@@ -5,6 +5,7 @@ import type {
 } from 'radix-vue'
 
 export interface DialogContentProps extends _DialogContentProps {
+  to?: string | HTMLElement
   align?: string
   class?: string
   size?: '1' | '2' | '3' | '4'
@@ -36,12 +37,14 @@ const props = withDefaults(defineProps<DialogContentProps>(), {
 })
 const emits = defineEmits<DialogContentEmits>()
 const forwarded = useForwardPropsEmits(props, emits, [
-  'align', 'class', 'size', 'width', 'minWidth', 'maxWidth', 'height', 'minHeight', 'maxHeight',
+  'to', 'align', 'class', 'size',
+  'width', 'minWidth', 'maxWidth',
+  'height', 'minHeight', 'maxHeight',
 ])
 </script>
 
 <template>
-  <DialogPortal>
+  <DialogPortal :to="props.to">
     <DialogOverlay class="ui-DialogOverlay">
       <div class="ui-DialogScroll">
         <div

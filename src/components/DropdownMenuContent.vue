@@ -8,6 +8,7 @@ import { createContext } from 'radix-vue'
 import type { ColorType } from './types'
 
 export interface DropdownMenuContentProps extends _DropdownMenuContentProps {
+  to?: string | HTMLElement
   size?: '1' | '2'
   variant?: 'solid' | 'soft'
   color?: ColorType
@@ -50,7 +51,7 @@ const props = withDefaults(defineProps<DropdownMenuContentProps>(), {
 })
 const emits = defineEmits<DialogContentEmits>()
 const forwarded = useForwardPropsEmits(props, emits, [
-  'size', 'variant', 'color', 'highContrast',
+  'to', 'size', 'variant', 'color', 'highContrast',
 ])
 
 const { forwardRef } = useForwardExpose()
@@ -59,7 +60,7 @@ provideDropdownMenuContentContext({ size, variant, color, highContrast })
 </script>
 
 <template>
-  <DropdownMenuPortal>
+  <DropdownMenuPortal :to="props.to">
     <DropdownMenuContent
       v-bind="{
         ...$attrs,

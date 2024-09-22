@@ -5,6 +5,7 @@ import type {
 } from 'radix-vue'
 
 export interface AlertDialogContentProps extends _DialogContentProps {
+  to?: string | HTMLElement
   align?: string
   class?: string
   size?: '1' | '2' | '3' | '4'
@@ -33,12 +34,14 @@ const props = withDefaults(defineProps<AlertDialogContentProps>(), {
 const emits = defineEmits<AlertDialogContentEmits>()
 
 const forwarded = useForwardPropsEmits(props, emits, [
-  'align', 'class', 'size', 'width', 'minWidth', 'maxWidth', 'height', 'minHeight', 'maxHeight',
+  'to', 'align', 'class', 'size',
+  'width', 'minWidth', 'maxWidth',
+  'height', 'minHeight', 'maxHeight',
 ])
 </script>
 
 <template>
-  <AlertDialogPortal>
+  <AlertDialogPortal :to="props.to">
     <AlertDialogOverlay class="ui-DialogOverlay">
       <div class="ui-DialogScroll">
         <div

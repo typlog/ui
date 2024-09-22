@@ -5,6 +5,7 @@ import type {
 } from 'radix-vue'
 
 export interface PopoverContentProps extends _PopoverContentProps {
+  to?: string | HTMLElement
   size?: '1' | '2' | '3' | '4'
 }
 </script>
@@ -25,11 +26,11 @@ const props = withDefaults(defineProps<PopoverContentProps>(), {
 })
 const emits = defineEmits<PopoverContentEmits>()
 
-const forwarded = useForwardPropsEmits(props, emits, ['size'])
+const forwarded = useForwardPropsEmits(props, emits, ['to', 'size'])
 </script>
 
 <template>
-  <PopoverPortal>
+  <PopoverPortal :to="props.to">
     <PopoverContent
       v-bind="{ ...$attrs, ...forwarded }"
       :data-size="props.size"

@@ -5,6 +5,7 @@ import type {
 } from 'radix-vue'
 
 export interface TooltipProps extends TooltipProviderProps, TooltipContentProps {
+  to?: string | HTMLElement
   content?: string
 }
 </script>
@@ -43,7 +44,7 @@ const props = withDefaults(defineProps<TooltipProps>(), {
       >
         <slot></slot>
       </TooltipTrigger>
-      <TooltipPortal>
+      <TooltipPortal :to="props.to">
         <TooltipContent
           class="ui-Tooltip"
           :align="props.align"
