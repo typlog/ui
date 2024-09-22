@@ -8,7 +8,8 @@ export interface SelectRootProps extends _SelectRootProps {
 
 <script setup lang="ts">
 import { provide, computed } from 'vue'
-import { SelectRoot, useForwardExpose, useForwardPropsEmits } from 'radix-vue'
+import { SelectRoot, useForwardExpose } from 'radix-vue'
+import { useForwardPropsEmits } from './util'
 
 defineOptions({
   inheritAttrs: false,
@@ -19,7 +20,7 @@ const props = withDefaults(defineProps<SelectRootProps>(), {
 })
 const emits = defineEmits<SelectRootEmits>()
 
-const forwarded = useForwardPropsEmits(props, emits)
+const forwarded = useForwardPropsEmits(props, emits, ['size'])
 provide('SelectRoot.size', computed(() => props.size))
 
 useForwardExpose()
@@ -27,7 +28,7 @@ useForwardExpose()
 
 <template>
   <SelectRoot
-    v-bind="{...$attrs, ...forwarded, size: undefined}"
+    v-bind="{...$attrs, ...forwarded}"
     class="ui-SelectItem"
   >
     <slot></slot>

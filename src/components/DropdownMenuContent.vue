@@ -29,11 +29,11 @@ export const [injectDropdownMenuContentContext, provideDropdownMenuContentContex
 import { toRefs } from 'vue'
 import {
   useForwardExpose,
-  useForwardPropsEmits,
   DropdownMenuPortal,
   DropdownMenuContent,
 } from 'radix-vue'
 import ScrollArea from './ScrollArea.vue'
+import { useForwardPropsEmits } from './util'
 
 defineOptions({
   inheritAttrs: false,
@@ -49,9 +49,11 @@ const props = withDefaults(defineProps<DropdownMenuContentProps>(), {
   collisionPadding: 10,
 })
 const emits = defineEmits<DialogContentEmits>()
-const forwarded = useForwardPropsEmits(props, emits)
-const { forwardRef } = useForwardExpose()
+const forwarded = useForwardPropsEmits(props, emits, [
+  'size', 'variant', 'color', 'highContrast',
+])
 
+const { forwardRef } = useForwardExpose()
 const { size, variant, color, highContrast } = toRefs(props)
 provideDropdownMenuContentContext({ size, variant, color, highContrast })
 </script>
@@ -62,10 +64,6 @@ provideDropdownMenuContentContext({ size, variant, color, highContrast })
       v-bind="{
         ...$attrs,
         ...forwarded,
-        color: undefined,
-        size: undefined,
-        variant: undefined,
-        highContrast: undefined,
       }"
       :ref="forwardRef"
       class="ui-PopperContent ui-MenuContent"

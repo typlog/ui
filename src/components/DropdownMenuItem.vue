@@ -12,9 +12,10 @@ export interface DropdownMenuItemProps extends _DropdownMenuItemProps {
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose, useForwardPropsEmits } from 'radix-vue'
+import { useForwardExpose } from 'radix-vue'
 import { DropdownMenuItem } from 'radix-vue'
 import { injectDropdownMenuContentContext } from './DropdownMenuContent.vue'
+import { useForwardPropsEmits } from './util'
 
 defineOptions({
   inheritAttrs: false,
@@ -23,7 +24,7 @@ defineOptions({
 const props = defineProps<DropdownMenuItemProps>()
 const emits = defineEmits<DropdownMenuItemEmits>()
 
-const forwarded = useForwardPropsEmits(props, emits)
+const forwarded = useForwardPropsEmits(props, emits, ['color', 'shortcut'])
 
 useForwardExpose()
 
@@ -37,7 +38,7 @@ const rootContext = injectDropdownMenuContentContext()
     :data-size="rootContext.size.value"
     :data-variant="rootContext.variant.value"
     :data-high-contrast="rootContext.highContrast?.value || undefined"
-    v-bind="{...$attrs, ...forwarded, color: undefined, shortcut: undefined}"
+    v-bind="{...$attrs, ...forwarded}"
   >
     <slot></slot>
     <div

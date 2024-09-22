@@ -11,7 +11,8 @@ export interface CheckboxProps extends CheckboxRootProps {
 </script>
 
 <script setup lang="ts">
-import { CheckboxRoot, CheckboxIndicator, useForwardPropsEmits } from 'radix-vue'
+import { CheckboxRoot, CheckboxIndicator } from 'radix-vue'
+import { useForwardPropsEmits } from './util'
 
 defineOptions({
   inheritAttrs: false,
@@ -22,9 +23,8 @@ const emits = defineEmits<CheckboxRootEmits>()
 const props = withDefaults(defineProps<CheckboxProps>(), {
   size: '2',
   variant: 'surface',
-  highContrast: undefined,
 })
-const forwarded = useForwardPropsEmits(props, emits)
+const forwarded = useForwardPropsEmits(props, emits, ['color', 'size', 'variant', 'highContrast'])
 </script>
 
 <template>
@@ -32,16 +32,12 @@ const forwarded = useForwardPropsEmits(props, emits)
     v-bind="{
       ...$attrs,
       ...forwarded,
-      size: undefined,
-      color: undefined,
-      variant: undefined,
-      highContrast: undefined,
     }"
     class="ui-Checkbox"
     :data-variant="props.variant"
     :data-size="props.size"
-    :data-accent-color="forwarded.color"
-    :data-high-contrast="forwarded.highContrast"
+    :data-accent-color="props.color"
+    :data-high-contrast="props.highContrast"
   >
     <CheckboxIndicator
       class="ui-CheckboxIndicator"

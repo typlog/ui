@@ -7,7 +7,8 @@ export interface RadioTabsListProps extends RadioGroupRootProps {
 </script>
 
 <script setup lang="ts">
-import { RadioGroupRoot, useForwardPropsEmits } from 'radix-vue'
+import { RadioGroupRoot } from 'radix-vue'
+import { useForwardPropsEmits } from './util'
 
 defineOptions({
   inheritAttrs: false,
@@ -18,7 +19,7 @@ const emits = defineEmits<RadioGroupRootEmits>()
 const props = withDefaults(defineProps<RadioTabsListProps>(), {
   size: '2',
 })
-const forwarded = useForwardPropsEmits(props, emits)
+const forwarded = useForwardPropsEmits(props, emits, ['size'])
 </script>
 
 <template>

@@ -19,11 +19,11 @@ export interface DialogContentProps extends _DialogContentProps {
 
 <script setup lang="ts">
 import {
-  useForwardPropsEmits,
   DialogPortal,
   DialogContent,
   DialogOverlay,
 } from 'radix-vue'
+import { useForwardPropsEmits } from './util'
 
 defineOptions({
   inheritAttrs: false,
@@ -35,7 +35,9 @@ const props = withDefaults(defineProps<DialogContentProps>(), {
   maxWidth: '600px',
 })
 const emits = defineEmits<DialogContentEmits>()
-const forwarded = useForwardPropsEmits(props, emits)
+const forwarded = useForwardPropsEmits(props, emits, [
+  'align', 'class', 'size', 'width', 'minWidth', 'maxWidth', 'height', 'minHeight', 'maxHeight',
+])
 </script>
 
 <template>
@@ -53,9 +55,6 @@ const forwarded = useForwardPropsEmits(props, emits)
             v-bind="{
               ...$attrs,
               ...forwarded,
-              size: undefined,
-              align: undefined,
-              maxWidth: undefined,
             }"
             :style="{
               width: forwarded.width,

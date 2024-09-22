@@ -11,10 +11,10 @@ export interface PopoverContentProps extends _PopoverContentProps {
 
 <script setup lang="ts">
 import {
-  useForwardPropsEmits,
   PopoverPortal,
   PopoverContent,
 } from 'radix-vue'
+import { useForwardPropsEmits } from './util'
 
 defineOptions({
   inheritAttrs: false,
@@ -25,13 +25,13 @@ const props = withDefaults(defineProps<PopoverContentProps>(), {
 })
 const emits = defineEmits<PopoverContentEmits>()
 
-const forwarded = useForwardPropsEmits(props, emits)
+const forwarded = useForwardPropsEmits(props, emits, ['size'])
 </script>
 
 <template>
   <PopoverPortal>
     <PopoverContent
-      v-bind="{ ...$attrs, ...forwarded, size: undefined }"
+      v-bind="{ ...$attrs, ...forwarded }"
       :data-size="props.size"
       class="ui-PopoverContent"
     >

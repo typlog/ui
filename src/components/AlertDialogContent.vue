@@ -22,8 +22,8 @@ import {
   AlertDialogPortal,
   AlertDialogContent,
   AlertDialogOverlay,
-  useForwardPropsEmits,
 } from 'radix-vue'
+import { useForwardPropsEmits } from './util'
 
 const props = withDefaults(defineProps<AlertDialogContentProps>(), {
   align: 'center',
@@ -32,7 +32,9 @@ const props = withDefaults(defineProps<AlertDialogContentProps>(), {
 })
 const emits = defineEmits<AlertDialogContentEmits>()
 
-const forwarded = useForwardPropsEmits(props, emits)
+const forwarded = useForwardPropsEmits(props, emits, [
+  'align', 'class', 'size', 'width', 'minWidth', 'maxWidth', 'height', 'minHeight', 'maxHeight',
+])
 </script>
 
 <template>
@@ -50,9 +52,6 @@ const forwarded = useForwardPropsEmits(props, emits)
             v-bind="{
               ...$attrs,
               ...forwarded,
-              size: undefined,
-              align: undefined,
-              maxWidth: undefined,
             }"
             :style="{
               width: forwarded.width,

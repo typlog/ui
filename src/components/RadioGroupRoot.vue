@@ -24,7 +24,8 @@ export const [injectRadioGroupRootContext, provideRadioGroupRootContext]
 
 <script setup lang="ts">
 import { toRefs } from 'vue'
-import { RadioGroupRoot, useForwardPropsEmits } from 'radix-vue'
+import { RadioGroupRoot } from 'radix-vue'
+import { useForwardPropsEmits } from './util'
 
 defineOptions({
   inheritAttrs: false,
@@ -36,7 +37,7 @@ const props = withDefaults(defineProps<RadioGroupRootProps>(), {
   size: '2',
   variant: 'surface',
 })
-const forwarded = useForwardPropsEmits(props, emits)
+const forwarded = useForwardPropsEmits(props, emits, ['color', 'size', 'variant', 'highContrast'])
 
 const { size, variant, color, highContrast } = toRefs(props)
 
@@ -48,10 +49,6 @@ provideRadioGroupRootContext({ size, variant, color, highContrast })
     v-bind="{
       ...$attrs,
       ...forwarded,
-      size: undefined,
-      variant: undefined,
-      color: undefined,
-      highContrast: undefined,
     }"
   >
     <slot></slot>
