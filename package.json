@@ -1,6 +1,6 @@
 {
   "name": "@typlog/ui",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "type": "module",
   "description": "Themed components for Radix Vue.",
@@ -12,7 +12,8 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
-    }
+    },
+    "./style.css": "./dist/style.css"
   },
   "scripts": {
     "start": "vite",
