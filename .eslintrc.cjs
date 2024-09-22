@@ -19,5 +19,6 @@ module.exports = {
     'vue/multi-word-component-names': 'off',
     'vue/singleline-html-element-content-newline': 'off',
     'vue/require-default-prop': 'off',
-  }
+  },
+  ignorePatterns: ["dist/**/*"],
 }

@@ -136,7 +136,7 @@ export {
 } from './RadioGroupItem.vue'
 
 export {
-  type RadioGroupItemProps
+  type RadioGroupItemProps,
 } from 'radix-vue'
 
 export {
