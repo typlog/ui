@@ -13,7 +13,8 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
-    "./style.css": "./dist/style.css"
+    "./style.css": "./dist/style.css",
+    "./tailwind": "./tailwind/index.ts"
   },
   "scripts": {
     "start": "vite",
