@@ -34,7 +34,7 @@ const rootContext = injectDropdownMenuContentContext()
 <template>
   <DropdownMenuItem
     class="ui-MenuItem"
-    :data-accent-color="forwarded.color"
+    :data-accent-color="props.color"
     :data-size="rootContext.size.value"
     :data-variant="rootContext.variant.value"
     :data-high-contrast="rootContext.highContrast?.value || undefined"

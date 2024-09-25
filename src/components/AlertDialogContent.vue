@@ -57,12 +57,12 @@ const forwarded = useForwardPropsEmits(props, emits, [
               ...forwarded,
             }"
             :style="{
-              width: forwarded.width,
-              height: forwarded.height,
-              minWidth: forwarded.minWidth,
-              maxWidth: forwarded.maxWidth,
-              minHeight: forwarded.minHeight,
-              maxHeight: forwarded.maxHeight,
+              width: props.width,
+              height: props.height,
+              minWidth: props.minWidth,
+              maxWidth: props.maxWidth,
+              minHeight: props.minHeight,
+              maxHeight: props.maxHeight,
             }"
           >
             <slot></slot>

@@ -12,7 +12,6 @@ export interface RadioProps {
 
 <script setup lang="ts">
 import { useVModel } from '@vueuse/core'
-import { useForwardProps } from 'radix-vue'
 
 defineOptions({
   inheritAttrs: false,
@@ -26,8 +25,6 @@ const props = withDefaults(defineProps<RadioProps>(), {
 const emits = defineEmits<{
   'update:modelValue': [value: string | number]
 }>()
-
-const forwarded = useForwardProps(props)
 
 const modelValue = useVModel(props, 'modelValue', emits, {
   defaultValue: props.modelValue,
@@ -44,7 +41,7 @@ const modelValue = useVModel(props, 'modelValue', emits, {
     :data-accent-color="props.color"
     :data-variant="props.variant"
     :data-size="props.size"
-    :data-high-contrast="forwarded.highContrast"
+    :data-high-contrast="props.highContrast"
   >
 </template>
 

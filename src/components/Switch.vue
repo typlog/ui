@@ -25,7 +25,9 @@ const props = withDefaults(defineProps<SwitchProps>(), {
   size: '2',
   variant: 'surface',
 })
-const forwarded = useForwardPropsEmits(props, emits, ['color', 'size', 'variant', 'highContrast', 'radius'])
+const forwarded = useForwardPropsEmits(props, emits, [
+  'color', 'size', 'variant', 'highContrast', 'radius'
+])
 </script>
 
 <template>
@@ -33,17 +35,13 @@ const forwarded = useForwardPropsEmits(props, emits, ['color', 'size', 'variant'
     v-bind="{
       ...$attrs,
       ...forwarded,
-      size: undefined,
-      color: undefined,
-      variant: undefined,
-      highContrast: undefined,
     }"
     class="ui-Switch"
     :data-variant="props.variant"
     :data-size="props.size"
-    :data-accent-color="forwarded.color"
-    :data-radius="forwarded.radius"
-    :data-high-contrast="forwarded.highContrast"
+    :data-accent-color="props.color"
+    :data-radius="props.radius"
+    :data-high-contrast="props.highContrast"
   >
     <SwitchThumb class="ui-SwitchThumb" />
   </SwitchRoot>
