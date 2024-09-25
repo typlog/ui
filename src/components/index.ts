@@ -243,6 +243,11 @@ export {
   default as Spinner,
 } from './Spinner.vue'
 
+export {
+  default as IconCircle,
+  type IconCircleProps,
+} from './IconCircle.vue'
+
 import { Icon } from '@iconify/vue'
 
 Icon.name = 'Icon'

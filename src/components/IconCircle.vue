@@ -2,13 +2,13 @@
 import { Icon } from '@iconify/vue'
 import type { ColorType } from './types'
 
-interface IconMarkerProps {
+export interface IconCircleProps {
   color?: ColorType
   size?: number | string
   variant?: 'solid' | 'soft' | 'outline' | 'glow'
   icon: string
 }
-const props = withDefaults(defineProps<IconMarkerProps>(), {
+const props = withDefaults(defineProps<IconCircleProps>(), {
   size: 1,
   variant: 'soft',
 })
@@ -16,7 +16,7 @@ const props = withDefaults(defineProps<IconMarkerProps>(), {
 
 <template>
   <span
-    class="ui-IconMarker"
+    class="ui-IconCircle"
     :data-variant="props.variant"
     :data-size="props.size"
     :data-accent-color="props.color"
@@ -26,33 +26,33 @@ const props = withDefaults(defineProps<IconMarkerProps>(), {
 </template>
 
 <style>
-.ui-IconMarker {
+.ui-IconCircle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-weight: var(--font-weight-medium);
-  border-radius: 9999px;
+  border-radius: var(--radius-full);
   box-sizing: border-box;
   user-select: none;
   cursor: default;
   background-color: var(--accent-a3);
   color: var(--accent-11);
-  font-size: var(--icon-marker-size);
-  padding: var(--icon-marker-padding);
+  font-size: var(--icon-circle-size);
+  padding: var(--icon-circle-padding);
 }
-.ui-IconMarker[data-size="1"] {
-  --icon-marker-size: 10px;
-  --icon-marker-padding: 2px;
+.ui-IconCircle[data-size="1"] {
+  --icon-circle-size: 10px;
+  --icon-circle-padding: 2px;
 }
-.ui-IconMarker[data-size="2"] {
-  --icon-marker-size: 12px;
-  --icon-marker-padding: 3px;
+.ui-IconCircle[data-size="2"] {
+  --icon-circle-size: 12px;
+  --icon-circle-padding: 3px;
 }
-.ui-IconMarker[data-size="3"] {
-  --icon-marker-size: 14px;
-  --icon-marker-padding: 4px;
+.ui-IconCircle[data-size="3"] {
+  --icon-circle-size: 14px;
+  --icon-circle-padding: 4px;
 }
-.ui-IconMarker[data-variant="glow"] {
-  box-shadow: 0 0 0 calc(var(--icon-marker-padding) - 1px) var(--accent-a2);
+.ui-IconCircle[data-variant="glow"] {
+  box-shadow: 0 0 0 calc(var(--icon-circle-padding) - 1px) var(--accent-a2);
 }
 </style>
