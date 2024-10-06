@@ -17,6 +17,7 @@ const props = withDefaults(defineProps<IconCircleProps>(), {
 <template>
   <span
     class="ui-IconCircle"
+    data-radius="full"
     :data-variant="props.variant"
     :data-size="props.size"
     :data-accent-color="props.color"
