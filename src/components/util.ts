@@ -15,7 +15,7 @@ export function useForwardPropsEmits<T extends Record<string, any>, Name extends
   const parsedProps = useForwardProps(props)
   const emitsAsProps = useEmitAsProps(emit)
   return computed(() => ({
-    ..._excludeProps(parsedProps, exclude),
+    ..._excludeProps(parsedProps.value, exclude),
     ...emitsAsProps,
   }))
 }
@@ -23,7 +23,7 @@ export function useForwardPropsEmits<T extends Record<string, any>, Name extends
 function _excludeProps (props: Record<string, any>, exclude: string[]) {
   const rv: Record<string, any> = {}
   Object.keys(props).forEach(k => {
-    if (exclude.indexOf(k) !== -1) {
+    if (exclude.indexOf(k) === -1) {
       rv[k] = props[k]
     }
   })
