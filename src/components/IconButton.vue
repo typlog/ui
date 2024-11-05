@@ -20,6 +20,7 @@ const forwarded = useForwardProps(props)
 .ui-IconButton:where(:not([data-variant="ghost"])) {
   height: var(--button-height);
   width: var(--button-height);
+  padding: 0;
 }
 
 .ui-IconButton:where([data-variant="ghost"]) {

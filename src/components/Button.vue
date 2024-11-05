@@ -77,7 +77,7 @@ const attrs = computed(() => {
   cursor: not-allowed;
 }
 
-.ui-Button[data-size="1"] {
+.ui-Button:where([data-size="1"]) {
   gap: var(--space-1);
   font-size: var(--font-size-1);
   line-height: var(--line-height-1);
@@ -85,16 +85,16 @@ const attrs = computed(() => {
   --button-height: var(--space-5);
   border-radius: max(var(--radius-1), var(--radius-full));
 }
-.ui-Button[data-size="1"]:where(:not([data-variant="ghost"])) {
+.ui-Button:where([data-size="1"]):where(:not([data-variant="ghost"])) {
   padding-left: var(--space-2);
   padding-right: var(--space-2);
 }
-.ui-Button[data-size="1"]:where([data-variant="ghost"]) {
+.ui-Button:where([data-size="1"]):where([data-variant="ghost"]) {
   gap: var(--space-1);
   --button-ghost-padding-x: var(--space-2);
   --button-ghost-padding-y: var(--space-1);
 }
-.ui-Button[data-size="2"] {
+.ui-Button:where([data-size="2"]) {
   gap: var(--space-2);
   font-size: var(--font-size-2);
   line-height: var(--line-height-2);
@@ -102,16 +102,16 @@ const attrs = computed(() => {
   --button-height: var(--space-6);
   border-radius: max(var(--radius-2), var(--radius-full));
 }
-.ui-Button[data-size="2"]:where(:not([data-variant="ghost"])) {
+.ui-Button:where([data-size="2"]):where(:not([data-variant="ghost"])) {
   padding-left: var(--space-3);
   padding-right: var(--space-3);
 }
-.ui-Button[data-size="2"]:where([data-variant="ghost"]) {
+.ui-Button:where([data-size="2"]):where([data-variant="ghost"]) {
   gap: var(--space-1);
   --button-ghost-padding-x: var(--space-2);
   --button-ghost-padding-y: var(--space-1);
 }
-.ui-Button[data-size="3"] {
+.ui-Button:where([data-size="3"]) {
   gap: var(--space-3);
   font-size: var(--font-size-3);
   line-height: var(--line-height-3);
@@ -119,16 +119,16 @@ const attrs = computed(() => {
   --button-height: var(--space-7);
   border-radius: max(var(--radius-3), var(--radius-full));
 }
-.ui-Button[data-size="3"]:where(:not([data-variant="ghost"])) {
+.ui-Button:where([data-size="3"]):where(:not([data-variant="ghost"])) {
   padding-left: var(--space-4);
   padding-right: var(--space-4);
 }
-.ui-Button[data-size="3"]:where([data-variant="ghost"]) {
+.ui-Button:where([data-size="3"]):where([data-variant="ghost"]) {
   gap: var(--space-2);
   --button-ghost-padding-x: var(--space-3);
   --button-ghost-padding-y: calc(var(--space-1) * 1.5);
 }
-.ui-Button[data-size="4"] {
+.ui-Button:where([data-size="4"]) {
   gap: var(--space-3);
   font-size: var(--font-size-4);
   line-height: var(--line-height-4);
@@ -136,11 +136,11 @@ const attrs = computed(() => {
   --button-height: var(--space-8);
   border-radius: max(var(--radius-4), var(--radius-full));
 }
-.ui-Button[data-size="4"]:where(:not([data-variant="ghost"])) {
+.ui-Button:where([data-size="4"]):where(:not([data-variant="ghost"])) {
   padding-left: var(--space-5);
   padding-right: var(--space-5);
 }
-.ui-Button[data-size="4"]:where([data-variant="ghost"]) {
+.ui-Button:where([data-size="4"]):where([data-variant="ghost"]) {
   gap: var(--space-2);
   --button-ghost-padding-x: var(--space-4);
   --button-ghost-padding-y: var(--space-2);
@@ -159,30 +159,30 @@ const attrs = computed(() => {
   --button-solid-high-contrast-active-filter: brightness(0.95) saturate(1.2);
 }
 
-.ui-Button[data-variant="solid"] {
+.ui-Button:where([data-variant="solid"]) {
   background-color: var(--accent-9);
   color: var(--accent-contrast);
 }
 @media (hover: hover) {
-  .ui-Button[data-variant="solid"]:where(:hover) {
+  .ui-Button:where([data-variant="solid"]):where(:hover) {
     background-color: var(--accent-10);
   }
 }
-.ui-Button[data-variant="solid"]:where(:focus-visible) {
+.ui-Button:where([data-variant="solid"]):where(:focus-visible) {
   outline: 2px solid var(--focus-8);
   outline-offset: 2px;
 }
-.ui-Button[data-variant="solid"]:where([data-high-contrast="true"]) {
+.ui-Button:where([data-variant="solid"]):where([data-high-contrast="true"]) {
   background-color: var(--accent-12);
   color: var(--gray-1);
 }
 @media (hover: hover) {
-  .ui-Button[data-variant="solid"]:where([data-high-contrast="true"]:hover) {
+  .ui-Button:where([data-variant="solid"]):where([data-high-contrast="true"]:hover) {
     background-color: var(--accent-12);
     filter: var(--button-solid-high-contrast-hover-filter);
   }
 }
-.ui-Button[data-variant="solid"]:where([data-disabled]) {
+.ui-Button:where([data-variant="solid"]):where([data-disabled]) {
   color: var(--gray-a8);
   background-color: var(--gray-a3);
   outline: none;
@@ -201,19 +201,19 @@ const attrs = computed(() => {
   background-color: var(--gray-a3);
 }
 
-.ui-Button[data-variant="soft"] {
+.ui-Button:where([data-variant="soft"]) {
   background-color: var(--accent-a3);
 }
 @media (hover: hover) {
-  .ui-Button[data-variant="soft"]:where(:hover) {
+  .ui-Button:where([data-variant="soft"]):where(:hover) {
     background-color: var(--accent-a4);
   }
 }
-.ui-Button[data-variant="soft"]:where(:focus-visible) {
+.ui-Button:where([data-variant="soft"]):where(:focus-visible) {
   outline: 2px solid var(--accent-8);
   outline-offset: -1px;
 }
-.ui-Button[data-variant="soft"]:where([data-disabled]) {
+.ui-Button:where([data-variant="soft"]):where([data-disabled]) {
   color: var(--gray-a8);
   background-color: var(--gray-a3);
 }
@@ -236,48 +236,48 @@ const attrs = computed(() => {
 }
 
 /* outline */
-.ui-Button[data-variant="outline"] {
+.ui-Button:where([data-variant="outline"]) {
   box-shadow: inset 0 0 0 1px var(--accent-a8);
   color: var(--accent-a11);
 }
 @media (hover: hover) {
-  .ui-Button[data-variant="outline"]:where(:hover) {
+  .ui-Button:where([data-variant="outline"]):where(:hover) {
     background-color: var(--accent-a2);
   }
 }
-.ui-Button[data-variant="outline"]:where(:focus-visible) {
+.ui-Button:where([data-variant="outline"]):where(:focus-visible) {
   outline: 2px solid var(--focus-8);
   outline-offset: -1px;
 }
-.ui-Button[data-variant="outline"]:where([data-high-contrast="true"]) {
+.ui-Button:where([data-variant="outline"]):where([data-high-contrast="true"]) {
   box-shadow: inset 0 0 0 1px var(--accent-a7), inset 0 0 0 1px var(--gray-a11);
   color: var(--accent-12);
 }
-.ui-Button[data-variant="outline"]:where([data-disabled]) {
+.ui-Button:where([data-variant="outline"]):where([data-disabled]) {
   color: var(--gray-a8);
   box-shadow: inset 0 0 0 1px var(--gray-a7);
   background-color: transparent;
 }
 
 /* surface */
-.ui-Button[data-variant="surface"] {
+.ui-Button:where([data-variant="surface"]) {
   background-color: var(--accent-surface);
   box-shadow: inset 0 0 0 1px var(--accent-a7);
   color: var(--accent-a11);
 }
 @media (hover: hover) {
-  .ui-Button[data-variant="surface"]:where(:hover) {
+  .ui-Button:where([data-variant="surface"]):where(:hover) {
     box-shadow: inset 0 0 0 1px var(--accent-a8);
   }
 }
-.ui-Button[data-variant="surface"]:where(:focus-visible) {
+.ui-Button:where([data-variant="surface"]):where(:focus-visible) {
   outline: 2px solid var(--focus-8);
   outline-offset: -1px;
 }
-.ui-Button[data-variant="surface"]:where([data-high-contrast="true"]) {
+.ui-Button:where([data-variant="surface"]):where([data-high-contrast="true"]) {
   color: var(--accent-12);
 }
-.ui-Button[data-variant="surface"]:where([data-disabled]) {
+.ui-Button:where([data-variant="surface"]):where([data-disabled]) {
   color: var(--gray-a8);
   box-shadow: inset 0 0 0 1px var(--gray-a6);
   background-color: var(--gray-a2);
