@@ -3,26 +3,33 @@ import type { RadioGroupItemProps } from 'radix-vue'
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose, useForwardProps } from 'radix-vue'
+import { computed } from 'vue'
+import { useForwardProps } from 'radix-vue'
 import { RadioGroupItem } from 'radix-vue'
 import { injectRadioGroupRootContext } from './RadioGroupRoot.vue'
 
 const props = defineProps<RadioGroupItemProps>()
 const forwarded = useForwardProps(props)
-
-useForwardExpose()
-
 const rootContext = injectRadioGroupRootContext()
+
+const resetClass = computed(() => {
+  const rv: string[] = [
+    `r-size-${rootContext.size.value}`,
+    `r-variant-${rootContext.variant.value}`,
+  ]
+  if (rootContext.highContrast?.value) {
+    rv.push('r-high-contrast')
+  }
+  return rv
+})
 </script>
 
 <template>
   <label class="ui-RadioGroupItem">
     <RadioGroupItem
       class="ui-Radio"
+      :class="resetClass"
       :data-accent-color="rootContext.color?.value"
-      :data-size="rootContext.size.value"
-      :data-variant="rootContext.variant.value"
-      :data-high-contrast="rootContext.highContrast?.value"
       v-bind="forwarded"
     >
     </RadioGroupItem>

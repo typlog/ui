@@ -11,26 +11,26 @@ export interface SelectTriggerProps extends _SelectTriggerProps {
 </script>
 
 <script setup lang="ts">
-import { inject } from 'vue'
+import { inject, computed, Ref } from 'vue'
 import { Icon } from '@iconify/vue'
-import { SelectTrigger, SelectValue, SelectIcon, useForwardExpose } from 'radix-vue'
+import { SelectTrigger, SelectValue, SelectIcon } from 'radix-vue'
 
 const props = withDefaults(defineProps<SelectTriggerProps>(), {
   variant: 'surface',
 })
-const size = inject('SelectRoot.size')
-
-useForwardExpose()
+const size = inject('SelectRoot.size') as Ref<number>
+const resetClass = computed(() => {
+  return [`r-variant-${props.variant}`, `r-size-${size.value}`]
+})
 </script>
 
 <template>
   <SelectTrigger
     class="ui-SelectTrigger"
+    :class="resetClass"
     :disabled="props.disabled"
-    :data-variant="props.variant"
     :data-accent-color="props.color"
     :data-radius="props.radius"
-    :data-size="size"
   >
     <span class="ui-SelectTriggerInner">
       <SelectValue :placeholder="props.placeholder" />
@@ -68,24 +68,24 @@ useForwardExpose()
   flex-shrink: 0;
 }
 
-.ui-SelectTrigger:where(:not([data-variant="ghost"])).ui-SelectIcon {
+.ui-SelectTrigger:where(:not(.r-variant-ghost)).ui-SelectIcon {
   opacity: 0.9;
 }
 
 
-.ui-SelectTrigger:where(:not([data-variant="ghost"])) {
+.ui-SelectTrigger:where(:not(.r-variant-ghost)) {
   box-sizing: border-box;
   height: var(--select-trigger-height);
 }
 
-.ui-SelectTrigger:where([data-variant="ghost"]) {
+.ui-SelectTrigger:where(.r-variant-ghost) {
   box-sizing: content-box;
   height: fit-content;
   padding: var(--select-trigger-ghost-padding-y) var(--select-trigger-ghost-padding-x);
   margin: calc(0px - var(--select-trigger-ghost-padding-y)) calc(0px - var(--select-trigger-ghost-padding-x));
 }
 
-.ui-SelectTrigger:where([data-size="1"]) {
+.ui-SelectTrigger:where(.r-size-1) {
   --select-trigger-height: var(--space-5);
   gap: var(--space-1);
   font-size: var(--font-size-1);
@@ -94,17 +94,17 @@ useForwardExpose()
   border-radius: max(var(--radius-1), var(--radius-full));
 }
 
-.ui-SelectTrigger:where([data-size="1"]):where([data-variant="ghost"]) {
+.ui-SelectTrigger:where(.r-size-1):where(.r-variant-ghost) {
   --select-trigger-ghost-padding-x: var(--space-2);
   --select-trigger-ghost-padding-y: var(--space-1);
 }
 
-.ui-SelectTrigger:where([data-size="1"]):where(:not([data-variant="ghost"])) {
+.ui-SelectTrigger:where(.r-size-1):where(:not(.r-variant-ghost)) {
   padding-left: var(--space-2);
   padding-right: var(--space-2);
 }
 
-.ui-SelectTrigger:where([data-size="2"]) {
+.ui-SelectTrigger:where(.r-size-2) {
   --select-trigger-height: var(--space-6);
   gap: calc(var(--space-1) * 1.5);
   font-size: var(--font-size-2);
@@ -113,17 +113,17 @@ useForwardExpose()
   border-radius: max(var(--radius-2), var(--radius-full));
 }
 
-.ui-SelectTrigger:where([data-size="1"]):where([data-variant="ghost"]) {
+.ui-SelectTrigger:where(.r-size-1):where(.r-variant-ghost) {
   --select-trigger-ghost-padding-x: var(--space-2);
   --select-trigger-ghost-padding-y: var(--space-1);
 }
 
-.ui-SelectTrigger:where([data-size="2"]):where(:not([data-variant="ghost"])) {
+.ui-SelectTrigger:where(.r-size-2):where(:not(.r-variant-ghost)) {
   padding-left: var(--space-3);
   padding-right: var(--space-3);
 }
 
-.ui-SelectTrigger:where([data-size="3"]) {
+.ui-SelectTrigger:where(.r-size-3) {
   --select-trigger-height: var(--space-7);
   gap: var(--space-2);
   font-size: var(--font-size-3);
@@ -132,22 +132,22 @@ useForwardExpose()
   border-radius: max(var(--radius-3), var(--radius-full));
 }
 
-.ui-SelectTrigger:where([data-size="3"]):where([data-variant="ghost"]) {
+.ui-SelectTrigger:where(.r-size-3):where(.r-variant-ghost) {
   --select-trigger-ghost-padding-x: var(--space-3);
   --select-trigger-ghost-padding-y: calc(var(--space-1) * 1.5);
 }
 
-.ui-SelectTrigger:where([data-size="3"]):where(:not([data-variant="ghost"])) {
+.ui-SelectTrigger:where(.r-size-3):where(:not(.r-variant-ghost)) {
   padding-left: var(--space-4);
   padding-right: var(--space-4);
 }
 
-.ui-SelectTrigger:where([data-size="3"]) .ui-SelectIcon {
+.ui-SelectTrigger:where(.r-size-3) .ui-SelectIcon {
   width: 11px;
   height: 11px;
 }
 
-.ui-SelectTrigger:where([data-variant="surface"]) {
+.ui-SelectTrigger:where(.r-variant-surface) {
   --select-trigger-border-width: 1px;
   --select-trigger-border-color: var(--gray-a7);
   outline: 0;
@@ -156,77 +156,77 @@ useForwardExpose()
   border: var(--select-trigger-border-width) solid var(--select-trigger-border-color);
 }
 
-.ui-SelectTrigger:where([data-variant="surface"]):where(:focus-visible) {
+.ui-SelectTrigger:where(.r-variant-surface):where(:focus-visible) {
   --select-trigger-border-color: var(--focus-a8);
   box-shadow: 0 0 0 2px var(--accent-4), 0 1px 2px 0 rgb(0 0 0 / 0.05);
 }
 
 @media (hover: hover) {
-  .ui-SelectTrigger:where([data-variant="surface"]):hover {
+  .ui-SelectTrigger:where(.r-variant-surface):hover {
     --select-trigger-border-color: var(--gray-a8);
   }
 }
 
-.ui-SelectTrigger:where([data-variant="surface"]):where([data-state='open']) {
+.ui-SelectTrigger:where(.r-variant-surface):where([data-state='open']) {
   --select-trigger-border-color: var(--gray-a8);
 }
 
-.ui-SelectTrigger:where([data-variant="surface"]):where(:disabled) {
+.ui-SelectTrigger:where(.r-variant-surface):where(:disabled) {
   color: var(--gray-a11);
   background-color: var(--gray-a2);
   --select-trigger-border-color: var(--gray-a6);
 }
 
-.ui-SelectTrigger:where([data-variant="surface"]):where([data-placeholder]) .ui-SelectTriggerInner {
+.ui-SelectTrigger:where(.r-variant-surface):where([data-placeholder]) .ui-SelectTriggerInner {
   color: var(--gray-a10);
 }
 
-.ui-SelectTrigger:where([data-variant="soft"]),
-.ui-SelectTrigger:where([data-variant="ghost"]) {
+.ui-SelectTrigger:where(.r-variant-soft),
+.ui-SelectTrigger:where(.r-variant-ghost) {
   color: var(--accent-12);
 }
 
-.ui-SelectTrigger:where([data-variant="soft"]):where(:focus-visible),
-.ui-SelectTrigger:where([data-variant="ghost"]):where(:focus-visible) {
+.ui-SelectTrigger:where(.r-variant-soft):where(:focus-visible),
+.ui-SelectTrigger:where(.r-variant-ghost):where(:focus-visible) {
   outline: 2px solid var(--focus-8);
   outline-offset: -1px;
 }
 
-.ui-SelectTrigger:where([data-variant="soft"]):where([data-placeholder]) .ui-SelectTriggerInner,
-.ui-SelectTrigger:where([data-variant="ghost"]):where([data-placeholder]) .ui-SelectTriggerInner {
+.ui-SelectTrigger:where(.r-variant-soft):where([data-placeholder]) .ui-SelectTriggerInner,
+.ui-SelectTrigger:where(.r-variant-ghost):where([data-placeholder]) .ui-SelectTriggerInner {
   color: var(--accent-12);
   opacity: 0.6;
 }
 
-.ui-SelectTrigger:where([data-variant="soft"]) {
+.ui-SelectTrigger:where(.r-variant-soft) {
   background-color: var(--accent-a3);
 }
 @media (hover: hover) {
-  .ui-SelectTrigger:where([data-variant="soft"]):hover {
+  .ui-SelectTrigger:where(.r-variant-soft):hover {
     background-color: var(--accent-a4);
   }
 }
-.ui-SelectTrigger:where([data-variant="soft"]):where([data-state='open']) {
+.ui-SelectTrigger:where(.r-variant-soft):where([data-state='open']) {
   background-color: var(--accent-a4);
 }
-.ui-SelectTrigger:where([data-variant="soft"]):where(:focus-visible) {
+.ui-SelectTrigger:where(.r-variant-soft):where(:focus-visible) {
   outline-color: var(--accent-8);
 }
-.ui-SelectTrigger:where([data-variant="soft"]):where(:disabled) {
+.ui-SelectTrigger:where(.r-variant-soft):where(:disabled) {
   color: var(--gray-a11);
   background-color: var(--gray-a3);
 }
 
 @media (hover: hover) {
-  .ui-SelectTrigger:where([data-variant="ghost"]):hover {
+  .ui-SelectTrigger:where(.r-variant-ghost):hover {
     background-color: var(--accent-a3);
   }
 }
-.ui-SelectTrigger:where([data-variant="ghost"]):where([data-state='open']) {
+.ui-SelectTrigger:where(.r-variant-ghost):where([data-state='open']) {
   background-color: var(--accent-a3);
 }
 
-.ui-SelectTrigger:where([data-variant="ghost"]):where(:disabled) {
+.ui-SelectTrigger:where(.r-variant-ghost):where(:disabled) {
   color: var(--gray-a11);
   background-color: transparent;
 }

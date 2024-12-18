@@ -23,9 +23,9 @@ const props = withDefaults(defineProps<SeparatorProps>(), {
   <Primitive
     :as="props.as"
     class="ui-Separator"
+    :class="`r-size-${props.size}`"
     role="separator"
     :data-accent-color="props.color"
-    :data-size="props.size"
     :aria-orientation="props.orientation"
   />
 </template>
@@ -46,16 +46,16 @@ const props = withDefaults(defineProps<SeparatorProps>(), {
   height: var(--separator-size, auto);
 }
 
-.ui-Separator[data-size="1"] {
+.ui-Separator:where(.r-size-1) {
   --separator-size: var(--space-4);
 }
-.ui-Separator[data-size="2"] {
+.ui-Separator:where(.r-size-2) {
   --separator-size: var(--space-6);
 }
-.ui-Separator[data-size="3"] {
+.ui-Separator:where(.r-size-3) {
   --separator-size: var(--space-9);
 }
-.ui-Separator[data-size="4"] {
+.ui-Separator:where(.r-size-4) {
   --separator-size: 100%;
 }
 </style>

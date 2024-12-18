@@ -13,7 +13,7 @@ export interface SwitchProps extends SwitchRootProps {
 
 <script setup lang="ts">
 import { SwitchRoot, SwitchThumb } from 'radix-vue'
-import { useForwardPropsEmits } from './util'
+import { extractForwardPropsEmits } from './util'
 
 const emits = defineEmits<SwitchRootEmits>()
 
@@ -21,7 +21,7 @@ const props = withDefaults(defineProps<SwitchProps>(), {
   size: '2',
   variant: 'surface',
 })
-const forwarded = useForwardPropsEmits(props, emits, [
+const [forwarded, resetClass] = extractForwardPropsEmits(props, emits, [
   'color', 'size', 'variant', 'highContrast', 'radius',
 ])
 </script>
@@ -30,11 +30,9 @@ const forwarded = useForwardPropsEmits(props, emits, [
   <SwitchRoot
     v-bind="forwarded"
     class="ui-Switch"
-    :data-variant="props.variant"
-    :data-size="props.size"
+    :class="resetClass"
     :data-accent-color="props.color"
     :data-radius="props.radius"
-    :data-high-contrast="props.highContrast"
   >
     <SwitchThumb class="ui-SwitchThumb" />
   </SwitchRoot>
@@ -121,73 +119,73 @@ const forwarded = useForwardPropsEmits(props, emits, [
   transform: translateX(var(--switch-thumb-translate-x));
 }
 
-.ui-Switch[data-size="1"] {
+.ui-Switch:where(.r-size-1) {
   --switch-height: var(--space-4);
   --switch-border-radius: max(var(--radius-1), var(--radius-thumb));
 }
-.ui-Switch[data-size="2"] {
+.ui-Switch:where(.r-size-2) {
   --switch-height: calc(var(--space-5) * 5 / 6);
   --switch-border-radius: max(var(--radius-2), var(--radius-thumb));
 }
-.ui-Switch[data-size="3"] {
+.ui-Switch:where(.r-size-3) {
   --switch-height: var(--space-5);
   --switch-border-radius: max(var(--radius-2), var(--radius-thumb));
 }
 
-.ui-Switch[data-variant="surface"]::before {
+.ui-Switch:where(.r-variant-surface)::before {
   background-color: var(--gray-a3);
   background-image: linear-gradient(to right, var(--accent-track) 40%, transparent 60%);
   box-shadow: inset 0 0 0 1px var(--gray-a5);
 }
 
-.ui-Switch[data-variant="surface"]:where(:active)::before {
+.ui-Switch:where(.r-variant-surface):where(:active)::before {
   background-color: var(--gray-a4);
 }
 
-.ui-Switch[data-variant="surface"]:where([data-state='checked']:active)::before {
+.ui-Switch:where(.r-variant-surface):where([data-state='checked']:active)::before {
   filter: var(--switch-surface-checked-active-filter);
 }
 
-.ui-Switch[data-variant="surface"][data-high-contrast="true"]::before {
+.ui-Switch:where(.r-variant-surface):where(.r-high-contrast)::before {
   background-image:
     linear-gradient(to right, var(--switch-high-contrast-checked-color-overlay) 40%, transparent 60%),
     linear-gradient(to right, var(--accent-track) 40%, transparent 60%);
 }
-.ui-Switch[data-variant="surface"][data-high-contrast="true"]:where([data-state='checked']:active)::before {
+.ui-Switch:where(.r-variant-surface):where(.r-high-contrast):where([data-state='checked']:active)::before {
   filter: var(--switch-high-contrast-checked-active-before-filter);
 }
-.ui-Switch[data-variant="surface"]:where([data-disabled]) {
+.ui-Switch:where(.r-variant-surface):where([data-disabled]) {
   mix-blend-mode: var(--switch-disabled-blend-mode);
 }
 
-.ui-Switch[data-variant="surface"]:where([data-disabled])::before {
+.ui-Switch:where(.r-variant-surface):where([data-disabled])::before {
   filter: none;
   background-image: none;
   background-color: var(--gray-a3);
   box-shadow: inset 0 0 0 1px var(--gray-a3);
 }
 
-.ui-Switch[data-variant="surface"] .ui-SwitchThumb:where([data-state='unchecked']) {
+.ui-Switch:where(.r-variant-surface) .ui-SwitchThumb:where([data-state='unchecked']) {
   box-shadow: 0 0 1px 1px var(--black-a2), 0 1px 1px var(--black-a1), 0 2px 4px -1px var(--black-a1);
 }
 
-.ui-Switch[data-variant="surface"] .ui-SwitchThumb:where([data-state='checked']) {
+.ui-Switch:where(.r-variant-surface) .ui-SwitchThumb:where([data-state='checked']) {
   box-shadow: 0 1px 3px var(--black-a2), 0 2px 4px -1px var(--black-a1), 0 0 0 1px var(--black-a1),
     0 0 0 1px var(--accent-a4), -1px 0 1px var(--black-a2);
 }
 
-.ui-Switch[data-variant="surface"][data-high-contrast="true"] .ui-SwitchThumb:where([data-state='checked']) {
+.ui-Switch:where(.r-variant-surface):where(.r-high-contrast) .ui-SwitchThumb:where([data-state='checked']) {
   box-shadow: 0 1px 3px var(--black-a2), 0 2px 4px -1px var(--black-a1), 0 0 0 1px var(--black-a2),
     -1px 0 1px var(--black-a2);
 }
 
-.ui-Switch[data-variant="surface"] .ui-SwitchThumb:where([data-disabled]) {
+.ui-Switch:where(.r-variant-surface) .ui-SwitchThumb:where([data-disabled]) {
   background-color: var(--gray-2);
   box-shadow: 0 0 0 1px var(--gray-a2), 0 1px 3px var(--black-a1);
   transition: none;
 }
 
-.ui-Switch[data-variant="soft"]::before {
+.ui-Switch:where(.r-variant-soft)::before {
   background-image:
     linear-gradient(to right, var(--accent-a4) 40%, transparent 60%),
     linear-gradient(to right, var(--accent-a4) 40%, transparent 60%),
@@ -195,15 +193,15 @@ const forwarded = useForwardPropsEmits(props, emits, [
     linear-gradient(to right, var(--gray-a2) 40%, var(--gray-a3) 60%);
 }
 
-.ui-Switch[data-variant="soft"]:where([data-state='unchecked'])::before {
+.ui-Switch:where(.r-variant-soft):where([data-state='unchecked'])::before {
   background-color: var(--gray-a3);
 }
 
-.ui-Switch[data-variant="soft"]:where(:active)::before {
+.ui-Switch:where(.r-variant-soft):where(:active)::before {
   background-color: var(--gray-a4);
 }
 
-.ui-Switch[data-variant="soft"][data-high-contrast="true"]::before {
+.ui-Switch:where(.r-variant-soft):where(.r-high-contrast)::before {
   background-image:
     linear-gradient(to right, var(--switch-high-contrast-checked-color-overlay) 40%, transparent 60%),
     linear-gradient(to right, var(--accent-a6) 40%, transparent 60%),
@@ -212,34 +210,34 @@ const forwarded = useForwardPropsEmits(props, emits, [
     linear-gradient(to right, var(--accent-a3) 40%, var(--gray-a3) 60%);
 }
 
-.ui-Switch[data-variant="soft"][data-high-contrast="true"]:where([data-state='checked']:active)::before {
+.ui-Switch:where(.r-variant-soft):where(.r-high-contrast):where([data-state='checked']:active)::before {
   filter: var(--switch-high-contrast-checked-active-before-filter);
 }
 
-.ui-Switch[data-variant="soft"]:where([data-disabled]) {
+.ui-Switch:where(.r-variant-soft):where([data-disabled]) {
   mix-blend-mode: var(--switch-disabled-blend-mode);
 }
-.ui-Switch[data-variant="soft"]:where([data-disabled])::before {
+.ui-Switch:where(.r-variant-soft):where([data-disabled])::before {
   filter: none;
   background-image: none;
   background-color: var(--gray-a4);
 }
 
-.ui-Switch[data-variant="soft"] .ui-SwitchThumb {
+.ui-Switch:where(.r-variant-soft) .ui-SwitchThumb {
   filter: saturate(0.45);
 }
 
-.ui-Switch[data-variant="soft"] .ui-SwitchThumb:where([data-state='unchecked']) {
+.ui-Switch:where(.r-variant-soft) .ui-SwitchThumb:where([data-state='unchecked']) {
   box-shadow: 0 0 0 1px var(--black-a1), 0 1px 3px var(--black-a1), 0 1px 3px var(--black-a1),
     0 2px 4px -1px var(--black-a1);
 }
 
-.ui-Switch[data-variant="soft"] .ui-SwitchThumb:where([data-state='checked']) {
+.ui-Switch:where(.r-variant-soft) .ui-SwitchThumb:where([data-state='checked']) {
   box-shadow: 0 0 0 1px var(--black-a1), 0 1px 3px var(--black-a2), 0 1px 3px var(--accent-a3),
     0 2px 4px -1px var(--accent-a3);
 }
 
-.ui-Switch[data-variant="soft"] .ui-SwitchThumb:where([data-disabled]) {
+.ui-Switch:where(.r-variant-soft) .ui-SwitchThumb:where([data-disabled]) {
   filter: none;
   background-color: var(--gray-2);
   box-shadow: 0 0 0 1px var(--gray-a2), 0 1px 3px var(--black-a1);

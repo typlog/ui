@@ -12,7 +12,9 @@ export interface BadgeProps extends PrimitiveProps {
 </script>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { Primitive } from 'radix-vue'
+import { extractClass } from './util'
 
 const props = withDefaults(defineProps<BadgeProps>(), {
   as: 'span',
@@ -21,18 +23,20 @@ const props = withDefaults(defineProps<BadgeProps>(), {
   size: '1',
   highContrast: undefined,
 })
+
+const resetClass = computed(() => {
+  return extractClass(props, ['size', 'variant', 'highContrast'])
+})
 </script>
 
 <template>
   <Primitive
     class="ui-Badge"
+    :class="resetClass"
     :as="props.as"
     :as-child="props.asChild"
-    :data-variant="props.variant"
     :data-accent-color="props.color"
     :data-radius="props.radius"
-    :data-size="props.size"
-    :data-high-contrast="props.highContrast"
   >
     <slot></slot>
   </Primitive>
@@ -50,7 +54,7 @@ const props = withDefaults(defineProps<BadgeProps>(), {
   height: fit-content;
 }
 
-.ui-Badge[data-size="1"] {
+.ui-Badge:where(.r-size-1) {
   font-size: var(--font-size-1);
   line-height: var(--line-height-1);
   letter-spacing: var(--letter-spacing-1);
@@ -59,7 +63,7 @@ const props = withDefaults(defineProps<BadgeProps>(), {
   border-radius: max(var(--radius-1), var(--radius-full));
 }
 
-.ui-Badge[data-size="2"] {
+.ui-Badge:where(.r-size-2) {
   font-size: var(--font-size-1);
   line-height: var(--line-height-1);
   letter-spacing: var(--letter-spacing-1);
@@ -68,7 +72,7 @@ const props = withDefaults(defineProps<BadgeProps>(), {
   border-radius: max(var(--radius-2), var(--radius-full));
 }
 
-.ui-Badge[data-size="3"] {
+.ui-Badge:where(.r-size-3) {
   font-size: var(--font-size-2);
   line-height: var(--line-height-2);
   letter-spacing: var(--letter-spacing-2);
@@ -76,38 +80,38 @@ const props = withDefaults(defineProps<BadgeProps>(), {
   gap: var(--space-2);
   border-radius: max(var(--radius-2), var(--radius-full));
 }
-.ui-Badge[data-variant="solid"] {
+.ui-Badge:where(.r-variant-solid) {
   background-color: var(--accent-9);
   color: var(--accent-contrast);
 }
-.ui-Badge[data-variant="solid"]:where([data-high-contrast="true"]) {
+.ui-Badge:where(.r-variant-solid):where(.r-high-contrast) {
   background-color: var(--accent-12);
   color: var(--gray-1);
 }
-.ui-Badge[data-variant="solid"]::selection {
+.ui-Badge:where(.r-variant-solid)::selection {
   background-color: var(--accent-7);
   color: var(--accent-12);
 }
-.ui-Badge[data-variant="soft"] {
+.ui-Badge:where(.r-variant-soft) {
   background-color: var(--accent-a3);
   color: var(--accent-a11);
 }
-.ui-Badge[data-variant="soft"]:where([data-high-contrast="true"]) {
+.ui-Badge:where(.r-variant-soft):where(.r-high-contrast) {
   color: var(--accent-12);
 }
-.ui-Badge[data-variant="surface"] {
+.ui-Badge:where(.r-variant-surface) {
   background-color: var(--accent-surface);
   box-shadow: inset 0 0 0 1px var(--accent-a6);
   color: var(--accent-a11);
 }
-.ui-Badge[data-variant="surface"]:where([data-high-contrast="true"]) {
+.ui-Badge:where(.r-variant-surface):where(.r-high-contrast) {
   color: var(--accent-12);
 }
-.ui-Badge[data-variant="outline"] {
+.ui-Badge:where(.r-variant-outline) {
   box-shadow: inset 0 0 0 1px var(--accent-a8);
   color: var(--accent-a11);
 }
-.ui-Badge[data-variant="outline"]:where([data-high-contrast="true"]) {
+.ui-Badge:where(.r-variant-outline):where(.r-high-contrast) {
   box-shadow: inset 0 0 0 1px var(--accent-a7), inset 0 0 0 1px var(--gray-a11);
   color: var(--accent-12);
 }

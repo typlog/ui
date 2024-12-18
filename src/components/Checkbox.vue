@@ -12,7 +12,7 @@ export interface CheckboxProps extends CheckboxRootProps {
 
 <script setup lang="ts">
 import { CheckboxRoot, CheckboxIndicator } from 'radix-vue'
-import { useForwardPropsEmits } from './util'
+import { extractForwardPropsEmits } from './util'
 
 const emits = defineEmits<CheckboxRootEmits>()
 
@@ -20,17 +20,15 @@ const props = withDefaults(defineProps<CheckboxProps>(), {
   size: '2',
   variant: 'surface',
 })
-const forwarded = useForwardPropsEmits(props, emits, ['color', 'size', 'variant', 'highContrast'])
+const [forwarded, resetClass] = extractForwardPropsEmits(props, emits, ['color', 'size', 'variant', 'highContrast'])
 </script>
 
 <template>
   <CheckboxRoot
     v-bind="forwarded"
     class="ui-Checkbox"
-    :data-variant="props.variant"
-    :data-size="props.size"
+    :class="resetClass"
     :data-accent-color="props.color"
-    :data-high-contrast="props.highContrast"
   >
     <CheckboxIndicator
       class="ui-CheckboxIndicator"
@@ -97,59 +95,59 @@ const forwarded = useForwardPropsEmits(props, emits, ['color', 'size', 'variant'
   left: 50%;
 }
 
-.ui-Checkbox[data-size="1"] {
+.ui-Checkbox:where(.r-size-1) {
   --checkbox-size: calc(var(--space-4) * 0.875);
   --checkbox-indicator-size: calc(9px * var(--scaling));
   --checkbox-border-radius: calc(var(--radius-1) * 0.875);
 }
-.ui-Checkbox[data-size="2"] {
+.ui-Checkbox:where(.r-size-2) {
   --checkbox-size: var(--space-4);
   --checkbox-indicator-size: calc(10px * var(--scaling));
   --checkbox-border-radius: var(--radius-1);
 }
-.ui-Checkbox[data-size="3"] {
+.ui-Checkbox:where(.r-size-3) {
   --checkbox-size: calc(var(--space-4) * 1.25);
   --checkbox-indicator-size: calc(12px * var(--scaling));
   --checkbox-border-radius: calc(var(--radius-1) * 1.25);
 }
 
-.ui-Checkbox[data-variant="surface"]:where([data-state='unchecked'])::before {
+.ui-Checkbox:where(.r-variant-surface):where([data-state='unchecked'])::before {
   background-color: var(--color-surface);
   box-shadow: inset 0 0 0 1px var(--gray-a7);
 }
-.ui-Checkbox[data-variant="surface"]:where([data-state='checked'], [data-state='indeterminate'])::before {
+.ui-Checkbox:where(.r-variant-surface):where([data-state='checked'], [data-state='indeterminate'])::before {
   background-color: var(--accent-indicator);
 }
-.ui-Checkbox[data-variant="surface"]:where([data-state='checked'], [data-state='indeterminate']) .ui-CheckboxIndicator {
+.ui-Checkbox:where(.r-variant-surface):where([data-state='checked'], [data-state='indeterminate']) .ui-CheckboxIndicator {
   color: var(--accent-contrast);
 }
-.ui-Checkbox[data-variant="surface"][data-high-contrast="true"]:where([data-state='checked'], [data-state='indeterminate'])::before {
+.ui-Checkbox:where(.r-variant-surface):where(.r-high-contrast):where([data-state='checked'], [data-state='indeterminate'])::before {
   background-color: var(--accent-12);
 }
-.ui-Checkbox[data-variant="surface"][data-high-contrast="true"]:where([data-state='checked'], [data-state='indeterminate']) .ui-CheckboxIndicator {
+.ui-Checkbox:where(.r-variant-surface):where(.r-high-contrast):where([data-state='checked'], [data-state='indeterminate']) .ui-CheckboxIndicator {
   color: var(--accent-1);
 }
-.ui-Checkbox[data-variant="surface"]:disabled:where([data-state='checked'], [data-state='indeterminate'])::before {
+.ui-Checkbox:where(.r-variant-surface):disabled:where([data-state='checked'], [data-state='indeterminate'])::before {
   box-shadow: inset 0 0 0 1px var(--gray-a6);
   background-color: transparent;
 }
-.ui-Checkbox[data-variant="surface"]:disabled:where([data-state='checked'], [data-state='indeterminate']) .ui-CheckboxIndicator {
+.ui-Checkbox:where(.r-variant-surface):disabled:where([data-state='checked'], [data-state='indeterminate']) .ui-CheckboxIndicator {
   color: var(--gray-a8);
 }
 
-.ui-Checkbox[data-variant="soft"]::before {
+.ui-Checkbox:where(.r-variant-soft)::before {
   background-color: var(--accent-a5);
 }
-.ui-Checkbox[data-variant="soft"]:where([data-state='checked'], [data-state='indeterminate']) .ui-CheckboxIndicator {
+.ui-Checkbox:where(.r-variant-soft):where([data-state='checked'], [data-state='indeterminate']) .ui-CheckboxIndicator {
   color: var(--accent-a11);
 }
-.ui-Checkbox[data-variant="soft"][data-high-contrast="true"]:where([data-state='checked'], [data-state='indeterminate']) .ui-CheckboxIndicator {
+.ui-Checkbox:where(.r-variant-soft):where(.r-high-contrast):where([data-state='checked'], [data-state='indeterminate']) .ui-CheckboxIndicator {
   color: var(--accent-12);
 }
-.ui-Checkbox[data-variant="soft"]:disabled::before {
+.ui-Checkbox:where(.r-variant-soft):disabled::before {
   background-color: var(--gray-a3);
 }
-.ui-Checkbox[data-variant="soft"]:disabled .ui-CheckboxIndicator {
+.ui-Checkbox:where(.r-variant-soft):disabled .ui-CheckboxIndicator {
   color: var(--gray-a8);
 }
 </style>

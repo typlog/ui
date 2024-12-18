@@ -10,23 +10,27 @@ export interface CardProps extends PrimitiveProps {
 </script>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { Primitive } from 'radix-vue'
+import { extractClass } from './util'
 
 const props = withDefaults(defineProps<CardProps>(), {
   as: 'div',
   variant: 'surface',
   size: '1',
 })
+const resetClass = computed(() => {
+  return extractClass(props, ['size', 'variant'])
+})
 </script>
 
 <template>
   <Primitive
     class="ui-Card"
+    :class="resetClass"
     :as-child="props.asChild"
     :as="props.as"
-    :data-variant="props.variant"
     :data-radius="props.radius"
-    :data-size="props.size"
   >
     <slot></slot>
   </Primitive>
@@ -57,31 +61,31 @@ const props = withDefaults(defineProps<CardProps>(), {
   --card-border-color: var(--focus-8);
   box-shadow: 0 0 0 2px var(--accent-4), 0 1px 2px 0 rgb(0 0 0 / 0.05);
 }
-.ui-Card:where([data-size="1"]) {
+.ui-Card:where(.r-size-1) {
   --card-padding: var(--space-3);
   --card-border-radius: max(var(--radius-4), var(--radius-full));
 }
-.ui-Card:where([data-size="2"]) {
+.ui-Card:where(.r-size-2) {
   --card-padding: var(--space-4);
   --card-border-radius: max(var(--radius-4), var(--radius-full));
 }
-.ui-Card:where([data-size="3"]) {
+.ui-Card:where(.r-size-3) {
   --card-padding: var(--space-5);
   --card-border-radius: max(var(--radius-5), var(--radius-full));
 }
-.ui-Card:where([data-size="4"]) {
+.ui-Card:where(.r-size-4) {
   --card-padding: var(--space-6);
   --card-border-radius: max(var(--radius-5), var(--radius-full));
 }
-.ui-Card:where([data-size="5"]) {
+.ui-Card:where(.r-size-5) {
   --card-padding: var(--space-8);
   --card-border-radius: max(var(--radius-6), var(--radius-full));
 }
-.ui-Card:where([data-variant="soft"]) {
+.ui-Card:where(.r-variant-soft) {
   border-color: var(--gray-2);
   background-color: var(--gray-2);
 }
-.ui-Card:where([data-variant="soft"]):where(:any-link, button, label):where(:hover) {
+.ui-Card:where(.r-variant-soft):where(:any-link, button, label):where(:hover) {
   border-color: var(--gray-a5);
 }
 </style>

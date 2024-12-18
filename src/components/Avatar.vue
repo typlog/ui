@@ -19,11 +19,15 @@ import {
   AvatarImage,
   AvatarFallback,
 } from 'radix-vue'
+import { extractClass } from './util'
 
 const props = withDefaults(defineProps<AvatarProps>(), {
   radius: 'small',
   variant: 'solid',
   size: '2',
+})
+const resetClass = computed(() => {
+  return extractClass(props, ['size', 'variant'])
 })
 const fallback = computed(() => {
   if (props.fallback) {
@@ -36,16 +40,15 @@ const fallback = computed(() => {
 <template>
   <AvatarRoot
     class="ui-Avatar"
-    :data-radius="props.radius"
-    :data-size="props.size"
-    :data-variant="props.variant"
+    :class="resetClass"
     :data-accent-color="props.color"
+    :data-radius="props.radius"
   >
     <AvatarImage
       :alt="props.alt"
       :src="props.src || ''"
     />
-    <AvatarFallback :data-count="fallback.length">{{ fallback }}</AvatarFallback>
+    <AvatarFallback :class="`r-count-${fallback.length}`">{{ fallback }}</AvatarFallback>
   </AvatarRoot>
 </template>
 
@@ -83,22 +86,22 @@ const fallback = computed(() => {
   text-transform: uppercase;
 }
 
-.ui-Avatar > span[data-count="1"] {
+.ui-Avatar > span.r-count-1 {
   font-size: var(--avatar-fallback-one-letter-font-size);
 }
 
-.ui-Avatar > span[data-count="2"] {
+.ui-Avatar > span.r-count-2 {
   font-size: var(--avatar-fallback-two-letters-font-size, var(--avatar-fallback-one-letter-font-size));
 }
 
-.ui-Avatar[data-size="1"] {
+.ui-Avatar:where(.r-size-1) {
   --avatar-size: var(--space-5);
   --avatar-fallback-one-letter-font-size: var(--font-size-2);
   --avatar-fallback-two-letters-font-size: var(--font-size-1);
   border-radius: max(var(--radius-2), var(--radius-full));
   letter-spacing: var(--letter-spacing-1);
 }
-.ui-Avatar[data-size="2"] {
+.ui-Avatar:where(.r-size-2) {
   --avatar-size: var(--space-6);
   --avatar-fallback-one-letter-font-size: var(--font-size-3);
   --avatar-fallback-two-letters-font-size: var(--font-size-2);
@@ -106,7 +109,7 @@ const fallback = computed(() => {
   letter-spacing: var(--letter-spacing-2);
 }
 
-.ui-Avatar[data-size="3"] {
+.ui-Avatar:where(.r-size-3) {
   --avatar-size: var(--space-7);
   --avatar-fallback-one-letter-font-size: var(--font-size-4);
   --avatar-fallback-two-letters-font-size: var(--font-size-3);
@@ -114,7 +117,7 @@ const fallback = computed(() => {
   letter-spacing: var(--letter-spacing-3);
 }
 
-.ui-Avatar[data-size="4"] {
+.ui-Avatar:where(.r-size-4) {
   --avatar-size: var(--space-8);
   --avatar-fallback-one-letter-font-size: var(--font-size-5);
   --avatar-fallback-two-letters-font-size: var(--font-size-4);
@@ -122,46 +125,46 @@ const fallback = computed(() => {
   letter-spacing: var(--letter-spacing-4);
 }
 
-.ui-Avatar[data-size="5"] {
+.ui-Avatar:where(.r-size-5) {
   --avatar-size: var(--space-9);
   --avatar-fallback-one-letter-font-size: var(--font-size-6);
   border-radius: max(var(--radius-4), var(--radius-full));
   letter-spacing: var(--letter-spacing-6);
 }
 
-.ui-Avatar[data-size="6"] {
+.ui-Avatar:where(.r-size-6) {
   --avatar-size: 80px;
   --avatar-fallback-one-letter-font-size: var(--font-size-7);
   border-radius: max(var(--radius-5), var(--radius-full));
   letter-spacing: var(--letter-spacing-7);
 }
 
-.ui-Avatar[data-size="7"] {
+.ui-Avatar:where(.r-size-7) {
   --avatar-size: 96px;
   --avatar-fallback-one-letter-font-size: var(--font-size-7);
   border-radius: max(var(--radius-5), var(--radius-full));
   letter-spacing: var(--letter-spacing-7);
 }
 
-.ui-Avatar[data-size="8"] {
+.ui-Avatar:where(.r-size-8) {
   --avatar-size: 128px;
   --avatar-fallback-one-letter-font-size: var(--font-size-8);
   border-radius: max(var(--radius-6), var(--radius-full));
   letter-spacing: var(--letter-spacing-8);
 }
 
-.ui-Avatar[data-size="9"] {
+.ui-Avatar:where(.r-size-9) {
   --avatar-size: 160px;
   --avatar-fallback-one-letter-font-size: var(--font-size-9);
   border-radius: max(var(--radius-6), var(--radius-full));
   letter-spacing: var(--letter-spacing-9);
 }
 
-.ui-Avatar[data-variant="solid"] > span {
+.ui-Avatar:where(.r-variant-solid) > span {
   background-color: var(--accent-9);
   color: var(--accent-contrast);
 }
-.ui-Avatar[data-variant="soft"] > span {
+.ui-Avatar:where(.r-variant-soft) > span {
   background-color: var(--accent-a3);
   color: var(--accent-a11);
 }

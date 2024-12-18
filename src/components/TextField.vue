@@ -28,8 +28,9 @@ export interface TextFieldProps {
 </script>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useVModel } from '@vueuse/core'
+import { extractClass } from './util'
 
 defineOptions({
   inheritAttrs: false,
@@ -67,15 +68,21 @@ const modelValue = useVModel(props, 'modelValue', emits, {
   defaultValue: props.modelValue,
   passive: (props.modelValue === undefined) as false,
 })
+
+const resetClass = computed(() => {
+  const rv = extractClass(props, ['size', 'variant'])
+  if (props.class) {
+    rv.push(props.class)
+  }
+  return rv
+})
 </script>
 
 <template>
   <div
     class="ui-TextField"
-    :class="props.class"
+    :class="resetClass"
     :data-accent-color="props.color"
-    :data-variant="props.variant"
-    :data-size="props.size"
     @pointerdown="onPointerDown"
   >
     <input
@@ -204,12 +211,12 @@ const modelValue = useVModel(props, 'modelValue', emits, {
   align-items: center;
   cursor: text;
 }
-.ui-TextFieldSlot[data-side="left"] {
+.ui-TextFieldSlot:where(.r-side-left) {
   order: -1;
   margin-left: calc(var(--text-field-border-width) * -1);
   margin-right: 0;
 }
-.ui-TextFieldSlot[data-side="right"] {
+.ui-TextFieldSlot:where(.r-side-right) {
   order: 0;
   margin-left: 0;
   margin-right: calc(var(--text-field-border-width) * -1);
@@ -228,7 +235,7 @@ const modelValue = useVModel(props, 'modelValue', emits, {
   border-bottom-right-radius: 0;
 }
 
-.ui-TextField[data-size="1"] {
+.ui-TextField:where(.r-size-1) {
   --text-field-height: var(--space-5);
   --text-field-padding: calc(var(--space-1) * 1.5 - var(--text-field-border-width));
   --text-field-border-radius: max(var(--radius-2), var(--radius-full));
@@ -236,21 +243,21 @@ const modelValue = useVModel(props, 'modelValue', emits, {
   font-size: var(--font-size-1);
   letter-spacing: var(--letter-spacing-1);
 }
-.ui-TextField[data-size="1"] :where(.ui-TextFieldSlot) {
+.ui-TextField:where(.r-size-1) :where(.ui-TextFieldSlot) {
   gap: var(--space-2);
   padding-left: var(--space-1);
   padding-right: var(--space-1);
 }
-.ui-TextField[data-size="1"] :where(.ui-TextFieldInput) {
+.ui-TextField:where(.r-size-1) :where(.ui-TextFieldInput) {
   /* Reset size 2 padding bottom */
   padding-bottom: 0px;
   /* Safari credentials autofill icon */
 }
-.ui-TextField[data-size="1"] :where(.ui-TextFieldInput)::-webkit-textfield-decoration-container {
+.ui-TextField:where(.r-size-1) :where(.ui-TextFieldInput)::-webkit-textfield-decoration-container {
   padding-right: 0px;
   margin-right: -2px;
 }
-.ui-TextField[data-size="2"] {
+.ui-TextField:where(.r-size-2) {
   --text-field-height: var(--space-6);
   --text-field-padding: calc(var(--space-2) - var(--text-field-border-width));
   --text-field-border-radius: max(var(--radius-2), var(--radius-full));
@@ -258,22 +265,22 @@ const modelValue = useVModel(props, 'modelValue', emits, {
   font-size: var(--font-size-2);
   letter-spacing: var(--letter-spacing-2);
 }
-.ui-TextField[data-size="2"] :where(.ui-TextFieldInput) {
+.ui-TextField:where(.r-size-2) :where(.ui-TextFieldInput) {
   /* Avoid 1px baseline jitter when layout around the text field is subpixel-sized (e.g. vh units). */
   /* Works because as of Nov 2023, Chrome computes input text bounding box height as 16.5px on @2x screens. */
   padding-bottom: 0.5px;
   /* Safari credentials autofill icon */
 }
-.ui-TextField[data-size="2"] :where(.ui-TextFieldInput)::-webkit-textfield-decoration-container {
+.ui-TextField:where(.r-size-2) :where(.ui-TextFieldInput)::-webkit-textfield-decoration-container {
   padding-right: 2px;
   margin-right: 0px;
 }
-.ui-TextField[data-size="2"] :where(.ui-TextFieldSlot) {
+.ui-TextField:where(.r-size-2) :where(.ui-TextFieldSlot) {
   gap: var(--space-2);
   padding-left: var(--space-2);
   padding-right: var(--space-2);
 }
-.ui-TextField[data-size="3"] {
+.ui-TextField:where(.r-size-3) {
   --text-field-height: var(--space-7);
   --text-field-padding: calc(var(--space-3) - var(--text-field-border-width));
   --text-field-border-radius: max(var(--radius-3), var(--radius-full));
@@ -281,22 +288,22 @@ const modelValue = useVModel(props, 'modelValue', emits, {
   font-size: var(--font-size-3);
   letter-spacing: var(--letter-spacing-3);
 }
-.ui-TextField[data-size="3"] :where(.ui-TextFieldInput) {
+.ui-TextField:where(.r-size-3) :where(.ui-TextFieldInput) {
   /* Reset size 2 padding bottom */
   padding-bottom: 0px;
   /* Safari credentials autofill icon */
 }
-.ui-TextField[data-size="3"] :where(.ui-TextFieldInput)::-webkit-textfield-decoration-container {
+.ui-TextField:where(.r-size-3) :where(.ui-TextFieldInput)::-webkit-textfield-decoration-container {
   padding-right: 5px;
   margin-right: 0px;
 }
-.ui-TextField[data-size="3"] :where(.ui-TextFieldSlot) {
+.ui-TextField:where(.r-size-3) :where(.ui-TextFieldSlot) {
   gap: var(--space-3);
   padding-left: var(--space-3);
   padding-right: var(--space-3);
 }
 
-.ui-TextField[data-variant="surface"] {
+.ui-TextField:where(.r-variant-surface) {
   --text-field-selection-color: var(--focus-a5);
   --text-field-focus-color: var(--focus-a8);
   --text-field-border-width: 1px;
@@ -309,39 +316,39 @@ const modelValue = useVModel(props, 'modelValue', emits, {
   color: var(--gray-12);
 }
 @supports selector(:has(*)) {
-  .ui-TextField[data-variant="surface"]:where(:has(.ui-TextFieldInput:focus)) {
+  .ui-TextField:where(.r-variant-surface):where(:has(.ui-TextFieldInput:focus)) {
     --text-field-border-color: var(--text-field-focus-color);
     box-shadow: 0 0 0 2px var(--accent-4), 0 1px 2px 0 rgb(0 0 0 / 0.05);
   }
 }
 @supports not selector(:has(*)) {
-  .ui-TextField[data-variant="surface"]:where(:focus-within) {
+  .ui-TextField:where(.r-variant-surface):where(:focus-within) {
     --text-field-border-color: var(--text-field-focus-color);
     box-shadow: 0 0 0 2px var(--accent-4), 0 1px 2px 0 rgb(0 0 0 / 0.05);
   }
 }
-.ui-TextField[data-variant="surface"] :where(.ui-TextFieldInput)::placeholder {
+.ui-TextField:where(.r-variant-surface) :where(.ui-TextFieldInput)::placeholder {
   color: var(--gray-a10);
 }
-.ui-TextField[data-variant="surface"] :where(.ui-TextFieldSlot) {
+.ui-TextField:where(.r-variant-surface) :where(.ui-TextFieldSlot) {
   color: var(--gray-a11);
 }
-.ui-TextField[data-variant="surface"] :where(.ui-TextFieldSlot):where([data-accent-color]) {
+.ui-TextField:where(.r-variant-surface) :where(.ui-TextFieldSlot):where([data-accent-color]) {
   color: var(--accent-a11);
 }
-.ui-TextField[data-variant="surface"]:where(:has(.ui-TextFieldInput:where(:autofill):not(:disabled, :read-only:not([type=file])))) {
+.ui-TextField:where(.r-variant-surface):where(:has(.ui-TextFieldInput:where(:autofill):not(:disabled, :read-only:not([type=file])))) {
   /* Blend with focus color */
   background-image: linear-gradient(var(--focus-a2), var(--focus-a2));
   border-color: var(--gray-a5);
 }
-.ui-TextField[data-variant="surface"]:where(:has(.ui-TextFieldInput:where(:disabled, :read-only:not([type=file])))) {
+.ui-TextField:where(.r-variant-surface):where(:has(.ui-TextFieldInput:where(:disabled, :read-only:not([type=file])))) {
   /* Blend with grey */
   background-image: linear-gradient(var(--gray-a2), var(--gray-a2));
   border-color: var(--gray-a6);
 }
 
 /* soft */
-.ui-TextField[data-variant="soft"] {
+.ui-TextField:where(.r-variant-soft) {
   --text-field-selection-color: var(--accent-a5);
   --text-field-focus-color: var(--accent-8);
   --text-field-border-width: 0px;
@@ -350,32 +357,32 @@ const modelValue = useVModel(props, 'modelValue', emits, {
   /* prettier-ignore */
 }
 @supports selector(:has(*)) {
-  .ui-TextField[data-variant="soft"]:where(:has(.ui-TextFieldInput:focus)) {
+  .ui-TextField:where(.r-variant-soft):where(:has(.ui-TextFieldInput:focus)) {
     outline: 2px solid var(--text-field-focus-color);
     outline-offset: -1px;
   }
 }
 @supports not selector(:has(*)) {
-  .ui-TextField[data-variant="soft"]:where(:focus-within) {
+  .ui-TextField:where(.r-variant-soft):where(:focus-within) {
     outline: 2px solid var(--text-field-focus-color);
     outline-offset: -1px;
   }
 }
-.ui-TextField[data-variant="soft"] :where(.ui-TextFieldInput)::placeholder {
+.ui-TextField:where(.r-variant-soft) :where(.ui-TextFieldInput)::placeholder {
   color: var(--accent-12);
   opacity: 0.6;
 }
-.ui-TextField[data-variant="soft"] :where(.ui-TextFieldSlot) {
+.ui-TextField:where(.r-variant-soft) :where(.ui-TextFieldSlot) {
   color: var(--accent-12);
 }
-.ui-TextField[data-variant="soft"] :where(.ui-TextFieldSlot):where([data-accent-color]) {
+.ui-TextField:where(.r-variant-soft) :where(.ui-TextFieldSlot):where([data-accent-color]) {
   color: var(--accent-a11);
 }
-.ui-TextField[data-variant="soft"]:where(:has(.ui-TextFieldInput:where(:autofill):not(:disabled, :read-only:not([type=file])))) {
+.ui-TextField:where(.r-variant-soft):where(:has(.ui-TextFieldInput:where(:autofill):not(:disabled, :read-only:not([type=file])))) {
   /* Use gray autofill color when component color is gray */
   box-shadow: inset 0 0 0 1px var(--accent-a5), inset 0 0 0 1px var(--gray-a4);
 }
-.ui-TextField[data-variant="soft"]:where(:has(.ui-TextFieldInput:where(:disabled, :read-only:not([type=file])))) {
+.ui-TextField:where(.r-variant-soft):where(:has(.ui-TextFieldInput:where(:disabled, :read-only:not([type=file])))) {
   background-color: var(--gray-a3);
 }
 

@@ -17,26 +17,26 @@ const forwarded = useForwardProps(props)
 </template>
 
 <style>
-.ui-IconButton:where(:not([data-variant="ghost"])) {
+.ui-IconButton:where(:not(.r-variant-ghost)) {
   height: var(--button-height);
   width: var(--button-height);
   padding: 0;
 }
 
-.ui-IconButton:where([data-variant="ghost"]) {
+.ui-IconButton:where(.r-variant-ghost) {
   padding: var(--icon-button-ghost-padding);
 }
 
-.ui-IconButton[data-size="1"] {
+.ui-IconButton:where(.r-size-1) {
   --icon-button-ghost-padding: var(--space-1);
 }
-.ui-IconButton[data-size="2"] {
+.ui-IconButton:where(.r-size-2) {
   --icon-button-ghost-padding: calc(var(--space-1) * 1.5);
 }
-.ui-IconButton[data-size="3"] {
+.ui-IconButton:where(.r-size-3) {
   --icon-button-ghost-padding: var(--space-2);
 }
-.ui-IconButton[data-size="4"] {
+.ui-IconButton:where(.r-size-4) {
   --icon-button-ghost-padding: var(--space-3);
 }
 </style>

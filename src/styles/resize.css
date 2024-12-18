@@ -1,0 +1,9 @@
+.r-resize-vertical {
+  resize: vertical;
+}
+.r-resize-horizontal {
+  resize: horizontal;
+}
+.r-resize-both {
+  resize: both;
+}

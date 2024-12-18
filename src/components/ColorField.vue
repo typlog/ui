@@ -12,7 +12,9 @@ export interface ColorFieldProps {
 </script>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { useVModel } from '@vueuse/core'
+import { extractClass } from './util'
 
 const props = withDefaults(defineProps<ColorFieldProps>(), {
   size: '2',
@@ -27,14 +29,16 @@ const modelValue = useVModel(props, 'modelValue', emits, {
   defaultValue: props.modelValue || '#000000',
   passive: (props.modelValue === undefined) as false,
 })
+const resetClass = computed(() => {
+  return extractClass(props, ['size', 'variant'])
+})
 </script>
 
 <template>
   <div
     class="ui-TextField ui-ColorField"
+    :class="resetClass"
     :data-accent-color="props.color"
-    :data-variant="props.variant"
-    :data-size="props.size"
   >
     <input
       :id="props.id"
@@ -53,7 +57,7 @@ const modelValue = useVModel(props, 'modelValue', emits, {
 
 <style>
 @supports selector(:has(*)) {
-  .ui-ColorField[data-variant="surface"]:where(:has(input:focus)) {
+  .ui-ColorField:where(.r-variant-surface):where(:has(input:focus)) {
     --text-field-border-color: var(--text-field-focus-color);
     box-shadow: 0 0 0 2px var(--accent-4), 0 1px 2px 0 rgb(0 0 0 / 0.05);
   }
@@ -63,11 +67,11 @@ const modelValue = useVModel(props, 'modelValue', emits, {
   border: none;
   background: transparent;
 }
-.ui-ColorField[data-variant="surface"] .ui-ColorFieldInput {
+.ui-ColorField:where(.r-variant-surface) .ui-ColorFieldInput {
   width: calc(var(--text-field-height) - 4px);
   height: calc(var(--text-field-height) - 4px);
 }
-.ui-ColorField[data-variant="soft"] .ui-ColorFieldInput {
+.ui-ColorField:where(.r-variant-soft) .ui-ColorFieldInput {
   width: var(--text-field-height);
   height: var(--text-field-height);
   margin-left: calc(var(--text-field-padding) / 4);

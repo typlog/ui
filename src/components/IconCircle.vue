@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
 import type { ColorType } from './types'
+import { extractClass } from './util'
 
 export interface IconCircleProps {
   color?: ColorType
@@ -12,14 +14,16 @@ const props = withDefaults(defineProps<IconCircleProps>(), {
   size: 1,
   variant: 'soft',
 })
+const resetClass = computed(() => {
+  return extractClass(props, ['size', 'variant'])
+})
 </script>
 
 <template>
   <span
     class="ui-IconCircle"
+    :class="resetClass"
     data-radius="full"
-    :data-variant="props.variant"
-    :data-size="props.size"
     :data-accent-color="props.color"
   >
     <Icon :icon="props.icon" />
@@ -41,19 +45,19 @@ const props = withDefaults(defineProps<IconCircleProps>(), {
   font-size: var(--icon-circle-size);
   padding: var(--icon-circle-padding);
 }
-.ui-IconCircle[data-size="1"] {
+.ui-IconCircle:where(.r-size-1) {
   --icon-circle-size: 10px;
   --icon-circle-padding: 2px;
 }
-.ui-IconCircle[data-size="2"] {
+.ui-IconCircle:where(.r-size-2) {
   --icon-circle-size: 12px;
   --icon-circle-padding: 3px;
 }
-.ui-IconCircle[data-size="3"] {
+.ui-IconCircle:where(.r-size-3) {
   --icon-circle-size: 14px;
   --icon-circle-padding: 4px;
 }
-.ui-IconCircle[data-variant="glow"] {
+.ui-IconCircle:where(.r-variant-glow) {
   box-shadow: 0 0 0 calc(var(--icon-circle-padding) - 1px) var(--accent-a2);
 }
 </style>

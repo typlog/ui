@@ -13,8 +13,9 @@ export interface ButtonProps extends PrimitiveProps {
 </script>
 
 <script setup lang="ts">
-import { useAttrs, computed } from 'vue'
+import { computed } from 'vue'
 import { Primitive } from 'radix-vue'
+import { extractClass } from './util'
 
 const props = withDefaults(defineProps<ButtonProps>(), {
   as: 'button',
@@ -22,31 +23,21 @@ const props = withDefaults(defineProps<ButtonProps>(), {
   variant: 'solid',
   highContrast: false,
 })
-const $attrs = useAttrs()
-const attrs = computed(() => {
-  const dataset: Record<string, any> = {
-    'data-accent-color': props.color,
-    'data-variant': props.variant,
-    'data-radius': props.radius,
-    'data-size': props.size,
-  }
-  if (props.highContrast) {
-    dataset['data-high-contrast'] = true
-  }
-  if (props.disabled) {
-    return {...$attrs, ...dataset, disabled: true, 'data-disabled': true}
-  } else {
-    return {...$attrs, ...dataset}
-  }
+
+const resetClass = computed(() => {
+  return extractClass(props, ['size', 'variant', 'highContrast'])
 })
 </script>
 
 <template>
   <Primitive
     class="ui-Button"
+    :class="resetClass"
     :as-child="props.asChild"
     :as="props.as"
-    v-bind="attrs"
+    :data-accent-color="props.color"
+    :data-radius="props.radius"
+    :data-disabled="props.disabled ? true : undefined"
   >
     <slot></slot>
   </Primitive>
@@ -64,12 +55,12 @@ const attrs = computed(() => {
   text-align: center;
   height: var(--button-height);
 }
-.ui-Button:where([data-variant="ghost"]) {
+.ui-Button:where(.r-variant-ghost) {
   box-sizing: content-box;
   /* Make sure that the height is not stretched in a Flex/Grid layout */
   height: fit-content;
 }
-.ui-Button:where(:not([data-variant="ghost"])) {
+.ui-Button:where(:not(.r-variant-ghost)) {
   font-weight: var(--font-weight-medium);
 }
 
@@ -77,7 +68,7 @@ const attrs = computed(() => {
   cursor: not-allowed;
 }
 
-.ui-Button:where([data-size="1"]) {
+.ui-Button:where(.r-size-1) {
   gap: var(--space-1);
   font-size: var(--font-size-1);
   line-height: var(--line-height-1);
@@ -85,16 +76,16 @@ const attrs = computed(() => {
   --button-height: var(--space-5);
   border-radius: max(var(--radius-1), var(--radius-full));
 }
-.ui-Button:where([data-size="1"]):where(:not([data-variant="ghost"])) {
+.ui-Button:where(.r-size-1):where(:not(.r-variant-ghost)) {
   padding-left: var(--space-2);
   padding-right: var(--space-2);
 }
-.ui-Button:where([data-size="1"]):where([data-variant="ghost"]) {
+.ui-Button:where(.r-size-1):where(.r-variant-ghost) {
   gap: var(--space-1);
   --button-ghost-padding-x: var(--space-2);
   --button-ghost-padding-y: var(--space-1);
 }
-.ui-Button:where([data-size="2"]) {
+.ui-Button:where(.r-size-2) {
   gap: var(--space-2);
   font-size: var(--font-size-2);
   line-height: var(--line-height-2);
@@ -102,16 +93,16 @@ const attrs = computed(() => {
   --button-height: var(--space-6);
   border-radius: max(var(--radius-2), var(--radius-full));
 }
-.ui-Button:where([data-size="2"]):where(:not([data-variant="ghost"])) {
+.ui-Button:where(.r-size-2):where(:not(.r-variant-ghost)) {
   padding-left: var(--space-3);
   padding-right: var(--space-3);
 }
-.ui-Button:where([data-size="2"]):where([data-variant="ghost"]) {
+.ui-Button:where(.r-size-2):where(.r-variant-ghost) {
   gap: var(--space-1);
   --button-ghost-padding-x: var(--space-2);
   --button-ghost-padding-y: var(--space-1);
 }
-.ui-Button:where([data-size="3"]) {
+.ui-Button:where(.r-size-3) {
   gap: var(--space-3);
   font-size: var(--font-size-3);
   line-height: var(--line-height-3);
@@ -119,16 +110,16 @@ const attrs = computed(() => {
   --button-height: var(--space-7);
   border-radius: max(var(--radius-3), var(--radius-full));
 }
-.ui-Button:where([data-size="3"]):where(:not([data-variant="ghost"])) {
+.ui-Button:where(.r-size-3):where(:not(.r-variant-ghost)) {
   padding-left: var(--space-4);
   padding-right: var(--space-4);
 }
-.ui-Button:where([data-size="3"]):where([data-variant="ghost"]) {
+.ui-Button:where(.r-size-3):where(.r-variant-ghost) {
   gap: var(--space-2);
   --button-ghost-padding-x: var(--space-3);
   --button-ghost-padding-y: calc(var(--space-1) * 1.5);
 }
-.ui-Button:where([data-size="4"]) {
+.ui-Button:where(.r-size-4) {
   gap: var(--space-3);
   font-size: var(--font-size-4);
   line-height: var(--line-height-4);
@@ -136,11 +127,11 @@ const attrs = computed(() => {
   --button-height: var(--space-8);
   border-radius: max(var(--radius-4), var(--radius-full));
 }
-.ui-Button:where([data-size="4"]):where(:not([data-variant="ghost"])) {
+.ui-Button:where(.r-size-4):where(:not(.r-variant-ghost)) {
   padding-left: var(--space-5);
   padding-right: var(--space-5);
 }
-.ui-Button:where([data-size="4"]):where([data-variant="ghost"]) {
+.ui-Button:where(.r-size-4):where(.r-variant-ghost) {
   gap: var(--space-2);
   --button-ghost-padding-x: var(--space-4);
   --button-ghost-padding-y: var(--space-2);
@@ -159,30 +150,30 @@ const attrs = computed(() => {
   --button-solid-high-contrast-active-filter: brightness(0.95) saturate(1.2);
 }
 
-.ui-Button:where([data-variant="solid"]) {
+.ui-Button:where(.r-variant-solid) {
   background-color: var(--accent-9);
   color: var(--accent-contrast);
 }
 @media (hover: hover) {
-  .ui-Button:where([data-variant="solid"]):where(:hover) {
+  .ui-Button:where(.r-variant-solid):where(:hover) {
     background-color: var(--accent-10);
   }
 }
-.ui-Button:where([data-variant="solid"]):where(:focus-visible) {
+.ui-Button:where(.r-variant-solid):where(:focus-visible) {
   outline: 2px solid var(--focus-8);
   outline-offset: 2px;
 }
-.ui-Button:where([data-variant="solid"]):where([data-high-contrast="true"]) {
+.ui-Button:where(.r-variant-solid):where(.r-high-contrast) {
   background-color: var(--accent-12);
   color: var(--gray-1);
 }
 @media (hover: hover) {
-  .ui-Button:where([data-variant="solid"]):where([data-high-contrast="true"]:hover) {
+  .ui-Button:where(.r-variant-solid):where(.r-high-contrast:hover) {
     background-color: var(--accent-12);
     filter: var(--button-solid-high-contrast-hover-filter);
   }
 }
-.ui-Button:where([data-variant="solid"]):where([data-disabled]) {
+.ui-Button:where(.r-variant-solid):where([data-disabled]) {
   color: var(--gray-a8);
   background-color: var(--gray-a3);
   outline: none;
@@ -190,94 +181,94 @@ const attrs = computed(() => {
 }
 
 /* soft / ghost */
-.ui-Button:where([data-variant="soft"], [data-variant="ghost"]) {
+.ui-Button:where(.r-variant-soft, .r-variant-ghost) {
   color: var(--accent-a11);
 }
-.ui-Button:where([data-variant="soft"], [data-variant="ghost"]):where([data-high-contrast="true"]) {
+.ui-Button:where(.r-variant-soft, .r-variant-ghost):where(.r-high-contrast) {
   color: var(--accent-12);
 }
-.ui-Button:where([data-variant="soft"], [data-variant="ghost"]):where([data-disabled]) {
+.ui-Button:where(.r-variant-soft, .r-variant-ghost):where([data-disabled]) {
   color: var(--gray-a8);
   background-color: var(--gray-a3);
 }
 
-.ui-Button:where([data-variant="soft"]) {
+.ui-Button:where(.r-variant-soft) {
   background-color: var(--accent-a3);
 }
 @media (hover: hover) {
-  .ui-Button:where([data-variant="soft"]):where(:hover) {
+  .ui-Button:where(.r-variant-soft):where(:hover) {
     background-color: var(--accent-a4);
   }
 }
-.ui-Button:where([data-variant="soft"]):where(:focus-visible) {
+.ui-Button:where(.r-variant-soft):where(:focus-visible) {
   outline: 2px solid var(--accent-8);
   outline-offset: -1px;
 }
-.ui-Button:where([data-variant="soft"]):where([data-disabled]) {
+.ui-Button:where(.r-variant-soft):where([data-disabled]) {
   color: var(--gray-a8);
   background-color: var(--gray-a3);
 }
 
-.ui-Button:where([data-variant="ghost"]) {
+.ui-Button:where(.r-variant-ghost) {
   padding: var(--button-ghost-padding-y) var(--button-ghost-padding-x);
 }
 @media (hover: hover) {
-  .ui-Button:where([data-variant="ghost"]):where(:hover) {
+  .ui-Button:where(.r-variant-ghost):where(:hover) {
     background-color: var(--accent-a3);
   }
 }
-.ui-Button:where([data-variant="ghost"]):where(:focus-visible) {
+.ui-Button:where(.r-variant-ghost):where(:focus-visible) {
   outline: 2px solid var(--focus-8);
   outline-offset: -1px;
 }
-.ui-Button:where([data-variant="ghost"]):where([data-disabled]) {
+.ui-Button:where(.r-variant-ghost):where([data-disabled]) {
   color: var(--gray-a8);
   background-color: transparent;
 }
 
 /* outline */
-.ui-Button:where([data-variant="outline"]) {
+.ui-Button:where(.r-variant-outline) {
   box-shadow: inset 0 0 0 1px var(--accent-a8);
   color: var(--accent-a11);
 }
 @media (hover: hover) {
-  .ui-Button:where([data-variant="outline"]):where(:hover) {
+  .ui-Button:where(.r-variant-outline):where(:hover) {
     background-color: var(--accent-a2);
   }
 }
-.ui-Button:where([data-variant="outline"]):where(:focus-visible) {
+.ui-Button:where(.r-variant-outline):where(:focus-visible) {
   outline: 2px solid var(--focus-8);
   outline-offset: -1px;
 }
-.ui-Button:where([data-variant="outline"]):where([data-high-contrast="true"]) {
+.ui-Button:where(.r-variant-outline):where(.r-high-contrast) {
   box-shadow: inset 0 0 0 1px var(--accent-a7), inset 0 0 0 1px var(--gray-a11);
   color: var(--accent-12);
 }
-.ui-Button:where([data-variant="outline"]):where([data-disabled]) {
+.ui-Button:where(.r-variant-outline):where([data-disabled]) {
   color: var(--gray-a8);
   box-shadow: inset 0 0 0 1px var(--gray-a7);
   background-color: transparent;
 }
 
 /* surface */
-.ui-Button:where([data-variant="surface"]) {
+.ui-Button:where(.r-variant-surface) {
   background-color: var(--accent-surface);
   box-shadow: inset 0 0 0 1px var(--accent-a7);
   color: var(--accent-a11);
 }
 @media (hover: hover) {
-  .ui-Button:where([data-variant="surface"]):where(:hover) {
+  .ui-Button:where(.r-variant-surface):where(:hover) {
     box-shadow: inset 0 0 0 1px var(--accent-a8);
   }
 }
-.ui-Button:where([data-variant="surface"]):where(:focus-visible) {
+.ui-Button:where(.r-variant-surface):where(:focus-visible) {
   outline: 2px solid var(--focus-8);
   outline-offset: -1px;
 }
-.ui-Button:where([data-variant="surface"]):where([data-high-contrast="true"]) {
+.ui-Button:where(.r-variant-surface):where(.r-high-contrast) {
   color: var(--accent-12);
 }
-.ui-Button:where([data-variant="surface"]):where([data-disabled]) {
+.ui-Button:where(.r-variant-surface):where([data-disabled]) {
   color: var(--gray-a8);
   box-shadow: inset 0 0 0 1px var(--gray-a6);
   background-color: var(--gray-a2);

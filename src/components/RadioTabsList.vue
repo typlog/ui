@@ -8,20 +8,20 @@ export interface RadioTabsListProps extends RadioGroupRootProps {
 
 <script setup lang="ts">
 import { RadioGroupRoot } from 'radix-vue'
-import { useForwardPropsEmits } from './util'
+import { extractForwardPropsEmits } from './util'
 
 const emits = defineEmits<RadioGroupRootEmits>()
 const props = withDefaults(defineProps<RadioTabsListProps>(), {
   size: '2',
 })
-const forwarded = useForwardPropsEmits(props, emits, ['size'])
+const [forwarded, resetClass] = extractForwardPropsEmits(props, emits, ['size'])
 </script>
 
 <template>
   <RadioGroupRoot
     v-bind="forwarded"
     class="ui-RadioTabsList"
-    :data-size="props.size"
+    :class="resetClass"
   >
     <slot></slot>
   </RadioGroupRoot>
@@ -37,14 +37,14 @@ const forwarded = useForwardPropsEmits(props, emits, ['size'])
   border-radius: var(--radio-tabs-list-radius);
 }
 
-.ui-RadioTabsList[data-size="1"] {
+.ui-RadioTabsList:where(.r-size-1) {
   --radio-tabs-list-padding: var(--space-1);
   --radio-tabs-list-radius: var(--radius-2);
   --radio-tabs-item-padding: 3px 6px;
   --radio-tabs-item-radius: var(--radius-1);
 }
 
-.ui-RadioTabsList[data-size="2"] {
+.ui-RadioTabsList:where(.r-size-2) {
   --radio-tabs-list-padding: var(--space-1);
   --radio-tabs-list-radius: var(--radius-4);
   --radio-tabs-item-padding: 4px 8px;

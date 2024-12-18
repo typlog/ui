@@ -26,6 +26,10 @@ import {
 } from 'radix-vue'
 import { useForwardPropsEmits } from './util'
 
+defineOptions({
+  inheritAttrs: false,
+})
+
 const props = withDefaults(defineProps<AlertDialogContentProps>(), {
   align: 'center',
   size: '3',
