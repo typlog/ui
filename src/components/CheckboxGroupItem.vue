@@ -12,10 +12,6 @@ export interface CheckboxGroupItemProps extends CheckboxProps {
 import Checkbox from './Checkbox.vue'
 import { injectCheckboxGroupRootContext } from './CheckboxGroupRoot.vue'
 
-defineOptions({
-  inheritAttrs: false,
-})
-
 const props = defineProps<CheckboxGroupItemProps>()
 const forwarded = useForwardProps(props)
 
@@ -50,7 +46,6 @@ onBeforeUnmount(() => {
 <template>
   <Checkbox
     v-bind="{
-      ...$attrs,
       ...forwarded,
       name: props.name || rootContext.name,
       checked,

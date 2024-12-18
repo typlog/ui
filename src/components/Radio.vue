@@ -13,10 +13,6 @@ export interface RadioProps {
 <script setup lang="ts">
 import { useVModel } from '@vueuse/core'
 
-defineOptions({
-  inheritAttrs: false,
-})
-
 const props = withDefaults(defineProps<RadioProps>(), {
   size: '2',
   variant: 'surface',
@@ -37,7 +33,6 @@ const modelValue = useVModel(props, 'modelValue', emits, {
     v-model="modelValue"
     class="ui-Radio"
     type="radio"
-    v-bind="$attrs"
     :data-accent-color="props.color"
     :data-variant="props.variant"
     :data-size="props.size"

@@ -8,10 +8,6 @@ import { RadioGroupItem } from 'radix-vue'
 import { injectRadioGroupRootContext } from './RadioGroupRoot.vue'
 import Card from './Card.vue'
 
-defineOptions({
-  inheritAttrs: false,
-})
-
 const props = defineProps<RadioGroupItemProps>()
 const forwarded = useForwardProps(props)
 
@@ -27,7 +23,7 @@ const rootContext = injectRadioGroupRootContext()
     :data-size="rootContext.size.value"
     :data-variant="rootContext.variant.value"
     :data-high-contrast="rootContext.highContrast?.value"
-    v-bind="{...$attrs, ...forwarded, asChild: false}"
+    v-bind="{...forwarded, asChild: false}"
   >
     <Card :as-child="forwarded.asChild">
       <slot></slot>

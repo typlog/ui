@@ -2,6 +2,11 @@
 import {
   Button,
   Checkbox,
+  Switch,
+  SelectRoot,
+  SelectTrigger,
+  SelectContent,
+  SelectItem,
   PopoverRoot,
   PopoverContent,
   PopoverTrigger,
@@ -19,6 +24,22 @@ import {
   <section>
     <h1>Checkbox</h1>
     <Checkbox />
+  </section>
+  <section>
+    <h1>Switch</h1>
+    <Switch />
+  </section>
+  <section>
+    <h1>Select</h1>
+    <SelectRoot>
+      <SelectTrigger placeholder="Select ..." />
+      <SelectContent>
+        <SelectItem value="a">America</SelectItem>
+        <SelectItem value="b">Banana</SelectItem>
+        <SelectItem value="c">China</SelectItem>
+        <SelectItem value="d">Deno</SelectItem>
+      </SelectContent>
+    </SelectRoot>
   </section>
   <section>
     <PopoverRoot>

@@ -10,12 +10,7 @@ export interface RadioTabsListProps extends RadioGroupRootProps {
 import { RadioGroupRoot } from 'radix-vue'
 import { useForwardPropsEmits } from './util'
 
-defineOptions({
-  inheritAttrs: false,
-})
-
 const emits = defineEmits<RadioGroupRootEmits>()
-
 const props = withDefaults(defineProps<RadioTabsListProps>(), {
   size: '2',
 })
@@ -24,11 +19,7 @@ const forwarded = useForwardPropsEmits(props, emits, ['size'])
 
 <template>
   <RadioGroupRoot
-    v-bind="{
-      ...$attrs,
-      ...forwarded,
-      size: undefined,
-    }"
+    v-bind="forwarded"
     class="ui-RadioTabsList"
     :data-size="props.size"
   >

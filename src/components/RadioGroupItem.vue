@@ -7,10 +7,6 @@ import { useForwardExpose, useForwardProps } from 'radix-vue'
 import { RadioGroupItem } from 'radix-vue'
 import { injectRadioGroupRootContext } from './RadioGroupRoot.vue'
 
-defineOptions({
-  inheritAttrs: false,
-})
-
 const props = defineProps<RadioGroupItemProps>()
 const forwarded = useForwardProps(props)
 
@@ -27,7 +23,7 @@ const rootContext = injectRadioGroupRootContext()
       :data-size="rootContext.size.value"
       :data-variant="rootContext.variant.value"
       :data-high-contrast="rootContext.highContrast?.value"
-      v-bind="{...$attrs, ...forwarded}"
+      v-bind="forwarded"
     >
     </RadioGroupItem>
     <slot></slot>

@@ -1,17 +1,13 @@
 <script setup lang="ts">
 import { TabsTrigger, useForwardProps, type TabsTriggerProps } from 'radix-vue'
 
-defineOptions({
-  inheritAttrs: false,
-})
-
 const props = defineProps<TabsTriggerProps>()
 const forwarded = useForwardProps(props)
 </script>
 
 <template>
   <TabsTrigger
-    v-bind="{...$attrs, ...forwarded}"
+    v-bind="forwarded"
     class="ui-TabTrigger"
   >
     <span class="ui-TabTriggerInner">

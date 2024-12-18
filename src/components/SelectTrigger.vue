@@ -15,10 +15,6 @@ import { inject } from 'vue'
 import { Icon } from '@iconify/vue'
 import { SelectTrigger, SelectValue, SelectIcon, useForwardExpose } from 'radix-vue'
 
-defineOptions({
-  inheritAttrs: false,
-})
-
 const props = withDefaults(defineProps<SelectTriggerProps>(), {
   variant: 'surface',
 })
@@ -28,26 +24,23 @@ useForwardExpose()
 </script>
 
 <template>
-  <SelectTrigger as-child>
-    <button
-      class="ui-SelectTrigger"
-      v-bind="$attrs"
-      :disabled="props.disabled"
-      :data-variant="props.variant"
-      :data-accent-color="props.color"
-      :data-radius="props.radius"
-      :data-size="size"
-    >
-      <span class="ui-SelectTriggerInner">
-        <SelectValue :placeholder="props.placeholder" />
-      </span>
-      <SelectIcon as-child>
-        <Icon
-          class="ui-SelectIcon"
-          icon="radix-icons:chevron-down"
-        />
-      </SelectIcon>
-    </button>
+  <SelectTrigger
+    class="ui-SelectTrigger"
+    :disabled="props.disabled"
+    :data-variant="props.variant"
+    :data-accent-color="props.color"
+    :data-radius="props.radius"
+    :data-size="size"
+  >
+    <span class="ui-SelectTriggerInner">
+      <SelectValue :placeholder="props.placeholder" />
+    </span>
+    <SelectIcon as-child>
+      <Icon
+        class="ui-SelectIcon"
+        icon="radix-icons:chevron-down"
+      />
+    </SelectIcon>
   </SelectTrigger>
 </template>
 

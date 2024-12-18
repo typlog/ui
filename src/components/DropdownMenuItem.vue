@@ -17,10 +17,6 @@ import { DropdownMenuItem } from 'radix-vue'
 import { injectDropdownMenuContentContext } from './DropdownMenuContent.vue'
 import { useForwardPropsEmits } from './util'
 
-defineOptions({
-  inheritAttrs: false,
-})
-
 const props = defineProps<DropdownMenuItemProps>()
 const emits = defineEmits<DropdownMenuItemEmits>()
 
@@ -38,7 +34,7 @@ const rootContext = injectDropdownMenuContentContext()
     :data-size="rootContext.size.value"
     :data-variant="rootContext.variant.value"
     :data-high-contrast="rootContext.highContrast?.value || undefined"
-    v-bind="{...$attrs, ...forwarded}"
+    v-bind="forwarded"
   >
     <slot></slot>
     <div

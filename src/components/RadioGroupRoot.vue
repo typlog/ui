@@ -27,10 +27,6 @@ import { toRefs } from 'vue'
 import { RadioGroupRoot } from 'radix-vue'
 import { useForwardPropsEmits } from './util'
 
-defineOptions({
-  inheritAttrs: false,
-})
-
 const emits = defineEmits<RadioGroupRootEmits>()
 
 const props = withDefaults(defineProps<RadioGroupRootProps>(), {
@@ -46,10 +42,8 @@ provideRadioGroupRootContext({ size, variant, color, highContrast })
 
 <template>
   <RadioGroupRoot
-    v-bind="{
-      ...$attrs,
-      ...forwarded,
-    }"
+    class="ui-RadioGroupRoot"
+    v-bind="forwarded"
   >
     <slot></slot>
   </RadioGroupRoot>

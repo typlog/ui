@@ -11,10 +11,6 @@ import { provide, computed } from 'vue'
 import { SelectRoot, useForwardExpose } from 'radix-vue'
 import { useForwardPropsEmits } from './util'
 
-defineOptions({
-  inheritAttrs: false,
-})
-
 const props = withDefaults(defineProps<SelectRootProps>(), {
   size: '2',
 })
@@ -28,7 +24,7 @@ useForwardExpose()
 
 <template>
   <SelectRoot
-    v-bind="{...$attrs, ...forwarded}"
+    v-bind="forwarded"
     class="ui-SelectItem"
   >
     <slot></slot>

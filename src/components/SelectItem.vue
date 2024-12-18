@@ -12,10 +12,6 @@ import {
   useForwardProps,
 } from 'radix-vue'
 
-defineOptions({
-  inheritAttrs: false,
-})
-
 const props = defineProps<SelectItemProps>()
 const forwarded = useForwardProps(props)
 
@@ -25,7 +21,7 @@ useForwardExpose()
 <template>
   <SelectItem
     class="ui-SelectItem"
-    v-bind="{...$attrs, ...forwarded}"
+    v-bind="forwarded"
   >
     <SelectItemIndicator class="ui-SelectItemIndicator">
       <Icon icon="radix-icons:check" />

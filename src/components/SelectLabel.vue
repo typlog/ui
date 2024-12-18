@@ -9,10 +9,6 @@ import {
   useForwardProps,
 } from 'radix-vue'
 
-defineOptions({
-  inheritAttrs: false,
-})
-
 const props = defineProps<SelectLabelProps>()
 const forwarded = useForwardProps(props)
 
@@ -22,7 +18,7 @@ useForwardExpose()
 <template>
   <SelectLabel
     class="ui-SelectLabel"
-    v-bind="{...$attrs, ...forwarded}"
+    v-bind="forwarded"
   >
     <slot></slot>
   </SelectLabel>

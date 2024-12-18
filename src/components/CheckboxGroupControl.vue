@@ -8,10 +8,6 @@ import type { CheckboxProps } from './Checkbox.vue'
 import Checkbox from './Checkbox.vue'
 import { injectCheckboxGroupRootContext } from './CheckboxGroupRoot.vue'
 
-defineOptions({
-  inheritAttrs: false,
-})
-
 const props = defineProps<CheckboxProps>()
 const forwarded = useForwardProps(props)
 
@@ -31,7 +27,6 @@ const checked = computed(() => {
 <template>
   <Checkbox
     v-bind="{
-      ...$attrs,
       ...forwarded,
       name: props.name || rootContext.name,
       checked,

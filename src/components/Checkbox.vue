@@ -14,10 +14,6 @@ export interface CheckboxProps extends CheckboxRootProps {
 import { CheckboxRoot, CheckboxIndicator } from 'radix-vue'
 import { useForwardPropsEmits } from './util'
 
-defineOptions({
-  inheritAttrs: false,
-})
-
 const emits = defineEmits<CheckboxRootEmits>()
 
 const props = withDefaults(defineProps<CheckboxProps>(), {
@@ -29,10 +25,7 @@ const forwarded = useForwardPropsEmits(props, emits, ['color', 'size', 'variant'
 
 <template>
   <CheckboxRoot
-    v-bind="{
-      ...$attrs,
-      ...forwarded,
-    }"
+    v-bind="forwarded"
     class="ui-Checkbox"
     :data-variant="props.variant"
     :data-size="props.size"

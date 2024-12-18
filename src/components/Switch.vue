@@ -15,10 +15,6 @@ export interface SwitchProps extends SwitchRootProps {
 import { SwitchRoot, SwitchThumb } from 'radix-vue'
 import { useForwardPropsEmits } from './util'
 
-defineOptions({
-  inheritAttrs: false,
-})
-
 const emits = defineEmits<SwitchRootEmits>()
 
 const props = withDefaults(defineProps<SwitchProps>(), {
@@ -26,16 +22,13 @@ const props = withDefaults(defineProps<SwitchProps>(), {
   variant: 'surface',
 })
 const forwarded = useForwardPropsEmits(props, emits, [
-  'color', 'size', 'variant', 'highContrast', 'radius'
+  'color', 'size', 'variant', 'highContrast', 'radius',
 ])
 </script>
 
 <template>
   <SwitchRoot
-    v-bind="{
-      ...$attrs,
-      ...forwarded,
-    }"
+    v-bind="forwarded"
     class="ui-Switch"
     :data-variant="props.variant"
     :data-size="props.size"
