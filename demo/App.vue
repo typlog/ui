@@ -5,6 +5,9 @@ import {
   PopoverRoot,
   PopoverContent,
   PopoverTrigger,
+  Radio,
+  RadioGroupRoot,
+  RadioGroupItem,
 } from '../src'
 </script>
 
@@ -26,5 +29,15 @@ import {
         <p>This is popover content</p>
       </PopoverContent>
     </PopoverRoot>
+  </section>
+  <section>
+    <div>
+      <Radio />
+    </div>
+    <RadioGroupRoot>
+      <RadioGroupItem value="a">A</RadioGroupItem>
+      <RadioGroupItem value="b">B</RadioGroupItem>
+      <RadioGroupItem value="c">C</RadioGroupItem>
+    </RadioGroupRoot>
   </section>
 </template>

@@ -54,6 +54,7 @@ const modelValue = useVModel(props, 'modelValue', emits, {
   vertical-align: top;
   flex-shrink: 0;
   cursor: default;
+  width: var(--radio-size);
   height: var(--radio-size);
   border: none;
   box-shadow: none;

@@ -20,14 +20,25 @@ const rootContext = injectRadioGroupRootContext()
 </script>
 
 <template>
-  <RadioGroupItem
-    class="ui-Radio"
-    :data-accent-color="rootContext.color?.value"
-    :data-size="rootContext.size.value"
-    :data-variant="rootContext.variant.value"
-    :data-high-contrast="rootContext.highContrast?.value"
-    v-bind="{...$attrs, ...forwarded}"
-  >
+  <label class="ui-RadioGroupItem">
+    <RadioGroupItem
+      class="ui-Radio"
+      :data-accent-color="rootContext.color?.value"
+      :data-size="rootContext.size.value"
+      :data-variant="rootContext.variant.value"
+      :data-high-contrast="rootContext.highContrast?.value"
+      v-bind="{...$attrs, ...forwarded}"
+    >
+    </RadioGroupItem>
     <slot></slot>
-  </RadioGroupItem>
+  </label>
 </template>
+
+<style>
+.ui-RadioGroupItem {
+  display: flex;
+  align-items: center;
+  gap: .5em;
+  width: fit-content;
+}
+</style>
