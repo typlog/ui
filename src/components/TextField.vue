@@ -211,12 +211,12 @@ const resetClass = computed(() => {
   align-items: center;
   cursor: text;
 }
-.ui-TextFieldSlot:where(.r-side-left) {
+.ui-TextFieldSlot:where([data-side=left]) {
   order: -1;
   margin-left: calc(var(--text-field-border-width) * -1);
   margin-right: 0;
 }
-.ui-TextFieldSlot:where(.r-side-right) {
+.ui-TextFieldSlot:where([data-side=right]) {
   order: 0;
   margin-left: 0;
   margin-right: calc(var(--text-field-border-width) * -1);
