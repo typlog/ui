@@ -1,0 +1,19 @@
+{
+  "name": "site",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "deploy": "wrangler pages deploy",
+    "dev": "wrangler pages dev public"
+  },
+  "dependencies": {
+    "@radix-ui/colors": "^3.0.0",
+    "bezier-easing": "^2.1.0",
+    "colorjs.io": "^0.5.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240821.1",
+    "typescript": "^5.5.2",
+    "wrangler": "^3.72.2"
+  }
+}
