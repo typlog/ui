@@ -2,7 +2,7 @@
 import type {
   DialogContentProps as _DialogContentProps,
   DialogContentEmits,
-} from 'radix-vue'
+} from 'reka-ui'
 
 export interface DialogContentProps extends _DialogContentProps {
   to?: string | HTMLElement
@@ -23,7 +23,7 @@ import {
   DialogPortal,
   DialogContent,
   DialogOverlay,
-} from 'radix-vue'
+} from 'reka-ui'
 import { useForwardPropsEmits } from './util'
 
 defineOptions({
@@ -200,14 +200,14 @@ const forwarded = useForwardPropsEmits(props, emits, [
   }
 }
 
-.ui-DialogContent > h2[id^="radix-vue-dialog-title"] {
+.ui-DialogContent > h2[id^="reka-ui-dialog-title"] {
   font-size: var(--font-size-5);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-4);
   margin-bottom: var(--space-3);
 }
 
-.ui-DialogContent > p[id^="radix-vue-dialog-description"] {
+.ui-DialogContent > p[id^="reka-ui-dialog-description"] {
   font-size: var(--font-size-2);
   line-height: var(--line-height-2);
   letter-spacing: var(--letter-spacing-2);

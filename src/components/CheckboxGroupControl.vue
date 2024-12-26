@@ -1,6 +1,6 @@
 <script lang="ts">
 import { computed } from 'vue'
-import { useForwardExpose, useForwardProps } from 'radix-vue'
+import { useForwardExpose, useForwardProps } from 'reka-ui'
 import type { CheckboxProps } from './Checkbox.vue'
 </script>
 

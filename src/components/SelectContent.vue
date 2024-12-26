@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { SelectContentProps as _SelectContentProps } from 'radix-vue'
+import type { SelectContentProps as _SelectContentProps } from 'reka-ui'
 import type { ColorType } from './types'
 
 export interface SelectContentProps extends _SelectContentProps {
@@ -21,7 +21,7 @@ import {
   ScrollAreaThumb,
   useForwardExpose,
   useForwardProps,
-} from 'radix-vue'
+} from 'reka-ui'
 
 defineOptions({
   inheritAttrs: false,

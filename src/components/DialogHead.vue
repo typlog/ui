@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import { DialogTitle, DialogClose } from 'radix-vue'
+import { DialogTitle, DialogClose } from 'reka-ui'
 import Button from './Button.vue'
 import Inset from './Inset.vue'
 

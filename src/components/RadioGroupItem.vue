@@ -1,11 +1,11 @@
 <script lang="ts">
-import type { RadioGroupItemProps } from 'radix-vue'
+import type { RadioGroupItemProps } from 'reka-ui'
 </script>
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useForwardProps } from 'radix-vue'
-import { RadioGroupItem } from 'radix-vue'
+import { useForwardProps } from 'reka-ui'
+import { RadioGroupItem } from 'reka-ui'
 import { injectRadioGroupRootContext } from './RadioGroupRoot.vue'
 
 const props = defineProps<RadioGroupItemProps>()

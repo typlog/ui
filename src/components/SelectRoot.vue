@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { SelectRootProps as _SelectRootProps, SelectRootEmits } from 'radix-vue'
+import type { SelectRootProps as _SelectRootProps, SelectRootEmits } from 'reka-ui'
 
 export interface SelectRootProps extends _SelectRootProps {
   size?: '1' | '2' | '3'
@@ -8,7 +8,7 @@ export interface SelectRootProps extends _SelectRootProps {
 
 <script setup lang="ts">
 import { provide, computed } from 'vue'
-import { SelectRoot, useForwardExpose } from 'radix-vue'
+import { SelectRoot, useForwardExpose } from 'reka-ui'
 import { useForwardPropsEmits } from './util'
 
 const props = withDefaults(defineProps<SelectRootProps>(), {

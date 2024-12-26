@@ -18,7 +18,7 @@ import {
   AvatarRoot,
   AvatarImage,
   AvatarFallback,
-} from 'radix-vue'
+} from 'reka-ui'
 import { extractClass } from './util'
 
 const props = withDefaults(defineProps<AvatarProps>(), {

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TabsTrigger, useForwardProps, type TabsTriggerProps } from 'radix-vue'
+import { TabsTrigger, useForwardProps, type TabsTriggerProps } from 'reka-ui'
 
 const props = defineProps<TabsTriggerProps>()
 const forwarded = useForwardProps(props)

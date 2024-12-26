@@ -3,8 +3,8 @@ import type { Ref } from 'vue'
 import type {
   DropdownMenuContentProps as _DropdownMenuContentProps,
   DialogContentEmits,
-} from 'radix-vue'
-import { createContext } from 'radix-vue'
+} from 'reka-ui'
+import { createContext } from 'reka-ui'
 import type { ColorType } from './types'
 
 export interface DropdownMenuContentProps extends _DropdownMenuContentProps {
@@ -32,7 +32,7 @@ import {
   useForwardExpose,
   DropdownMenuPortal,
   DropdownMenuContent,
-} from 'radix-vue'
+} from 'reka-ui'
 import ScrollArea from './ScrollArea.vue'
 import { useForwardPropsEmits } from './util'
 

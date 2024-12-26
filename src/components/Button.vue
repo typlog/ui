@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { PrimitiveProps } from 'radix-vue'
+import type { PrimitiveProps } from 'reka-ui'
 import type { ColorType, RadiusType } from './types'
 
 export interface ButtonProps extends PrimitiveProps {
@@ -14,7 +14,7 @@ export interface ButtonProps extends PrimitiveProps {
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { Primitive } from 'radix-vue'
+import { Primitive } from 'reka-ui'
 import { extractClass } from './util'
 
 const props = withDefaults(defineProps<ButtonProps>(), {

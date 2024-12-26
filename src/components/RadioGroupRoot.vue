@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { Ref } from 'vue'
-import type { RadioGroupRootProps as _RadioGroupRootProps, RadioGroupRootEmits } from 'radix-vue'
-import { createContext } from 'radix-vue'
+import type { RadioGroupRootProps as _RadioGroupRootProps, RadioGroupRootEmits } from 'reka-ui'
+import { createContext } from 'reka-ui'
 import type { ColorType } from './types'
 
 export interface RadioGroupRootProps extends _RadioGroupRootProps {
@@ -24,7 +24,7 @@ export const [injectRadioGroupRootContext, provideRadioGroupRootContext]
 
 <script setup lang="ts">
 import { toRefs } from 'vue'
-import { RadioGroupRoot } from 'radix-vue'
+import { RadioGroupRoot } from 'reka-ui'
 import { useForwardPropsEmits } from './util'
 
 const emits = defineEmits<RadioGroupRootEmits>()

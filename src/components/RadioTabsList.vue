@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { RadioGroupRootProps, RadioGroupRootEmits } from 'radix-vue'
+import type { RadioGroupRootProps, RadioGroupRootEmits } from 'reka-ui'
 
 export interface RadioTabsListProps extends RadioGroupRootProps {
   size?: '1' | '2'
@@ -7,7 +7,7 @@ export interface RadioTabsListProps extends RadioGroupRootProps {
 </script>
 
 <script setup lang="ts">
-import { RadioGroupRoot } from 'radix-vue'
+import { RadioGroupRoot } from 'reka-ui'
 import { extractForwardPropsEmits } from './util'
 
 const emits = defineEmits<RadioGroupRootEmits>()

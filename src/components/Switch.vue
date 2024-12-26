@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { SwitchRootEmits, SwitchRootProps } from 'radix-vue'
+import type { SwitchRootEmits, SwitchRootProps } from 'reka-ui'
 import type { ColorType, RadiusType } from './types'
 
 export interface SwitchProps extends SwitchRootProps {
@@ -12,7 +12,7 @@ export interface SwitchProps extends SwitchRootProps {
 </script>
 
 <script setup lang="ts">
-import { SwitchRoot, SwitchThumb } from 'radix-vue'
+import { SwitchRoot, SwitchThumb } from 'reka-ui'
 import { extractForwardPropsEmits } from './util'
 
 const emits = defineEmits<SwitchRootEmits>()

@@ -1,6 +1,6 @@
 <script lang="ts">
 import { computed, onMounted, onBeforeUnmount } from 'vue'
-import { useForwardExpose, useForwardProps } from 'radix-vue'
+import { useForwardExpose, useForwardProps } from 'reka-ui'
 import type { CheckboxProps } from './Checkbox.vue'
 
 export interface CheckboxGroupItemProps extends CheckboxProps {

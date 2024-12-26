@@ -2,7 +2,7 @@
 import type {
   TooltipProviderProps,
   TooltipContentProps,
-} from 'radix-vue'
+} from 'reka-ui'
 
 export interface TooltipProps extends TooltipProviderProps, TooltipContentProps {
   to?: string | HTMLElement
@@ -18,7 +18,7 @@ import {
   TooltipPortal,
   TooltipRoot,
   TooltipTrigger,
-} from 'radix-vue'
+} from 'reka-ui'
 
 const props = withDefaults(defineProps<TooltipProps>(), {
   maxWidth: '360px',

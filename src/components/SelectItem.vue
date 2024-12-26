@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { SelectItemProps } from 'radix-vue'
+import type { SelectItemProps } from 'reka-ui'
 </script>
 
 <script setup lang="ts">
@@ -10,7 +10,7 @@ import {
   SelectItemText,
   useForwardExpose,
   useForwardProps,
-} from 'radix-vue'
+} from 'reka-ui'
 
 const props = defineProps<SelectItemProps>()
 const forwarded = useForwardProps(props)

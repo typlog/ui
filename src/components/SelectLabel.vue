@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { SelectLabelProps } from 'radix-vue'
+import type { SelectLabelProps } from 'reka-ui'
 </script>
 
 <script setup lang="ts">
@@ -7,7 +7,7 @@ import {
   SelectLabel,
   useForwardExpose,
   useForwardProps,
-} from 'radix-vue'
+} from 'reka-ui'
 
 const props = defineProps<SelectLabelProps>()
 const forwarded = useForwardProps(props)

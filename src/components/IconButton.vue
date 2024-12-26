@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useForwardProps } from 'radix-vue'
+import { useForwardProps } from 'reka-ui'
 import Button from './Button.vue'
 import type { ButtonProps } from './Button.vue'
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { CheckboxRootEmits, CheckboxRootProps } from 'radix-vue'
+import type { CheckboxRootEmits, CheckboxRootProps } from 'reka-ui'
 import type { ColorType } from './types'
 
 export interface CheckboxProps extends CheckboxRootProps {
@@ -11,7 +11,7 @@ export interface CheckboxProps extends CheckboxRootProps {
 </script>
 
 <script setup lang="ts">
-import { CheckboxRoot, CheckboxIndicator } from 'radix-vue'
+import { CheckboxRoot, CheckboxIndicator } from 'reka-ui'
 import { extractForwardPropsEmits } from './util'
 
 const emits = defineEmits<CheckboxRootEmits>()

@@ -68,7 +68,7 @@ export {
   PopoverArrow,
   DropdownMenuRoot,
   DropdownMenuTrigger,
-} from 'radix-vue'
+} from 'reka-ui'
 
 export {
   default as AlertDialogContent,
@@ -137,7 +137,7 @@ export {
 
 export {
   type RadioGroupItemProps,
-} from 'radix-vue'
+} from 'reka-ui'
 
 export {
   default as RadioCardsItem,
@@ -179,7 +179,7 @@ export {
 
 export {
   type SelectItemProps,
-} from 'radix-vue'
+} from 'reka-ui'
 
 export {
   default as SelectLabel,
@@ -187,13 +187,13 @@ export {
 
 export {
   type SelectLabelProps,
-} from 'radix-vue'
+} from 'reka-ui'
 
 export {
   default as SelectSeparator,
 } from './SelectSeparator.vue'
 
-export { SelectGroup } from 'radix-vue'
+export { SelectGroup } from 'reka-ui'
 
 export {
   default as Table,
@@ -208,7 +208,7 @@ export {
 export {
   TabsRoot,
   TabsContent,
-} from 'radix-vue'
+} from 'reka-ui'
 
 export {
   default as TabsList,
@@ -227,7 +227,7 @@ export {
 export {
   RadioGroupItem as RadioTabsItem,
   type RadioGroupItemProps as RadioTabsItemProps,
-} from 'radix-vue'
+} from 'reka-ui'
 
 export {
   default as Turnstile,

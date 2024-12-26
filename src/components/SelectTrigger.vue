@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { SelectTriggerProps as _SelectTriggerProps } from 'radix-vue'
+import type { SelectTriggerProps as _SelectTriggerProps } from 'reka-ui'
 import type { ColorType, RadiusType } from './types'
 
 export interface SelectTriggerProps extends _SelectTriggerProps {
@@ -13,7 +13,7 @@ export interface SelectTriggerProps extends _SelectTriggerProps {
 <script setup lang="ts">
 import { inject, computed, Ref } from 'vue'
 import { Icon } from '@iconify/vue'
-import { SelectTrigger, SelectValue, SelectIcon } from 'radix-vue'
+import { SelectTrigger, SelectValue, SelectIcon } from 'reka-ui'
 
 const props = withDefaults(defineProps<SelectTriggerProps>(), {
   variant: 'surface',

@@ -2,7 +2,7 @@
 import type {
   PopoverContentProps as _PopoverContentProps,
   PopoverContentEmits,
-} from 'radix-vue'
+} from 'reka-ui'
 
 export interface PopoverContentProps extends _PopoverContentProps {
   to?: string | HTMLElement
@@ -14,7 +14,7 @@ export interface PopoverContentProps extends _PopoverContentProps {
 import {
   PopoverPortal,
   PopoverContent,
-} from 'radix-vue'
+} from 'reka-ui'
 import { useForwardPropsEmits } from './util'
 
 defineOptions({

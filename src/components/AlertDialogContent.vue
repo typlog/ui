@@ -2,7 +2,7 @@
 import type {
   AlertDialogContentProps as _DialogContentProps,
   AlertDialogContentEmits,
-} from 'radix-vue'
+} from 'reka-ui'
 
 export interface AlertDialogContentProps extends _DialogContentProps {
   to?: string | HTMLElement
@@ -23,7 +23,7 @@ import {
   AlertDialogPortal,
   AlertDialogContent,
   AlertDialogOverlay,
-} from 'radix-vue'
+} from 'reka-ui'
 import { useForwardPropsEmits } from './util'
 
 defineOptions({

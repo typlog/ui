@@ -2,7 +2,7 @@
 import type {
   DropdownMenuItemProps as _DropdownMenuItemProps,
   DropdownMenuItemEmits,
-} from 'radix-vue'
+} from 'reka-ui'
 import type { ColorType } from './types'
 
 export interface DropdownMenuItemProps extends _DropdownMenuItemProps {
@@ -12,8 +12,8 @@ export interface DropdownMenuItemProps extends _DropdownMenuItemProps {
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from 'radix-vue'
-import { DropdownMenuItem } from 'radix-vue'
+import { useForwardExpose } from 'reka-ui'
+import { DropdownMenuItem } from 'reka-ui'
 import { injectDropdownMenuContentContext } from './DropdownMenuContent.vue'
 import { useForwardPropsEmits } from './util'
 

@@ -1,5 +1,5 @@
 import { type MaybeRefOrGetter, type ComputedRef, computed } from 'vue'
-import { useEmitAsProps, useForwardProps } from 'radix-vue'
+import { useEmitAsProps, useForwardProps } from 'reka-ui'
 
 export function excludeProps<T extends Record<string, any>>(props: ComputedRef<T>, exclude: string[]) {
   return computed(() => {

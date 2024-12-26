@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { ScrollAreaRootProps } from 'radix-vue'
+import type { ScrollAreaRootProps } from 'reka-ui'
 import type { RadiusType } from './types'
 
 export interface ScrollAreaProps extends ScrollAreaRootProps {
@@ -17,7 +17,7 @@ import {
   ScrollAreaThumb,
   ScrollAreaCorner,
   ScrollAreaViewport,
-} from 'radix-vue'
+} from 'reka-ui'
 
 const props = withDefaults(defineProps<ScrollAreaProps>(), {
   size: '1',

@@ -11,7 +11,7 @@ export interface TabsListProps {
 </script>
 
 <script setup lang="ts">
-import { TabsList } from 'radix-vue'
+import { TabsList } from 'reka-ui'
 
 const props = withDefaults(defineProps<TabsListProps>(), {
   size: '2',

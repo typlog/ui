@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { Ref } from 'vue'
-import type { PrimitiveProps } from 'radix-vue'
-import { createContext } from 'radix-vue'
+import type { PrimitiveProps } from 'reka-ui'
+import { createContext } from 'reka-ui'
 
 export interface CheckboxGroupRootProps extends PrimitiveProps {
   modelValue?: string[]
@@ -33,7 +33,7 @@ export const [injectCheckboxGroupRootContext, provideCheckboxGroupRootContext]
 <script setup lang="ts">
 import { ref, toRefs, computed } from 'vue'
 import { useVModel } from '@vueuse/core'
-import { Primitive } from 'radix-vue'
+import { Primitive } from 'reka-ui'
 
 const props = defineProps<CheckboxGroupRootProps>()
 const emits = defineEmits<CheckboxGroupRootEmits>()
