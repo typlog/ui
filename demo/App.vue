@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import {
+  Icon,
   Button,
   Checkbox,
   Switch,
@@ -14,14 +15,39 @@ import {
   RadioGroupRoot,
   RadioGroupItem,
   Toggle,
-  Icon,
+  ToggleGroupRoot,
+  ToggleGroupItem,
 } from '../src'
 </script>
 
 <template>
-  <Toggle>
-    <Icon icon="radix-icons:font-italic" />
-  </Toggle>
+  <div class="py-4">
+    <Toggle variant="solid" disabled>
+      <Icon icon="radix-icons:font-italic" />
+    </Toggle>
+  </div>
+  <div class="py-4">
+    <ToggleGroupRoot variant="solid">
+      <ToggleGroupItem
+        value="left"
+        aria-label="Toggle italic"
+      >
+        <Icon icon="radix-icons:text-align-left" />
+      </ToggleGroupItem>
+      <ToggleGroupItem
+        value="center"
+        aria-label="Toggle italic"
+      >
+        <Icon icon="radix-icons:text-align-center" />
+      </ToggleGroupItem>
+      <ToggleGroupItem
+        value="right"
+        aria-label="Toggle italic"
+      >
+        <Icon icon="radix-icons:text-align-right" />
+      </ToggleGroupItem>
+    </ToggleGroupRoot>
+  </div>
   <section>
     <h1>Buttons</h1>
     <Button>Button</Button>

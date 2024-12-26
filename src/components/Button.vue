@@ -187,7 +187,7 @@ const resetClass = computed(() => {
 .ui-Button:where(.r-variant-soft, .r-variant-ghost):where(.r-high-contrast) {
   color: var(--accent-12);
 }
-.ui-Button:where(.r-variant-soft, .r-variant-ghost):where([data-disabled]) {
+.ui-Button:where(.r-variant-soft):where([data-disabled]) {
   color: var(--gray-a8);
   background-color: var(--gray-a3);
 }

@@ -15,7 +15,6 @@ export interface ToggleProps extends _ToggleProps {
 import { Toggle } from 'reka-ui'
 import { extractForwardPropsEmits } from './util'
 
-
 const emits = defineEmits<ToggleEmits>()
 
 const props = withDefaults(defineProps<ToggleProps>(), {
@@ -49,7 +48,6 @@ const [forwarded, resetClass] = extractForwardPropsEmits(props, emits, [
   flex-shrink: 0;
   width: var(--toggle-size);
   height: var(--toggle-size);
-  border-radius: var(--toggle-border-radius);
 }
 .ui-Toggle:where(.r-size-1) {
   border-radius: max(var(--radius-1), var(--radius-full));
@@ -63,10 +61,8 @@ const [forwarded, resetClass] = extractForwardPropsEmits(props, emits, [
   border-radius: max(var(--radius-3), var(--radius-full));
   --toggle-size: var(--space-7);
 }
-.ui-Toggle:where(.r-variant-solid) {
-  background-color: var(--color-panel-solid);
-  box-shadow: var(--shadow-2);
-}
+
+/** soft */
 .ui-Toggle:where(.r-variant-soft) {
   background-color: var(--color-panel-translucent);
   box-shadow: var(--shadow-2);
@@ -76,14 +72,41 @@ const [forwarded, resetClass] = extractForwardPropsEmits(props, emits, [
     background-color: var(--accent-a2);
   }
 }
+.ui-Toggle:where(.r-variant-soft):where(:focus-visible) {
+  outline: 2px solid var(--accent-8);
+  outline-offset: -1px;
+}
+.ui-Toggle:where(.r-variant-soft):where([data-disabled]) {
+  color: var(--gray-a8);
+  background-color: var(--gray-a3);
+}
 .ui-Toggle:where(.r-variant-soft):where([data-state="on"]) {
   background-color: var(--accent-a3);
   box-shadow: var(--shadow-1);
 }
+
+/** solid & ghost*/
+.ui-Toggle:where(.r-variant-solid) {
+  background-color: var(--color-panel-solid);
+  box-shadow: var(--shadow-2);
+}
+
 @media (hover: hover) {
   .ui-Toggle:where(.r-variant-solid, .r-variant-ghost):where(:hover) {
     background-color: var(--accent-a3);
   }
+}
+.ui-Toggle:where(.r-variant-solid, .r-variant-ghost):where(:focus-visible) {
+  outline: 2px solid var(--focus-8);
+  outline-offset: 2px;
+}
+.ui-Toggle:where(.r-variant-solid):where([data-disabled]) {
+  color: var(--gray-a8);
+  background-color: var(--gray-a3);
+}
+.ui-Toggle:where(.r-variant-ghost):where([data-disabled]) {
+  color: var(--gray-a8);
+  background-color: transparent;
 }
 .ui-Toggle:where(.r-variant-solid):where([data-state="on"]) {
   background-color: var(--accent-9);
