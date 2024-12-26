@@ -248,6 +248,11 @@ export {
   type IconCircleProps,
 } from './IconCircle.vue'
 
+export {
+  default as Toggle,
+  type ToggleProps,
+} from './Toggle.vue'
+
 import { Icon } from '@iconify/vue'
 
 Icon.name = 'Icon'

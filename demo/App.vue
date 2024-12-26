@@ -13,10 +13,15 @@ import {
   Radio,
   RadioGroupRoot,
   RadioGroupItem,
+  Toggle,
+  Icon,
 } from '../src'
 </script>
 
 <template>
+  <Toggle>
+    <Icon icon="radix-icons:font-italic" />
+  </Toggle>
   <section>
     <h1>Buttons</h1>
     <Button>Button</Button>
