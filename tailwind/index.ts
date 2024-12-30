@@ -16,7 +16,7 @@ export default {
       ],
     },
     borderColor: {
-      DEFAULT: 'var(--gray-a5)',
+      DEFAULT: 'var(--gray-a4)',
     },
   },
 }
