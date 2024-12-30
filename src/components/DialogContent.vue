@@ -200,14 +200,14 @@ const forwarded = useForwardPropsEmits(props, emits, [
   }
 }
 
-.ui-DialogContent > h2[id^="reka-ui-dialog-title"] {
+.ui-DialogContent > h2[id^="reka-dialog-title"] {
   font-size: var(--font-size-5);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-4);
   margin-bottom: var(--space-3);
 }
 
-.ui-DialogContent > p[id^="reka-ui-dialog-description"] {
+.ui-DialogContent > p[id^="reka-dialog-description"] {
   font-size: var(--font-size-2);
   line-height: var(--line-height-2);
   letter-spacing: var(--letter-spacing-2);
