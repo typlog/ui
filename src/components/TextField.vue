@@ -82,6 +82,7 @@ const resetClass = computed(() => {
   <div
     class="ui-TextField"
     :class="resetClass"
+    :data-radius="props.radius"
     :data-accent-color="props.color"
     @pointerdown="onPointerDown"
   >

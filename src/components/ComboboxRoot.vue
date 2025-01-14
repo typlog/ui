@@ -22,7 +22,7 @@ export const [injectComboboxRootContext, provideComboboxRootContext]
 
 <script setup lang="ts">
 import { ComboboxRoot } from 'reka-ui'
-import { useForwardPropsEmits } from './util'
+import { extractForwardPropsEmits } from './util'
 
 const props = withDefaults(defineProps<ComboboxRootProps>(), {
   variant: 'surface',
@@ -31,7 +31,7 @@ const props = withDefaults(defineProps<ComboboxRootProps>(), {
 const emits = defineEmits<ComboboxRootEmits>()
 const { size, color, highContrast } = toRefs(props)
 
-const forwarded = useForwardPropsEmits(props, emits, ['size', 'color', 'highContrast'])
+const [forwarded, resetClass] = extractForwardPropsEmits(props, emits, ['size', 'color', 'highContrast'])
 provideComboboxRootContext({
   size,
   color,
@@ -40,7 +40,7 @@ provideComboboxRootContext({
 </script>
 
 <template>
-  <ComboboxRoot v-bind="forwarded">
+  <ComboboxRoot class="ui-ComboboxRoot" :class="resetClass" v-bind="forwarded">
     <slot></slot>
   </ComboboxRoot>
 </template>

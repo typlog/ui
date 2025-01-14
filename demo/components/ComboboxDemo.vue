@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref, nextTick } from 'vue'
 import {
   ComboboxRoot,
   ComboboxInput,
@@ -6,6 +7,7 @@ import {
   ComboboxGroup,
   ComboboxItem,
   ComboboxLabel,
+  ComboboxEmpty,
 } from '../../src'
 
 const options = [
@@ -34,6 +36,13 @@ const options = [
     ],
   },
 ]
+
+const query = ref('')
+
+const onKeydown = async () => {
+  await nextTick()
+  console.log('****', query.value)
+}
 </script>
 
 <template>
@@ -60,11 +69,14 @@ const options = [
               </ComboboxItem>
             </ComboboxGroup>
           </template>
+          <ComboboxEmpty>
+            <span>Nothing</span>
+          </ComboboxEmpty>
         </ComboboxContent>
       </ComboboxRoot>
 
-      <ComboboxRoot multiple>
-        <ComboboxInput placeholder="Placeholder..." />
+      <ComboboxRoot class="w-[400px]" multiple>
+        <ComboboxInput placeholder="Placeholder..." v-model="query" @keydown.enter="onKeydown" />
         <ComboboxContent :side-offset="5">
           <template
             v-for="group in options"
@@ -83,6 +95,9 @@ const options = [
               </ComboboxItem>
             </ComboboxGroup>
           </template>
+          <ComboboxEmpty>
+            <span>Not found: {{ query }}</span>
+          </ComboboxEmpty>
         </ComboboxContent>
       </ComboboxRoot>
     </div>

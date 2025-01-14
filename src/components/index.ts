@@ -231,6 +231,7 @@ export {
 
 export {
   ComboboxGroup,
+  ComboboxEmpty,
 } from 'reka-ui'
 
 export {
