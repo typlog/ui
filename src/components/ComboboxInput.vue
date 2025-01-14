@@ -86,7 +86,9 @@ watch(values, () => {
         :key="displayValue(item)"
         :value="item"
       >
-        <TagsInputItemText />
+        <slot name="item" :item="item">
+          <TagsInputItemText />
+        </slot>
         <TagsInputItemDelete>
           <Icon icon="lucide:x" />
         </TagsInputItemDelete>

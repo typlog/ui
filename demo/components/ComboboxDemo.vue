@@ -10,9 +10,10 @@ import {
   ComboboxEmpty,
 } from '../../src'
 
-const options = [
+const foodItems = [
   {
-    name: 'Fruit', children: [
+    name: 'Fruit',
+    children: [
       { name: 'Apple' },
       { name: 'Banana' },
       { name: 'Orange' },
@@ -24,7 +25,8 @@ const options = [
     ],
   },
   {
-    name: 'Vegetable', children: [
+    name: 'Vegetable',
+    children: [
       { name: 'Cabbage' },
       { name: 'Broccoli' },
       { name: 'Carrots' },
@@ -37,7 +39,15 @@ const options = [
   },
 ]
 
+const languages: Record<string, string> = {
+  en: 'English',
+  fr: 'French',
+  ja: 'Japanese',
+  zh: 'Chinese',
+}
+
 const query = ref('')
+const selected = ref<string[]>([])
 
 const onKeydown = async () => {
   await nextTick()
@@ -53,7 +63,7 @@ const onKeydown = async () => {
         <ComboboxInput placeholder="Placeholder..." />
         <ComboboxContent :side-offset="5">
           <template
-            v-for="group in options"
+            v-for="group in foodItems"
             :key="group.name"
           >
             <ComboboxGroup v-if="group.children.length">
@@ -75,26 +85,20 @@ const onKeydown = async () => {
         </ComboboxContent>
       </ComboboxRoot>
 
-      <ComboboxRoot class="w-[400px]" multiple>
-        <ComboboxInput placeholder="Placeholder..." v-model="query" @keydown.enter="onKeydown" />
-        <ComboboxContent :side-offset="5">
-          <template
-            v-for="group in options"
-            :key="group.name"
-          >
-            <ComboboxGroup v-if="group.children.length">
-              <ComboboxLabel>
-                {{ group.name }}
-              </ComboboxLabel>
-              <ComboboxItem
-                v-for="option in group.children"
-                :key="option.name"
-                :value="option.name"
-              >
-                {{ option.name }}
-              </ComboboxItem>
-            </ComboboxGroup>
+      <ComboboxRoot class="w-[400px]" multiple v-model="selected">
+        <ComboboxInput placeholder="Placeholder..." v-model="query" @keydown.enter="onKeydown">
+          <template #item="{ item }">
+            <span>{{ languages[item as string] }}</span>
           </template>
+        </ComboboxInput>
+        <ComboboxContent :side-offset="5">
+          <ComboboxItem
+            v-for="(value, key) in languages"
+            :key="key"
+            :value="key"
+          >
+            {{ value }}
+          </ComboboxItem>
           <ComboboxEmpty>
             <span>Not found: {{ query }}</span>
           </ComboboxEmpty>
