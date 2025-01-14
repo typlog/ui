@@ -1,16 +1,14 @@
 <script lang="ts">
 import type { SelectContentProps as _SelectContentProps } from 'reka-ui'
-import type { ColorType } from './types'
 
 export interface SelectContentProps extends _SelectContentProps {
+  to?: string | HTMLElement
   variant?: 'solid' | 'soft'
-  color?: ColorType
-  highContrast?: boolean
 }
 </script>
 
 <script setup lang="ts">
-import { inject } from 'vue'
+import { computed } from 'vue'
 import {
   SelectPortal,
   SelectContent,
@@ -22,6 +20,7 @@ import {
   useForwardExpose,
   useForwardProps,
 } from 'reka-ui'
+import { injectSelectRootContext } from './SelectRoot.vue'
 
 defineOptions({
   inheritAttrs: false,
@@ -31,29 +30,35 @@ const props = withDefaults(defineProps<SelectContentProps>(), {
   variant: 'solid',
 })
 const forwarded = useForwardProps(props)
-
-const size = inject('SelectRoot.size')
-
 const { forwardRef } = useForwardExpose()
+
+const context = injectSelectRootContext()
+
+const contentClass = computed(() => {
+  const rv = ['r-size-' + context.size.value, 'r-variant-' + props.variant]
+  if (context.highContrast.value) {
+    rv.push('r-high-contrast')
+  }
+  if (props.position === 'popper') {
+    rv.push('ui-PopperContent')
+  }
+  return rv
+})
 </script>
 
 <template>
-  <SelectPortal>
+  <SelectPortal :to="props.to">
     <SelectContent
+      :ref="forwardRef"
       v-bind="{
         ...$attrs,
         ...forwarded,
-        color: undefined,
+        to: undefined,
         variant: undefined,
-        highContrast: undefined,
       }"
-      :ref="forwardRef"
       class="ui-SelectContent"
-      :class="{'ui-PopperContent': props.position === 'popper'}"
-      :data-variant="props.variant"
-      :data-size="size"
-      :data-accent-color="props.color"
-      :data-high-contrast="props.highContrast"
+      :class="contentClass"
+      :data-accent-color="context.color.value"
     >
       <ScrollAreaRoot
         type="auto"
@@ -90,12 +95,14 @@ const { forwardRef } = useForwardExpose()
   overflow: hidden;
   box-shadow: var(--shadow-5);
   background-color: var(--color-panel-solid);
+  box-sizing: border-box;
 }
 
 .ui-SelectContent:where([data-side]) {
-  min-width: var(--radix-select-trigger-width);
-  max-height: var(--radix-select-content-available-height);
-  transform-origin: var(--radix-select-content-transform-origin);
+  min-width: var(--reka-select-trigger-width);
+  max-width: var(--reka-select-content-available-width);
+  max-height: var(--reka-select-content-available-height);
+  transform-origin: var(--reka-select-content-transform-origin);
 }
 
 .ui-SelectViewport {
@@ -107,15 +114,15 @@ const { forwardRef } = useForwardExpose()
   padding-right: var(--space-3);
 }
 
-.ui-SelectContent[data-size="1"] {
+.ui-SelectContent:where(.r-size-1) {
   --select-content-padding: var(--space-1);
   --select-item-height: var(--space-5);
   --select-item-indicator-width: calc(var(--space-5) / 1.2);
   --select-separator-margin-right: var(--space-2);
   border-radius: var(--radius-3);
 }
-.ui-SelectContent[data-size="2"],
-.ui-SelectContent[data-size="3"] {
+.ui-SelectContent:where(.r-size-2),
+.ui-SelectContent:where(.r-size-3) {
   --select-content-padding: var(--space-2);
   --select-item-height: var(--space-6);
   --select-item-indicator-width: var(--space-5);

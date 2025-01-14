@@ -38,13 +38,13 @@ useForwardExpose()
 .ui-SelectItem + .ui-SelectLabel {
   margin-top: var(--space-2);
 }
-.ui-SelectContent[data-size="1"] .ui-SelectLabel {
+:where(.r-size-1) .ui-SelectLabel {
   font-size: var(--font-size-1);
   letter-spacing: var(--letter-spacing-1);
   line-height: var(--line-height-1);
 }
-.ui-SelectContent[data-size="2"] .ui-SelectLabel,
-.ui-SelectContent[data-size="3"] .ui-SelectLabel {
+:where(.r-size-2) .ui-SelectLabel,
+:where(.r-size-3) .ui-SelectLabel {
   font-size: var(--font-size-2);
   letter-spacing: var(--letter-spacing-2);
   line-height: var(--line-height-2);

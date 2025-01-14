@@ -43,20 +43,20 @@ const forwarded = useForwardPropsEmits(props, emits, ['to', 'size'])
 
 <style>
 .ui-PopoverContent {
-  background-color: var(--color-panel-solid);
-  box-shadow: var(--shadow-5);
-  min-width: var(--radix-popover-trigger-width);
-  outline: 0;
-  overflow: auto;
-  position: relative;
-
   --inset-padding-top: var(--popover-content-padding);
   --inset-padding-right: var(--popover-content-padding);
   --inset-padding-bottom: var(--popover-content-padding);
   --inset-padding-left: var(--popover-content-padding);
+
+  background-color: var(--color-panel-solid);
+  box-shadow: var(--shadow-5);
+  min-width: var(--reka-popover-trigger-width);
+  outline: 0;
+  overflow: auto;
+  position: relative;
   padding: var(--popover-content-padding);
   box-sizing: border-box;
-  transform-origin: var(--radix-popover-content-transform-origin);
+  transform-origin: var(--reka-popover-content-transform-origin);
 }
 .ui-PopoverContent:where([data-size="1"]) {
   --popover-content-padding: var(--space-3);

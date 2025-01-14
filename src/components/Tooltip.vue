@@ -78,7 +78,7 @@ const props = withDefaults(defineProps<TooltipProps>(), {
   padding: var(--space-1) var(--space-2);
   background-color: var(--gray-12);
   border-radius: var(--radius-2);
-  transform-origin: var(--radix-tooltip-content-transform-origin);
+  transform-origin: var(--reka-tooltip-content-transform-origin);
   animation-duration: 140ms;
   animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }

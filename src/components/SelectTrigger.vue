@@ -1,26 +1,26 @@
 <script lang="ts">
 import type { SelectTriggerProps as _SelectTriggerProps } from 'reka-ui'
-import type { ColorType, RadiusType } from './types'
+import type { RadiusType } from './types'
 
 export interface SelectTriggerProps extends _SelectTriggerProps {
   variant?: 'surface' | 'soft' | 'ghost'
-  color?: ColorType
   radius?: RadiusType
   placeholder?: string
 }
 </script>
 
 <script setup lang="ts">
-import { inject, computed, Ref } from 'vue'
+import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
 import { SelectTrigger, SelectValue, SelectIcon } from 'reka-ui'
+import { injectSelectRootContext } from './SelectRoot.vue'
 
 const props = withDefaults(defineProps<SelectTriggerProps>(), {
   variant: 'surface',
 })
-const size = inject('SelectRoot.size') as Ref<number>
+const context = injectSelectRootContext()
 const resetClass = computed(() => {
-  return [`r-variant-${props.variant}`, `r-size-${size.value}`]
+  return [`r-variant-${props.variant}`, `r-size-${context.size.value}`]
 })
 </script>
 
@@ -29,7 +29,7 @@ const resetClass = computed(() => {
     class="ui-SelectTrigger"
     :class="resetClass"
     :disabled="props.disabled"
-    :data-accent-color="props.color"
+    :data-accent-color="context.color"
     :data-radius="props.radius"
   >
     <span class="ui-SelectTriggerInner">

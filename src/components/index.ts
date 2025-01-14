@@ -18,23 +18,6 @@ export {
 } from './IconButton.vue'
 
 export {
-  default as Checkbox,
-  type CheckboxProps,
-} from './Checkbox.vue'
-
-export {
-  default as CheckboxGroupRoot,
-} from './CheckboxGroupRoot.vue'
-
-export {
-  default as CheckboxGroupItem,
-} from './CheckboxGroupItem.vue'
-
-export {
-  default as CheckboxGroupControl,
-} from './CheckboxGroupControl.vue'
-
-export {
   default as Card,
   type CardProps,
 } from './Card.vue'
@@ -45,9 +28,27 @@ export {
 } from './CardHead.vue'
 
 export {
-  default as ColorField,
-  type ColorFieldProps,
-} from './ColorField.vue'
+  default as ScrollArea,
+  type ScrollAreaProps,
+} from './ScrollArea.vue'
+
+export {
+  default as Separator,
+  type SeparatorProps,
+} from './Separator.vue'
+
+export {
+  default as Inset,
+  type InsetProps,
+} from './Inset.vue'
+
+export {
+  default as SavingIndicator,
+  type SavingStatus,
+  type SavingIndicatorProps,
+} from './SavingIndicator.vue'
+
+/* dialog, dropdown, popover */
 
 export {
   AlertDialogRoot,
@@ -64,8 +65,6 @@ export {
   PopoverRoot,
   PopoverTrigger,
   PopoverClose,
-  PopoverAnchor,
-  PopoverArrow,
   DropdownMenuRoot,
   DropdownMenuTrigger,
 } from 'reka-ui'
@@ -99,21 +98,7 @@ export {
   type DropdownMenuItemProps,
 } from './DropdownMenuItem.vue'
 
-export {
-  default as Separator,
-  type SeparatorProps,
-} from './Separator.vue'
-
-export {
-  default as Inset,
-  type InsetProps,
-} from './Inset.vue'
-
-export {
-  default as SavingIndicator,
-  type SavingStatus,
-  type SavingIndicatorProps,
-} from './SavingIndicator.vue'
+/* Form inputs */
 
 export {
   default as Switch,
@@ -144,6 +129,23 @@ export {
 } from './RadioCardsItem.vue'
 
 export {
+  default as Checkbox,
+  type CheckboxProps,
+} from './Checkbox.vue'
+
+export {
+  default as CheckboxGroupRoot,
+} from './CheckboxGroupRoot.vue'
+
+export {
+  default as CheckboxGroupItem,
+} from './CheckboxGroupItem.vue'
+
+export {
+  default as CheckboxGroupControl,
+} from './CheckboxGroupControl.vue'
+
+export {
   default as TextField,
   type TextFieldProps,
 } from './TextField.vue'
@@ -154,9 +156,23 @@ export {
 } from './TextArea.vue'
 
 export {
-  default as ScrollArea,
-  type ScrollAreaProps,
-} from './ScrollArea.vue'
+  default as ColorField,
+  type ColorFieldProps,
+} from './ColorField.vue'
+
+export {
+  default as Toggle,
+  type ToggleProps,
+} from './Toggle.vue'
+
+export {
+  default as ToggleGroupRoot,
+  type ToggleGroupRootProps,
+} from './ToggleGroupRoot.vue'
+
+export {
+  default as ToggleGroupItem,
+} from './ToggleGroupItem.vue'
 
 export {
   default as SelectRoot,
@@ -178,14 +194,11 @@ export {
 } from './SelectItem.vue'
 
 export {
-  type SelectItemProps,
-} from 'reka-ui'
-
-export {
   default as SelectLabel,
 } from './SelectLabel.vue'
 
 export {
+  type SelectItemProps,
   type SelectLabelProps,
 } from 'reka-ui'
 
@@ -194,6 +207,31 @@ export {
 } from './SelectSeparator.vue'
 
 export { SelectGroup } from 'reka-ui'
+
+export {
+  default as ComboboxRoot,
+  type ComboboxRootProps,
+} from './ComboboxRoot.vue'
+
+export {
+  default as ComboboxInput,
+} from './ComboboxInput.vue'
+
+export {
+  default as ComboboxContent,
+} from './ComboboxContent.vue'
+
+export {
+  default as ComboboxItem,
+} from './ComboboxItem.vue'
+
+export {
+  default as ComboboxLabel,
+} from './ComboboxLabel.vue'
+
+export {
+  ComboboxGroup,
+} from 'reka-ui'
 
 export {
   default as Table,
@@ -247,20 +285,6 @@ export {
   default as IconCircle,
   type IconCircleProps,
 } from './IconCircle.vue'
-
-export {
-  default as Toggle,
-  type ToggleProps,
-} from './Toggle.vue'
-
-export {
-  default as ToggleGroupRoot,
-  type ToggleGroupRootProps,
-} from './ToggleGroupRoot.vue'
-
-export {
-  default as ToggleGroupItem,
-} from './ToggleGroupItem.vue'
 
 import { Icon } from '@iconify/vue'
 
