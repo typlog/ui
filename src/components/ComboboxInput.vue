@@ -2,6 +2,8 @@
 import type{
   ComboboxInputProps as _ComboboxInputProps,
   ComboboxInputEmits,
+  AcceptableValue,
+  AcceptableInputValue,
 } from 'reka-ui'
 import type { RadiusType } from './types'
 
@@ -28,12 +30,14 @@ import {
 } from 'reka-ui'
 import { Icon } from '@iconify/vue'
 import { useVModel } from '@vueuse/core'
+import { injectComboboxRootContext as _injectContext } from './ComboboxRoot.vue'
 
 defineOptions({
   inheritAttrs: false,
 })
 
 const context = injectComboboxRootContext()
+const _altContext = _injectContext()
 
 const props = withDefaults(defineProps<ComboboxInputProps>(), {
   variant: 'surface',
@@ -45,8 +49,16 @@ const query = useVModel(props, 'modelValue', emits, {
 })
 
 const values = computed(() => {
-  return context.modelValue.value as string[]
+  return context.modelValue.value as AcceptableInputValue[]
 })
+
+const displayValue = (value: AcceptableValue) => {
+  if (_altContext.displayValue) {
+    return _altContext.displayValue(value)
+  } else {
+    return value.toString()
+  }
+}
 
 watch(values, () => {
   query.value = ''
@@ -64,12 +76,13 @@ watch(values, () => {
       v-if="context.multiple.value"
       class="ui-ComboboxTagsRoot"
       :model-value="values"
+      :displayValue="displayValue"
       delimiter=""
     >
       <TagsInputItem
         v-for="item in values"
         class="ui-ComboboxTagsItem"
-        :key="item"
+        :key="displayValue(item)"
         :value="item"
       >
         <TagsInputItemText />
