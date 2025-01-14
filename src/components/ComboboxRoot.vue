@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, type ComputedRef } from 'vue'
+import { toRefs, type Ref } from 'vue'
 import { createContext } from 'reka-ui'
 import type { ComboboxRootProps as _ComboboxRootProps, ComboboxRootEmits } from 'reka-ui'
 import type { ColorType } from './types'
@@ -11,9 +11,9 @@ export interface ComboboxRootProps extends _ComboboxRootProps {
 }
 
 interface ComboboxRootContext {
-  size: ComputedRef<string>
-  color: ComputedRef<ColorType | undefined>
-  highContrast: ComputedRef<boolean>
+  size: Ref<string>
+  color: Ref<ColorType | undefined>
+  highContrast: Ref<boolean>
 }
 
 export const [injectComboboxRootContext, provideComboboxRootContext]
@@ -29,12 +29,13 @@ const props = withDefaults(defineProps<ComboboxRootProps>(), {
   size: '2',
 })
 const emits = defineEmits<ComboboxRootEmits>()
+const { size, color, highContrast } = toRefs(props)
 
 const forwarded = useForwardPropsEmits(props, emits, ['size', 'color', 'highContrast'])
 provideComboboxRootContext({
-  size: computed(() => props.size),
-  color: computed(() => props.color),
-  highContrast: computed(() => props.highContrast),
+  size,
+  color,
+  highContrast,
 })
 </script>
 

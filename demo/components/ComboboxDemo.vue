@@ -62,6 +62,29 @@ const options = [
           </template>
         </ComboboxContent>
       </ComboboxRoot>
+
+      <ComboboxRoot multiple>
+        <ComboboxInput placeholder="Placeholder..." />
+        <ComboboxContent :side-offset="5">
+          <template
+            v-for="group in options"
+            :key="group.name"
+          >
+            <ComboboxGroup v-if="group.children.length">
+              <ComboboxLabel>
+                {{ group.name }}
+              </ComboboxLabel>
+              <ComboboxItem
+                v-for="option in group.children"
+                :key="option.name"
+                :value="option.name"
+              >
+                {{ option.name }}
+              </ComboboxItem>
+            </ComboboxGroup>
+          </template>
+        </ComboboxContent>
+      </ComboboxRoot>
     </div>
   </section>
 </template>
