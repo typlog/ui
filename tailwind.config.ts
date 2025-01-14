@@ -4,7 +4,7 @@ import theme from './tailwind'
 const config: Config = {
   darkMode: 'class',
   content: [
-    './src/**/*.{vue,ts}',
+    './demo/**/*.{vue,ts}',
   ],
   theme: theme,
 }
