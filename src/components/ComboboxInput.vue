@@ -62,6 +62,7 @@ const displayValue = (value: AcceptableValue) => {
 
 watch(values, () => {
   query.value = ''
+  context.filterState.search = ''
 }, { deep: true })
 </script>
 
@@ -145,6 +146,7 @@ watch(values, () => {
 
 .ui-ComboboxTagsRoot {
   display: flex;
+  padding: calc(var(--space-1) / 2);
   gap: var(--space-1);
   align-items: center;
   flex-wrap: wrap;
@@ -155,7 +157,7 @@ watch(values, () => {
   display: flex;
   gap: var(--space-1);
   align-items: center;
-  height: calc(var(--combobox-field-height) - 6px);
+  height: calc(var(--combobox-field-height) - var(--space-1) * 2);
   padding: var(--combobox-field-padding);
   border-radius: calc(var(--combobox-field-border-radius) - var(--combobox-field-border-width));
   background-color: var(--accent-a9);
@@ -175,8 +177,13 @@ watch(values, () => {
   background-color: transparent;
   border-radius: calc(var(--combobox-field-border-radius) - var(--combobox-field-border-width));
   text-indent: var(--combobox-field-padding);
-  height: calc(var(--combobox-field-height) - 4px);
+  height: calc(var(--combobox-field-height) - var(--space-1));
   cursor: auto;
+}
+
+.ui-ComboboxField:where([data-multiple="true"]) :where(.ui-ComboboxInput) {
+  text-indent: calc(var(--combobox-field-padding) / 2);
+  height: calc(var(--combobox-field-height) - var(--space-1) * 2);
 }
 
 .ui-ComboboxTagsRoot :where(.ui-ComboboxInput) {
@@ -200,10 +207,11 @@ watch(values, () => {
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  cursor: text;
+  cursor: pointer;
   order: 0;
   margin-left: 0;
   margin-right: calc(var(--combobox-field-border-width) * -1);
+  height: calc(var(--combobox-field-height) - 4px);
 }
 :where(.r-size-1) .ui-ComboboxField {
   --combobox-field-height: var(--space-5);
