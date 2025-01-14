@@ -31,6 +31,7 @@ const props = defineProps<{title: string}>()
   top: calc(0px - var(--inset-padding-top-calc));
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-top: calc(0px - var(--inset-padding-top-calc));
   padding: calc(var(--dialog-content-padding) / 2) var(--dialog-content-padding);
   border-bottom: 1px solid var(--gray-a4);

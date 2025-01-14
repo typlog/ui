@@ -132,8 +132,6 @@ const resetClass = computed(() => {
 }
 
 .ui-TextFieldInput {
-  display: flex;
-  align-items: center;
   text-align: inherit;
   border: none;
   padding: 0;
