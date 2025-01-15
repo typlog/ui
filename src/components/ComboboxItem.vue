@@ -1,24 +1,34 @@
-<script lang="ts">
-import type { ComboboxItemProps } from 'reka-ui'
-</script>
-
 <script setup lang="ts">
+import {
+  ref,
+  onMounted,
+  type  ComponentPublicInstance,
+} from 'vue'
 import { Icon } from '@iconify/vue'
 import {
   ComboboxItem,
   ComboboxItemIndicator,
-  useForwardExpose,
   useForwardProps,
+  type ComboboxItemProps,
 } from 'reka-ui'
+import { injectComboboxRootContext } from './ComboboxRoot.vue'
 
 const props = defineProps<ComboboxItemProps>()
 const forwarded = useForwardProps(props)
 
-useForwardExpose()
+const rootContext = injectComboboxRootContext()
+
+const primitiveElement = ref<ComponentPublicInstance>()
+
+onMounted(() => {
+  const text = primitiveElement.value?.$el.textContent as string
+  rootContext.items.value.set(props.value, text)
+})
 </script>
 
 <template>
   <ComboboxItem
+    ref="primitiveElement"
     class="ui-ComboboxItem"
     v-bind="forwarded"
   >

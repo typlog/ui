@@ -22,7 +22,6 @@ import {
   ComboboxTrigger,
   TagsInputRoot,
   TagsInputItem,
-  TagsInputItemText,
   TagsInputItemDelete,
   TagsInputInput,
   useForwardPropsEmits,
@@ -30,14 +29,13 @@ import {
 } from 'reka-ui'
 import { Icon } from '@iconify/vue'
 import { useVModel } from '@vueuse/core'
-import { injectComboboxRootContext as _injectContext } from './ComboboxRoot.vue'
+import { injectComboboxRootContext as _injectComboboxRootContext } from './ComboboxRoot.vue'
 
 defineOptions({
   inheritAttrs: false,
 })
 
 const context = injectComboboxRootContext()
-const _altContext = _injectContext()
 
 const props = withDefaults(defineProps<ComboboxInputProps>(), {
   variant: 'surface',
@@ -52,12 +50,10 @@ const values = computed(() => {
   return context.modelValue.value as AcceptableInputValue[]
 })
 
+const _root = _injectComboboxRootContext()
+
 const displayValue = (value: AcceptableValue) => {
-  if (_altContext.displayValue) {
-    return _altContext.displayValue(value)
-  } else {
-    return value.toString()
-  }
+  return _root.items.value.get(value)
 }
 
 watch(values, () => {
@@ -77,17 +73,19 @@ watch(values, () => {
       v-if="context.multiple.value"
       class="ui-ComboboxTagsRoot"
       :model-value="values"
-      :displayValue="displayValue"
       delimiter=""
     >
       <TagsInputItem
         v-for="item in values"
-        class="ui-ComboboxTagsItem"
         :key="displayValue(item)"
+        class="ui-ComboboxTagsItem"
         :value="item"
       >
-        <slot name="item" :item="item">
-          <TagsInputItemText />
+        <slot
+          name="item"
+          :item="item"
+        >
+          <span>{{ displayValue(item) }}</span>
         </slot>
         <TagsInputItemDelete>
           <Icon icon="lucide:x" />
@@ -95,7 +93,6 @@ watch(values, () => {
       </TagsInputItem>
 
       <ComboboxInput
-        class="ui-ComboboxInput"
         v-bind="{
           ...$attrs,
           ...forwarded,
@@ -103,6 +100,7 @@ watch(values, () => {
           radius: undefined,
         }"
         v-model="query"
+        class="ui-ComboboxInput"
         as-child
       >
         <TagsInputInput @keydown.enter.prevent />

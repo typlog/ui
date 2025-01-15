@@ -86,11 +86,7 @@ const onKeydown = async () => {
       </ComboboxRoot>
 
       <ComboboxRoot class="w-[400px]" multiple v-model="selected">
-        <ComboboxInput placeholder="Placeholder..." v-model="query" @keydown.enter="onKeydown">
-          <template #item="{ item }">
-            <span>{{ languages[item as string] }}</span>
-          </template>
-        </ComboboxInput>
+        <ComboboxInput placeholder="Placeholder..." v-model="query" @keydown.enter="onKeydown" />
         <ComboboxContent :side-offset="5">
           <ComboboxItem
             v-for="(value, key) in languages"
