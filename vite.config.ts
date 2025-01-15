@@ -15,9 +15,9 @@ export default defineConfig({
   build: {
     lib: {
       formats: ['es'],
-      entry: {
-        index: resolve(__dirname, 'src/index.ts'),
-      },
+      entry: [resolve(__dirname, 'src/index.ts')],
+      fileName: 'index',
+      cssFileName: 'style',
     },
     rollupOptions: {
       external: [
