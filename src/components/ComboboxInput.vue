@@ -15,15 +15,11 @@ export interface ComboboxInputProps extends _ComboboxInputProps {
 </script>
 
 <script setup lang="ts">
-import { computed,  watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import {
   ComboboxAnchor,
   ComboboxInput,
   ComboboxTrigger,
-  TagsInputRoot,
-  TagsInputItem,
-  TagsInputItemDelete,
-  TagsInputInput,
   useForwardPropsEmits,
   injectComboboxRootContext,
 } from 'reka-ui'
@@ -45,6 +41,8 @@ const query = useVModel(props, 'modelValue', emits, {
   passive: true,
 })
 
+const activeIndex = ref<number>(-1)
+
 const values = computed(() => {
   return context.modelValue.value as AcceptableInputValue[]
 })
@@ -54,6 +52,25 @@ const displayValue = (value: AcceptableValue) => {
     return JSON.stringify(value)
   } else {
     return value.toString()
+  }
+}
+
+const onDeleteIndex = (index: number) => {
+  activeIndex.value = index;
+  (context.modelValue.value as AcceptableInputValue[]).splice(index, 1)
+  activeIndex.value = -1
+}
+
+const onInputKeydown = (event: KeyboardEvent) => {
+  if (!query.value && (event.key === 'Delete' || event.key === 'Backspace')) {
+    if (activeIndex.value !== -1) {
+      onDeleteIndex(activeIndex.value)
+    } else {
+      activeIndex.value = values.value.length - 1
+      setTimeout(() => {
+        activeIndex.value = -1
+      }, 500)
+    }
   }
 }
 
@@ -70,16 +87,15 @@ watch(values, () => {
     :data-radius="radius"
     :data-multiple="context.multiple.value || undefined"
   >
-    <TagsInputRoot
+    <div
       v-if="context.multiple.value"
-      class="ui-ComboboxTagsRoot"
-      :model-value="values"
-      delimiter=""
+      class="ui-ComboboxValues"
     >
-      <TagsInputItem
-        v-for="item in values"
+      <div
+        v-for="(item, index) in values"
+        class="ui-ComboboxValuesItem"
+        :aria-current="index === activeIndex"
         :key="displayValue(item)"
-        class="ui-ComboboxTagsItem"
         :value="item"
       >
         <slot
@@ -88,10 +104,14 @@ watch(values, () => {
         >
           <span>{{ displayValue(item) }}</span>
         </slot>
-        <TagsInputItemDelete>
+        <button
+          type="button"
+          tabindex="-1"
+          @click.prevent="onDeleteIndex(index)"
+        >
           <Icon icon="lucide:x" />
-        </TagsInputItemDelete>
-      </TagsInputItem>
+        </button>
+      </div>
 
       <ComboboxInput
         v-bind="{
@@ -102,11 +122,10 @@ watch(values, () => {
         }"
         v-model="query"
         class="ui-ComboboxInput"
-        as-child
+        @keydown="onInputKeydown"
       >
-        <TagsInputInput @keydown.enter.prevent />
       </ComboboxInput>
-    </TagsInputRoot>
+    </div>
 
     <ComboboxInput
       v-else
@@ -145,7 +164,7 @@ watch(values, () => {
   background-color: var(--combobox-field-selection-color);
 }
 
-.ui-ComboboxTagsRoot {
+.ui-ComboboxValues {
   display: flex;
   padding: calc(var(--space-1) / 2);
   gap: var(--space-1);
@@ -154,7 +173,7 @@ watch(values, () => {
   flex-grow: 1;
 }
 
-.ui-ComboboxTagsItem {
+.ui-ComboboxValuesItem {
   display: flex;
   gap: var(--space-1);
   align-items: center;
@@ -165,8 +184,8 @@ watch(values, () => {
   color: var(--accent-contrast);
 }
 
-.ui-ComboboxTagsItem:where([aria-current="true"]) {
-  background-color: var(--accent-a11);
+.ui-ComboboxValuesItem:where([aria-current="true"]) {
+  background-color: var(--red-a9);
 }
 
 .ui-ComboboxInput {
@@ -187,7 +206,7 @@ watch(values, () => {
   height: calc(var(--combobox-field-height) - var(--space-1) * 2);
 }
 
-.ui-ComboboxTagsRoot :where(.ui-ComboboxInput) {
+.ui-ComboboxValues :where(.ui-ComboboxInput) {
   width: auto;
 }
 
