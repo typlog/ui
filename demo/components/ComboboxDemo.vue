@@ -47,7 +47,7 @@ const languages: Record<string, string> = {
 }
 
 const query = ref('')
-const selected = ref<string[]>([])
+const selected = ref<string[]>(['en'])
 
 const onKeydown = async () => {
   await nextTick()
@@ -86,7 +86,11 @@ const onKeydown = async () => {
       </ComboboxRoot>
 
       <ComboboxRoot class="w-[400px]" multiple v-model="selected">
-        <ComboboxInput placeholder="Placeholder..." v-model="query" @keydown.enter="onKeydown" />
+        <ComboboxInput placeholder="Placeholder..." v-model="query" @keydown.enter="onKeydown">
+          <template #item="{ value }">
+            <span>{{ languages[value as string] }}</span>
+          </template>
+        </ComboboxInput>
         <ComboboxContent :side-offset="5">
           <ComboboxItem
             v-for="(value, key) in languages"

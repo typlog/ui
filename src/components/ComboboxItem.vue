@@ -1,9 +1,4 @@
 <script setup lang="ts">
-import {
-  ref,
-  onMounted,
-  type  ComponentPublicInstance,
-} from 'vue'
 import { Icon } from '@iconify/vue'
 import {
   ComboboxItem,
@@ -11,24 +6,13 @@ import {
   useForwardProps,
   type ComboboxItemProps,
 } from 'reka-ui'
-import { injectComboboxRootContext } from './ComboboxRoot.vue'
 
 const props = defineProps<ComboboxItemProps>()
 const forwarded = useForwardProps(props)
-
-const rootContext = injectComboboxRootContext()
-
-const primitiveElement = ref<ComponentPublicInstance>()
-
-onMounted(() => {
-  const text = primitiveElement.value?.$el.textContent as string
-  rootContext.items.value.set(props.value, text)
-})
 </script>
 
 <template>
   <ComboboxItem
-    ref="primitiveElement"
     class="ui-ComboboxItem"
     v-bind="forwarded"
   >

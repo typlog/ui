@@ -29,7 +29,6 @@ import {
 } from 'reka-ui'
 import { Icon } from '@iconify/vue'
 import { useVModel } from '@vueuse/core'
-import { injectComboboxRootContext as _injectComboboxRootContext } from './ComboboxRoot.vue'
 
 defineOptions({
   inheritAttrs: false,
@@ -50,10 +49,12 @@ const values = computed(() => {
   return context.modelValue.value as AcceptableInputValue[]
 })
 
-const _root = _injectComboboxRootContext()
-
 const displayValue = (value: AcceptableValue) => {
-  return _root.items.value.get(value)
+  if (typeof value === 'object') {
+    return JSON.stringify(value)
+  } else {
+    return value.toString()
+  }
 }
 
 watch(values, () => {
@@ -83,7 +84,7 @@ watch(values, () => {
       >
         <slot
           name="item"
-          :item="item"
+          :value="item"
         >
           <span>{{ displayValue(item) }}</span>
         </slot>
