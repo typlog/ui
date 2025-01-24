@@ -15,6 +15,7 @@ const props = defineProps<{title: string}>()
     <DialogTitle class="font-semibold">{{ props.title }}</DialogTitle>
     <Button
       :as="DialogClose"
+      type="button"
       variant="ghost"
       color="gray"
       radius="full"
