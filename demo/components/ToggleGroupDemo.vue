@@ -71,5 +71,67 @@ import {
         </ToggleGroupItem>
       </ToggleGroupRoot>
     </div>
+    <div class="mt-2 flex gap-4">
+      <ToggleGroupRoot size="1">
+        <ToggleGroupItem
+          value="left"
+          aria-label="Toggle italic"
+        >
+          <Icon icon="radix-icons:text-align-left" />
+        </ToggleGroupItem>
+        <ToggleGroupItem
+          value="center"
+          aria-label="Toggle italic"
+        >
+          <Icon icon="radix-icons:text-align-center" />
+        </ToggleGroupItem>
+        <ToggleGroupItem
+          value="right"
+          aria-label="Toggle italic"
+        >
+          <Icon icon="radix-icons:text-align-right" />
+        </ToggleGroupItem>
+      </ToggleGroupRoot>
+      <ToggleGroupRoot size="2">
+        <ToggleGroupItem
+          value="left"
+          aria-label="Toggle italic"
+        >
+          <Icon icon="radix-icons:text-align-left" />
+        </ToggleGroupItem>
+        <ToggleGroupItem
+          value="center"
+          aria-label="Toggle italic"
+        >
+          <Icon icon="radix-icons:text-align-center" />
+        </ToggleGroupItem>
+        <ToggleGroupItem
+          value="right"
+          aria-label="Toggle italic"
+        >
+          <Icon icon="radix-icons:text-align-right" />
+        </ToggleGroupItem>
+      </ToggleGroupRoot>
+      <ToggleGroupRoot size="3">
+        <ToggleGroupItem
+          value="left"
+          aria-label="Toggle italic"
+        >
+          <Icon icon="radix-icons:text-align-left" />
+        </ToggleGroupItem>
+        <ToggleGroupItem
+          value="center"
+          aria-label="Toggle italic"
+        >
+          <Icon icon="radix-icons:text-align-center" />
+        </ToggleGroupItem>
+        <ToggleGroupItem
+          value="right"
+          aria-label="Toggle italic"
+        >
+          <Icon icon="radix-icons:text-align-right" />
+        </ToggleGroupItem>
+      </ToggleGroupRoot>
+    </div>
   </section>
 </template>
