@@ -53,7 +53,7 @@ const forwarded = useForwardProps(props)
   background-color: var(--gray-a3);
 }
 .ui-ToggleGroupRoot:where(.r-variant-soft) :where(.ui-ToggleGroupItem[data-state="on"]) {
-  background-color: var(--accent-a3);
+  background-color: var(--accent-a4);
 }
 
 /** solid & ghost */
@@ -80,7 +80,7 @@ const forwarded = useForwardProps(props)
   box-shadow: var(--shadow-1);
 }
 .ui-ToggleGroupRoot:where(.r-variant-ghost) :where(.ui-ToggleGroupItem[data-state="on"]) {
-  background-color: var(--accent-a3);
+  background-color: var(--accent-a4);
 }
 .ui-ToggleGroupRoot:where(.r-variant-solid, .r-variant-ghost):where(.r-high-contrast) :where(.ui-ToggleGroupItem[data-state="on"]) {
   background-color: var(--accent-12);
