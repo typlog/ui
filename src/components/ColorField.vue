@@ -1,12 +1,11 @@
 <script lang="ts">
-import type { ColorType, RadiusType } from './types'
+import type { RadiusType } from './types'
 
 export interface ColorFieldProps {
   id?: string
   modelValue?: string
+  variant?: 'solid' | 'outline'
   size?: '1' | '2' | '3'
-  variant?: 'surface' | 'soft'
-  color?: ColorType
   radius?: RadiusType
 }
 </script>
@@ -18,7 +17,7 @@ import { extractClass } from './util'
 
 const props = withDefaults(defineProps<ColorFieldProps>(), {
   size: '2',
-  variant: 'surface',
+  variant: 'solid',
 })
 
 const emits = defineEmits<{
@@ -36,9 +35,9 @@ const resetClass = computed(() => {
 
 <template>
   <div
-    class="ui-TextField ui-ColorField"
+    class="ui-ColorField"
     :class="resetClass"
-    :data-accent-color="props.color"
+    :data-radius="props.radius"
   >
     <input
       :id="props.id"
@@ -46,34 +45,73 @@ const resetClass = computed(() => {
       class="ui-ColorFieldInput"
       type="color"
     >
-    <input
-      v-model="modelValue"
-      class="ui-TextFieldInput"
-      type="text"
-      pattern="^#[0-9a-f]{6}$"
-    >
   </div>
 </template>
 
 <style>
+.ui-ColorField {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--color-field-size);
+  height: var(--color-field-size);
+  border-radius: var(--color-field-radius);
+}
+
+.ui-ColorField:where(.r-size-1) {
+  --color-field-size: var(--space-5);
+  --color-field-radius: max(var(--radius-2), var(--radius-full));
+}
+.ui-ColorField:where(.r-size-2) {
+  --color-field-size: var(--space-6);
+  --color-field-radius: max(var(--radius-2), var(--radius-full));
+}
+
+.ui-ColorField:where(.r-size-3) {
+  --color-field-size: var(--space-7);
+  --color-field-radius: max(var(--radius-3), var(--radius-full));
+}
+
+.ui-ColorField:where(.r-variant-solid) {
+  --color-input-size: var(--color-field-size);
+  --color-input-radius: var(--color-field-radius);
+}
+
+.ui-ColorField:where(.r-variant-outline) {
+  --color-input-size: calc(var(--color-field-size) - var(--space-1));
+  --color-input-radius: calc(var(--color-field-radius) - 2px);
+  border: 1px solid var(--gray-a7);
+}
+
+.ui-ColorFieldInput {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: var(--color-input-size);
+  height: var(--color-input-size);
+  border-radius: var(--color-input-radius);
+}
+
+.ui-ColorFieldInput::-webkit-color-swatch-wrapper {
+  padding: 0;
+  border-radius: var(--color-input-radius);
+}
+
+.ui-ColorFieldInput::-webkit-color-swatch {
+  border: none;
+  border-radius: var(--color-input-radius);
+}
+
+.ui-ColorFieldInput::-moz-color-swatch {
+  border: none;
+  border-radius: var(--color-input-radius);
+}
+
 @supports selector(:has(*)) {
-  .ui-ColorField:where(.r-variant-surface):where(:has(input:focus)) {
+  .ui-ColorField:where(:has(.ui-ColorFieldInput:focus)) {
     --text-field-border-color: var(--text-field-focus-color);
     box-shadow: 0 0 0 2px var(--accent-4), 0 1px 2px 0 rgb(0 0 0 / 0.05);
   }
-}
-.ui-ColorFieldInput {
-  padding: 0;
-  border: none;
-  background: transparent;
-}
-.ui-ColorField:where(.r-variant-surface) .ui-ColorFieldInput {
-  width: calc(var(--text-field-height) - 4px);
-  height: calc(var(--text-field-height) - 4px);
-}
-.ui-ColorField:where(.r-variant-soft) .ui-ColorFieldInput {
-  width: var(--text-field-height);
-  height: var(--text-field-height);
-  margin-left: calc(var(--text-field-padding) / 4);
 }
 </style>
