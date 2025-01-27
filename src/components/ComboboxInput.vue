@@ -38,7 +38,7 @@ const props = withDefaults(defineProps<ComboboxInputProps>(), {
 const emits = defineEmits<ComboboxInputEmits>()
 const forwarded = useForwardPropsEmits(props, emits)
 const query = useVModel(props, 'modelValue', emits, {
-  passive: true,
+  passive: (props.modelValue === undefined) as false,
 })
 
 const activeIndex = ref<number>(-1)
