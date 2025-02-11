@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import PaginationDemo from './components/PaginationDemo.vue'
 import SpinnerDemo from './components/SpinnerDemo.vue'
 import ToggleDemo from './components/ToggleDemo.vue'
 import ToggleGroupDemo from './components/ToggleGroupDemo.vue'
@@ -16,4 +17,5 @@ import ColorFieldDemo from './components/ColorFieldDemo.vue'
   <ComboboxDemo />
   <TabsDemo />
   <ColorFieldDemo />
+  <PaginationDemo />
 </template>

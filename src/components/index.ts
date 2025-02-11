@@ -20,6 +20,7 @@ export * from './combobox'
 export * from './radio'
 export * from './tabs'
 
+export * from './pagination'
 export * from './table'
 export * from './separator'
 export * from './tooltip'
