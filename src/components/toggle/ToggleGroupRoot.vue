@@ -3,7 +3,7 @@ import type {
   ToggleGroupRootProps as _ToggleGroupRootProps,
   ToggleGroupRootEmits,
 } from 'reka-ui'
-import type { ColorType, RadiusType } from './types'
+import type { ColorType, RadiusType } from '../types'
 
 export interface ToggleGroupRootProps extends _ToggleGroupRootProps {
   color?: ColorType
@@ -17,7 +17,7 @@ export interface ToggleGroupRootProps extends _ToggleGroupRootProps {
 <script setup lang="ts">
 import { ToggleGroupRoot } from 'reka-ui'
 
-import { extractForwardPropsEmits } from './util'
+import { extractForwardPropsEmits } from '../util'
 
 const emits = defineEmits<ToggleGroupRootEmits>()
 

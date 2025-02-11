@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { ToggleProps as _ToggleProps, ToggleEmits } from 'reka-ui'
-import type { ColorType, RadiusType } from './types'
+import type { ColorType, RadiusType } from '../types'
 
 export interface ToggleProps extends _ToggleProps {
   color?: ColorType
@@ -13,7 +13,7 @@ export interface ToggleProps extends _ToggleProps {
 
 <script setup lang="ts">
 import { Toggle } from 'reka-ui'
-import { extractForwardPropsEmits } from './util'
+import { extractForwardPropsEmits } from '../util'
 
 const emits = defineEmits<ToggleEmits>()
 

@@ -87,9 +87,3 @@
     transform: translateX(-4px) scale(0.97);
   }
 }
-
-@keyframes ui-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}

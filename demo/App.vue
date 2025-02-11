@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import SpinnerDemo from './components/SpinnerDemo.vue'
 import ToggleDemo from './components/ToggleDemo.vue'
 import ToggleGroupDemo from './components/ToggleGroupDemo.vue'
 import SelectDemo from './components/SelectDemo.vue'
@@ -8,6 +9,7 @@ import ColorFieldDemo from './components/ColorFieldDemo.vue'
 </script>
 
 <template>
+  <SpinnerDemo />
   <ToggleDemo />
   <ToggleGroupDemo />
   <SelectDemo />
