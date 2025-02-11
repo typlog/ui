@@ -20,6 +20,7 @@ const props = defineProps<{title: string}>()
       color="gray"
       radius="full"
       style="--button-ghost-padding-x: var(--space-1)"
+      aria-label="Close"
     >
       <Icon icon="lucide:x" />
     </Button>
