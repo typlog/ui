@@ -1,0 +1,15 @@
+@theme {
+  --breakpoint-*: initial;
+  --breakpoint-xs: 520px;
+  --breakpoint-sm: 768px;
+  --breakpoint-md: 1024px;
+  --breakpoint-lg: 1280px;
+  --breakpoint-xl: 1640px;
+
+  --container-*: initial;
+  --container-xs: 520px;
+  --container-sm: 768px;
+  --container-md: 1024px;
+  --container-lg: 1280px;
+  --container-xl: 1640px;
+}
