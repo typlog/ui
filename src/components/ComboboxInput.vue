@@ -93,9 +93,9 @@ watch(values, () => {
     >
       <div
         v-for="(item, index) in values"
+        :key="displayValue(item)"
         class="ui-ComboboxValuesItem"
         :aria-current="index === activeIndex"
-        :key="displayValue(item)"
         :value="item"
       >
         <slot
