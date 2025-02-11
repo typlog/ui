@@ -17,10 +17,10 @@ const props = withDefaults(defineProps<ButtonProps>(), {
 </template>
 
 <style>
-.ui-CollapsibleChevron {
+.ui-CollapsibleChevron > svg {
   transition: transform 0.2s ease;
 }
-.ui-CollapsibleChevron:where([data-state="open"]) {
+.ui-CollapsibleChevron:where([data-state="open"]) > svg {
   transform: rotate(90deg);
 }
 </style>
