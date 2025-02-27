@@ -53,10 +53,10 @@ const resetClass = computed(() => {
   vertical-align: top;
   font-style: normal;
   text-align: center;
+  white-space: nowrap;
   height: var(--button-height);
 }
 .ui-Button:where(.r-variant-ghost) {
-  box-sizing: content-box;
   /* Make sure that the height is not stretched in a Flex/Grid layout */
   height: fit-content;
 }

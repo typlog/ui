@@ -63,11 +63,11 @@ const props = withDefaults(defineProps<TableProps>(), {
 }
 
 .ui-TableContent thead th {
-  font-weight: bold;
+  font-weight: var(--font-weight-semibold);
 }
 
 .ui-TableContent tbody th {
-  font-weight: normal;
+  font-weight: var(--font-weight-regular);
 }
 
 .ui-TableContent button {

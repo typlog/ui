@@ -330,7 +330,7 @@ onMounted(async () => {
   }
 }
 .ui-IconifyCollectionGroupsHead > h1 {
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   font-size: var(--font-size-4);
   line-height: var(--line-height-4);
 }

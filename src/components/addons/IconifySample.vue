@@ -55,12 +55,12 @@ const props = defineProps<CollectionItem>()
   gap: var(--space-1);
 }
 .ui-IconifySampleInfo > strong {
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   font-size: var(--font-size-2);
   line-height: var(--line-height-2);
 }
 .ui-IconifySampleInfo > span {
-  font-weight: 400;
+  font-weight: var(--font-weight-regular);
   font-size: var(--font-size-1);
   line-height: var(--line-height-1);
   color: var(--gray-a10);
