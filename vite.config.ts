@@ -25,7 +25,6 @@ export default defineConfig({
       external: [
         'vue',
         '@iconify/vue',
-        '@vueuse/core',
         'reka-ui',
       ],
     },
