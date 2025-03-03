@@ -2,7 +2,6 @@
 import type { ColorType } from '../types'
 
 export interface RadioProps {
-  modelValue?: string
   color?: ColorType
   size?: '1' | '2' | '3'
   variant?: 'surface' | 'soft'
@@ -12,7 +11,6 @@ export interface RadioProps {
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useVModel } from '@vueuse/core'
 import { extractClass } from '../util'
 
 const props = withDefaults(defineProps<RadioProps>(), {
@@ -20,13 +18,17 @@ const props = withDefaults(defineProps<RadioProps>(), {
   variant: 'surface',
 })
 
-const emits = defineEmits<{
-  'update:modelValue': [value: string | number]
-}>()
-
-const modelValue = useVModel(props, 'modelValue', emits, {
-  defaultValue: props.modelValue,
-  passive: (props.modelValue === undefined) as false,
+const [ modelValue, modifiers ] = defineModel<any>({
+  default: '',
+  set (value) {
+    if (modifiers.number) {
+      return Number(value)
+    }
+    if (modifiers.trim) {
+      return value.trim()
+    }
+    return value
+  }
 })
 
 const resetClass = computed(() => {

@@ -4,7 +4,6 @@ import type { ColorType, RadiusType } from '../types'
 export interface TextFieldProps {
   id?: string
   class?: string
-  modelValue?: string | number
   size?: '1' | '2' | '3'
   variant?: 'surface' | 'soft'
   color?: ColorType
@@ -29,7 +28,6 @@ export interface TextFieldProps {
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { useVModel } from '@vueuse/core'
 import { extractClass } from '../util'
 
 defineOptions({
@@ -59,14 +57,17 @@ const onPointerDown = (event: MouseEvent) => {
   })
 }
 
-const emits = defineEmits<{
-  'update:modelValue': [value: string | number]
-}>()
-
-
-const modelValue = useVModel(props, 'modelValue', emits, {
-  defaultValue: props.modelValue,
-  passive: (props.modelValue === undefined) as false,
+const [ modelValue, modifiers ] = defineModel<any>({
+  default: '',
+  set (value) {
+    if (modifiers.number) {
+      return Number(value)
+    }
+    if (modifiers.trim) {
+      return value.trim()
+    }
+    return value
+  }
 })
 
 const resetClass = computed(() => {

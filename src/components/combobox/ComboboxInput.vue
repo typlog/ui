@@ -24,7 +24,6 @@ import {
   injectComboboxRootContext,
 } from 'reka-ui'
 import { Icon } from '@iconify/vue'
-import { useVModel } from '@vueuse/core'
 
 defineOptions({
   inheritAttrs: false,
@@ -37,9 +36,8 @@ const props = withDefaults(defineProps<ComboboxInputProps>(), {
 })
 const emits = defineEmits<ComboboxInputEmits>()
 const forwarded = useForwardPropsEmits(props, emits)
-const query = useVModel(props, 'modelValue', emits, {
-  passive: (props.modelValue === undefined) as false,
-})
+
+const query = defineModel<string>({ default: ''})
 
 const activeIndex = ref<number>(-1)
 

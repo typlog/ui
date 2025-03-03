@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { SelectTriggerProps as _SelectTriggerProps } from 'reka-ui'
-import type { RadiusType } from './types'
+import type { RadiusType } from '../types'
 
 export interface SelectTriggerProps extends _SelectTriggerProps {
   variant?: 'surface' | 'soft' | 'ghost'

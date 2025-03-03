@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import RadioDemo from './components/RadioDemo.vue'
 import PaginationDemo from './components/PaginationDemo.vue'
 import SpinnerDemo from './components/SpinnerDemo.vue'
 import ToggleDemo from './components/ToggleDemo.vue'
@@ -10,6 +11,7 @@ import ColorFieldDemo from './components/ColorFieldDemo.vue'
 </script>
 
 <template>
+  <RadioDemo />
   <SpinnerDemo />
   <ToggleDemo />
   <ToggleGroupDemo />

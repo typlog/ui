@@ -3,7 +3,6 @@ import type { ColorType, RadiusType } from '../types'
 
 export interface TextAreaProps {
   class?: string
-  modelValue?: string
   size?: '1' | '2' | '3'
   variant?: 'surface' | 'soft'
   resize?: 'none' | 'vertical' | 'horizontal' | 'both'
@@ -14,7 +13,6 @@ export interface TextAreaProps {
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useVModel } from '@vueuse/core'
 import { extractClass } from '../util'
 
 defineOptions({
@@ -26,13 +24,8 @@ const props = withDefaults(defineProps<TextAreaProps>(), {
   variant: 'surface',
 })
 
-const emits = defineEmits<{
-  'update:modelValue': [value: string | number]
-}>()
-
-const modelValue = useVModel(props, 'modelValue', emits, {
-  defaultValue: props.modelValue,
-  passive: (props.modelValue === undefined) as false,
+const modelValue = defineModel<string>({
+  default: '',
 })
 
 const resetClass = computed(() => {

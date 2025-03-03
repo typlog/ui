@@ -3,7 +3,6 @@ import type { ButtonProps } from '../button/Button.vue'
 
 export interface PaginationProps extends ButtonProps {
   total: number
-  page: number
   perpage?: number
   edge?: number
 }
@@ -11,7 +10,6 @@ export interface PaginationProps extends ButtonProps {
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useVModel } from '@vueuse/core'
 import { Icon } from '@iconify/vue'
 import Button from '../button/Button.vue'
 import IconButton from '../button/IconButton.vue'
@@ -23,9 +21,8 @@ const props = withDefaults(defineProps<PaginationProps>(), {
   size: '1',
   variant: 'ghost',
 })
-const emits = defineEmits<{'update:page': [number]}>()
 
-const page = useVModel(props, 'page', emits)
+const page = defineModel<number>('page', { required: true })
 
 const resetClass = computed(() => {
   return extractClass(props, ['size', 'variant'])
@@ -79,10 +76,10 @@ const selectPage = (n: number) => {
   page.value = n
 }
 const selectLeft = () => {
-  selectPage(props.page - props.edge)
+  selectPage(page.value - props.edge)
 }
 const selectRight = () => {
-  selectPage(props.page + props.edge)
+  selectPage(page.value + props.edge)
 }
 </script>
 

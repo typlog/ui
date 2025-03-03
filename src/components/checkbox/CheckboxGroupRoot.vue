@@ -4,14 +4,8 @@ import type { PrimitiveProps } from 'reka-ui'
 import { createContext } from 'reka-ui'
 
 export interface CheckboxGroupRootProps extends PrimitiveProps {
-  modelValue?: string[]
-  defaultValue?: string[]
   disabled?: boolean
   name?: string
-}
-export type  CheckboxGroupRootEmits = {
-  /** Event handler called when the radio group value changes */
-  'update:modelValue': [payload: string[]]
 }
 
 interface CheckboxGroupRootContext {
@@ -32,19 +26,24 @@ export const [injectCheckboxGroupRootContext, provideCheckboxGroupRootContext]
 
 <script setup lang="ts">
 import { ref, toRefs, computed } from 'vue'
-import { useVModel } from '@vueuse/core'
 import { Primitive } from 'reka-ui'
 
 const props = defineProps<CheckboxGroupRootProps>()
-const emits = defineEmits<CheckboxGroupRootEmits>()
 
 const { disabled, name } = toRefs(props)
 
 const allValues = ref<string[]>([])
 
-const modelValue = useVModel(props, 'modelValue', emits, {
-  defaultValue: props.defaultValue,
-  passive: (props.modelValue === undefined) as false,
+const [modelValue, modifiers] = defineModel<any[]>({
+  default: [],
+  set (value) {
+    if (modifiers.number) {
+      value = value.map((v: any) => Number(v))
+    } else if (modifiers.trim) {
+      value = value.map((v: any) => v.trim())
+    }
+    return value
+  }
 })
 
 const selected = computed(() => {

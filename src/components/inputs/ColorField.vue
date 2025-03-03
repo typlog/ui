@@ -3,7 +3,6 @@ import type { RadiusType } from '../types'
 
 export interface ColorFieldProps {
   id?: string
-  modelValue?: string
   variant?: 'solid' | 'outline'
   size?: '1' | '2' | '3'
   radius?: RadiusType
@@ -12,7 +11,6 @@ export interface ColorFieldProps {
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useVModel } from '@vueuse/core'
 import { extractClass } from '../util'
 
 const props = withDefaults(defineProps<ColorFieldProps>(), {
@@ -20,14 +18,10 @@ const props = withDefaults(defineProps<ColorFieldProps>(), {
   variant: 'solid',
 })
 
-const emits = defineEmits<{
-  'update:modelValue': [string]
-}>()
-
-const modelValue = useVModel(props, 'modelValue', emits, {
-  defaultValue: props.modelValue || '#000000',
-  passive: (props.modelValue === undefined) as false,
+const model = defineModel<string>({
+  default: '#000000',
 })
+
 const resetClass = computed(() => {
   return extractClass(props, ['size', 'variant'])
 })
@@ -41,7 +35,7 @@ const resetClass = computed(() => {
   >
     <input
       :id="props.id"
-      v-model="modelValue"
+      v-model="model"
       class="ui-ColorFieldInput"
       type="color"
     >
