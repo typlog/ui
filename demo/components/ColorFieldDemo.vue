@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import {
   ColorField,
+  TextField,
 } from '../../src'
 
 const color = ref('#AA99EC')
@@ -26,5 +27,17 @@ const color = ref('#AA99EC')
     <ColorField radius="medium" variant="outline" v-model="color" />
     <ColorField radius="large" variant="outline" v-model="color" />
     <ColorField radius="full" variant="outline" v-model="color" />
+  </div>
+  <div class="mt-2 flex gap-4">
+    <TextField v-model="color">
+      <template #left>
+        <ColorField v-model="color" />
+      </template>
+    </TextField>
+    <TextField v-model="color">
+      <template #right>
+        <ColorField v-model="color" />
+      </template>
+    </TextField>
   </div>
 </template>

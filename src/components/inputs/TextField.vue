@@ -210,6 +210,9 @@ const resetClass = computed(() => {
   display: flex;
   align-items: center;
   cursor: text;
+  gap: var(--space-2);
+  padding-left: var(--text-field-slot-padding);
+  padding-right: var(--text-field-slot-padding);
 }
 .ui-TextFieldSlot:where([data-side=left]) {
   order: -1;
@@ -240,13 +243,9 @@ const resetClass = computed(() => {
   --text-field-padding: calc(var(--space-1) * 1.5 - var(--text-field-border-width));
   --text-field-border-radius: max(var(--radius-2), var(--radius-full));
   --text-field-native-icon-size: var(--space-3);
+  --text-field-slot-padding: var(--space-1);
   font-size: var(--font-size-1);
   letter-spacing: var(--letter-spacing-1);
-}
-.ui-TextField:where(.r-size-1) :where(.ui-TextFieldSlot) {
-  gap: var(--space-2);
-  padding-left: var(--space-1);
-  padding-right: var(--space-1);
 }
 .ui-TextField:where(.r-size-1) :where(.ui-TextFieldInput) {
   /* Reset size 2 padding bottom */
@@ -262,6 +261,7 @@ const resetClass = computed(() => {
   --text-field-padding: calc(var(--space-2) - var(--text-field-border-width));
   --text-field-border-radius: max(var(--radius-2), var(--radius-full));
   --text-field-native-icon-size: var(--space-4);
+  --text-field-slot-padding: var(--space-2);
   font-size: var(--font-size-2);
   letter-spacing: var(--letter-spacing-2);
 }
@@ -275,16 +275,12 @@ const resetClass = computed(() => {
   padding-right: 2px;
   margin-right: 0px;
 }
-.ui-TextField:where(.r-size-2) :where(.ui-TextFieldSlot) {
-  gap: var(--space-2);
-  padding-left: var(--space-2);
-  padding-right: var(--space-2);
-}
 .ui-TextField:where(.r-size-3) {
   --text-field-height: var(--space-7);
   --text-field-padding: calc(var(--space-3) - var(--text-field-border-width));
   --text-field-border-radius: max(var(--radius-3), var(--radius-full));
   --text-field-native-icon-size: var(--space-4);
+  --text-field-slot-padding: var(--space-3);
   font-size: var(--font-size-3);
   letter-spacing: var(--letter-spacing-3);
 }
@@ -299,8 +295,6 @@ const resetClass = computed(() => {
 }
 .ui-TextField:where(.r-size-3) :where(.ui-TextFieldSlot) {
   gap: var(--space-3);
-  padding-left: var(--space-3);
-  padding-right: var(--space-3);
 }
 
 .ui-TextField:where(.r-variant-surface) {

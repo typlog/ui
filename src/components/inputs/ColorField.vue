@@ -108,4 +108,16 @@ const resetClass = computed(() => {
     box-shadow: 0 0 0 2px var(--accent-4), 0 1px 2px 0 rgb(0 0 0 / 0.05);
   }
 }
+
+:where(.ui-TextFieldSlot[data-side="left"]) .ui-ColorField {
+  margin-left: calc(0px - var(--text-field-slot-padding) / 2);
+}
+:where(.ui-TextFieldSlot[data-side="right"]) .ui-ColorField {
+  margin-right: calc(0px - var(--text-field-slot-padding) / 2);
+}
+:where(.ui-TextFieldSlot) .ui-ColorField,
+:where(.ui-TextFieldSlot) .ui-ColorFieldInput {
+  width: calc(var(--color-field-size) - var(--text-field-padding));
+  height: calc(var(--color-field-size) - var(--text-field-padding));
+}
 </style>
