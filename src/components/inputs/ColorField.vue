@@ -32,6 +32,7 @@ const resetClass = computed(() => {
     class="ui-ColorField"
     :class="resetClass"
     :data-radius="props.radius"
+    :style="{'--color-field-border-color': model}"
   >
     <input
       :id="props.id"
@@ -55,15 +56,18 @@ const resetClass = computed(() => {
 .ui-ColorField:where(.r-size-1) {
   --color-field-size: var(--space-5);
   --color-field-radius: max(var(--radius-2), var(--radius-full));
+  --color-field-border-width: 1px;
 }
 .ui-ColorField:where(.r-size-2) {
   --color-field-size: var(--space-6);
   --color-field-radius: max(var(--radius-2), var(--radius-full));
+  --color-field-border-width: 2px;
 }
 
 .ui-ColorField:where(.r-size-3) {
   --color-field-size: var(--space-7);
   --color-field-radius: max(var(--radius-3), var(--radius-full));
+  --color-field-border-width: 3px;
 }
 
 .ui-ColorField:where(.r-variant-solid) {
@@ -72,9 +76,9 @@ const resetClass = computed(() => {
 }
 
 .ui-ColorField:where(.r-variant-outline) {
-  --color-input-size: calc(var(--color-field-size) - var(--space-1));
+  --color-input-size: calc(var(--color-field-size) - var(--color-field-border-width) * 4);
   --color-input-radius: calc(var(--color-field-radius) - 2px);
-  border: 1px solid var(--gray-a7);
+  border: var(--color-field-border-width) solid var(--color-field-border-color);
 }
 
 .ui-ColorFieldInput {
