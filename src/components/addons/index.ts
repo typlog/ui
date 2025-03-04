@@ -5,4 +5,4 @@ export {
 
 export {
   default as IconifyCollection,
-} from './IconifyCollection.vue'
+} from './iconify-collection/IconifyCollection.vue'

@@ -83,11 +83,11 @@ const filterIcons = (names: string[], query?: string, suffix?: string) => {
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 import { Icon } from '@iconify/vue'
-import Button from '../button/Button.vue'
-import IconButton from '../button/IconButton.vue'
-import Tooltip from '../tooltip/Tooltip.vue'
-import Pagination from '../pagination/Pagination.vue'
-import TextField from '../inputs/TextField.vue'
+import Button from '../../button/Button.vue'
+import IconButton from '../../button/IconButton.vue'
+import Tooltip from '../../tooltip/Tooltip.vue'
+import Pagination from '../../pagination/Pagination.vue'
+import TextField from '../../inputs/TextField.vue'
 import IconifySample from './IconifySample.vue'
 
 const props = withDefaults(defineProps<IconifyCollectionProps>(), {
