@@ -215,12 +215,10 @@ onMounted(async () => {
         <div class="ui-IconifyCollectionForm">
           <TextField
             v-model="collectionFilter"
-            class="flex-grow"
             placeholder="Filter icon sets..."
           />
           <TextField
             v-model="searchQuery"
-            class="flex-grow"
             placeholder="Search icons..."
             @keydown.enter="onSearch"
           />
@@ -258,14 +256,12 @@ onMounted(async () => {
         <TextField
           v-if="shouldDisplay === 'search'"
           v-model="searchQuery"
-          class="flex-grow"
           placeholder="Search icons..."
           @keydown.enter="onSearch"
         />
         <TextField
           v-if="shouldDisplay === 'collection'"
           v-model="collectionQuery"
-          class="flex-grow"
           placeholder="Search icons..."
         />
       </div>
