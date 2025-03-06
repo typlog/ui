@@ -29,7 +29,7 @@ const resetClass = computed(() => {
     class="ui-SelectTrigger"
     :class="resetClass"
     :disabled="props.disabled"
-    :data-accent-color="context.color"
+    :data-accent-color="context.color.value"
     :data-radius="props.radius"
   >
     <span class="ui-SelectTriggerInner">
