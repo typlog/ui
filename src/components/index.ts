@@ -20,6 +20,7 @@ export * from './combobox'
 export * from './radio'
 export * from './tabs'
 
+export * from './accordion'
 export * from './collapsible'
 export * from './pagination'
 export * from './table'

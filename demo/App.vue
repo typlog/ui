@@ -9,11 +9,13 @@ import ComboboxDemo from './components/ComboboxDemo.vue'
 import TabsDemo from './components/TabsDemo.vue'
 import ColorFieldDemo from './components/ColorFieldDemo.vue'
 import CollapsibleDemo from './components/CollapsibleDemo.vue'
+import AccordionDemo from './components/AccordionDemo.vue'
 </script>
 
 <template>
   <RadioDemo />
   <SpinnerDemo />
+  <AccordionDemo />
   <CollapsibleDemo />
   <ToggleDemo />
   <ToggleGroupDemo />

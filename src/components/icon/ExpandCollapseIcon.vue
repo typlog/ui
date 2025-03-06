@@ -28,7 +28,7 @@ const props = withDefaults(defineProps<ExpandCollapseIconProps>(), {
   height: var(--expand-icon-size);
   cursor: pointer;
   display: inline-block;
-  --expand-icon-color: var(--gray-10);
+  --expand-icon-color: var(--gray-11);
 }
 
 .ui-ExpandCollapseIcon:where([data-accent-color]) {
