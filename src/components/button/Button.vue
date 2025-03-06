@@ -5,7 +5,7 @@ import type { ColorType, RadiusType } from '../types'
 export interface ButtonProps extends PrimitiveProps {
   color?: ColorType
   radius?: RadiusType
-  variant?: 'solid' | 'soft' | 'surface' | 'outline' | 'ghost'
+  variant?: 'classic' | 'solid' | 'soft' | 'surface' | 'outline' | 'ghost'
   size?: '1' | '2' | '3' | '4'
   highContrast?: boolean
   disabled?: boolean
@@ -141,13 +141,11 @@ const resetClass = computed(() => {
 .radix-ui {
   --button-solid-active-filter: brightness(0.92) saturate(1.1);
   --button-solid-high-contrast-hover-filter: contrast(0.88) saturate(1.1) brightness(1.1);
-  --button-solid-high-contrast-active-filter: contrast(0.82) saturate(1.2) brightness(1.16);
 }
 
 :is(.dark, .dark-theme) .radix-ui {
   --button-solid-active-filter: brightness(1.08);
   --button-solid-high-contrast-hover-filter: contrast(0.88) saturate(1.3) brightness(1.18);
-  --button-solid-high-contrast-active-filter: brightness(0.95) saturate(1.2);
 }
 
 .ui-Button:where(.r-variant-solid) {
@@ -162,6 +160,10 @@ const resetClass = computed(() => {
 .ui-Button:where(.r-variant-solid):where(:focus-visible) {
   outline: 2px solid var(--focus-8);
   outline-offset: 2px;
+}
+.ui-Button:where(.r-variant-solid):where(:active) {
+  background-color: var(--accent-10);
+  filter: var(--button-solid-active-filter);
 }
 .ui-Button:where(.r-variant-solid):where(.r-high-contrast) {
   background-color: var(--accent-12);
@@ -204,6 +206,9 @@ const resetClass = computed(() => {
   outline: 2px solid var(--accent-8);
   outline-offset: -1px;
 }
+.ui-Button:where(.r-variant-soft):where(:active) {
+  background-color: var(--accent-a5);
+}
 .ui-Button:where(.r-variant-soft):where([data-disabled]) {
   color: var(--gray-a8);
   background-color: var(--gray-a3);
@@ -221,9 +226,42 @@ const resetClass = computed(() => {
   outline: 2px solid var(--focus-8);
   outline-offset: -1px;
 }
+.ui-Button:where(.r-variant-ghost):where(:active) {
+  background-color: var(--accent-a4);
+}
 .ui-Button:where(.r-variant-ghost):where([data-disabled]) {
   color: var(--gray-a8);
   background-color: transparent;
+}
+
+/* classic */
+.ui-Button:where(.r-variant-classic) {
+  box-shadow: var(--shadow-2);
+  background-color: var(--color-background);
+}
+.ui-Button:where(.r-variant-classic):where(.r-high-contrast) {
+  color: var(--gray-12);
+  box-shadow: 0 0 0 1px var(--gray-a6), 0 1px 1px 0 var(--black-a4), 0 2px 1px -1px var(--black-a2), 0 1px 3px 0 var(--black-a1);
+}
+@media (hover: hover) {
+  .ui-Button:where(.r-variant-classic):where(:hover) {
+    color: var(--accent-a11);
+    background-color: var(--gray-a2);
+  }
+  .ui-Button:where(.r-variant-classic):where(.r-high-contrast):where(:hover) {
+    color: var(--accent-12);
+  }
+}
+.ui-Button:where(.r-variant-classic):where(:focus-visible) {
+  outline: 2px solid var(--focus-8);
+  outline-offset: -1px;
+}
+.ui-Button:where(.r-variant-classic):where(:active:not([data-disabled])) {
+  box-shadow: var(--shadow-1);
+}
+.ui-Button:where(.r-variant-classic):where([data-disabled]) {
+  color: var(--gray-a10);
+  background-color: var(--gray-a2);
 }
 
 /* outline */
@@ -243,6 +281,9 @@ const resetClass = computed(() => {
 .ui-Button:where(.r-variant-outline):where(.r-high-contrast) {
   box-shadow: inset 0 0 0 1px var(--accent-a7), inset 0 0 0 1px var(--gray-a11);
   color: var(--accent-12);
+}
+.ui-Button:where(.r-variant-outline):where(:active) {
+  background-color: var(--accent-a4);
 }
 .ui-Button:where(.r-variant-outline):where([data-disabled]) {
   color: var(--gray-a8);
@@ -267,6 +308,9 @@ const resetClass = computed(() => {
 }
 .ui-Button:where(.r-variant-surface):where(.r-high-contrast) {
   color: var(--accent-12);
+}
+.ui-Button:where(.r-variant-surface):where(:active) {
+  background-color: var(--accent-a4);
 }
 .ui-Button:where(.r-variant-surface):where([data-disabled]) {
   color: var(--gray-a8);
