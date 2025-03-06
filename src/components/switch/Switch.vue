@@ -59,6 +59,7 @@ const [forwarded, resetClass] = extractForwardPropsEmits(props, emits, [
   align-items: center;
   vertical-align: top;
   flex-shrink: 0;
+  outline: none;
 
   height: var(--switch-height);
   --switch-width: calc(var(--switch-height) * 1.75);
