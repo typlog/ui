@@ -28,6 +28,7 @@ import { ComboboxRoot } from 'reka-ui'
 import { extractForwardPropsEmits } from '../util'
 
 const props = withDefaults(defineProps<ComboboxRootProps>(), {
+  multiple: false,
   variant: 'surface',
   size: '2',
 })

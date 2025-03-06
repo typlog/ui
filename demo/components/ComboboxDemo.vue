@@ -57,7 +57,7 @@ const onKeydown = async () => {
 
 <template>
   <section class="my-6">
-    <h1 class="text-lg font-semibold">Toggle</h1>
+    <h1 class="text-lg font-semibold">Combobox</h1>
     <div class="mt-2 flex gap-4">
       <ComboboxRoot>
         <ComboboxInput placeholder="Placeholder..." />

@@ -37,8 +37,6 @@ const props = withDefaults(defineProps<ComboboxInputProps>(), {
 const emits = defineEmits<ComboboxInputEmits>()
 const forwarded = useForwardPropsEmits(props, emits)
 
-const query = defineModel<string>({ default: ''})
-
 const activeIndex = ref<number>(-1)
 
 const values = computed(() => {
@@ -60,20 +58,20 @@ const onDeleteIndex = (index: number) => {
 }
 
 const onInputKeydown = (event: KeyboardEvent) => {
-  if (!query.value && (event.key === 'Delete' || event.key === 'Backspace')) {
+  const value = (event.target as HTMLInputElement).value
+  if (!value && (event.key === 'Delete' || event.key === 'Backspace')) {
     if (activeIndex.value !== -1) {
       onDeleteIndex(activeIndex.value)
     } else {
       activeIndex.value = values.value.length - 1
       setTimeout(() => {
         activeIndex.value = -1
-      }, 500)
+      }, 800)
     }
   }
 }
 
 watch(values, () => {
-  query.value = ''
   context.filterState.search = ''
 }, { deep: true })
 </script>
@@ -118,7 +116,6 @@ watch(values, () => {
           variant: undefined,
           radius: undefined,
         }"
-        v-model="query"
         class="ui-ComboboxInput"
         @keydown="onInputKeydown"
       >
