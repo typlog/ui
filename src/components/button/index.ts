@@ -6,3 +6,7 @@ export {
 export {
   default as IconButton,
 } from './IconButton.vue'
+
+export {
+  default as SocialButton,
+} from './SocialButton.vue'

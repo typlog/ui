@@ -254,7 +254,7 @@ const resetClass = computed(() => {
 }
 .ui-Button:where(.r-variant-classic):where(:focus-visible) {
   outline: 2px solid var(--focus-8);
-  outline-offset: -1px;
+  outline-offset: 2px;
 }
 .ui-Button:where(.r-variant-classic):where(:active:not([data-disabled])) {
   box-shadow: var(--shadow-1);
