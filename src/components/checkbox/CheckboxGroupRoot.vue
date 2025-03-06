@@ -43,7 +43,7 @@ const [modelValue, modifiers] = defineModel<any[]>({
       value = value.map((v: any) => v.trim())
     }
     return value
-  }
+  },
 })
 
 const selected = computed(() => {

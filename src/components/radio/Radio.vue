@@ -18,7 +18,7 @@ const props = withDefaults(defineProps<RadioProps>(), {
   variant: 'surface',
 })
 
-const [ modelValue, modifiers ] = defineModel<any>({
+const [modelValue, modifiers] = defineModel<any>({
   default: '',
   set (value) {
     if (modifiers.number) {
@@ -28,7 +28,7 @@ const [ modelValue, modifiers ] = defineModel<any>({
       return value.trim()
     }
     return value
-  }
+  },
 })
 
 const resetClass = computed(() => {
