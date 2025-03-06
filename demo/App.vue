@@ -8,11 +8,13 @@ import SelectDemo from './components/SelectDemo.vue'
 import ComboboxDemo from './components/ComboboxDemo.vue'
 import TabsDemo from './components/TabsDemo.vue'
 import ColorFieldDemo from './components/ColorFieldDemo.vue'
+import CollapsibleDemo from './components/CollapsibleDemo.vue'
 </script>
 
 <template>
   <RadioDemo />
   <SpinnerDemo />
+  <CollapsibleDemo />
   <ToggleDemo />
   <ToggleGroupDemo />
   <SelectDemo />
