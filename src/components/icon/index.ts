@@ -6,8 +6,12 @@ export {
 } from './IconCircle.vue'
 
 export {
-  default as ExpandCollapseIcon,
-} from './ExpandCollapseIcon.vue'
+  default as PlusMinusIcon,
+} from './PlusMinusIcon.vue'
+
+export {
+  default as ChevronIcon,
+} from './ChevronIcon.vue'
 
 Icon.name = 'Icon'
 export { Icon }

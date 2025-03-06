@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import {
   CollapsibleRoot,
-  CollapsibleChevron,
   CollapsibleTrigger,
   CollapsibleContent,
+  ChevronIcon,
 } from '../../src'
 </script>
 
@@ -12,11 +12,11 @@ import {
     <CollapsibleRoot>
       <div class="flex items-center gap-2">
         <CollapsibleTrigger>Trigger 1</CollapsibleTrigger>
-        <CollapsibleChevron />
+        <CollapsibleTrigger>
+          <ChevronIcon />
+        </CollapsibleTrigger>
       </div>
-      <CollapsibleContent>
-        <div class="p-4 bg-gray-100">Content 1</div>
-      </CollapsibleContent>
+      <CollapsibleContent>Content 1</CollapsibleContent>
     </CollapsibleRoot>
     <CollapsibleRoot>
       <div class="flex items-center gap-2">

@@ -8,9 +8,9 @@ export interface AccordionTriggerProps extends _AccordionTriggerProps {
 
 <script setup lang="ts">
 import { AccordionTrigger } from 'reka-ui'
-import { Icon } from '@iconify/vue'
 import { extractForwardProps } from '../util'
-import ExpandCollapseIcon from '../icon/ExpandCollapseIcon.vue'
+import PlusMinusIcon from '../icon/PlusMinusIcon.vue'
+import ChevronIcon from '../icon/ChevronIcon.vue'
 
 const props = withDefaults(defineProps<AccordionTriggerProps>(), {
   size: '1',
@@ -29,14 +29,13 @@ const [forwarded, resetClass] = extractForwardProps(props, ['size'])
     <div class="ui-AccordionTriggerText">
       <slot></slot>
     </div>
-    <ExpandCollapseIcon
+    <PlusMinusIcon
       v-if="props.indicator === 'plus-minus'"
       class="ui-AccordionTriggerIcon"
     />
-    <Icon
+    <ChevronIcon
       v-else-if="props.indicator === 'chevron'"
-      class="ui-AccordionTriggerChevron"
-      icon="lucide:chevron-down"
+      arrow-transform="down-up"
     />
   </AccordionTrigger>
 </template>
@@ -56,11 +55,5 @@ const [forwarded, resetClass] = extractForwardProps(props, ['size'])
 }
 .ui-AccordionTrigger:hover {
   text-decoration: underline;
-}
-.ui-AccordionTriggerChevron {
-  transition: transform 0.2s ease;
-}
-:where(.ui-AccordionTrigger[data-state="open"]) .ui-AccordionTriggerChevron {
-  transform: rotate(180deg);
 }
 </style>

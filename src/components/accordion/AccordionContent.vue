@@ -4,6 +4,10 @@ import { AccordionContent, useForwardProps } from 'reka-ui'
 
 const props = defineProps<AccordionContentProps>()
 const forwardedProps = useForwardProps(props)
+
+defineOptions({
+  inheritAttrs: false,
+})
 </script>
 
 <template>
@@ -11,7 +15,7 @@ const forwardedProps = useForwardProps(props)
     v-bind="forwardedProps"
     class="ui-AccordionContent"
   >
-    <div class="ui-AccordionContentInner">
+    <div class="ui-AccordionContentInner" v-bind="$attrs">
       <slot></slot>
     </div>
   </AccordionContent>
