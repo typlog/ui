@@ -39,7 +39,7 @@
     "@vue/eslint-config-typescript": "^14.1.0",
     "autoprefixer": "^10.4.15",
     "eslint": "^9.14.0",
-    "eslint-plugin-vue": "^9.30.0",
+    "eslint-plugin-vue": "^10.0.0",
     "postcss": "^8.4.30",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.7.0",
