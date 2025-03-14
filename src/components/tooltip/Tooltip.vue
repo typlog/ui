@@ -26,6 +26,10 @@ const props = withDefaults(defineProps<TooltipProps>(), {
   sideOffset: 4,
   collisionPadding: 10,
 })
+
+defineOptions({
+  inheritAttrs: false,
+})
 </script>
 
 <template>
@@ -41,6 +45,7 @@ const props = withDefaults(defineProps<TooltipProps>(), {
       <TooltipTrigger
         :as="props.as"
         :as-child="props.asChild"
+        v-bind="$attrs"
       >
         <slot></slot>
       </TooltipTrigger>
