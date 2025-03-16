@@ -3,7 +3,7 @@ import type { RadiusType } from '../types'
 
 export interface ColorFieldProps {
   id?: string
-  variant?: 'solid' | 'outline'
+  variant?: 'solid' | 'ring'
   size?: '1' | '2' | '3'
   radius?: RadiusType
 }
@@ -75,7 +75,7 @@ const resetClass = computed(() => {
   --color-input-radius: var(--color-field-radius);
 }
 
-.ui-ColorField:where(.r-variant-outline) {
+.ui-ColorField:where(.r-variant-ring) {
   --color-input-size: calc(var(--color-field-size) - var(--color-field-border-width) * 4);
   --color-input-radius: calc(var(--color-field-radius) - 2px);
   border: var(--color-field-border-width) solid var(--color-field-border-color);
