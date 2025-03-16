@@ -6,7 +6,7 @@ export interface AvatarProps {
   alt: string
   fallback?: string
   radius?: RadiusType
-  variant?: 'solid' | 'soft'
+  variant?: 'solid' | 'soft' | 'ring'
   size?: '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'
   color?: ColorType
 }
@@ -98,6 +98,8 @@ const fallback = computed(() => {
   --avatar-size: var(--space-5);
   --avatar-fallback-one-letter-font-size: var(--font-size-2);
   --avatar-fallback-two-letters-font-size: var(--font-size-1);
+  --avatar-ring-width: 1px;
+  --avatar-ring-offset: 1px;
   border-radius: max(var(--radius-2), var(--radius-full));
   letter-spacing: var(--letter-spacing-1);
 }
@@ -105,6 +107,8 @@ const fallback = computed(() => {
   --avatar-size: var(--space-6);
   --avatar-fallback-one-letter-font-size: var(--font-size-3);
   --avatar-fallback-two-letters-font-size: var(--font-size-2);
+  --avatar-ring-width: 2px;
+  --avatar-ring-offset: 2px;
   border-radius: max(var(--radius-2), var(--radius-full));
   letter-spacing: var(--letter-spacing-2);
 }
@@ -113,6 +117,8 @@ const fallback = computed(() => {
   --avatar-size: var(--space-7);
   --avatar-fallback-one-letter-font-size: var(--font-size-4);
   --avatar-fallback-two-letters-font-size: var(--font-size-3);
+  --avatar-ring-width: 2px;
+  --avatar-ring-offset: 2px;
   border-radius: max(var(--radius-3), var(--radius-full));
   letter-spacing: var(--letter-spacing-3);
 }
@@ -121,6 +127,8 @@ const fallback = computed(() => {
   --avatar-size: var(--space-8);
   --avatar-fallback-one-letter-font-size: var(--font-size-5);
   --avatar-fallback-two-letters-font-size: var(--font-size-4);
+  --avatar-ring-width: 2px;
+  --avatar-ring-offset: 2px;
   border-radius: max(var(--radius-3), var(--radius-full));
   letter-spacing: var(--letter-spacing-4);
 }
@@ -128,6 +136,8 @@ const fallback = computed(() => {
 .ui-Avatar:where(.r-size-5) {
   --avatar-size: var(--space-9);
   --avatar-fallback-one-letter-font-size: var(--font-size-6);
+  --avatar-ring-width: 3px;
+  --avatar-ring-offset: 2px;
   border-radius: max(var(--radius-4), var(--radius-full));
   letter-spacing: var(--letter-spacing-6);
 }
@@ -135,6 +145,8 @@ const fallback = computed(() => {
 .ui-Avatar:where(.r-size-6) {
   --avatar-size: 80px;
   --avatar-fallback-one-letter-font-size: var(--font-size-7);
+  --avatar-ring-width: 3px;
+  --avatar-ring-offset: 3px;
   border-radius: max(var(--radius-5), var(--radius-full));
   letter-spacing: var(--letter-spacing-7);
 }
@@ -142,6 +154,8 @@ const fallback = computed(() => {
 .ui-Avatar:where(.r-size-7) {
   --avatar-size: 96px;
   --avatar-fallback-one-letter-font-size: var(--font-size-7);
+  --avatar-ring-width: 3px;
+  --avatar-ring-offset: 3px;
   border-radius: max(var(--radius-5), var(--radius-full));
   letter-spacing: var(--letter-spacing-7);
 }
@@ -149,6 +163,8 @@ const fallback = computed(() => {
 .ui-Avatar:where(.r-size-8) {
   --avatar-size: 128px;
   --avatar-fallback-one-letter-font-size: var(--font-size-8);
+  --avatar-ring-width: 4px;
+  --avatar-ring-offset: 3px;
   border-radius: max(var(--radius-6), var(--radius-full));
   letter-spacing: var(--letter-spacing-8);
 }
@@ -156,10 +172,20 @@ const fallback = computed(() => {
 .ui-Avatar:where(.r-size-9) {
   --avatar-size: 160px;
   --avatar-fallback-one-letter-font-size: var(--font-size-9);
+  --avatar-ring-width: 4px;
+  --avatar-ring-offset: 4px;
   border-radius: max(var(--radius-6), var(--radius-full));
   letter-spacing: var(--letter-spacing-9);
 }
 
+.ui-Avatar:where(.r-variant-ring) {
+  outline-color: var(--accent-9);
+  outline-width: var(--avatar-ring-width);
+  outline-offset: var(--avatar-ring-offset);
+  outline-style: solid;
+}
+
+.ui-Avatar:where(.r-variant-ring) > span,
 .ui-Avatar:where(.r-variant-solid) > span {
   background-color: var(--accent-9);
   color: var(--accent-contrast);
