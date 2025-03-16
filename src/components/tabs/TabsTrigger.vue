@@ -84,14 +84,11 @@ const forwarded = useForwardProps(props)
   .ui-TabTrigger:where(:hover) {
     color: var(--gray-12);
   }
-  .ui-TabTrigger:where(:hover) :where(.ui-TabTriggerInner) {
+  .ui-TabTrigger:where(:not(:disabled):hover) :where(.ui-TabTriggerInner) {
     background-color: var(--gray-a3);
   }
   .ui-TabTrigger:where(:focus-visible:hover) :where(.ui-TabTriggerInner) {
     background-color: var(--accent-a3);
-  }
-  .ui-TabTrigger:where(:hover:disabled) :where(.ui-TabTriggerInner) {
-    background-color: transparent;
   }
 }
 .ui-TabTrigger:where([data-state='active']) {
