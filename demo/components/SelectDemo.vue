@@ -12,7 +12,11 @@ import {
     <h1 class="text-lg font-semibold">Select</h1>
     <div class="mt-2 flex gap-4">
       <SelectRoot>
-        <SelectTrigger placeholder="Select ..." />
+        <SelectTrigger placeholder="Select ...">
+          <template v-slot="{ selectedLabel }">
+            <span>selected: {{ selectedLabel.join(', ') }}</span>
+          </template>
+        </SelectTrigger>
         <SelectContent>
           <SelectItem value="a">America</SelectItem>
           <SelectItem value="b">Banana</SelectItem>

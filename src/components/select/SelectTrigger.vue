@@ -33,7 +33,18 @@ const resetClass = computed(() => {
     :data-radius="props.radius"
   >
     <span class="ui-SelectTriggerInner">
-      <SelectValue :placeholder="props.placeholder" />
+      <SelectValue :placeholder="props.placeholder">
+        <template v-slot="{ selectedLabel, modelValue }">
+          <slot
+            v-if="selectedLabel.length"
+            :selected-label="selectedLabel"
+            :model-value="modelValue"
+          >
+            {{ selectedLabel.join(', ') }}
+          </slot>
+          <template v-else>{{ props.placeholder }}</template>
+        </template>
+      </SelectValue>
     </span>
     <SelectIcon as-child>
       <Icon
