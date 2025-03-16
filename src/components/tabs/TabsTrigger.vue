@@ -41,6 +41,11 @@ const forwarded = useForwardProps(props)
   outline: none;
 }
 
+.ui-TabTrigger:disabled {
+  color: var(--gray-a8);
+  border-color: currentColor;
+}
+
 .ui-TabTriggerInner,
 .ui-TabTriggerInnerHidden {
   display: flex;
@@ -76,7 +81,7 @@ const forwarded = useForwardProps(props)
 }
 
 @media (hover: hover) {
-  .ui-TabTrigger:hover {
+  .ui-TabTrigger:where(:hover) {
     color: var(--gray-12);
   }
   .ui-TabTrigger:where(:hover) :where(.ui-TabTriggerInner) {
@@ -84,6 +89,9 @@ const forwarded = useForwardProps(props)
   }
   .ui-TabTrigger:where(:focus-visible:hover) :where(.ui-TabTriggerInner) {
     background-color: var(--accent-a3);
+  }
+  .ui-TabTrigger:where(:hover:disabled) :where(.ui-TabTriggerInner) {
+    background-color: transparent;
   }
 }
 .ui-TabTrigger:where([data-state='active']) {
