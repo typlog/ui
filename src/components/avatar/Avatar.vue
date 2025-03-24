@@ -33,7 +33,12 @@ const fallback = computed(() => {
   if (props.fallback) {
     return props.fallback
   }
-  return props.alt.split(/\s+/).map(p => p[0]).slice(0, 2).join('')
+  const symbols = props.alt.split(/\s+/).map(p => p[0])
+  if (props.size === '1') {
+    return symbols[0]
+  } else {
+    return symbols.slice(0, 2).join('')
+  }
 })
 </script>
 
