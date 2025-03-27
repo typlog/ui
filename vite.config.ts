@@ -12,8 +12,15 @@ export default defineConfig({
     dts({
       tsconfigPath: 'tsconfig.build.json',
       cleanVueFileName: true,
+      rollupTypes: true,
     }),
   ],
+  resolve: {
+    dedupe: [
+      'vue',
+      '@vue/runtime-core',
+    ],
+  },
   build: {
     lib: {
       formats: ['es'],
