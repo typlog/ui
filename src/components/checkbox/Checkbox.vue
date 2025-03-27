@@ -35,7 +35,7 @@ const [forwarded, resetClass] = extractForwardPropsEmits(props, emits, ['color',
       as-child
     >
       <svg
-        v-if="forwarded.checked !== false"
+        v-if="props.modelValue !== false"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         fill="none"
@@ -45,7 +45,7 @@ const [forwarded, resetClass] = extractForwardPropsEmits(props, emits, ['color',
         stroke-linejoin="round"
       >
         <path
-          v-if="forwarded.checked === 'indeterminate'"
+          v-if="props.modelValue === 'indeterminate'"
           d="M5 12h14"
         />
         <path

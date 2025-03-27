@@ -27,7 +27,7 @@ const checked = computed(() => {
   return rootContext.selected.value.indexOf(props.value) !== -1
 })
 
-const onUpdate = (checked: boolean) => {
+const onUpdate = (checked: any) => {
   if (checked) {
     rootContext.addModelValue(props.value)
   } else {
@@ -48,10 +48,10 @@ onBeforeUnmount(() => {
     v-bind="{
       ...forwarded,
       name: props.name || rootContext.name,
-      checked,
+      modelValue: checked,
       disabled
     }"
-    @update:checked="onUpdate"
+    @update:model-value="onUpdate"
   >
   </Checkbox>
 </template>

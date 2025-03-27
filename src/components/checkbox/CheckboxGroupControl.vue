@@ -19,9 +19,9 @@ const disabled = computed(() => {
   return rootContext.disabled?.value || props.disabled
 })
 
-const checked = computed(() => {
-  return rootContext.checked.value
-})
+const toggleModelValue = (checked: any) => {
+  rootContext.toggleModelValue(checked)
+}
 </script>
 
 <template>
@@ -29,10 +29,10 @@ const checked = computed(() => {
     v-bind="{
       ...forwarded,
       name: props.name || rootContext.name,
-      checked,
+      modelValue: rootContext.checked.value,
       disabled
     }"
-    @update:checked="rootContext.toggleModelValue"
+    @update:model-value="toggleModelValue"
   >
   </Checkbox>
 </template>
