@@ -30,7 +30,7 @@ useForwardExpose()
   display: flex;
   align-items: center;
   height: var(--combobox-item-height);
-  padding-left: var(--combobox-item-indicator-width);
+  padding-left: calc(var(--combobox-item-indicator-width) / 2);
   padding-right: var(--combobox-item-indicator-width);
   color: var(--gray-a10);
   user-select: none;
