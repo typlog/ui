@@ -41,6 +41,6 @@
 @import './typography.css';
 
 
-.radix-ui {
+.ui-root {
   --scaling: 1;
 }

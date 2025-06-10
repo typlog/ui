@@ -1,4 +1,4 @@
-.radix-ui {
+.ui-root {
   --shadow-1:
     inset 0 0 0 1px var(--gray-a5),
     inset 0 1.5px 2px 0 var(--gray-a2),
@@ -35,7 +35,7 @@
 }
 
 @supports (color: color-mix(in oklab, white, black)) {
-  .radix-ui {
+  .ui-root {
     --shadow-1:
       inset 0 0 0 1px var(--gray-a5),
       inset 0 1.5px 2px 0 var(--gray-a2),
@@ -72,7 +72,7 @@
   }
 }
 
-:is(.dark, .dark-theme) .radix-ui {
+:is(.dark, .dark-theme) .ui-root {
   --shadow-1:
     inset 0 -1px 1px 0 var(--gray-a3),
     inset 0 0 0 1px var(--gray-a3),
@@ -110,7 +110,7 @@
 }
 
 @supports (color: color-mix(in oklab, white, black)) {
-  :is(.dark, .dark-theme) .radix-ui {
+  :is(.dark, .dark-theme) .ui-root {
     --shadow-1:
       inset 0 -1px 1px 0 var(--gray-a3),
       inset 0 0 0 1px var(--gray-a3),

@@ -20,7 +20,7 @@ const forwarded = useForwardProps(props)
 </template>
 
 <style>
-.radix-ui {
+.ui-root {
   --tab-active-letter-spacing: -0.01em;
   --tab-active-word-spacing: 0em;
   --tab-inactive-letter-spacing: 0em;

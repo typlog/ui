@@ -39,14 +39,14 @@ const [forwarded, resetClass] = extractForwardPropsEmits(props, emits, [
 </template>
 
 <style>
-.radix-ui {
+.ui-root {
   --switch-disabled-blend-mode: multiply;
   --switch-high-contrast-checked-color-overlay: var(--black-a8);
   --switch-high-contrast-checked-active-before-filter: contrast(0.82) saturate(1.2) brightness(1.16);
   --switch-surface-checked-active-filter: brightness(0.92) saturate(1.1);
 }
 
-:is(.dark, .dark-theme) .radix-ui {
+:is(.dark, .dark-theme) .ui-root {
   --switch-disabled-blend-mode: screen;
   --switch-high-contrast-checked-color-overlay: transparent;
   --switch-high-contrast-checked-active-before-filter: brightness(1.08);

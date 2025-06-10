@@ -7,14 +7,14 @@
 /*                                     */
 /* * * * * * * * * * * * * * * * * * * */
 
-:where(.radix-ui) {
+:where(.ui-root) {
   --color-background: white;
   --color-overlay: var(--black-a6);
   --color-panel-solid: white;
   --color-panel-translucent: rgba(255, 255, 255, 0.7);
   --color-surface: rgba(255, 255, 255, 0.85);
 }
-:is(.dark, .dark-theme) :where(.radix-ui) {
+:is(.dark, .dark-theme) :where(.ui-root) {
   --color-background: var(--gray-1);
   --color-overlay: var(--black-a8);
   --color-panel-solid: var(--gray-2);
@@ -30,12 +30,12 @@
 
 /* Because Chrome is buggy with box-shadow transitions from "transparent" keyword and/or RGB color into P3 colors. */
 /* Note: using `:where` here to guarantee that the P3 color will take over regardless of the output rule order. */
-:where(.radix-ui) {
+:where(.ui-root) {
   --color-transparent: rgb(0 0 0 / 0);
 }
 @supports (color: color(display-p3 1 1 1)) {
   @media (color-gamut: p3) {
-    .radix-ui {
+    .ui-root {
       --color-transparent: color(display-p3 0 0 0 / 0);
     }
   }
@@ -51,10 +51,10 @@
  * Make sure that forced light/dark appearance also sets corresponding browser colors,
  * like input autofill color and body scrollbar
  */
-:is(.light, .light-theme) :where(.radix-ui) {
+:is(.light, .light-theme) :where(.ui-root) {
   color-scheme: light;
 }
-:is(.dark, .dark-theme) :where(.radix-ui) {
+:is(.dark, .dark-theme) :where(.ui-root) {
   color-scheme: dark;
 }
 
@@ -64,7 +64,7 @@
 /*                                     */
 /* * * * * * * * * * * * * * * * * * * */
 
-.radix-ui,
+.ui-root,
 [data-accent-color]:where(:not([data-accent-color=''], [data-accent-color='gray'])) {
   --focus-1: var(--accent-1);
   --focus-2: var(--accent-2);
@@ -93,7 +93,7 @@
   --focus-a12: var(--accent-a12);
 }
 
-.radix-ui ::selection {
+.ui-root ::selection {
   background-color: var(--focus-a5);
 }
 
@@ -103,11 +103,11 @@
 /*                                     */
 /* * * * * * * * * * * * * * * * * * * */
 
-.radix-ui {
+.ui-root {
   color: var(--gray-12);
 }
 
-.radix-ui:where([data-has-background='true']) {
+.ui-root:where([data-has-background='true']) {
   background-color: var(--color-background);
 }
 
@@ -117,12 +117,12 @@
 /*                                     */
 /* * * * * * * * * * * * * * * * * * * */
 
-.radix-ui:where([data-panel-background='solid']) {
+.ui-root:where([data-panel-background='solid']) {
   --color-panel: var(--color-panel-solid);
   --backdrop-filter-panel: none;
 }
 
-.radix-ui:where([data-panel-background='translucent']) {
+.ui-root:where([data-panel-background='translucent']) {
   --color-panel: var(--color-panel-translucent);
   --backdrop-filter-panel: blur(64px);
 }
@@ -997,7 +997,7 @@
 /*                                     */
 /* * * * * * * * * * * * * * * * * * * */
 
-.radix-ui :where([data-gray-color='mauve']) {
+.ui-root :where([data-gray-color='mauve']) {
   --gray-1: var(--mauve-1);
   --gray-2: var(--mauve-2);
   --gray-3: var(--mauve-3);
@@ -1030,7 +1030,7 @@
   --gray-track: var(--mauve-track);
 }
 
-.radix-ui :where([data-gray-color='olive']) {
+.ui-root :where([data-gray-color='olive']) {
   --gray-1: var(--olive-1);
   --gray-2: var(--olive-2);
   --gray-3: var(--olive-3);
@@ -1063,7 +1063,7 @@
   --gray-track: var(--olive-track);
 }
 
-.radix-ui :where([data-gray-color='sage']) {
+.ui-root :where([data-gray-color='sage']) {
   --gray-1: var(--sage-1);
   --gray-2: var(--sage-2);
   --gray-3: var(--sage-3);
@@ -1096,7 +1096,7 @@
   --gray-track: var(--sage-track);
 }
 
-.radix-ui :where([data-gray-color='sand']) {
+.ui-root :where([data-gray-color='sand']) {
   --gray-1: var(--sand-1);
   --gray-2: var(--sand-2);
   --gray-3: var(--sand-3);
@@ -1129,7 +1129,7 @@
   --gray-track: var(--sand-track);
 }
 
-.radix-ui :where([data-gray-color='slate']) {
+.ui-root :where([data-gray-color='slate']) {
   --gray-1: var(--slate-1);
   --gray-2: var(--slate-2);
   --gray-3: var(--slate-3);

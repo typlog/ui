@@ -138,12 +138,12 @@ const resetClass = computed(() => {
 }
 
 /* solid */
-.radix-ui {
+.ui-root {
   --button-solid-active-filter: brightness(0.92) saturate(1.1);
   --button-solid-high-contrast-hover-filter: contrast(0.88) saturate(1.1) brightness(1.1);
 }
 
-:is(.dark, .dark-theme) .radix-ui {
+:is(.dark, .dark-theme) .ui-root {
   --button-solid-active-filter: brightness(1.08);
   --button-solid-high-contrast-hover-filter: contrast(0.88) saturate(1.3) brightness(1.18);
 }
