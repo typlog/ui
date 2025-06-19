@@ -51,6 +51,7 @@ const forwarded = useForwardPropsEmits(props, emits, ['to', 'size'])
   background-color: var(--color-panel-solid);
   box-shadow: var(--shadow-5);
   min-width: var(--reka-popover-trigger-width);
+  max-width: var(--reka-popover-content-available-width);
   outline: 0;
   overflow: auto;
   position: relative;

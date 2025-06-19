@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import { DialogTitle, DialogClose } from 'reka-ui'
-import Button from '../button/Button.vue'
+import IconButton from '../button/IconButton.vue'
 import Inset from '../inset/Inset.vue'
 
 const props = defineProps<{title: string}>()
@@ -13,17 +13,16 @@ const props = defineProps<{title: string}>()
     side="x"
   >
     <DialogTitle class="font-semibold">{{ props.title }}</DialogTitle>
-    <Button
+    <IconButton
       :as="DialogClose"
       type="button"
       variant="ghost"
       color="gray"
       radius="full"
-      style="--button-ghost-padding-x: var(--space-1)"
       aria-label="Close"
     >
       <Icon icon="lucide:x" />
-    </Button>
+    </IconButton>
   </Inset>
 </template>
 

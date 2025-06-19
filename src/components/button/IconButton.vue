@@ -17,7 +17,7 @@ const forwarded = useForwardProps(props)
 </template>
 
 <style>
-.ui-IconButton:where(:not(.r-variant-ghost)) {
+.ui-Button.ui-IconButton:where(:not(.r-variant-ghost)) {
   height: var(--button-height);
   width: var(--button-height);
   padding: 0;

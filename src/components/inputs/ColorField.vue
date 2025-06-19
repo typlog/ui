@@ -18,7 +18,7 @@ const props = withDefaults(defineProps<ColorFieldProps>(), {
   variant: 'solid',
 })
 
-const model = defineModel<string>({
+const modelValue = defineModel<string>({
   default: '#000000',
 })
 
@@ -32,11 +32,11 @@ const resetClass = computed(() => {
     class="ui-ColorField"
     :class="resetClass"
     :data-radius="props.radius"
-    :style="{'--color-field-border-color': model}"
+    :style="{'--color-field-border-color': modelValue}"
   >
     <input
       :id="props.id"
-      v-model="model"
+      v-model="modelValue"
       class="ui-ColorFieldInput"
       type="color"
     >
