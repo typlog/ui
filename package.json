@@ -13,12 +13,14 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
+    "./base.css": "./dist/base.css",
     "./style.css": "./dist/style.css",
     "./tailwind.css": "./tailwind/index.css"
   },
   "scripts": {
     "start": "vite",
-    "build": "vite build",
+    "build": "vite build && npm run build:css",
+    "build:css": "esbuild src/styles/index.css --bundle --outfile=dist/base.css",
     "lint": "eslint src"
   },
   "files": [

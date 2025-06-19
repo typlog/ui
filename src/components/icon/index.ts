@@ -13,5 +13,4 @@ export {
   default as ChevronIcon,
 } from './ChevronIcon.vue'
 
-Icon.name = 'Icon'
 export { Icon }

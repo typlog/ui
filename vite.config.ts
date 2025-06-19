@@ -22,6 +22,7 @@ export default defineConfig({
     ],
   },
   build: {
+    minify: false,
     lib: {
       formats: ['es'],
       entry: [resolve(__dirname, 'src/index.ts')],
