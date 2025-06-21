@@ -24,7 +24,7 @@ const rootContext = injectRadioGroupRootContext()
     :data-high-contrast="rootContext.highContrast?.value"
     v-bind="{...forwarded, asChild: false}"
   >
-    <Card :as-child="forwarded.asChild">
+    <Card :as-child="forwarded.asChild" class="w-full h-full">
       <slot></slot>
     </Card>
   </RadioGroupItem>
