@@ -32,6 +32,10 @@ const rootContext = injectRadioGroupRootContext()
 
 
 <style>
+.ui-RadioCardsItem .ui-Card {
+  width: 100%;
+  height: 100%;
+}
 .ui-RadioCardsItem:where([data-state="checked"]) .ui-Card {
   --card-border-color: var(--accent-10);
   box-shadow: 0 0 0 1px var(--accent-10);
