@@ -21,6 +21,7 @@ interface IconifyCollectionProps {
   prefix?: string
   search?: string
   perpage?: number
+  iconSize?: string | number
 }
 
 interface IconifyCollectionEmits {
@@ -84,7 +85,6 @@ const filterIcons = (names: string[], query?: string, suffix?: string) => {
 import { ref, computed, onMounted } from 'vue'
 import { Icon } from '@iconify/vue'
 import Button from '../../button/Button.vue'
-import IconButton from '../../button/IconButton.vue'
 import Tooltip from '../../tooltip/Tooltip.vue'
 import Pagination from '../../pagination/Pagination.vue'
 import TextField from '../../inputs/TextField.vue'
@@ -92,6 +92,7 @@ import IconifySample from './IconifySample.vue'
 
 const props = withDefaults(defineProps<IconifyCollectionProps>(), {
   perpage: 200,
+  iconSize: 20,
 })
 
 const emits = defineEmits<IconifyCollectionEmits>()
@@ -196,6 +197,15 @@ const visibleIcons = computed(() => {
   return allIcons.value.slice(start, end)
 })
 
+const iconSize = computed(() => {
+  const size = props.iconSize.toString()
+  if (/^\d+/.test(size)) {
+    return size + 'px'
+  } else {
+    return size
+  }
+})
+
 onMounted(async () => {
   if (props.prefix) {
     onSelectPrefix(props.prefix)
@@ -281,20 +291,14 @@ onMounted(async () => {
           {{ k }}
         </Button>
       </div>
-      <div class="ui-IconifyCollectionIconGrid">
+      <div class="ui-IconifyCollectionIconGrid" :style="{fontSize: iconSize}">
         <Tooltip v-for="icon in visibleIcons" :key="icon" as="div" :content="icon">
-          <IconButton
-            type="button"
-            color="gray"
-            variant="ghost"
-            size="4"
-            @click.prevent="onSelectIcon(icon)"
-          >
+          <button type="button" @click.prevent="onSelectIcon(icon)">
             <Icon :icon="icon" />
-          </IconButton>
+          </button>
         </Tooltip>
       </div>
-      <Pagination v-model:page="page" :total="allIcons.length" :perpage="perpage" />
+      <Pagination v-model:page="page" :total="allIcons.length" :perpage="perpage" size="2" />
     </div>
   </div>
 </template>
@@ -368,5 +372,14 @@ onMounted(async () => {
   flex-grow: 1;
   margin-top: var(--space-4);
   margin-bottom: var(--space-4);
+}
+
+.ui-IconifyCollectionIconGrid button {
+  border: 0;
+  padding: var(--space-2);
+  border-radius: max(var(--radius-2), var(--radius-full));
+}
+.ui-IconifyCollectionIconGrid button:hover {
+  background-color: var(--gray-a4);
 }
 </style>
