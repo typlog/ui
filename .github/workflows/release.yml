@@ -1,6 +1,7 @@
 name: Release package
 
 permissions:
+  id-token: write
   contents: write
 
 on:
@@ -18,11 +19,11 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           registry-url: https://registry.npmjs.org/
       - run: npm ci
       - run: npm run build
-      - run: npm publish --access=public
+      - run: npm publish --provenance
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
       - run: npx changelogithub --no-group

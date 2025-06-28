@@ -3,24 +3,35 @@
   "version": "0.10.1",
   "license": "MIT",
   "type": "module",
-  "description": "Themed components for Radix Vue.",
+  "description": "Themed components for Reka UI.",
   "author": "Hsiaoming Yang <me@lepture.com>",
   "sideEffects": false,
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "module": "./dist/components.js",
+  "types": "./dist/components.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+      "types": "./dist/components.d.ts",
+      "import": "./dist/components.js"
+    },
+    "./components": {
+      "types": "./dist/components.d.ts",
+      "import": "./dist/components.js"
+    },
+    "./addons": {
+      "types": "./dist/addons.d.ts",
+      "import": "./dist/addons.js"
     },
     "./base.css": "./dist/base.css",
-    "./style.css": "./dist/style.css",
-    "./tailwind.css": "./tailwind/index.css"
+    "./components.css": "./dist/components.css",
+    "./addons.css": "./dist/addons.css",
+    "./tailwind.css": "./tailwind/index.css",
+    "./components/": "./dist/components/"
   },
   "scripts": {
     "start": "vite",
-    "build": "vite build && npm run build:css",
-    "build:css": "esbuild src/styles/index.css --bundle --outfile=dist/base.css",
+    "build": "npm run build:vue && npm run build:css",
+    "build:vue": "vite build && node scripts/post-build.mjs",
+    "build:css": "node scripts/build-css.mjs",
     "lint": "eslint src"
   },
   "files": [

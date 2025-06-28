@@ -4,6 +4,7 @@ import vue from '@vitejs/plugin-vue'
 import dts from 'vite-plugin-dts'
 import tailwind from '@tailwindcss/vite'
 
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -20,20 +21,26 @@ export default defineConfig({
       'vue',
       '@vue/runtime-core',
     ],
+    alias: {
+      '#components': resolve(__dirname, 'src/components'),
+    },
   },
   build: {
     minify: false,
+    cssCodeSplit: true,
     lib: {
       formats: ['es'],
-      entry: [resolve(__dirname, 'src/index.ts')],
-      fileName: 'index',
-      cssFileName: 'style',
+      entry: {
+        components: resolve(__dirname, 'src/components/index.ts'),
+        addons: resolve(__dirname, 'src/addons/index.ts'),
+      },
     },
     rollupOptions: {
       external: [
         'vue',
         '@iconify/vue',
         'reka-ui',
+        '#components',
       ],
     },
   },

@@ -1,13 +1,33 @@
 <script lang="ts">
-import type { PrimitiveProps } from 'reka-ui'
+import type { AsTag } from 'reka-ui'
 import type { ColorType, RadiusType } from '../types'
 
-export interface BadgeProps extends PrimitiveProps {
+export interface BadgeProps {
+  /**
+   * The visual variant to apply.
+   * @defaultValue "solid"
+   */
   variant?: 'solid' | 'soft' | 'surface' | 'outline'
+  /** Overrides the accent color inherited from the Theme. */
   color?: ColorType
+  /**
+   * Overrides the radius inherited from the theme.
+   * @defaultValue "small"
+   */
   radius?: RadiusType
+  /**
+   * Control the size of the badge.
+   * @defaultValue "1"
+   */
   size?: '1' | '2' | '3'
+  /** Uses a higher contrast color for the component. */
   highContrast?: boolean
+  /**
+   * The element or component this component should render as.
+   * @defaultValue "span"
+   */
+  as?: AsTag
+  asChild?: boolean
 }
 </script>
 

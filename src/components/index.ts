@@ -29,6 +29,5 @@ export * from './tooltip'
 export * from './quota'
 export * from './spinner'
 export * from './icon'
-export * from './addons'
 
-export * from './types'
+export type * from './types'

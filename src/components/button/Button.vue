@@ -1,14 +1,33 @@
 <script lang="ts">
-import type { PrimitiveProps } from 'reka-ui'
+import type { Component } from 'vue'
+import type { AsTag } from 'reka-ui'
 import type { ColorType, RadiusType } from '../types'
 
-export interface ButtonProps extends PrimitiveProps {
-  color?: ColorType
-  radius?: RadiusType
+export interface ButtonProps {
+  /**
+   * The visual variant to apply.
+   * @defaultValue "solid"
+   */
   variant?: 'classic' | 'solid' | 'soft' | 'surface' | 'outline' | 'ghost'
+  /** Overrides the accent color inherited from the Theme. */
+  color?: ColorType
+  /** Overrides the radius inherited from the theme. */
+  radius?: RadiusType
+  /**
+   * Control the size of the button.
+   * @defaultValue "2"
+   */
   size?: '1' | '2' | '3' | '4'
+  /** Uses a higher contrast color for the component. */
   highContrast?: boolean
+  /** Mark the button as disabled. */
   disabled?: boolean
+  /**
+   * The element or component this component should render as.
+   * @defaultValue "button"
+   */
+  as?: AsTag | Component
+  asChild?: boolean
 }
 </script>
 
@@ -52,16 +71,20 @@ const resetClass = computed(() => {
   user-select: none;
   vertical-align: top;
   font-style: normal;
+  font-weight: var(--button-font-weight);
   text-align: center;
   white-space: nowrap;
   height: var(--button-height);
+  padding-left: var(--button-padding-x);
+  padding-right: var(--button-padding-x);
 }
+
 .ui-Button:where(.r-variant-ghost) {
-  /* Make sure that the height is not stretched in a Flex/Grid layout */
-  height: fit-content;
+  --button-font-weight: var(--font-weight-regular);
 }
+
 .ui-Button:where(:not(.r-variant-ghost)) {
-  font-weight: var(--font-weight-medium);
+  --button-font-weight: var(--font-weight-medium);
 }
 
 .ui-Button:where([data-disabled]) {
@@ -73,16 +96,11 @@ const resetClass = computed(() => {
   font-size: var(--font-size-1);
   line-height: var(--line-height-1);
   letter-spacing: var(--letter-spacing-1);
-  --button-height: var(--space-5);
   border-radius: max(var(--radius-1), var(--radius-full));
-}
-.ui-Button:where(.r-size-1):where(:not(.r-variant-ghost)) {
-  padding-left: var(--space-2);
-  padding-right: var(--space-2);
+  --button-height: var(--space-5);
+  --button-padding-x: var(--space-2);
 }
 .ui-Button:where(.r-size-1):where(.r-variant-ghost) {
-  gap: var(--space-1);
-  --button-ghost-padding-x: var(--space-2);
   --button-ghost-padding-y: var(--space-1);
 }
 .ui-Button:where(.r-size-2) {
@@ -90,16 +108,13 @@ const resetClass = computed(() => {
   font-size: var(--font-size-2);
   line-height: var(--line-height-2);
   letter-spacing: var(--letter-spacing-2);
-  --button-height: var(--space-6);
   border-radius: max(var(--radius-2), var(--radius-full));
-}
-.ui-Button:where(.r-size-2):where(:not(.r-variant-ghost)) {
-  padding-left: var(--space-3);
-  padding-right: var(--space-3);
+  --button-height: var(--space-6);
+  --button-padding-x: var(--space-3);
 }
 .ui-Button:where(.r-size-2):where(.r-variant-ghost) {
   gap: var(--space-1);
-  --button-ghost-padding-x: var(--space-2);
+  --button-padding-x: var(--space-2);
   --button-ghost-padding-y: var(--space-1);
 }
 .ui-Button:where(.r-size-3) {
@@ -107,16 +122,13 @@ const resetClass = computed(() => {
   font-size: var(--font-size-3);
   line-height: var(--line-height-3);
   letter-spacing: var(--letter-spacing-3);
-  --button-height: var(--space-7);
   border-radius: max(var(--radius-3), var(--radius-full));
-}
-.ui-Button:where(.r-size-3):where(:not(.r-variant-ghost)) {
-  padding-left: var(--space-4);
-  padding-right: var(--space-4);
+  --button-height: var(--space-7);
+  --button-padding-x: var(--space-4);
 }
 .ui-Button:where(.r-size-3):where(.r-variant-ghost) {
   gap: var(--space-2);
-  --button-ghost-padding-x: var(--space-3);
+  --button-padding-x: var(--space-3);
   --button-ghost-padding-y: calc(var(--space-1) * 1.5);
 }
 .ui-Button:where(.r-size-4) {
@@ -124,16 +136,13 @@ const resetClass = computed(() => {
   font-size: var(--font-size-4);
   line-height: var(--line-height-4);
   letter-spacing: var(--letter-spacing-4);
-  --button-height: var(--space-8);
   border-radius: max(var(--radius-4), var(--radius-full));
-}
-.ui-Button:where(.r-size-4):where(:not(.r-variant-ghost)) {
-  padding-left: var(--space-5);
-  padding-right: var(--space-5);
+  --button-height: var(--space-8);
+  --button-padding-x: var(--space-5);
 }
 .ui-Button:where(.r-size-4):where(.r-variant-ghost) {
   gap: var(--space-2);
-  --button-ghost-padding-x: var(--space-4);
+  --button-padding-x: var(--space-4);
   --button-ghost-padding-y: var(--space-2);
 }
 

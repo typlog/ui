@@ -2,8 +2,8 @@
 import type { ColorType, RadiusType } from '../types'
 
 export interface AvatarProps {
-  src: string | undefined
   alt: string
+  src?: string
   fallback?: string
   radius?: RadiusType
   variant?: 'solid' | 'soft' | 'ring'

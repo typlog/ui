@@ -13,7 +13,10 @@
     "outDir": "dist",
     "sourceMap": true,
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "paths": {
+      "#components": ["./src/components/index.ts"]
+    }
   },
   "include": [
     "env.d.ts",

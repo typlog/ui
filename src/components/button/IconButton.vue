@@ -1,9 +1,14 @@
+<script lang="ts">
+import type { ButtonProps as IconButtonProps } from './Button.vue'
+
+export type { IconButtonProps }
+</script>
+
 <script setup lang="ts">
 import { useForwardProps } from 'reka-ui'
 import Button from './Button.vue'
-import type { ButtonProps } from './Button.vue'
 
-const props = defineProps<ButtonProps>()
+const props = defineProps<IconButtonProps>()
 const forwarded = useForwardProps(props)
 </script>
 
