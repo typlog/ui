@@ -27,7 +27,7 @@ export interface TextFieldProps {
 </script>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed, useTemplateRef } from 'vue'
 import { extractClass } from '../util'
 
 defineOptions({
@@ -40,7 +40,7 @@ const props = withDefaults(defineProps<TextFieldProps>(), {
   variant: 'surface',
 })
 
-const inputRef = ref<HTMLInputElement>()
+const inputRef = useTemplateRef<HTMLInputElement>('input')
 
 const onPointerDown = (event: MouseEvent) => {
   const target = event.target as HTMLElement
@@ -89,7 +89,7 @@ const resetClass = computed(() => {
   >
     <input
       :id="props.id"
-      ref="inputRef"
+      ref="input"
       v-model="modelValue"
       :type="props.type"
       v-bind="$attrs"
