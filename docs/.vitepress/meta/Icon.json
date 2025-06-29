@@ -1,0 +1,109 @@
+{
+  "props": [
+    {
+      "name": "ariaHidden",
+      "description": "",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "color",
+      "description": "",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "customise",
+      "description": "",
+      "type": "IconifyIconCustomiseCallback",
+      "required": false
+    },
+    {
+      "name": "flip",
+      "description": "",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "height",
+      "description": "",
+      "type": "null | string | number",
+      "required": false
+    },
+    {
+      "name": "hFlip",
+      "description": "",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "horizontalFlip",
+      "description": "",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "icon",
+      "description": "",
+      "type": "string | IconifyIcon",
+      "required": true
+    },
+    {
+      "name": "id",
+      "description": "",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "inline",
+      "description": "",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "mode",
+      "description": "",
+      "type": "\"style\" | \"svg\" | \"bg\" | \"mask\"",
+      "required": false
+    },
+    {
+      "name": "rotate",
+      "description": "",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "ssr",
+      "description": "<p>Try load icon on first render during SSR</p>\n<p>This is a low-level API for framework integrations, you don't usually need to use it directly.\nNote this might hydration mismatches if the icon data is not handled correctly, use with caution.</p>\n",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "title",
+      "description": "",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "verticalFlip",
+      "description": "",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "vFlip",
+      "description": "",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "width",
+      "description": "",
+      "type": "null | string | number",
+      "required": false
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "methods": []
+}

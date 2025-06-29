@@ -1,0 +1,13 @@
+{
+  "props": [
+    {
+      "name": "arrowTransform",
+      "description": "",
+      "type": "\"right-down\" | \"right-up\" | \"up-down\" | \"down-up\"",
+      "required": false
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "methods": []
+}

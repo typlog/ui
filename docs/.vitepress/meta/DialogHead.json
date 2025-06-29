@@ -1,0 +1,13 @@
+{
+  "props": [
+    {
+      "name": "title",
+      "description": "",
+      "type": "string",
+      "required": true
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "methods": []
+}

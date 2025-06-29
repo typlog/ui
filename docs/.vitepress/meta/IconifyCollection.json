@@ -1,0 +1,36 @@
+{
+  "props": [
+    {
+      "name": "iconSize",
+      "description": "",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "perpage",
+      "description": "",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "prefix",
+      "description": "",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "search",
+      "description": "",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "events": [
+    {
+      "name": "select",
+      "type": "[icon: string]"
+    }
+  ],
+  "slots": [],
+  "methods": []
+}

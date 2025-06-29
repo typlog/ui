@@ -1,0 +1,50 @@
+{
+  "props": [
+    {
+      "name": "as",
+      "description": "<p>The element or component this component should render as.</p>\n",
+      "type": "AsTag",
+      "required": false,
+      "default": "\"div\""
+    },
+    {
+      "name": "asChild",
+      "description": "",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "color",
+      "description": "<p>Overrides the accent color inherited from the Theme.</p>\n",
+      "type": "\"gray\" | \"gold\" | \"bronze\" | \"brown\" | \"yellow\" | \"amber\" | \"orange\" | \"tomato\" | \"red\" | \"ruby\" | \"crimson\" | \"pink\" | \"plum\" | \"purple\" | \"violet\" | \"iris\" | \"indigo\" | \"blue\" | \"cyan\" | \"teal\" | \"jade\" | \"green\" | \"grass\" | \"lime\" | \"mint\" | \"sky\"",
+      "required": false
+    },
+    {
+      "name": "highContrast",
+      "description": "<p>Uses a higher contrast color for the component.</p>\n",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "radius",
+      "description": "<p>Overrides the radius inherited from the theme.</p>\n",
+      "type": "\"small\" | \"none\" | \"medium\" | \"large\" | \"full\"",
+      "required": false
+    },
+    {
+      "name": "size",
+      "description": "<p>Control the size of the badge.</p>\n",
+      "type": "\"2\" | \"1\" | \"3\"",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "description": "<p>The visual variant to apply.</p>\n",
+      "type": "\"solid\" | \"soft\" | \"surface\" | \"outline\"",
+      "required": false
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "methods": []
+}

@@ -1,0 +1,42 @@
+{
+  "props": [
+    {
+      "name": "id",
+      "description": "",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "modelValue",
+      "description": "",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "radius",
+      "description": "",
+      "type": "\"small\" | \"none\" | \"medium\" | \"large\" | \"full\"",
+      "required": false
+    },
+    {
+      "name": "size",
+      "description": "",
+      "type": "\"2\" | \"1\" | \"3\"",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "description": "",
+      "type": "\"solid\" | \"ring\"",
+      "required": false
+    }
+  ],
+  "events": [
+    {
+      "name": "update:modelValue",
+      "type": "[value: string]"
+    }
+  ],
+  "slots": [],
+  "methods": []
+}

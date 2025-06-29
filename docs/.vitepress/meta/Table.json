@@ -1,0 +1,25 @@
+{
+  "props": [
+    {
+      "name": "layout",
+      "description": "",
+      "type": "\"auto\" | \"fixed\"",
+      "required": false
+    },
+    {
+      "name": "size",
+      "description": "",
+      "type": "\"2\" | \"1\" | \"3\"",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "description": "",
+      "type": "\"surface\" | \"ghost\"",
+      "required": false
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "methods": []
+}

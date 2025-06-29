@@ -1,0 +1,19 @@
+{
+  "props": [
+    {
+      "name": "size",
+      "description": "",
+      "type": "\"2\" | \"1\" | \"3\"",
+      "required": false
+    },
+    {
+      "name": "status",
+      "description": "",
+      "type": "\"idle\" | \"saving\" | \"saved\"",
+      "required": true
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "methods": []
+}

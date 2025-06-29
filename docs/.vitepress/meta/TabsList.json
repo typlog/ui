@@ -1,0 +1,25 @@
+{
+  "props": [
+    {
+      "name": "color",
+      "description": "",
+      "type": "\"gray\" | \"gold\" | \"bronze\" | \"brown\" | \"yellow\" | \"amber\" | \"orange\" | \"tomato\" | \"red\" | \"ruby\" | \"crimson\" | \"pink\" | \"plum\" | \"purple\" | \"violet\" | \"iris\" | \"indigo\" | \"blue\" | \"cyan\" | \"teal\" | \"jade\" | \"green\" | \"grass\" | \"lime\" | \"mint\" | \"sky\"",
+      "required": false
+    },
+    {
+      "name": "highContrast",
+      "description": "",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "size",
+      "description": "",
+      "type": "\"2\" | \"1\"",
+      "required": false
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "methods": []
+}

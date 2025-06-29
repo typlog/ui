@@ -1,0 +1,60 @@
+{
+  "props": [
+    {
+      "name": "action",
+      "description": "",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "appearance",
+      "description": "",
+      "type": "\"always\" | \"execute\" | \"interaction-only\"",
+      "required": false
+    },
+    {
+      "name": "modelValue",
+      "description": "",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "renderOnMount",
+      "description": "",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "resetInterval",
+      "description": "",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "sitekey",
+      "description": "",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "size",
+      "description": "",
+      "type": "\"normal\" | \"compact\"",
+      "required": false
+    },
+    {
+      "name": "theme",
+      "description": "",
+      "type": "\"auto\" | \"light\" | \"dark\"",
+      "required": false
+    }
+  ],
+  "events": [
+    {
+      "name": "update:modelValue",
+      "type": "[string]"
+    }
+  ],
+  "slots": [],
+  "methods": []
+}

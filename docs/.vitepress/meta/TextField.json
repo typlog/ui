@@ -1,0 +1,54 @@
+{
+  "props": [
+    {
+      "name": "color",
+      "description": "",
+      "type": "\"gray\" | \"gold\" | \"bronze\" | \"brown\" | \"yellow\" | \"amber\" | \"orange\" | \"tomato\" | \"red\" | \"ruby\" | \"crimson\" | \"pink\" | \"plum\" | \"purple\" | \"violet\" | \"iris\" | \"indigo\" | \"blue\" | \"cyan\" | \"teal\" | \"jade\" | \"green\" | \"grass\" | \"lime\" | \"mint\" | \"sky\"",
+      "required": false
+    },
+    {
+      "name": "id",
+      "description": "",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "modelValue",
+      "description": "",
+      "type": "any",
+      "required": false
+    },
+    {
+      "name": "radius",
+      "description": "",
+      "type": "\"small\" | \"none\" | \"medium\" | \"large\" | \"full\"",
+      "required": false
+    },
+    {
+      "name": "size",
+      "description": "",
+      "type": "\"2\" | \"1\" | \"3\"",
+      "required": false
+    },
+    {
+      "name": "type",
+      "description": "",
+      "type": "\"number\" | \"text\" | \"date\" | \"datetime-local\" | \"email\" | \"hidden\" | \"month\" | \"password\" | \"search\" | \"tel\" | \"time\" | \"url\" | \"week\" | \"file\"",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "description": "",
+      "type": "\"soft\" | \"surface\"",
+      "required": false
+    }
+  ],
+  "events": [
+    {
+      "name": "update:modelValue",
+      "type": "[value: any]"
+    }
+  ],
+  "slots": [],
+  "methods": []
+}

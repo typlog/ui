@@ -1,0 +1,19 @@
+{
+  "props": [
+    {
+      "name": "color",
+      "description": "",
+      "type": "\"gray\" | \"gold\" | \"bronze\" | \"brown\" | \"yellow\" | \"amber\" | \"orange\" | \"tomato\" | \"red\" | \"ruby\" | \"crimson\" | \"pink\" | \"plum\" | \"purple\" | \"violet\" | \"iris\" | \"indigo\" | \"blue\" | \"cyan\" | \"teal\" | \"jade\" | \"green\" | \"grass\" | \"lime\" | \"mint\" | \"sky\"",
+      "required": false
+    },
+    {
+      "name": "percent",
+      "description": "",
+      "type": "number",
+      "required": true
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "methods": []
+}

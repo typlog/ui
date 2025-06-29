@@ -1,0 +1,49 @@
+{
+  "props": [
+    {
+      "name": "alt",
+      "description": "<p>Alt text of the avatar.</p>\n",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "color",
+      "description": "<p>Overrides the accent color inherited from the Theme.</p>\n",
+      "type": "\"gray\" | \"gold\" | \"bronze\" | \"brown\" | \"yellow\" | \"amber\" | \"orange\" | \"tomato\" | \"red\" | \"ruby\" | \"crimson\" | \"pink\" | \"plum\" | \"purple\" | \"violet\" | \"iris\" | \"indigo\" | \"blue\" | \"cyan\" | \"teal\" | \"jade\" | \"green\" | \"grass\" | \"lime\" | \"mint\" | \"sky\"",
+      "required": false
+    },
+    {
+      "name": "fallback",
+      "description": "<p>Using fallback characters for the avatar.</p>\n",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "radius",
+      "description": "<p>Overrides the radius inherited from the theme.</p>\n",
+      "type": "\"small\" | \"none\" | \"medium\" | \"large\" | \"full\"",
+      "required": false
+    },
+    {
+      "name": "size",
+      "description": "<p>Control the size of the avatar.</p>\n",
+      "type": "\"2\" | \"1\" | \"3\" | \"4\" | \"5\" | \"6\" | \"7\" | \"8\" | \"9\"",
+      "required": false
+    },
+    {
+      "name": "src",
+      "description": "<p>Avatar's image source URL.</p>\n",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "description": "<p>The visual variant to apply.</p>\n",
+      "type": "\"solid\" | \"soft\" | \"ring\"",
+      "required": false
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "methods": []
+}
