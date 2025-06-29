@@ -4,7 +4,7 @@ import {
   SelectContent,
   SelectTrigger,
   SelectItem,
-} from '../../src'
+} from '#components'
 </script>
 
 <template>

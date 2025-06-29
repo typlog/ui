@@ -4,7 +4,7 @@ import {
   CollapsibleTrigger,
   CollapsibleContent,
   ChevronIcon,
-} from '../../src'
+} from '#components'
 </script>
 
 <template>

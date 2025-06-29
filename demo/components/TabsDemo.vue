@@ -4,7 +4,7 @@ import {
   TabsList,
   TabsTrigger,
   TabsContent,
-} from '../../src'
+} from '#components'
 </script>
 
 <template>

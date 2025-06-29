@@ -3,7 +3,7 @@ import {
   Icon,
   ToggleGroupRoot,
   ToggleGroupItem,
-} from '../../src'
+} from '#components'
 </script>
 
 <template>

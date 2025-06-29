@@ -27,6 +27,7 @@
     "src/**/*.ts",
     "src/**/*.d.ts",
     "src/**/*.vue",
+    "demo/**/*.vue",
     "vite.config.ts",
   ]
 }

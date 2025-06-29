@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import {
   Radio,
-} from '../../src'
+} from '#components'
 
 const value = ref(1)
 </script>

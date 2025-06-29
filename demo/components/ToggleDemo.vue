@@ -2,7 +2,7 @@
 import {
   Icon,
   Toggle,
-} from '../../src'
+} from '#components'
 </script>
 
 <template>

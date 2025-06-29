@@ -4,7 +4,7 @@ import {
   Icon,
   ColorField,
   TextField,
-} from '../../src'
+} from '#components'
 
 const color = ref('#AA99EC')
 </script>

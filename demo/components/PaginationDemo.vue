@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import {
   Pagination,
-} from '../../src'
+} from '#components'
 
 const p1 = ref(1)
 </script>

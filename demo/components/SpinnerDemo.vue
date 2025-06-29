@@ -2,7 +2,7 @@
 import {
   Spinner,
   SavingIndicator,
-} from '../../src'
+} from '#components'
 
 </script>
 

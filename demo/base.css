@@ -1,5 +1,6 @@
-@import "tailwindcss" source("./");
+@import "tailwindcss";
 @import "../tailwind/index.css";
+@import "../src/styles/index.css";
 
 body {
   padding: 1rem;

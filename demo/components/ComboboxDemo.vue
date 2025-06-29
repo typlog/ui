@@ -8,7 +8,7 @@ import {
   ComboboxItem,
   ComboboxLabel,
   ComboboxEmpty,
-} from '../../src'
+} from '#components'
 
 const foodItems = [
   {
