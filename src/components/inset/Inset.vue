@@ -1,22 +1,47 @@
 <script lang="ts">
 export interface InsetProps {
   side?: 'all' | 'x' | 'y' | 'top' | 'bottom' | 'left' | 'right'
+  top?: boolean
+  bottom?: boolean
+  left?: boolean
+  right?: boolean
   clip?: 'border-box' | 'padding-box'
 }
 </script>
 
 <script setup lang="ts">
+import { computed } from 'vue'
+
 const props = withDefaults(defineProps<InsetProps>(), {
   side: 'all',
   clip: 'border-box',
+})
+
+const resetClass = computed(() => {
+  const rv: string[] = []
+  if (props.top || ['all', 'y', 'top'].includes(props.side)) {
+    rv.push('inset-top')
+  }
+  if (props.bottom || ['all', 'y', 'bottom'].includes(props.side)) {
+    rv.push('inset-bottom')
+  }
+  if (props.left || ['all', 'x', 'left'].includes(props.side)) {
+    rv.push('inset-left')
+  }
+  if (props.right || ['all', 'x', 'right'].includes(props.side)) {
+    rv.push('inset-right')
+  }
+  if (props.clip) {
+    rv.push(`r-clip-${props.clip}`)
+  }
+  return rv
 })
 </script>
 
 <template>
   <div
     class="ui-Inset"
-    :data-side="props.side"
-    :data-clip="props.clip"
+    :class="resetClass"
   >
     <slot></slot>
   </div>
@@ -43,21 +68,21 @@ const props = withDefaults(defineProps<InsetProps>(), {
   --margin-left-override: initial;
 }
 
-.ui-Inset:where([data-clip="border-box"]) {
+.ui-Inset:where(.r-clip-border-box) {
   --inset-border-radius-calc: calc(var(--inset-border-radius, 0px) - var(--inset-border-width, 0px));
   --inset-padding-top-calc: var(--inset-padding-top, 0px);
   --inset-padding-right-calc: var(--inset-padding-right, 0px);
   --inset-padding-bottom-calc: var(--inset-padding-bottom, 0px);
   --inset-padding-left-calc: var(--inset-padding-left, 0px);
 }
-.ui-Inset:where([data-clip="padding-box"]) {
+.ui-Inset:where(.r-clip-padding-box) {
   --inset-border-radius-calc: var(--inset-border-radius, 0px);
   --inset-padding-top-calc: calc(var(--inset-padding-top, 0px) + var(--inset-border-width, 0px));
   --inset-padding-right-calc: calc(var(--inset-padding-right, 0px) + var(--inset-border-width, 0px));
   --inset-padding-bottom-calc: calc(var(--inset-padding-bottom, 0px) + var(--inset-border-width, 0px));
   --inset-padding-left-calc: calc(var(--inset-padding-left, 0px) + var(--inset-border-width, 0px));
 }
-.ui-Inset:where([data-side="top"]) {
+.ui-Inset:where(.inset-top) {
   --margin-top-override: calc(var(--margin-top) - var(--inset-padding-top-calc));
   --margin-right-override: calc(var(--margin-right) - var(--inset-padding-right-calc));
   --margin-bottom-override: var(--margin-bottom);
@@ -67,7 +92,7 @@ const props = withDefaults(defineProps<InsetProps>(), {
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
 }
-.ui-Inset:where([data-side="bottom"]) {
+.ui-Inset:where(.inset-bottom) {
   --margin-top-override: var(--margin-top);
   --margin-right-override: calc(var(--margin-right) - var(--inset-padding-right-calc));
   --margin-bottom-override: calc(var(--margin-bottom) - var(--inset-padding-bottom-calc));
@@ -77,7 +102,7 @@ const props = withDefaults(defineProps<InsetProps>(), {
   border-bottom-left-radius: var(--inset-border-radius-calc);
   border-bottom-right-radius: var(--inset-border-radius-calc);
 }
-.ui-Inset:where([data-side="left"]) {
+.ui-Inset:where(.inset-left) {
   --margin-top-override: calc(var(--margin-top) - var(--inset-padding-top-calc));
   --margin-bottom-override: calc(var(--margin-bottom) - var(--inset-padding-bottom-calc));
   --margin-left-override: calc(var(--margin-left) - var(--inset-padding-left-calc));
@@ -87,7 +112,7 @@ const props = withDefaults(defineProps<InsetProps>(), {
   border-bottom-left-radius: var(--inset-border-radius-calc);
   border-bottom-right-radius: 0px;
 }
-.ui-Inset:where([data-side="right"]) {
+.ui-Inset:where(.inset-right) {
   --margin-top-override: calc(var(--margin-top) - var(--inset-padding-top-calc));
   --margin-right-override: calc(var(--margin-right) - var(--inset-padding-right-calc));
   --margin-bottom-override: calc(var(--margin-bottom) - var(--inset-padding-bottom-calc));
@@ -96,26 +121,5 @@ const props = withDefaults(defineProps<InsetProps>(), {
   border-top-right-radius: var(--inset-border-radius-calc);
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: var(--inset-border-radius-calc);
-}
-.ui-Inset:where([data-side="x"]) {
-  --margin-top-override: var(--margin-top);
-  --margin-right-override: calc(var(--margin-right) - var(--inset-padding-right-calc));
-  --margin-bottom-override: var(--margin-bottom);
-  --margin-left-override: calc(var(--margin-left) - var(--inset-padding-left-calc));
-  border-radius: 0px;
-}
-.ui-Inset:where([data-side="y"]) {
-  --margin-top-override: calc(var(--margin-top) - var(--inset-padding-top-calc));
-  --margin-right-override: var(--margin-right);
-  --margin-bottom-override: calc(var(--margin-bottom) - var(--inset-padding-bottom-calc));
-  --margin-left-override: var(--margin-left);
-  border-radius: 0px;
-}
-.ui-Inset:where([data-side="all"]) {
-  --margin-top-override: calc(var(--margin-top) - var(--inset-padding-top-calc));
-  --margin-right-override: calc(var(--margin-right) - var(--inset-padding-right-calc));
-  --margin-bottom-override: calc(var(--margin-bottom) - var(--inset-padding-bottom-calc));
-  --margin-left-override: calc(var(--margin-left) - var(--inset-padding-left-calc));
-  border-radius: var(--inset-border-radius-calc);
 }
 </style>
