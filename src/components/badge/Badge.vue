@@ -8,7 +8,7 @@ export interface BadgeProps {
    * @defaultValue "solid"
    */
   variant?: 'solid' | 'soft' | 'surface' | 'outline'
-  /** Overrides the accent color inherited from the Theme. */
+  /** Overrides the accent color inherited from the theme. */
   color?: ColorType
   /**
    * Overrides the radius inherited from the theme.
