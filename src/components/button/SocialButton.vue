@@ -14,9 +14,13 @@ const BRAND_ICONS: Record<BrandType, string> = {
   figma: 'logos:figma',
 }
 
-export interface ButtonProps extends PrimitiveProps {
+export interface SocialButtonProps extends PrimitiveProps {
   brand: BrandType
   radius?: RadiusType
+  /**
+   * Control the size of the social button.
+   * @defaultValue "2"
+   */
   size?: '1' | '2' | '3' | '4'
   disabled?: boolean
 }
@@ -28,11 +32,9 @@ import { Primitive } from 'reka-ui'
 import { Icon } from '@iconify/vue'
 import { extractClass } from '../util'
 
-const props = withDefaults(defineProps<ButtonProps>(), {
+const props = withDefaults(defineProps<SocialButtonProps>(), {
   as: 'button',
   size: '2',
-  variant: 'solid',
-  highContrast: false,
 })
 
 const resetClass = computed(() => {

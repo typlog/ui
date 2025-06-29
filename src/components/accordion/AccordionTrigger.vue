@@ -1,7 +1,11 @@
 <script lang="ts">
-import type { AccordionTriggerProps as _AccordionTriggerProps } from 'reka-ui'
+import type { PrimitiveProps } from 'reka-ui'
 
-export interface AccordionTriggerProps extends _AccordionTriggerProps {
+export interface AccordionTriggerProps extends PrimitiveProps {
+  /**
+   * The indicator icon for the accordion trigger.
+   * @defaultValue "chevron"
+   */
   indicator?: 'plus-minus' | 'chevron'
 }
 </script>

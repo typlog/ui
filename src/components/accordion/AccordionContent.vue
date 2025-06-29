@@ -1,5 +1,9 @@
-<script setup lang="ts">
+<script lang="ts">
 import type { AccordionContentProps } from 'reka-ui'
+export type { AccordionContentProps } from 'reka-ui'
+</script>
+
+<script setup lang="ts">
 import { AccordionContent, useForwardProps } from 'reka-ui'
 
 const props = defineProps<AccordionContentProps>()

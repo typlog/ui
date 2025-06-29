@@ -2,12 +2,28 @@
 import type { ColorType, RadiusType } from '../types'
 
 export interface AvatarProps {
+  /** Alt text of the avatar. */
   alt: string
+  /** Avatar's image source URL. */
   src?: string
+  /** Using fallback characters for the avatar. */
   fallback?: string
+  /**
+   * Overrides the radius inherited from the theme.
+   * @defaultValue "small"
+   */
   radius?: RadiusType
+  /**
+   * The visual variant to apply.
+   * @defaultValue "solid"
+   */
   variant?: 'solid' | 'soft' | 'ring'
+  /**
+   * Control the size of the avatar.
+   * @defaultValue "2"
+   */
   size?: '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'
+  /** Overrides the accent color inherited from the Theme. */
   color?: ColorType
 }
 </script>
