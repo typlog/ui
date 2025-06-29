@@ -25,6 +25,7 @@ const props = withDefaults(defineProps<TooltipProps>(), {
   side: 'top',
   sideOffset: 4,
   collisionPadding: 10,
+  avoidCollisions: true,
 })
 
 defineOptions({
