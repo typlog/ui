@@ -29,7 +29,7 @@ export interface TurnstileProps {
 </script>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { useTemplateRef, onMounted, onBeforeUnmount } from 'vue'
 
 const props = withDefaults(defineProps<TurnstileProps>(), {
   resetInterval: 295 * 1000,
@@ -44,7 +44,7 @@ const emit = defineEmits<{
   'update:modelValue': [string]
 }>()
 
-const element = ref<HTMLDivElement>()
+const element = useTemplateRef<HTMLDivElement>('element')
 
 const resetTurnstile = () => {
   if (window.turnstile) {
@@ -118,5 +118,5 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div ref="element"></div>
+  <div ref="element" class="ui-Turnstile"></div>
 </template>
