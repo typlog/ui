@@ -34,7 +34,7 @@ const resetClass = computed(() => {
   >
     <span class="ui-SelectTriggerInner">
       <SelectValue :placeholder="props.placeholder">
-        <template v-slot="{ selectedLabel, modelValue }">
+        <template #default="{ selectedLabel, modelValue }">
           <slot
             v-if="selectedLabel.length"
             :selected-label="selectedLabel"

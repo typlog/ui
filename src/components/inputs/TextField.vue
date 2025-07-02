@@ -77,6 +77,10 @@ const resetClass = computed(() => {
   }
   return rv
 })
+
+const onFileChange = () => {
+  modelValue.value = inputRef.value?.files
+}
 </script>
 
 <template>
@@ -88,6 +92,16 @@ const resetClass = computed(() => {
     @pointerdown="onPointerDown"
   >
     <input
+      v-if="props.type === 'file'"
+      :id="props.id"
+      ref="input"
+      :type="props.type"
+      v-bind="$attrs"
+      class="ui-TextFieldInput"
+      @change="onFileChange"
+    />
+    <input
+      v-else
       :id="props.id"
       ref="input"
       v-model="modelValue"
