@@ -31,6 +31,7 @@ export default defineConfig({
     lib: {
       formats: ['es'],
       entry: {
+        base: resolve(__dirname, 'src/styles/index.css'),
         components: resolve(__dirname, 'src/components/index.ts'),
         addons: resolve(__dirname, 'src/addons/index.ts'),
       },

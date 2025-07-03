@@ -30,7 +30,6 @@ const runBuild = (name, filepath) => {
 }
 
 const buildAll = async () => {
-  await runBuild('base', resolve('src/styles/index.ts'))
   const names = await fs.readdir('./src/components')
   const results = names.map(async (name) => {
     if (!name.includes('.')) {
@@ -44,6 +43,11 @@ const buildAll = async () => {
   })
   await Promise.all(results)
   await fs.unlink('dist/noop')
+  try {
+    await fs.unlink('dist/base.d.ts')
+  } catch (e) {
+    console.info(e)
+  }
 }
 
 buildAll()
