@@ -72,7 +72,8 @@ const onInputKeydown = (event: KeyboardEvent) => {
 }
 
 watch(values, () => {
-  context.filterState.search = ''
+  context.filterSearch.value = ''
+  emits('update:modelValue', '')
 }, { deep: true })
 </script>
 
