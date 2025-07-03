@@ -1,79 +1,9 @@
 # @typlog/ui
 
-> Themed components for Radix Vue.
+An open-source Vue component library optimized for fast development,
+built on top of Reka UI and Radix Colors.
 
-## Components
+## Credits
 
-```js
-import {
-  Avatar,
-  Badge,
-  Button,
-  IconButton,
-  Card,
-  Separator,
-  Inset,
-  ScrollArea,
-  SavingIndicator,
-  Tooltip,
-  Table,
-  Quota,
-  Spinner,
-  Icon,
-
-  // input
-  Checkbox,
-  CheckboxGroupRoot,
-  CheckboxGroupItem,
-  CheckboxGroupControl,
-  Radio,
-  RadioGroupRoot,
-  RadioGroupItem,
-  RadioCardsRoot,
-  RadioCardsItem,
-  SelectRoot,
-  SelectContent,
-  SelectTrigger,
-  SelectItem,
-  SelectLabel,
-  SelectSeparator,
-  SelectGroup,
-  Switch,
-  ColorField,
-  TextField,
-  TextArea,
-  Turnstile,
-  TabsRoot,
-  TabsList,
-  TabsTrigger,
-  TabsContent,
-  RadioTabsList,
-  RadioTabsItem,
-
-  // popper
-  AlertDialogRoot,
-  AlertDialogContent,
-  AlertDialogTrigger,
-  AlertDialogCancel,
-  AlertDialogAction,
-  AlertDialogTitle,
-  AlertDialogDescription,
-  DialogRoot,
-  DialogContent,
-  DialogTrigger,
-  DialogClose,
-  DialogHead,
-  DialogTitle,
-  DialogDescription,
-  PopoverRoot,
-  PopoverContent,
-  PopoverTrigger,
-  PopoverClose,
-  PopoverAnchor,
-  PopoverArrow,
-  DropdownMenuRoot,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-  DropdownMenuItem,
-} from '@typlog/ui'
-```
+- [Radix UI](https://radix-ui.com/)
+- [Reka UI](https://reka-ui.com/)
