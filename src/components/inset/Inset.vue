@@ -55,10 +55,10 @@ const resetClass = computed(() => {
   --margin-bottom: 0px;
   --margin-left: 0px;
   overflow: hidden;
-  margin-top: var(--margin-top-override);
-  margin-right: var(--margin-right-override);
-  margin-bottom: var(--margin-bottom-override);
-  margin-left: var(--margin-left-override);
+  margin-top: var(--margin-top-override, var(--margin-top));
+  margin-right: var(--margin-right-override, var(--margin-right));
+  margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+  margin-left: var(--margin-left-override, var(--margin-left));
 }
 
 .ui-Inset > * {
@@ -84,39 +84,27 @@ const resetClass = computed(() => {
 }
 .ui-Inset:where(.inset-top) {
   --margin-top-override: calc(var(--margin-top) - var(--inset-padding-top-calc));
-  --margin-right-override: calc(var(--margin-right) - var(--inset-padding-right-calc));
-  --margin-bottom-override: var(--margin-bottom);
-  --margin-left-override: calc(var(--margin-left) - var(--inset-padding-left-calc));
   border-top-left-radius: var(--inset-border-radius-calc);
   border-top-right-radius: var(--inset-border-radius-calc);
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
 }
 .ui-Inset:where(.inset-bottom) {
-  --margin-top-override: var(--margin-top);
-  --margin-right-override: calc(var(--margin-right) - var(--inset-padding-right-calc));
   --margin-bottom-override: calc(var(--margin-bottom) - var(--inset-padding-bottom-calc));
-  --margin-left-override: calc(var(--margin-left) - var(--inset-padding-left-calc));
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
   border-bottom-left-radius: var(--inset-border-radius-calc);
   border-bottom-right-radius: var(--inset-border-radius-calc);
 }
 .ui-Inset:where(.inset-left) {
-  --margin-top-override: calc(var(--margin-top) - var(--inset-padding-top-calc));
-  --margin-bottom-override: calc(var(--margin-bottom) - var(--inset-padding-bottom-calc));
   --margin-left-override: calc(var(--margin-left) - var(--inset-padding-left-calc));
-  --margin-right-override: var(--margin-right);
   border-top-left-radius: var(--inset-border-radius-calc);
   border-top-right-radius: 0px;
   border-bottom-left-radius: var(--inset-border-radius-calc);
   border-bottom-right-radius: 0px;
 }
 .ui-Inset:where(.inset-right) {
-  --margin-top-override: calc(var(--margin-top) - var(--inset-padding-top-calc));
   --margin-right-override: calc(var(--margin-right) - var(--inset-padding-right-calc));
-  --margin-bottom-override: calc(var(--margin-bottom) - var(--inset-padding-bottom-calc));
-  --margin-left-override: var(--margin-left);
   border-top-left-radius: 0px;
   border-top-right-radius: var(--inset-border-radius-calc);
   border-bottom-left-radius: 0px;
