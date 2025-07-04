@@ -224,7 +224,7 @@ const resetClass = computed(() => {
 }
 
 .ui-Button:where(.r-variant-ghost) {
-  padding: var(--button-ghost-padding-y) var(--button-ghost-padding-x);
+  padding: var(--button-ghost-padding-y) var(--button-padding-x);
 }
 @media (hover: hover) {
   .ui-Button:where(.r-variant-ghost):where(:hover) {

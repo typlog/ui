@@ -1,10 +1,8 @@
 <script lang="ts">
+type InsetSide = 'all' | 'x' | 'y' | 'top' | 'bottom' | 'left' | 'right'
+
 export interface InsetProps {
-  side?: 'all' | 'x' | 'y' | 'top' | 'bottom' | 'left' | 'right'
-  top?: boolean
-  bottom?: boolean
-  left?: boolean
-  right?: boolean
+  side?: InsetSide
   clip?: 'border-box' | 'padding-box'
 }
 </script>
@@ -18,19 +16,7 @@ const props = withDefaults(defineProps<InsetProps>(), {
 })
 
 const resetClass = computed(() => {
-  const rv: string[] = []
-  if (props.top || ['all', 'y', 'top'].includes(props.side)) {
-    rv.push('inset-top')
-  }
-  if (props.bottom || ['all', 'y', 'bottom'].includes(props.side)) {
-    rv.push('inset-bottom')
-  }
-  if (props.left || ['all', 'x', 'left'].includes(props.side)) {
-    rv.push('inset-left')
-  }
-  if (props.right || ['all', 'x', 'right'].includes(props.side)) {
-    rv.push('inset-right')
-  }
+  const rv: string[] = [`r-side-${props.side}`]
   if (props.clip) {
     rv.push(`r-clip-${props.clip}`)
   }
@@ -82,32 +68,65 @@ const resetClass = computed(() => {
   --inset-padding-bottom-calc: calc(var(--inset-padding-bottom, 0px) + var(--inset-border-width, 0px));
   --inset-padding-left-calc: calc(var(--inset-padding-left, 0px) + var(--inset-border-width, 0px));
 }
-.ui-Inset:where(.inset-top) {
+.ui-Inset:where(.r-side-top) {
   --margin-top-override: calc(var(--margin-top) - var(--inset-padding-top-calc));
-  border-top-left-radius: var(--inset-border-radius-calc);
-  border-top-right-radius: var(--inset-border-radius-calc);
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
-}
-.ui-Inset:where(.inset-bottom) {
-  --margin-bottom-override: calc(var(--margin-bottom) - var(--inset-padding-bottom-calc));
-  border-top-left-radius: 0px;
-  border-top-right-radius: 0px;
-  border-bottom-left-radius: var(--inset-border-radius-calc);
-  border-bottom-right-radius: var(--inset-border-radius-calc);
-}
-.ui-Inset:where(.inset-left) {
+  --margin-right-override: calc(var(--margin-right) - var(--inset-padding-right-calc));
+  --margin-bottom-override: var(--margin-bottom);
   --margin-left-override: calc(var(--margin-left) - var(--inset-padding-left-calc));
   border-top-left-radius: var(--inset-border-radius-calc);
+  border-top-right-radius: var(--inset-border-radius-calc);
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+.ui-Inset:where(.r-side-bottom) {
+  --margin-top-override: var(--margin-top);
+  --margin-right-override: calc(var(--margin-right) - var(--inset-padding-right-calc));
+  --margin-bottom-override: calc(var(--margin-bottom) - var(--inset-padding-bottom-calc));
+  --margin-left-override: calc(var(--margin-left) - var(--inset-padding-left-calc));
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: var(--inset-border-radius-calc);
+  border-bottom-right-radius: var(--inset-border-radius-calc);
+}
+.ui-Inset:where(.r-side-left) {
+  --margin-top-override: calc(var(--margin-top) - var(--inset-padding-top-calc));
+  --margin-bottom-override: calc(var(--margin-bottom) - var(--inset-padding-bottom-calc));
+  --margin-left-override: calc(var(--margin-left) - var(--inset-padding-left-calc));
+  --margin-right-override: var(--margin-right);
+  border-top-left-radius: var(--inset-border-radius-calc);
   border-top-right-radius: 0px;
   border-bottom-left-radius: var(--inset-border-radius-calc);
   border-bottom-right-radius: 0px;
 }
-.ui-Inset:where(.inset-right) {
+.ui-Inset:where(.r-side-right) {
+  --margin-top-override: calc(var(--margin-top) - var(--inset-padding-top-calc));
   --margin-right-override: calc(var(--margin-right) - var(--inset-padding-right-calc));
+  --margin-bottom-override: calc(var(--margin-bottom) - var(--inset-padding-bottom-calc));
+  --margin-left-override: var(--margin-left);
   border-top-left-radius: 0px;
   border-top-right-radius: var(--inset-border-radius-calc);
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: var(--inset-border-radius-calc);
+}
+.ui-Inset:where(.r-side-x) {
+  --margin-top-override: var(--margin-top);
+  --margin-right-override: calc(var(--margin-right) - var(--inset-padding-right-calc));
+  --margin-bottom-override: var(--margin-bottom);
+  --margin-left-override: calc(var(--margin-left) - var(--inset-padding-left-calc));
+  border-radius: 0px;
+}
+.ui-Inset:where(.r-side-y) {
+  --margin-top-override: calc(var(--margin-top) - var(--inset-padding-top-calc));
+  --margin-right-override: var(--margin-right);
+  --margin-bottom-override: calc(var(--margin-bottom) - var(--inset-padding-bottom-calc));
+  --margin-left-override: var(--margin-left);
+  border-radius: 0px;
+}
+.ui-Inset:where(.r-side-all) {
+  --margin-top-override: calc(var(--margin-top) - var(--inset-padding-top-calc));
+  --margin-right-override: calc(var(--margin-right) - var(--inset-padding-right-calc));
+  --margin-bottom-override: calc(var(--margin-bottom) - var(--inset-padding-bottom-calc));
+  --margin-left-override: calc(var(--margin-left) - var(--inset-padding-left-calc));
+  border-radius: var(--inset-border-radius-calc);
 }
 </style>

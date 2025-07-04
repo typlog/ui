@@ -12,13 +12,12 @@ const props = defineProps<{title: string}>()
     class="ui-DialogHead"
     side="x"
   >
-    <DialogTitle class="font-semibold">{{ props.title }}</DialogTitle>
+    <DialogTitle>{{ props.title }}</DialogTitle>
     <IconButton
       :as="DialogClose"
       type="button"
       variant="ghost"
       color="gray"
-      radius="full"
       aria-label="Close"
     >
       <Icon icon="lucide:x" />

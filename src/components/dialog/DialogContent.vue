@@ -6,8 +6,6 @@ import type {
 
 export interface DialogContentProps extends _DialogContentProps {
   to?: string | HTMLElement
-  align?: string
-  class?: string
   size?: '1' | '2' | '3' | '4'
   width?: string
   minWidth?: string
@@ -31,7 +29,6 @@ defineOptions({
 })
 
 const props = withDefaults(defineProps<DialogContentProps>(), {
-  align: 'center',
   size: '3',
   maxWidth: '600px',
 })
@@ -46,15 +43,11 @@ const forwarded = useForwardPropsEmits(props, emits, [
 <template>
   <DialogPortal :to="props.to">
     <DialogOverlay class="ui-DialogOverlay">
-      <div class="ui-DialogScroll">
-        <div
-          class="ui-DialogScrollPadding"
-          :data-align="props.align"
-        >
+      <div class="ui-DialogWrapper">
+        <div class="ui-DialogContainer">
           <DialogContent
             class="ui-DialogContent"
-            :class="props.class"
-            :data-size="props.size"
+            :class="`r-size-${props.size}`"
             v-bind="{
               ...$attrs,
               ...forwarded,
@@ -89,66 +82,87 @@ const forwarded = useForwardPropsEmits(props, emits, [
   background-color: var(--color-overlay);
 }
 
-.ui-DialogScroll {
+.ui-DialogWrapper {
   display: flex;
-  overflow: auto;
+  overflow: hidden;
   position: absolute;
   inset: 0;
 }
 
-.ui-DialogScrollPadding {
+.ui-DialogContainer {
+  display: flex;
+  flex-direction: column;
   flex-grow: 1;
-  margin: auto;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  box-sizing: border-box;
   padding-top: var(--space-6);
-  padding-bottom: max(var(--space-6), 6vh);
-  padding-left: var(--space-4);
-  padding-right: var(--space-4);
-}
-
-.ui-DialogScrollPadding[data-align="start"] {
-  margin-top: 0;
-}
-
-.ui-DialogScrollPadding[data-align="center"] {
-  margin-top: auto;
 }
 
 .ui-DialogContent {
-  margin: auto;
+  --inset-padding-top: var(--dialog-content-padding);
+  --inset-padding-right: var(--dialog-content-padding);
+  --inset-padding-bottom: var(--dialog-content-padding);
+  --inset-padding-left: var(--dialog-content-padding);
+
   width: 100%;
   max-height: calc(100vh - var(--space-6) * 2);
   position: relative;
   box-sizing: border-box;
   overflow: auto;
   text-align: left;
-
-  --inset-padding-top: var(--dialog-content-padding);
-  --inset-padding-right: var(--dialog-content-padding);
-  --inset-padding-bottom: var(--dialog-content-padding);
-  --inset-padding-left: var(--dialog-content-padding);
   padding: var(--dialog-content-padding);
   box-sizing: border-box;
-
   background-color: var(--color-panel-solid);
-  box-shadow: var(--shadow-6);
   outline: none;
+  border-top-left-radius: var(--dialog-content-radius);
+  border-top-right-radius: var(--dialog-content-radius);
 }
 
-.ui-DialogContent[data-size="1"] {
+.ui-DialogContent:where(.r-size-1) {
+  --dialog-content-radius: var(--radius-4);
+  --dialog-content-padding: var(--space-2);
+}
+.ui-DialogContent:where(.r-size-2) {
+  --dialog-content-radius: var(--radius-4);
   --dialog-content-padding: var(--space-3);
-  border-radius: var(--radius-4);
 }
-.ui-DialogContent[data-size="2"] {
+.ui-DialogContent:where(.r-size-3) {
+  --dialog-content-radius: var(--radius-5);
   --dialog-content-padding: var(--space-4);
-  border-radius: var(--radius-4);
 }
-.ui-DialogContent[data-size="3"] {
+.ui-DialogContent:where(.r-size-4) {
+  --dialog-content-radius: var(--radius-5);
   --dialog-content-padding: var(--space-5);
-  border-radius: var(--radius-5);
 }
-.ui-DialogContent[data-size="4"] {
-  --dialog-content-padding: var(--space-6);
-  border-radius: var(--radius-5);
+
+.ui-DialogContent > h2[id^="reka-dialog-title"] {
+  font-size: var(--font-size-5);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-4);
+  margin-bottom: var(--space-3);
+}
+
+.ui-DialogContent > p[id^="reka-dialog-description"] {
+  font-size: var(--font-size-2);
+  line-height: var(--line-height-2);
+  letter-spacing: var(--letter-spacing-2);
+}
+
+@media (min-width: 520px) {
+  .ui-DialogContainer {
+    justify-content: center;
+    padding-bottom: max(var(--space-6), 6vh);
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+  }
+
+  .ui-DialogContent {
+    box-shadow: var(--shadow-6);
+    border-bottom-left-radius: var(--dialog-content-radius);
+    border-bottom-right-radius: var(--dialog-content-radius);
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -163,23 +177,23 @@ const forwarded = useForwardPropsEmits(props, emits, [
 
   @keyframes ui-dialog-content-show {
     from {
-      opacity: 0;
-      transform: translateY(5px) scale(0.97);
+      opacity: 0.1;
+      transform: translateY(var(--space-6));
     }
     to {
       opacity: 1;
-      transform: translateY(0px) scale(1);
+      transform: translateY(0);
     }
   }
 
   @keyframes ui-dialog-content-hide {
     from {
       opacity: 1;
-      transform: translateY(0px) scale(1);
+      transform: translateY(0);
     }
     to {
-      opacity: 0;
-      transform: translateY(5px) scale(0.99);
+      opacity: 0.1;
+      transform: translateY(var(--space-6));
     }
   }
 
@@ -192,24 +206,11 @@ const forwarded = useForwardPropsEmits(props, emits, [
   .ui-DialogOverlay[data-state='closed']::before {
     animation: ui-fade-out 160ms cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .ui-DialogContent[data-state='open'] {
+  .ui-DialogOverlay[data-state='open'] :where(.ui-DialogContent) {
     animation: ui-dialog-content-show 200ms cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .ui-DialogContent[data-state='closed'] {
-    animation: ui-dialog-content-hide 100ms cubic-bezier(0.16, 1, 0.3, 1);
+  .ui-DialogOverlay[data-state='closed'] :where(.ui-DialogContent) {
+    animation: ui-dialog-content-hide 150ms cubic-bezier(0.16, 1, 0.3, 1);
   }
-}
-
-.ui-DialogContent > h2[id^="reka-dialog-title"] {
-  font-size: var(--font-size-5);
-  font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-4);
-  margin-bottom: var(--space-3);
-}
-
-.ui-DialogContent > p[id^="reka-dialog-description"] {
-  font-size: var(--font-size-2);
-  line-height: var(--line-height-2);
-  letter-spacing: var(--letter-spacing-2);
 }
 </style>

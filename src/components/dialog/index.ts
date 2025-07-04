@@ -2,9 +2,13 @@ export {
   DialogRoot,
   DialogTrigger,
   DialogClose,
-  DialogTitle,
   DialogDescription,
 } from 'reka-ui'
+
+export {
+  default as DialogTitle,
+  type DialogTitleProps,
+} from './DialogTitle.vue'
 
 export {
   default as DialogContent,
