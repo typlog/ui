@@ -57,6 +57,7 @@ const resetClass = computed(() => {
     :data-accent-color="props.color"
     :data-radius="props.radius"
     :data-disabled="props.disabled ? true : undefined"
+    :disabled="props.disabled && props.as === 'button' ? true : undefined"
   >
     <slot></slot>
   </Primitive>

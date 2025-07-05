@@ -36,12 +36,12 @@ const expanded = ref(false)
 .vp-Example {
   margin-top: var(--space-4);
   margin-bottom: var(--space-6);
-  border: 1px solid var(--gray-a4);
+  border: 1px solid var(--gray-a5);
   border-radius: var(--radius-4);
   overflow: hidden;
 }
 .vp-ExampleComponent {
-  border-bottom: 1px solid var(--gray-a4);
+  border-bottom: 1px solid var(--gray-a5);
   width: 100%;
   box-sizing: border-box;
 }
@@ -97,7 +97,7 @@ const expanded = ref(false)
 .vp-ExampleAction {
   width: 100%;
   font-size: 13px;
-  border-top: 1px solid var(--gray-a4);
+  border-top: 1px solid var(--gray-a5);
   background: var(--gray-2);
   color: var(--gray-11);
   padding: var(--space-1);
