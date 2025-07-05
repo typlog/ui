@@ -30,6 +30,7 @@
     "demo/**/*.vue",
     "docs/.vitepress/**/*.ts",
     "docs/.vitepress/**/*.vue",
+    "docs/examples/**/*.vue",
     "vite.config.ts",
-  ]
+  ],
 }

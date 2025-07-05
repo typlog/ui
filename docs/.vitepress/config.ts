@@ -1,5 +1,7 @@
 import { resolve } from 'node:path'
 import { defineConfig } from 'vitepress'
+import tailwindcss from '@tailwindcss/vite'
+import { markdownExampleTagBlock } from './plugins/example'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -8,10 +10,18 @@ export default defineConfig({
   srcDir: 'content',
   cleanUrls: true,
   vite: {
+    plugins: [
+      tailwindcss(),
+    ],
     resolve: {
       alias: {
         '#components': resolve(__dirname, '../../src/components'),
       },
+    },
+  },
+  markdown: {
+    preConfig(md) {
+      md.use(markdownExampleTagBlock)
     },
   },
   themeConfig: {

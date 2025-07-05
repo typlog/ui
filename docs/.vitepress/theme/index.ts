@@ -1,14 +1,14 @@
 import type { Theme } from 'vitepress'
-import DefaultTheme from 'vitepress/theme'
 import * as components from '#components'
+import Example from '../components/Example.vue'
 import Layout from './Layout.vue'
 
 import "./style.css"
 
 export default {
   Layout,
-  extends: DefaultTheme,
   async enhanceApp({ app }) {
+    app.component('Example', Example)
     Object.keys(components).forEach((name) => {
       app.component(name, components[name as 'Button'])
     })
