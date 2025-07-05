@@ -3,6 +3,7 @@ import type {
   DialogContentProps as _DialogContentProps,
   DialogContentEmits,
 } from 'reka-ui'
+import { injectThemeContext } from '../ThemeProvider.vue'
 
 export interface DialogContentProps extends _DialogContentProps {
   to?: string | HTMLElement
@@ -13,6 +14,7 @@ export interface DialogContentProps extends _DialogContentProps {
   height?: string
   minHeight?: string
   maxHeight?: string
+  closeIcon?: boolean
 }
 </script>
 
@@ -21,8 +23,11 @@ import {
   DialogPortal,
   DialogContent,
   DialogOverlay,
+  DialogClose,
 } from 'reka-ui'
+import { Icon } from '@iconify/vue'
 import { useForwardPropsEmits } from '../util'
+import IconButton from '../button/IconButton.vue'
 
 defineOptions({
   inheritAttrs: false,
@@ -32,17 +37,25 @@ const props = withDefaults(defineProps<DialogContentProps>(), {
   size: '3',
   maxWidth: '600px',
 })
+const theme = injectThemeContext()
 const emits = defineEmits<DialogContentEmits>()
 const forwarded = useForwardPropsEmits(props, emits, [
   'to', 'align', 'class', 'size',
   'width', 'minWidth', 'maxWidth',
   'height', 'minHeight', 'maxHeight',
+  'closeIcon',
 ])
 </script>
 
 <template>
   <DialogPortal :to="props.to">
-    <DialogOverlay class="ui-DialogOverlay">
+    <DialogOverlay
+      class="ui-root ui-DialogOverlay"
+      :data-accent-color="theme.accentColor.value"
+      :data-gray-color="theme.grayColor.value"
+      :data-radius="theme.radius.value"
+      :data-scaling="theme.scaling.value"
+    >
       <div class="ui-DialogWrapper">
         <div class="ui-DialogContainer">
           <DialogContent
@@ -61,6 +74,17 @@ const forwarded = useForwardPropsEmits(props, emits, [
               maxHeight: props.maxHeight,
             }"
           >
+            <IconButton
+              v-if="props.closeIcon"
+              class="ui-DialogContentClose"
+              :as="DialogClose"
+              type="button"
+              variant="ghost"
+              color="gray"
+              aria-label="Close"
+            >
+              <Icon icon="lucide:x" />
+            </IconButton>
             <slot></slot>
           </DialogContent>
         </div>
@@ -137,6 +161,12 @@ const forwarded = useForwardPropsEmits(props, emits, [
   --dialog-content-padding: var(--space-5);
 }
 
+.ui-DialogContentClose {
+  position: absolute;
+  top: calc(var(--dialog-content-padding) / 1.5);
+  right: var(--dialog-content-padding);
+}
+
 .ui-DialogContent > h2[id^="reka-dialog-title"] {
   font-size: var(--font-size-5);
   font-weight: var(--font-weight-bold);
@@ -145,7 +175,7 @@ const forwarded = useForwardPropsEmits(props, emits, [
 }
 
 .ui-DialogContent > p[id^="reka-dialog-description"] {
-  font-size: var(--font-size-2);
+  font-size: var(--font-size-3);
   line-height: var(--line-height-2);
   letter-spacing: var(--letter-spacing-2);
 }

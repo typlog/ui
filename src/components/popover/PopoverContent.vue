@@ -3,6 +3,7 @@ import type {
   PopoverContentProps as _PopoverContentProps,
   PopoverContentEmits,
 } from 'reka-ui'
+import { injectThemeContext } from '../ThemeProvider.vue'
 
 export interface PopoverContentProps extends _PopoverContentProps {
   to?: string | HTMLElement
@@ -21,6 +22,8 @@ defineOptions({
   inheritAttrs: false,
 })
 
+const theme = injectThemeContext()
+
 const props = withDefaults(defineProps<PopoverContentProps>(), {
   size: '2',
 })
@@ -33,8 +36,12 @@ const forwarded = useForwardPropsEmits(props, emits, ['to', 'size'])
   <PopoverPortal :to="props.to">
     <PopoverContent
       v-bind="{ ...$attrs, ...forwarded }"
-      :data-size="props.size"
-      class="ui-PopoverContent"
+      class="ui-root ui-PopoverContent"
+      :class="`r-size-${props.size}`"
+      :data-accent-color="theme.accentColor.value"
+      :data-gray-color="theme.grayColor.value"
+      :data-radius="theme.radius.value"
+      :data-scaling="theme.scaling.value"
     >
       <slot></slot>
     </PopoverContent>
@@ -59,19 +66,19 @@ const forwarded = useForwardPropsEmits(props, emits, ['to', 'size'])
   box-sizing: border-box;
   transform-origin: var(--reka-popover-content-transform-origin);
 }
-.ui-PopoverContent:where([data-size="1"]) {
+.ui-PopoverContent:where(.r-size-1) {
   --popover-content-padding: var(--space-3);
   border-radius: var(--radius-4);
 }
-.ui-PopoverContent:where([data-size="2"]) {
+.ui-PopoverContent:where(.r-size-2) {
   --popover-content-padding: var(--space-4);
   border-radius: var(--radius-4);
 }
-.ui-PopoverContent:where([data-size="3"]) {
+.ui-PopoverContent:where(.r-size-3) {
   --popover-content-padding: var(--space-5);
   border-radius: var(--radius-5);
 }
-.ui-PopoverContent:where([data-size="4"]) {
+.ui-PopoverContent:where(.r-size-4) {
   --popover-content-padding: var(--space-6);
   border-radius: var(--radius-5);
 }

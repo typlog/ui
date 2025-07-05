@@ -20,6 +20,7 @@ export default defineConfig({
           { text: 'Button', link: '/components/button' },
           { text: 'Badge', link: '/components/badge' },
           { text: 'Avatar', link: '/components/avatar' },
+          { text: 'Dialog', link: '/components/dialog' },
         ]
       }
     ],

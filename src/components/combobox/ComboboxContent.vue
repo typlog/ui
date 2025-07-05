@@ -1,5 +1,6 @@
 <script lang="ts">
 import type { ComboboxContentProps as _ComboboxContentProps, ComboboxContentEmits } from 'reka-ui'
+import { injectThemeContext } from '../ThemeProvider.vue'
 
 export interface ComboboxContentProps extends _ComboboxContentProps {
   to?: string | HTMLElement
@@ -27,6 +28,7 @@ defineOptions({
 })
 const { forwardRef } = useForwardExpose()
 
+const theme = injectThemeContext()
 const props = withDefaults(defineProps<ComboboxContentProps>(), {
   variant: 'solid',
   position: 'popper',
@@ -55,9 +57,12 @@ const contentClass = computed(() => {
         to: undefined,
         variant: undefined,
       }"
-      class="ui-ComboboxContent"
+      class="ui-root ui-ComboboxContent"
       :class="contentClass"
-      :data-accent-color="context.color.value"
+      :data-accent-color="context.color.value || theme.accentColor.value"
+      :data-gray-color="theme.grayColor.value"
+      :data-radius="theme.radius.value"
+      :data-scaling="theme.scaling.value"
     >
       <ScrollAreaRoot
         type="auto"

@@ -1,5 +1,6 @@
 <script lang="ts">
 import type { SelectContentProps as _SelectContentProps } from 'reka-ui'
+import { injectThemeContext } from '../ThemeProvider.vue'
 
 export interface SelectContentProps extends _SelectContentProps {
   to?: string | HTMLElement
@@ -26,6 +27,7 @@ defineOptions({
   inheritAttrs: false,
 })
 
+const theme = injectThemeContext()
 const props = withDefaults(defineProps<SelectContentProps>(), {
   variant: 'solid',
 })
@@ -56,9 +58,12 @@ const contentClass = computed(() => {
         to: undefined,
         variant: undefined,
       }"
-      class="ui-SelectContent"
+      class="ui-root ui-SelectContent"
       :class="contentClass"
-      :data-accent-color="context.color.value"
+      :data-accent-color="context.color.value || theme.accentColor.value"
+      :data-gray-color="theme.grayColor.value"
+      :data-radius="theme.radius.value"
+      :data-scaling="theme.scaling.value"
     >
       <ScrollAreaRoot
         type="auto"

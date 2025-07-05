@@ -1,0 +1,27 @@
+.ui-root:where([data-scaling="90%"]) {
+  --scaling: 0.9;
+}
+
+.ui-root:where([data-scaling="95%"]) {
+  --scaling: 0.95;
+}
+
+.ui-root:where([data-scaling="100%"]) {
+  --scaling: 1;
+}
+
+.ui-root:where([data-scaling="105%"]) {
+  --scaling: 1.05;
+}
+
+.ui-root:where([data-scaling="110%"]) {
+  --scaling: 1.1;
+}
+
+.ui-root:where([data-scaling="115%"]) {
+  --scaling: 1.15;
+}
+
+.ui-root:where([data-scaling="120%"]) {
+  --scaling: 1.2;
+}

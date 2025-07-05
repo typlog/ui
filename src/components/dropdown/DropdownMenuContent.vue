@@ -5,6 +5,7 @@ import type {
   DialogContentEmits,
 } from 'reka-ui'
 import { createContext } from 'reka-ui'
+import { injectThemeContext } from '../ThemeProvider.vue'
 import type { ColorType } from '../types'
 
 export interface DropdownMenuContentProps extends _DropdownMenuContentProps {
@@ -40,6 +41,8 @@ defineOptions({
   inheritAttrs: false,
 })
 
+const theme = injectThemeContext()
+
 const props = withDefaults(defineProps<DropdownMenuContentProps>(), {
   size: '2',
   variant: 'solid',
@@ -67,9 +70,12 @@ provideDropdownMenuContentContext({ size, variant, color, highContrast })
         ...forwarded,
       }"
       :ref="forwardRef"
-      class="ui-PopperContent ui-MenuContent"
-      :data-accent-color="props.color"
-      :data-size="props.size"
+      class="ui-root ui-PopperContent ui-MenuContent"
+      :class="`r-size-${props.size}`"
+      :data-accent-color="props.color || theme.accentColor.value"
+      :data-gray-color="theme.grayColor.value"
+      :data-radius="theme.radius.value"
+      :data-scaling="theme.scaling.value"
     >
       <ScrollArea type="auto">
         <div class="ui-MenuViewport">
@@ -110,7 +116,7 @@ provideDropdownMenuContentContext({ size, variant, color, highContrast })
   padding-right: var(--space-3);
 }
 
-.ui-MenuContent:where([data-size="1"]) {
+.ui-MenuContent:where(.r-size-1) {
   --menu-content-padding: var(--space-1);
   --menu-item-padding-left: calc(var(--space-5) / 1.2);
   --menu-item-padding-right: var(--space-2);
@@ -118,7 +124,7 @@ provideDropdownMenuContentContext({ size, variant, color, highContrast })
   border-radius: var(--radius-3);
 }
 
-.ui-MenuContent:where([data-size="2"]) {
+.ui-MenuContent:where(.r-size-2) {
   --menu-content-padding: var(--space-2);
   --menu-item-padding-left: var(--space-3);
   --menu-item-padding-right: var(--space-3);

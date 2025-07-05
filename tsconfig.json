@@ -28,6 +28,7 @@
     "src/**/*.d.ts",
     "src/**/*.vue",
     "demo/**/*.vue",
+    "docs/.vitepress/**/*.ts",
     "vite.config.ts",
   ]
 }

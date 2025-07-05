@@ -3,11 +3,10 @@ import type {
   AlertDialogContentProps as _DialogContentProps,
   AlertDialogContentEmits,
 } from 'reka-ui'
+import { injectThemeContext } from '../ThemeProvider.vue'
 
 export interface AlertDialogContentProps extends _DialogContentProps {
   to?: string | HTMLElement
-  align?: string
-  class?: string
   size?: '1' | '2' | '3' | '4'
   width?: string
   minWidth?: string
@@ -30,8 +29,9 @@ defineOptions({
   inheritAttrs: false,
 })
 
+const theme = injectThemeContext()
+
 const props = withDefaults(defineProps<AlertDialogContentProps>(), {
-  align: 'center',
   size: '3',
   maxWidth: '450px',
 })
@@ -46,16 +46,18 @@ const forwarded = useForwardPropsEmits(props, emits, [
 
 <template>
   <AlertDialogPortal :to="props.to">
-    <AlertDialogOverlay class="ui-DialogOverlay">
-      <div class="ui-DialogScroll">
-        <div
-          class="ui-DialogScrollPadding"
-          :data-align="props.align"
-        >
+    <AlertDialogOverlay
+      class="ui-root ui-DialogOverlay"
+      :data-accent-color="theme.accentColor.value"
+      :data-gray-color="theme.grayColor.value"
+      :data-radius="theme.radius.value"
+      :data-scaling="theme.scaling.value"
+    >
+      <div class="ui-DialogWrapper">
+        <div class="ui-DialogContainer">
           <AlertDialogContent
             class="ui-DialogContent"
-            :class="props.class"
-            :data-size="props.size"
+            :class="`r-size-${props.size}`"
             v-bind="{
               ...$attrs,
               ...forwarded,
