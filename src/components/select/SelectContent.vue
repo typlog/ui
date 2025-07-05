@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { SelectContentProps as _SelectContentProps } from 'reka-ui'
-import { injectThemeContext } from '../ThemeProvider.vue'
+import ThemeWrapper from '../provider/ThemeWrapper.vue'
 
 export interface SelectContentProps extends _SelectContentProps {
   to?: string | HTMLElement
@@ -27,7 +27,6 @@ defineOptions({
   inheritAttrs: false,
 })
 
-const theme = injectThemeContext()
 const props = withDefaults(defineProps<SelectContentProps>(), {
   variant: 'solid',
 })
@@ -50,43 +49,41 @@ const contentClass = computed(() => {
 
 <template>
   <SelectPortal :to="props.to">
-    <SelectContent
-      :ref="forwardRef"
-      v-bind="{
-        ...$attrs,
-        ...forwarded,
-        to: undefined,
-        variant: undefined,
-      }"
-      class="ui-root ui-SelectContent"
-      :class="contentClass"
-      :data-accent-color="context.color.value || theme.accentColor.value"
-      :data-gray-color="theme.grayColor.value"
-      :data-radius="theme.radius.value"
-      :data-scaling="theme.scaling.value"
-    >
-      <ScrollAreaRoot
-        type="auto"
-        class="ui-ScrollArea"
+    <ThemeWrapper :accent-color="context.color.value">
+      <SelectContent
+        :ref="forwardRef"
+        v-bind="{
+          ...$attrs,
+          ...forwarded,
+          to: undefined,
+          variant: undefined,
+        }"
+        class="ui-SelectContent"
+        :class="contentClass"
       >
-        <SelectViewport
-          class="ui-SelectViewport"
-          as-child
+        <ScrollAreaRoot
+          type="auto"
+          class="ui-ScrollArea"
         >
-          <ScrollAreaViewport class="ui-ScrollAreaViewport">
-            <slot></slot>
-          </ScrollAreaViewport>
-          <div class="ui-ScrollAreaViewportFocusRing"></div>
-          <ScrollAreaScrollbar
-            class="ui-ScrollAreaScrollbar"
-            :data-size="1"
-            orientation="vertical"
+          <SelectViewport
+            class="ui-SelectViewport"
+            as-child
           >
-            <ScrollAreaThumb class="ui-ScrollAreaThumb" />
-          </ScrollAreaScrollbar>
-        </SelectViewport>
-      </ScrollAreaRoot>
-    </SelectContent>
+            <ScrollAreaViewport class="ui-ScrollAreaViewport">
+              <slot></slot>
+            </ScrollAreaViewport>
+            <div class="ui-ScrollAreaViewportFocusRing"></div>
+            <ScrollAreaScrollbar
+              class="ui-ScrollAreaScrollbar"
+              :data-size="1"
+              orientation="vertical"
+            >
+              <ScrollAreaThumb class="ui-ScrollAreaThumb" />
+            </ScrollAreaScrollbar>
+          </SelectViewport>
+        </ScrollAreaRoot>
+      </SelectContent>
+    </ThemeWrapper>
   </SelectPortal>
 </template>
 

@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { ComboboxContentProps as _ComboboxContentProps, ComboboxContentEmits } from 'reka-ui'
-import { injectThemeContext } from '../ThemeProvider.vue'
+import ThemeWrapper from '../provider/ThemeWrapper.vue'
 
 export interface ComboboxContentProps extends _ComboboxContentProps {
   to?: string | HTMLElement
@@ -28,7 +28,6 @@ defineOptions({
 })
 const { forwardRef } = useForwardExpose()
 
-const theme = injectThemeContext()
 const props = withDefaults(defineProps<ComboboxContentProps>(), {
   variant: 'solid',
   position: 'popper',
@@ -48,44 +47,42 @@ const contentClass = computed(() => {
 
 <template>
   <ComboboxPortal :to="props.to">
-    <ComboboxContent
-      :ref="forwardRef"
-      v-bind="{
-        ...$attrs,
-        ...forwarded,
-        position: 'popper',
-        to: undefined,
-        variant: undefined,
-      }"
-      class="ui-root ui-ComboboxContent"
-      :class="contentClass"
-      :data-accent-color="context.color.value || theme.accentColor.value"
-      :data-gray-color="theme.grayColor.value"
-      :data-radius="theme.radius.value"
-      :data-scaling="theme.scaling.value"
-    >
-      <ScrollAreaRoot
-        type="auto"
-        class="ui-ScrollArea"
+    <ThemeWrapper :accent-color="context.color.value">
+      <ComboboxContent
+        :ref="forwardRef"
+        v-bind="{
+          ...$attrs,
+          ...forwarded,
+          position: 'popper',
+          to: undefined,
+          variant: undefined,
+        }"
+        class="ui-ComboboxContent"
+        :class="contentClass"
       >
-        <ComboboxViewport
-          class="ui-ComboboxViewport"
-          as-child
+        <ScrollAreaRoot
+          type="auto"
+          class="ui-ScrollArea"
         >
-          <ScrollAreaViewport class="ui-ScrollAreaViewport">
-            <slot></slot>
-          </ScrollAreaViewport>
-        </ComboboxViewport>
-        <div class="ui-ScrollAreaViewportFocusRing"></div>
-        <ScrollAreaScrollbar
-          class="ui-ScrollAreaScrollbar"
-          :data-size="1"
-          orientation="vertical"
-        >
-          <ScrollAreaThumb class="ui-ScrollAreaThumb" />
-        </ScrollAreaScrollbar>
-      </ScrollAreaRoot>
-    </ComboboxContent>
+          <ComboboxViewport
+            class="ui-ComboboxViewport"
+            as-child
+          >
+            <ScrollAreaViewport class="ui-ScrollAreaViewport">
+              <slot></slot>
+            </ScrollAreaViewport>
+          </ComboboxViewport>
+          <div class="ui-ScrollAreaViewportFocusRing"></div>
+          <ScrollAreaScrollbar
+            class="ui-ScrollAreaScrollbar"
+            :data-size="1"
+            orientation="vertical"
+          >
+            <ScrollAreaThumb class="ui-ScrollAreaThumb" />
+          </ScrollAreaScrollbar>
+        </ScrollAreaRoot>
+      </ComboboxContent>
+    </ThemeWrapper>
   </ComboboxPortal>
 </template>
 

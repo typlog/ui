@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ThemeProvider } from '#components'
 import RadioDemo from './components/RadioDemo.vue'
 import PaginationDemo from './components/PaginationDemo.vue'
 import SpinnerDemo from './components/SpinnerDemo.vue'
@@ -13,15 +14,17 @@ import AccordionDemo from './components/AccordionDemo.vue'
 </script>
 
 <template>
-  <RadioDemo />
-  <SpinnerDemo />
-  <AccordionDemo />
-  <CollapsibleDemo />
-  <ToggleDemo />
-  <ToggleGroupDemo />
-  <SelectDemo />
-  <ComboboxDemo />
-  <TabsDemo />
-  <ColorFieldDemo />
-  <PaginationDemo />
+  <ThemeProvider>
+    <RadioDemo />
+    <SpinnerDemo />
+    <AccordionDemo />
+    <CollapsibleDemo />
+    <ToggleDemo />
+    <ToggleGroupDemo />
+    <SelectDemo />
+    <ComboboxDemo />
+    <TabsDemo />
+    <ColorFieldDemo />
+    <PaginationDemo />
+  </ThemeProvider>
 </template>

@@ -3,7 +3,15 @@ import type {
   DialogContentProps as _DialogContentProps,
   DialogContentEmits,
 } from 'reka-ui'
-import { injectThemeContext } from '../ThemeProvider.vue'
+import {
+  DialogPortal,
+  DialogContent,
+  DialogOverlay,
+  DialogClose,
+} from 'reka-ui'
+import { Icon } from '@iconify/vue'
+import IconButton from '../button/IconButton.vue'
+import ThemeWrapper from '../provider/ThemeWrapper.vue'
 
 export interface DialogContentProps extends _DialogContentProps {
   to?: string | HTMLElement
@@ -19,15 +27,7 @@ export interface DialogContentProps extends _DialogContentProps {
 </script>
 
 <script setup lang="ts">
-import {
-  DialogPortal,
-  DialogContent,
-  DialogOverlay,
-  DialogClose,
-} from 'reka-ui'
-import { Icon } from '@iconify/vue'
 import { useForwardPropsEmits } from '../util'
-import IconButton from '../button/IconButton.vue'
 
 defineOptions({
   inheritAttrs: false,
@@ -37,7 +37,6 @@ const props = withDefaults(defineProps<DialogContentProps>(), {
   size: '3',
   maxWidth: '600px',
 })
-const theme = injectThemeContext()
 const emits = defineEmits<DialogContentEmits>()
 const forwarded = useForwardPropsEmits(props, emits, [
   'to', 'align', 'class', 'size',
@@ -49,47 +48,43 @@ const forwarded = useForwardPropsEmits(props, emits, [
 
 <template>
   <DialogPortal :to="props.to">
-    <DialogOverlay
-      class="ui-root ui-DialogOverlay"
-      :data-accent-color="theme.accentColor.value"
-      :data-gray-color="theme.grayColor.value"
-      :data-radius="theme.radius.value"
-      :data-scaling="theme.scaling.value"
-    >
-      <div class="ui-DialogWrapper">
-        <div class="ui-DialogContainer">
-          <DialogContent
-            class="ui-DialogContent"
-            :class="`r-size-${props.size}`"
-            v-bind="{
-              ...$attrs,
-              ...forwarded,
-            }"
-            :style="{
-              width: props.width,
-              height: props.height,
-              minWidth: props.minWidth,
-              maxWidth: props.maxWidth,
-              minHeight: props.minHeight,
-              maxHeight: props.maxHeight,
-            }"
-          >
-            <IconButton
-              v-if="props.closeIcon"
-              class="ui-DialogContentClose"
-              :as="DialogClose"
-              type="button"
-              variant="ghost"
-              color="gray"
-              aria-label="Close"
+    <ThemeWrapper>
+      <DialogOverlay class="ui-DialogOverlay">
+        <div class="ui-DialogWrapper">
+          <div class="ui-DialogContainer">
+            <DialogContent
+              class="ui-DialogContent"
+              :class="`r-size-${props.size}`"
+              v-bind="{
+                ...$attrs,
+                ...forwarded,
+              }"
+              :style="{
+                width: props.width,
+                height: props.height,
+                minWidth: props.minWidth,
+                maxWidth: props.maxWidth,
+                minHeight: props.minHeight,
+                maxHeight: props.maxHeight,
+              }"
             >
-              <Icon icon="lucide:x" />
-            </IconButton>
-            <slot></slot>
-          </DialogContent>
+              <IconButton
+                v-if="props.closeIcon"
+                class="ui-DialogContentClose"
+                :as="DialogClose"
+                type="button"
+                variant="ghost"
+                color="gray"
+                aria-label="Close"
+              >
+                <Icon icon="lucide:x" />
+              </IconButton>
+              <slot></slot>
+            </DialogContent>
+          </div>
         </div>
-      </div>
-    </DialogOverlay>
+      </DialogOverlay>
+    </ThemeWrapper>
   </DialogPortal>
 </template>
 

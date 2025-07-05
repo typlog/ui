@@ -1,7 +1,7 @@
 export {
   default as ThemeProvider,
   type ThemeProviderProps,
-} from './ThemeProvider.vue'
+} from './provider/ThemeProvider.vue'
 
 export * from './avatar'
 export * from './badge'

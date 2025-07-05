@@ -3,7 +3,12 @@ import type {
   PopoverContentProps as _PopoverContentProps,
   PopoverContentEmits,
 } from 'reka-ui'
-import { injectThemeContext } from '../ThemeProvider.vue'
+import {
+  PopoverPortal,
+  PopoverContent,
+} from 'reka-ui'
+import { useForwardPropsEmits } from '../util'
+import ThemeWrapper from '../provider/ThemeWrapper.vue'
 
 export interface PopoverContentProps extends _PopoverContentProps {
   to?: string | HTMLElement
@@ -12,17 +17,9 @@ export interface PopoverContentProps extends _PopoverContentProps {
 </script>
 
 <script setup lang="ts">
-import {
-  PopoverPortal,
-  PopoverContent,
-} from 'reka-ui'
-import { useForwardPropsEmits } from '../util'
-
 defineOptions({
   inheritAttrs: false,
 })
-
-const theme = injectThemeContext()
 
 const props = withDefaults(defineProps<PopoverContentProps>(), {
   size: '2',
@@ -34,17 +31,15 @@ const forwarded = useForwardPropsEmits(props, emits, ['to', 'size'])
 
 <template>
   <PopoverPortal :to="props.to">
-    <PopoverContent
-      v-bind="{ ...$attrs, ...forwarded }"
-      class="ui-root ui-PopoverContent"
-      :class="`r-size-${props.size}`"
-      :data-accent-color="theme.accentColor.value"
-      :data-gray-color="theme.grayColor.value"
-      :data-radius="theme.radius.value"
-      :data-scaling="theme.scaling.value"
-    >
-      <slot></slot>
-    </PopoverContent>
+    <ThemeWrapper>
+      <PopoverContent
+        v-bind="{ ...$attrs, ...forwarded }"
+        class="ui-PopoverContent"
+        :class="`r-size-${props.size}`"
+      >
+        <slot></slot>
+      </PopoverContent>
+    </ThemeWrapper>
   </PopoverPortal>
 </template>
 

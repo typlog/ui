@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { TooltipContentProps } from 'reka-ui'
-import { injectThemeContext } from '../ThemeProvider.vue'
+import ThemeWrapper from '../provider/ThemeWrapper.vue'
 
 export interface TooltipProps extends TooltipContentProps {
   to?: string | HTMLElement
@@ -28,8 +28,6 @@ const props = withDefaults(defineProps<TooltipProps>(), {
 defineOptions({
   inheritAttrs: false,
 })
-
-const theme = injectThemeContext()
 </script>
 
 <template>
@@ -42,32 +40,30 @@ const theme = injectThemeContext()
       <slot></slot>
     </TooltipTrigger>
     <TooltipPortal :to="props.to">
-      <TooltipContent
-        class="ui-root ui-Tooltip"
-        :data-accent-color="theme.accentColor.value"
-        :data-gray-color="theme.grayColor.value"
-        :data-radius="theme.radius.value"
-        :data-scaling="theme.scaling.value"
-        :align="props.align"
-        :align-offset="props.alignOffset"
-        :aria-label="props.ariaLabel"
-        :arrow-padding="props.arrowPadding"
-        :avoid-collisions="props.avoidCollisions"
-        :collision-boundary="props.collisionBoundary"
-        :collision-padding="props.collisionPadding"
-        :hide-when-detached="props.hideWhenDetached"
-        :side="props.side"
-        :side-offset="props.sideOffset"
-        :sticky="props.sticky"
-      >
-        <slot name="content">
-          <p
-            class="ui-TooltipText"
-            v-text="props.content"
-          ></p>
-        </slot>
-        <TooltipArrow class="ui-TooltipArrow" />
-      </TooltipContent>
+      <ThemeWrapper>
+        <TooltipContent
+          class="ui-Tooltip"
+          :align="props.align"
+          :align-offset="props.alignOffset"
+          :aria-label="props.ariaLabel"
+          :arrow-padding="props.arrowPadding"
+          :avoid-collisions="props.avoidCollisions"
+          :collision-boundary="props.collisionBoundary"
+          :collision-padding="props.collisionPadding"
+          :hide-when-detached="props.hideWhenDetached"
+          :side="props.side"
+          :side-offset="props.sideOffset"
+          :sticky="props.sticky"
+        >
+          <slot name="content">
+            <p
+              class="ui-TooltipText"
+              v-text="props.content"
+            ></p>
+          </slot>
+          <TooltipArrow class="ui-TooltipArrow" />
+        </TooltipContent>
+      </ThemeWrapper>
     </TooltipPortal>
   </TooltipRoot>
 </template>
