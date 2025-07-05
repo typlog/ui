@@ -22,7 +22,6 @@ const theme = injectThemeContext()
     :data-gray-color="theme.grayColor.value"
     :data-radius="props.radius || theme.radius.value"
     :data-scaling="theme.scaling.value"
-    :data-has-background="theme.hasBackground.value"
     as-child
   >
     <slot></slot>
