@@ -22,7 +22,7 @@
     {
       "name": "radius",
       "description": "",
-      "type": "\"small\" | \"none\" | \"medium\" | \"large\" | \"full\"",
+      "type": "\"medium\" | \"none\" | \"small\" | \"large\" | \"full\"",
       "required": false
     },
     {
@@ -40,7 +40,7 @@
     {
       "name": "size",
       "description": "",
-      "type": "\"2\" | \"1\" | \"3\"",
+      "type": "\"1\" | \"2\" | \"3\"",
       "required": false
     },
     {

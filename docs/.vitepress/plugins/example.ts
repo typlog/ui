@@ -48,7 +48,7 @@ export function markdownExampleTagBlock(md: MarkdownRenderer) {
       const source = fs.readFileSync(srcPath, { encoding: 'utf-8' })
       const srcToken = new state.Token('fence', 'code', 0)
       srcToken.info = 'vue'
-      srcToken.content = source.replace(/#components/g, '@typlog/ui')
+      srcToken.content = source.replace(/#components/g, '@typlog/ui').trim()
       const endToken = new state.Token('html_inline', '', 0)
       endToken.content = '</template>\n</Example>'
       state.tokens.splice(index + 1, 0, srcToken, endToken)

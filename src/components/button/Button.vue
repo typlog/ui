@@ -6,7 +6,7 @@ import type { ColorType, RadiusType } from '../types'
 export interface ButtonProps {
   /**
    * The visual variant to apply.
-   * @defaultValue "solid"
+   * @default "solid"
    */
   variant?: 'classic' | 'solid' | 'soft' | 'surface' | 'outline' | 'ghost'
   /** Overrides the accent color inherited from the Theme. */
@@ -15,7 +15,7 @@ export interface ButtonProps {
   radius?: RadiusType
   /**
    * Control the size of the button.
-   * @defaultValue "2"
+   * @default "2"
    */
   size?: '1' | '2' | '3' | '4'
   /** Uses a higher contrast color for the component. */
@@ -24,7 +24,7 @@ export interface ButtonProps {
   disabled?: boolean
   /**
    * The element or component this component should render as.
-   * @defaultValue "button"
+   * @default "button"
    */
   as?: AsTag | Component
   asChild?: boolean

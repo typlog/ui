@@ -64,7 +64,7 @@
     {
       "name": "size",
       "description": "",
-      "type": "\"2\" | \"1\"",
+      "type": "\"1\" | \"2\"",
       "required": false
     }
   ],

@@ -4,7 +4,7 @@ import type { PrimitiveProps } from 'reka-ui'
 export interface AccordionTriggerProps extends PrimitiveProps {
   /**
    * The indicator icon for the accordion trigger.
-   * @defaultValue "chevron"
+   * @default "chevron"
    */
   indicator?: 'plus-minus' | 'chevron'
 }

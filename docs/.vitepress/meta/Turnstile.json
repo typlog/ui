@@ -39,7 +39,7 @@
     {
       "name": "size",
       "description": "",
-      "type": "\"normal\" | \"compact\"",
+      "type": "\"compact\" | \"normal\"",
       "required": false
     },
     {

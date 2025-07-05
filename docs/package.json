@@ -10,6 +10,6 @@
     "@tailwindcss/vite": "^4.1.11",
     "markdown-it": "^14.1.0",
     "vitepress": "^1.6.3",
-    "vue-component-meta": "^3.0.0"
+    "vue-component-meta": "^2.2.12"
   }
 }

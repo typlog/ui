@@ -1,6 +1,12 @@
 {
   "props": [
     {
+      "name": "accentColor",
+      "description": "",
+      "type": "\"indigo\" | \"gray\" | \"gold\" | \"bronze\" | \"brown\" | \"yellow\" | \"amber\" | \"orange\" | \"tomato\" | \"red\" | \"ruby\" | \"crimson\" | \"pink\" | \"plum\" | \"purple\" | \"violet\" | \"iris\" | \"blue\" | \"cyan\" | \"teal\" | \"jade\" | \"green\" | \"grass\" | \"lime\" | \"mint\" | \"sky\"",
+      "required": false
+    },
+    {
       "name": "as",
       "description": "<p>The element or component this component should render as. Can be overwritten by <code>asChild</code>.</p>\n",
       "type": "AsTag | Component",
@@ -14,13 +20,13 @@
       "required": false
     },
     {
-      "name": "brand",
+      "name": "grayColor",
       "description": "",
-      "type": "\"x\" | \"google\" | \"facebook\" | \"github\" | \"apple\" | \"slack\" | \"figma\"",
-      "required": true
+      "type": "\"auto\" | \"mauve\" | \"olive\" | \"sage\" | \"sand\" | \"slate\"",
+      "required": false
     },
     {
-      "name": "disabled",
+      "name": "hasBackground",
       "description": "",
       "type": "boolean",
       "required": false
@@ -32,11 +38,10 @@
       "required": false
     },
     {
-      "name": "size",
-      "description": "<p>Control the size of the social button.</p>\n",
-      "type": "\"1\" | \"2\" | \"3\" | \"4\"",
-      "required": false,
-      "default": "\"2\""
+      "name": "scaling",
+      "description": "",
+      "type": "\"100%\" | \"90%\" | \"95%\" | \"105%\" | \"110%\" | \"115%\" | \"120%\"",
+      "required": false
     }
   ],
   "events": [],

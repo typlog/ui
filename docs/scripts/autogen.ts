@@ -13,8 +13,6 @@ md.use(transformJSDocLinks)
 
 
 const checkerOptions: MetaCheckerOptions = {
-  forceUseTs: true,
-  printer: { newLine: 1 },
 }
 
 const tsconfigChecker = createChecker(
@@ -67,6 +65,12 @@ function parseMeta(meta: ComponentMeta) {
       let type = prop.type
       const { name, description, required } = prop
 
+      prop.tags.forEach(item => {
+        if (item.name === 'default') {
+          defaultValue = item.text
+        }
+      })
+
       if (name === 'as')
         defaultValue = defaultValue ?? '"div"'
 
@@ -76,10 +80,16 @@ function parseMeta(meta: ComponentMeta) {
       if (!type.includes('AcceptableValue'))
         type = parseTypeFromSchema(prop.schema) || type
 
+      type = type.replace(/\s*\|\s*undefined/g, '')
+
+      if (name === 'size') {
+        type = type.split(' | ').sort().join(' | ')
+      }
+
       return ({
         name,
         description: md.render(description),
-        type: type.replace(/\s*\|\s*undefined/g, ''),
+        type,
         required,
         default: defaultValue ?? undefined,
       })

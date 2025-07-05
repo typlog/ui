@@ -3,7 +3,7 @@
     {
       "name": "align",
       "description": "<p>The preferred alignment against the trigger.\nMay change when collisions occur.</p>\n",
-      "type": "\"center\" | \"start\" | \"end\"",
+      "type": "\"start\" | \"center\" | \"end\"",
       "required": false
     },
     {
@@ -52,7 +52,7 @@
     {
       "name": "color",
       "description": "",
-      "type": "\"gray\" | \"gold\" | \"bronze\" | \"brown\" | \"yellow\" | \"amber\" | \"orange\" | \"tomato\" | \"red\" | \"ruby\" | \"crimson\" | \"pink\" | \"plum\" | \"purple\" | \"violet\" | \"iris\" | \"indigo\" | \"blue\" | \"cyan\" | \"teal\" | \"jade\" | \"green\" | \"grass\" | \"lime\" | \"mint\" | \"sky\"",
+      "type": "\"indigo\" | \"gray\" | \"gold\" | \"bronze\" | \"brown\" | \"yellow\" | \"amber\" | \"orange\" | \"tomato\" | \"red\" | \"ruby\" | \"crimson\" | \"pink\" | \"plum\" | \"purple\" | \"violet\" | \"iris\" | \"blue\" | \"cyan\" | \"teal\" | \"jade\" | \"green\" | \"grass\" | \"lime\" | \"mint\" | \"sky\"",
       "required": false
     },
     {
@@ -118,7 +118,7 @@
     {
       "name": "size",
       "description": "",
-      "type": "\"2\" | \"1\"",
+      "type": "\"1\" | \"2\"",
       "required": false
     },
     {

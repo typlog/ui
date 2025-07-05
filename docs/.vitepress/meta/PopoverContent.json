@@ -3,7 +3,7 @@
     {
       "name": "align",
       "description": "<p>The preferred alignment against the trigger.\nMay change when collisions occur.</p>\n",
-      "type": "\"center\" | \"start\" | \"end\"",
+      "type": "\"start\" | \"center\" | \"end\"",
       "required": false
     },
     {
@@ -106,7 +106,7 @@
     {
       "name": "size",
       "description": "",
-      "type": "\"2\" | \"1\" | \"3\" | \"4\"",
+      "type": "\"1\" | \"2\" | \"3\" | \"4\"",
       "required": false
     },
     {

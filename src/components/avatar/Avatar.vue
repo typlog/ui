@@ -10,17 +10,17 @@ export interface AvatarProps {
   fallback?: string
   /**
    * Overrides the radius inherited from the theme.
-   * @defaultValue "small"
+   * @default "small"
    */
   radius?: RadiusType
   /**
    * The visual variant to apply.
-   * @defaultValue "solid"
+   * @default "solid"
    */
   variant?: 'solid' | 'soft' | 'ring'
   /**
    * Control the size of the avatar.
-   * @defaultValue "2"
+   * @default "2"
    */
   size?: '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'
   /** Overrides the accent color inherited from the Theme. */

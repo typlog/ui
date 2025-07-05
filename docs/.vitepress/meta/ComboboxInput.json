@@ -46,7 +46,7 @@
     {
       "name": "radius",
       "description": "",
-      "type": "\"small\" | \"none\" | \"medium\" | \"large\" | \"full\"",
+      "type": "\"medium\" | \"none\" | \"small\" | \"large\" | \"full\"",
       "required": false
     },
     {

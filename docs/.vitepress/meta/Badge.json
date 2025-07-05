@@ -5,7 +5,7 @@
       "description": "<p>The element or component this component should render as.</p>\n",
       "type": "AsTag",
       "required": false,
-      "default": "\"div\""
+      "default": "\"span\""
     },
     {
       "name": "asChild",
@@ -15,8 +15,8 @@
     },
     {
       "name": "color",
-      "description": "<p>Overrides the accent color inherited from the Theme.</p>\n",
-      "type": "\"gray\" | \"gold\" | \"bronze\" | \"brown\" | \"yellow\" | \"amber\" | \"orange\" | \"tomato\" | \"red\" | \"ruby\" | \"crimson\" | \"pink\" | \"plum\" | \"purple\" | \"violet\" | \"iris\" | \"indigo\" | \"blue\" | \"cyan\" | \"teal\" | \"jade\" | \"green\" | \"grass\" | \"lime\" | \"mint\" | \"sky\"",
+      "description": "<p>Overrides the accent color inherited from the theme.</p>\n",
+      "type": "\"indigo\" | \"gray\" | \"gold\" | \"bronze\" | \"brown\" | \"yellow\" | \"amber\" | \"orange\" | \"tomato\" | \"red\" | \"ruby\" | \"crimson\" | \"pink\" | \"plum\" | \"purple\" | \"violet\" | \"iris\" | \"blue\" | \"cyan\" | \"teal\" | \"jade\" | \"green\" | \"grass\" | \"lime\" | \"mint\" | \"sky\"",
       "required": false
     },
     {
@@ -28,20 +28,23 @@
     {
       "name": "radius",
       "description": "<p>Overrides the radius inherited from the theme.</p>\n",
-      "type": "\"small\" | \"none\" | \"medium\" | \"large\" | \"full\"",
-      "required": false
+      "type": "\"medium\" | \"none\" | \"small\" | \"large\" | \"full\"",
+      "required": false,
+      "default": "\"small\""
     },
     {
       "name": "size",
       "description": "<p>Control the size of the badge.</p>\n",
-      "type": "\"2\" | \"1\" | \"3\"",
-      "required": false
+      "type": "\"1\" | \"2\" | \"3\"",
+      "required": false,
+      "default": "\"1\""
     },
     {
       "name": "variant",
       "description": "<p>The visual variant to apply.</p>\n",
       "type": "\"solid\" | \"soft\" | \"surface\" | \"outline\"",
-      "required": false
+      "required": false,
+      "default": "\"solid\""
     }
   ],
   "events": [],

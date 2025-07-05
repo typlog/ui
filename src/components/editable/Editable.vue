@@ -5,14 +5,14 @@ import { ColorType, RadiusType } from '../types'
 export interface EditableProps extends EditableRootProps {
   /**
    * Overrides the radius inherited from the theme.
-   * @defaultValue "small"
+   * @default "small"
    */
   radius?: RadiusType
   /** Overrides the accent color inherited from the theme. */
   color?: ColorType
   /**
    * Control the size of the padding and radius.
-   * @defaultValue "1"
+   * @default "1"
    */
   size?: '1' | '2' | '3'
 }

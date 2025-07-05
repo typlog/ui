@@ -17,7 +17,8 @@
       "name": "indicator",
       "description": "<p>The indicator icon for the accordion trigger.</p>\n",
       "type": "\"chevron\" | \"plus-minus\"",
-      "required": false
+      "required": false,
+      "default": "\"chevron\""
     }
   ],
   "events": [],

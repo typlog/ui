@@ -4,7 +4,7 @@ interface PropData {
   description: string
   type: string
   required: boolean
-  default: string
+  default?: string
 }
 
 interface ComponentMeta {
@@ -67,6 +67,9 @@ const items = computed(() => {
           >
             {{ item.default }}
           </Badge>
+          <div v-else class="text-center">
+            <span class="text-sm text-gray-10">–</span>
+          </div>
         </td>
         <td>
           <div class="flex flex-col">

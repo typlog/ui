@@ -63,7 +63,7 @@
     {
       "name": "mode",
       "description": "",
-      "type": "\"style\" | \"svg\" | \"bg\" | \"mask\"",
+      "type": "\"svg\" | \"style\" | \"bg\" | \"mask\"",
       "required": false
     },
     {

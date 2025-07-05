@@ -19,7 +19,7 @@ export interface SocialButtonProps extends PrimitiveProps {
   radius?: RadiusType
   /**
    * Control the size of the social button.
-   * @defaultValue "2"
+   * @default "2"
    */
   size?: '1' | '2' | '3' | '4'
   disabled?: boolean
