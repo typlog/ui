@@ -48,7 +48,6 @@ provideThemeContext({
   <TooltipProvider>
     <Primitive
       class="ui-root"
-      data-is-root-theme
       :data-accent-color="props.accentColor"
       :data-gray-color="props.grayColor"
       :data-radius="props.radius"
@@ -62,7 +61,7 @@ provideThemeContext({
 </template>
 
 <style>
-.ui-root[data-is-root-theme] {
+[data-v-app] > .ui-root {
   position: relative;
   z-index: 0;
 }
