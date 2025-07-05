@@ -1,8 +1,8 @@
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
-import * as components from '../../../src/components'
-
+import * as components from '#components'
 import Layout from './Layout.vue'
+
 import "./style.css"
 
 export default {

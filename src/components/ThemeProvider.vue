@@ -45,20 +45,20 @@ provideThemeContext({
 </script>
 
 <template>
-  <Primitive
-    class="ui-root"
-    data-is-root-theme
-    :data-accent-color="props.accentColor"
-    :data-gray-color="props.grayColor"
-    :data-radius="props.radius"
-    :data-scaling="props.scaling"
-    :as="props.as"
-    :as-child="props.asChild"
-  >
-    <TooltipProvider>
-      <slot></slot>
-    </TooltipProvider>
-  </Primitive>
+  <TooltipProvider>
+    <Primitive
+      class="ui-root"
+      data-is-root-theme
+      :data-accent-color="props.accentColor"
+      :data-gray-color="props.grayColor"
+      :data-radius="props.radius"
+      :data-scaling="props.scaling"
+      :as="props.as"
+      :as-child="props.asChild"
+    >
+        <slot></slot>
+    </Primitive>
+  </TooltipProvider>
 </template>
 
 <style>

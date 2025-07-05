@@ -1,3 +1,4 @@
+import { resolve } from 'node:path'
 import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
@@ -6,6 +7,13 @@ export default defineConfig({
   description: "Themed components for Reka UI.",
   srcDir: 'content',
   cleanUrls: true,
+  vite: {
+    resolve: {
+      alias: {
+        '#components': resolve(__dirname, '../../src/components'),
+      },
+    },
+  },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
