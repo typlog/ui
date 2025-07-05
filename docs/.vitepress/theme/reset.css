@@ -1,0 +1,20 @@
+.vp-doc .ui-Table table {
+  display: table;
+  margin: 0;
+}
+
+.vp-doc .ui-Table tr {
+  background-color: inherit;
+  border-top: none;
+}
+
+.vp-doc .ui-Table th {
+  color: inherit;
+  background-color: inherit;
+}
+
+.vp-doc .ui-Table th,
+.vp-doc .ui-Table td {
+  border: 0;
+  padding: var(--table-cell-padding);
+}

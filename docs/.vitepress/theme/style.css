@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "../../../tailwind/index.css";
 @import "../../../src/styles/index.css";
+@import "./reset.css";
 
 /** adding tailwind sources */
+@source "../components/";
 @source "../../examples/";
