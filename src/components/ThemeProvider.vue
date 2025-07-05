@@ -56,7 +56,7 @@ provideThemeContext({
       :as="props.as"
       :as-child="props.asChild"
     >
-        <slot></slot>
+      <slot></slot>
     </Primitive>
   </TooltipProvider>
 </template>
