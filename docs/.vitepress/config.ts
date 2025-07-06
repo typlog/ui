@@ -36,11 +36,20 @@ export default defineConfig({
     sidebar: [
       {
         text: 'Components',
+        link: '/components/avatar',
         items: [
-          { text: 'Button', link: '/components/button' },
-          { text: 'Badge', link: '/components/badge' },
-          { text: 'Avatar', link: '/components/avatar' },
-          { text: 'Dialog', link: '/components/dialog' },
+          {
+            text: 'General',
+            items: [
+              { text: 'Avatar', link: '/components/avatar' },
+              { text: 'Badge', link: '/components/badge' },
+              { text: 'Button', link: '/components/button' },
+              { text: 'Dialog', link: '/components/dialog' },
+            ]
+          },
+          {
+            text: 'Form',
+          },
         ]
       }
     ],

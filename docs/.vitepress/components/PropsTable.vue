@@ -103,10 +103,3 @@ const items = computed(() => {
     </tbody>
   </Table>
 </template>
-
-<style>
-.vp-doc .vp-PropsTable p {
-  margin-top: var(--space-2);
-  margin-bottom: 0;
-}
-</style>
