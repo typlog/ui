@@ -2,6 +2,7 @@ export {
   default as ThemeProvider,
   type ThemeProviderProps,
   injectThemeContext,
+  provideThemeContext,
 } from './provider/ThemeProvider.vue'
 
 export * from './avatar'
