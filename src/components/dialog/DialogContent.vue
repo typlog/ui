@@ -162,19 +162,6 @@ const forwarded = useForwardPropsEmits(props, emits, [
   right: var(--dialog-content-padding);
 }
 
-.ui-DialogContent > h2[id^="reka-dialog-title"] {
-  font-size: var(--font-size-5);
-  font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-4);
-  margin-bottom: var(--space-3);
-}
-
-.ui-DialogContent > p[id^="reka-dialog-description"] {
-  font-size: var(--font-size-3);
-  line-height: var(--line-height-2);
-  letter-spacing: var(--letter-spacing-2);
-}
-
 @media (min-width: 520px) {
   .ui-DialogContainer {
     justify-content: center;
