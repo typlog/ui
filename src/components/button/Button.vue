@@ -199,11 +199,6 @@ const resetClass = computed(() => {
 .ui-Button:where(.r-variant-soft, .r-variant-ghost):where(.r-high-contrast) {
   color: var(--accent-12);
 }
-.ui-Button:where(.r-variant-soft):where([data-disabled]) {
-  color: var(--gray-a8);
-  background-color: var(--gray-a3);
-}
-
 .ui-Button:where(.r-variant-soft) {
   background-color: var(--accent-a3);
 }
@@ -223,7 +218,6 @@ const resetClass = computed(() => {
   color: var(--gray-a8);
   background-color: var(--gray-a3);
 }
-
 .ui-Button:where(.r-variant-ghost) {
   padding: var(--button-ghost-padding-y) var(--button-padding-x);
 }
