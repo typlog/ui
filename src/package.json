@@ -1,0 +1,38 @@
+{
+  "name": "@typlog/ui",
+  "version": "0.0.0",
+  "license": "MIT",
+  "type": "module",
+  "description": "Themed components for Reka UI with Radix colors.",
+  "author": "Hsiaoming Yang <me@lepture.com>",
+  "repository": {
+    "url": "https://github.com/typlog/ui"
+  },
+  "sideEffects": false,
+  "module": "./components.js",
+  "types": "./components.d.ts",
+  "exports": {
+    ".": {
+      "types": "./components.d.ts",
+      "import": "./components.js"
+    },
+    "./components": {
+      "types": "./components.d.ts",
+      "import": "./components.js"
+    },
+    "./addons": {
+      "types": "./addons.d.ts",
+      "import": "./addons.js"
+    },
+    "./base.css": "./base.css",
+    "./components.css": "./components.css",
+    "./addons.css": "./addons.css",
+    "./tailwind.css": "./tailwind/index.css",
+    "./components/": "./components/"
+  },
+  "dependencies": {
+    "@iconify/vue": "^5.0.0",
+    "reka-ui": "^2.0.0",
+    "vue": "^3.5.0"
+  }
+}

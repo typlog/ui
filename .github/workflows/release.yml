@@ -23,7 +23,11 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: npm ci
       - run: npm run build
-      - run: npm publish --provenance
+      - run: cp -r tailwind dist
+      - name: publish
+        run: |
+          cd dist
+          npm publish --provenance
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
       - run: npx changelogithub --no-group

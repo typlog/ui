@@ -2,6 +2,7 @@
   "name": "@typlog/ui",
   "version": "0.11.7",
   "license": "MIT",
+  "private": true,
   "type": "module",
   "description": "Themed components for Reka UI.",
   "author": "Hsiaoming Yang <me@lepture.com>",
@@ -9,43 +10,16 @@
     "url": "https://github.com/typlog/ui"
   },
   "sideEffects": false,
-  "module": "./dist/components.js",
-  "types": "./dist/components.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/components.d.ts",
-      "import": "./dist/components.js"
-    },
-    "./components": {
-      "types": "./dist/components.d.ts",
-      "import": "./dist/components.js"
-    },
-    "./addons": {
-      "types": "./dist/addons.d.ts",
-      "import": "./dist/addons.js"
-    },
-    "./base.css": "./dist/base.css",
-    "./components.css": "./dist/components.css",
-    "./addons.css": "./dist/addons.css",
-    "./tailwind.css": "./tailwind/index.css",
-    "./components/": "./dist/components/"
-  },
+  "workspaces": [
+    "src",
+    "docs"
+  ],
   "scripts": {
-    "start": "vite",
+    "start": "npm -w docs start --",
     "build": "npm run build:vue && npm run build:css",
     "build:vue": "vite build && node scripts/post-build.mjs",
     "build:css": "node scripts/build-css.mjs",
     "lint": "eslint src"
-  },
-  "files": [
-    "./LICENSE",
-    "./dist",
-    "./tailwind"
-  ],
-  "dependencies": {
-    "@iconify/vue": "^5.0.0",
-    "reka-ui": "^2.0.0",
-    "vue": "^3.5.0"
   },
   "devDependencies": {
     "@radix-ui/colors": "^3.0.0",
