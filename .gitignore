@@ -30,4 +30,4 @@ coverage
 *.tsbuildinfo
 
 # vitepress
-docs/.vitepress/cache
+.vitepress/cache

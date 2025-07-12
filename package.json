@@ -10,12 +10,9 @@
     "url": "https://github.com/typlog/ui"
   },
   "sideEffects": false,
-  "workspaces": [
-    "src",
-    "docs"
-  ],
+  "workspaces": [ "src" ],
   "scripts": {
-    "start": "npm -w docs start --",
+    "start": "vitepress dev",
     "build": "npm run build:vue && npm run build:css",
     "build:vue": "vite build && node scripts/post-build.mjs",
     "build:css": "node scripts/build-css.mjs",
@@ -30,11 +27,14 @@
     "autoprefixer": "^10.4.15",
     "eslint": "^9.14.0",
     "eslint-plugin-vue": "^10.0.0",
+    "markdown-it": "^14.1.0",
     "postcss": "^8.4.30",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.7.0",
     "vite": "^7.0.0",
     "vite-plugin-dts": "^4.2.1",
+    "vitepress": "^1.6.3",
+    "vue-component-meta": "^2.2.12",
     "vue-tsc": "^3.0.0"
   }
 }

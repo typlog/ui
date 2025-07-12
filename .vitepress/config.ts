@@ -7,7 +7,7 @@ import { markdownExampleTagBlock } from './plugins/example'
 export default defineConfig({
   title: "Typlog UI",
   description: "Themed components for Reka UI.",
-  srcDir: 'content',
+  srcDir: 'docs/content',
   cleanUrls: true,
   vite: {
     plugins: [
@@ -15,7 +15,8 @@ export default defineConfig({
     ],
     resolve: {
       alias: {
-        '#components': resolve(__dirname, '../../src/components'),
+        '~': resolve(__dirname, '..'),
+        '#components': resolve(__dirname, '../src/components'),
       },
     },
   },
