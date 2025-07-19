@@ -1,14 +1,23 @@
+<script lang="ts">
+interface ExampleProps {
+  name: string
+  variant?: 'full' | 'some' | 'hide'
+}
+</script>
+
 <script setup lang="ts">
 import { ref } from 'vue'
 import { ScrollArea } from '#components'
 
-defineProps<{ name: string }>()
+withDefaults(defineProps<ExampleProps>(), {
+  variant: 'some'
+})
 
 const expanded = ref(false)
 </script>
 
 <template>
-  <div class="vp-Example">
+  <div class="vp-Example" :class="`r-variant-${variant}`">
     <div class="vp-ExampleComponent">
       <ScrollArea scrollbars="horizontal">
         <slot></slot>
@@ -19,7 +28,12 @@ const expanded = ref(false)
         <slot name="source"></slot>
       </ScrollArea>
     </div>
-    <button class="vp-ExampleAction" @click.prevent="expanded = !expanded">
+    <button
+      v-if="variant !== 'full'"
+      class="vp-ExampleAction"
+      :data-expanded="expanded"
+      @click.prevent="expanded = !expanded"
+    >
       <span v-if="expanded">Hide code</span>
       <span v-else>Show code</span>
     </button>
@@ -57,7 +71,15 @@ const expanded = ref(false)
   flex-direction: column;
   outline: 0;
 }
-.vp-ExampleSource[data-expanded="false"]:before {
+.vp-ExampleAction {
+  width: 100%;
+  font-size: 13px;
+  border-top: 1px solid var(--gray-a5);
+  background: var(--gray-2);
+  color: var(--gray-11);
+  padding: var(--space-1);
+}
+.vp-Example:where(.r-variant-some) :where(.vp-ExampleSource[data-expanded="false"]:before) {
   position: absolute;
   content: "";
   pointer-events: none;
@@ -68,9 +90,16 @@ const expanded = ref(false)
   right: 0;
   z-index: 10;
 }
-.vp-ExampleSource[data-expanded="false"] .ui-ScrollAreaViewport {
+.vp-Example:where(.r-variant-some) :where(.vp-ExampleSource[data-expanded="false"] .ui-ScrollAreaViewport) {
   max-height: calc(8.75lh + .5rem);
   overflow: hidden;
+}
+.vp-Example:where(.r-variant-hide) :where(.vp-ExampleSource[data-expanded="false"] .ui-ScrollAreaViewport) {
+  max-height: 0;
+  overflow: hidden;
+}
+.vp-Example:where(.r-variant-hide) :where(.vp-ExampleAction[data-expanded="false"]) {
+  border-top: 0;
 }
 .vp-Example .vp-ExampleSource div.language-vue {
   margin: 0;
@@ -93,13 +122,5 @@ const expanded = ref(false)
 }
 .vp-ExampleSource button.copy:before {
   height: 28px !important;
-}
-.vp-ExampleAction {
-  width: 100%;
-  font-size: 13px;
-  border-top: 1px solid var(--gray-a5);
-  background: var(--gray-2);
-  color: var(--gray-11);
-  padding: var(--space-1);
 }
 </style>

@@ -4,6 +4,7 @@ import type { ColorType } from '../types'
 export interface TabsListProps {
   size?: '1' | '2'
   color?: ColorType
+  variant?: 'outline' | 'surface' | 'soft'
   highContrast?: boolean
 }
 </script>
@@ -14,11 +15,11 @@ import { TabsList, TabsIndicator } from 'reka-ui'
 import { extractClass } from '../util'
 
 const props = withDefaults(defineProps<TabsListProps>(), {
-  variant: 'line',
+  variant: 'outline',
   size: '2',
 })
 const resetClass = computed(() => {
-  return extractClass(props, ['size', 'highContrast'])
+  return extractClass(props, ['variant', 'size', 'highContrast'])
 })
 </script>
 

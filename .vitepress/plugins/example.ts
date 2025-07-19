@@ -2,6 +2,9 @@ import type { MarkdownEnv, MarkdownRenderer } from 'vitepress'
 import fs from 'node:fs'
 import { resolve, relative, dirname } from 'node:path'
 
+const ALLOWED_EXAMPLE_PROPS = ['name', 'variant']
+
+
 export function markdownExampleTagBlock(md: MarkdownRenderer) {
   md.core.ruler.after('inline', 'example', (state) => {
     const insertComponentImport = (importString: string) => {
@@ -31,10 +34,15 @@ export function markdownExampleTagBlock(md: MarkdownRenderer) {
       const matches = bindingValue.matchAll(propPattern)
 
       // Iterate through the matches and populate the props object
+      const exampleProps = []
       for (const match of matches) {
         const [, propName, propValue] = match
         props[propName] = propValue
+        if (ALLOWED_EXAMPLE_PROPS.indexOf(propName) !== -1) {
+          exampleProps.push(`${propName}="${propValue}"`)
+        }
       }
+
       const componentName = formatComponentName(props.name)
       const srcPath = resolve(__dirname, '../../docs/examples', props.name)
       const { path: mdPath } = state.env as MarkdownEnv
@@ -42,7 +50,8 @@ export function markdownExampleTagBlock(md: MarkdownRenderer) {
       insertComponentImport(`import ${componentName} from "${importPath}"`)
 
       const index = state.tokens.findIndex(i => i.content === content)
-      state.tokens[index].content = `<Example name="${props.name}">\n<${componentName} />\n<template #source>`
+
+      state.tokens[index].content = `<Example ${exampleProps.join(' ')}>\n<${componentName} />\n<template #source>`
 
       // insert source code
       const source = fs.readFileSync(srcPath, { encoding: 'utf-8' })

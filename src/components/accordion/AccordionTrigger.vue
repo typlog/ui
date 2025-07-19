@@ -56,8 +56,12 @@ const [forwarded, resetClass] = extractForwardProps(props, ['size'])
   padding-top: var(--accordion-padding);
   padding-bottom: var(--accordion-padding);
   font-weight: var(--font-weight-medium);
+  gap: var(--space-4);
 }
 .ui-AccordionTrigger:hover {
   text-decoration: underline;
+}
+.ui-AccordionTriggerText {
+  flex-grow: 1;
 }
 </style>
