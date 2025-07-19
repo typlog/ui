@@ -25,9 +25,12 @@ parseComponents(resolve(__dirname, '../src/addons/index.ts'))
 function parseComponents (filePath: string) {
   const names = tsconfigChecker.getExportNames(filePath)
   names.forEach(name => {
-    const meta = parseMeta(tsconfigChecker.getComponentMeta(filePath, name))
-    const outfile = resolve(__dirname, `../.vitepress/meta/${name}.json`)
-    writeFileSync(outfile, JSON.stringify(meta, null, 2))
+    // component name starts with uppercase character
+    if (/^[A-Z]/.test(name)) {
+      const meta = parseMeta(tsconfigChecker.getComponentMeta(filePath, name))
+      const outfile = resolve(__dirname, `../.vitepress/meta/${name}.json`)
+      writeFileSync(outfile, JSON.stringify(meta, null, 2))
+    }
   })
 }
 

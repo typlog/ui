@@ -17,6 +17,12 @@
       "description": "",
       "type": "\"1\" | \"2\"",
       "required": false
+    },
+    {
+      "name": "variant",
+      "description": "",
+      "type": "\"soft\" | \"surface\" | \"outline\"",
+      "required": false
     }
   ],
   "events": [],

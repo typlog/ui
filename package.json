@@ -16,6 +16,7 @@
     "build": "npm run build:vue && npm run build:css",
     "build:vue": "vite build && node scripts/post-build.mjs",
     "build:css": "node scripts/build-css.mjs",
+    "build:meta": "npx tsx scripts/generate-component-meta.ts",
     "lint": "eslint src"
   },
   "devDependencies": {
