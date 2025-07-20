@@ -10,17 +10,21 @@
     "url": "https://github.com/typlog/ui"
   },
   "sideEffects": false,
-  "workspaces": [ "src" ],
+  "workspaces": [
+    "src"
+  ],
   "scripts": {
     "start": "vitepress dev",
     "build": "npm run build:vue && npm run build:css",
     "build:vue": "vite build && node scripts/post-build.mjs",
     "build:css": "node scripts/build-css.mjs",
     "build:meta": "npx tsx scripts/generate-component-meta.ts",
+    "build:docs": "vitepress build",
     "lint": "eslint ."
   },
   "devDependencies": {
     "@radix-ui/colors": "^3.0.0",
+    "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.0.6",
     "@types/node": "^24.0.0",
     "@vitejs/plugin-vue": "^6.0.0",

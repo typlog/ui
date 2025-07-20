@@ -44,7 +44,7 @@
       "description": "<p>The visual variant to apply.</p>\n",
       "type": "\"solid\" | \"soft\" | \"surface\" | \"outline\"",
       "required": false,
-      "default": "\"solid\""
+      "default": "\"soft\""
     }
   ],
   "events": [],

@@ -116,12 +116,4 @@ const expanded = ref(false)
 .vp-ExampleSource span.lang {
   display: none;
 }
-.vp-ExampleSource button.copy {
-  width: 28px !important;
-  height: 28px !important;
-  background-size: 14px !important;
-}
-.vp-ExampleSource button.copy:before {
-  height: 28px !important;
-}
 </style>

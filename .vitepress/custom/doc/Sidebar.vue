@@ -9,7 +9,7 @@ import {
   CollapsibleContent,
   ChevronIcon,
 } from '#components'
-import DocSidebarItem from './DocSidebarItem.vue'
+import DocSidebarItem from './SidebarItem.vue'
 
 defineProps<{sidebar: DefaultTheme.SidebarItem[]}>()
 </script>

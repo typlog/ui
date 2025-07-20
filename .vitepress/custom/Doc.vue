@@ -11,13 +11,15 @@ const STATUS_COLOR_MAP: Record<string, ColorType> = {
 import { useData, Content } from 'vitepress'
 import { computed } from 'vue'
 import { Icon, Badge } from '#components'
-import DocSidebar from './DocSidebar.vue'
+import DocSidebar from './doc/Sidebar.vue'
+import DocOutline from './doc/Outline.vue'
 
 defineProps<{sidebar: DefaultTheme.SidebarItem[]}>()
 
 const { page, frontmatter } = useData()
 
 const statusColor = computed(() => STATUS_COLOR_MAP[frontmatter.value.status])
+console.log(page.value)
 </script>
 
 <template>
@@ -42,16 +44,20 @@ const statusColor = computed(() => STATUS_COLOR_MAP[frontmatter.value.status])
             >
               {{ frontmatter.status }}
             </Badge>
-            <a class="flex items-center gap-1 text-indigo-10 hover:underline" href="">
+            <a
+              v-if="frontmatter.source"
+              class="flex items-center gap-1 text-indigo-10 hover:underline"
+              :href="frontmatter.source"
+            >
               <Icon class="text-gray-12" icon="simple-icons:github" />
               <span class="text-sm">View source</span>
             </a>
           </div>
-          <Content class="e-content" />
+          <Content class="e-content prose" />
         </article>
         <div class="hidden xl:flex xl:flex-col self-start sticky h-[calc(100vh-9.5rem)] top-0">
           <div class="z-10 hidden xl:flex pl-10 box-border w-[19rem] max-h-full">
-            table of contents
+            <DocOutline />
           </div>
         </div>
       </div>

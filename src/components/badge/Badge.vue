@@ -5,7 +5,7 @@ import type { ColorType, RadiusType } from '../types'
 export interface BadgeProps {
   /**
    * The visual variant to apply.
-   * @default "solid"
+   * @default "soft"
    */
   variant?: 'solid' | 'soft' | 'surface' | 'outline'
   /** Overrides the accent color inherited from the theme. */
@@ -83,6 +83,10 @@ const resetClass = computed(() => {
   border-radius: max(var(--radius-1), var(--radius-full));
 }
 
+.ui-Badge:where(.r-size-1):where([data-radius="full"]) {
+  padding: calc(var(--space-1) * 0.5) var(--space-2);
+}
+
 .ui-Badge:where(.r-size-2) {
   font-size: var(--font-size-1);
   line-height: var(--line-height-1);
@@ -90,6 +94,10 @@ const resetClass = computed(() => {
   padding: var(--space-1) var(--space-2);
   gap: calc(var(--space-1) * 1.5);
   border-radius: max(var(--radius-2), var(--radius-full));
+}
+
+.ui-Badge:where(.r-size-2):where([data-radius="full"]) {
+  padding: var(--space-1) calc(var(--space-2) * 1.25);
 }
 
 .ui-Badge:where(.r-size-3) {
@@ -100,6 +108,11 @@ const resetClass = computed(() => {
   gap: var(--space-2);
   border-radius: max(var(--radius-2), var(--radius-full));
 }
+
+.ui-Badge:where(.r-size-3):where([data-radius="full"]) {
+  padding: var(--space-1) calc(var(--space-2) * 1.5);
+}
+
 .ui-Badge:where(.r-variant-solid) {
   background-color: var(--accent-9);
   color: var(--accent-contrast);

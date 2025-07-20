@@ -8,7 +8,7 @@
 
 /** adding tailwind sources */
 @source "../components/";
-@source "../layouts/";
+@source "../custom/";
 @source "../../docs/examples/";
 
 

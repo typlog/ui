@@ -1,8 +1,10 @@
 :root {
+  --vp-code-block-bg: var(--gray-2);
+  --vp-code-block-color: var(--gray-12);
   --vp-code-copy-code-border-color: var(--gray-3);
-  --vp-code-copy-code-bg: var(--gray-a2);
+  --vp-code-copy-code-bg: var(--gray-2);
   --vp-code-copy-code-hover-border-color: var(--gray-3);
-  --vp-code-copy-code-hover-bg: var(--color-background);
+  --vp-code-copy-code-hover-bg: var(--gray-1);
   --vp-code-copy-code-active-text: var(--gray-10);
   --vp-code-copy-copied-text-content: 'Copied';
   /* clipboard */
