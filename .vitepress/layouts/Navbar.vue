@@ -15,23 +15,23 @@ defineProps<{items: NavbarItem[]}>()
 </script>
 
 <template>
-  <div id="navbar" class="z-30 fixed md:sticky top-0 w-full">
+  <div id="navbar" class="z-30 fixed lg:sticky top-0 w-full">
     <div id="navbar-backdrop" class="absolute w-full h-full backdrop-blur border-b border-gray-a3"></div>
     <div class="mx-auto max-w-content relative">
       <div class="relative">
-        <div class="flex items-center md:px-12 h-16 min-w-0 mx-4 md:mx-0">
+        <div class="flex items-center lg:px-12 h-16 min-w-0 mx-4 lg:mx-0">
           <div class="h-full relative flex-1 flex items-center gap-x-4 min-w-0 border-b border-gray-a3">
             <div class="flex-1 flex items-center gap-x-4">
               <a href="/">Typlog UI</a>
             </div>
           </div>
         </div>
-        <div class="flex items-center h-14 py-4 px-5 md:hidden">
+        <div class="flex items-center h-14 py-4 px-5 lg:hidden">
           <div class="ml-4 flex text-sm leading-6 whitespace-nowrap min-w-0 space-x-3">
           </div>
         </div>
       </div>
-      <div class="hidden md:flex px-12 h-12">
+      <div class="hidden lg:flex px-12 h-12">
         <div class="nav-tabs h-full flex text-sm space-x-6">
           <a
             v-for="item in items"

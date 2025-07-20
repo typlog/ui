@@ -11,6 +11,7 @@ export default defineConfig({
   cleanUrls: true,
   vite: {
     plugins: [
+      // @ts-ignore
       tailwindcss(),
     ],
     resolve: {
@@ -75,6 +76,13 @@ export default defineConfig({
               { text: 'Popover', link: '/components/popover' },
             ],
           },
+        ],
+      },
+      {
+        text: 'Addons',
+        items: [
+          { text: 'Turnstile', link: '/addons/turnstile' },
+          { text: 'Iconify', link: '/addons/iconify' },
         ],
       },
     ],

@@ -2,6 +2,7 @@
 const ICON_MAP: Record<string, string> = {
   'Overview': 'lucide:rocket',
   'Components': 'lucide:component',
+  'Addons': 'lucide:blocks',
 }
 </script>
 

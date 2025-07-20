@@ -5,3 +5,7 @@ status: stable
 ---
 
 <Example name="badge/Overview.vue" variant="hide" />
+
+## API Reference
+
+<PropsTable name="Badge" />

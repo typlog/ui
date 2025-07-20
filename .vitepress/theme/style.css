@@ -4,6 +4,8 @@
 @import "./css/vars.css";
 @import "./css/code.css";
 
+@plugin "@tailwindcss/typography";
+
 /** adding tailwind sources */
 @source "../components/";
 @source "../layouts/";

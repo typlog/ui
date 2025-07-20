@@ -21,36 +21,40 @@ const statusColor = computed(() => STATUS_COLOR_MAP[frontmatter.value.status])
 </script>
 
 <template>
-  <div class="max-w-content px-4 mx-auto md:px-8">
-    <div id="sidebar" class="z-20 hidden md:block fixed bottom-0 top-30 md:top-28 right-auto w-[18rem]">
-      <div id="sidebar-content" class="absolute inset-0 z-10 stable-scrollbar-gutter overflow-auto pr-8 pb-10">
-        <div class="relative md:text-sm md:leading-6">
-          <div class="sticky top-0 h-8 bg-gradient-to-b from-background-light dark:from-background-dark"></div>
+  <main class="max-w-content flex mx-auto px-4 lg:px-8 lg:gap-8">
+    <div id="sidebar" class="z-20 hidden shrink-0 lg:block w-[18rem]">
+      <div class="w-full sticky top-28">
+        <div class="pt-8 text-sm leading-6">
           <DocSidebar :sidebar="sidebar" />
         </div>
       </div>
     </div>
-    <div id="content-container">
-      <div class="flex flex-row gap-12 box-border w-full pt-40 md:pt-10">
-        <div class="relative grow box-border flex-col w-full mx-auto px-1 md:pl-[23.7rem] md:-ml-12 lg:w-[calc(100%-28rem)]">
-          <article class="h-entry">
-            <h1 class="p-name text-4xl font-semibold">{{ page.title }}</h1>
-            <div class="mt-2 text-lg text-gray-11">{{ page.description }}</div>
-            <div class="flex gap-4 items-center mt-5 mb-12">
-              <Badge class="capitalize" :color="statusColor">{{ frontmatter.status }}</Badge>
-              <a class="flex items-center gap-1 text-indigo-10 hover:underline" href="">
-                <Icon class="text-gray-12" icon="simple-icons:github" />
-                <span class="text-sm">View source</span>
-              </a>
-            </div>
-            <Content class="e-content" />
-          </article>
-        </div>
-        <div class="hidden lg:flex self-start sticky lg:flex-col h-[calc(100vh-9.5rem)] top-[9.5rem]">
-          <div class="z-10 hidden lg:flex pl-10 box-border w-[19rem] max-h-full">
+    <div id="content-container" class="grow overflow-hidden lg:pl-10">
+      <div class="flex gap-12 box-border pt-8">
+        <article class="h-entry relative grow min-w-0 shrink">
+          <h1 class="p-name text-4xl font-semibold">{{ page.title }}</h1>
+          <div class="mt-2 text-lg text-gray-11">{{ page.description }}</div>
+          <div class="flex gap-4 items-center mt-5 mb-12">
+            <Badge
+              v-if="frontmatter.status"
+              class="capitalize"
+              :color="statusColor"
+            >
+              {{ frontmatter.status }}
+            </Badge>
+            <a class="flex items-center gap-1 text-indigo-10 hover:underline" href="">
+              <Icon class="text-gray-12" icon="simple-icons:github" />
+              <span class="text-sm">View source</span>
+            </a>
+          </div>
+          <Content class="e-content" />
+        </article>
+        <div class="hidden xl:flex xl:flex-col self-start sticky h-[calc(100vh-9.5rem)] top-0">
+          <div class="z-10 hidden xl:flex pl-10 box-border w-[19rem] max-h-full">
+            table of contents
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </main>
 </template>

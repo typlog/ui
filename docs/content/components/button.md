@@ -4,7 +4,7 @@ description: Trigger an action or event, such as submitting a form or displaying
 status: stable
 ---
 
-<Example name="button/Overview.vue" />
+<Example name="button/Overview.vue" variant="hide" />
 
 ## API Reference
 
