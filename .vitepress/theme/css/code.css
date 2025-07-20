@@ -1,0 +1,79 @@
+.dark .shiki span {
+  color: var(--shiki-dark, inherit);
+}
+
+html:not(.dark) .shiki span {
+  color: var(--shiki-light, inherit);
+}
+
+.vp-code code {
+  display: block;
+  padding-left: var(--space-4);
+  padding-right: var(--space-4);
+}
+
+div[class*="language-"] {
+  display: block;
+  position: relative;
+}
+
+div[class*="language-"] button.copy {
+  direction: ltr;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 3;
+  border: 1px solid var(--vp-code-copy-code-border-color);
+  border-radius: 4px;
+  width: 40px;
+  height: 40px;
+  background-color: var(--vp-code-copy-code-bg);
+  opacity: 0;
+  cursor: pointer;
+  background-image: var(--vp-icon-copy);
+  background-position: 50%;
+  background-size: 20px;
+  background-repeat: no-repeat;
+  transition: border-color 0.25s, background-color 0.25s, opacity 0.25s;
+}
+
+div[class*="language-"]:hover > button.copy,
+div[class*="language-"] > button.copy:focus {
+  opacity: 1;
+}
+
+div[class*="language-"] > button.copy:hover,
+div[class*="language-"] > button.copy.copied {
+  border-color: var(--vp-code-copy-code-hover-border-color);
+  background-color: var(--vp-code-copy-code-hover-bg);
+}
+
+div[class*="language-"] > button.copy.copied,
+div[class*="language-"] > button.copy:hover.copied {
+  border-radius: 0 4px 4px 0;
+  background-color: var(--vp-code-copy-code-hover-bg);
+  background-image: var(--vp-icon-copied);
+}
+
+div[class*="language-"] > button.copy.copied::before,
+div[class*="language-"] > button.copy:hover.copied::before {
+  position: relative;
+  top: -1px;
+  transform: translateX(calc(-100% - 1px));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--vp-code-copy-code-hover-border-color);
+  border-right: 0;
+  border-radius: 4px 0 0 4px;
+  padding: 0 10px;
+  width: fit-content;
+  height: 40px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--vp-code-copy-code-active-text);
+  background-color: var(--vp-code-copy-code-hover-bg);
+  white-space: nowrap;
+  content: var(--vp-code-copy-copied-text-content);
+}

@@ -6,10 +6,19 @@ export default defineConfigWithVueTs(
   vueTsConfigs.recommended,
   {
     name: 'app/files-to-ignore',
-    ignores: ['**/dist/**'],
+    ignores: [
+      '**/dist/**',
+      '.vitepress/cache/**'
+    ],
   },
   {
-    files: ['src/**/*.ts', 'src/**/*.vue'],
+    files: [
+      'src/**/*.ts',
+      'src/**/*.vue',
+      '.vitepress/**/*.ts',
+      '.vitepress/**/*.vue',
+      'docs/**/*.vue',
+    ],
     rules: {
       quotes: ['warn', 'single'],
       'comma-dangle': ['error', 'always-multiline'],
@@ -22,7 +31,7 @@ export default defineConfigWithVueTs(
     }
   },
   {
-    files: ['src/**/*.vue'],
+    files: ['src/**/*.vue', '.vitepress/**/*.vue', 'docs/**/*.vue'],
     rules: {
       'vue/no-v-html': 'off',
       'vue/no-v-text-v-html-on-component': 'off',

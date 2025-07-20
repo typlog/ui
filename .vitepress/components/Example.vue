@@ -10,7 +10,7 @@ import { ref } from 'vue'
 import { ScrollArea } from '#components'
 
 withDefaults(defineProps<ExampleProps>(), {
-  variant: 'some'
+  variant: 'some',
 })
 
 const expanded = ref(false)
@@ -108,10 +108,11 @@ const expanded = ref(false)
   padding-top: var(--space-2);
   padding-bottom: var(--space-2);
 }
-.vp-Example .vp-ExampleSource .shiki code {
-  padding-left: var(--space-4);
-  padding-right: var(--space-4);
+
+.vp-ExampleSource div[class*="language-"] {
+  position: static;
 }
+
 .vp-ExampleSource span.lang {
   display: none;
 }

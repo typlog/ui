@@ -1,8 +1,15 @@
 @import "tailwindcss";
 @import "~/tailwind/index.css";
 @import "~/src/styles/index.css";
-@import "./reset.css";
+@import "./css/vars.css";
+@import "./css/code.css";
 
 /** adding tailwind sources */
 @source "../components/";
+@source "../layouts/";
 @source "../../docs/examples/";
+
+
+@theme {
+  --container-content: 92rem;
+}

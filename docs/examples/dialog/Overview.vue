@@ -14,7 +14,7 @@ import {
 <template>
   <DialogRoot>
     <Button :as="DialogTrigger">Edit profile</Button>
-    <DialogContent maxWidth="450px">
+    <DialogContent max-width="450px">
       <DialogTitle>Edit profile</DialogTitle>
       <DialogDescription>Make changes to your profile.</DialogDescription>
       <div class="flex flex-col gap-3 mt-4">
