@@ -67,7 +67,7 @@ export function markdownExampleTagBlock(md: MarkdownRenderer) {
 }
 
 function formatComponentName (name: string) {
-  const parts = name.split('/').map(s => {
+  const parts = name.split(/\/|-/g).map(s => {
     return s[0].toUpperCase() + s.slice(1)
   })
   return 'Example' + parts.join('').replace('.vue', '')

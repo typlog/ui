@@ -40,6 +40,9 @@ const props = defineProps<PropsTableProps>()
 const items = computed(() => {
   return modules[props.name].props
 })
+const splitEnum = (value: string) => {
+  return value.split(/\s*\|\s*/)
+}
 </script>
 
 <template>
@@ -72,8 +75,15 @@ const items = computed(() => {
           </td>
           <td>
             <div class="flex flex-col">
-              <div v-if="item.type.length < 48" class="h-6">
-                <Badge variant="outline" color="gray">{{ item.type }}</Badge>
+              <div v-if="item.type.length < 48" class="h-6 flex gap-2">
+                <Badge
+                  v-for="type in splitEnum(item.type)"
+                  :key="type"
+                  variant="outline"
+                  color="gray"
+                >
+                  {{ type }}
+                </Badge>
               </div>
               <div v-else class="flex items-center gap-1">
                 <span class="text-sm font-medium">Enum</span>
@@ -83,9 +93,9 @@ const items = computed(() => {
                       <Icon icon="lucide:circle-question-mark" />
                     </IconButton>
                   </PopoverTrigger>
-                  <PopoverPopup :side-offset="4">
-                    <div class="text-sm max-w-96">
-                      <code>{{ item.type }}</code>
+                  <PopoverPopup>
+                    <div class="text-sm max-w-96 p-4 flex flex-wrap gap-2">
+                      <code v-for="type in splitEnum(item.type)" :key="type">{{ type }}</code>
                     </div>
                   </PopoverPopup>
                 </PopoverRoot>

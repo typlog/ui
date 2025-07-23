@@ -55,9 +55,10 @@ export default defineConfig({
           {
             text: 'General',
             items: [
+              { text: 'Avatar', link: '/components/avatar' },
               { text: 'Badge', link: '/components/badge' },
               { text: 'Button', link: '/components/button' },
-              { text: 'Avatar', link: '/components/avatar' },
+              { text: 'Icon Button', link: '/components/icon-button' },
             ],
           },
           {
