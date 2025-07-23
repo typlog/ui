@@ -17,3 +17,19 @@ radix: https://www.radix-ui.com/themes/docs/components/text-field
 ### Size
 
 <Example name="text-field/Size.vue" />
+
+### Variant
+
+<Example name="text-field/Variant.vue" />
+
+### Color
+
+<Example name="text-field/Color.vue" />
+
+### Radius
+
+<Example name="text-field/Radius.vue" />
+
+### Type
+
+<Example name="text-field/Type.vue" />
