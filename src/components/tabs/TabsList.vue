@@ -10,17 +10,14 @@ export interface TabsListProps {
 </script>
 
 <script setup lang="ts">
-import { computed } from 'vue'
 import { TabsList, TabsIndicator } from 'reka-ui'
-import { extractClass } from '../util'
+import { buildPropsClass } from '../util'
 
 const props = withDefaults(defineProps<TabsListProps>(), {
   variant: 'outline',
   size: '2',
 })
-const resetClass = computed(() => {
-  return extractClass(props, ['variant', 'size', 'highContrast'])
-})
+const resetClass = buildPropsClass(props, ['variant', 'size', 'highContrast'])
 </script>
 
 <template>

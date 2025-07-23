@@ -32,9 +32,8 @@ export interface BadgeProps {
 </script>
 
 <script setup lang="ts">
-import { computed } from 'vue'
 import { Primitive } from 'reka-ui'
-import { extractClass } from '../util'
+import { buildPropsClass } from '../util'
 
 const props = withDefaults(defineProps<BadgeProps>(), {
   as: 'span',
@@ -44,9 +43,7 @@ const props = withDefaults(defineProps<BadgeProps>(), {
   highContrast: undefined,
 })
 
-const resetClass = computed(() => {
-  return extractClass(props, ['size', 'variant', 'highContrast'])
-})
+const resetClass = buildPropsClass(props, ['size', 'variant', 'highContrast'])
 </script>
 
 <template>

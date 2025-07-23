@@ -11,7 +11,7 @@ export interface AccordionRootProps extends _AccordionRootProps {
 
 <script setup lang="ts">
 import { AccordionRoot } from 'reka-ui'
-import { extractForwardPropsEmits } from '../util'
+import { useForwardPropsEmitsWithout, buildPropsClass } from '../util'
 
 const props = withDefaults(defineProps<AccordionRootProps>(), {
   size: '1',
@@ -19,7 +19,8 @@ const props = withDefaults(defineProps<AccordionRootProps>(), {
 
 const emits = defineEmits<AccordionRootEmits>()
 
-const [forwarded, resetClass] = extractForwardPropsEmits(props, emits, ['size'])
+const forwarded = useForwardPropsEmitsWithout(props, emits, ['size'])
+const resetClass = buildPropsClass(props, ['size'])
 </script>
 
 <template>

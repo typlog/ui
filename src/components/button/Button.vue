@@ -32,9 +32,8 @@ export interface ButtonProps {
 </script>
 
 <script setup lang="ts">
-import { computed } from 'vue'
 import { Primitive } from 'reka-ui'
-import { extractClass } from '../util'
+import { buildPropsClass } from '../util'
 
 const props = withDefaults(defineProps<ButtonProps>(), {
   as: 'button',
@@ -43,9 +42,7 @@ const props = withDefaults(defineProps<ButtonProps>(), {
   highContrast: false,
 })
 
-const resetClass = computed(() => {
-  return extractClass(props, ['size', 'variant', 'highContrast'])
-})
+const resetClass = buildPropsClass(props, ['size', 'variant', 'highContrast'])
 </script>
 
 <template>

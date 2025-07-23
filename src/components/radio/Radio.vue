@@ -20,8 +20,7 @@ export interface RadioProps {
 </script>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import { extractClass } from '../util'
+import { buildPropsClass } from '../util'
 
 const props = withDefaults(defineProps<RadioProps>(), {
   size: '2',
@@ -41,9 +40,7 @@ const [modelValue, modifiers] = defineModel<any>({
   },
 })
 
-const resetClass = computed(() => {
-  return extractClass(props, ['size', 'variant', 'highContrast'])
-})
+const resetClass = buildPropsClass(props, ['size', 'variant', 'highContrast'])
 </script>
 
 <template>

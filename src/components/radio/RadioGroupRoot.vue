@@ -25,7 +25,7 @@ export const [injectRadioGroupRootContext, provideRadioGroupRootContext]
 <script setup lang="ts">
 import { toRefs } from 'vue'
 import { RadioGroupRoot } from 'reka-ui'
-import { useForwardPropsEmits } from '../util'
+import { useForwardPropsEmitsWithout } from '../util'
 
 const emits = defineEmits<RadioGroupRootEmits>()
 
@@ -33,7 +33,7 @@ const props = withDefaults(defineProps<RadioGroupRootProps>(), {
   size: '2',
   variant: 'surface',
 })
-const forwarded = useForwardPropsEmits(props, emits, ['color', 'size', 'variant', 'highContrast'])
+const forwarded = useForwardPropsEmitsWithout(props, emits, ['color', 'size', 'variant', 'highContrast'])
 
 const { size, variant, color, highContrast } = toRefs(props)
 

@@ -27,8 +27,7 @@ export interface ToggleGroupRootProps extends _ToggleGroupRootProps {
 
 <script setup lang="ts">
 import { ToggleGroupRoot } from 'reka-ui'
-
-import { extractForwardPropsEmits } from '../util'
+import { useForwardPropsEmitsWithout, buildPropsClass } from '../util'
 
 const emits = defineEmits<ToggleGroupRootEmits>()
 
@@ -36,9 +35,9 @@ const props = withDefaults(defineProps<ToggleGroupRootProps>(), {
   size: '2',
   variant: 'soft',
 })
-const [forwarded, resetClass] = extractForwardPropsEmits(props, emits, [
-  'color', 'size', 'variant', 'highContrast', 'radius',
-])
+
+const forwarded = useForwardPropsEmitsWithout(props, emits, ['color', 'size', 'variant', 'highContrast', 'radius'])
+const resetClass = buildPropsClass(props, ['size', 'variant', 'highContrast'])
 </script>
 
 <template>

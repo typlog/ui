@@ -13,7 +13,7 @@ import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
 import Button from '../button/Button.vue'
 import IconButton from '../button/IconButton.vue'
-import { extractClass } from '../util'
+import { buildPropsClass } from '../util'
 
 const props = withDefaults(defineProps<PaginationProps>(), {
   perpage: 10,
@@ -24,9 +24,7 @@ const props = withDefaults(defineProps<PaginationProps>(), {
 
 const page = defineModel<number>('page', { required: true })
 
-const resetClass = computed(() => {
-  return extractClass(props, ['size', 'variant'])
-})
+const resetClass = buildPropsClass(props, ['size', 'variant'])
 
 const buttonProps = computed(() => {
   return {

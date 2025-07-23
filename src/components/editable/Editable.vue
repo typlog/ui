@@ -25,18 +25,20 @@ import {
   EditableInput,
   EditablePreview,
 } from 'reka-ui'
-import { extractForwardPropsEmits } from '../util'
+import { useForwardPropsEmitsWithout, buildPropsClass } from '../util'
+
+defineOptions({
+  inheritAttrs: false,
+})
 
 const props = withDefaults(defineProps<EditableProps>(), {
   radius: 'small',
   size: '1',
 })
-const emits = defineEmits<EditableRootEmits>()
-const [forwarded, resetClass] = extractForwardPropsEmits(props, emits, ['radius', 'color', 'size'])
 
-defineOptions({
-  inheritAttrs: false,
-})
+const emits = defineEmits<EditableRootEmits>()
+const forwarded = useForwardPropsEmitsWithout(props, emits, ['radius', 'color', 'size'])
+const resetClass = buildPropsClass(props, ['radius', 'size'])
 </script>
 
 <template>

@@ -68,6 +68,7 @@ export default defineConfig({
               { text: 'Toggle', link: '/components/toggle' },
               { text: 'Toggle Group', link: '/components/toggle-group' },
               { text: 'Checkbox', link: '/components/checkbox' },
+              { text: 'Checkbox Group', link: '/components/checkbox-group' },
               { text: 'Radio', link: '/components/radio' },
               { text: 'Radio Group', link: '/components/radio-group' },
               { text: 'TextField', link: '/components/text-field' },

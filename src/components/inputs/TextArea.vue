@@ -12,8 +12,7 @@ export interface TextAreaProps {
 </script>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import { extractClass } from '../util'
+import { buildPropsClass } from '../util'
 
 defineOptions({
   inheritAttrs: false,
@@ -28,13 +27,7 @@ const modelValue = defineModel<string>({
   default: '',
 })
 
-const resetClass = computed(() => {
-  const rv = extractClass(props, ['size', 'variant', 'resize'])
-  if (props.class) {
-    rv.push(props.class)
-  }
-  return rv
-})
+const resetClass = buildPropsClass(props, ['size', 'variant', 'resize', 'class'])
 </script>
 
 <template>

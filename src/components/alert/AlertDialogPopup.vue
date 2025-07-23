@@ -16,7 +16,7 @@ import {
   AlertDialogContent,
   AlertDialogOverlay,
 } from 'reka-ui'
-import { useForwardPropsEmits } from '../util'
+import { useForwardPropsEmitsWithout } from '../util'
 
 defineOptions({
   inheritAttrs: false,
@@ -25,7 +25,7 @@ defineOptions({
 const props = defineProps<AlertDialogPopupProps>()
 const emits = defineEmits<AlertDialogContentEmits>()
 
-const forwarded = useForwardPropsEmits(props, emits, ['to', 'align', 'size'])
+const forwarded = useForwardPropsEmitsWithout(props, emits, ['to', 'align', 'size'])
 </script>
 
 <template>

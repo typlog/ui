@@ -8,13 +8,15 @@ export interface RadioTabsListProps extends RadioGroupRootProps {
 
 <script setup lang="ts">
 import { RadioGroupRoot } from 'reka-ui'
-import { extractForwardPropsEmits } from '../util'
+import { useForwardPropsEmitsWithout, buildPropsClass } from '../util'
 
 const emits = defineEmits<RadioGroupRootEmits>()
 const props = withDefaults(defineProps<RadioTabsListProps>(), {
   size: '2',
 })
-const [forwarded, resetClass] = extractForwardPropsEmits(props, emits, ['size'])
+
+const forwarded = useForwardPropsEmitsWithout(props, emits, ['size'])
+const resetClass = buildPropsClass(props, ['size'])
 </script>
 
 <template>

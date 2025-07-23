@@ -13,7 +13,7 @@ export interface SwitchProps extends SwitchRootProps {
 
 <script setup lang="ts">
 import { SwitchRoot, SwitchThumb } from 'reka-ui'
-import { extractForwardPropsEmits } from '../util'
+import { useForwardPropsEmitsWithout, buildPropsClass } from '../util'
 
 const emits = defineEmits<SwitchRootEmits>()
 
@@ -21,9 +21,9 @@ const props = withDefaults(defineProps<SwitchProps>(), {
   size: '2',
   variant: 'surface',
 })
-const [forwarded, resetClass] = extractForwardPropsEmits(props, emits, [
-  'color', 'size', 'variant', 'highContrast', 'radius',
-])
+
+const forwarded = useForwardPropsEmitsWithout(props, emits, ['color', 'size', 'variant', 'highContrast', 'radius'])
+const resetClass = buildPropsClass(props, ['size', 'variant', 'highContrast'])
 </script>
 
 <template>

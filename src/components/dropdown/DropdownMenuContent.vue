@@ -12,7 +12,7 @@ import {
 import { createContext } from 'reka-ui'
 import ThemeWrapper from '../provider/ThemeWrapper.vue'
 import ScrollArea from '../scrollarea/ScrollArea.vue'
-import { useForwardPropsEmits } from '../util'
+import { useForwardPropsEmitsWithout } from '../util'
 import type { ColorType } from '../types'
 
 export interface DropdownMenuContentProps extends _DropdownMenuContentProps {
@@ -49,7 +49,7 @@ const props = withDefaults(defineProps<DropdownMenuContentProps>(), {
   collisionPadding: 10,
 })
 const emits = defineEmits<DialogContentEmits>()
-const forwarded = useForwardPropsEmits(props, emits, [
+const forwarded = useForwardPropsEmitsWithout(props, emits, [
   'to', 'size', 'variant', 'color', 'highContrast',
 ])
 

@@ -17,7 +17,7 @@ export interface DialogPopupProps extends DialogContentProps {
 </script>
 
 <script setup lang="ts">
-import { useForwardPropsEmits } from '../util'
+import { useForwardPropsEmitsWithout } from '../util'
 
 defineOptions({
   inheritAttrs: false,
@@ -27,7 +27,7 @@ const props = withDefaults(defineProps<DialogPopupProps>(), {
   size: '1',
 })
 const emits = defineEmits<DialogContentEmits>()
-const forwarded = useForwardPropsEmits(props, emits, [
+const forwarded = useForwardPropsEmitsWithout(props, emits, [
   'to', 'align', 'class', 'size',
 ])
 </script>

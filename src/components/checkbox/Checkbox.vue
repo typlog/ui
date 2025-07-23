@@ -3,6 +3,7 @@ import type { CheckboxRootEmits, CheckboxRootProps } from 'reka-ui'
 import type { ColorType } from '../types'
 
 export interface CheckboxProps extends CheckboxRootProps {
+  parent?: boolean
   color?: ColorType
   variant?: 'surface' | 'soft'
   size?: '1' | '2' | '3'
@@ -12,7 +13,7 @@ export interface CheckboxProps extends CheckboxRootProps {
 
 <script setup lang="ts">
 import { CheckboxRoot, CheckboxIndicator } from 'reka-ui'
-import { extractForwardPropsEmits } from '../util'
+import { useForwardPropsEmitsWithout, buildPropsClass } from '../util'
 
 const emits = defineEmits<CheckboxRootEmits>()
 
@@ -20,7 +21,9 @@ const props = withDefaults(defineProps<CheckboxProps>(), {
   size: '2',
   variant: 'surface',
 })
-const [forwarded, resetClass] = extractForwardPropsEmits(props, emits, ['color', 'size', 'variant', 'highContrast'])
+
+const forwarded = useForwardPropsEmitsWithout(props, emits, ['parent', 'color', 'size', 'variant', 'highContrast'])
+const resetClass = buildPropsClass(props, ['size', 'variant', 'highContrast'])
 </script>
 
 <template>

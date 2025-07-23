@@ -4,6 +4,11 @@ export {
 } from './Checkbox.vue'
 
 export {
+  default as CheckboxGroup,
+  type CheckboxGroupProps,
+} from './CheckboxGroup.vue'
+
+export {
   default as CheckboxGroupRoot,
 } from './CheckboxGroupRoot.vue'
 

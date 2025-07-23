@@ -28,7 +28,7 @@ export interface TextFieldProps {
 
 <script setup lang="ts">
 import { computed, useTemplateRef } from 'vue'
-import { extractClass } from '../util'
+import { buildPropsClass } from '../util'
 
 defineOptions({
   inheritAttrs: false,
@@ -70,13 +70,7 @@ const [modelValue, modifiers] = defineModel<any>({
   },
 })
 
-const resetClass = computed(() => {
-  const rv = extractClass(props, ['size', 'variant'])
-  if (props.class) {
-    rv.push(props.class)
-  }
-  return rv
-})
+const resetClass = buildPropsClass(props, ['size', 'variant', 'class'])
 
 const onFileChange = () => {
   modelValue.value = inputRef.value?.files

@@ -10,18 +10,15 @@ export interface CardProps extends PrimitiveProps {
 </script>
 
 <script setup lang="ts">
-import { computed } from 'vue'
 import { Primitive } from 'reka-ui'
-import { extractClass } from '../util'
+import { buildPropsClass } from '../util'
 
 const props = withDefaults(defineProps<CardProps>(), {
   as: 'div',
   variant: 'surface',
   size: '1',
 })
-const resetClass = computed(() => {
-  return extractClass(props, ['size', 'variant'])
-})
+const resetClass = buildPropsClass(props, ['size', 'variant'])
 </script>
 
 <template>

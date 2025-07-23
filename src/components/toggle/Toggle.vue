@@ -24,7 +24,7 @@ export interface ToggleProps extends _ToggleProps {
 
 <script setup lang="ts">
 import { Toggle } from 'reka-ui'
-import { extractForwardPropsEmits } from '../util'
+import { useForwardPropsEmitsWithout, buildPropsClass } from '../util'
 
 const emits = defineEmits<ToggleEmits>()
 
@@ -32,9 +32,9 @@ const props = withDefaults(defineProps<ToggleProps>(), {
   size: '2',
   variant: 'soft',
 })
-const [forwarded, resetClass] = extractForwardPropsEmits(props, emits, [
-  'color', 'size', 'variant', 'highContrast', 'radius',
-])
+
+const forwarded = useForwardPropsEmitsWithout(props, emits, ['color', 'size', 'variant', 'highContrast', 'radius'])
+const resetClass = buildPropsClass(props, ['size', 'variant', 'highContrast'])
 </script>
 
 <template>

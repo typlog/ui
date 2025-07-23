@@ -30,16 +30,14 @@ export interface SocialButtonProps extends PrimitiveProps {
 import { computed } from 'vue'
 import { Primitive } from 'reka-ui'
 import { Icon } from '@iconify/vue'
-import { extractClass } from '../util'
+import { buildPropsClass } from '../util'
 
 const props = withDefaults(defineProps<SocialButtonProps>(), {
   as: 'button',
   size: '2',
 })
 
-const resetClass = computed(() => {
-  return extractClass(props, ['size', 'brand'])
-})
+const resetClass = buildPropsClass(props, ['size', 'brand'])
 
 const brandIcon = computed(() => {
   return BRAND_ICONS[props.brand]

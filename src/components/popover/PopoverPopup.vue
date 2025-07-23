@@ -7,7 +7,7 @@ import {
   PopoverPortal,
   PopoverContent,
 } from 'reka-ui'
-import { useForwardPropsEmits } from '../util'
+import { useForwardPropsEmitsWithout } from '../util'
 import ThemeWrapper from '../provider/ThemeWrapper.vue'
 
 export interface PopoverPopupProps extends PopoverContentProps {
@@ -29,7 +29,7 @@ const props = withDefaults(defineProps<PopoverPopupProps>(), {
 })
 const emits = defineEmits<PopoverContentEmits>()
 
-const forwarded = useForwardPropsEmits(props, emits, ['to', 'size'])
+const forwarded = useForwardPropsEmitsWithout(props, emits, ['to', 'size'])
 </script>
 
 <template>

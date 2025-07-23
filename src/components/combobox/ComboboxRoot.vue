@@ -14,7 +14,7 @@ export interface ComboboxRootProps extends _ComboboxRootProps {
 }
 
 interface ComboboxRootContext {
-  size: Ref<string>
+  size: Ref<'1' | '2' | '3'>
   color: Ref<ColorType | undefined>
   highContrast: Ref<boolean>
 }
@@ -25,17 +25,18 @@ export const [injectComboboxRootContext, provideComboboxRootContext]
 
 <script setup lang="ts">
 import { ComboboxRoot } from 'reka-ui'
-import { extractForwardPropsEmits } from '../util'
+import { useForwardPropsEmitsWithout, buildPropsClass } from '../util'
 
 const props = withDefaults(defineProps<ComboboxRootProps>(), {
   multiple: false,
-  variant: 'surface',
   size: '2',
 })
 const emits = defineEmits<ComboboxRootEmits>()
 const { size, color, highContrast } = toRefs(props)
 
-const [forwarded, resetClass] = extractForwardPropsEmits(props, emits, ['size', 'color', 'highContrast'])
+const forwarded = useForwardPropsEmitsWithout(props, emits, ['size', 'color', 'highContrast'])
+const resetClass = buildPropsClass(props, ['size', 'highContrast'])
+
 provideComboboxRootContext({
   size,
   color,

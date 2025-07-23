@@ -10,8 +10,7 @@ export interface ColorFieldProps {
 </script>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import { extractClass } from '../util'
+import { buildPropsClass } from '../util'
 
 const props = withDefaults(defineProps<ColorFieldProps>(), {
   size: '2',
@@ -22,9 +21,7 @@ const modelValue = defineModel<string>({
   default: '#000000',
 })
 
-const resetClass = computed(() => {
-  return extractClass(props, ['size', 'variant'])
-})
+const resetClass = buildPropsClass(props, ['size', 'variant'])
 </script>
 
 <template>

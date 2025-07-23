@@ -22,7 +22,7 @@ export const [injectSelectRootContext, provideSelectRootContext]
 
 <script setup lang="ts">
 import { SelectRoot } from 'reka-ui'
-import { useForwardPropsEmits } from '../util'
+import { useForwardPropsEmitsWithout } from '../util'
 
 const props = withDefaults(defineProps<SelectRootProps>(), {
   size: '2',
@@ -30,7 +30,7 @@ const props = withDefaults(defineProps<SelectRootProps>(), {
 const emits = defineEmits<SelectRootEmits>()
 const { size, color, highContrast } = toRefs(props)
 
-const forwarded = useForwardPropsEmits(props, emits, ['size', 'color', 'highContrast'])
+const forwarded = useForwardPropsEmitsWithout(props, emits, ['size', 'color', 'highContrast'])
 
 provideSelectRootContext({
   size,

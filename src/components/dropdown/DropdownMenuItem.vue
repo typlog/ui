@@ -14,12 +14,12 @@ export interface DropdownMenuItemProps extends _DropdownMenuItemProps {
 <script setup lang="ts">
 import { useForwardExpose, DropdownMenuItem } from 'reka-ui'
 import { injectDropdownMenuContentContext } from './DropdownMenuContent.vue'
-import { useForwardPropsEmits } from '../util'
+import { useForwardPropsEmitsWithout } from '../util'
 
 const props = defineProps<DropdownMenuItemProps>()
 const emits = defineEmits<DropdownMenuItemEmits>()
 
-const forwarded = useForwardPropsEmits(props, emits, ['color', 'shortcut'])
+const forwarded = useForwardPropsEmitsWithout(props, emits, ['color', 'shortcut'])
 
 useForwardExpose()
 

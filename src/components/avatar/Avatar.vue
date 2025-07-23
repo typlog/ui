@@ -35,16 +35,15 @@ import {
   AvatarImage,
   AvatarFallback,
 } from 'reka-ui'
-import { extractClass } from '../util'
+import { buildPropsClass } from '../util'
 
 const props = withDefaults(defineProps<AvatarProps>(), {
   radius: 'small',
   variant: 'solid',
   size: '2',
 })
-const resetClass = computed(() => {
-  return extractClass(props, ['size', 'variant'])
-})
+const resetClass = buildPropsClass(props, ['size', 'variant'])
+
 const fallback = computed(() => {
   if (props.fallback) {
     return props.fallback

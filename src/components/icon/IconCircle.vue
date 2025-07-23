@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
 import type { ColorType } from '../types'
-import { extractClass } from '../util'
+import { buildPropsClass } from '../util'
 
 export interface IconCircleProps {
   color?: ColorType
@@ -14,9 +13,7 @@ const props = withDefaults(defineProps<IconCircleProps>(), {
   size: 1,
   variant: 'soft',
 })
-const resetClass = computed(() => {
-  return extractClass(props, ['size', 'variant'])
-})
+const resetClass = buildPropsClass(props, ['size', 'variant'])
 </script>
 
 <template>

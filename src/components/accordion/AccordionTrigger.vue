@@ -12,7 +12,7 @@ export interface AccordionTriggerProps extends PrimitiveProps {
 
 <script setup lang="ts">
 import { AccordionTrigger } from 'reka-ui'
-import { extractForwardProps } from '../util'
+import { useForwardPropsWithout, buildPropsClass } from '../util'
 import PlusMinusIcon from '../icon/PlusMinusIcon.vue'
 import ChevronIcon from '../icon/ChevronIcon.vue'
 
@@ -21,7 +21,8 @@ const props = withDefaults(defineProps<AccordionTriggerProps>(), {
   indicator: 'chevron',
 })
 
-const [forwarded, resetClass] = extractForwardProps(props, ['size'])
+const forwarded = useForwardPropsWithout(props, ['size'])
+const resetClass = buildPropsClass(props, ['size'])
 </script>
 
 <template>
