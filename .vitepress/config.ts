@@ -90,9 +90,9 @@ export default defineConfig({
       {
         text: 'Addons',
         items: [
+          { text: 'SocialButton', link: '/addons/social-button' },
           { text: 'Turnstile', link: '/addons/turnstile' },
           { text: 'Iconify', link: '/addons/iconify' },
-          { text: 'SocialButton', link: '/addons/social-button' },
         ],
       },
     ],

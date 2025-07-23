@@ -2,42 +2,68 @@
 import { ref } from 'vue'
 import { Icon, ToggleGroupRoot, ToggleGroupItem } from '#components'
 
-const selected = ref<string[]>(['left'])
+const selected = ref<string>('blog')
 </script>
 
 <template>
-  <div class="flex items-center gap-2">
+  <div class="flex items-podcast gap-2">
     <ToggleGroupRoot v-model="selected" variant="solid">
-      <ToggleGroupItem value="left">
-        <Icon icon="lucide:align-left" />
+      <ToggleGroupItem value="blog">
+        <Icon icon="lucide:file-text" />
       </ToggleGroupItem>
-      <ToggleGroupItem value="center">
-        <Icon icon="lucide:align-center" />
+      <ToggleGroupItem value="podcast">
+        <Icon icon="lucide:podcast" />
       </ToggleGroupItem>
-      <ToggleGroupItem value="right">
-        <Icon icon="lucide:align-right" />
+      <ToggleGroupItem value="photo">
+        <Icon icon="lucide:file-image" />
       </ToggleGroupItem>
     </ToggleGroupRoot>
+
+    <ToggleGroupRoot v-model="selected" variant="surface">
+      <ToggleGroupItem value="blog">
+        <Icon icon="lucide:file-text" />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="podcast">
+        <Icon icon="lucide:podcast" />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="photo">
+        <Icon icon="lucide:file-image" />
+      </ToggleGroupItem>
+    </ToggleGroupRoot>
+
     <ToggleGroupRoot v-model="selected" variant="soft">
-      <ToggleGroupItem value="left">
-        <Icon icon="lucide:align-left" />
+      <ToggleGroupItem value="blog">
+        <Icon icon="lucide:file-text" />
       </ToggleGroupItem>
-      <ToggleGroupItem value="center">
-        <Icon icon="lucide:align-center" />
+      <ToggleGroupItem value="podcast">
+        <Icon icon="lucide:podcast" />
       </ToggleGroupItem>
-      <ToggleGroupItem value="right">
-        <Icon icon="lucide:align-right" />
+      <ToggleGroupItem value="photo">
+        <Icon icon="lucide:file-image" />
       </ToggleGroupItem>
     </ToggleGroupRoot>
+
+    <ToggleGroupRoot v-model="selected" variant="outline">
+      <ToggleGroupItem value="blog">
+        <Icon icon="lucide:file-text" />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="podcast">
+        <Icon icon="lucide:podcast" />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="photo">
+        <Icon icon="lucide:file-image" />
+      </ToggleGroupItem>
+    </ToggleGroupRoot>
+
     <ToggleGroupRoot v-model="selected" variant="ghost">
-      <ToggleGroupItem value="left">
-        <Icon icon="lucide:align-left" />
+      <ToggleGroupItem value="blog">
+        <Icon icon="lucide:file-text" />
       </ToggleGroupItem>
-      <ToggleGroupItem value="center">
-        <Icon icon="lucide:align-center" />
+      <ToggleGroupItem value="podcast">
+        <Icon icon="lucide:podcast" />
       </ToggleGroupItem>
-      <ToggleGroupItem value="right">
-        <Icon icon="lucide:align-right" />
+      <ToggleGroupItem value="photo">
+        <Icon icon="lucide:file-image" />
       </ToggleGroupItem>
     </ToggleGroupRoot>
   </div>

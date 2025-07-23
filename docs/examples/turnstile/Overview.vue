@@ -6,5 +6,5 @@ const token = ref('')
 </script>
 
 <template>
-  <Turnstile sitekey="0x4AAAAAABmL8cu5eZ3JKoY-" v-model="token" />
+  <Turnstile v-model="token" sitekey="0x4AAAAAABmL8cu5eZ3JKoY-" />
 </template>

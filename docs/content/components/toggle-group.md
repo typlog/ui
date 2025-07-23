@@ -27,3 +27,7 @@ reka: https://reka-ui.com/docs/components/toggle-group
 ### Variant
 
 <Example name="toggle-group/Variant.vue" />
+
+### Color
+
+<Example name="toggle-group/Color.vue" />

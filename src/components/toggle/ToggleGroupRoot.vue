@@ -8,9 +8,9 @@ import type { ColorType, RadiusType } from '../types'
 export interface ToggleGroupRootProps extends _ToggleGroupRootProps {
   /**
    * The visual variant to apply.
-   * @default "soft"
+   * @default "solid"
    */
-  variant?: 'solid' | 'soft' | 'ghost'
+  variant?: 'solid' | 'soft' | 'surface' | 'outline' | 'ghost'
   /** Overrides the accent color inherited from the Theme. */
   color?: ColorType
   /**
@@ -33,7 +33,7 @@ const emits = defineEmits<ToggleGroupRootEmits>()
 
 const props = withDefaults(defineProps<ToggleGroupRootProps>(), {
   size: '2',
-  variant: 'soft',
+  variant: 'solid',
 })
 
 const forwarded = useForwardPropsEmitsWithout(props, emits, ['color', 'size', 'variant', 'highContrast', 'radius'])
@@ -80,7 +80,9 @@ const resetClass = buildPropsClass(props, ['size', 'variant', 'highContrast'])
   --toggle-group-height: var(--space-7);
   --toggle-group-soft-padding: 3px;
 }
-.ui-ToggleGroupRoot:where(.r-variant-solid) {
+.ui-ToggleGroupRoot:where(.r-variant-solid),
+.ui-ToggleGroupRoot:where(.r-variant-outline),
+.ui-ToggleGroupRoot:where(.r-variant-surface) {
   border-radius: var(--toggle-radius);
   background-color: var(--color-panel-solid);
   box-shadow: var(--shadow-2);
