@@ -27,7 +27,7 @@ export interface TextFieldProps {
 </script>
 
 <script setup lang="ts">
-import { computed, useTemplateRef } from 'vue'
+import { useTemplateRef } from 'vue'
 import { buildPropsClass } from '../util'
 
 defineOptions({
