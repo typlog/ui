@@ -22,6 +22,7 @@ export default defineConfig({
     },
   },
   markdown: {
+    headers: true,
     preConfig(md) {
       md.use(markdownExampleTagBlock)
     },

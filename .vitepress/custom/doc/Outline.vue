@@ -29,7 +29,7 @@ useActiveAnchor(container, marker)
   >
     <div
       ref="marker"
-      class="outline-marker absolute left-0 h-[18px] w-[2px] bg-primary transition-[top,opacity] ease-in-out duration-300 rounded-full -translate-y-1"
+      class="outline-marker absolute left-0 transition-[top,opacity] ease-in-out duration-300 rounded-full -translate-y-1"
     >
     </div>
 
@@ -51,3 +51,11 @@ useActiveAnchor(container, marker)
     </div>
   </nav>
 </template>
+
+<style>
+.outline-marker {
+  width: 2px;
+  height: 18px;
+  background-color: var(--accent-10);
+}
+</style>

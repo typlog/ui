@@ -50,33 +50,13 @@ export function getHeaders(range: DefaultTheme.Config['outline']) {
       const level = Number(el.tagName[1])
       return {
         element: el as HTMLHeadElement,
-        title: serializeHeader(el),
+        title: el.textContent!.trim(),
         link: `#${el.id}`,
         level,
       }
     })
 
   return resolveHeaders(headers, range)
-}
-
-function serializeHeader(h: Element): string {
-  let ret = ''
-  for (const node of h.childNodes) {
-    if (node.nodeType === 1) {
-      if (
-        (node as Element).classList.contains('VPBadge')
-        || (node as Element).classList.contains('header-anchor')
-        || (node as Element).classList.contains('ignore-header')
-      ) {
-        continue
-      }
-      ret += node.textContent
-    }
-    else if (node.nodeType === 3) {
-      ret += node.textContent
-    }
-  }
-  return ret.trim()
 }
 
 export function resolveHeaders(

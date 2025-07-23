@@ -15,3 +15,7 @@
 @theme {
   --container-content: 92rem;
 }
+
+html {
+  scroll-behavior: smooth;
+}

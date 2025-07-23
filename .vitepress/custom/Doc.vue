@@ -19,11 +19,10 @@ defineProps<{sidebar: DefaultTheme.SidebarItem[]}>()
 const { page, frontmatter } = useData()
 
 const statusColor = computed(() => STATUS_COLOR_MAP[frontmatter.value.status])
-console.log(page.value)
 </script>
 
 <template>
-  <main class="max-w-content flex mx-auto px-4 lg:px-8 lg:gap-8">
+  <main class="max-w-content flex mx-auto pt-28 pb-10 lg:pt-0 lg:px-8">
     <div id="sidebar" class="z-20 hidden shrink-0 lg:block w-[18rem]">
       <div class="w-full sticky top-28">
         <div class="pt-8 text-sm leading-6">
@@ -31,7 +30,7 @@ console.log(page.value)
         </div>
       </div>
     </div>
-    <div id="content-container" class="grow overflow-hidden lg:pl-10">
+    <div id="content-container" class="grow overflow-hidden px-6 lg:pl-14">
       <div class="flex gap-12 box-border pt-8">
         <article class="h-entry relative grow min-w-0 shrink">
           <h1 class="p-name text-4xl font-semibold">{{ page.title }}</h1>
@@ -53,14 +52,14 @@ console.log(page.value)
               <span class="text-sm">View source</span>
             </a>
           </div>
-          <Content class="e-content prose" />
+          <Content class="e-content prose lg:prose-lg max-w-none" />
         </article>
-        <div class="hidden xl:flex xl:flex-col self-start sticky h-[calc(100vh-9.5rem)] top-0">
-          <div class="z-10 hidden xl:flex pl-10 box-border w-[19rem] max-h-full">
-            <DocOutline />
-          </div>
-        </div>
       </div>
+    </div>
+    <div class="hidden xl:block">
+      <aside id="aside" class="pl-6 pt-8 w-64 sticky top-28 overflow-y-auto">
+        <DocOutline />
+      </aside>
     </div>
   </main>
 </template>
