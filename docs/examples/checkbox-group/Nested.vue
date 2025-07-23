@@ -6,7 +6,7 @@ const scopes = ref(['tenant:read'])
 </script>
 
 <template>
-  <div class="text-sm">
+  <div>
     <div class="flex items-center gap-2 mb-2">
       <span class="font-medium">Token Scopes</span>
       <span>{{ scopes }}</span>

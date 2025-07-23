@@ -6,8 +6,8 @@ const selected = ref<string>('1')
 </script>
 
 <template>
-  <div class="flex items-center gap-2">
-    <RadioGroupRoot v-model="selected">
+  <div class="flex">
+    <RadioGroupRoot class="flex flex-col gap-2" v-model="selected">
       <RadioGroupItem value="1">
         Default layout
       </RadioGroupItem>

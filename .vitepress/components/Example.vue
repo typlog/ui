@@ -17,7 +17,7 @@ const expanded = ref(false)
 </script>
 
 <template>
-  <div class="vp-Example not-prose" :class="`r-variant-${variant}`">
+  <div class="vp-Example not-prose text-base" :class="`r-variant-${variant}`">
     <div class="vp-ExampleComponent">
       <ScrollArea scrollbars="horizontal">
         <slot></slot>

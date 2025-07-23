@@ -30,6 +30,9 @@ function parseComponents (filePath: string) {
       const meta = parseMeta(tsconfigChecker.getComponentMeta(filePath, name))
       meta.props = meta.props.map(item => {
         const description = item.description.replace(/<p>Read our$/m, '').trim()
+        if (item.name === 'radius') {
+          item.type = '"none" | "small" | "medium" | "large" | "full"'
+        }
         return {...item, description}
       })
       const outfile = resolve(__dirname, `../.vitepress/meta/${name}.json`)

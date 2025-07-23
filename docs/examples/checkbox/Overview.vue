@@ -8,6 +8,6 @@ const checked = ref(true)
 <template>
   <label class="flex items-center gap-2">
     <Checkbox v-model="checked" />
-    <span class="text-sm">Agree to Terms and Conditions</span>
+    <span>Agree to Terms and Conditions</span>
   </label>
 </template>

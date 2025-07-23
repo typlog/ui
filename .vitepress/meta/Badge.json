@@ -28,7 +28,7 @@
     {
       "name": "radius",
       "description": "<p>Overrides the radius inherited from the theme.</p>",
-      "type": "\"medium\" | \"none\" | \"small\" | \"large\" | \"full\"",
+      "type": "\"none\" | \"small\" | \"medium\" | \"large\" | \"full\"",
       "required": false,
       "default": "\"small\""
     },
