@@ -2,9 +2,19 @@
 import type { ColorType } from '../types'
 
 export interface RadioProps {
-  color?: ColorType
-  size?: '1' | '2' | '3'
+  /**
+   * The visual variant to apply.
+   * @default "surface"
+   */
   variant?: 'surface' | 'soft'
+  /** Overrides the accent color inherited from the Theme. */
+  color?: ColorType
+  /**
+   * Control the size of the radio.
+   * @default "2"
+   */
+  size?: '1' | '2' | '3'
+  /** Uses a higher contrast color for the component. */
   highContrast?: boolean
 }
 </script>

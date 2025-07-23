@@ -28,6 +28,10 @@ function parseComponents (filePath: string) {
     // component name starts with uppercase character
     if (/^[A-Z]/.test(name)) {
       const meta = parseMeta(tsconfigChecker.getComponentMeta(filePath, name))
+      meta.props = meta.props.map(item => {
+        const description = item.description.replace(/<p>Read our$/m, '').trim()
+        return {...item, description}
+      })
       const outfile = resolve(__dirname, `../.vitepress/meta/${name}.json`)
       writeFileSync(outfile, JSON.stringify(meta, null, 2))
     }

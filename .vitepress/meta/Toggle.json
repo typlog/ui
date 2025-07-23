@@ -2,76 +2,78 @@
   "props": [
     {
       "name": "as",
-      "description": "<p>The element or component this component should render as. Can be overwritten by <code>asChild</code>.</p>\n",
+      "description": "<p>The element or component this component should render as. Can be overwritten by <code>asChild</code>.</p>",
       "type": "AsTag | Component",
       "required": false,
       "default": "\"div\""
     },
     {
       "name": "asChild",
-      "description": "<p>Change the default rendered element for the one passed as a child, merging their props and behavior.</p>\n<p>Read our <a href=\"https://www.reka-ui.com/docs/guides/composition\">Composition</a> guide for more details.</p>\n",
+      "description": "<p>Change the default rendered element for the one passed as a child, merging their props and behavior.</p>\n<p>Read our <a href=\"https://www.reka-ui.com/docs/guides/composition\">Composition</a> guide for more details.</p>",
       "type": "boolean",
       "required": false
     },
     {
       "name": "color",
-      "description": "",
+      "description": "<p>Overrides the accent color inherited from the Theme.</p>",
       "type": "\"indigo\" | \"gray\" | \"gold\" | \"bronze\" | \"brown\" | \"yellow\" | \"amber\" | \"orange\" | \"tomato\" | \"red\" | \"ruby\" | \"crimson\" | \"pink\" | \"plum\" | \"purple\" | \"violet\" | \"iris\" | \"blue\" | \"cyan\" | \"teal\" | \"jade\" | \"green\" | \"grass\" | \"lime\" | \"mint\" | \"sky\"",
       "required": false
     },
     {
       "name": "defaultValue",
-      "description": "<p>The pressed state of the toggle when it is initially rendered. Use when you do not need to control its open state.</p>\n",
+      "description": "<p>The pressed state of the toggle when it is initially rendered. Use when you do not need to control its open state.</p>",
       "type": "boolean",
       "required": false
     },
     {
       "name": "disabled",
-      "description": "<p>When <code>true</code>, prevents the user from interacting with the toggle.</p>\n",
+      "description": "<p>When <code>true</code>, prevents the user from interacting with the toggle.</p>",
       "type": "boolean",
       "required": false
     },
     {
       "name": "highContrast",
-      "description": "",
+      "description": "<p>Uses a higher contrast color for the component.</p>",
       "type": "boolean",
       "required": false
     },
     {
       "name": "modelValue",
-      "description": "<p>The controlled pressed state of the toggle. Can be bind as <code>v-model</code>.</p>\n",
+      "description": "<p>The controlled pressed state of the toggle. Can be bind as <code>v-model</code>.</p>",
       "type": "boolean | null",
       "required": false
     },
     {
       "name": "name",
-      "description": "<p>The name of the field. Submitted with its owning form as part of a name/value pair.</p>\n",
+      "description": "<p>The name of the field. Submitted with its owning form as part of a name/value pair.</p>",
       "type": "string",
       "required": false
     },
     {
       "name": "radius",
-      "description": "",
+      "description": "<p>Overrides the radius inherited from the theme.</p>",
       "type": "\"medium\" | \"none\" | \"small\" | \"large\" | \"full\"",
       "required": false
     },
     {
       "name": "required",
-      "description": "<p>When <code>true</code>, indicates that the user must set the value before the owning form can be submitted.</p>\n",
+      "description": "<p>When <code>true</code>, indicates that the user must set the value before the owning form can be submitted.</p>",
       "type": "boolean",
       "required": false
     },
     {
       "name": "size",
-      "description": "",
+      "description": "<p>Control the size of the toggle.</p>",
       "type": "\"1\" | \"2\" | \"3\"",
-      "required": false
+      "required": false,
+      "default": "\"2\""
     },
     {
       "name": "variant",
-      "description": "",
+      "description": "<p>The visual variant to apply.</p>",
       "type": "\"solid\" | \"soft\" | \"ghost\"",
-      "required": false
+      "required": false,
+      "default": "\"soft\""
     }
   ],
   "events": [

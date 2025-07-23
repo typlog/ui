@@ -35,22 +35,42 @@ const statusColor = computed(() => STATUS_COLOR_MAP[frontmatter.value.status])
         <article class="h-entry relative grow min-w-0 shrink">
           <h1 class="p-name text-4xl font-semibold">{{ page.title }}</h1>
           <div class="mt-2 text-lg text-gray-11">{{ page.description }}</div>
-          <div class="flex gap-4 items-center mt-5 mb-12">
-            <Badge
-              v-if="frontmatter.status"
-              class="capitalize"
-              :color="statusColor"
-            >
-              {{ frontmatter.status }}
-            </Badge>
-            <a
-              v-if="frontmatter.source"
-              class="flex items-center gap-1 text-indigo-10 hover:underline"
-              :href="frontmatter.source"
-            >
-              <Icon class="text-gray-12" icon="simple-icons:github" />
-              <span class="text-sm">View source</span>
-            </a>
+          <div class="flex flex-col gap-4 sm:flex-row sm:items-center mt-5 mb-12 font-medium">
+            <div v-if="frontmatter.status">
+              <Badge
+                class="capitalize"
+                :color="statusColor"
+              >
+                {{ frontmatter.status }}
+              </Badge>
+            </div>
+            <div v-if="frontmatter.source">
+              <a
+                class="flex items-center gap-1 text-gray-11 hover:text-gray-12"
+                :href="frontmatter.source"
+              >
+                <Icon class="text-gray-12 text-sm" icon="simple-icons:github" />
+                <span class="text-sm">View source</span>
+              </a>
+            </div>
+            <div v-if="frontmatter.radix">
+              <a
+                class="flex items-center gap-1 text-gray-11 hover:text-gray-12"
+                :href="frontmatter.radix"
+              >
+                <Icon class="text-gray-12 text-sm" icon="simple-icons:radixui" />
+                <span class="text-sm">Radix Themes</span>
+              </a>
+            </div>
+            <div v-if="frontmatter.reka">
+              <a
+                class="flex items-center gap-1 text-gray-11 hover:text-gray-12"
+                :href="frontmatter.reka"
+              >
+                <i class="reka-icon"></i>
+                <span class="text-sm">Reka UI</span>
+              </a>
+            </div>
           </div>
           <Content class="e-content prose lg:prose-lg max-w-none" />
         </article>
@@ -63,3 +83,16 @@ const statusColor = computed(() => STATUS_COLOR_MAP[frontmatter.value.status])
     </div>
   </main>
 </template>
+
+<style>
+.reka-icon {
+  mask: var(--reka-icon) no-repeat;
+  mask-size: 100% 100%;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  vertical-align: middle;
+  font-style: normal;
+  background-color: var(--jade-8);
+}
+</style>

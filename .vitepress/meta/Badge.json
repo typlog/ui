@@ -2,7 +2,7 @@
   "props": [
     {
       "name": "as",
-      "description": "<p>The element or component this component should render as.</p>\n",
+      "description": "<p>The element or component this component should render as.</p>",
       "type": "AsTag",
       "required": false,
       "default": "\"span\""
@@ -15,33 +15,33 @@
     },
     {
       "name": "color",
-      "description": "<p>Overrides the accent color inherited from the theme.</p>\n",
+      "description": "<p>Overrides the accent color inherited from the theme.</p>",
       "type": "\"indigo\" | \"gray\" | \"gold\" | \"bronze\" | \"brown\" | \"yellow\" | \"amber\" | \"orange\" | \"tomato\" | \"red\" | \"ruby\" | \"crimson\" | \"pink\" | \"plum\" | \"purple\" | \"violet\" | \"iris\" | \"blue\" | \"cyan\" | \"teal\" | \"jade\" | \"green\" | \"grass\" | \"lime\" | \"mint\" | \"sky\"",
       "required": false
     },
     {
       "name": "highContrast",
-      "description": "<p>Uses a higher contrast color for the component.</p>\n",
+      "description": "<p>Uses a higher contrast color for the component.</p>",
       "type": "boolean",
       "required": false
     },
     {
       "name": "radius",
-      "description": "<p>Overrides the radius inherited from the theme.</p>\n",
+      "description": "<p>Overrides the radius inherited from the theme.</p>",
       "type": "\"medium\" | \"none\" | \"small\" | \"large\" | \"full\"",
       "required": false,
       "default": "\"small\""
     },
     {
       "name": "size",
-      "description": "<p>Control the size of the badge.</p>\n",
+      "description": "<p>Control the size of the badge.</p>",
       "type": "\"1\" | \"2\" | \"3\"",
       "required": false,
       "default": "\"1\""
     },
     {
       "name": "variant",
-      "description": "<p>The visual variant to apply.</p>\n",
+      "description": "<p>The visual variant to apply.</p>",
       "type": "\"solid\" | \"soft\" | \"surface\" | \"outline\"",
       "required": false,
       "default": "\"soft\""

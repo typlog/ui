@@ -2,13 +2,13 @@
   "props": [
     {
       "name": "color",
-      "description": "",
+      "description": "<p>Overrides the accent color inherited from the Theme.</p>",
       "type": "\"indigo\" | \"gray\" | \"gold\" | \"bronze\" | \"brown\" | \"yellow\" | \"amber\" | \"orange\" | \"tomato\" | \"red\" | \"ruby\" | \"crimson\" | \"pink\" | \"plum\" | \"purple\" | \"violet\" | \"iris\" | \"blue\" | \"cyan\" | \"teal\" | \"jade\" | \"green\" | \"grass\" | \"lime\" | \"mint\" | \"sky\"",
       "required": false
     },
     {
       "name": "highContrast",
-      "description": "",
+      "description": "<p>Uses a higher contrast color for the component.</p>",
       "type": "boolean",
       "required": false
     },
@@ -20,15 +20,17 @@
     },
     {
       "name": "size",
-      "description": "",
+      "description": "<p>Control the size of the radio.</p>",
       "type": "\"1\" | \"2\" | \"3\"",
-      "required": false
+      "required": false,
+      "default": "\"2\""
     },
     {
       "name": "variant",
-      "description": "",
+      "description": "<p>The visual variant to apply.</p>",
       "type": "\"soft\" | \"surface\"",
-      "required": false
+      "required": false,
+      "default": "\"surface\""
     }
   ],
   "events": [

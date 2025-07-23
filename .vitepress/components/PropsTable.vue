@@ -102,7 +102,7 @@ const splitEnum = (value: string) => {
               </div>
               <div
                 v-if="item.description"
-                class="text-sm text-muted-foreground"
+                class="text-sm leading-5"
                 v-html="item.description"
               >
               </div>

@@ -70,6 +70,7 @@ const expanded = ref(false)
   display: flex;
   flex-direction: column;
   outline: 0;
+  font-size: 14px;
 }
 .vp-ExampleAction {
   width: 100%;

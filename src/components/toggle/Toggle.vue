@@ -3,11 +3,22 @@ import type { ToggleProps as _ToggleProps, ToggleEmits } from 'reka-ui'
 import type { ColorType, RadiusType } from '../types'
 
 export interface ToggleProps extends _ToggleProps {
-  color?: ColorType
+  /**
+   * The visual variant to apply.
+   * @default "soft"
+   */
   variant?: 'solid' | 'soft' | 'ghost'
-  size?: '1' | '2' | '3'
-  highContrast?: boolean
+  /** Overrides the accent color inherited from the Theme. */
+  color?: ColorType
+  /** Overrides the radius inherited from the theme. */
   radius?: RadiusType
+  /**
+   * Control the size of the toggle.
+   * @default "2"
+   */
+  size?: '1' | '2' | '3'
+  /** Uses a higher contrast color for the component. */
+  highContrast?: boolean
 }
 </script>
 
