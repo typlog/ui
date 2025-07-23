@@ -4,43 +4,50 @@
       "name": "color",
       "description": "",
       "type": "\"indigo\" | \"gray\" | \"gold\" | \"bronze\" | \"brown\" | \"yellow\" | \"amber\" | \"orange\" | \"tomato\" | \"red\" | \"ruby\" | \"crimson\" | \"pink\" | \"plum\" | \"purple\" | \"violet\" | \"iris\" | \"blue\" | \"cyan\" | \"teal\" | \"jade\" | \"green\" | \"grass\" | \"lime\" | \"mint\" | \"sky\"",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "id",
       "description": "",
       "type": "string",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "modelValue",
       "description": "",
       "type": "any",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "radius",
       "description": "",
       "type": "\"none\" | \"small\" | \"medium\" | \"large\" | \"full\"",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "size",
       "description": "",
       "type": "\"1\" | \"2\" | \"3\"",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "type",
       "description": "",
       "type": "\"number\" | \"text\" | \"date\" | \"datetime-local\" | \"email\" | \"hidden\" | \"month\" | \"password\" | \"search\" | \"tel\" | \"time\" | \"url\" | \"week\" | \"file\"",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "variant",
       "description": "",
       "type": "\"soft\" | \"surface\"",
-      "required": false
+      "required": false,
+      "inherit": null
     }
   ],
   "events": [

@@ -1,11 +1,5 @@
 <script lang="ts">
-interface PropData {
-  name: string
-  description: string
-  type: string
-  required: boolean
-  default?: string
-}
+import type { PropData } from './_partials/VPropsTable.vue'
 
 interface ComponentMeta {
   props: PropData[]
@@ -27,89 +21,34 @@ Object.keys(_modules).forEach(name => {
 <script setup lang="ts">
 import { computed } from 'vue'
 import {
-  Table,
-  Badge,
-  Icon,
-  IconButton,
-  PopoverRoot,
-  PopoverTrigger,
-  PopoverPopup,
+  CollapsibleRoot,
+  CollapsibleTrigger,
+  CollapsibleContent,
 } from '#components'
+import VPropsTable from './_partials/VPropsTable.vue'
 
 const props = defineProps<PropsTableProps>()
 const items = computed(() => {
   return modules[props.name].props
 })
-const splitEnum = (value: string) => {
-  return value.split(/\s*\|\s*/)
-}
+
+const selfProps = computed(() => {
+  return items.value.filter(item => !item.inherit)
+})
+
+const inheritProps = computed(() => {
+  return items.value.filter(item => Boolean(item.inherit))
+})
 </script>
 
 <template>
   <div class="not-prose">
-    <Table class="vp-PropsTable" variant="surface">
-      <thead>
-        <tr>
-          <th>Prop</th>
-          <th>Default</th>
-          <th>Type</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="item in items" :key="item.name">
-          <td>
-            <Badge class="font-mono" variant="surface">{{ item.name }}</Badge>
-          </td>
-          <td>
-            <Badge
-              v-if="item.default"
-              class="font-mono"
-              color="gray"
-              variant="surface"
-            >
-              {{ item.default }}
-            </Badge>
-            <div v-else class="text-center">
-              <span class="text-sm text-gray-10">–</span>
-            </div>
-          </td>
-          <td>
-            <div class="flex flex-col">
-              <div v-if="item.type.length < 48" class="h-6 flex gap-2">
-                <Badge
-                  v-for="type in splitEnum(item.type)"
-                  :key="type"
-                  variant="outline"
-                  color="gray"
-                >
-                  {{ type }}
-                </Badge>
-              </div>
-              <div v-else class="flex items-center gap-1">
-                <span class="text-sm font-medium">Enum</span>
-                <PopoverRoot>
-                  <PopoverTrigger as-child>
-                    <IconButton size="1" variant="ghost" color="gray">
-                      <Icon icon="lucide:circle-question-mark" />
-                    </IconButton>
-                  </PopoverTrigger>
-                  <PopoverPopup>
-                    <div class="text-sm max-w-96 p-4 flex flex-wrap gap-2">
-                      <code v-for="type in splitEnum(item.type)" :key="type">{{ type }}</code>
-                    </div>
-                  </PopoverPopup>
-                </PopoverRoot>
-              </div>
-              <div
-                v-if="item.description"
-                class="text-sm leading-5"
-                v-html="item.description"
-              >
-              </div>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </Table>
+    <VPropsTable :items="selfProps" />
+    <CollapsibleRoot v-if="inheritProps.length">
+      <CollapsibleTrigger>Inherit from Reka UI</CollapsibleTrigger>
+      <CollapsibleContent>
+        <VPropsTable :items="inheritProps" />
+      </CollapsibleContent>
+    </CollapsibleRoot>
   </div>
 </template>

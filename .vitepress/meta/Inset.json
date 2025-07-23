@@ -4,13 +4,15 @@
       "name": "clip",
       "description": "",
       "type": "\"border-box\" | \"padding-box\"",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "side",
       "description": "",
       "type": "\"all\" | \"x\" | \"y\" | \"top\" | \"bottom\" | \"left\" | \"right\"",
-      "required": false
+      "required": false,
+      "inherit": null
     }
   ],
   "events": [],

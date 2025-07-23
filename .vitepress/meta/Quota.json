@@ -4,13 +4,15 @@
       "name": "color",
       "description": "",
       "type": "\"indigo\" | \"gray\" | \"gold\" | \"bronze\" | \"brown\" | \"yellow\" | \"amber\" | \"orange\" | \"tomato\" | \"red\" | \"ruby\" | \"crimson\" | \"pink\" | \"plum\" | \"purple\" | \"violet\" | \"iris\" | \"blue\" | \"cyan\" | \"teal\" | \"jade\" | \"green\" | \"grass\" | \"lime\" | \"mint\" | \"sky\"",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "percent",
       "description": "",
       "type": "number",
-      "required": true
+      "required": true,
+      "inherit": null
     }
   ],
   "events": [],

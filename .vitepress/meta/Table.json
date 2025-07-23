@@ -4,19 +4,22 @@
       "name": "layout",
       "description": "",
       "type": "\"auto\" | \"fixed\"",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "size",
       "description": "",
       "type": "\"1\" | \"2\" | \"3\"",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "variant",
       "description": "",
       "type": "\"surface\" | \"ghost\"",
-      "required": false
+      "required": false,
+      "inherit": null
     }
   ],
   "events": [],

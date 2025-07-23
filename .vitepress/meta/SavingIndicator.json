@@ -4,13 +4,15 @@
       "name": "size",
       "description": "",
       "type": "\"1\" | \"2\" | \"3\"",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "status",
       "description": "",
       "type": "\"idle\" | \"saving\" | \"saved\"",
-      "required": true
+      "required": true,
+      "inherit": null
     }
   ],
   "events": [],

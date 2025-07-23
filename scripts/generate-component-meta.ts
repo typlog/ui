@@ -28,13 +28,6 @@ function parseComponents (filePath: string) {
     // component name starts with uppercase character
     if (/^[A-Z]/.test(name)) {
       const meta = parseMeta(tsconfigChecker.getComponentMeta(filePath, name))
-      meta.props = meta.props.map(item => {
-        const description = item.description.replace(/<p>Read our$/m, '').trim()
-        if (item.name === 'radius') {
-          item.type = '"none" | "small" | "medium" | "large" | "full"'
-        }
-        return {...item, description}
-      })
       const outfile = resolve(__dirname, `../.vitepress/meta/${name}.json`)
       writeFileSync(outfile, JSON.stringify(meta, null, 2))
     }
@@ -72,7 +65,8 @@ function parseMeta(meta: ComponentMeta) {
     .map((prop) => {
       let defaultValue = prop.default
       let type = prop.type
-      const { name, description, required } = prop
+      let description = prop.description
+      const { name, required } = prop
 
       prop.tags.forEach(item => {
         if (item.name === 'default') {
@@ -80,26 +74,44 @@ function parseMeta(meta: ComponentMeta) {
         }
       })
 
-      if (name === 'as')
+      if (name === 'as') {
         defaultValue = defaultValue ?? '"div"'
+      }
 
-      if (defaultValue === 'undefined')
+      if (defaultValue === 'undefined') {
         defaultValue = undefined
+      }
 
-      if (!type.includes('AcceptableValue'))
+      if (!type.includes('AcceptableValue')) {
         type = parseTypeFromSchema(prop.schema) || type
+      }
 
       type = type.replace(/\s*\|\s*undefined/g, '')
 
       if (name === 'size') {
         type = type.split(' | ').sort().join(' | ')
+      } else if (name === 'radius') {
+        type = '"none" | "small" | "medium" | "large" | "full"'
       }
+
+      if (name === 'asChild') {
+        description = description.replace(/Read our.+$/, '')
+      }
+
+      let inherit: string | null = null
+      prop.declarations.some(declare => {
+        if (declare.file.indexOf('node_modules/reka-ui') !== -1) {
+          inherit = 'reka-ui'
+          return true
+        }
+      })
 
       return ({
         name,
-        description: md.render(description),
+        description: md.render(description).trim(),
         type,
         required,
+        inherit,
         default: defaultValue ?? undefined,
       })
     })

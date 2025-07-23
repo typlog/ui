@@ -4,103 +4,120 @@
       "name": "ariaHidden",
       "description": "",
       "type": "boolean",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "color",
       "description": "",
       "type": "string",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "customise",
       "description": "",
       "type": "IconifyIconCustomiseCallback",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "flip",
       "description": "",
       "type": "string",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "height",
       "description": "",
       "type": "null | string | number",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "hFlip",
       "description": "",
       "type": "boolean",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "horizontalFlip",
       "description": "",
       "type": "boolean",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "icon",
       "description": "",
       "type": "string | IconifyIcon",
-      "required": true
+      "required": true,
+      "inherit": null
     },
     {
       "name": "id",
       "description": "",
       "type": "string",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "inline",
       "description": "",
       "type": "boolean",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "mode",
       "description": "",
       "type": "\"svg\" | \"style\" | \"bg\" | \"mask\"",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "rotate",
       "description": "",
       "type": "number",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "ssr",
       "description": "<p>Try load icon on first render during SSR</p>\n<p>This is a low-level API for framework integrations, you don't usually need to use it directly.\nNote this might hydration mismatches if the icon data is not handled correctly, use with caution.</p>",
       "type": "boolean",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "title",
       "description": "",
       "type": "string",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "verticalFlip",
       "description": "",
       "type": "boolean",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "vFlip",
       "description": "",
       "type": "boolean",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "width",
       "description": "",
       "type": "null | string | number",
-      "required": false
+      "required": false,
+      "inherit": null
     }
   ],
   "events": [],

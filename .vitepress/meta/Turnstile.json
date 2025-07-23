@@ -4,49 +4,57 @@
       "name": "action",
       "description": "",
       "type": "string",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "appearance",
       "description": "",
       "type": "\"always\" | \"execute\" | \"interaction-only\"",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "modelValue",
       "description": "",
       "type": "string",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "renderOnMount",
       "description": "",
       "type": "boolean",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "resetInterval",
       "description": "",
       "type": "number",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "sitekey",
       "description": "",
       "type": "string",
-      "required": true
+      "required": true,
+      "inherit": null
     },
     {
       "name": "size",
       "description": "",
       "type": "\"compact\" | \"normal\"",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "theme",
       "description": "",
       "type": "\"auto\" | \"light\" | \"dark\"",
-      "required": false
+      "required": false,
+      "inherit": null
     }
   ],
   "events": [

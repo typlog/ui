@@ -4,25 +4,29 @@
       "name": "iconSize",
       "description": "",
       "type": "string | number",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "perpage",
       "description": "",
       "type": "number",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "prefix",
       "description": "",
       "type": "string",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "search",
       "description": "",
       "type": "string",
-      "required": false
+      "required": false,
+      "inherit": null
     }
   ],
   "events": [

@@ -4,124 +4,144 @@
       "name": "activationMode",
       "description": "<p>The activation event of the editable field</p>",
       "type": "\"none\" | \"focus\" | \"dblclick\"",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "as",
       "description": "<p>The element or component this component should render as. Can be overwritten by <code>asChild</code>.</p>",
       "type": "AsTag | Component",
       "required": false,
+      "inherit": "reka-ui",
       "default": "\"div\""
     },
     {
       "name": "asChild",
-      "description": "<p>Change the default rendered element for the one passed as a child, merging their props and behavior.</p>\n<p>Read our <a href=\"https://www.reka-ui.com/docs/guides/composition\">Composition</a> guide for more details.</p>",
+      "description": "<p>Change the default rendered element for the one passed as a child, merging their props and behavior.</p>",
       "type": "boolean",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "autoResize",
       "description": "<p>Whether the editable field should auto resize</p>",
       "type": "boolean",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "color",
       "description": "<p>Overrides the accent color inherited from the theme.</p>",
       "type": "\"indigo\" | \"gray\" | \"gold\" | \"bronze\" | \"brown\" | \"yellow\" | \"amber\" | \"orange\" | \"tomato\" | \"red\" | \"ruby\" | \"crimson\" | \"pink\" | \"plum\" | \"purple\" | \"violet\" | \"iris\" | \"blue\" | \"cyan\" | \"teal\" | \"jade\" | \"green\" | \"grass\" | \"lime\" | \"mint\" | \"sky\"",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "defaultValue",
       "description": "<p>The default value of the editable field</p>",
       "type": "string",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "dir",
       "description": "<p>The reading direction of the calendar when applicable. &lt;br&gt; If omitted, inherits globally from <code>ConfigProvider</code> or assumes LTR (left-to-right) reading mode.</p>",
       "type": "\"ltr\" | \"rtl\"",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "disabled",
       "description": "<p>Whether the editable field is disabled</p>",
       "type": "boolean",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "id",
       "description": "<p>The id of the field</p>",
       "type": "string",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "maxLength",
       "description": "<p>The maximum number of characters allowed</p>",
       "type": "number",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "modelValue",
       "description": "<p>The value of the editable field</p>",
       "type": "string | null",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "name",
       "description": "<p>The name of the field. Submitted with its owning form as part of a name/value pair.</p>",
       "type": "string",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "placeholder",
       "description": "<p>The placeholder for the editable field</p>",
       "type": "string | { edit: string; preview: string; }",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "radius",
       "description": "<p>Overrides the radius inherited from the theme.</p>",
       "type": "\"none\" | \"small\" | \"medium\" | \"large\" | \"full\"",
       "required": false,
+      "inherit": null,
       "default": "\"small\""
     },
     {
       "name": "readonly",
       "description": "<p>Whether the editable field is read-only</p>",
       "type": "boolean",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "required",
       "description": "<p>When <code>true</code>, indicates that the user must set the value before the owning form can be submitted.</p>",
       "type": "boolean",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "selectOnFocus",
       "description": "<p>Whether to select the text in the input when it is focused.</p>",
       "type": "boolean",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "size",
       "description": "<p>Control the size of the padding and radius.</p>",
       "type": "\"1\" | \"2\" | \"3\"",
       "required": false,
+      "inherit": null,
       "default": "\"1\""
     },
     {
       "name": "startWithEditMode",
       "description": "<p>Whether to start with the edit mode active</p>",
       "type": "boolean",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "submitMode",
       "description": "<p>The submit event of the editable field</p>",
       "type": "\"none\" | \"both\" | \"blur\" | \"enter\"",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     }
   ],
   "events": [

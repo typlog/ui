@@ -5,37 +5,43 @@
       "description": "<p>The element or component this component should render as. Can be overwritten by <code>asChild</code>.</p>",
       "type": "AsTag | Component",
       "required": false,
+      "inherit": "reka-ui",
       "default": "\"div\""
     },
     {
       "name": "asChild",
-      "description": "<p>Change the default rendered element for the one passed as a child, merging their props and behavior.</p>\n<p>Read our <a href=\"https://www.reka-ui.com/docs/guides/composition\">Composition</a> guide for more details.</p>",
+      "description": "<p>Change the default rendered element for the one passed as a child, merging their props and behavior.</p>",
       "type": "boolean",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "brand",
       "description": "",
       "type": "\"x\" | \"google\" | \"facebook\" | \"github\" | \"apple\" | \"slack\" | \"figma\"",
-      "required": true
+      "required": true,
+      "inherit": null
     },
     {
       "name": "disabled",
       "description": "",
       "type": "boolean",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "radius",
       "description": "",
       "type": "\"none\" | \"small\" | \"medium\" | \"large\" | \"full\"",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "size",
       "description": "<p>Control the size of the social button.</p>",
       "type": "\"1\" | \"2\" | \"3\" | \"4\"",
       "required": false,
+      "inherit": null,
       "default": "\"2\""
     }
   ],

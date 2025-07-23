@@ -4,13 +4,15 @@
       "name": "defaultOpen",
       "description": "<p>The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.</p>",
       "type": "boolean",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "open",
       "description": "<p>The controlled open state of the dialog. Can be binded as <code>v-model:open</code>.</p>",
       "type": "boolean",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     }
   ],
   "events": [

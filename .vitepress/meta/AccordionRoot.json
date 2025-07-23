@@ -5,67 +5,78 @@
       "description": "<p>The element or component this component should render as. Can be overwritten by <code>asChild</code>.</p>",
       "type": "AsTag | Component",
       "required": false,
+      "inherit": "reka-ui",
       "default": "\"div\""
     },
     {
       "name": "asChild",
-      "description": "<p>Change the default rendered element for the one passed as a child, merging their props and behavior.</p>\n<p>Read our <a href=\"https://www.reka-ui.com/docs/guides/composition\">Composition</a> guide for more details.</p>",
+      "description": "<p>Change the default rendered element for the one passed as a child, merging their props and behavior.</p>",
       "type": "boolean",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "collapsible",
       "description": "<p>When type is &quot;single&quot;, allows closing content when clicking trigger for an open item.\nWhen type is &quot;multiple&quot;, this prop has no effect.</p>",
       "type": "boolean",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "defaultValue",
       "description": "<p>The default active value of the item(s).</p>\n<p>Use when you do not need to control the state of the item(s).</p>",
       "type": "string | string[]",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "dir",
       "description": "<p>The reading direction of the accordion when applicable. If omitted, assumes LTR (left-to-right) reading mode.</p>",
       "type": "\"ltr\" | \"rtl\"",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "disabled",
       "description": "<p>When <code>true</code>, prevents the user from interacting with the accordion and all its items</p>",
       "type": "boolean",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "modelValue",
       "description": "<p>The controlled value of the active item(s).</p>\n<p>Use this when you need to control the state of the items. Can be binded with <code>v-model</code></p>",
       "type": "string | string[]",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "orientation",
       "description": "<p>The orientation of the accordion.</p>",
       "type": "\"vertical\" | \"horizontal\"",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "size",
       "description": "",
       "type": "\"1\" | \"2\" | \"3\"",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "type",
       "description": "<p>Determines whether a &quot;single&quot; or &quot;multiple&quot; items can be selected at a time.</p>\n<p>This prop will overwrite the inferred type from <code>modelValue</code> and <code>defaultValue</code>.</p>",
       "type": "\"single\" | \"multiple\"",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "unmountOnHide",
       "description": "<p>When <code>true</code>, the element will be unmounted on closed state.</p>",
       "type": "boolean",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     }
   ],
   "events": [

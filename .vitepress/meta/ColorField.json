@@ -4,31 +4,36 @@
       "name": "id",
       "description": "",
       "type": "string",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "modelValue",
       "description": "",
       "type": "string",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "radius",
       "description": "",
       "type": "\"none\" | \"small\" | \"medium\" | \"large\" | \"full\"",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "size",
       "description": "",
       "type": "\"1\" | \"2\" | \"3\"",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "variant",
       "description": "",
       "type": "\"solid\" | \"ring\"",
-      "required": false
+      "required": false,
+      "inherit": null
     }
   ],
   "events": [

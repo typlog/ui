@@ -4,128 +4,149 @@
       "name": "align",
       "description": "<p>The preferred alignment against the trigger.\nMay change when collisions occur.</p>",
       "type": "\"start\" | \"center\" | \"end\"",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "alignOffset",
       "description": "<p>An offset in pixels from the <code>start</code> or <code>end</code> alignment options.</p>",
       "type": "number",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "arrowPadding",
       "description": "<p>The padding between the arrow and the edges of the content.\nIf your content has border-radius, this will prevent it from\noverflowing the corners.</p>",
       "type": "number",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "as",
       "description": "<p>The element or component this component should render as. Can be overwritten by <code>asChild</code>.</p>",
       "type": "AsTag | Component",
       "required": false,
+      "inherit": "reka-ui",
       "default": "\"div\""
     },
     {
       "name": "asChild",
-      "description": "<p>Change the default rendered element for the one passed as a child, merging their props and behavior.</p>\n<p>Read our <a href=\"https://www.reka-ui.com/docs/guides/composition\">Composition</a> guide for more details.</p>",
+      "description": "<p>Change the default rendered element for the one passed as a child, merging their props and behavior.</p>",
       "type": "boolean",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "avoidCollisions",
       "description": "<p>When <code>true</code>, overrides the side and align preferences\nto prevent collisions with boundary edges.</p>",
       "type": "boolean",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "collisionBoundary",
       "description": "<p>The element used as the collision boundary. By default\nthis is the viewport, though you can provide additional\nelement(s) to be included in this check.</p>",
       "type": "Element | (Element | null)[] | null",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "collisionPadding",
       "description": "<p>The distance in pixels from the boundary edges where collision\ndetection should occur. Accepts a number (same for all sides),\nor a partial padding object, for example: { top: 20, left: 20 }.</p>",
       "type": "number | Partial<Record<\"top\" | \"bottom\" | \"left\" | \"right\", number>>",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "disableOutsidePointerEvents",
       "description": "<p>When <code>true</code>, hover/focus/click interactions will be disabled on elements outside\nthe <code>DismissableLayer</code>. Users will need to click twice on outside elements to\ninteract with them: once to close the <code>DismissableLayer</code>, and again to trigger the element.</p>",
       "type": "boolean",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "disableUpdateOnLayoutShift",
       "description": "<p>Whether to disable the update position for the content when the layout shifted.</p>",
       "type": "boolean",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "forceMount",
       "description": "<p>Used to force mounting when more control is needed. Useful when\ncontrolling animation with Vue animation libraries.</p>",
       "type": "boolean",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "hideWhenDetached",
       "description": "<p>Whether to hide the content when the trigger becomes fully occluded.</p>",
       "type": "boolean",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "positionStrategy",
       "description": "<p>The type of CSS position property to use.</p>",
       "type": "\"absolute\" | \"fixed\"",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "prioritizePosition",
       "description": "<p>Force content to be position within the viewport.</p>\n<p>Might overlap the reference element, which may not be desired.</p>",
       "type": "boolean",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "reference",
       "description": "<p>The custom element or virtual element that will be set as the reference\nto position the floating element.</p>\n<p>If provided, it will replace the default anchor element.</p>",
       "type": "ReferenceElement",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "side",
       "description": "<p>The preferred side of the trigger to render against when open.\nWill be reversed when collisions occur and avoidCollisions\nis enabled.</p>",
       "type": "\"top\" | \"bottom\" | \"left\" | \"right\"",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "sideOffset",
       "description": "<p>The distance in pixels from the trigger.</p>",
       "type": "number",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "size",
       "description": "",
       "type": "\"1\" | \"2\"",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "sticky",
       "description": "<p>The sticky behavior on the align axis. <code>partial</code> will keep the\ncontent in the boundary as long as the trigger is at least partially\nin the boundary whilst &quot;always&quot; will keep the content in the boundary\nregardless.</p>",
       "type": "\"always\" | \"partial\"",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "to",
       "description": "",
       "type": "string | HTMLElement",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "updatePositionStrategy",
       "description": "<p>Strategy to update the position of the floating element on every animation frame.</p>",
       "type": "\"always\" | \"optimized\"",
-      "required": false
+      "required": false,
+      "inherit": "reka-ui"
     }
   ],
   "events": [

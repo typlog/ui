@@ -4,25 +4,29 @@
       "name": "color",
       "description": "",
       "type": "\"indigo\" | \"gray\" | \"gold\" | \"bronze\" | \"brown\" | \"yellow\" | \"amber\" | \"orange\" | \"tomato\" | \"red\" | \"ruby\" | \"crimson\" | \"pink\" | \"plum\" | \"purple\" | \"violet\" | \"iris\" | \"blue\" | \"cyan\" | \"teal\" | \"jade\" | \"green\" | \"grass\" | \"lime\" | \"mint\" | \"sky\"",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "highContrast",
       "description": "",
       "type": "boolean",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "size",
       "description": "",
       "type": "\"1\" | \"2\"",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "variant",
       "description": "",
       "type": "\"soft\" | \"surface\" | \"outline\"",
-      "required": false
+      "required": false,
+      "inherit": null
     }
   ],
   "events": [],

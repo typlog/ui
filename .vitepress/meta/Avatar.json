@@ -4,25 +4,29 @@
       "name": "alt",
       "description": "<p>Alt text of the avatar, usually the person's name.</p>",
       "type": "string",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "color",
       "description": "<p>Overrides the accent color inherited from the Theme.</p>",
       "type": "\"indigo\" | \"gray\" | \"gold\" | \"bronze\" | \"brown\" | \"yellow\" | \"amber\" | \"orange\" | \"tomato\" | \"red\" | \"ruby\" | \"crimson\" | \"pink\" | \"plum\" | \"purple\" | \"violet\" | \"iris\" | \"blue\" | \"cyan\" | \"teal\" | \"jade\" | \"green\" | \"grass\" | \"lime\" | \"mint\" | \"sky\"",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "fallback",
       "description": "<p>Using fallback characters for the avatar.</p>",
       "type": "string",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "radius",
       "description": "<p>Overrides the radius inherited from the theme.</p>",
       "type": "\"none\" | \"small\" | \"medium\" | \"large\" | \"full\"",
       "required": false,
+      "inherit": null,
       "default": "\"small\""
     },
     {
@@ -30,19 +34,22 @@
       "description": "<p>Control the size of the avatar.</p>",
       "type": "\"1\" | \"2\" | \"3\" | \"4\" | \"5\" | \"6\" | \"7\" | \"8\" | \"9\"",
       "required": false,
+      "inherit": null,
       "default": "\"2\""
     },
     {
       "name": "src",
       "description": "<p>Avatar's image source URL.</p>",
       "type": "string",
-      "required": false
+      "required": false,
+      "inherit": null
     },
     {
       "name": "variant",
       "description": "<p>The visual variant to apply.</p>",
       "type": "\"solid\" | \"soft\" | \"ring\"",
       "required": false,
+      "inherit": null,
       "default": "\"solid\""
     }
   ],
