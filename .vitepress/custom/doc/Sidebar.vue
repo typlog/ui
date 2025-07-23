@@ -7,7 +7,7 @@ import {
   CollapsibleRoot,
   CollapsibleTrigger,
   CollapsibleContent,
-  ChevronIcon,
+  CollapsibleIndicator,
 } from '#components'
 import DocSidebarItem from './SidebarItem.vue'
 
@@ -22,11 +22,14 @@ defineProps<{sidebar: DefaultTheme.SidebarItem[]}>()
     <CollapsibleRoot
       v-if="item.items?.length"
       class="mb-6"
+      size="1"
       default-open
     >
-      <CollapsibleTrigger class="flex items-center justify-between w-full px-4">
+      <CollapsibleTrigger class="w-full px-4">
         <span class="font-semibold">{{ item.text }}</span>
-        <ChevronIcon />
+        <template #right>
+          <CollapsibleIndicator />
+        </template>
       </CollapsibleTrigger>
       <CollapsibleContent>
         <DocSidebarItem

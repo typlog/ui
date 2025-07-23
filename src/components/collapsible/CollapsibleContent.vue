@@ -2,12 +2,12 @@
 import type { CollapsibleContentProps } from 'reka-ui'
 import { CollapsibleContent, useForwardProps } from 'reka-ui'
 
-const props = defineProps<CollapsibleContentProps>()
-const forwardedProps = useForwardProps(props)
-
 defineOptions({
   inheritAttrs: false,
 })
+
+const props = defineProps<CollapsibleContentProps>()
+const forwardedProps = useForwardProps(props)
 </script>
 
 <template>

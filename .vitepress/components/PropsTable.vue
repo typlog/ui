@@ -24,6 +24,7 @@ import {
   CollapsibleRoot,
   CollapsibleTrigger,
   CollapsibleContent,
+  CollapsibleIndicator,
 } from '#components'
 import VPropsTable from './_partials/VPropsTable.vue'
 
@@ -43,9 +44,18 @@ const inheritProps = computed(() => {
 
 <template>
   <div class="not-prose">
-    <VPropsTable :items="selfProps" />
-    <CollapsibleRoot v-if="inheritProps.length">
-      <CollapsibleTrigger>Inherit from Reka UI</CollapsibleTrigger>
+    <VPropsTable v-if="selfProps.length" :items="selfProps" />
+    <CollapsibleRoot
+      v-if="inheritProps.length"
+      size="1"
+      class="pt-4"
+    >
+      <CollapsibleTrigger class="font-medium">
+        Inherit from Reka UI
+        <template #right>
+          <CollapsibleIndicator />
+        </template>
+      </CollapsibleTrigger>
       <CollapsibleContent>
         <VPropsTable :items="inheritProps" />
       </CollapsibleContent>
