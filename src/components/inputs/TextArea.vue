@@ -35,6 +35,7 @@ const resetClass = buildPropsClass(props, ['size', 'variant', 'resize', 'class']
     class="ui-TextArea"
     :class="resetClass"
     :data-accent-color="props.color"
+    :data-radius="props.radius"
   >
     <textarea
       v-model="modelValue"
@@ -53,7 +54,6 @@ const resetClass = buildPropsClass(props, ['size', 'variant', 'resize', 'class']
   font-style: normal;
   text-align: start;
   overflow: hidden;
-  padding: var(--text-area-border-width);
   width: 100%;
 }
 .ui-TextAreaInput {
@@ -71,6 +71,9 @@ const resetClass = buildPropsClass(props, ['size', 'variant', 'resize', 'class']
 .ui-TextAreaInput:focus {
   outline: none;
   box-shadow: none;
+}
+.ui-TextAreaInput:where(:disabled) {
+  cursor: not-allowed;
 }
 .ui-TextAreaInput::-webkit-scrollbar {
   width: var(--space-3);
@@ -141,9 +144,8 @@ const resetClass = buildPropsClass(props, ['size', 'variant', 'resize', 'class']
 .ui-TextArea:where(.r-variant-surface) .ui-TextAreaInput::placeholder {
   color: var(--gray-a10);
 }
-.ui-TextArea:where(.r-variant-surface) .ui-TextAreaInput:where(:disabled, :read-only) {
+.ui-TextArea:where(.r-variant-surface) :where(.ui-TextAreaInput:read-only) {
   background-image: linear-gradient(var(--gray-a2), var(--gray-a2));
-  box-shadow: inset 0 0 0 var(--text-area-border-width) var(--gray-a6);
 }
 .ui-TextArea:where(.r-variant-soft) {
   --text-area-border-width: 0px;
@@ -161,7 +163,7 @@ const resetClass = buildPropsClass(props, ['size', 'variant', 'resize', 'class']
   color: var(--accent-12);
   opacity: 0.65;
 }
-.ui-TextArea:where(.r-variant-soft) .ui-TextAreaInput:where(:disabled, :read-only) {
+.ui-TextArea:where(.r-variant-soft) :where(.ui-TextAreaInput:read-only) {
   background-image: linear-gradient(var(--gray-a2), var(--gray-a2));
   box-shadow: inset 0 0 0 var(--text-area-border-width) var(--gray-a6);
 }
