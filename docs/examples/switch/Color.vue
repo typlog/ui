@@ -7,10 +7,10 @@ const checked = ref(true)
 
 <template>
   <div class="flex items-center gap-2">
-    <Switch color="indigo" v-model="checked" />
-    <Switch color="cyan" v-model="checked" />
-    <Switch color="orange" v-model="checked" />
-    <Switch color="crimson" v-model="checked" />
-    <Switch color="gray" v-model="checked" />
+    <Switch v-model="checked" color="indigo" />
+    <Switch v-model="checked" color="cyan" />
+    <Switch v-model="checked" color="orange" />
+    <Switch v-model="checked" color="crimson" />
+    <Switch v-model="checked" color="gray" />
   </div>
 </template>

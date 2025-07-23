@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { PrimitiveProps } from 'reka-ui'
-import type { RadiusType } from '../types'
+import type { RadiusType } from '../../components/types'
 
 type BrandType = 'google' | 'facebook' | 'x' | 'github' | 'apple' | 'slack' | 'figma'
 
@@ -16,6 +16,7 @@ const BRAND_ICONS: Record<BrandType, string> = {
 
 export interface SocialButtonProps extends PrimitiveProps {
   brand: BrandType
+  variant?: 'classic' | 'solid' | 'soft' | 'surface' | 'outline'
   radius?: RadiusType
   /**
    * Control the size of the social button.
@@ -30,14 +31,15 @@ export interface SocialButtonProps extends PrimitiveProps {
 import { computed } from 'vue'
 import { Primitive } from 'reka-ui'
 import { Icon } from '@iconify/vue'
-import { buildPropsClass } from '../util'
+import { buildPropsClass } from '../../components/util'
 
 const props = withDefaults(defineProps<SocialButtonProps>(), {
   as: 'button',
+  variant: 'classic',
   size: '2',
 })
 
-const resetClass = buildPropsClass(props, ['size', 'brand'])
+const resetClass = buildPropsClass(props, ['size', 'brand', 'variant'])
 
 const brandIcon = computed(() => {
   return BRAND_ICONS[props.brand]
@@ -59,7 +61,7 @@ const brandIcon = computed(() => {
 </template>
 
 <style>
-.ui-SocialButton {
+.ui-SocialButton:where(.r-variant-classic) {
   background-color: var(--social-button-background-color);
   color: var(--social-button-text-color);
   box-shadow: 0px 1px 2px 0px #0A0D120D, 0px -2px 0px 0px #0A0D120D inset, 0px 0px 0px 1px #0A0D122E inset;
@@ -73,7 +75,7 @@ const brandIcon = computed(() => {
   }
 }
 .ui-SocialButton:where(.r-brand-google) {
-  background-color: var(--color-background);
+  --social-button-background-color: var(--color-background);
   --social-button-text-color: var(--gray-12);
 }
 .ui-SocialButton:where(.r-brand-facebook) {
@@ -82,17 +84,17 @@ const brandIcon = computed(() => {
 .ui-SocialButton:where(.r-brand-github) {
   --social-button-background-color: #333;
 }
-.ui-SocialButton:where(.r-brand-slack) {
+.ui-SocialButton:where(.r-variant-classic):where(.r-brand-slack) {
   --social-button-background-color: #611f69;
 }
-.ui-SocialButton:where(:focus-visible) {
+.ui-SocialButton:where(.r-variant-classic):where(:focus-visible) {
   outline: 2px solid var(--focus-8);
   outline-offset: 2px;
 }
-.ui-SocialButton:where(:active) {
+.ui-SocialButton:where(.r-variant-classic):where(:active) {
   box-shadow: var(--shadow-1);
 }
-.ui-SocialButton:where([data-disabled]) {
+.ui-SocialButton:where(.r-variant-classic):where([data-disabled]) {
   color: var(--gray-a10);
   background-color: var(--gray-a2);
 }

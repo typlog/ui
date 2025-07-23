@@ -11,13 +11,14 @@ export default defineConfig({
   cleanUrls: true,
   vite: {
     plugins: [
-      // @ts-ignore
+      // @ts-expect-error this seems a type bug of vite
       tailwindcss(),
     ],
     resolve: {
       alias: {
         '~': resolve(__dirname, '..'),
         '#components': resolve(__dirname, '../src/components'),
+        '#addons': resolve(__dirname, '../src/addons'),
       },
     },
   },
@@ -91,6 +92,7 @@ export default defineConfig({
         items: [
           { text: 'Turnstile', link: '/addons/turnstile' },
           { text: 'Iconify', link: '/addons/iconify' },
+          { text: 'SocialButton', link: '/addons/social-button' },
         ],
       },
     ],

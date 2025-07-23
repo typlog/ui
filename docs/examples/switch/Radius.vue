@@ -7,8 +7,8 @@ const checked = ref(true)
 
 <template>
   <div class="flex items-center gap-2">
-    <Switch radius="none" v-model="checked" />
-    <Switch radius="small" v-model="checked" />
-    <Switch radius="full" v-model="checked" />
+    <Switch v-model="checked" radius="none" />
+    <Switch v-model="checked" radius="small" />
+    <Switch v-model="checked" radius="full" />
   </div>
 </template>

@@ -7,7 +7,7 @@ const selected = ref<string>('left')
 
 <template>
   <div class="flex items-center gap-2">
-    <ToggleGroupRoot size="1" v-model="selected">
+    <ToggleGroupRoot v-model="selected" size="1">
       <ToggleGroupItem value="left">
         <Icon icon="lucide:align-left" />
       </ToggleGroupItem>
@@ -18,7 +18,7 @@ const selected = ref<string>('left')
         <Icon icon="lucide:align-right" />
       </ToggleGroupItem>
     </ToggleGroupRoot>
-    <ToggleGroupRoot size="2" v-model="selected">
+    <ToggleGroupRoot v-model="selected" size="2">
       <ToggleGroupItem value="left">
         <Icon icon="lucide:align-left" />
       </ToggleGroupItem>
@@ -29,7 +29,7 @@ const selected = ref<string>('left')
         <Icon icon="lucide:align-right" />
       </ToggleGroupItem>
     </ToggleGroupRoot>
-    <ToggleGroupRoot size="3" v-model="selected">
+    <ToggleGroupRoot v-model="selected" size="3">
       <ToggleGroupItem value="left">
         <Icon icon="lucide:align-left" />
       </ToggleGroupItem>

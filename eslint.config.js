@@ -31,7 +31,12 @@ export default defineConfigWithVueTs(
     }
   },
   {
-    files: ['src/**/*.vue', '.vitepress/**/*.vue', 'docs/**/*.vue'],
+    files: [
+      'src/**/*.vue',
+      '.vitepress/**/*.vue',
+      '.vitepress/**/*.ts',
+      'docs/**/*.vue'
+    ],
     rules: {
       'vue/no-v-html': 'off',
       'vue/no-v-text-v-html-on-component': 'off',

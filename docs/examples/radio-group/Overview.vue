@@ -7,7 +7,7 @@ const selected = ref<string>('1')
 
 <template>
   <div class="flex">
-    <RadioGroupRoot class="flex flex-col gap-2" v-model="selected">
+    <RadioGroupRoot v-model="selected" class="flex flex-col gap-2">
       <RadioGroupItem value="1">
         Default layout
       </RadioGroupItem>

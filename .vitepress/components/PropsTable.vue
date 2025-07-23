@@ -51,7 +51,7 @@ const inheritProps = computed(() => {
       class="pt-4"
     >
       <CollapsibleTrigger class="font-medium">
-        Inherit from Reka UI
+        Props inherited from Reka UI
         <template #right>
           <CollapsibleIndicator />
         </template>

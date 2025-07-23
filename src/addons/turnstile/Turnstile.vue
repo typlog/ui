@@ -118,5 +118,19 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div ref="element" class="ui-Turnstile"></div>
+  <div ref="element" class="ui-Turnstile" :class="`r-size-${size}`"></div>
 </template>
+
+<style>
+.ui-Turnstile {
+  background: var(--gray-a3);
+}
+.ui-Turnstile:where(.r-size-normal) {
+  width: 300px;
+  height: 65px;
+}
+.ui-Turnstile:where(.r-size-compact) {
+  width: 150px;
+  height: 140px;
+}
+</style>

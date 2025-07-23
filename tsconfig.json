@@ -20,7 +20,8 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "#components": ["./src/components/index.ts"]
+      "#components": ["./src/components/index.ts"],
+      "#addons": ["./src/addons/index.ts"]
     }
   },
   "include": [

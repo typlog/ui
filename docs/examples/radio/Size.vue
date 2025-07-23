@@ -7,8 +7,8 @@ const checked = ref(true)
 
 <template>
   <div class="flex items-center gap-2">
-    <Radio size="1" v-model="checked" />
-    <Radio size="2" v-model="checked" />
-    <Radio size="3" v-model="checked" />
+    <Radio v-model="checked" size="1" />
+    <Radio v-model="checked" size="2" />
+    <Radio v-model="checked" size="3" />
   </div>
 </template>

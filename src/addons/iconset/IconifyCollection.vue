@@ -84,6 +84,7 @@ const filterIcons = (names: string[], query?: string, suffix?: string) => {
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 import { Icon } from '@iconify/vue'
+import { injectDialogRootContext } from 'reka-ui'
 import {
   Button,
   Tooltip,
@@ -98,6 +99,7 @@ const props = withDefaults(defineProps<IconifyCollectionProps>(), {
 })
 
 const emits = defineEmits<IconifyCollectionEmits>()
+const dialogContext = injectDialogRootContext(null)
 
 const shouldDisplay = ref<'all' | 'collection' | 'search'>('all')
 const groupCollections = ref<CollectionGroup[]>([])
@@ -124,6 +126,9 @@ const reset = () => {
 
 const onSelectIcon = (icon: string) => {
   emits('select', icon)
+  if (dialogContext) {
+    dialogContext.onOpenChange(false)
+  }
 }
 
 const onSearch = async () => {

@@ -11,7 +11,7 @@ import {
 </script>
 
 <template>
-  <SelectRoot defaultValue="apple">
+  <SelectRoot default-value="apple">
     <SelectTrigger />
     <SelectContent>
       <SelectGroup>
