@@ -12,7 +12,7 @@ const STATUS_COLOR_MAP: Record<string, ColorType> = {
 <script setup lang="ts">
 import { useData, Content } from 'vitepress'
 import { computed } from 'vue'
-import { Icon, Badge } from '#components'
+import { Icon, Badge, ScrollArea } from '#components'
 import DocSidebar from './doc/Sidebar.vue'
 import DocOutline from './doc/Outline.vue'
 
@@ -27,12 +27,14 @@ const statusColor = computed(() => STATUS_COLOR_MAP[frontmatter.value.status])
   <main class="max-w-content flex mx-auto pt-28 pb-10 lg:pt-0 lg:px-8">
     <div id="sidebar" class="z-20 hidden shrink-0 lg:block w-[18rem]">
       <div class="w-full sticky top-28">
-        <div class="pt-8 text-sm leading-6">
-          <DocSidebar :sidebar="sidebar" />
-        </div>
+        <ScrollArea class="pr-3 max-h-[calc(100vh-112px)]" scrollbars="vertical">
+          <div class="pt-8 text-sm leading-6">
+            <DocSidebar :sidebar="sidebar" />
+          </div>
+        </ScrollArea>
       </div>
     </div>
-    <div id="content-container" class="grow overflow-hidden px-6 lg:pl-14">
+    <div id="content-container" class="grow overflow-hidden px-6 lg:pl-12">
       <div class="flex gap-12 box-border pt-8">
         <article class="h-entry relative grow min-w-0 shrink">
           <h1 class="p-name text-4xl font-semibold">{{ page.title }}</h1>

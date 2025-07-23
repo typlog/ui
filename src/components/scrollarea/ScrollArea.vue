@@ -20,6 +20,7 @@ import {
 } from 'reka-ui'
 
 const props = withDefaults(defineProps<ScrollAreaProps>(), {
+  type: 'scroll',
   size: '1',
   scrollbars: 'both',
 })

@@ -1,0 +1,14 @@
+{
+  "props": [
+    {
+      "name": "variant",
+      "description": "",
+      "type": "\"chevron\" | \"plus\"",
+      "required": false,
+      "inherit": null
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "methods": []
+}

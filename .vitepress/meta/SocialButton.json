@@ -43,6 +43,13 @@
       "required": false,
       "inherit": null,
       "default": "\"2\""
+    },
+    {
+      "name": "variant",
+      "description": "",
+      "type": "\"solid\" | \"soft\" | \"surface\" | \"outline\" | \"classic\"",
+      "required": false,
+      "inherit": null
     }
   ],
   "events": [],

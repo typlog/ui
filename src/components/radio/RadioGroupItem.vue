@@ -1,22 +1,35 @@
 <script lang="ts">
-import type { RadioGroupItemProps } from 'reka-ui'
+import type { RadioGroupItemProps as RekaRadioGroupItemProps } from 'reka-ui'
+import type { ColorType } from '../types'
+
+export interface RadioGroupItemProps extends RekaRadioGroupItemProps {
+  color?: ColorType
+  size?: '1' | '2' | '3'
+  variant?: 'surface' | 'soft'
+  highContrast?: boolean
+}
 </script>
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { RadioGroupItem, useForwardProps } from 'reka-ui'
+import { RadioGroupItem } from 'reka-ui'
 import { injectRadioGroupRootContext } from './RadioGroupRoot.vue'
+import { useForwardPropsWithout } from '../util'
 
 const props = defineProps<RadioGroupItemProps>()
-const forwarded = useForwardProps(props)
+
+const forwarded = useForwardPropsWithout(props, ['color', 'size', 'variant', 'highContrast'])
+
 const rootContext = injectRadioGroupRootContext()
 
 const resetClass = computed(() => {
   const rv: string[] = [
-    `r-size-${rootContext.size.value}`,
-    `r-variant-${rootContext.variant.value}`,
+    `r-size-${props.size || rootContext.size.value}`,
+    `r-variant-${props.variant || rootContext.variant.value}`,
   ]
-  if (rootContext.highContrast?.value) {
+  if (props.highContrast) {
+    rv.push('r-high-contrast')
+  } else if (props.highContrast != false && rootContext.highContrast?.value) {
     rv.push('r-high-contrast')
   }
   return rv
@@ -28,7 +41,7 @@ const resetClass = computed(() => {
     <RadioGroupItem
       class="ui-Radio"
       :class="resetClass"
-      :data-accent-color="rootContext.color?.value"
+      :data-accent-color="props.color || rootContext.color?.value"
       v-bind="forwarded"
     >
     </RadioGroupItem>

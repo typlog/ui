@@ -81,6 +81,9 @@ export default defineConfig({
             text: 'Controls',
             items: [
               { text: 'Tabs', link: '/components/tabs' },
+              { text: 'Accordion', link: '/components/accordion' },
+              { text: 'Collapsible', link: '/components/collapsible' },
+              { text: 'Pagination', link: '/components/pagination' },
             ],
           },
           {
@@ -89,6 +92,8 @@ export default defineConfig({
               { text: 'Dialog', link: '/components/dialog' },
               { text: 'Dropdown', link: '/components/dropdown' },
               { text: 'Popover', link: '/components/popover' },
+              { text: 'Tooltip', link: '/components/tooltip' },
+              { text: 'Toast', link: '/components/toast' },
             ],
           },
         ],

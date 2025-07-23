@@ -123,7 +123,12 @@ const resetClass = buildPropsClass(props, ['variant', 'size', 'highContrast'])
   padding-right: var(--tab-padding-x);
 }
 
-:where(.ui-TabList.r-high-contrast) .ui-TabsIndicator {
+.ui-TabList:where(.r-variant-surface.r-size-1),
+.ui-TabList:where(.r-variant-soft.r-size-1) {
+  --tab-inner-padding-x: calc(var(--space-2) / 4 * 3);
+}
+
+:where(.ui-TabList.r-variant-outline.r-high-contrast) .ui-TabsIndicator {
   background-color: var(--accent-12);
 }
 </style>

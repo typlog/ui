@@ -18,3 +18,13 @@ reka: https://reka-ui.com/docs/components/radio-group
 ### RadioGroupItem
 
 <PropsTable name="RadioGroupItem" />
+
+## Examples
+
+### Variant
+
+<Example name="radio-group/Variant.vue" />
+
+### Size
+
+<Example name="radio-group/Size.vue" />

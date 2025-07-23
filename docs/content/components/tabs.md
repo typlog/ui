@@ -32,3 +32,7 @@ radix: https://www.radix-ui.com/themes/docs/components/tabs
 ### Variant
 
 <Example name="tabs/Variant.vue" />
+
+### Size
+
+<Example name="tabs/Size.vue" />

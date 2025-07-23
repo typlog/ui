@@ -117,10 +117,10 @@
     {
       "name": "variant",
       "description": "<p>The visual variant to apply.</p>",
-      "type": "\"solid\" | \"soft\" | \"ghost\"",
+      "type": "\"solid\" | \"soft\" | \"surface\" | \"outline\" | \"ghost\"",
       "required": false,
       "inherit": null,
-      "default": "\"soft\""
+      "default": "\"solid\""
     }
   ],
   "events": [

@@ -16,11 +16,25 @@
       "inherit": "reka-ui"
     },
     {
+      "name": "color",
+      "description": "",
+      "type": "\"indigo\" | \"gray\" | \"gold\" | \"bronze\" | \"brown\" | \"yellow\" | \"amber\" | \"orange\" | \"tomato\" | \"red\" | \"ruby\" | \"crimson\" | \"pink\" | \"plum\" | \"purple\" | \"violet\" | \"iris\" | \"blue\" | \"cyan\" | \"teal\" | \"jade\" | \"green\" | \"grass\" | \"lime\" | \"mint\" | \"sky\"",
+      "required": false,
+      "inherit": null
+    },
+    {
       "name": "disabled",
       "description": "<p>When <code>true</code>, prevents the user from interacting with the radio item.</p>",
       "type": "boolean",
       "required": false,
       "inherit": "reka-ui"
+    },
+    {
+      "name": "highContrast",
+      "description": "",
+      "type": "boolean",
+      "required": false,
+      "inherit": null
     },
     {
       "name": "id",
@@ -44,11 +58,25 @@
       "inherit": "reka-ui"
     },
     {
+      "name": "size",
+      "description": "",
+      "type": "\"1\" | \"2\" | \"3\"",
+      "required": false,
+      "inherit": null
+    },
+    {
       "name": "value",
       "description": "<p>The value given as data when submitted with a <code>name</code>.</p>",
       "type": "AcceptableValue",
       "required": false,
       "inherit": "reka-ui"
+    },
+    {
+      "name": "variant",
+      "description": "",
+      "type": "\"soft\" | \"surface\"",
+      "required": false,
+      "inherit": null
     }
   ],
   "events": [],

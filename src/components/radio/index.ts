@@ -1,6 +1,5 @@
 export {
   RadioGroupItem as RadioTabsItem,
-  type RadioGroupItemProps,
   type RadioGroupItemProps as RadioTabsItemProps,
 } from 'reka-ui'
 
@@ -17,6 +16,7 @@ export {
 
 export {
   default as RadioGroupItem,
+  type RadioGroupItemProps,
 } from './RadioGroupItem.vue'
 
 export {
