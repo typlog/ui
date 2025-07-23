@@ -33,7 +33,7 @@ import {
   IconButton,
   PopoverRoot,
   PopoverTrigger,
-  PopoverContent,
+  PopoverPopup,
 } from '#components'
 
 const props = defineProps<PropsTableProps>()
@@ -83,11 +83,11 @@ const items = computed(() => {
                       <Icon icon="lucide:circle-question-mark" />
                     </IconButton>
                   </PopoverTrigger>
-                  <PopoverContent :side-offset="4">
+                  <PopoverPopup :side-offset="4">
                     <div class="text-sm max-w-96">
                       <code>{{ item.type }}</code>
                     </div>
-                  </PopoverContent>
+                  </PopoverPopup>
                 </PopoverRoot>
               </div>
               <div

@@ -5,6 +5,6 @@ export {
 } from 'reka-ui'
 
 export {
-  default as PopoverContent,
-  type PopoverContentProps,
-} from './PopoverContent.vue'
+  default as PopoverPopup,
+  type PopoverPopupProps,
+} from './PopoverPopup.vue'

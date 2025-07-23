@@ -1,6 +1,6 @@
 <script lang="ts">
 import type {
-  PopoverContentProps as _PopoverContentProps,
+  PopoverContentProps,
   PopoverContentEmits,
 } from 'reka-ui'
 import {
@@ -10,9 +10,9 @@ import {
 import { useForwardPropsEmits } from '../util'
 import ThemeWrapper from '../provider/ThemeWrapper.vue'
 
-export interface PopoverContentProps extends _PopoverContentProps {
+export interface PopoverPopupProps extends PopoverContentProps {
   to?: string | HTMLElement
-  size?: '1' | '2' | '3' | '4'
+  size?: '1' | '2'
 }
 </script>
 
@@ -21,8 +21,11 @@ defineOptions({
   inheritAttrs: false,
 })
 
-const props = withDefaults(defineProps<PopoverContentProps>(), {
-  size: '2',
+const props = withDefaults(defineProps<PopoverPopupProps>(), {
+  size: '1',
+  side: 'bottom',
+  align: 'start',
+  sideOffset: 4,
 })
 const emits = defineEmits<PopoverContentEmits>()
 
@@ -34,7 +37,7 @@ const forwarded = useForwardPropsEmits(props, emits, ['to', 'size'])
     <ThemeWrapper>
       <PopoverContent
         v-bind="{ ...$attrs, ...forwarded }"
-        class="ui-PopoverContent"
+        class="ui-PopoverPopup ui-PopperContent"
         :class="`r-size-${props.size}`"
       >
         <slot></slot>
@@ -44,12 +47,7 @@ const forwarded = useForwardPropsEmits(props, emits, ['to', 'size'])
 </template>
 
 <style>
-.ui-PopoverContent {
-  --inset-padding-top: var(--popover-content-padding);
-  --inset-padding-right: var(--popover-content-padding);
-  --inset-padding-bottom: var(--popover-content-padding);
-  --inset-padding-left: var(--popover-content-padding);
-
+.ui-PopoverPopup {
   background-color: var(--color-panel-solid);
   box-shadow: var(--shadow-5);
   min-width: var(--reka-popover-trigger-width);
@@ -57,24 +55,13 @@ const forwarded = useForwardPropsEmits(props, emits, ['to', 'size'])
   outline: 0;
   overflow: auto;
   position: relative;
-  padding: var(--popover-content-padding);
   box-sizing: border-box;
   transform-origin: var(--reka-popover-content-transform-origin);
 }
-.ui-PopoverContent:where(.r-size-1) {
-  --popover-content-padding: var(--space-3);
+.ui-PopoverPopup:where(.r-size-1) {
   border-radius: var(--radius-4);
 }
-.ui-PopoverContent:where(.r-size-2) {
-  --popover-content-padding: var(--space-4);
-  border-radius: var(--radius-4);
-}
-.ui-PopoverContent:where(.r-size-3) {
-  --popover-content-padding: var(--space-5);
-  border-radius: var(--radius-5);
-}
-.ui-PopoverContent:where(.r-size-4) {
-  --popover-content-padding: var(--space-6);
+.ui-PopoverPopup:where(.r-size-2) {
   border-radius: var(--radius-5);
 }
 
