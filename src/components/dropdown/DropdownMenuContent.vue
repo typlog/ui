@@ -31,7 +31,7 @@ interface DropdownMenuContentContext {
 }
 
 export const [injectDropdownMenuContentContext, provideDropdownMenuContentContext]
-  = createContext<DropdownMenuContentContext>('ui_DropdownMenuContent')
+  = createContext<DropdownMenuContentContext>('ui:DropdownMenuContent')
 </script>
 
 <script setup lang="ts">

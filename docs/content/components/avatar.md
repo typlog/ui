@@ -12,3 +12,9 @@ radix: https://www.radix-ui.com/themes/docs/components/avatar
 ## API Reference
 
 <PropsTable name="Avatar" />
+
+## Examples
+
+### Size
+
+<Example name="avatar/Size.vue" />

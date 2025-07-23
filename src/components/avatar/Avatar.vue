@@ -2,8 +2,8 @@
 import type { ColorType, RadiusType } from '../types'
 
 export interface AvatarProps {
-  /** Alt text of the avatar. */
-  alt: string
+  /** Alt text of the avatar, usually the person's name. */
+  alt?: string
   /** Avatar's image source URL. */
   src?: string
   /** Using fallback characters for the avatar. */
@@ -49,11 +49,15 @@ const fallback = computed(() => {
   if (props.fallback) {
     return props.fallback
   }
-  const symbols = props.alt.split(/\s+/).map(p => p[0])
-  if (props.size === '1') {
-    return symbols[0]
+  if (props.alt) {
+    const symbols = props.alt.split(/\s+/).map(p => p[0])
+    if (props.size === '1') {
+      return symbols[0]
+    } else {
+      return symbols.slice(0, 2).join('')
+    }
   } else {
-    return symbols.slice(0, 2).join('')
+    return ''
   }
 })
 </script>

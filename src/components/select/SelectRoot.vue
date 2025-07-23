@@ -17,7 +17,7 @@ interface SelectRootContext {
 }
 
 export const [injectSelectRootContext, provideSelectRootContext]
-  = createContext<SelectRootContext>('ui_SelectRoot')
+  = createContext<SelectRootContext>('ui:SelectRoot')
 </script>
 
 <script setup lang="ts">

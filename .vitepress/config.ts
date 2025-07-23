@@ -66,8 +66,10 @@ export default defineConfig({
             items: [
               { text: 'Switch', link: '/components/switch' },
               { text: 'Toggle', link: '/components/toggle' },
+              { text: 'Toggle Group', link: '/components/toggle-group' },
               { text: 'Checkbox', link: '/components/checkbox' },
               { text: 'Radio', link: '/components/radio' },
+              { text: 'Radio Group', link: '/components/radio-group' },
               { text: 'TextField', link: '/components/text-field' },
               { text: 'TextArea', link: '/components/text-area' },
               { text: 'Select', link: '/components/select' },

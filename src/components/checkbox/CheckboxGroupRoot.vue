@@ -21,7 +21,7 @@ interface CheckboxGroupRootContext {
 }
 
 export const [injectCheckboxGroupRootContext, provideCheckboxGroupRootContext]
-  = createContext<CheckboxGroupRootContext>('ui_CheckboxGroupRoot')
+  = createContext<CheckboxGroupRootContext>('ui:CheckboxGroupRoot')
 </script>
 
 <script setup lang="ts">

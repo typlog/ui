@@ -11,3 +11,13 @@ reka: https://reka-ui.com/docs/components/toggle
 ## API Reference
 
 <PropsTable name="Toggle" />
+
+## Examples
+
+### Size
+
+<Example name="toggle/Size.vue" />
+
+### Variant
+
+<Example name="toggle/Variant.vue" />

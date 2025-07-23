@@ -20,7 +20,7 @@ interface ComboboxRootContext {
 }
 
 export const [injectComboboxRootContext, provideComboboxRootContext]
-  = createContext<ComboboxRootContext>('ui_ComboboxRoot')
+  = createContext<ComboboxRootContext>('ui:ComboboxRoot')
 </script>
 
 <script setup lang="ts">

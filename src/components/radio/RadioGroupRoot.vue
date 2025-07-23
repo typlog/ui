@@ -19,7 +19,7 @@ interface RadioGroupRootContext {
 }
 
 export const [injectRadioGroupRootContext, provideRadioGroupRootContext]
-  = createContext<RadioGroupRootContext>('ui_RadioGroupRoot')
+  = createContext<RadioGroupRootContext>('ui:RadioGroupRoot')
 </script>
 
 <script setup lang="ts">

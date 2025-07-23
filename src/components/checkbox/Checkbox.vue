@@ -30,30 +30,31 @@ const [forwarded, resetClass] = extractForwardPropsEmits(props, emits, ['color',
     :class="resetClass"
     :data-accent-color="props.color"
   >
-    <CheckboxIndicator
-      class="ui-CheckboxIndicator"
-      as-child
-    >
-      <svg
-        v-if="props.modelValue !== false"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="4"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+    <template #default="{ state }">
+      <CheckboxIndicator
+        class="ui-CheckboxIndicator"
+        as-child
       >
-        <path
-          v-if="props.modelValue === 'indeterminate'"
-          d="M5 12h14"
-        />
-        <path
-          v-else
-          d="M20 6 9 17l-5-5"
-        />
-      </svg>
-    </CheckboxIndicator>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="4"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            v-if="state === 'indeterminate'"
+            d="M5 12h14"
+          />
+          <path
+            v-else
+            d="M20 6 9 17l-5-5"
+          />
+        </svg>
+      </CheckboxIndicator>
+    </template>
   </CheckboxRoot>
 </template>
 

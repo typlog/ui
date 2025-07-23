@@ -23,17 +23,18 @@ const forwarded = useForwardProps(props)
   justify-content: center;
   vertical-align: top;
   flex-shrink: 0;
-  width: var(--toggle-size);
-  height: var(--toggle-size);
+  width: var(--toggle-item-size);
+  height: var(--toggle-item-size);
 }
-.ui-ToggleGroupItem:where(:first-child) {
+.ui-ToggleGroupRoot:where(.r-variant-solid) :where(.ui-ToggleGroupItem:first-child) {
   border-top-left-radius: var(--toggle-radius);
   border-bottom-left-radius: var(--toggle-radius);
 }
-.ui-ToggleGroupItem:where(:last-child) {
+.ui-ToggleGroupRoot:where(.r-variant-solid) :where(.ui-ToggleGroupItem:last-child) {
   border-top-right-radius: var(--toggle-radius);
   border-bottom-right-radius: var(--toggle-radius);
 }
+.ui-ToggleGroupRoot:where(.r-variant-soft) :where(.ui-ToggleGroupItem),
 .ui-ToggleGroupRoot:where(.r-variant-ghost) :where(.ui-ToggleGroupItem) {
   border-radius: var(--toggle-radius);
 }
