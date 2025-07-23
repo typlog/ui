@@ -78,6 +78,12 @@ export default defineConfig({
             ],
           },
           {
+            text: 'Controls',
+            items: [
+              { text: 'Tabs', link: '/components/tabs' },
+            ],
+          },
+          {
             text: 'Overlays',
             items: [
               { text: 'Dialog', link: '/components/dialog' },

@@ -63,7 +63,7 @@ const forwarded = useForwardProps(props)
   }
 }
 :where(.ui-ToggleGroupRoot.r-variant-surface, .r-variant-outline) .ui-ToggleGroupItem + .ui-ToggleGroupItem {
-  box-shadow: -1px 0 0 0 var(--gray-a4);
+  box-shadow: inset 1px 0 0 0 var(--gray-a4);
 }
 
 .ui-ToggleGroupRoot:where(.r-variant-solid, .r-variant-surface, .r-variant-outoine, .r-variant-ghost) :where(.ui-ToggleGroupItem:focus-visible) {

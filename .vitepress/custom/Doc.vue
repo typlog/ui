@@ -4,7 +4,7 @@ import type { ColorType } from '#components'
 
 const STATUS_COLOR_MAP: Record<string, ColorType> = {
   alpha: 'orange',
-  beta: 'indigo',
+  beta: 'bronze',
   stable: 'green',
 }
 </script>

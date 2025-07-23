@@ -44,12 +44,12 @@ const inheritProps = computed(() => {
 
 <template>
   <div class="not-prose">
-    <VPropsTable v-if="selfProps.length" :items="selfProps" />
-    <CollapsibleRoot
-      v-if="inheritProps.length"
-      size="1"
-      class="pt-4"
-    >
+    <VPropsTable
+      v-if="selfProps.length"
+      class="mb-4"
+      :items="selfProps"
+    />
+    <CollapsibleRoot v-if="inheritProps.length" size="1">
       <CollapsibleTrigger class="font-medium">
         Props inherited from Reka UI
         <template #right>

@@ -35,8 +35,6 @@ const forwarded = useForwardProps(props)
   user-select: none;
   box-sizing: border-box;
   height: var(--tab-height);
-  padding-left: var(--tab-padding-x);
-  padding-right: var(--tab-padding-x);
   color: var(--gray-a11);
   outline: none;
 }
@@ -55,7 +53,7 @@ const forwarded = useForwardProps(props)
   height: var(--tab-inner-height);
   padding-left: var(--tab-inner-padding-x);
   padding-right: var(--tab-inner-padding-x);
-  border-radius: var(--tab-inner-border-radius);
+  border-radius: var(--tab-item-radius);
 }
 
 .ui-TabTriggerInner {
@@ -81,21 +79,43 @@ const forwarded = useForwardProps(props)
 }
 
 @media (hover: hover) {
-  .ui-TabTrigger:where(:hover) {
+  .ui-TabList:where(.r-variant-outline) :where(.ui-TabTrigger:hover) {
     color: var(--gray-12);
   }
-  .ui-TabTrigger:where(:not(:disabled):hover) :where(.ui-TabTriggerInner) {
+  .ui-TabList:where(.r-variant-surface, .r-variant-soft) :where(.ui-TabTrigger:hover) {
+    color: var(--accent-a11);
+  }
+  .ui-TabList:where(.r-variant-outline) :where(.ui-TabTrigger:not(:disabled):hover) :where(.ui-TabTriggerInner) {
     background-color: var(--gray-a3);
   }
   .ui-TabTrigger:where(:focus-visible:hover) :where(.ui-TabTriggerInner) {
     background-color: var(--accent-a3);
   }
 }
-.ui-TabTrigger:where([data-state='active']) {
-  color: var(--gray-12);
-}
+
 .ui-TabTrigger:where(:focus-visible) :where(.ui-TabTriggerInner) {
   outline: 2px solid var(--focus-8);
   outline-offset: -2px;
+}
+
+.ui-TabList:where(.r-variant-outline) :where(.ui-TabTrigger) {
+  padding-left: var(--tab-padding-x);
+  padding-right: var(--tab-padding-x);
+}
+
+.ui-TabList:where(.r-variant-outline) :where(.ui-TabTrigger[data-state='active']) {
+  color: var(--gray-12);
+}
+
+.ui-TabList:where(.r-variant-soft) :where(.ui-TabTrigger + .ui-TabTrigger) {
+  margin-left: calc(var(--tab-padding-x) / 2)
+}
+
+.ui-TabList:where(.r-variant-surface) :where(.ui-TabTrigger + .ui-TabTrigger) {
+  box-shadow: inset 1px 0 0 var(--gray-a3);
+}
+
+.ui-TabList:where(.r-variant-surface, .r-variant-soft) :where(.ui-TabTrigger[data-state='active']) {
+  color: var(--accent-a11);
 }
 </style>

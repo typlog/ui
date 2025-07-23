@@ -1,5 +1,6 @@
 ---
 title: Checkbox Group
+description: Groups multiple checkboxes and emits a list of selected values.
 status: alpha
 source: https://github.com/typlog/ui/tree/main/src/components/checkbox
 reka: https://reka-ui.com/docs/components/checkbox-group
