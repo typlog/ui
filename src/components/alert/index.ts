@@ -15,6 +15,6 @@ export {
 } from '../dialog'
 
 export {
-  default as AlertDialogContent,
-  type AlertDialogContentProps,
-} from './AlertDialogContent.vue'
+  default as AlertDialogPopup,
+  type AlertDialogPopupProps,
+} from './AlertDialogPopup.vue'

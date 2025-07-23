@@ -16,6 +16,6 @@ export {
 } from './DialogDescription.vue'
 
 export {
-  default as DialogContent,
-  type DialogContentProps,
-} from './DialogContent.vue'
+  default as DialogPopup,
+  type DialogPopupProps,
+} from './DialogPopup.vue'

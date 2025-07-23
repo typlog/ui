@@ -1,19 +1,12 @@
 <script lang="ts">
 import type {
-  AlertDialogContentProps as _DialogContentProps,
+  AlertDialogContentProps,
   AlertDialogContentEmits,
 } from 'reka-ui'
 import ThemeWrapper from '../provider/ThemeWrapper.vue'
 
-export interface AlertDialogContentProps extends _DialogContentProps {
+export interface AlertDialogPopupProps extends AlertDialogContentProps {
   to?: string | HTMLElement
-  size?: '1' | '2' | '3' | '4'
-  width?: string
-  minWidth?: string
-  maxWidth?: string
-  height?: string
-  minHeight?: string
-  maxHeight?: string
 }
 </script>
 
@@ -29,17 +22,10 @@ defineOptions({
   inheritAttrs: false,
 })
 
-const props = withDefaults(defineProps<AlertDialogContentProps>(), {
-  size: '3',
-  maxWidth: '450px',
-})
+const props = defineProps<AlertDialogPopupProps>()
 const emits = defineEmits<AlertDialogContentEmits>()
 
-const forwarded = useForwardPropsEmits(props, emits, [
-  'to', 'align', 'class', 'size',
-  'width', 'minWidth', 'maxWidth',
-  'height', 'minHeight', 'maxHeight',
-])
+const forwarded = useForwardPropsEmits(props, emits, ['to', 'align', 'size'])
 </script>
 
 <template>
@@ -49,19 +35,10 @@ const forwarded = useForwardPropsEmits(props, emits, [
         <div class="ui-DialogWrapper">
           <div class="ui-DialogContainer">
             <AlertDialogContent
-              class="ui-DialogContent"
-              :class="`r-size-${props.size}`"
+              class="ui-DialogPopup ui-AlertPopup"
               v-bind="{
                 ...$attrs,
                 ...forwarded,
-              }"
-              :style="{
-                width: props.width,
-                height: props.height,
-                minWidth: props.minWidth,
-                maxWidth: props.maxWidth,
-                minHeight: props.minHeight,
-                maxHeight: props.maxHeight,
               }"
             >
               <slot></slot>
@@ -72,3 +49,11 @@ const forwarded = useForwardPropsEmits(props, emits, [
     </ThemeWrapper>
   </AlertDialogPortal>
 </template>
+
+<style>
+.ui-AlertPopup {
+  --dialog-popup-radius: var(--radius-4);
+  --dialog-popup-max-width: 450px;
+  padding: var(--space-5);
+}
+</style>
