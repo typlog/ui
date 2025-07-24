@@ -3,44 +3,53 @@ import type { PrimitiveProps } from 'reka-ui'
 
 export interface AccordionTriggerProps extends PrimitiveProps {
   /**
-   * The indicator icon for the accordion trigger.
+   * The indicator icon's poistion, left or right.
+   *
+   * @default "right"
+   */
+  indicatorSide?: 'left' | 'right'
+  /**
+   * An indicator icon on the left or right of the trigger.
+   *
    * @default "chevron"
    */
-  indicator?: 'plus-minus' | 'chevron'
+  indicatorIcon?: 'none' | 'chevron' | 'plus'
 }
 </script>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { AccordionTrigger } from 'reka-ui'
-import { useForwardPropsWithout, buildPropsClass } from '../util'
-import PlusMinusIcon from '../icon/PlusMinusIcon.vue'
-import ChevronIcon from '../icon/ChevronIcon.vue'
+import { useForwardPropsWithout } from '../util'
+import AccordionIndicator from './AccordionIndicator.vue'
+import { injectAccordionRootContext } from './AccordionRoot.vue'
 
-const props = withDefaults(defineProps<AccordionTriggerProps>(), {
-  size: '1',
-  indicator: 'chevron',
+const props = defineProps<AccordionTriggerProps>()
+const ctx = injectAccordionRootContext()
+
+const forwarded = useForwardPropsWithout(props, ['indicatorSide', 'indicatorIcon'])
+
+const indicatorIcon = computed(() => {
+  return props.indicatorIcon || ctx.indicatorIcon.value
 })
 
-const forwarded = useForwardPropsWithout(props, ['size'])
-const resetClass = buildPropsClass(props, ['size'])
+const indicatorSide = computed(() => {
+  return props.indicatorSide || ctx.indicatorSide.value
+})
 </script>
 
 <template>
   <AccordionTrigger
     class="ui-AccordionTrigger"
-    :class="resetClass"
     v-bind="forwarded"
   >
     <div class="ui-AccordionTriggerText">
       <slot></slot>
     </div>
-    <PlusMinusIcon
-      v-if="props.indicator === 'plus-minus'"
-      class="ui-AccordionTriggerIcon"
-    />
-    <ChevronIcon
-      v-else-if="props.indicator === 'chevron'"
-      arrow-transform="down-up"
+    <AccordionIndicator
+      v-if="indicatorIcon !== 'none'"
+      :data-side="indicatorSide"
+      :variant="indicatorIcon"
     />
   </AccordionTrigger>
 </template>
@@ -50,6 +59,7 @@ const resetClass = buildPropsClass(props, ['size'])
   display: flex;
   align-items: center;
   justify-content: space-between;
+  text-align: initial;
   width: 100%;
   cursor: pointer;
   user-select: none;
@@ -57,7 +67,8 @@ const resetClass = buildPropsClass(props, ['size'])
   padding-top: var(--accordion-padding);
   padding-bottom: var(--accordion-padding);
   font-weight: var(--font-weight-medium);
-  gap: var(--space-4);
+  gap: var(--accordion-trigger-gap);
+  --accordion-indicator-icon-size: var(--accordion-trigger-font-size);
 }
 .ui-AccordionTrigger:hover {
   text-decoration: underline;

@@ -31,10 +31,10 @@
     },
     {
       "name": "value",
-      "description": "<p>A string value for the accordion item. All items within an accordion should use a unique value.</p>",
+      "description": "<p>A string identifier for the accordion item. If omitted, a unique value will be generated automatically.</p>",
       "type": "string",
-      "required": true,
-      "inherit": "reka-ui"
+      "required": false,
+      "inherit": null
     }
   ],
   "events": [],

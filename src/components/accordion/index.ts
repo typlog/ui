@@ -17,3 +17,8 @@ export {
   default as AccordionTrigger,
   type AccordionTriggerProps,
 } from './AccordionTrigger.vue'
+
+export {
+  default as AccordionIndicator,
+  type AccordionIndicatorProps,
+} from './AccordionIndicator.vue'

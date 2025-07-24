@@ -44,6 +44,22 @@
       "inherit": "reka-ui"
     },
     {
+      "name": "indicatorIcon",
+      "description": "<p>An indicator icon on the left or right of the trigger.</p>",
+      "type": "\"none\" | \"chevron\" | \"plus\"",
+      "required": false,
+      "inherit": null,
+      "default": "\"chevron\""
+    },
+    {
+      "name": "indicatorSide",
+      "description": "<p>The indicator icon's poistion, left or right.</p>",
+      "type": "\"left\" | \"right\"",
+      "required": false,
+      "inherit": null,
+      "default": "\"right\""
+    },
+    {
       "name": "modelValue",
       "description": "<p>The controlled value of the active item(s).</p>\n<p>Use this when you need to control the state of the items. Can be binded with <code>v-model</code></p>",
       "type": "string | string[]",
@@ -55,14 +71,16 @@
       "description": "<p>The orientation of the accordion.</p>",
       "type": "\"vertical\" | \"horizontal\"",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": null,
+      "default": "\"vertical\""
     },
     {
       "name": "size",
-      "description": "",
+      "description": "<p>Control the size of the accordion.</p>",
       "type": "\"1\" | \"2\" | \"3\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"1\""
     },
     {
       "name": "type",

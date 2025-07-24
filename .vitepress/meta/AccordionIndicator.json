@@ -1,0 +1,15 @@
+{
+  "props": [
+    {
+      "name": "variant",
+      "description": "<p>The indicator icon for the accordion trigger.</p>",
+      "type": "\"chevron\" | \"plus\"",
+      "required": false,
+      "inherit": null,
+      "default": "\"chevron\""
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "methods": []
+}

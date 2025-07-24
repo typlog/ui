@@ -46,27 +46,23 @@ const resetClass = buildPropsClass(props, ['variant', 'size'])
   --collapsible-trigger-font-size: var(--font-size-2);
   --collapsible-trigger-gap: calc(var(--space-1) / 2);
   --collapsible-indicator-icon-size: var(--font-size-2);
-  --collapsible-indicator-line-width: 1px;
 }
 
 .ui-CollapsibleRoot:where(.r-size-2) {
   --collapsible-trigger-font-size: var(--font-size-3);
   --collapsible-trigger-gap: var(--space-1);
   --collapsible-indicator-icon-size: var(--font-size-3);
-  --collapsible-indicator-line-width: 1px;
 }
 
 .ui-CollapsibleRoot:where(.r-size-3) {
   --collapsible-trigger-font-size: var(--font-size-5);
   --collapsible-trigger-gap: calc(var(--space-2) * 3 / 4);
   --collapsible-indicator-icon-size: var(--font-size-5);
-  --collapsible-indicator-line-width: 2px;
 }
 
 .ui-CollapsibleRoot:where(.r-size-4) {
   --collapsible-trigger-font-size: var(--font-size-7);
   --collapsible-trigger-gap: var(--space-2);
   --collapsible-indicator-icon-size: var(--font-size-7);
-  --collapsible-indicator-line-width: 2px;
 }
 </style>

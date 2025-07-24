@@ -1,18 +1,35 @@
 <script lang="ts">
-import type { AccordionItemProps } from 'reka-ui'
-export type { AccordionItemProps } from 'reka-ui'
+import type { AccordionItemProps as RekaAccordionItemProps } from 'reka-ui'
+
+export interface AccordionItemProps extends Omit<RekaAccordionItemProps, 'value'> {
+  /**
+   * A string identifier for the accordion item. If omitted, a unique value will be generated automatically.
+   */
+  value?: string;
+}
 </script>
 
 <script setup lang="ts">
-import { AccordionItem, useForwardProps } from 'reka-ui'
+import { computed } from 'vue'
+import { AccordionItem, useForwardProps, useId } from 'reka-ui'
 
 const props = defineProps<AccordionItemProps>()
-const forwardedProps = useForwardProps(props)
+
+const id = useId(null, 'accordion-item')
+
+const forwarded = computed(() => {
+  const refProps = useForwardProps(props)
+  if (!refProps.value.value) {
+    return {...refProps.value, value: id}
+  } else {
+    return refProps.value as RekaAccordionItemProps
+  }
+})
 </script>
 
 <template>
   <AccordionItem
-    v-bind="forwardedProps"
+    v-bind="forwarded"
     class="ui-AccordionItem"
   >
     <slot></slot>
