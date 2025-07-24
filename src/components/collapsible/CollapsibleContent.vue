@@ -40,12 +40,17 @@ const forwardedProps = useForwardProps(props)
 }
 .ui-CollapsibleContent {
   overflow: hidden;
+  font-size: var(--collapsible-font-size);
   font-weight: var(--font-weight-regular);
+  padding-block: var(--collapsible-padding-y);
 }
 .ui-CollapsibleContent:where([data-state="open"]) {
   animation: collapsible-down 0.2s ease-out;
 }
 .ui-CollapsibleContent:where([data-state="closed"]) {
   animation: collapsible-up 0.2s ease-out;
+}
+:where(.ui-CollapsibleRoot:not(.r-variant-ghost)) .ui-CollapsibleContent {
+  padding-inline: var(--collapsible-padding-x);
 }
 </style>

@@ -7,7 +7,6 @@ import {
   CollapsibleRoot,
   CollapsibleTrigger,
   CollapsibleContent,
-  CollapsibleIndicator,
 } from '#components'
 import DocSidebarItem from './SidebarItem.vue'
 
@@ -25,12 +24,7 @@ defineProps<{sidebar: DefaultTheme.SidebarItem[]}>()
       size="1"
       default-open
     >
-      <CollapsibleTrigger class="w-full px-4">
-        <span class="font-semibold">{{ item.text }}</span>
-        <template #right>
-          <CollapsibleIndicator />
-        </template>
-      </CollapsibleTrigger>
+      <CollapsibleTrigger class="px-4">{{ item.text }}</CollapsibleTrigger>
       <CollapsibleContent>
         <DocSidebarItem
           v-for="subitem in item.items"

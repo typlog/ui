@@ -56,7 +56,7 @@ const resetClass = buildPropsClass(props, ['variant', 'size', 'highContrast'])
   justify-content: center;
   vertical-align: top;
   flex-shrink: 0;
-  box-shadow: var(--shadow-2);
+  box-shadow: inset 0 0 0 1px var(--gray-a6);
   border-radius: var(--tab-radius);
 }
 

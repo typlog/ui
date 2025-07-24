@@ -1,5 +1,4 @@
 export {
-  type CollapsibleTriggerProps,
   type CollapsibleContentProps,
 } from 'reka-ui'
 
@@ -10,6 +9,7 @@ export {
 
 export {
   default as CollapsibleTrigger,
+  type CollapsibleTriggerProps,
 } from './CollapsibleTrigger.vue'
 
 export {
@@ -18,5 +18,4 @@ export {
 
 export {
   default as CollapsibleIndicator,
-  type CollapsibleIndicatorProps,
 } from './CollapsibleIndicator.vue'

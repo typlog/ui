@@ -112,7 +112,7 @@ const forwarded = useForwardProps(props)
 }
 
 .ui-TabList:where(.r-variant-surface) :where(.ui-TabTrigger + .ui-TabTrigger) {
-  box-shadow: inset 1px 0 0 var(--gray-a3);
+  box-shadow: inset 1px 0 0 var(--gray-a4);
 }
 
 .ui-TabList:where(.r-variant-surface, .r-variant-soft) :where(.ui-TabTrigger[data-state='active']) {

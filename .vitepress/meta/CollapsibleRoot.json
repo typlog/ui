@@ -67,7 +67,7 @@
     {
       "name": "variant",
       "description": "",
-      "type": "\"solid\" | \"soft\" | \"surface\" | \"outline\" | \"ghost\"",
+      "type": "\"soft\" | \"surface\" | \"ghost\"",
       "required": false,
       "inherit": null
     }

@@ -24,7 +24,11 @@
   color: var(--gray-10);
 }
 
-:where(.ui-CollapsibleRoot[data-state="open"]) .ui-CollapsibleIndicator {
+.ui-CollapsibleIndicator:where([data-side="left"]) {
+  order: -1;
+}
+
+:where([data-state="open"]) .ui-CollapsibleIndicator {
   transform: rotate(90deg);
 }
 </style>
