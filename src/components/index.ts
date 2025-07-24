@@ -31,6 +31,8 @@ export * from './editable'
 export * from './accordion'
 export * from './collapsible'
 export * from './pagination'
+export * from './toast'
+
 export * from './table'
 export * from './separator'
 export * from './tooltip'
