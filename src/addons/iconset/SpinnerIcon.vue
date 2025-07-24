@@ -46,8 +46,16 @@ type SpinnerIcon = '12-dots-scale-rotate' |
   'wifi-fade' |
   'wind-toy'
 
-interface SpinnerProps {
+export interface SpinnerIconProps {
+  /**
+   * Icon name of the spinner.
+   * @default "180-ring"
+   */
   icon?: SpinnerIcon
+  /**
+   * Control size of the spinner.
+   * @default "2"
+   */
   size?: '1' | '2' | '3'
 }
 </script>
@@ -56,7 +64,7 @@ interface SpinnerProps {
 import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
 
-const props = withDefaults(defineProps<SpinnerProps>(), {
+const props = withDefaults(defineProps<SpinnerIconProps>(), {
   icon: '180-ring',
   size: '2',
 })
@@ -67,23 +75,23 @@ const iconName = computed(() => {
 
 <template>
   <Icon
-    class="ui-Spinner"
+    class="ui-SpinnerIcon"
     :class="`r-size-${size}`"
     :icon="iconName"
   />
 </template>
 
 <style>
-.ui-Spinner {
+.ui-SpinnerIcon {
   color: var(--gray-10);
 }
-.ui-Spinner:where(.r-size-1) {
+.ui-SpinnerIcon:where(.r-size-1) {
   font-size: var(--space-3);
 }
-.ui-Spinner:where(.r-size-2) {
+.ui-SpinnerIcon:where(.r-size-2) {
   font-size: var(--space-4);
 }
-.ui-Spinner:where(.r-size-3) {
+.ui-SpinnerIcon:where(.r-size-3) {
   font-size: calc(1.25 * var(--space-4));
 }
 </style>

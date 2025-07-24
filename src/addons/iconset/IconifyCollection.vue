@@ -1,6 +1,13 @@
 <script lang="ts">
 import type { CollectionItem } from './IconifySample.vue'
 
+export interface IconifyCollectionProps {
+  prefix?: string
+  search?: string
+  perpage?: number
+  iconSize?: string | number
+}
+
 interface CollectionGroup {
   category: string
   items: CollectionItem[]
@@ -15,13 +22,6 @@ interface CollectionData {
   uncategorized?: string[]
   categories?: Record<string, string[]>
   hidden?: string[]
-}
-
-interface IconifyCollectionProps {
-  prefix?: string
-  search?: string
-  perpage?: number
-  iconSize?: string | number
 }
 
 interface IconifyCollectionEmits {
