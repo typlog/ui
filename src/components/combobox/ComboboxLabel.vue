@@ -30,24 +30,17 @@ useForwardExpose()
   display: flex;
   align-items: center;
   height: var(--combobox-item-height);
-  padding-left: calc(var(--combobox-item-indicator-width) / 2);
-  padding-right: var(--combobox-item-indicator-width);
+  padding-left: calc(var(--combobox-indicator-width) / 2);
+  padding-right: var(--combobox-indicator-width);
   color: var(--gray-a10);
   user-select: none;
   cursor: default;
+
+  font-size: var(--combobox-label-font-size);
+  letter-spacing: var(--combobox-label-letter-spacing);
+  line-height: var(--combobox-label-line-height);
 }
 .ui-SelectItem + .ui-ComboboxLabel {
   margin-top: var(--space-2);
-}
-:where(.r-size-1) .ui-ComboboxLabel {
-  font-size: var(--font-size-1);
-  letter-spacing: var(--letter-spacing-1);
-  line-height: var(--line-height-1);
-}
-:where(.r-size-2) .ui-ComboboxLabel,
-:where(.r-size-3) .ui-ComboboxLabel {
-  font-size: var(--font-size-2);
-  letter-spacing: var(--letter-spacing-2);
-  line-height: var(--line-height-2);
 }
 </style>

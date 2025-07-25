@@ -2,12 +2,12 @@
 import { toRefs, type Ref } from 'vue'
 import { createContext } from 'reka-ui'
 import type {
-  ComboboxRootProps as _ComboboxRootProps,
+  ComboboxRootProps as RekaComboboxRootProps,
   ComboboxRootEmits,
 } from 'reka-ui'
 import type { ColorType } from '../types'
 
-export interface ComboboxRootProps extends _ComboboxRootProps {
+export interface ComboboxRootProps extends RekaComboboxRootProps {
   size?: '1' | '2' | '3'
   color?: ColorType
   highContrast?: boolean
@@ -35,7 +35,7 @@ const emits = defineEmits<ComboboxRootEmits>()
 const { size, color, highContrast } = toRefs(props)
 
 const forwarded = useForwardPropsEmitsWithout(props, emits, ['size', 'color', 'highContrast'])
-const resetClass = buildPropsClass(props, ['size', 'highContrast'])
+const resetClass = buildPropsClass(props, ['size', 'highContrast', 'multiple'])
 
 provideComboboxRootContext({
   size,
@@ -53,3 +53,12 @@ provideComboboxRootContext({
     <slot></slot>
   </ComboboxRoot>
 </template>
+
+<style>
+.ui-ComboboxRoot {
+  width: fit-content;
+}
+.ui-ComboboxRoot:where(.r-multiple) {
+  width: auto;
+}
+</style>

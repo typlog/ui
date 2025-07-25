@@ -1,9 +1,11 @@
 <script lang="ts">
-import type { ComboboxContentProps as _ComboboxContentProps, ComboboxContentEmits } from 'reka-ui'
+import type {
+  ComboboxContentProps as RekaComboboxContentProps,
+  ComboboxContentEmits,
+} from 'reka-ui'
 import ThemeWrapper from '../provider/ThemeWrapper.vue'
 
-export interface ComboboxContentProps extends _ComboboxContentProps {
-  to?: string | HTMLElement
+export interface ComboboxContentProps extends RekaComboboxContentProps {
   variant?: 'solid' | 'soft'
 }
 </script>
@@ -31,6 +33,7 @@ const { forwardRef } = useForwardExpose()
 const props = withDefaults(defineProps<ComboboxContentProps>(), {
   variant: 'solid',
   position: 'popper',
+  sideOffset: 5,
 })
 const emits = defineEmits<ComboboxContentEmits>()
 const forwarded = useForwardPropsEmits(props, emits)
@@ -46,7 +49,7 @@ const contentClass = computed(() => {
 </script>
 
 <template>
-  <ComboboxPortal :to="props.to">
+  <ComboboxPortal>
     <ThemeWrapper :accent-color="context.color.value">
       <ComboboxContent
         :ref="forwardRef"
@@ -111,23 +114,73 @@ const contentClass = computed(() => {
   padding: var(--combobox-content-padding);
 }
 
-.ui-ComboboxContent:has(.ui-ScrollAreaScrollbar[data-orientation='vertical']) .ui-ComboboxViewport {
+.ui-ComboboxContent:where(:has(.ui-ScrollAreaScrollbar[data-orientation='vertical'])) :where(.ui-ComboboxViewport) {
   padding-right: var(--space-3);
 }
 
 .ui-ComboboxContent:where(.r-size-1) {
   --combobox-content-padding: var(--space-1);
+
   --combobox-item-height: var(--space-5);
-  --combobox-item-indicator-width: calc(var(--space-5) / 1.2);
+  --combobox-item-font-size: var(--font-size-1);
+  --combobox-item-line-height: var(--line-height-1);
+  --combobox-item-letter-spacing: var(--letter-spacing-1);
+  --combobox-item-radius: var(--radius-1);
+
+  --combobox-indicator-width: calc(var(--space-5) / 1.2);
+  --combobox-indicator-icon-width: calc(8px * var(--scaling));
+  --combobox-indicator-icon-height: calc(8px * var(--scaling));
+
   --combobox-separator-margin-right: var(--space-2);
+
+  --combobox-label-font-size: var(--font-size-1);
+  --combobox-label-letter-spacing: var(--letter-spacing-1);
+  --combobox-label-line-height: var(--line-height-1);
+
   border-radius: var(--radius-3);
 }
+
+.ui-ComboboxContent:where(.r-size-2) {
+  --combobox-item-font-size: var(--font-size-2);
+  --combobox-item-letter-spacing: var(--letter-spacing-2);
+}
+
+.ui-ComboboxContent:where(.r-size-3) {
+  --combobox-item-font-size: var(--font-size-3);
+  --combobox-item-letter-spacing: var(--letter-spacing-3);
+}
+
 .ui-ComboboxContent:where(.r-size-2),
 .ui-ComboboxContent:where(.r-size-3) {
   --combobox-content-padding: var(--space-2);
+  --combobox-item-radius: var(--radius-2);
   --combobox-item-height: var(--space-6);
-  --combobox-item-indicator-width: var(--space-5);
+  --combobox-item-line-height: var(--line-height-2);
+  --combobox-indicator-width: var(--space-5);
+  --combobox-indicator-icon-width: calc(10px * var(--scaling));
+  --combobox-indicator-icon-height: calc(10px * var(--scaling));
   --combobox-separator-margin-right: var(--space-3);
+
+  --combobox-label-font-size: var(--font-size-2);
+  --combobox-label-letter-spacing: var(--letter-spacing-2);
+  --combobox-label-line-height: var(--line-height-2);
+
   border-radius: var(--radius-4);
+}
+
+.ui-ComboboxContent:where(.r-variant-solid) {
+  --combobox-highlighted-background-color: var(--accent-9);
+  --combobox-highlighted-text-color: var(--accent-contrast);
+}
+.ui-ComboboxContent:where(.r-variant-solid.r-high-contrast) {
+  --combobox-highlighted-background-color: var(--accent-12);
+  --combobox-highlighted-text-color: var(--accent-1);
+}
+.ui-ComboboxContent:where(.r-variant-soft) {
+  --combobox-highlighted-background-color: var(--accent-a3);
+  --combobox-highlighted-text-color: var(--accent-a11);
+}
+.ui-ComboboxContent:where(.r-variant-soft.r-high-contrast) {
+  --combobox-highlighted-text-color: var(--accent-12);
 }
 </style>

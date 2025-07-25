@@ -1,13 +1,13 @@
 <script lang="ts">
 import type{
-  ComboboxInputProps as _ComboboxInputProps,
+  ComboboxInputProps as RekaComboboxInputProps,
   ComboboxInputEmits,
   AcceptableValue,
   AcceptableInputValue,
 } from 'reka-ui'
 import type { RadiusType } from '../types'
 
-export interface ComboboxInputProps extends _ComboboxInputProps {
+export interface ComboboxInputProps extends RekaComboboxInputProps {
   variant?: 'surface' | 'soft'
   radius?: RadiusType
   placeholder?: string
@@ -23,6 +23,7 @@ import {
   useForwardPropsEmits,
   injectComboboxRootContext,
 } from 'reka-ui'
+import CrossIcon from '~icons/radix-icons/cross-2'
 import ChevronDownIcon from '~icons/radix-icons/chevron-down'
 
 defineOptions({
@@ -58,8 +59,8 @@ const onDeleteIndex = (index: number) => {
 }
 
 const onInputKeydown = (event: KeyboardEvent) => {
-  const value = (event.target as HTMLInputElement).value
-  if (!value && (event.key === 'Delete' || event.key === 'Backspace')) {
+  const input = event.target as HTMLInputElement
+  if (!input.value && (event.key === 'Delete' || event.key === 'Backspace')) {
     if (activeIndex.value !== -1) {
       onDeleteIndex(activeIndex.value)
     } else {
@@ -106,7 +107,7 @@ watch(values, () => {
           tabindex="-1"
           @click.prevent="onDeleteIndex(index)"
         >
-          <Icon icon="lucide:x" />
+          <CrossIcon />
         </button>
       </div>
 
@@ -334,7 +335,6 @@ watch(values, () => {
   --combobox-field-border-width: 0px;
   background-color: var(--accent-a3);
   color: var(--accent-12);
-  /* prettier-ignore */
 }
 @supports selector(:has(*)) {
   .ui-ComboboxField:where(.r-variant-soft):where(:has(.ui-ComboboxInput:focus)) {

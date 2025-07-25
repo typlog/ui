@@ -20,6 +20,9 @@ export {
 } from './ComboboxLabel.vue'
 
 export {
+  default as ComboboxEmpty,
+} from './ComboboxEmpty.vue'
+
+export {
   ComboboxGroup,
-  ComboboxEmpty,
 } from 'reka-ui'
