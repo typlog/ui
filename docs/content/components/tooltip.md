@@ -12,3 +12,12 @@ reka: https://reka-ui.com/docs/components/tooltip
 ## API Reference
 
 <PropsTable name="Tooltip" />
+
+## Examples
+
+By default, the tooltip has a black background in light mode and a white background in dark mode.
+You can customize the background color using the `color` prop.
+
+### Color
+
+<Example name="tooltip/Color.vue" />

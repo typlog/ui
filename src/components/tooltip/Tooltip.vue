@@ -1,12 +1,20 @@
 <script lang="ts">
 import type { TooltipContentProps } from 'reka-ui'
+import type { ColorType } from '../types'
 import ThemeWrapper from '../provider/ThemeWrapper.vue'
 
 export interface TooltipProps extends TooltipContentProps {
   /** The content associated with the tooltip. */
   content?: string
-  /** The max width of the tooltip popup. */
+  /**
+   * The max width of the tooltip popup.
+   * @default "360px"
+   */
   maxWidth?: string
+  /** Background color of the tooltip popup.
+   * @default "gray"
+   */
+  color?: ColorType
 }
 </script>
 
@@ -25,6 +33,7 @@ const props = withDefaults(defineProps<TooltipProps>(), {
   sideOffset: 4,
   collisionPadding: 10,
   avoidCollisions: true,
+  color: 'gray',
 })
 
 defineOptions({
@@ -56,6 +65,7 @@ defineOptions({
           :side="props.side"
           :side-offset="props.sideOffset"
           :sticky="props.sticky"
+          :data-accent-color="props.color"
           :style="{maxWidth: props.maxWidth}"
         >
           <slot name="content">
@@ -75,12 +85,13 @@ defineOptions({
 .ui-Tooltip {
   box-sizing: border-box;
   padding: var(--space-1) var(--space-2);
-  background-color: var(--gray-12);
   border-radius: var(--radius-2);
   transform-origin: var(--reka-tooltip-content-transform-origin);
   animation-duration: 140ms;
   animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  background-color: var(--accent-11);
 }
+
 @media (prefers-reduced-motion: no-preference) {
   .ui-Tooltip:where([data-state='delayed-open']):where([data-side='top']) {
     animation-name: ui-slide-from-top, ui-fade-in;
@@ -103,7 +114,16 @@ defineOptions({
   line-height: var(--line-height-1);
   letter-spacing: var(--letter-spacing-1);
 }
+
 .ui-TooltipArrow {
+  fill: var(--accent-11);
+}
+
+/* special handle for gray color */
+.ui-Tooltip:where([data-accent-color="gray"]) {
+  background-color: var(--gray-12);
+}
+.ui-Tooltip:where([data-accent-color="gray"]) :where(.ui-TooltipArrow) {
   fill: var(--gray-12);
 }
 </style>

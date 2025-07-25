@@ -72,6 +72,14 @@
       "default": "0"
     },
     {
+      "name": "color",
+      "description": "<p>Background color of the tooltip popup.</p>",
+      "type": "\"indigo\" | \"gray\" | \"gold\" | \"bronze\" | \"brown\" | \"yellow\" | \"amber\" | \"orange\" | \"tomato\" | \"red\" | \"ruby\" | \"crimson\" | \"pink\" | \"plum\" | \"purple\" | \"violet\" | \"iris\" | \"blue\" | \"cyan\" | \"teal\" | \"jade\" | \"green\" | \"grass\" | \"lime\" | \"mint\" | \"sky\"",
+      "required": false,
+      "inherit": null,
+      "default": "\"gray\""
+    },
+    {
       "name": "content",
       "description": "<p>The content associated with the tooltip.</p>",
       "type": "string",
@@ -98,7 +106,8 @@
       "description": "<p>The max width of the tooltip popup.</p>",
       "type": "string",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"360px\""
     },
     {
       "name": "positionStrategy",
