@@ -19,40 +19,28 @@ const statusColor = computed(() => STATUS_COLOR_MAP[frontmatter.value.status])
 </script>
 <template>
   <div class="flex flex-col gap-4 sm:flex-row sm:items-center mt-5 mb-12 font-medium">
-    <div v-if="frontmatter.status">
-      <Badge
-        class="capitalize"
-        :color="statusColor"
-      >
-        {{ frontmatter.status }}
-      </Badge>
-    </div>
-    <div v-if="frontmatter.source">
-      <a
-        class="flex items-center gap-1 text-gray-11 hover:text-gray-12"
-        :href="frontmatter.source"
-      >
-        <Icon class="text-gray-12 text-sm" icon="simple-icons:github" />
-        <span class="text-sm">View source</span>
-      </a>
-    </div>
-    <div v-if="frontmatter.radix">
-      <a
-        class="flex items-center gap-1 text-gray-11 hover:text-gray-12"
-        :href="frontmatter.radix"
-      >
-        <Icon class="text-gray-12 text-sm" icon="simple-icons:radixui" />
-        <span class="text-sm">Radix Themes</span>
-      </a>
-    </div>
-    <div v-if="frontmatter.reka">
-      <a
-        class="flex items-center gap-1 text-gray-11 hover:text-gray-12"
-        :href="frontmatter.reka"
-      >
-        <i class="reka-icon"></i>
-        <span class="text-sm">Reka UI</span>
-      </a>
-    </div>
+    <Badge v-if="frontmatter.status" class="capitalize" :color="statusColor">
+      {{ frontmatter.status }}
+    </Badge>
+    <a
+      v-if="frontmatter.source"
+      class="w-fit flex items-center gap-1 text-gray-11 hover:text-gray-12"
+      :href="frontmatter.source"
+    >
+      <Icon class="text-gray-12 text-sm" icon="simple-icons:github" />
+      <span class="text-sm">View source</span>
+    </a>
+    <a
+      v-if="frontmatter.radix"
+      class="w-fit flex items-center gap-1 text-gray-11 hover:text-gray-12"
+      :href="frontmatter.radix"
+    >
+      <Icon class="text-gray-12 text-sm" icon="simple-icons:radixui" />
+      <span class="text-sm">Radix Themes</span>
+    </a>
+    <a v-if="frontmatter.reka" class="w-fit flex items-center gap-1 text-gray-11 hover:text-gray-12" :href="frontmatter.reka">
+      <i class="reka-icon"></i>
+      <span class="text-sm">Reka UI</span>
+    </a>
   </div>
 </template>

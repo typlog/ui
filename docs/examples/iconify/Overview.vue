@@ -18,7 +18,7 @@ const onSelectIcon = (icon: string) => {
 <template>
   <DialogRoot>
     <Button :as="DialogTrigger">Choose an icon</Button>
-    <DialogPopup size="5" class="h-(--dialog-popup-max-height)">
+    <DialogPopup size="5" class="p-0 h-(--dialog-popup-max-height)">
       <div class="py-2 px-4 w-full flex items-center justify-between bg-gray-2 border-b sticky top-0">
         <DialogTitle>Choose an icon from iconify</DialogTitle>
         <Button variant="ghost" color="gray" :as="DialogClose">

@@ -69,6 +69,7 @@ const resetClass = buildPropsClass(props, ['size', 'variant', 'highContrast'])
   flex-shrink: 0;
   line-height: 1;
   height: fit-content;
+  width: fit-content;
 }
 
 .ui-Badge:where(.r-size-1) {
