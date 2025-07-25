@@ -194,7 +194,7 @@ watch(values, () => {
   background-color: transparent;
   border-radius: calc(var(--combobox-field-border-radius) - var(--combobox-field-border-width));
   text-indent: var(--combobox-field-padding);
-  height: calc(var(--combobox-field-height) - var(--space-1));
+  height: var(--combobox-input-height);
   cursor: auto;
 }
 
@@ -228,7 +228,7 @@ watch(values, () => {
   order: 0;
   margin-left: 0;
   margin-right: calc(var(--combobox-field-border-width) * -1);
-  height: calc(var(--combobox-field-height) - 4px);
+  height: var(--combobox-trigger-height);
 }
 :where(.r-size-1) .ui-ComboboxField {
   --combobox-field-height: var(--space-5);
@@ -303,6 +303,9 @@ watch(values, () => {
   --combobox-field-focus-color: var(--focus-a8);
   --combobox-field-border-width: 1px;
   --combobox-field-border-color: var(--gray-a7);
+  --combobox-input-height: calc(var(--combobox-field-height) - var(--space-1));
+  --combobox-trigger-height: calc(var(--combobox-field-height) - var(--space-1));
+
   /* Blend inner shadow with page background */
   background-clip: content-box;
   background-color: var(--color-surface);
@@ -333,6 +336,9 @@ watch(values, () => {
   --combobox-field-selection-color: var(--accent-a5);
   --combobox-field-focus-color: var(--accent-8);
   --combobox-field-border-width: 0px;
+  --combobox-input-height: var(--combobox-field-height);
+  --combobox-trigger-height: var(--combobox-field-height);
+
   background-color: var(--accent-a3);
   color: var(--accent-12);
 }

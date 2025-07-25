@@ -49,3 +49,13 @@ The root element of a combobox, it contains all the parts of a combobox.
 ### Multiple
 
 <Example name="combobox/Multiple.vue" variant="hide" />
+
+### Variant
+
+The input field supports two variants: `soft` and `surface`.
+
+<Example name="combobox/InputVariant.vue" />
+
+The content popup supports two variants: `soft` and `solid`.
+
+<Example name="combobox/ContentVariant.vue" />
