@@ -2,9 +2,25 @@
 import type { ColorType } from '../types'
 
 export interface SeparatorProps {
-  as?: string
+  /**
+   * The element this separator should render as.
+   * @default "span"
+   */
+  as?: 'span' | 'div'
+  /**
+   * Control the orientation of the separator.
+   * @default "horizontal"
+   */
   orientation?: 'horizontal' | 'vertical'
+  /**
+   * Control the size of the separator.
+   * @default "1"
+   */
   size?: '1' | '2' | '3' | '4'
+  /**
+   * Overrides the color of the separator.
+   * @default "gray"
+   */
   color?: ColorType
 }
 </script>
@@ -16,6 +32,7 @@ const props = withDefaults(defineProps<SeparatorProps>(), {
   as: 'span',
   orientation: 'horizontal',
   color: 'gray',
+  size: '1',
 })
 </script>
 
