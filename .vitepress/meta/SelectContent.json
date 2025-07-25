@@ -9,6 +9,14 @@
       "default": "\"center\""
     },
     {
+      "name": "alignFlip",
+      "description": "<p>Flip alignment when colliding with boundary.\nMay only occur when <code>prioritizePosition</code> is true.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": "reka-ui",
+      "default": "true"
+    },
+    {
       "name": "alignOffset",
       "description": "<p>An offset in pixels from the <code>start</code> or <code>end</code> alignment options.</p>",
       "type": "number",
@@ -130,6 +138,14 @@
       "required": false,
       "inherit": "reka-ui",
       "default": "\"top\""
+    },
+    {
+      "name": "sideFlip",
+      "description": "<p>Flip to the opposite side when colliding with boundary.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": "reka-ui",
+      "default": "true"
     },
     {
       "name": "sideOffset",

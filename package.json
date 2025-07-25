@@ -39,7 +39,7 @@
     "vite": "^7.0.0",
     "vite-plugin-dts": "^4.2.1",
     "vitepress": "^1.6.3",
-    "vue-component-meta": "^2.2.12",
+    "vue-component-meta": "^3.0.4",
     "vue-tsc": "^3.0.0"
   }
 }

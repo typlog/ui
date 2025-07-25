@@ -64,7 +64,7 @@
   "events": [
     {
       "name": "update:modelValue",
-      "type": "StringOrNumber"
+      "type": "[StringOrNumber]"
     }
   ],
   "slots": [

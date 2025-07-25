@@ -83,7 +83,7 @@
   "events": [
     {
       "name": "update:modelValue",
-      "type": "AcceptableValue[]"
+      "type": "[AcceptableValue[]]"
     }
   ],
   "slots": [],
