@@ -4,6 +4,11 @@ import {
   type Message,
 } from './manager'
 
+export type {
+  Message,
+  ToastMessage,
+} from './manager'
+
 export {
   default as ToastProvider,
   type ToastProviderProps,
@@ -21,5 +26,6 @@ export const toast: ToastFunction = Object.assign(
     success: toastManager.success,
     warning: toastManager.warning,
     error: toastManager.error,
+    promise: toastManager.promise,
   },
 )

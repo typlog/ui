@@ -6,14 +6,7 @@ const count = ref(0)
 
 const onClick = () => {
   count.value += 1
-  toast.info({
-    title: `You clicked ${count.value} times`,
-    description: 'This is a description',
-    action: {
-      label: 'Undo',
-      onClick: () => console.log('undo'),
-    },
-  })
+  toast(`You have received ${count.value} events.`)
 }
 </script>
 

@@ -10,6 +10,7 @@ export default {
   Layout,
   async enhanceApp({ app }) {
     app.component('Example', Example)
+    app.component('ExampleCode', Example)
     app.component('PropsTable', PropsTable)
     Object.keys(components).forEach((name) => {
       app.component(name, components[name as 'Button'])

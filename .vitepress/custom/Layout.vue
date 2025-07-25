@@ -33,7 +33,7 @@ const isActiveLink = (item: DefaultTheme.SidebarItem, link: string) => {
 <script setup lang="ts">
 import { computed, toRefs } from 'vue'
 import { useData, useRoute } from 'vitepress'
-import { ThemeProvider, ToastProvider } from '#components'
+import { ThemeProvider } from '#components'
 import Navbar, { type NavbarItem } from './Navbar.vue'
 import Doc from './Doc.vue'
 
@@ -59,6 +59,5 @@ const activeSidebar = computed(() => {
   <ThemeProvider>
     <Navbar :items="sidebar" />
     <Doc :sidebar="activeSidebar" />
-    <ToastProvider />
   </ThemeProvider>
 </template>

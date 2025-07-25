@@ -3,7 +3,7 @@ import type { ToastProviderProps as RekaToastProviderProps } from 'reka-ui'
 
 export interface ToastProviderProps extends RekaToastProviderProps {
   size?: '1' | '2' | '3'
-  postion?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'
+  position?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'
 }
 </script>
 
@@ -25,18 +25,18 @@ defineOptions({
 
 const props = withDefaults(defineProps<ToastProviderProps>(), {
   size: '1',
-  postion: 'bottom-right',
-  offset: '1rem',
+  position: 'bottom-right',
 })
 
 const forwarded = useForwardPropsWithout(props, ['position', 'size'])
+const manager = useToastManager()
 
 const yPosition = computed(() => {
-  return props.postion.split('-')[0] as 'top' | 'bottom'
+  return props.position.split('-')[0] as 'top' | 'bottom'
 })
 
 const xPosition = computed(() => {
-  return props.postion.split('-')[1] as 'left' | 'right'
+  return props.position.split('-')[1] as 'left' | 'right'
 })
 
 const swipeDirection = computed(() => {
@@ -46,7 +46,10 @@ const swipeDirection = computed(() => {
   return xPosition.value
 })
 
-const { messages } = useToastManager()
+const messages = computed(() => {
+  // only show latest 3 messages
+  return manager.messages.value.slice(0, 3)
+})
 </script>
 
 <template>
@@ -102,19 +105,19 @@ const { messages } = useToastManager()
 }
 .ui-ToastViewport:where(.r-size-1) {
   --toast-width: 300px;
-  --toast-gap: var(--space-4);
+  --toast-gap: var(--space-2);
   --toast-title-font-size: var(--font-size-2);
   --toast-description-font-size: var(--font-size-1);
 }
 .ui-ToastViewport:where(.r-size-2) {
   --toast-width: 340px;
-  --toast-gap: var(--space-5);
+  --toast-gap: var(--space-3);
   --toast-title-font-size: var(--font-size-3);
-  --toast-description-font-size: var(--font-size-2);
+  --toast-description-font-size: var(--font-size-1);
 }
 .ui-ToastViewport:where(.r-size-3) {
   --toast-width: 380px;
-  --toast-gap: var(--space-6);
+  --toast-gap: var(--space-4);
   --toast-title-font-size: var(--font-size-4);
   --toast-description-font-size: var(--font-size-3);
 }

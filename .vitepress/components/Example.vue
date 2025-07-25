@@ -71,6 +71,7 @@ const expanded = ref(false)
   flex-direction: column;
   outline: 0;
   font-size: 14px;
+  background: var(--gray-a2);
 }
 .vp-ExampleAction {
   width: 100%;

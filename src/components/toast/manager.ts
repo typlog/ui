@@ -40,12 +40,13 @@ export type ToastFunction = {
   success: (message: Message) => number
   warning: (message: Message) => number
   error: (message: Message) => number
+  promise: <T>(fn: () => Promise<T>, options: PromiseMessageOption<T>) => number
 }
 
 interface PromiseMessageOption<T> {
   loading: string
   success: (data: T) => Message
-  error: (err: Error) => Message
+  error?: (err: Error) => Message
 }
 
 let count = 0
@@ -98,10 +99,10 @@ export const useToastManager = createGlobalState(() => {
     return add(msg, 'error')
   }
 
-  const promise = <T>(result: Promise<T>, options: PromiseMessageOption<T>) => {
+  const promise = <T>(fn: () => Promise<T>, options: PromiseMessageOption<T>) => {
     const id = add(options.loading, 'loading')
 
-    result.then((value) => {
+    fn().then((value) => {
       const msg = options.success(value)
       if (typeof msg === 'string') {
         update(id, {title: msg, category: 'success'})
@@ -109,11 +110,13 @@ export const useToastManager = createGlobalState(() => {
         update(id, {...msg, category: 'success'})
       }
     }).catch((e) => {
-      const msg = options.error(e)
-      if (typeof msg === 'string') {
-        update(id, {title: msg, category: 'error'})
-      } else {
-        update(id, {...msg, category: 'error'})
+      if (options.error) {
+        const msg = options.error(e)
+        if (typeof msg === 'string') {
+          update(id, {title: msg, category: 'error'})
+        } else {
+          update(id, {...msg, category: 'error'})
+        }
       }
     })
 

@@ -21,7 +21,7 @@ const CATEGORY_COLORS: Record<MessageCategory, ColorType> = {
   loading: 'gray',
   info: 'indigo',
   success: 'green',
-  warning: 'amber',
+  warning: 'orange',
   error: 'red',
 }
 </script>
@@ -41,10 +41,10 @@ const props = defineProps<ToastItemProps>()
 const toastRef = useTemplateRef<InstanceType<typeof ToastRoot>>('toastRef')
 const paused = ref(false)
 
-const state = useToastManager()
+const manager = useToastManager()
 
 const styleVars = computed(() => {
-  const heights = state.messages.value.slice(0, props.index).map(item => item.height || 60)
+  const heights = manager.messages.value.slice(0, props.index).map(item => item.height || 60)
   const offsetY = heights.reduce((sum, num) => sum + num, 0)
   return {'--toast-index': props.index, '--toast-offset-y': offsetY + 'px'}
 })
@@ -68,7 +68,7 @@ const categoryColor = computed(() => {
 const onOpenChange = (open: boolean) => {
   if (open === false) {
     setTimeout(() => {
-      state.remove(props.message.id)
+      manager.remove(props.message.id)
     }, 500)
   }
 }
@@ -83,7 +83,7 @@ const onResume = () => {
 
 onMounted(() => {
   const el = toastRef.value!.$el as HTMLLIElement
-  state.update(props.message.id, {height: el.clientHeight})
+  manager.update(props.message.id, {height: el.clientHeight})
 })
 </script>
 
@@ -94,7 +94,6 @@ onMounted(() => {
     class="ui-ToastItem"
     :duration="message.duration"
     :data-expanded="paused"
-    :data-invisible="index > 2"
     :style="styleVars"
     @update:open="onOpenChange"
     @pause="onPause"
@@ -157,10 +156,6 @@ onMounted(() => {
   --toast-collapse-scale: calc(max(0, 1 - (var(--toast-index) * 0.06)));
 }
 
-.ui-ToastItem:where([data-invisible="true"]) {
-  opacity: 0;
-}
-
 .ui-ToastItem:where([data-swipe="move"]) {
   transition: none;
 }
@@ -192,7 +187,7 @@ onMounted(() => {
 :where(.ui-ToastViewport[data-y-position="bottom"]) .ui-ToastItem:where([data-expanded="false"]) {
   transform:
     translateX(var(--reka-toast-swipe-move-x, 0px))
-    translateY(calc(var(--reka-toast-swipe-move-y, 0px) + (min(var(--toast-index), 10) * -20%)))
+    translateY(calc(var(--reka-toast-swipe-move-y, 0px) + var(--toast-offset-y) * -0.2))
     scale(var(--toast-collapse-scale));
 }
 
