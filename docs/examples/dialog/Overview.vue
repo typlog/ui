@@ -14,7 +14,7 @@ import {
 <template>
   <DialogRoot>
     <Button :as="DialogTrigger">Edit profile</Button>
-    <DialogPopup>
+    <DialogPopup class="p-0">
       <div class="p-4">
         <DialogTitle>Edit profile</DialogTitle>
         <DialogDescription>Make changes to your profile.</DialogDescription>

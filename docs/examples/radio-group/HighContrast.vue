@@ -12,6 +12,7 @@ const selected = ref<string>('1')
       class="flex flex-col gap-2"
       variant="soft"
       color="gray"
+      high-contrast
     >
       <RadioGroupItem value="1">
         Default layout
@@ -28,15 +29,15 @@ const selected = ref<string>('1')
       v-model="selected"
       class="flex flex-col gap-2"
       variant="soft"
-      color="green"
+      high-contrast
     >
-      <RadioGroupItem value="1">
+      <RadioGroupItem color="green" value="1">
         Default layout
       </RadioGroupItem>
-      <RadioGroupItem value="2">
+      <RadioGroupItem color="orange" value="2">
         Simple layout
       </RadioGroupItem>
-      <RadioGroupItem value="3">
+      <RadioGroupItem color="red" value="3">
         Compact layout
       </RadioGroupItem>
     </RadioGroupRoot>
@@ -45,14 +46,15 @@ const selected = ref<string>('1')
       v-model="selected"
       class="flex flex-col gap-2"
       variant="soft"
+      high-contrast
     >
-      <RadioGroupItem color="violet" value="1">
+      <RadioGroupItem color="jade" value="1">
         Default layout
       </RadioGroupItem>
-      <RadioGroupItem color="crimson" value="2">
+      <RadioGroupItem color="iris" value="2">
         Simple layout
       </RadioGroupItem>
-      <RadioGroupItem color="bronze" value="3">
+      <RadioGroupItem color="brown" value="3">
         Compact layout
       </RadioGroupItem>
     </RadioGroupRoot>

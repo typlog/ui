@@ -13,7 +13,6 @@ export * from './card'
 export * from './button'
 export * from './scrollarea'
 
-export * from './alert'
 export * from './dialog'
 export * from './dropdown'
 export * from './popover'

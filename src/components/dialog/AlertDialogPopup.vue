@@ -5,9 +5,7 @@ import type {
 } from 'reka-ui'
 import ThemeWrapper from '../provider/ThemeWrapper.vue'
 
-export interface AlertDialogPopupProps extends AlertDialogContentProps {
-  to?: string | HTMLElement
-}
+export interface AlertDialogPopupProps extends AlertDialogContentProps {}
 </script>
 
 <script setup lang="ts">
@@ -15,8 +13,8 @@ import {
   AlertDialogPortal,
   AlertDialogContent,
   AlertDialogOverlay,
+  useForwardPropsEmits,
 } from 'reka-ui'
-import { useForwardPropsEmitsWithout } from '../util'
 
 defineOptions({
   inheritAttrs: false,
@@ -25,17 +23,17 @@ defineOptions({
 const props = defineProps<AlertDialogPopupProps>()
 const emits = defineEmits<AlertDialogContentEmits>()
 
-const forwarded = useForwardPropsEmitsWithout(props, emits, ['to', 'align', 'size'])
+const forwarded = useForwardPropsEmits(props, emits)
 </script>
 
 <template>
-  <AlertDialogPortal :to="props.to">
+  <AlertDialogPortal>
     <ThemeWrapper>
       <AlertDialogOverlay class="ui-DialogOverlay">
         <div class="ui-DialogWrapper">
           <div class="ui-DialogContainer">
             <AlertDialogContent
-              class="ui-DialogPopup ui-AlertPopup"
+              class="ui-DialogPopup ui-AlertPopup r-size-3"
               v-bind="{
                 ...$attrs,
                 ...forwarded,
@@ -50,10 +48,11 @@ const forwarded = useForwardPropsEmitsWithout(props, emits, ['to', 'align', 'siz
   </AlertDialogPortal>
 </template>
 
+<style src="./style.css"></style>
+
 <style>
 .ui-AlertPopup {
   --dialog-popup-radius: var(--radius-4);
   --dialog-popup-max-width: 450px;
-  padding: var(--space-5);
 }
 </style>

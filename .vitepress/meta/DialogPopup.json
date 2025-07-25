@@ -31,17 +31,11 @@
     },
     {
       "name": "size",
-      "description": "",
+      "description": "<p>Control size of the dialog. It will affect the padding and border-radius.</p>",
       "type": "\"1\" | \"2\" | \"3\" | \"4\" | \"5\"",
       "required": false,
-      "inherit": null
-    },
-    {
-      "name": "to",
-      "description": "",
-      "type": "string | HTMLElement",
-      "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"1\""
     }
   ],
   "events": [

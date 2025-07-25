@@ -21,10 +21,18 @@ reka: https://reka-ui.com/docs/components/radio-group
 
 ## Examples
 
+### Size
+
+<Example name="radio-group/Size.vue" />
+
 ### Variant
 
 <Example name="radio-group/Variant.vue" />
 
-### Size
+### Color
 
-<Example name="radio-group/Size.vue" />
+<Example name="radio-group/Color.vue" />
+
+### High Contrast
+
+<Example name="radio-group/HighContrast.vue" />
