@@ -3,8 +3,10 @@ import type { TooltipContentProps } from 'reka-ui'
 import ThemeWrapper from '../provider/ThemeWrapper.vue'
 
 export interface TooltipProps extends TooltipContentProps {
-  to?: string | HTMLElement
+  /** The content associated with the tooltip. */
   content?: string
+  /** The max width of the tooltip popup. */
+  maxWidth?: string
 }
 </script>
 
@@ -39,7 +41,7 @@ defineOptions({
     >
       <slot></slot>
     </TooltipTrigger>
-    <TooltipPortal :to="props.to">
+    <TooltipPortal>
       <ThemeWrapper>
         <TooltipContent
           class="ui-Tooltip"
@@ -54,6 +56,7 @@ defineOptions({
           :side="props.side"
           :side-offset="props.sideOffset"
           :sticky="props.sticky"
+          :style="{maxWidth: props.maxWidth}"
         >
           <slot name="content">
             <p
