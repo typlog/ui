@@ -1,31 +1,28 @@
 <script lang="ts">
-import type { Ref } from 'vue'
-import type { RadioGroupRootProps as _RadioGroupRootProps, RadioGroupRootEmits } from 'reka-ui'
-import { createContext } from 'reka-ui'
+import type { RadioGroupRootProps as RekaRadioGroupRootProps, RadioGroupRootEmits } from 'reka-ui'
 import type { ColorType } from '../types'
 
-export interface RadioGroupRootProps extends _RadioGroupRootProps {
-  color?: ColorType
-  size?: '1' | '2' | '3'
+export interface RadioGroupRootProps extends RekaRadioGroupRootProps {
+  /**
+   * The visual variant of the radio group.
+   * @default "surface"
+   */
   variant?: 'surface' | 'soft'
+  /**
+   * Control the size of the radio group.
+   * @default "2"
+   */
+  size?: '1' | '2' | '3'
+  /** Overrides the accent color inherited from the ThemeProvider. */
+  color?: ColorType
+  /** Uses a higher contrast color for the component. */
   highContrast?: boolean
 }
-
-interface RadioGroupRootContext {
-  color?: Ref<ColorType | undefined>
-  size: Ref<'1' | '2' | '3'>
-  variant: Ref<'surface' | 'soft'>
-  highContrast?: Ref<boolean>
-}
-
-export const [injectRadioGroupRootContext, provideRadioGroupRootContext]
-  = createContext<RadioGroupRootContext>('ui:RadioGroupRoot')
 </script>
 
 <script setup lang="ts">
-import { toRefs } from 'vue'
 import { RadioGroupRoot } from 'reka-ui'
-import { useForwardPropsEmitsWithout } from '../util'
+import { useForwardPropsEmitsWithout, buildPropsClass } from '../util'
 
 const emits = defineEmits<RadioGroupRootEmits>()
 
@@ -34,17 +31,28 @@ const props = withDefaults(defineProps<RadioGroupRootProps>(), {
   variant: 'surface',
 })
 const forwarded = useForwardPropsEmitsWithout(props, emits, ['color', 'size', 'variant', 'highContrast'])
-
-const { size, variant, color, highContrast } = toRefs(props)
-
-provideRadioGroupRootContext({ size, variant, color, highContrast })
+const resetClass = buildPropsClass(props, ['size', 'variant', 'highContrast'])
 </script>
 
 <template>
   <RadioGroupRoot
     class="ui-RadioGroupRoot"
+    :class="resetClass"
+    :data-accent-color="props.color"
     v-bind="forwarded"
   >
     <slot></slot>
   </RadioGroupRoot>
 </template>
+
+<style>
+.ui-RadioGroupRoot:where(.r-size-1) {
+  --radio-size: calc(var(--space-4) * 0.875);
+}
+.ui-RadioGroupRoot:where(.r-size-2) {
+  --radio-size: var(--space-4);
+}
+.ui-RadioGroupRoot:where(.r-size-3) {
+  --radio-size: calc(var(--space-4) * 1.25);
+}
+</style>

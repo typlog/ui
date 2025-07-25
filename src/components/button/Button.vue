@@ -9,9 +9,9 @@ export interface ButtonProps {
    * @default "solid"
    */
   variant?: 'classic' | 'solid' | 'soft' | 'surface' | 'outline' | 'ghost'
-  /** Overrides the accent color inherited from the Theme. */
+  /** Overrides the accent color inherited from the ThemeProvider. */
   color?: ColorType
-  /** Overrides the radius inherited from the theme. */
+  /** Overrides the radius inherited from the ThemeProvider. */
   radius?: RadiusType
   /**
    * Control the size of the button.

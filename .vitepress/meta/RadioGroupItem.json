@@ -17,7 +17,7 @@
     },
     {
       "name": "color",
-      "description": "",
+      "description": "<p>Overrides the accent color inherited from the RadioGroupRoot.</p>",
       "type": "\"indigo\" | \"gray\" | \"gold\" | \"bronze\" | \"brown\" | \"yellow\" | \"amber\" | \"orange\" | \"tomato\" | \"red\" | \"ruby\" | \"crimson\" | \"pink\" | \"plum\" | \"purple\" | \"violet\" | \"iris\" | \"blue\" | \"cyan\" | \"teal\" | \"jade\" | \"green\" | \"grass\" | \"lime\" | \"mint\" | \"sky\"",
       "required": false,
       "inherit": null
@@ -31,7 +31,7 @@
     },
     {
       "name": "highContrast",
-      "description": "",
+      "description": "<p>Overrides the highContrast prop inherited from the RadioGroupRoot.</p>",
       "type": "boolean",
       "required": false,
       "inherit": null
@@ -59,7 +59,7 @@
     },
     {
       "name": "size",
-      "description": "",
+      "description": "<p>Overrides the size inherited from the RadioGroupRoot.</p>",
       "type": "\"1\" | \"2\" | \"3\"",
       "required": false,
       "inherit": null
@@ -73,7 +73,7 @@
     },
     {
       "name": "variant",
-      "description": "",
+      "description": "<p>Overrides the variant inherited from the RadioGroupRoot.</p>",
       "type": "\"soft\" | \"surface\"",
       "required": false,
       "inherit": null

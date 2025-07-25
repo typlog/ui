@@ -80,6 +80,7 @@ const resetClass = buildPropsClass(props, ['variant', 'size', 'highContrast'])
 .ui-TabList:where(.r-variant-surface, .r-variant-classic) {
   position: relative;
   display: inline-flex;
+  width: fit-content;
   align-items: center;
   justify-content: center;
   vertical-align: top;

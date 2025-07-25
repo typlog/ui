@@ -73,6 +73,7 @@ export default defineConfig({
               { text: 'Checkbox Group', link: '/components/checkbox-group' },
               { text: 'Radio', link: '/components/radio' },
               { text: 'Radio Group', link: '/components/radio-group' },
+              { text: 'Radio Tabs', link: '/components/radio-tabs' },
               { text: 'TextField', link: '/components/text-field' },
               { text: 'TextArea', link: '/components/text-area' },
               { text: 'ColorField', link: '/components/color-field' },

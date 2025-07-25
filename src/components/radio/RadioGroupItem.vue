@@ -3,45 +3,32 @@ import type { RadioGroupItemProps as RekaRadioGroupItemProps } from 'reka-ui'
 import type { ColorType } from '../types'
 
 export interface RadioGroupItemProps extends RekaRadioGroupItemProps {
+  /** Overrides the accent color inherited from the RadioGroupRoot. */
   color?: ColorType
+  /** Overrides the size inherited from the RadioGroupRoot. */
   size?: '1' | '2' | '3'
+  /** Overrides the variant inherited from the RadioGroupRoot. */
   variant?: 'surface' | 'soft'
+  /** Overrides the highContrast prop inherited from the RadioGroupRoot. */
   highContrast?: boolean
 }
 </script>
 
 <script setup lang="ts">
-import { computed } from 'vue'
 import { RadioGroupItem } from 'reka-ui'
-import { injectRadioGroupRootContext } from './RadioGroupRoot.vue'
-import { useForwardPropsWithout } from '../util'
+import { useForwardPropsWithout, buildPropsClass } from '../util'
 
 const props = defineProps<RadioGroupItemProps>()
-
 const forwarded = useForwardPropsWithout(props, ['color', 'size', 'variant', 'highContrast'])
-
-const rootContext = injectRadioGroupRootContext()
-
-const resetClass = computed(() => {
-  const rv: string[] = [
-    `r-size-${props.size || rootContext.size.value}`,
-    `r-variant-${props.variant || rootContext.variant.value}`,
-  ]
-  if (props.highContrast) {
-    rv.push('r-high-contrast')
-  } else if (props.highContrast != false && rootContext.highContrast?.value) {
-    rv.push('r-high-contrast')
-  }
-  return rv
-})
+const resetClass = buildPropsClass(props, ['size', 'variant', 'highContrast'])
 </script>
 
 <template>
   <label class="ui-RadioGroupItem">
     <RadioGroupItem
-      class="ui-Radio"
+      class="ui-RadioBase ui-RadioGroupItemIndicator"
       :class="resetClass"
-      :data-accent-color="props.color || rootContext.color?.value"
+      :data-accent-color="props.color"
       v-bind="forwarded"
     >
     </RadioGroupItem>
@@ -49,9 +36,11 @@ const resetClass = computed(() => {
   </label>
 </template>
 
+<style src="./style.css"></style>
+
 <style>
 .ui-RadioGroupItem {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: .5em;
   width: fit-content;

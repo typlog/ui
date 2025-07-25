@@ -1,9 +1,4 @@
 export {
-  RadioGroupItem as RadioTabsItem,
-  type RadioGroupItemProps as RadioTabsItemProps,
-} from 'reka-ui'
-
-export {
   default as Radio,
   type RadioProps,
 } from './Radio.vue'
@@ -24,6 +19,11 @@ export {
 } from './RadioCardsItem.vue'
 
 export {
-  default as RadioTabsList,
-  type RadioTabsListProps,
-} from './RadioTabsList.vue'
+  default as RadioTabsRoot,
+  type RadioTabsRootProps,
+} from './RadioTabsRoot.vue'
+
+export {
+  default as RadioTabsItem,
+  type RadioTabsItemProps,
+} from './RadioTabsItem.vue'

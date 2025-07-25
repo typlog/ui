@@ -4,24 +4,17 @@ import type { RadioGroupItemProps } from 'reka-ui'
 
 <script setup lang="ts">
 import { useForwardExpose, useForwardProps, RadioGroupItem } from 'reka-ui'
-import { injectRadioGroupRootContext } from './RadioGroupRoot.vue'
 import Card from '../card/Card.vue'
 
 const props = defineProps<RadioGroupItemProps>()
 const forwarded = useForwardProps(props)
 
 useForwardExpose()
-
-const rootContext = injectRadioGroupRootContext()
 </script>
 
 <template>
   <RadioGroupItem
     class="ui-RadioCardsItem"
-    :data-accent-color="rootContext.color?.value"
-    :data-size="rootContext.size.value"
-    :data-variant="rootContext.variant.value"
-    :data-high-contrast="rootContext.highContrast?.value"
     v-bind="{...forwarded, asChild: false}"
   >
     <Card :as-child="forwarded.asChild">

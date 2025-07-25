@@ -20,12 +20,6 @@ const forwarded = useForwardProps(props)
 </template>
 
 <style>
-.ui-root {
-  --tab-active-letter-spacing: -0.01em;
-  --tab-active-word-spacing: 0em;
-  --tab-inactive-letter-spacing: 0em;
-  --tab-inactive-word-spacing: 0em;
-}
 .ui-TabTrigger {
   display: flex;
   align-items: center;

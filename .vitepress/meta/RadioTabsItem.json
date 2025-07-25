@@ -51,28 +51,7 @@
       "inherit": "reka-ui"
     }
   ],
-  "events": [
-    {
-      "name": "select",
-      "type": "[event: RadioGroupItemSelectEvent]"
-    }
-  ],
-  "slots": [
-    {
-      "name": "checked",
-      "description": "<p>Current checked state</p>\n",
-      "type": "boolean"
-    },
-    {
-      "name": "required",
-      "description": "<p>Required state</p>\n",
-      "type": "boolean"
-    },
-    {
-      "name": "disabled",
-      "description": "<p>Disabled state</p>\n",
-      "type": "boolean"
-    }
-  ],
+  "events": [],
+  "slots": [],
   "methods": []
 }
