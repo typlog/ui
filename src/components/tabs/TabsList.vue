@@ -4,7 +4,7 @@ import type { ColorType } from '../types'
 export interface TabsListProps {
   size?: '1' | '2'
   color?: ColorType
-  variant?: 'outline' | 'surface' | 'soft'
+  variant?: 'classic' | 'outline' | 'surface' | 'soft'
   highContrast?: boolean
 }
 </script>
@@ -40,54 +40,9 @@ const resetClass = buildPropsClass(props, ['variant', 'size', 'highContrast'])
   font-style: normal;
   scrollbar-width: none;
 }
+
 .ui-TabList::-webkit-scrollbar {
   display: none;
-}
-
-.ui-TabList:where(.r-variant-outline, .r-variant-soft) {
-  display: flex;
-  box-shadow: inset 0 -1px 0 0 var(--gray-a5);
-}
-
-.ui-TabList:where(.r-variant-surface) {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  vertical-align: top;
-  flex-shrink: 0;
-  box-shadow: inset 0 0 0 1px var(--gray-a6);
-  border-radius: var(--tab-radius);
-}
-
-.ui-TabsIndicator {
-  position: absolute;
-  left: 0;
-  transition-property: width, transform;
-  transform: translateX(var(--reka-tabs-indicator-position));
-  width: var(--reka-tabs-indicator-size);
-}
-
-.ui-TabList:where(.r-variant-outline) :where(.ui-TabsIndicator) {
-  bottom: 0;
-  height: 2px;
-  background-color: var(--accent-indicator);
-  transition-duration: 300ms;
-}
-
-.ui-TabList:where(.r-variant-surface) :where(.ui-TabsIndicator) {
-  top: 0;
-  height: var(--tab-inner-height);
-  background-color: var(--accent-a3);
-  transition-duration: 100ms;
-}
-
-.ui-TabList:where(.r-variant-soft) :where(.ui-TabsIndicator) {
-  top: calc((var(--tab-height) - var(--tab-inner-height)) / 2);
-  height: var(--tab-inner-height);
-  background-color: var(--accent-a3);
-  border-radius: var(--tab-item-radius);
-  transition-duration: 100ms;
 }
 
 .ui-TabList:where(.r-size-1) {
@@ -113,14 +68,55 @@ const resetClass = buildPropsClass(props, ['variant', 'size', 'highContrast'])
   --tab-inner-height: calc(var(--space-6) - var(--space-1));
 }
 
+.ui-TabsIndicator {
+  position: absolute;
+  left: 0;
+  transition-property: width, transform;
+  transform: translateX(var(--reka-tabs-indicator-position));
+  width: var(--reka-tabs-indicator-size);
+}
+
+/** classic & surface */
+.ui-TabList:where(.r-variant-surface, .r-variant-classic) {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: top;
+  flex-shrink: 0;
+  border-radius: var(--tab-radius);
+}
+
+.ui-TabList:where(.r-variant-classic) {
+  background-color: var(--accent-a3);
+  padding-left: var(--tab-padding-x);
+  padding-right: var(--tab-padding-x);
+}
+
 .ui-TabList:where(.r-variant-surface) {
   --tab-item-radius: 0;
   --tab-inner-height: var(--tab-height);
+  box-shadow: inset 0 0 0 1px var(--gray-a6);
 }
 
-.ui-TabList:where(.r-variant-soft) {
-  padding-left: var(--tab-padding-x);
-  padding-right: var(--tab-padding-x);
+.ui-TabList:where(.r-variant-surface) :where(.ui-TabsIndicator) {
+  top: 0;
+  height: var(--tab-inner-height);
+  background-color: var(--accent-a3);
+  transition-duration: 100ms;
+}
+
+.ui-TabList:where(.r-variant-classic) :where(.ui-TabsIndicator) {
+  top: calc((var(--tab-height) - var(--tab-inner-height)) / 2);
+  height: var(--tab-inner-height);
+  background-color: var(--color-panel-solid);
+  box-shadow:
+    0 0 0 0.5px var(--black-a1),
+    0 1px 1px 0 var(--gray-a2),
+    0 2px 1px -1px var(--black-a1),
+    0 1px 3px 0 var(--black-a1);
+  border-radius: var(--tab-item-radius);
+  transition-duration: 100ms;
 }
 
 .ui-TabList:where(.r-variant-surface.r-size-1),
@@ -128,6 +124,33 @@ const resetClass = buildPropsClass(props, ['variant', 'size', 'highContrast'])
   --tab-inner-padding-x: calc(var(--space-2) / 4 * 3);
 }
 
+/** soft & outline */
+.ui-TabList:where(.r-variant-outline, .r-variant-soft) {
+  display: flex;
+  box-shadow: inset 0 -1px 0 0 var(--gray-a5);
+}
+
+.ui-TabList:where(.r-variant-soft) {
+  padding-left: var(--tab-padding-x);
+  padding-right: var(--tab-padding-x);
+}
+
+.ui-TabList:where(.r-variant-soft) :where(.ui-TabsIndicator) {
+  top: calc((var(--tab-height) - var(--tab-inner-height)) / 2);
+  height: var(--tab-inner-height);
+  background-color: var(--accent-a3);
+  border-radius: var(--tab-item-radius);
+  transition-duration: 100ms;
+}
+
+.ui-TabList:where(.r-variant-outline) :where(.ui-TabsIndicator) {
+  bottom: 0;
+  height: 2px;
+  background-color: var(--accent-indicator);
+  transition-duration: 300ms;
+}
+
+/** high contrast */
 :where(.ui-TabList.r-variant-outline.r-high-contrast) .ui-TabsIndicator {
   background-color: var(--accent-12);
 }
