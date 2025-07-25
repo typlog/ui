@@ -23,7 +23,7 @@ import {
   useForwardPropsEmits,
   injectComboboxRootContext,
 } from 'reka-ui'
-import { Icon } from '@iconify/vue'
+import ChevronDownIcon from '~icons/radix-icons/chevron-down'
 
 defineOptions({
   inheritAttrs: false,
@@ -134,7 +134,7 @@ watch(values, () => {
       }"
     />
     <ComboboxTrigger class="ui-ComboboxTrigger">
-      <Icon icon="radix-icons:chevron-down" />
+      <ChevronDownIcon />
     </ComboboxTrigger>
   </ComboboxAnchor>
 </template>

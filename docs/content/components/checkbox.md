@@ -18,3 +18,7 @@ radix: https://www.radix-ui.com/themes/docs/components/checkbox
 ### Size
 
 <Example name="checkbox/Size.vue" />
+
+### State
+
+<Example name="checkbox/State.vue" />

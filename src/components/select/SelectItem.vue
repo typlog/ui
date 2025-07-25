@@ -3,7 +3,6 @@ import type { SelectItemProps } from 'reka-ui'
 </script>
 
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
 import {
   SelectItem,
   SelectItemIndicator,
@@ -11,6 +10,7 @@ import {
   useForwardExpose,
   useForwardProps,
 } from 'reka-ui'
+import CheckIcon from '~icons/radix-icons/check'
 
 const props = defineProps<SelectItemProps>()
 const forwarded = useForwardProps(props)
@@ -24,7 +24,7 @@ useForwardExpose()
     v-bind="forwarded"
   >
     <SelectItemIndicator class="ui-SelectItemIndicator">
-      <Icon icon="radix-icons:check" />
+      <CheckIcon />
     </SelectItemIndicator>
     <SelectItemText>
       <slot></slot>

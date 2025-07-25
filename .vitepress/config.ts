@@ -15,7 +15,7 @@ export default defineConfig({
       // @ts-expect-error this seems a type bug
       tailwindcss(),
       // @ts-expect-error this seems a type bug
-      Icons({ compiler: 'vue3' }),
+      Icons({ scale: 1, compiler: 'vue3' }),
     ],
     resolve: {
       alias: {

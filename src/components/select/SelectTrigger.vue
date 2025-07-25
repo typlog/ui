@@ -11,8 +11,8 @@ export interface SelectTriggerProps extends _SelectTriggerProps {
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { Icon } from '@iconify/vue'
 import { SelectTrigger, SelectValue, SelectIcon } from 'reka-ui'
+import ChevronDownIcon from '~icons/radix-icons/chevron-down'
 import { injectSelectRootContext } from './SelectRoot.vue'
 
 const props = withDefaults(defineProps<SelectTriggerProps>(), {
@@ -47,10 +47,7 @@ const resetClass = computed(() => {
       </SelectValue>
     </span>
     <SelectIcon as-child>
-      <Icon
-        class="ui-SelectIcon"
-        icon="radix-icons:chevron-down"
-      />
+      <ChevronDownIcon class="ui-SelectIcon" />
     </SelectIcon>
   </SelectTrigger>
 </template>

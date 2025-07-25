@@ -9,6 +9,8 @@ export interface AccordionIndicatorProps {
 </script>
 
 <script setup lang="ts">
+import ChevronIcon from '~icons/radix-icons/chevron-right'
+
 withDefaults(defineProps<AccordionIndicatorProps>(), {
   variant: 'chevron',
 })
@@ -16,21 +18,10 @@ withDefaults(defineProps<AccordionIndicatorProps>(), {
 
 <template>
   <div class="ui-AccordionIndicator">
-    <svg
+    <ChevronIcon
       v-if="variant == 'chevron'"
       class="ui-AccordionIndicator-chevron"
-      xmlns="http://www.w3.org/2000/svg"
-      width="1em"
-      height="1em"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
-      <path d="m9 18 6-6-6-6" />
-    </svg>
+    />
     <div v-if="variant == 'plus'" class="ui-AccordionIndicator-plus">
       <span class="ui-AccordionIndicator-plus-1"></span>
       <span class="ui-AccordionIndicator-plus-2"></span>

@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
 import {
   ComboboxItem,
   ComboboxItemIndicator,
   useForwardProps,
   type ComboboxItemProps,
 } from 'reka-ui'
+import CheckIcon from '~icons/radix-icons/check'
 
 const props = defineProps<ComboboxItemProps>()
 const forwarded = useForwardProps(props)
@@ -17,7 +17,7 @@ const forwarded = useForwardProps(props)
     v-bind="forwarded"
   >
     <ComboboxItemIndicator class="ui-ComboboxItemIndicator">
-      <Icon icon="radix-icons:check" />
+      <CheckIcon />
     </ComboboxItemIndicator>
     <slot></slot>
   </ComboboxItem>
