@@ -69,14 +69,10 @@ function parseMeta(meta: ComponentMeta) {
       const { name, required } = prop
 
       prop.tags.forEach(item => {
-        if (item.name === 'default') {
+        if (item.name === 'default' || item.name === 'defaultValue') {
           defaultValue = item.text
         }
       })
-
-      if (name === 'as') {
-        defaultValue = defaultValue ?? '"div"'
-      }
 
       if (defaultValue === 'undefined') {
         defaultValue = undefined

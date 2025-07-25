@@ -12,7 +12,8 @@
       "description": "<p>The modality of the popover. When set to true, interaction with outside elements will be disabled and only popover content will be visible to screen readers.</p>",
       "type": "boolean",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": "reka-ui",
+      "default": "false"
     },
     {
       "name": "open",

@@ -118,14 +118,16 @@
       "description": "<p>Whether to reset the searchTerm when the Combobox input blurred</p>",
       "type": "boolean",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": "reka-ui",
+      "default": "`true`"
     },
     {
       "name": "resetSearchTermOnSelect",
       "description": "<p>Whether to reset the searchTerm when the Combobox value is selected</p>",
       "type": "boolean",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": "reka-ui",
+      "default": "`true`"
     },
     {
       "name": "size",

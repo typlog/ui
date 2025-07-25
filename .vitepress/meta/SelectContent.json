@@ -5,21 +5,24 @@
       "description": "<p>The preferred alignment against the trigger.\nMay change when collisions occur.</p>",
       "type": "\"start\" | \"center\" | \"end\"",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": "reka-ui",
+      "default": "\"center\""
     },
     {
       "name": "alignOffset",
       "description": "<p>An offset in pixels from the <code>start</code> or <code>end</code> alignment options.</p>",
       "type": "number",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": "reka-ui",
+      "default": "0"
     },
     {
       "name": "arrowPadding",
       "description": "<p>The padding between the arrow and the edges of the content.\nIf your content has border-radius, this will prevent it from\noverflowing the corners.</p>",
       "type": "number",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": "reka-ui",
+      "default": "0"
     },
     {
       "name": "as",
@@ -41,35 +44,40 @@
       "description": "<p>When <code>true</code>, overrides the side and align preferences\nto prevent collisions with boundary edges.</p>",
       "type": "boolean",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": "reka-ui",
+      "default": "true"
     },
     {
       "name": "bodyLock",
       "description": "<p>The document.body will be lock, and scrolling will be disabled.</p>",
       "type": "boolean",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": "reka-ui",
+      "default": "true"
     },
     {
       "name": "collisionBoundary",
       "description": "<p>The element used as the collision boundary. By default\nthis is the viewport, though you can provide additional\nelement(s) to be included in this check.</p>",
       "type": "Element | (Element | null)[] | null",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": "reka-ui",
+      "default": "[]"
     },
     {
       "name": "collisionPadding",
       "description": "<p>The distance in pixels from the boundary edges where collision\ndetection should occur. Accepts a number (same for all sides),\nor a partial padding object, for example: { top: 20, left: 20 }.</p>",
       "type": "number | Partial<Record<\"top\" | \"bottom\" | \"left\" | \"right\", number>>",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": "reka-ui",
+      "default": "0"
     },
     {
       "name": "disableUpdateOnLayoutShift",
       "description": "<p>Whether to disable the update position for the content when the layout shifted.</p>",
       "type": "boolean",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": "reka-ui",
+      "default": "false"
     },
     {
       "name": "forceMount",
@@ -83,7 +91,8 @@
       "description": "<p>Whether to hide the content when the trigger becomes fully occluded.</p>",
       "type": "boolean",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": "reka-ui",
+      "default": "false"
     },
     {
       "name": "position",
@@ -104,7 +113,8 @@
       "description": "<p>Force content to be position within the viewport.</p>\n<p>Might overlap the reference element, which may not be desired.</p>",
       "type": "boolean",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": "reka-ui",
+      "default": "false"
     },
     {
       "name": "reference",
@@ -118,21 +128,24 @@
       "description": "<p>The preferred side of the trigger to render against when open.\nWill be reversed when collisions occur and avoidCollisions\nis enabled.</p>",
       "type": "\"top\" | \"bottom\" | \"left\" | \"right\"",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": "reka-ui",
+      "default": "\"top\""
     },
     {
       "name": "sideOffset",
       "description": "<p>The distance in pixels from the trigger.</p>",
       "type": "number",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": "reka-ui",
+      "default": "0"
     },
     {
       "name": "sticky",
       "description": "<p>The sticky behavior on the align axis. <code>partial</code> will keep the\ncontent in the boundary as long as the trigger is at least partially\nin the boundary whilst &quot;always&quot; will keep the content in the boundary\nregardless.</p>",
       "type": "\"always\" | \"partial\"",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": "reka-ui",
+      "default": "\"partial\""
     },
     {
       "name": "to",
@@ -146,7 +159,8 @@
       "description": "<p>Strategy to update the position of the floating element on every animation frame.</p>",
       "type": "\"always\" | \"optimized\"",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": "reka-ui",
+      "default": "'optimized'"
     },
     {
       "name": "variant",

@@ -7,6 +7,7 @@ interface ComponentMeta {
 
 interface PropsTableProps {
   name: string
+  expand?: boolean
 }
 
 const _regex = /\/(\w+)\.json$/
@@ -49,7 +50,11 @@ const inheritProps = computed(() => {
       class="mb-4"
       :items="selfProps"
     />
-    <CollapsibleRoot v-if="inheritProps.length" size="1">
+    <CollapsibleRoot
+      v-if="inheritProps.length"
+      size="1"
+      :default-open="props.expand"
+    >
       <CollapsibleTrigger class="font-medium">
         Props inherited from Reka UI
         <template #right>

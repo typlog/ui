@@ -12,19 +12,28 @@ radix: https://www.radix-ui.com/themes/docs/components/dialog
 
 ## API Reference
 
-### DialogRoot
+### DialogRoot & AlertDialogRoot
 
-<PropsTable name="DialogRoot" />
+Contains all the parts of a dialog.
 
-### AlertDialogRoot
-
-<PropsTable name="AlertDialogRoot" />
+<PropsTable name="AlertDialogRoot" expand />
 
 ### DialogTrigger & AlertDialogTrigger
 
-<PropsTable name="DialogTrigger" />
+Wraps the control that will open the dialog. Usually used with `Button`:
 
-<PropsTable name="AlertDialogTrigger" />
+```vue
+<template>
+<DialogRoot>
+  <DialogTrigger as-child>
+    <Button>Open dialog</Button>
+  </DialogTrigger>
+  <DialogPopup>...</DialogPopup>
+</DialogRoot>
+</template>
+```
+
+<PropsTable name="DialogTrigger" />
 
 ### DialogPopup
 
@@ -32,7 +41,7 @@ radix: https://www.radix-ui.com/themes/docs/components/dialog
 
 ### AlertDialogPopup
 
-<PropsTable name="DialogPopup" />
+<PropsTable name="AlertDialogPopup" />
 
 ### DialogTitle & AlertDialogTitle
 
@@ -58,8 +67,21 @@ radix: https://www.radix-ui.com/themes/docs/components/dialog
 
 ### Size
 
+Use the `size` prop to control size of the dialog. It will affect the `padding`,
+`border-radius` and `max-width` of the popup.
+
 <Example name="dialog/Size.vue" variant="hide" />
 
 ### Alert Dialog
+
+For alert-style dialogs, use the alert-specific components:
+
+<div class="text-sm">
+
+`AlertDialogRoot`, `AlertDialogTrigger`, `AlertDialogPopup`,
+`AlertDialogTitle`, `AlertDialogDescription`,
+`AlertDialogCancel`, `AlertDialogAction`.
+
+</div>
 
 <Example name="dialog/Alert.vue" variant="hide" />

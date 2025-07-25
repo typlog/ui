@@ -28,13 +28,6 @@
       "type": "boolean",
       "required": false,
       "inherit": "reka-ui"
-    },
-    {
-      "name": "to",
-      "description": "",
-      "type": "string | HTMLElement",
-      "required": false,
-      "inherit": null
     }
   ],
   "events": [

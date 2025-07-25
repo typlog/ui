@@ -20,7 +20,8 @@
       "description": "<p>Whether or not an accordion item is disabled from user interaction.\nWhen <code>true</code>, prevents the user from interacting with the item.</p>",
       "type": "boolean",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": "reka-ui",
+      "default": "false"
     },
     {
       "name": "unmountOnHide",

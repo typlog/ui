@@ -5,14 +5,16 @@
       "description": "<p>Time in milliseconds that each toast should remain visible for.</p>",
       "type": "number",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": "reka-ui",
+      "default": "5000"
     },
     {
       "name": "label",
       "description": "<p>An author-localized label for each toast. Used to help screen reader users\nassociate the interruption with a toast.</p>",
       "type": "string",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": "reka-ui",
+      "default": "'Notification'"
     },
     {
       "name": "position",
@@ -33,14 +35,16 @@
       "description": "<p>Direction of pointer swipe that should close the toast.</p>",
       "type": "\"left\" | \"right\" | \"up\" | \"down\"",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": "reka-ui",
+      "default": "'right'"
     },
     {
       "name": "swipeThreshold",
       "description": "<p>Distance in pixels that the swipe must pass before a close is triggered.</p>",
       "type": "number",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": "reka-ui",
+      "default": "50"
     }
   ],
   "events": [],

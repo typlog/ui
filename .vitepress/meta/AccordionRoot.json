@@ -20,7 +20,8 @@
       "description": "<p>When type is &quot;single&quot;, allows closing content when clicking trigger for an open item.\nWhen type is &quot;multiple&quot;, this prop has no effect.</p>",
       "type": "boolean",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": "reka-ui",
+      "default": "false"
     },
     {
       "name": "defaultValue",
@@ -34,14 +35,16 @@
       "description": "<p>The reading direction of the accordion when applicable. If omitted, assumes LTR (left-to-right) reading mode.</p>",
       "type": "\"ltr\" | \"rtl\"",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": "reka-ui",
+      "default": "\"ltr\""
     },
     {
       "name": "disabled",
       "description": "<p>When <code>true</code>, prevents the user from interacting with the accordion and all its items</p>",
       "type": "boolean",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": "reka-ui",
+      "default": "false"
     },
     {
       "name": "indicatorIcon",
@@ -94,7 +97,8 @@
       "description": "<p>When <code>true</code>, the element will be unmounted on closed state.</p>",
       "type": "boolean",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": "reka-ui",
+      "default": "`true`"
     }
   ],
   "events": [

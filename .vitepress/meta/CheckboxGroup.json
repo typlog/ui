@@ -41,7 +41,8 @@
       "description": "<p>Whether keyboard navigation should loop around</p>",
       "type": "boolean",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": "reka-ui",
+      "default": "false"
     },
     {
       "name": "modelValue",
