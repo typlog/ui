@@ -1,0 +1,49 @@
+{
+  "props": [
+    {
+      "name": "duration",
+      "description": "<p>Time in milliseconds that each toast should remain visible for.</p>",
+      "type": "number",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "label",
+      "description": "<p>An author-localized label for each toast. Used to help screen reader users\nassociate the interruption with a toast.</p>",
+      "type": "string",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "position",
+      "description": "",
+      "type": "\"bottom-right\" | \"top-left\" | \"top-right\" | \"bottom-left\"",
+      "required": false,
+      "inherit": null
+    },
+    {
+      "name": "size",
+      "description": "",
+      "type": "\"1\" | \"2\" | \"3\"",
+      "required": false,
+      "inherit": null
+    },
+    {
+      "name": "swipeDirection",
+      "description": "<p>Direction of pointer swipe that should close the toast.</p>",
+      "type": "\"left\" | \"right\" | \"up\" | \"down\"",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "swipeThreshold",
+      "description": "<p>Distance in pixels that the swipe must pass before a close is triggered.</p>",
+      "type": "number",
+      "required": false,
+      "inherit": "reka-ui"
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "methods": []
+}

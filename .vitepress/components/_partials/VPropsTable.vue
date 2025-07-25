@@ -42,7 +42,7 @@ defineProps<{items: PropData[]}>()
           >
             {{ item.default }}
           </Badge>
-          <div v-else class="text-center">
+          <div v-else>
             <span class="text-sm text-gray-10">–</span>
           </div>
         </td>

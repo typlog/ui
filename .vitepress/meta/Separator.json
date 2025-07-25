@@ -2,32 +2,35 @@
   "props": [
     {
       "name": "as",
-      "description": "",
-      "type": "string",
+      "description": "<p>The element this separator should render as.</p>",
+      "type": "\"div\" | \"span\"",
       "required": false,
       "inherit": null,
-      "default": "\"div\""
+      "default": "\"span\""
     },
     {
       "name": "color",
-      "description": "",
+      "description": "<p>Overrides the color of the separator.</p>",
       "type": "\"indigo\" | \"gray\" | \"gold\" | \"bronze\" | \"brown\" | \"yellow\" | \"amber\" | \"orange\" | \"tomato\" | \"red\" | \"ruby\" | \"crimson\" | \"pink\" | \"plum\" | \"purple\" | \"violet\" | \"iris\" | \"blue\" | \"cyan\" | \"teal\" | \"jade\" | \"green\" | \"grass\" | \"lime\" | \"mint\" | \"sky\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"gray\""
     },
     {
       "name": "orientation",
-      "description": "",
+      "description": "<p>Control the orientation of the separator.</p>",
       "type": "\"vertical\" | \"horizontal\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"horizontal\""
     },
     {
       "name": "size",
-      "description": "",
+      "description": "<p>Control the size of the separator.</p>",
       "type": "\"1\" | \"2\" | \"3\" | \"4\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"1\""
     }
   ],
   "events": [],

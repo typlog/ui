@@ -1,26 +1,17 @@
 <script lang="ts">
 import type { DefaultTheme } from 'vitepress'
-import type { ColorType } from '#components'
-
-const STATUS_COLOR_MAP: Record<string, ColorType> = {
-  alpha: 'orange',
-  beta: 'bronze',
-  stable: 'green',
-}
 </script>
 
 <script setup lang="ts">
 import { useData, Content } from 'vitepress'
-import { computed } from 'vue'
-import { Icon, Badge, ScrollArea } from '#components'
+import { ScrollArea } from '#components'
 import DocSidebar from './doc/Sidebar.vue'
 import DocOutline from './doc/Outline.vue'
+import DocMetaInfo from './doc/MetaInfo.vue'
 
 defineProps<{sidebar: DefaultTheme.SidebarItem[]}>()
 
-const { page, frontmatter } = useData()
-
-const statusColor = computed(() => STATUS_COLOR_MAP[frontmatter.value.status])
+const { page } = useData()
 </script>
 
 <template>
@@ -39,44 +30,8 @@ const statusColor = computed(() => STATUS_COLOR_MAP[frontmatter.value.status])
         <article class="h-entry relative grow min-w-0 shrink">
           <h1 class="p-name text-4xl font-semibold">{{ page.title }}</h1>
           <div class="mt-2 text-lg text-gray-11">{{ page.description }}</div>
-          <div class="flex flex-col gap-4 sm:flex-row sm:items-center mt-5 mb-12 font-medium">
-            <div v-if="frontmatter.status">
-              <Badge
-                class="capitalize"
-                :color="statusColor"
-              >
-                {{ frontmatter.status }}
-              </Badge>
-            </div>
-            <div v-if="frontmatter.source">
-              <a
-                class="flex items-center gap-1 text-gray-11 hover:text-gray-12"
-                :href="frontmatter.source"
-              >
-                <Icon class="text-gray-12 text-sm" icon="simple-icons:github" />
-                <span class="text-sm">View source</span>
-              </a>
-            </div>
-            <div v-if="frontmatter.radix">
-              <a
-                class="flex items-center gap-1 text-gray-11 hover:text-gray-12"
-                :href="frontmatter.radix"
-              >
-                <Icon class="text-gray-12 text-sm" icon="simple-icons:radixui" />
-                <span class="text-sm">Radix Themes</span>
-              </a>
-            </div>
-            <div v-if="frontmatter.reka">
-              <a
-                class="flex items-center gap-1 text-gray-11 hover:text-gray-12"
-                :href="frontmatter.reka"
-              >
-                <i class="reka-icon"></i>
-                <span class="text-sm">Reka UI</span>
-              </a>
-            </div>
-          </div>
-          <Content class="e-content prose lg:prose-lg max-w-none" />
+          <DocMetaInfo />
+          <Content class="e-content prose dark:prose-invert lg:prose-lg max-w-none" />
         </article>
       </div>
     </div>

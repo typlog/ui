@@ -45,6 +45,8 @@ function as expected.
 </template>
 ```
 
+<PropsTable name="ToastProvider" />
+
 ### Position
 
 You can customize the position of toast messages using the `position` prop on `ToastProvider`.

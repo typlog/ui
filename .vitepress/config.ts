@@ -60,6 +60,7 @@ export default defineConfig({
               { text: 'Badge', link: '/components/badge' },
               { text: 'Button', link: '/components/button' },
               { text: 'Icon Button', link: '/components/icon-button' },
+              { text: 'Separator', link: '/components/separator' },
             ],
           },
           {
@@ -74,7 +75,10 @@ export default defineConfig({
               { text: 'Radio Group', link: '/components/radio-group' },
               { text: 'TextField', link: '/components/text-field' },
               { text: 'TextArea', link: '/components/text-area' },
+              { text: 'ColorField', link: '/components/color-field' },
               { text: 'Select', link: '/components/select' },
+              { text: 'Combobox', link: '/components/combobox' },
+              { text: 'Editable', link: '/components/editable' },
             ],
           },
           {

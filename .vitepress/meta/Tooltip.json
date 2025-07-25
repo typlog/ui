@@ -66,7 +66,7 @@
     },
     {
       "name": "content",
-      "description": "",
+      "description": "<p>The content associated with the tooltip.</p>",
       "type": "string",
       "required": false,
       "inherit": null
@@ -84,6 +84,13 @@
       "type": "boolean",
       "required": false,
       "inherit": "reka-ui"
+    },
+    {
+      "name": "maxWidth",
+      "description": "<p>The max width of the tooltip popup.</p>",
+      "type": "string",
+      "required": false,
+      "inherit": null
     },
     {
       "name": "positionStrategy",
@@ -112,13 +119,6 @@
       "type": "\"always\" | \"partial\"",
       "required": false,
       "inherit": "reka-ui"
-    },
-    {
-      "name": "to",
-      "description": "",
-      "type": "string | HTMLElement",
-      "required": false,
-      "inherit": null
     },
     {
       "name": "updatePositionStrategy",

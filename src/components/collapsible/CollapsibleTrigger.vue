@@ -38,7 +38,6 @@ const forwarded = useForwardPropsWithout(props, ['indicator'])
   align-items: center;
   justify-content: space-between;
   text-align: initial;
-  width: 100%;
   gap: var(--collapsible-trigger-gap);
   font-size: var(--collapsible-font-size);
   font-weight: var(--font-weight-medium);

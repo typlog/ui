@@ -24,7 +24,7 @@
     {
       "name": "variant",
       "description": "",
-      "type": "\"soft\" | \"surface\" | \"outline\"",
+      "type": "\"soft\" | \"surface\" | \"outline\" | \"classic\"",
       "required": false,
       "inherit": null
     }

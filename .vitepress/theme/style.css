@@ -4,6 +4,7 @@
 @import "./css/vars.css";
 @import "./css/code.css";
 
+@custom-variant dark (&:where(.dark, .dark *));
 @plugin "@tailwindcss/typography";
 
 /** adding tailwind sources */

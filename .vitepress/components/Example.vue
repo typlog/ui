@@ -53,11 +53,13 @@ const expanded = ref(false)
   border: 1px solid var(--gray-a5);
   border-radius: var(--radius-4);
   overflow: hidden;
+  background: var(--accent-2);
 }
 .vp-ExampleComponent {
   border-bottom: 1px solid var(--gray-a5);
   width: 100%;
   box-sizing: border-box;
+  background-color: var(--color-panel-solid);
 }
 .vp-ExampleComponent .ui-ScrollAreaViewport {
   padding: var(--space-3) var(--space-4);
@@ -71,7 +73,6 @@ const expanded = ref(false)
   flex-direction: column;
   outline: 0;
   font-size: 14px;
-  background: var(--gray-a2);
 }
 .vp-ExampleAction {
   width: 100%;

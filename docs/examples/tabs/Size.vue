@@ -9,7 +9,7 @@ import {
 <template>
   <div class="flex flex-col gap-4">
     <TabsRoot default-value="account">
-      <TabsList size="1">
+      <TabsList size="1" variant="classic">
         <TabsTrigger value="account">Account</TabsTrigger>
         <TabsTrigger value="documents">Documents</TabsTrigger>
         <TabsTrigger value="settings">Settings</TabsTrigger>
@@ -17,7 +17,23 @@ import {
     </TabsRoot>
 
     <TabsRoot default-value="account">
-      <TabsList size="2">
+      <TabsList size="2" variant="classic">
+        <TabsTrigger value="account">Account</TabsTrigger>
+        <TabsTrigger value="documents">Documents</TabsTrigger>
+        <TabsTrigger value="settings">Settings</TabsTrigger>
+      </TabsList>
+    </TabsRoot>
+
+    <TabsRoot default-value="account">
+      <TabsList size="1" variant="outline">
+        <TabsTrigger value="account">Account</TabsTrigger>
+        <TabsTrigger value="documents">Documents</TabsTrigger>
+        <TabsTrigger value="settings">Settings</TabsTrigger>
+      </TabsList>
+    </TabsRoot>
+
+    <TabsRoot default-value="account">
+      <TabsList size="2" variant="outline">
         <TabsTrigger value="account">Account</TabsTrigger>
         <TabsTrigger value="documents">Documents</TabsTrigger>
         <TabsTrigger value="settings">Settings</TabsTrigger>

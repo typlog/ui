@@ -24,7 +24,7 @@ defineProps<{sidebar: DefaultTheme.SidebarItem[]}>()
       size="1"
       default-open
     >
-      <CollapsibleTrigger class="px-4">{{ item.text }}</CollapsibleTrigger>
+      <CollapsibleTrigger class="px-4 w-full">{{ item.text }}</CollapsibleTrigger>
       <CollapsibleContent>
         <DocSidebarItem
           v-for="subitem in item.items"
