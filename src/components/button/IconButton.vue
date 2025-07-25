@@ -21,6 +21,8 @@ const forwarded = useForwardProps(props)
   </Button>
 </template>
 
+<style src="./style.css"></style>
+
 <style>
 .ui-Button.ui-IconButton {
   height: var(--button-height);

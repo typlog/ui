@@ -17,7 +17,7 @@ export interface AvatarProps {
    * The visual variant to apply.
    * @default "solid"
    */
-  variant?: 'solid' | 'soft' | 'ring'
+  variant?: 'solid' | 'soft' | 'outline' | 'surface' | 'ring'
   /**
    * Control the size of the avatar.
    * @default "2"
@@ -35,6 +35,7 @@ import {
   AvatarImage,
   AvatarFallback,
 } from 'reka-ui'
+import UserIcon from '~icons/lucide/user'
 import { buildPropsClass } from '../util'
 
 const props = withDefaults(defineProps<AvatarProps>(), {
@@ -72,7 +73,15 @@ const fallback = computed(() => {
       :alt="props.alt"
       :src="props.src || ''"
     />
-    <AvatarFallback :class="`r-count-${fallback.length}`">{{ fallback }}</AvatarFallback>
+    <AvatarFallback
+      v-if="fallback"
+      :class="`r-count-${fallback.length}`"
+    >
+      {{ fallback }}
+    </AvatarFallback>
+    <AvatarFallback v-else>
+      <UserIcon />
+    </AvatarFallback>
   </AvatarRoot>
 </template>
 
@@ -110,11 +119,11 @@ const fallback = computed(() => {
   text-transform: uppercase;
 }
 
-.ui-Avatar > span.r-count-1 {
+.ui-Avatar > :where(span.r-count-1) {
   font-size: var(--avatar-fallback-one-letter-font-size);
 }
 
-.ui-Avatar > span.r-count-2 {
+.ui-Avatar > :where(span.r-count-2) {
   font-size: var(--avatar-fallback-two-letters-font-size, var(--avatar-fallback-one-letter-font-size));
 }
 
@@ -217,5 +226,16 @@ const fallback = computed(() => {
 .ui-Avatar:where(.r-variant-soft) > span {
   background-color: var(--accent-a3);
   color: var(--accent-a11);
+}
+.ui-Avatar:where(.r-variant-outline) > span {
+  box-shadow: inset 0 0 1px var(--accent-a8);
+  color: var(--accent-a11);
+}
+
+.ui-Avatar:where(.r-variant-surface) > span {
+  background-color: var(--accent-surface);
+  background-color: var(--accent-a3);
+  color: var(--accent-a11);
+  box-shadow: inset 0 0 1px var(--accent-a8);
 }
 </style>

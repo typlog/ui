@@ -1,6 +1,7 @@
 import { resolve } from 'node:path'
 import { defineConfig } from 'vitepress'
 import tailwindcss from '@tailwindcss/vite'
+import Icons from 'unplugin-icons/vite'
 import { markdownExampleTagBlock } from './plugins/example'
 
 // https://vitepress.dev/reference/site-config
@@ -11,8 +12,10 @@ export default defineConfig({
   cleanUrls: true,
   vite: {
     plugins: [
-      // @ts-expect-error this seems a type bug of vite
+      // @ts-expect-error this seems a type bug
       tailwindcss(),
+      // @ts-expect-error this seems a type bug
+      Icons({ compiler: 'vue3' }),
     ],
     resolve: {
       alias: {

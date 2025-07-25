@@ -18,3 +18,19 @@ radix: https://www.radix-ui.com/themes/docs/components/avatar
 ### Size
 
 <Example name="avatar/Size.vue" />
+
+### Radius
+
+<Example name="avatar/Radius.vue" />
+
+### Fallback
+
+<Example name="avatar/Fallback.vue" />
+
+### Variant
+
+<Example name="avatar/Variant.vue" />
+
+### Ring
+
+<Example name="avatar/Ring.vue" />

@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "types": [
+      "unplugin-icons/types/vue",
+    ],
+
     "target": "ES2020",
     "useDefineForClassFields": true,
     "module": "ESNext",
