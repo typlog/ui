@@ -117,7 +117,7 @@
     {
       "name": "variant",
       "description": "<p>The visual variant to apply.</p>",
-      "type": "\"solid\" | \"soft\" | \"surface\" | \"outline\" | \"ghost\"",
+      "type": "\"solid\" | \"soft\" | \"outline\" | \"surface\" | \"ghost\"",
       "required": false,
       "inherit": null,
       "default": "\"solid\""

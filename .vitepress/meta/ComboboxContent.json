@@ -170,13 +170,6 @@
       "default": "\"partial\""
     },
     {
-      "name": "to",
-      "description": "",
-      "type": "string | HTMLElement",
-      "required": false,
-      "inherit": null
-    },
-    {
       "name": "updatePositionStrategy",
       "description": "<p>Strategy to update the position of the floating element on every animation frame.</p>",
       "type": "\"always\" | \"optimized\"",

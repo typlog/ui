@@ -47,7 +47,7 @@
     {
       "name": "variant",
       "description": "",
-      "type": "\"solid\" | \"soft\" | \"surface\" | \"outline\" | \"classic\"",
+      "type": "\"solid\" | \"soft\" | \"outline\" | \"surface\" | \"classic\"",
       "required": false,
       "inherit": null
     }
