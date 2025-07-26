@@ -57,7 +57,7 @@ const rootContext = injectDropdownMenuContentContext()
   scroll-margin: var(--menu-content-padding) 0;
   user-select: none;
   cursor: default;
-  color: var(--gray-a11);
+  color: var(--gray-12);
   font-size: var(--menu-item-font-size);
   line-height: var(--menu-item-line-height);
   letter-spacing: var(--menu-item-letter-spacing);
@@ -69,6 +69,7 @@ const rootContext = injectDropdownMenuContentContext()
   align-items: center;
   margin-left: auto;
   padding-left: var(--space-4);
+  color: var(--gray-a11);
 }
 
 .ui-MenuItem:where([data-accent-color]) {

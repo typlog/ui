@@ -23,8 +23,8 @@
     "lint": "eslint ."
   },
   "devDependencies": {
-    "@iconify-json/lucide": "^1.2.58",
     "@iconify-json/radix-icons": "^1.2.2",
+    "@iconify-json/ri": "^1.2.5",
     "@radix-ui/colors": "^3.0.0",
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.0.6",

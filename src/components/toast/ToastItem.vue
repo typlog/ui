@@ -1,4 +1,10 @@
 <script lang="ts">
+import type { Component } from 'vue'
+import SpinnerIcon from '../spinner/SpinnerIcon.vue'
+import InfoIcon from '~icons/ri/information-2-fill'
+import SuccessIcon from '~icons/ri/checkbox-circle-fill'
+import WarningIcon from '~icons/ri/alert-fill'
+import ErrorIcon from '~icons/ri/error-warning-fill'
 import type { ColorType } from '../types'
 import type { ToastMessage, MessageCategory } from './manager'
 import { useToastManager } from './manager'
@@ -10,12 +16,12 @@ export interface ToastItemProps {
   index: number
 }
 
-const CATEGORY_ICONS: Record<MessageCategory, string> = {
-  loading: 'svg-spinners:bars-rotate-fade',
-  info: 'ri:information-2-fill',
-  success: 'ri:checkbox-circle-fill',
-  warning: 'ri:alert-fill',
-  error: 'ri:error-warning-fill',
+const CATEGORY_ICONS: Record<MessageCategory, Component> = {
+  loading: SpinnerIcon,
+  info: InfoIcon,
+  success: SuccessIcon,
+  warning: WarningIcon,
+  error: ErrorIcon,
 }
 const CATEGORY_COLORS: Record<MessageCategory, ColorType> = {
   loading: 'gray',
@@ -34,7 +40,6 @@ import {
   ToastDescription,
   ToastAction,
 } from 'reka-ui'
-import { Icon } from '@iconify/vue'
 import Button from '../button/Button.vue'
 
 const props = defineProps<ToastItemProps>()
@@ -104,7 +109,7 @@ onMounted(() => {
       class="ui-ToastIcon"
       :data-accent-color="categoryColor"
     >
-      <Icon :icon="categoryIcon" />
+      <component :is="categoryIcon" />
     </div>
     <div class="ui-ToastContent">
       <ToastTitle class="ui-ToastTitle">{{ message.title }}</ToastTitle>
@@ -253,8 +258,6 @@ onMounted(() => {
   align-items: center;
   font-size: calc(var(--toast-title-font-size) + 4px);
   color: var(--accent-a9);
-}
-.ui-ToastIcon {
   vertical-align: middle;
 }
 .ui-ToastTitle {

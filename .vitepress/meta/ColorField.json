@@ -1,6 +1,21 @@
 {
   "props": [
     {
+      "name": "as",
+      "description": "<p>The element or component this component should render as. Can be overwritten by <code>asChild</code>.</p>",
+      "type": "AsTag | Component",
+      "required": false,
+      "inherit": "reka-ui",
+      "default": "\"div\""
+    },
+    {
+      "name": "defaultValue",
+      "description": "",
+      "type": "string",
+      "required": false,
+      "inherit": null
+    },
+    {
       "name": "id",
       "description": "",
       "type": "string",

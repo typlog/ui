@@ -96,7 +96,7 @@
     {
       "name": "variant",
       "description": "<p>The visual variant of the radio group.</p>",
-      "type": "\"soft\" | \"surface\"",
+      "type": "\"surface\" | \"classic\"",
       "required": false,
       "inherit": null,
       "default": "\"surface\""

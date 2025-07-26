@@ -7,7 +7,7 @@ import {
   PopoverTrigger,
   PopoverPopup,
 } from '#components'
-import QuestionIcon from '~icons/lucide/circle-question-mark'
+import QuestionIcon from '~icons/ri/question-line'
 
 const props = defineProps<{name: string, type: string}>()
 

@@ -6,8 +6,8 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
-  DropdownMenuTriggerIcon,
 } from '#components'
+import ChevronDownIcon from '~icons/radix-icons/chevron-down'
 </script>
 
 <template>
@@ -15,7 +15,7 @@ import {
     <DropdownMenuTrigger>
       <Button variant="soft">
         Options
-        <DropdownMenuTriggerIcon />
+        <ChevronDownIcon />
       </Button>
     </DropdownMenuTrigger>
     <DropdownMenuContent>

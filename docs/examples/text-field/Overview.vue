@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import SearchIcon from '~icons/lucide/search'
+import SearchIcon from '~icons/ri/search-line'
 import { TextField } from '#components'
 </script>
 

@@ -1,34 +1,35 @@
 <script lang="ts">
+import type { PrimitiveProps } from 'reka-ui'
 export type SavingStatus = 'idle' | 'saving' | 'saved'
-export interface SavingIndicatorProps {
+
+export interface SavingIndicatorProps extends Omit<PrimitiveProps, 'asChild'> {
   status: SavingStatus
   size?: '1' | '2' | '3'
 }
 </script>
 
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
+import { Primitive } from 'reka-ui'
+import CheckIcon from '~icons/ri/checkbox-circle-line'
+import SpinnerIcon from './SpinnerIcon.vue'
 
 const props = withDefaults(defineProps<SavingIndicatorProps>(), {
   size: '2',
+  as: 'span',
 })
 </script>
 
 <template>
-  <div
+  <Primitive
     class="ui-SavingIndicator"
     :class="`r-size-${size}`"
     :data-status="props.status"
   >
-    <Icon
-      v-if="props.status === 'saving'"
-      icon="svg-spinners:180-ring"
-    />
-    <Icon
-      v-else-if="props.status === 'saved'"
-      icon="lucide:check-circle-2"
-    />
-  </div>
+    <slot :status="status">
+      <SpinnerIcon v-if="props.status === 'saving'" />
+      <CheckIcon v-else-if="props.status === 'saved'" />
+    </slot>
+  </Primitive>
 </template>
 
 <style>
@@ -41,6 +42,7 @@ const props = withDefaults(defineProps<SavingIndicatorProps>(), {
 }
 .ui-SavingIndicator:where([data-status="saving"]) {
   color: var(--gray-10);
+  animation: ui-spin 2s infinite linear;
 }
 .ui-SavingIndicator:where([data-status="saved"]) {
   color: var(--green-10);

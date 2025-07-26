@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import PlusIcon from '~icons/lucide/plus'
+import PlusIcon from '~icons/ri/add-line'
 import { Tooltip, IconButton } from '#components'
 </script>
 

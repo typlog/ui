@@ -1,6 +1,14 @@
 {
   "props": [
     {
+      "name": "as",
+      "description": "<p>The element or component this component should render as. Can be overwritten by <code>asChild</code>.</p>",
+      "type": "AsTag | Component",
+      "required": false,
+      "inherit": "reka-ui",
+      "default": "\"div\""
+    },
+    {
       "name": "size",
       "description": "",
       "type": "\"1\" | \"2\" | \"3\"",
@@ -16,6 +24,12 @@
     }
   ],
   "events": [],
-  "slots": [],
+  "slots": [
+    {
+      "name": "status",
+      "description": "",
+      "type": "\"idle\" | \"saving\" | \"saved\""
+    }
+  ],
   "methods": []
 }

@@ -35,7 +35,7 @@ import {
   AvatarImage,
   AvatarFallback,
 } from 'reka-ui'
-import UserIcon from '~icons/lucide/user'
+import UserIcon from '~icons/ri/user-line'
 import { buildPropsClass } from '../util'
 
 const props = withDefaults(defineProps<AvatarProps>(), {

@@ -100,14 +100,15 @@ export const useToastManager = createGlobalState(() => {
   }
 
   const promise = <T>(fn: () => Promise<T>, options: PromiseMessageOption<T>) => {
-    const id = add(options.loading, 'loading')
+    // using 100min for promise duration
+    const id = add({title: options.loading, duration: 6000000}, 'loading')
 
     fn().then((value) => {
       const msg = options.success(value)
       if (typeof msg === 'string') {
-        update(id, {title: msg, category: 'success'})
+        update(id, {duration: undefined, title: msg, category: 'success'})
       } else {
-        update(id, {...msg, category: 'success'})
+        update(id, {duration: undefined, ...msg, category: 'success'})
       }
     }).catch((e) => {
       if (options.error) {
