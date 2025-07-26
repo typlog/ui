@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { Icon } from '@iconify/vue'
 import {
-  Icon,
   Button,
   DialogRoot,
   DialogTrigger,
