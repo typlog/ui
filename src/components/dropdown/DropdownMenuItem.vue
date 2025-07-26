@@ -1,11 +1,11 @@
 <script lang="ts">
 import type {
-  DropdownMenuItemProps as _DropdownMenuItemProps,
+  DropdownMenuItemProps as RekaDropdownMenuItemProps,
   DropdownMenuItemEmits,
 } from 'reka-ui'
 import type { ColorType } from '../types'
 
-export interface DropdownMenuItemProps extends _DropdownMenuItemProps {
+export interface DropdownMenuItemProps extends RekaDropdownMenuItemProps {
   color?: ColorType
   shortcut?: string
 }
@@ -30,7 +30,6 @@ const rootContext = injectDropdownMenuContentContext()
   <DropdownMenuItem
     class="ui-MenuItem"
     :data-accent-color="props.color"
-    :data-size="rootContext.size.value"
     :data-variant="rootContext.variant.value"
     :data-high-contrast="rootContext.highContrast?.value || undefined"
     v-bind="forwarded"
@@ -59,6 +58,10 @@ const rootContext = injectDropdownMenuContentContext()
   user-select: none;
   cursor: default;
   color: var(--gray-a11);
+  font-size: var(--menu-item-font-size);
+  line-height: var(--menu-item-line-height);
+  letter-spacing: var(--menu-item-letter-spacing);
+  border-radius: var(--menu-item-border-radius);
 }
 
 .ui-MenuShortcut {
@@ -76,32 +79,12 @@ const rootContext = injectDropdownMenuContentContext()
   color: var(--gray-a8);
 }
 
+.ui-MenuItem:where([data-highlighted]) {
+  background-color: var(--menu-item-highlighted-background-color);
+  color: var(--menu-item-highlighted-text-color);
+}
+
 .ui-MenuItem:where([data-disabled], [data-highlighted]) :where(.ui-MenuShortcut) {
   color: inherit;
-}
-
-.ui-MenuItem:where([data-size="1"]) {
-  font-size: var(--font-size-1);
-  line-height: var(--line-height-1);
-  letter-spacing: var(--letter-spacing-1);
-  border-radius: var(--radius-1);
-}
-.ui-MenuItem:where([data-size="2"]) {
-  font-size: var(--font-size-2);
-  line-height: var(--line-height-2);
-  letter-spacing: var(--letter-spacing-2);
-  border-radius: var(--radius-2);
-}
-
-.ui-MenuItem:where([data-variant="solid"]):where([data-highlighted]) {
-  background-color: var(--accent-9);
-  color: var(--accent-contrast);
-}
-.ui-MenuItem:where([data-variant="solid"]):where([data-high-contrast]):where([data-highlighted]) {
-  background-color: var(--accent-12);
-  color: var(--accent-1);
-}
-.ui-MenuItem:where([data-variant="soft"]):where([data-highlighted]) {
-  background-color: var(--accent-a4);
 }
 </style>

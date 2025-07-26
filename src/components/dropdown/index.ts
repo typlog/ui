@@ -12,3 +12,10 @@ export {
   default as DropdownMenuItem,
   type DropdownMenuItemProps,
 } from './DropdownMenuItem.vue'
+
+export {
+  default as DropdownMenuSeparator,
+} from './DropdownMenuSeparator.vue'
+
+import DropdownMenuTriggerIcon from '~icons/radix-icons/chevron-down'
+export { DropdownMenuTriggerIcon }

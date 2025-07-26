@@ -1,22 +1,16 @@
 <script lang="ts">
 import { toRefs, type Ref } from 'vue'
 import type {
-  DropdownMenuContentProps as _DropdownMenuContentProps,
+  DropdownMenuContentProps as RekaDropdownMenuContentProps,
   DialogContentEmits,
-} from 'reka-ui'
-import {
-  useForwardExpose,
-  DropdownMenuPortal,
-  DropdownMenuContent,
 } from 'reka-ui'
 import { createContext } from 'reka-ui'
 import ThemeWrapper from '../provider/ThemeWrapper.vue'
 import ScrollArea from '../scrollarea/ScrollArea.vue'
-import { useForwardPropsEmitsWithout } from '../util'
+import { useForwardPropsEmitsWithout, buildPropsClass } from '../util'
 import type { ColorType } from '../types'
 
-export interface DropdownMenuContentProps extends _DropdownMenuContentProps {
-  to?: string | HTMLElement
+export interface DropdownMenuContentProps extends RekaDropdownMenuContentProps {
   size?: '1' | '2'
   variant?: 'solid' | 'soft'
   color?: ColorType
@@ -35,6 +29,12 @@ export const [injectDropdownMenuContentContext, provideDropdownMenuContentContex
 </script>
 
 <script setup lang="ts">
+import {
+  useForwardExpose,
+  DropdownMenuPortal,
+  DropdownMenuContent,
+} from 'reka-ui'
+
 defineOptions({
   inheritAttrs: false,
 })
@@ -55,11 +55,13 @@ const forwarded = useForwardPropsEmitsWithout(props, emits, [
 
 const { forwardRef } = useForwardExpose()
 const { size, variant, color, highContrast } = toRefs(props)
+const resetClass = buildPropsClass(props, ['size', 'variant', 'highContrast'])
+
 provideDropdownMenuContentContext({ size, variant, color, highContrast })
 </script>
 
 <template>
-  <DropdownMenuPortal :to="props.to">
+  <DropdownMenuPortal>
     <ThemeWrapper :accent-color="props.color">
       <DropdownMenuContent
         v-bind="{
@@ -68,7 +70,7 @@ provideDropdownMenuContentContext({ size, variant, color, highContrast })
         }"
         :ref="forwardRef"
         class="ui-PopperContent ui-MenuContent"
-        :class="`r-size-${props.size}`"
+        :class="resetClass"
       >
         <ScrollArea type="auto">
           <div class="ui-MenuViewport">
@@ -93,10 +95,10 @@ provideDropdownMenuContentContext({ size, variant, color, highContrast })
   flex-direction: column;
   box-sizing: border-box;
   overflow: hidden;
+  border-radius: var(--menu-content-border-radius);
 
-  --menu-bg: var(--color-panel-solid);
   box-shadow: var(--shadow-5);
-  background-color: var(--menu-bg);
+  background-color: var(--color-panel-solid);
 }
 
 .ui-MenuViewport {
@@ -114,17 +116,43 @@ provideDropdownMenuContentContext({ size, variant, color, highContrast })
 
 .ui-MenuContent:where(.r-size-1) {
   --menu-content-padding: var(--space-1);
+  --menu-content-border-radius: var(--radius-3);
+
   --menu-item-padding-left: calc(var(--space-5) / 1.2);
   --menu-item-padding-right: var(--space-2);
   --menu-item-height: var(--space-5);
-  border-radius: var(--radius-3);
+  --menu-item-font-size: var(--font-size-1);
+  --menu-item-line-height: var(--line-height-1);
+  --menu-item-letter-spacing: var(--letter-spacing-1);
+  --menu-item-border-radius: var(--radius-1);
+
 }
 
 .ui-MenuContent:where(.r-size-2) {
   --menu-content-padding: var(--space-2);
+  --menu-content-border-radius: var(--radius-4);
+
   --menu-item-padding-left: var(--space-3);
   --menu-item-padding-right: var(--space-3);
   --menu-item-height: var(--space-6);
-  border-radius: var(--radius-4);
+  --menu-item-font-size: var(--font-size-2);
+  --menu-item-line-height: var(--line-height-2);
+  --menu-item-letter-spacing: var(--letter-spacing-2);
+  --menu-item-border-radius: var(--radius-2);
+}
+
+.ui-MenuContent:where(.r-variant-solid) {
+  --menu-item-highlighted-background-color: var(--accent-9);
+  --menu-item-highlighted-text-color: var(--accent-contrast);
+}
+
+.ui-MenuContent:where(.r-variant-solid.r-high-contrast) {
+  --menu-item-highlighted-background-color: var(--accent-12);
+  --menu-item-highlighted-text-color: var(--accent-1);
+}
+
+.ui-MenuContent:where(.r-variant-soft) {
+  --menu-item-highlighted-background-color: var(--accent-a4);
+  --menu-item-highlighted-text-color: var(--accent-a11);
 }
 </style>
