@@ -7,7 +7,7 @@ radix: https://www.radix-ui.com/themes/docs/components/select
 reka: https://reka-ui.com/docs/components/select
 ---
 
-<Example name="select/Overview.vue" />
+<Example name="select/Overview.vue" variant="hide" />
 
 ## API Reference
 
@@ -24,3 +24,20 @@ The root element of a select, it contains all the parts of a select.
 ### SelectContent
 
 <PropsTable name="SelectContent" />
+
+## Examples
+
+### Size
+
+<Example name="select/Size.vue" variant="hide" />
+
+### Variant
+
+The trigger field supports three variants: `soft`, `surface`, and `ghost`.
+
+<Example name="select/TriggerVariant.vue" variant="hide" />
+
+The content popup supports three variants: `soft` and `solid`.
+
+<Example name="select/ContentVariant.vue" variant="hide" />
+

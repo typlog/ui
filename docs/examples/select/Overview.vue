@@ -12,7 +12,7 @@ import {
 
 <template>
   <SelectRoot default-value="apple">
-    <SelectTrigger />
+    <SelectTrigger placeholder="Select..." />
     <SelectContent>
       <SelectGroup>
         <SelectLabel>Fruits</SelectLabel>

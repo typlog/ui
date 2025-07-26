@@ -61,4 +61,49 @@ provideComboboxRootContext({
 .ui-ComboboxRoot:where(.r-multiple) {
   width: auto;
 }
+
+.ui-ComboboxRoot:where(.r-size-1) {
+  --combobox-field-height: var(--space-5);
+  --combobox-field-padding: calc(var(--space-1) * 1.5);
+  --combobox-field-border-radius: max(var(--radius-2), var(--radius-full));
+  --combobox-field-native-icon-size: var(--space-3);
+  --combobox-field-font-size: var(--font-size-1);
+  --combobox-field-letter-spacing: var(--letter-spacing-1);
+
+  --combobox-trigger-gap: var(--space-2);
+  --combobox-trigger-padding-x: var(--space-1);
+
+  --combobox-decoration-container-padding-right: 0px;
+  --combobox-decoration-container-margin-right: -2px;
+}
+
+.ui-ComboboxRoot:where(.r-size-2) {
+  --combobox-field-height: var(--space-6);
+  --combobox-field-padding: var(--space-2);
+  --combobox-field-border-radius: max(var(--radius-2), var(--radius-full));
+  --combobox-field-native-icon-size: var(--space-4);
+  --combobox-field-font-size: var(--font-size-2);
+  --combobox-field-letter-spacing: var(--letter-spacing-2);
+
+  --combobox-trigger-gap: var(--space-2);
+  --combobox-trigger-padding-x: var(--space-2);
+
+  --combobox-decoration-container-padding-right: 2px;
+  --combobox-decoration-container-margin-right: 0px;
+}
+
+.ui-ComboboxRoot:where(.r-size-3) {
+  --combobox-field-height: var(--space-7);
+  --combobox-field-padding: var(--space-3);
+  --combobox-field-border-radius: max(var(--radius-3), var(--radius-full));
+  --combobox-field-native-icon-size: var(--space-4);
+  --combobox-field-font-size: var(--font-size-3);
+  --combobox-field-letter-spacing: var(--letter-spacing-3);
+
+  --combobox-trigger-gap: var(--space-3);
+  --combobox-trigger-padding-x: var(--space-3);
+
+  --combobox-decoration-container-padding-right: 5px;
+  --combobox-decoration-container-margin-right: 0px;
+}
 </style>

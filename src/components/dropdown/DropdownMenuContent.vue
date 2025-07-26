@@ -80,6 +80,8 @@ provideDropdownMenuContentContext({ size, variant, color, highContrast })
   </DropdownMenuPortal>
 </template>
 
+<style src="../popover/popper.css"></style>
+
 <style>
 .ui-MenuContent {
   --scrollarea-scrollbar-vertical-margin-top: var(--menu-content-padding);

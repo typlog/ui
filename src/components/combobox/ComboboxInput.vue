@@ -69,6 +69,10 @@ const onInputKeydown = (event: KeyboardEvent) => {
         activeIndex.value = -1
       }, 800)
     }
+  } else if (input.value && event.key === 'Enter') {
+    setTimeout(() => {
+      input.value = ''
+    })
   }
 }
 
@@ -151,6 +155,8 @@ watch(values, () => {
   height: var(--combobox-field-height);
   padding: var(--combobox-field-border-width);
   border-radius: var(--combobox-field-border-radius);
+  font-size: var(--combobox-field-font-size);
+  letter-spacing: var(--combobox-field-letter-spacing);
 }
 
 .ui-ComboboxField:where([data-multiple="true"]) {
@@ -196,6 +202,10 @@ watch(values, () => {
   text-indent: var(--combobox-field-padding);
   height: var(--combobox-input-height);
   cursor: auto;
+
+  /* Reset size 2 padding bottom */
+  padding-bottom: 0px;
+  /* Safari credentials autofill icon */
 }
 
 .ui-ComboboxField:where([data-multiple="true"]) :where(.ui-ComboboxInput) {
@@ -229,73 +239,15 @@ watch(values, () => {
   margin-left: 0;
   margin-right: calc(var(--combobox-field-border-width) * -1);
   height: var(--combobox-trigger-height);
+
+  gap: var(--combobox-trigger-gap);
+  padding-left: var(--combobox-trigger-padding-x);
+  padding-right: var(--combobox-trigger-padding-x);
 }
-:where(.r-size-1) .ui-ComboboxField {
-  --combobox-field-height: var(--space-5);
-  --combobox-field-padding: calc(var(--space-1) * 1.5 - var(--combobox-field-border-width));
-  --combobox-field-border-radius: max(var(--radius-2), var(--radius-full));
-  --combobox-field-native-icon-size: var(--space-3);
-  font-size: var(--font-size-1);
-  letter-spacing: var(--letter-spacing-1);
-}
-:where(.r-size-1) .ui-ComboboxField :where(.ui-ComboboxTrigger) {
-  gap: var(--space-2);
-  padding-left: var(--space-1);
-  padding-right: var(--space-1);
-}
-:where(.r-size-1) .ui-ComboboxField :where(.ui-ComboboxInput) {
-  /* Reset size 2 padding bottom */
-  padding-bottom: 0px;
-  /* Safari credentials autofill icon */
-}
-:where(.r-size-1) .ui-ComboboxField :where(.ui-ComboboxInput)::-webkit-textfield-decoration-container {
-  padding-right: 0px;
-  margin-right: -2px;
-}
-:where(.r-size-2) .ui-ComboboxField {
-  --combobox-field-height: var(--space-6);
-  --combobox-field-padding: calc(var(--space-2) - var(--combobox-field-border-width));
-  --combobox-field-border-radius: max(var(--radius-2), var(--radius-full));
-  --combobox-field-native-icon-size: var(--space-4);
-  font-size: var(--font-size-2);
-  letter-spacing: var(--letter-spacing-2);
-}
-:where(.r-size-2) .ui-ComboboxField :where(.ui-ComboboxInput) {
-  /* Avoid 1px baseline jitter when layout around the text field is subpixel-sized (e.g. vh units). */
-  /* Works because as of Nov 2023, Chrome computes input text bounding box height as 16.5px on @2x screens. */
-  padding-bottom: 0.5px;
-  /* Safari credentials autofill icon */
-}
-:where(.r-size-2) .ui-ComboboxField :where(.ui-ComboboxInput)::-webkit-textfield-decoration-container {
-  padding-right: 2px;
-  margin-right: 0px;
-}
-:where(.r-size-2) .ui-ComboboxField :where(.ui-ComboboxTrigger) {
-  gap: var(--space-2);
-  padding-left: var(--space-2);
-  padding-right: var(--space-2);
-}
-:where(.r-size-3) .ui-ComboboxField {
-  --combobox-field-height: var(--space-7);
-  --combobox-field-padding: calc(var(--space-3) - var(--combobox-field-border-width));
-  --combobox-field-border-radius: max(var(--radius-3), var(--radius-full));
-  --combobox-field-native-icon-size: var(--space-4);
-  font-size: var(--font-size-3);
-  letter-spacing: var(--letter-spacing-3);
-}
-:where(.r-size-3) .ui-ComboboxField :where(.ui-ComboboxInput) {
-  /* Reset size 2 padding bottom */
-  padding-bottom: 0px;
-  /* Safari credentials autofill icon */
-}
-:where(.r-size-3) .ui-ComboboxField :where(.ui-ComboboxInput)::-webkit-textfield-decoration-container {
-  padding-right: 5px;
-  margin-right: 0px;
-}
-:where(.r-size-3) .ui-ComboboxField :where(.ui-ComboboxTrigger) {
-  gap: var(--space-3);
-  padding-left: var(--space-3);
-  padding-right: var(--space-3);
+
+.ui-ComboboxInput::-webkit-textfield-decoration-container {
+  padding-right: var(--combobox-decoration-container-padding-right);
+  margin-right: var(--combobox-decoration-container-margin-right);
 }
 
 .ui-ComboboxField:where(.r-variant-surface) {
@@ -312,6 +264,7 @@ watch(values, () => {
   box-sizing: border-box;
   border: var(--combobox-field-border-width) solid var(--combobox-field-border-color);
   color: var(--gray-12);
+  padding: calc(var(--combobox-field-border-width) - var(--combobox-field-border-width));
 }
 @supports selector(:has(*)) {
   .ui-ComboboxField:where(.r-variant-surface):where(:has(.ui-ComboboxInput:focus)) {
@@ -341,6 +294,7 @@ watch(values, () => {
 
   background-color: var(--accent-a3);
   color: var(--accent-12);
+  padding: var(--combobox-field-border-width);
 }
 @supports selector(:has(*)) {
   .ui-ComboboxField:where(.r-variant-soft):where(:has(.ui-ComboboxInput:focus)) {

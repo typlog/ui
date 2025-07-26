@@ -64,6 +64,8 @@ const resetClass = computed(() => {
   font-style: normal;
   text-align: start;
   color: var(--gray-12);
+  box-sizing: border-box;
+  height: var(--select-trigger-height);
 }
 
 .ui-SelectTriggerInner {
@@ -74,27 +76,18 @@ const resetClass = computed(() => {
 
 .ui-SelectIcon {
   flex-shrink: 0;
-}
-
-.ui-SelectTrigger:where(:not(.r-variant-ghost)).ui-SelectIcon {
   opacity: 0.9;
-}
-
-
-.ui-SelectTrigger:where(:not(.r-variant-ghost)) {
-  box-sizing: border-box;
-  height: var(--select-trigger-height);
-}
-
-.ui-SelectTrigger:where(.r-variant-ghost) {
-  box-sizing: content-box;
-  height: fit-content;
-  padding: var(--select-trigger-ghost-padding-y) var(--select-trigger-ghost-padding-x);
-  margin: calc(0px - var(--select-trigger-ghost-padding-y)) calc(0px - var(--select-trigger-ghost-padding-x));
+  width: var(--select-icon-size);
+  height: var(--select-icon-size);
 }
 
 .ui-SelectTrigger:where(.r-size-1) {
   --select-trigger-height: var(--space-5);
+  --select-trigger-padding-x: var(--space-2);
+  --select-trigger-ghost-padding-x: var(--space-2);
+  --select-trigger-ghost-padding-y: var(--space-1);
+  --select-icon-size: 9px;
+
   gap: var(--space-1);
   font-size: var(--font-size-1);
   line-height: var(--line-height-1);
@@ -102,18 +95,14 @@ const resetClass = computed(() => {
   border-radius: max(var(--radius-1), var(--radius-full));
 }
 
-.ui-SelectTrigger:where(.r-size-1):where(.r-variant-ghost) {
-  --select-trigger-ghost-padding-x: var(--space-2);
-  --select-trigger-ghost-padding-y: var(--space-1);
-}
-
-.ui-SelectTrigger:where(.r-size-1):where(:not(.r-variant-ghost)) {
-  padding-left: var(--space-2);
-  padding-right: var(--space-2);
-}
 
 .ui-SelectTrigger:where(.r-size-2) {
   --select-trigger-height: var(--space-6);
+  --select-trigger-padding-x: var(--space-3);
+  --select-trigger-ghost-padding-x: var(--space-2);
+  --select-trigger-ghost-padding-y: var(--space-1);
+  --select-icon-size: 10px;
+
   gap: calc(var(--space-1) * 1.5);
   font-size: var(--font-size-2);
   line-height: var(--line-height-2);
@@ -121,18 +110,13 @@ const resetClass = computed(() => {
   border-radius: max(var(--radius-2), var(--radius-full));
 }
 
-.ui-SelectTrigger:where(.r-size-1):where(.r-variant-ghost) {
-  --select-trigger-ghost-padding-x: var(--space-2);
-  --select-trigger-ghost-padding-y: var(--space-1);
-}
-
-.ui-SelectTrigger:where(.r-size-2):where(:not(.r-variant-ghost)) {
-  padding-left: var(--space-3);
-  padding-right: var(--space-3);
-}
-
 .ui-SelectTrigger:where(.r-size-3) {
   --select-trigger-height: var(--space-7);
+  --select-trigger-padding-x: var(--space-4);
+  --select-trigger-ghost-padding-x: var(--space-3);
+  --select-trigger-ghost-padding-y: calc(var(--space-1) * 1.5);
+  --select-icon-size: 11px;
+
   gap: var(--space-2);
   font-size: var(--font-size-3);
   line-height: var(--line-height-3);
@@ -140,21 +124,7 @@ const resetClass = computed(() => {
   border-radius: max(var(--radius-3), var(--radius-full));
 }
 
-.ui-SelectTrigger:where(.r-size-3):where(.r-variant-ghost) {
-  --select-trigger-ghost-padding-x: var(--space-3);
-  --select-trigger-ghost-padding-y: calc(var(--space-1) * 1.5);
-}
-
-.ui-SelectTrigger:where(.r-size-3):where(:not(.r-variant-ghost)) {
-  padding-left: var(--space-4);
-  padding-right: var(--space-4);
-}
-
-.ui-SelectTrigger:where(.r-size-3) .ui-SelectIcon {
-  width: 11px;
-  height: 11px;
-}
-
+/** surface */
 .ui-SelectTrigger:where(.r-variant-surface) {
   --select-trigger-border-width: 1px;
   --select-trigger-border-color: var(--gray-a7);
@@ -162,6 +132,8 @@ const resetClass = computed(() => {
   color: var(--gray-12);
   background-color: var(--color-surface);
   border: var(--select-trigger-border-width) solid var(--select-trigger-border-color);
+  padding-left: var(--select-trigger-padding-x);
+  padding-right: var(--select-trigger-padding-x);
 }
 
 .ui-SelectTrigger:where(.r-variant-surface):where(:focus-visible) {
@@ -189,6 +161,7 @@ const resetClass = computed(() => {
   color: var(--gray-a10);
 }
 
+/** soft and ghost */
 .ui-SelectTrigger:where(.r-variant-soft),
 .ui-SelectTrigger:where(.r-variant-ghost) {
   color: var(--accent-12);
@@ -208,7 +181,10 @@ const resetClass = computed(() => {
 
 .ui-SelectTrigger:where(.r-variant-soft) {
   background-color: var(--accent-a3);
+  padding-left: var(--select-trigger-padding-x);
+  padding-right: var(--select-trigger-padding-x);
 }
+
 @media (hover: hover) {
   .ui-SelectTrigger:where(.r-variant-soft):hover {
     background-color: var(--accent-a4);
@@ -223,6 +199,11 @@ const resetClass = computed(() => {
 .ui-SelectTrigger:where(.r-variant-soft):where(:disabled) {
   color: var(--gray-a11);
   background-color: var(--gray-a3);
+}
+
+.ui-SelectTrigger:where(.r-variant-ghost) {
+  padding: var(--select-trigger-ghost-padding-y) var(--select-trigger-ghost-padding-x);
+  margin: calc(0px - var(--select-trigger-ghost-padding-y)) calc(0px - var(--select-trigger-ghost-padding-x));
 }
 
 @media (hover: hover) {

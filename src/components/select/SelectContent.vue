@@ -1,9 +1,8 @@
 <script lang="ts">
-import type { SelectContentProps as _SelectContentProps } from 'reka-ui'
+import type { SelectContentProps as RekaSelectContentProps } from 'reka-ui'
 import ThemeWrapper from '../provider/ThemeWrapper.vue'
 
-export interface SelectContentProps extends _SelectContentProps {
-  to?: string | HTMLElement
+export interface SelectContentProps extends RekaSelectContentProps {
   variant?: 'solid' | 'soft'
 }
 </script>
@@ -48,14 +47,13 @@ const contentClass = computed(() => {
 </script>
 
 <template>
-  <SelectPortal :to="props.to">
+  <SelectPortal>
     <ThemeWrapper :accent-color="context.color.value">
       <SelectContent
         :ref="forwardRef"
         v-bind="{
           ...$attrs,
           ...forwarded,
-          to: undefined,
           variant: undefined,
         }"
         class="ui-SelectContent"
@@ -86,6 +84,8 @@ const contentClass = computed(() => {
     </ThemeWrapper>
   </SelectPortal>
 </template>
+
+<style src="../popover/popper.css"></style>
 
 <style>
 .ui-SelectContent {

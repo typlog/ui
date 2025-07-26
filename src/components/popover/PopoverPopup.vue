@@ -46,6 +46,8 @@ const forwarded = useForwardPropsEmitsWithout(props, emits, ['to', 'size'])
   </PopoverPortal>
 </template>
 
+<style src="./popper.css"></style>
+
 <style>
 .ui-PopoverPopup {
   background-color: var(--color-panel-solid);
@@ -63,41 +65,5 @@ const forwarded = useForwardPropsEmitsWithout(props, emits, ['to', 'size'])
 }
 .ui-PopoverPopup:where(.r-size-2) {
   border-radius: var(--radius-5);
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .ui-PopperContent {
-    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .ui-PopperContent:where([data-state='open']) {
-    animation-duration: 160ms;
-  }
-  .ui-PopperContent:where([data-state='open']):where([data-side='top']) {
-    animation-name: ui-slide-from-top, ui-fade-in;
-  }
-  .ui-PopperContent:where([data-state='open']):where([data-side='bottom']) {
-    animation-name: ui-slide-from-bottom, ui-fade-in;
-  }
-  .ui-PopperContent:where([data-state='open']):where([data-side='left']) {
-    animation-name: ui-slide-from-left, ui-fade-in;
-  }
-  .ui-PopperContent:where([data-state='open']):where([data-side='right']) {
-    animation-name: ui-slide-from-right, ui-fade-in;
-  }
-  .ui-PopperContent:where([data-state='closed']) {
-    animation-duration: 100ms;
-  }
-  .ui-PopperContent:where([data-state='closed']):where([data-side='top']) {
-    animation-name: ui-slide-from-top, ui-fade-out;
-  }
-  .ui-PopperContent:where([data-state='closed']):where([data-side='bottom']) {
-    animation-name: ui-slide-from-bottom, ui-fade-out;
-  }
-  .ui-PopperContent:where([data-state='closed']):where([data-side='left']) {
-    animation-name: ui-slide-from-left, ui-fade-out;
-  }
-  .ui-PopperContent:where([data-state='closed']):where([data-side='right']) {
-    animation-name: ui-slide-from-right, ui-fade-out;
-  }
 }
 </style>
