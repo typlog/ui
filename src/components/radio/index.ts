@@ -5,7 +5,6 @@ export {
 
 export {
   default as RadioGroupRoot,
-  default as RadioCardsRoot,
   type RadioGroupRootProps,
 } from './RadioGroupRoot.vue'
 
@@ -13,6 +12,11 @@ export {
   default as RadioGroupItem,
   type RadioGroupItemProps,
 } from './RadioGroupItem.vue'
+
+export {
+  default as RadioCardsRoot,
+  type RadioCardsRootProps,
+} from './RadioCardsRoot.vue'
 
 export {
   default as RadioCardsItem,

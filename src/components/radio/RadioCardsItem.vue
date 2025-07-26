@@ -4,7 +4,6 @@ import type { RadioGroupItemProps } from 'reka-ui'
 
 <script setup lang="ts">
 import { useForwardExpose, useForwardProps, RadioGroupItem } from 'reka-ui'
-import Card from '../card/Card.vue'
 
 const props = defineProps<RadioGroupItemProps>()
 const forwarded = useForwardProps(props)
@@ -14,22 +13,20 @@ useForwardExpose()
 
 <template>
   <RadioGroupItem
-    class="ui-RadioCardsItem"
+    class="ui-RadioCardsItem ui-BaseCard"
     v-bind="{...forwarded, asChild: false}"
   >
-    <Card :as-child="forwarded.asChild">
-      <slot></slot>
-    </Card>
+    <slot></slot>
   </RadioGroupItem>
 </template>
 
+<style src="../card/style.css"></style>
 
 <style>
-.ui-RadioCardsItem .ui-Card {
-  width: 100%;
+.ui-RadioCardsItem {
   height: 100%;
 }
-.ui-RadioCardsItem:where([data-state="checked"]) .ui-Card {
+.ui-RadioCardsItem:where([data-state="checked"]) {
   --card-border-color: var(--accent-10);
   box-shadow: 0 0 0 1px var(--accent-10);
 }

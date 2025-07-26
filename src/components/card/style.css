@@ -1,0 +1,26 @@
+.ui-BaseCard {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  font-style: normal;
+  text-align: start;
+  box-sizing: border-box;
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
+  border-color: var(--card-border-color, var(--gray-a5));
+  border-width: var(--card-border-width, 1px);
+  border-style: solid;
+  width: 100%;
+}
+.ui-BaseCard:where(:any-link, button, label):where(:hover) {
+  --card-border-color: var(--gray-a7);
+}
+.ui-BaseCard:where(:any-link, button, label):where(:focus-visible) {
+  --card-border-color: var(--focus-8);
+  box-shadow: 0 0 0 2px var(--accent-4), 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+/** special enhancement for tailwindcss */
+.ui-BaseCard:where(.p-0) {
+  --card-padding: 0;
+}

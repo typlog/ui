@@ -23,7 +23,7 @@ const resetClass = buildPropsClass(props, ['size', 'variant'])
 
 <template>
   <Primitive
-    class="ui-Card"
+    class="ui-Card ui-BaseCard"
     :class="resetClass"
     :as-child="props.asChild"
     :as="props.as"
@@ -34,27 +34,6 @@ const resetClass = buildPropsClass(props, ['size', 'variant'])
 </template>
 
 <style>
-.ui-Card {
-  display: block;
-  position: relative;
-  overflow: hidden;
-  font-style: normal;
-  text-align: start;
-  box-sizing: border-box;
-  border-radius: var(--card-border-radius);
-  padding: var(--card-padding);
-  border-color: var(--card-border-color, var(--gray-a5));
-  border-width: var(--card-border-width, 1px);
-  border-style: solid;
-  width: 100%;
-}
-.ui-Card:where(:any-link, button, label):where(:hover) {
-  --card-border-color: var(--gray-a7);
-}
-.ui-Card:where(:any-link, button, label):where(:focus-visible) {
-  --card-border-color: var(--focus-8);
-  box-shadow: 0 0 0 2px var(--accent-4), 0 1px 2px 0 rgb(0 0 0 / 0.05);
-}
 .ui-Card:where(.r-size-1) {
   --card-padding: var(--space-3);
   --card-border-radius: max(var(--radius-4), var(--radius-full));
@@ -81,10 +60,5 @@ const resetClass = buildPropsClass(props, ['size', 'variant'])
 }
 .ui-Card:where(.r-variant-soft):where(:any-link, button, label):where(:hover) {
   border-color: var(--gray-a5);
-}
-
-/** special enhancement for tailwindcss */
-.ui-Card:where(.p-0) {
-  --card0-padding: 0;
 }
 </style>
