@@ -78,7 +78,7 @@
 
 /* special handle for tailwindcss p-0, when css priority doesn't work */
 .ui-DialogPopup:where(.p-0) {
-  padding: 0;
+  --dialog-popup-padding: 0;
 }
 
 @media (min-width: 450px) {

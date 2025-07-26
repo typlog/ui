@@ -59,11 +59,17 @@ const forwarded = useForwardPropsEmitsWithout(props, emits, ['to', 'size'])
   position: relative;
   box-sizing: border-box;
   transform-origin: var(--reka-popover-content-transform-origin);
+  padding: var(--popover-popup-padding);
 }
 .ui-PopoverPopup:where(.r-size-1) {
   border-radius: var(--radius-4);
+  --popover-popup-padding: var(--space-2);
 }
 .ui-PopoverPopup:where(.r-size-2) {
   border-radius: var(--radius-5);
+  --popover-popup-padding: var(--space-4);
+}
+.ui-PopoverPopup:where(.p-0) {
+  --popover-popup-padding: 0;
 }
 </style>
