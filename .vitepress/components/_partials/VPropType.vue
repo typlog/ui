@@ -2,14 +2,14 @@
 import { computed } from 'vue'
 import {
   Badge,
-  Icon,
   IconButton,
   PopoverRoot,
   PopoverTrigger,
   PopoverPopup,
 } from '#components'
+import QuestionIcon from '~icons/lucide/circle-question-mark'
 
-const props = defineProps<{type: string}>()
+const props = defineProps<{name: string, type: string}>()
 
 const values = computed(() => {
   return props.type.split(/\s*\|\s*/)
@@ -28,11 +28,18 @@ const values = computed(() => {
     </Badge>
   </div>
   <div v-else class="flex items-center gap-1">
-    <span class="text-sm font-medium">Enum</span>
+    <a
+      v-if="name === 'color'"
+      class="text-sm underline hover:text-indigo-11"
+      href="/overview/color/"
+    >
+      <span class="font-medium">Color</span>
+    </a>
+    <span v-else class="text-sm font-medium">Enum</span>
     <PopoverRoot>
       <PopoverTrigger as-child>
         <IconButton size="1" variant="ghost" color="gray">
-          <Icon icon="lucide:circle-question-mark" />
+          <QuestionIcon />
         </IconButton>
       </PopoverTrigger>
       <PopoverPopup>

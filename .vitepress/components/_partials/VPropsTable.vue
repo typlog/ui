@@ -48,7 +48,7 @@ defineProps<{items: PropData[]}>()
         </td>
         <td>
           <div class="flex flex-col">
-            <VPropType :type="item.type" />
+            <VPropType :name="item.name" :type="item.type" />
             <div
               v-if="item.description"
               class="text-sm leading-5"

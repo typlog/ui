@@ -78,7 +78,7 @@ function parseMeta(meta: ComponentMeta) {
         defaultValue = undefined
       }
 
-      if (!type.includes('AcceptableValue')) {
+      if (!isNativeType(type)) {
         type = parseTypeFromSchema(prop.schema) || type
       }
 
@@ -181,4 +181,8 @@ function transformJSDocLinks(md: MarkdownIt) {
       }
     })
   })
+}
+
+function isNativeType (type: string) {
+  return type.includes('AcceptableValue')
 }

@@ -10,7 +10,7 @@
 /** adding tailwind sources */
 @source "../components/";
 @source "../custom/";
-@source "../../docs/examples/";
+@source "~/docs/examples/";
 
 
 @theme {

@@ -18,7 +18,7 @@
     {
       "name": "brand",
       "description": "",
-      "type": "\"x\" | \"google\" | \"facebook\" | \"github\" | \"apple\" | \"slack\" | \"figma\"",
+      "type": "\"google\" | \"facebook\" | \"x\" | \"github\" | \"apple\" | \"slack\" | \"figma\"",
       "required": true,
       "inherit": null
     },

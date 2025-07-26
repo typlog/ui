@@ -33,7 +33,7 @@
     {
       "name": "swipeDirection",
       "description": "<p>Direction of pointer swipe that should close the toast.</p>",
-      "type": "\"left\" | \"right\" | \"up\" | \"down\"",
+      "type": "\"right\" | \"left\" | \"up\" | \"down\"",
       "required": false,
       "inherit": "reka-ui",
       "default": "'right'"
