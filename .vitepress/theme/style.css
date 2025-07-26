@@ -1,6 +1,6 @@
 @import "tailwindcss";
-@import "~/tailwind/index.css";
-@import "~/src/styles/index.css";
+@import "../../tailwind/index.css";
+@import "../../src/styles/index.css";
 @import "./css/vars.css";
 @import "./css/code.css";
 
@@ -10,7 +10,7 @@
 /** adding tailwind sources */
 @source "../components/";
 @source "../custom/";
-@source "~/docs/examples/";
+@source "../../docs/examples/";
 
 
 @theme {

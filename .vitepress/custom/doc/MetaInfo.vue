@@ -11,7 +11,8 @@ const STATUS_COLOR_MAP: Record<string, ColorType> = {
 <script setup lang="ts">
 import { useData } from 'vitepress'
 import { computed } from 'vue'
-import { Icon, Badge } from '#components'
+import { Icon } from '@iconify/vue'
+import { Badge } from '#components'
 
 const { frontmatter } = useData()
 

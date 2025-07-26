@@ -62,7 +62,7 @@ const expanded = ref(false)
   background-color: var(--color-panel-solid);
 }
 .vp-ExampleComponent .ui-ScrollAreaViewport {
-  padding: var(--space-3) var(--space-4);
+  padding: var(--space-4);
 }
 .vp-ExampleSource {
   --vp-code-block-bg: transparent;

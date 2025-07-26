@@ -8,7 +8,7 @@ const ICON_MAP: Record<string, string> = {
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { Icon } from '#components'
+import { Icon } from '@iconify/vue'
 
 const props = defineProps<{text?: string}>()
 const icon = computed(() => {
