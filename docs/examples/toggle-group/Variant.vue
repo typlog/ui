@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Icon, ToggleGroupRoot, ToggleGroupItem } from '#components'
+import { Icon } from '@iconify/vue'
+import { ToggleGroupRoot, ToggleGroupItem } from '#components'
 
 const selected = ref<string>('blog')
 </script>

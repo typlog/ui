@@ -1,6 +1,9 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
   "compilerOptions": {
+    "types": [
+      "unplugin-icons/types/vue",
+    ],
     "target": "esnext",
     "jsx": "preserve",
     "lib": ["esnext", "dom"],

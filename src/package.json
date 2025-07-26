@@ -27,7 +27,7 @@
     "./base.css": "./base.css",
     "./components.css": "./components.css",
     "./addons.css": "./addons.css",
-    "./tailwind.css": "./tailwind/index.css",
+    "./tailwind.css": "./tailwind.css",
     "./components/": "./components/"
   },
   "dependencies": {

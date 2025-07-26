@@ -35,9 +35,7 @@ const resetClass = buildPropsClass(props, ['variant', 'size'])
     :data-accent-color="color"
     :data-radius="radius"
   >
-    <template #default="{ open }">
-      <slot :open="open"></slot>
-    </template>
+    <slot></slot>
   </CollapsibleRoot>
 </template>
 

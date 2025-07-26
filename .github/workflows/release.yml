@@ -23,7 +23,6 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: npm ci
       - run: npm run build
-      - run: cp -r tailwind dist
       - name: publish
         run: |
           cd dist

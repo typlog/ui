@@ -37,4 +37,5 @@ export * from './tooltip'
 export * from './quota'
 export * from './spinner'
 
+export * from './util'
 export type * from './types'

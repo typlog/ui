@@ -14,8 +14,7 @@ export {
   type ToastProviderProps,
 } from './ToastProvider.vue'
 
-export const toastManager = useToastManager()
-
+const toastManager = useToastManager()
 
 export const toast: ToastFunction = Object.assign(
   (msg: Message) => {

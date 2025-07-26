@@ -18,5 +18,19 @@ const updatePackageJSON = async () => {
   fs.writeFileSync('dist/package.json', JSON.stringify(pkg, null, 2))
 }
 
+const cleanFiles = () => {
+  try {
+    fs.unlinkSync('dist/base.d.ts')
+  } catch (e) {
+    console.info(e)
+  }
+  try {
+    fs.unlinkSync('dist/tailwind.d.ts')
+  } catch (e) {
+    console.info(e)
+  }
+}
+
 updateImports(path.resolve('dist/addons.js'))
 updatePackageJSON()
+cleanFiles()

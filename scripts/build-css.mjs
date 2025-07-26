@@ -43,11 +43,6 @@ const buildAll = async () => {
   })
   await Promise.all(results)
   await fs.unlink('dist/noop')
-  try {
-    await fs.unlink('dist/base.d.ts')
-  } catch (e) {
-    console.info(e)
-  }
 }
 
 buildAll()

@@ -1,7 +1,3 @@
-@theme {
-  --color-*: initial;
-}
-
 @layer base {
   * {
     border-color: var(--gray-a4);

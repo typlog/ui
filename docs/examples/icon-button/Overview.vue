@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { IconButton, Icon } from '#components'
+import { Icon } from '@iconify/vue'
+import { IconButton } from '#components'
 </script>
 
 <template>

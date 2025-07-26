@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { Toggle, Icon } from '#components'
+import { Icon } from '@iconify/vue'
+import { Toggle } from '#components'
 </script>
 
 <template>
