@@ -1,35 +1,45 @@
 <script lang="ts">
+import type { PrimitiveProps } from 'reka-ui'
 import type { RadiusType } from '../types'
 
-export interface ColorFieldProps {
+export interface ColorFieldProps extends Omit<PrimitiveProps, 'asChild'> {
   id?: string
   variant?: 'solid' | 'ring'
   size?: '1' | '2' | '3'
   radius?: RadiusType
+  defaultValue?: string
 }
 </script>
 
 <script setup lang="ts">
+import { onMounted } from 'vue'
+import { Primitive } from 'reka-ui'
 import { buildPropsClass } from '../util'
 
 const props = withDefaults(defineProps<ColorFieldProps>(), {
   size: '2',
   variant: 'solid',
+  as: 'div',
 })
 
-const modelValue = defineModel<string>({
-  default: '#000000',
-})
+const modelValue = defineModel<string>({ required: false })
 
 const resetClass = buildPropsClass(props, ['size', 'variant'])
+
+onMounted(() => {
+  if (props.defaultValue && !modelValue.value) {
+    modelValue.value = props.defaultValue
+  }
+})
 </script>
 
 <template>
-  <div
+  <Primitive
     class="ui-ColorField"
+    :as="props.as"
     :class="resetClass"
     :data-radius="props.radius"
-    :style="{'--color-field-border-color': modelValue}"
+    :style="{'--color-field-color': modelValue }"
   >
     <input
       :id="props.id"
@@ -37,7 +47,7 @@ const resetClass = buildPropsClass(props, ['size', 'variant'])
       class="ui-ColorFieldInput"
       type="color"
     >
-  </div>
+  </Primitive>
 </template>
 
 <style>
@@ -75,7 +85,7 @@ const resetClass = buildPropsClass(props, ['size', 'variant'])
 .ui-ColorField:where(.r-variant-ring) {
   --color-input-size: calc(var(--color-field-size) - var(--color-field-border-width) * 4);
   --color-input-radius: calc(var(--color-field-radius) - 2px);
-  border: var(--color-field-border-width) solid var(--color-field-border-color);
+  border: var(--color-field-border-width) solid var(--color-field-color);
 }
 
 .ui-ColorFieldInput {

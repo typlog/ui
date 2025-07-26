@@ -49,6 +49,7 @@ const forwarded = useForwardPropsWithout(props, ['indicator'])
 :where(.ui-CollapsibleRoot:not(.r-variant-ghost)) .ui-CollapsibleTrigger {
   padding-block: var(--collapsible-padding-y);
   padding-inline: var(--collapsible-padding-x);
+  width: 100%;
 }
 
 :where(.ui-CollapsibleRoot.r-variant-soft) .ui-CollapsibleTrigger {
