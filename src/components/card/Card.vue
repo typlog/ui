@@ -46,10 +46,7 @@ const resetClass = buildPropsClass(props, ['size', 'variant'])
   border-color: var(--card-border-color, var(--gray-a5));
   border-width: var(--card-border-width, 1px);
   border-style: solid;
-  --inset-padding-top: var(--card-padding);
-  --inset-padding-right: var(--card-padding);
-  --inset-padding-bottom: var(--card-padding);
-  --inset-padding-left: var(--card-padding);
+  width: 100%;
 }
 .ui-Card:where(:any-link, button, label):where(:hover) {
   --card-border-color: var(--gray-a7);
@@ -84,5 +81,10 @@ const resetClass = buildPropsClass(props, ['size', 'variant'])
 }
 .ui-Card:where(.r-variant-soft):where(:any-link, button, label):where(:hover) {
   border-color: var(--gray-a5);
+}
+
+/** special enhancement for tailwindcss */
+.ui-Card:where(.p-0) {
+  --card0-padding: 0;
 }
 </style>
