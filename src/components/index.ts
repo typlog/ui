@@ -36,6 +36,5 @@ export * from './separator'
 export * from './tooltip'
 export * from './quota'
 export * from './spinner'
-export * from './icon'
 
 export type * from './types'

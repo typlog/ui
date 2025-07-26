@@ -12,7 +12,7 @@ import {
 <template>
   <PopoverRoot>
     <Button :as="PopoverTrigger">Edit profile</Button>
-    <PopoverPopup class="w-96">
+    <PopoverPopup class="w-96 p-0">
       <div class="p-4">
         <h2 class="font-medium">Edit profile</h2>
         <p>Make changes to your profile.</p>

@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import { Tooltip, IconButton, Icon } from '#components'
+import PlusIcon from '~icons/lucide/plus'
+import { Tooltip, IconButton } from '#components'
 </script>
 
 <template>
   <div class="flex">
     <Tooltip content="Add to library">
       <IconButton radius="full">
-        <Icon icon="lucide:plus" />
+        <PlusIcon />
       </IconButton>
     </Tooltip>
   </div>
