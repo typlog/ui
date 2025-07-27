@@ -1,8 +1,8 @@
 <script lang="ts">
-import type { ToggleProps as _ToggleProps, ToggleEmits } from 'reka-ui'
+import type { ToggleProps as RekaToggleProps, ToggleEmits } from 'reka-ui'
 import type { ColorType, RadiusType } from '../types'
 
-export interface ToggleProps extends _ToggleProps {
+export interface ToggleProps extends RekaToggleProps {
   /**
    * The visual variant to apply.
    * @default "soft"

@@ -1,8 +1,8 @@
 <script lang="ts">
-import type { SelectTriggerProps as _SelectTriggerProps } from 'reka-ui'
+import type { SelectTriggerProps as RekaSelectTriggerProps } from 'reka-ui'
 import type { RadiusType } from '../types'
 
-export interface SelectTriggerProps extends _SelectTriggerProps {
+export interface SelectTriggerProps extends RekaSelectTriggerProps {
   variant?: 'surface' | 'soft' | 'ghost'
   radius?: RadiusType
   placeholder?: string
@@ -11,13 +11,14 @@ export interface SelectTriggerProps extends _SelectTriggerProps {
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { SelectTrigger, SelectValue, SelectIcon } from 'reka-ui'
+import { SelectTrigger, SelectValue } from 'reka-ui'
 import ChevronDownIcon from '~icons/radix-icons/chevron-down'
 import { injectSelectRootContext } from './SelectRoot.vue'
 
 const props = withDefaults(defineProps<SelectTriggerProps>(), {
   variant: 'surface',
 })
+
 const context = injectSelectRootContext()
 const resetClass = computed(() => {
   return [`r-variant-${props.variant}`, `r-size-${context.size.value}`]
@@ -34,7 +35,7 @@ const resetClass = computed(() => {
   >
     <span class="ui-SelectTriggerInner">
       <SelectValue :placeholder="props.placeholder">
-        <template #default="{ selectedLabel, modelValue }">
+        <template v-slot="{ selectedLabel, modelValue }">
           <slot
             v-if="selectedLabel.length"
             :selected-label="selectedLabel"
@@ -46,9 +47,7 @@ const resetClass = computed(() => {
         </template>
       </SelectValue>
     </span>
-    <SelectIcon as-child>
-      <ChevronDownIcon class="ui-SelectIcon" />
-    </SelectIcon>
+    <ChevronDownIcon class="ui-SelectIcon" />
   </SelectTrigger>
 </template>
 

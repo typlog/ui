@@ -155,4 +155,9 @@ const resetClass = buildPropsClass(props, ['variant', 'size', 'highContrast'])
 :where(.ui-TabList.r-variant-outline.r-high-contrast) .ui-TabsIndicator {
   background-color: var(--accent-12);
 }
+
+/** special fix for tailwind */
+.ui-TabList:where(.w-full) {
+  width: 100%;
+}
 </style>

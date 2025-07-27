@@ -85,4 +85,9 @@ const resetClass = buildPropsClass(props, ['size', 'variant'])
 .ui-RadioTabsRoot:where(.r-variant-soft) {
   background-color: var(--accent-a3);
 }
+
+/* special fix for tailwind */
+.ui-RadioTabsRoot:where(.w-full) {
+  width: 100%;
+}
 </style>
