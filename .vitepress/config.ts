@@ -2,19 +2,18 @@ import { resolve } from 'node:path'
 import { defineConfig } from 'vitepress'
 import tailwindcss from '@tailwindcss/vite'
 import Icons from 'unplugin-icons/vite'
+import type { ThemeConfig } from './custom/types'
 import { markdownExampleTagBlock } from './plugins/example'
 
 // https://vitepress.dev/reference/site-config
-export default defineConfig({
+export default defineConfig<ThemeConfig>({
   title: 'Typlog UI',
   description: 'Themed components for Reka UI.',
   srcDir: 'docs/content',
   cleanUrls: true,
   vite: {
     plugins: [
-      // @ts-expect-error this seems a type bug
       tailwindcss(),
-      // @ts-expect-error this seems a type bug
       Icons({ scale: 1, compiler: 'vue3' }),
     ],
     resolve: {
@@ -46,6 +45,7 @@ export default defineConfig({
     sidebar: [
       {
         text: 'Overview',
+        icon: 'lucide:rocket',
         items: [
           { text: 'Getting started', link: '/overview/getting-started' },
           { text: 'Releases', link: '/overview/releases' },
@@ -55,6 +55,7 @@ export default defineConfig({
       },
       {
         text: 'Components',
+        icon: 'lucide:component',
         items: [
           {
             text: 'General',
@@ -110,6 +111,7 @@ export default defineConfig({
       },
       {
         text: 'Addons',
+        icon: 'lucide:blocks',
         items: [
           { text: 'SocialButton', link: '/addons/social-button' },
           { text: 'Turnstile', link: '/addons/turnstile' },

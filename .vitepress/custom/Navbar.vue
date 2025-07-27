@@ -1,7 +1,7 @@
 <script lang="ts">
-import type { DefaultTheme } from 'vitepress'
+import type { SidebarItem } from './types'
 
-export interface NavbarItem extends DefaultTheme.SidebarItem {
+export interface NavbarItem extends SidebarItem {
   text: string
   link: string
   active: boolean
@@ -9,7 +9,7 @@ export interface NavbarItem extends DefaultTheme.SidebarItem {
 </script>
 
 <script setup lang="ts">
-import TextIcon from '../components/TextIcon.vue'
+import { Icon } from '@iconify/vue'
 
 defineProps<{items: NavbarItem[]}>()
 </script>
@@ -40,7 +40,7 @@ defineProps<{items: NavbarItem[]}>()
             :class="{ active: item.active }"
             :href="item.link"
           >
-            <TextIcon :text="item.text" />
+            <Icon v-if="item.icon" :icon="item.icon" />
             <span>{{ item.text }}</span>
           </a>
         </div>
