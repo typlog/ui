@@ -1,8 +1,9 @@
 <script lang="ts">
-import type { ColorType } from '../types'
+import type { ColorType, RadiusType } from '../types'
 
 export interface TabsListProps {
   size?: '1' | '2'
+  radius?: RadiusType
   color?: ColorType
   variant?: 'classic' | 'outline' | 'surface' | 'soft'
   highContrast?: boolean
@@ -24,6 +25,7 @@ const resetClass = buildPropsClass(props, ['variant', 'size', 'highContrast'])
   <TabsList
     class="ui-TabList"
     :class="resetClass"
+    :data-radius="props.radius"
     :data-accent-color="props.color"
   >
     <TabsIndicator class="ui-TabsIndicator" />
@@ -52,7 +54,7 @@ const resetClass = buildPropsClass(props, ['variant', 'size', 'highContrast'])
   --tab-height: var(--space-6);
   --tab-padding-x: var(--space-1);
   --tab-radius: max(var(--radius-2), var(--radius-full));
-  --tab-item-radius: var(--radius-1);
+  --tab-item-radius: max(var(--radius-1), var(--radius-full));
   --tab-inner-padding-x: var(--space-1);
   --tab-inner-height: var(--space-5);
 }
@@ -63,7 +65,7 @@ const resetClass = buildPropsClass(props, ['variant', 'size', 'highContrast'])
   --tab-height: var(--space-7);
   --tab-padding-x: var(--space-2);
   --tab-radius: max(var(--radius-3), var(--radius-full));
-  --tab-item-radius: var(--radius-2);
+  --tab-item-radius: max(var(--radius-2), var(--radius-full));
   --tab-inner-padding-x: var(--space-2);
   --tab-inner-height: calc(var(--space-6) - var(--space-1));
 }
