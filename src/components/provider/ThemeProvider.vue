@@ -11,6 +11,7 @@ export interface ThemeProviderProps extends PrimitiveProps {
   radius?: RadiusType
   grayColor?: GrayColorType
   scaling?: ScalingType
+  panelBackground?: 'solid' | 'translucent'
   hasBackground?: boolean
 }
 
@@ -19,6 +20,7 @@ interface ThemeProviderContext {
   radius: Ref<RadiusType>
   grayColor: Ref<GrayColorType>
   scaling: Ref<ScalingType>
+  panelBackground: Ref<'solid' | 'translucent'>
   hasBackground: Ref<boolean>
 }
 
@@ -35,15 +37,17 @@ const props = withDefaults(defineProps<ThemeProviderProps>(), {
   radius: 'medium',
   grayColor: 'auto',
   scaling: '100%',
+  panelBackground: 'translucent',
   hasBackground: true,
 })
 
-const { accentColor, radius, grayColor, scaling, hasBackground } = toRefs(props)
+const { accentColor, radius, grayColor, scaling, panelBackground, hasBackground } = toRefs(props)
 provideThemeContext({
   accentColor,
   radius,
   grayColor,
   scaling,
+  panelBackground,
   hasBackground,
 })
 </script>
@@ -56,6 +60,7 @@ provideThemeContext({
       :data-gray-color="grayColor"
       :data-radius="radius"
       :data-scaling="scaling"
+      :data-panel-background="panelBackground"
       :data-has-background="hasBackground"
       :as="props.as"
       :as-child="props.asChild"

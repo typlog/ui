@@ -49,8 +49,8 @@ export default defineConfig({
         items: [
           { text: 'Getting started', link: '/overview/getting-started' },
           { text: 'Releases', link: '/overview/releases' },
-          { text: 'Shadow', link: '/overview/shadow' },
           { text: 'Color', link: '/overview/color' },
+          { text: 'Shadows', link: '/overview/shadows' },
         ],
       },
       {
