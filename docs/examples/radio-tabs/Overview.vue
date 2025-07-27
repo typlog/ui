@@ -7,7 +7,7 @@ const selected = ref<string>('1')
 
 <template>
   <div class="flex items-center">
-    <RadioTabsRoot v-model="selected">
+    <RadioTabsRoot v-model="selected" color="gray">
       <RadioTabsItem value="1">
         Default
       </RadioTabsItem>

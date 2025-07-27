@@ -18,3 +18,7 @@ radix: https://www.radix-ui.com/themes/docs/components/card
 ### Size
 
 <Example name="card/Size.vue" />
+
+### Variant
+
+<Example name="card/Variant.vue" />

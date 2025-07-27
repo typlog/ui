@@ -29,10 +29,14 @@ radix: https://www.radix-ui.com/themes/docs/components/tabs
 
 ## Examples
 
+### Size
+
+<Example name="tabs/Size.vue" />
+
 ### Variant
 
 <Example name="tabs/Variant.vue" />
 
-### Size
+### Radius
 
-<Example name="tabs/Size.vue" />
+<Example name="tabs/Radius.vue" />

@@ -30,3 +30,7 @@ source: https://github.com/typlog/ui/tree/main/src/components/radio
 ### Color
 
 <Example name="radio-tabs/Color.vue" />
+
+### Radius
+
+<Example name="radio-tabs/Radius.vue" />

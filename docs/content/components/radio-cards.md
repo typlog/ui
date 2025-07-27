@@ -7,3 +7,13 @@ radix: https://www.radix-ui.com/themes/docs/components/radio-cards
 ---
 
 <Example name="radio-cards/Overview.vue" variant="hide" />
+
+## API Reference
+
+### RadioCardsRoot
+
+<PropsTable name="RadioCardsRoot" />
+
+### RadioCardsItem
+
+<PropsTable name="RadioCardsItem" />
