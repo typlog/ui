@@ -1,5 +1,7 @@
 # @typlog/ui
 
+**WIP**
+
 An open-source Vue component library optimized for fast development,
 built on top of Reka UI and Radix Colors.
 

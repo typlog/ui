@@ -25,16 +25,20 @@ const forwardedProps = useForwardProps(props)
 @keyframes collapsible-down {
   from {
     height: 0;
+    opacity: 1;
   }
   to {
     height: var(--reka-collapsible-content-height);
+    opacity: 1;
   }
 }
 @keyframes collapsible-up {
   from {
+    opacity: 1;
     height: var(--reka-collapsible-content-height);
   }
   to {
+    opacity: 0;
     height: 0;
   }
 }
@@ -48,7 +52,10 @@ const forwardedProps = useForwardProps(props)
   animation: collapsible-down 0.2s ease-out;
 }
 .ui-CollapsibleContent:where([data-state="closed"]) {
-  animation: collapsible-up 0.2s ease-out;
+  animation: collapsible-up 0.2s ease-in;
+}
+:where(.ui-CollapsibleRoot.r-variant-soft) .ui-CollapsibleContent {
+  background-color: var(--accent-a2);
 }
 :where(.ui-CollapsibleRoot:not(.r-variant-ghost)) .ui-CollapsibleContent {
   padding-inline: var(--collapsible-padding-x);

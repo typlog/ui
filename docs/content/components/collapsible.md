@@ -24,6 +24,14 @@ reka: https://reka-ui.com/docs/components/collapsible
 
 ## Examples
 
+### Size
+
+<Example name="collapsible/Size.vue" />
+
 ### Variant
 
 <Example name="collapsible/Variant.vue" />
+
+### Color
+
+<Example name="collapsible/Color.vue" />

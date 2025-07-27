@@ -47,26 +47,19 @@ const forwarded = useForwardPropsWithout(props, ['indicator'])
   text-align: initial;
 }
 :where(.ui-CollapsibleRoot:not(.r-variant-ghost)) .ui-CollapsibleTrigger {
+  background-color: var(--collapsible-trigger-background-color);
   padding-block: var(--collapsible-padding-y);
   padding-inline: var(--collapsible-padding-x);
   width: 100%;
-}
-
-:where(.ui-CollapsibleRoot.r-variant-soft) .ui-CollapsibleTrigger {
-  background: var(--accent-a2);
   border-radius: var(--collapsible-radius);
+  transition: border-radius 0.2s ease;
 }
-:where(.ui-CollapsibleRoot.r-variant-surface) .ui-CollapsibleTrigger {
-  border-top-left-radius: var(--collapsible-radius);
-  border-top-right-radius: var(--collapsible-radius);
-  background: var(--accent-a2);
+:where(.ui-CollapsibleRoot:not(.r-variant-ghost)) .ui-CollapsibleTrigger:where(:hover) {
+  background-color: var(--collapsible-trigger-hover-background-color);
 }
-:where(.ui-CollapsibleRoot.r-variant-soft) .ui-CollapsibleTrigger:where(:hover) {
-  background: var(--accent-a3);
-}
-:where(.ui-CollapsibleRoot.r-variant-surface) .ui-CollapsibleTrigger:where([data-state="open"]),
-:where(.ui-CollapsibleRoot.r-variant-soft) .ui-CollapsibleTrigger:where([data-state="open"]) {
-  background: var(--accent-a3);
-  color: var(--accent-a11);
+:where(.ui-CollapsibleRoot:not(.r-variant-ghost)) .ui-CollapsibleTrigger:where([data-state="open"]) {
+  background-color: var(--collapsible-trigger-open-background-color);
+  color: var(--collapsible-trigger-open-text-color);
+  border-radius: var(--collapsible-radius) var(--collapsible-radius) 0 0;
 }
 </style>
