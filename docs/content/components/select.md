@@ -41,3 +41,7 @@ The content popup supports three variants: `soft` and `solid`.
 
 <Example name="select/ContentVariant.vue" variant="hide" />
 
+
+### Multiple
+
+<Example name="select/Multiple.vue" variant="hide" />
