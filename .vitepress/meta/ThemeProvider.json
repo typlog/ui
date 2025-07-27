@@ -37,6 +37,13 @@
       "inherit": null
     },
     {
+      "name": "panelBackground",
+      "description": "",
+      "type": "\"translucent\" | \"solid\"",
+      "required": false,
+      "inherit": null
+    },
+    {
       "name": "radius",
       "description": "",
       "type": "\"none\" | \"small\" | \"medium\" | \"large\" | \"full\"",

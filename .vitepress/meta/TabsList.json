@@ -15,6 +15,13 @@
       "inherit": null
     },
     {
+      "name": "radius",
+      "description": "",
+      "type": "\"none\" | \"small\" | \"medium\" | \"large\" | \"full\"",
+      "required": false,
+      "inherit": null
+    },
+    {
       "name": "size",
       "description": "",
       "type": "\"1\" | \"2\"",

@@ -78,12 +78,6 @@
       "type": "[value: boolean]"
     }
   ],
-  "slots": [
-    {
-      "name": "open",
-      "description": "",
-      "type": "boolean"
-    }
-  ],
+  "slots": [],
   "methods": []
 }

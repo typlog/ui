@@ -11,7 +11,6 @@ import { useForwardPropsEmitsWithout } from '../util'
 import ThemeWrapper from '../provider/ThemeWrapper.vue'
 
 export interface PopoverPopupProps extends PopoverContentProps {
-  to?: string | HTMLElement
   size?: '1' | '2'
 }
 </script>
@@ -33,7 +32,7 @@ const forwarded = useForwardPropsEmitsWithout(props, emits, ['to', 'size'])
 </script>
 
 <template>
-  <PopoverPortal :to="props.to">
+  <PopoverPortal>
     <ThemeWrapper>
       <PopoverContent
         v-bind="{ ...$attrs, ...forwarded }"
