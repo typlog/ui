@@ -29,7 +29,7 @@ const props = withDefaults(defineProps<ToastProviderProps>(), {
 })
 
 const forwarded = useForwardPropsWithout(props, ['position', 'size'])
-const manager = useToastManager()
+const { messages } = useToastManager()
 
 const yPosition = computed(() => {
   return props.position.split('-')[0] as 'top' | 'bottom'
@@ -44,11 +44,6 @@ const swipeDirection = computed(() => {
     return props.swipeDirection
   }
   return xPosition.value
-})
-
-const messages = computed(() => {
-  // only show latest 3 messages
-  return manager.messages.value.slice(0, 3)
 })
 </script>
 

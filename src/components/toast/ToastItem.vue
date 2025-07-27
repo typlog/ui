@@ -99,6 +99,7 @@ onMounted(() => {
     class="ui-ToastItem"
     :duration="message.duration"
     :data-expanded="paused"
+    :data-visible="index < 3"
     :style="styleVars"
     @update:open="onOpenChange"
     @pause="onPause"
@@ -161,8 +162,21 @@ onMounted(() => {
   --toast-collapse-scale: calc(max(0, 1 - (var(--toast-index) * 0.06)));
 }
 
+.ui-ToastItem::after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  height: calc(var(--toast-gap) + 1px);
+  bottom: 100%;
+  width: 100%;
+}
+
 .ui-ToastItem:where([data-swipe="move"]) {
   transition: none;
+}
+
+.ui-ToastItem:where([data-visible="false"]) {
+  display: none;
 }
 
 :where(.ui-ToastViewport[data-x-position="left"]) .ui-ToastItem {
@@ -216,6 +230,7 @@ onMounted(() => {
   --toast-item-swipe-to-y: calc(100% + var(--toast-y-position))
 }
 
+.ui-ToastItem:where([data-state="closed"]),
 .ui-ToastItem:where([data-swipe="closed"]) {
   animation: ui-fade-out 100ms ease-in;
 }

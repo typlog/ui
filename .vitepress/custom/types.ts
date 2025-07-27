@@ -1,4 +1,4 @@
-import type { DefaultTheme } from "vitepress"
+import type { DefaultTheme } from 'vitepress'
 
 export interface SidebarItem extends DefaultTheme.SidebarItem {
   icon?: string
