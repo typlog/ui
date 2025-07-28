@@ -96,7 +96,6 @@ provideDropdownMenuContentContext({ size, variant, color, highContrast })
   box-sizing: border-box;
   overflow: hidden;
   border-radius: var(--menu-content-border-radius);
-
   box-shadow: var(--shadow-5);
   background-color: var(--color-panel-solid);
 }

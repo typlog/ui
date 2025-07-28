@@ -28,22 +28,25 @@
   padding-top: var(--space-6);
 }
 
-.ui-DialogPopup {
-  width: 100%;
-  max-height: calc(100vh - var(--space-6) * 2);
-  position: relative;
-  box-sizing: border-box;
-  overflow: auto;
-  text-align: left;
-  box-sizing: border-box;
-  background-color: var(--color-panel-solid);
-  outline: none;
-  border-top-left-radius: var(--dialog-popup-radius);
-  border-top-right-radius: var(--dialog-popup-radius);
-  max-width: var(--dialog-popup-max-width);
-  max-height: var(--dialog-popup-max-height);
-  padding: var(--dialog-popup-padding);
+@layer components {
+  .ui-DialogPopup {
+    width: 100%;
+    max-height: calc(100vh - var(--space-6) * 2);
+    position: relative;
+    box-sizing: border-box;
+    overflow: auto;
+    text-align: left;
+    box-sizing: border-box;
+    background-color: var(--color-panel-solid);
+    outline: none;
+    border-top-left-radius: var(--dialog-popup-radius);
+    border-top-right-radius: var(--dialog-popup-radius);
+    max-width: var(--dialog-popup-max-width);
+    max-height: var(--dialog-popup-max-height);
+    padding: var(--dialog-popup-padding);
+  }
 }
+
 
 .ui-DialogPopup:where(.r-size-1) {
   --dialog-popup-padding: var(--space-3);
@@ -74,11 +77,6 @@
   --dialog-popup-radius: var(--radius-5);
   --dialog-popup-max-width: none;
   --dialog-popup-max-height: calc(100vh - 64px);
-}
-
-/* special handle for tailwindcss p-0, when css priority doesn't work */
-.ui-DialogPopup:where(.p-0) {
-  --dialog-popup-padding: 0;
 }
 
 @media (min-width: 450px) {

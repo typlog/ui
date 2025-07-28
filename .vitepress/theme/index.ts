@@ -1,10 +1,9 @@
+import './style.css'
 import type { Theme } from 'vitepress'
 import * as components from '#components'
 import Example from '../components/Example.vue'
 import PropsTable from '../components/PropsTable.vue'
 import Layout from '../custom/Layout.vue'
-
-import './style.css'
 
 export default {
   Layout,

@@ -55,20 +55,22 @@ const indicatorSide = computed(() => {
 </template>
 
 <style>
-.ui-AccordionTrigger {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  text-align: initial;
-  width: 100%;
-  cursor: pointer;
-  user-select: none;
-  font-size: var(--accordion-trigger-font-size);
-  padding-top: var(--accordion-padding);
-  padding-bottom: var(--accordion-padding);
-  font-weight: var(--font-weight-medium);
-  gap: var(--accordion-trigger-gap);
-  --accordion-indicator-icon-size: var(--accordion-trigger-font-size);
+@layer components {
+  .ui-AccordionTrigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: initial;
+    width: 100%;
+    cursor: pointer;
+    user-select: none;
+    font-size: var(--accordion-trigger-font-size);
+    padding-top: var(--accordion-padding);
+    padding-bottom: var(--accordion-padding);
+    font-weight: var(--font-weight-medium);
+    gap: var(--accordion-trigger-gap);
+    --accordion-indicator-icon-size: var(--accordion-trigger-font-size);
+  }
 }
 .ui-AccordionTrigger:hover {
   text-decoration: underline;

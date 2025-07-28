@@ -47,14 +47,16 @@ const resetClass = buildPropsClass(props, ['size', 'variant'])
 </template>
 
 <style>
-.ui-RadioTabsRoot {
-  display: inline-flex;
-  width: fit-content;
-  align-items: center;
-  box-sizing: border-box;
-  padding: var(--radio-tabs-list-padding);
-  border-radius: var(--radio-tabs-list-radius);
-  font-size: var(--radio-tabs-font-size);
+@layer components {
+  .ui-RadioTabsRoot {
+    display: inline-flex;
+    width: fit-content;
+    align-items: center;
+    box-sizing: border-box;
+    padding: var(--radio-tabs-list-padding);
+    border-radius: var(--radio-tabs-list-radius);
+    font-size: var(--radio-tabs-font-size);
+  }
 }
 
 .ui-RadioTabsRoot:where(.r-size-1) {
@@ -84,10 +86,5 @@ const resetClass = buildPropsClass(props, ['size', 'variant'])
 
 .ui-RadioTabsRoot:where(.r-variant-soft) {
   background-color: var(--accent-a3);
-}
-
-/* special fix for tailwind */
-.ui-RadioTabsRoot:where(.w-full) {
-  width: 100%;
 }
 </style>
