@@ -39,10 +39,12 @@ const resetClass = buildPropsClass(props, ['size', 'variant', 'highContrast'])
 <style src="./style.css"></style>
 
 <style>
-.ui-RadioGroupItem {
-  display: inline-flex;
-  align-items: center;
-  gap: .5em;
-  width: fit-content;
+@layer components {
+  .ui-RadioGroupItem {
+    display: inline-flex;
+    align-items: center;
+    gap: .5em;
+    width: fit-content;
+  }
 }
 </style>

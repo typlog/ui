@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {
   Button,
+  CloseButton,
   DialogRoot,
   DialogTrigger,
   DialogPopup,
@@ -33,6 +34,7 @@ import {
         <Button variant="classic" color="gray" :as="DialogClose">Cancel</Button>
         <Button>Save</Button>
       </div>
+      <CloseButton :as="DialogClose" />
     </DialogPopup>
   </DialogRoot>
 </template>
