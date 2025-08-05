@@ -53,14 +53,16 @@ const resetClass = buildPropsClass(props, ['size', 'variant', 'highContrast'])
 </template>
 
 <style>
-.ui-ToggleGroupRoot {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  vertical-align: top;
-  flex-shrink: 0;
-  height: var(--toggle-group-height);
+@layer components {
+  .ui-ToggleGroupRoot {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: top;
+    flex-shrink: 0;
+    height: var(--toggle-group-height);
+  }
 }
 .ui-ToggleGroupRoot:where(.r-size-1) {
   font-size: var(--font-size-1);

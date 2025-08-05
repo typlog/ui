@@ -33,14 +33,16 @@ const forwarded = useForwardPropsWithout(props, ['indicator'])
 </template>
 
 <style>
-.ui-CollapsibleTrigger {
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-between;
-  text-align: initial;
-  gap: var(--collapsible-trigger-gap);
-  font-size: var(--collapsible-font-size);
-  font-weight: var(--font-weight-medium);
+@layer components {
+  .ui-CollapsibleTrigger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: initial;
+    gap: var(--collapsible-trigger-gap);
+    font-size: var(--collapsible-font-size);
+    font-weight: var(--font-weight-medium);
+  }
 }
 .ui-CollapsibleTriggerText {
   flex-grow: 1;

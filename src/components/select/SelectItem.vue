@@ -33,18 +33,20 @@ useForwardExpose()
 </template>
 
 <style>
-.ui-SelectItem {
-  display: flex;
-  align-items: center;
-  height: var(--select-item-height);
-  padding-left: var(--select-item-indicator-width);
-  padding-right: var(--select-item-indicator-width);
-  position: relative;
-  box-sizing: border-box;
-  outline: none;
-  scroll-margin: var(--select-content-padding) 0;
-  user-select: none;
-  cursor: default;
+@layer components {
+  .ui-SelectItem {
+    display: flex;
+    align-items: center;
+    height: var(--select-item-height);
+    padding-left: var(--select-item-indicator-width);
+    padding-right: var(--select-item-indicator-width);
+    position: relative;
+    box-sizing: border-box;
+    outline: none;
+    scroll-margin: var(--select-content-padding) 0;
+    user-select: none;
+    cursor: default;
+  }
 }
 
 .ui-SelectItem:where([data-disabled]) {

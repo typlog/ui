@@ -191,21 +191,23 @@ watch(values, () => {
   background-color: var(--red-a9);
 }
 
-.ui-ComboboxInput {
-  text-align: inherit;
-  border: none;
-  padding: 0;
-  width: 100%;
-  font-size: 1em;
-  background-color: transparent;
-  border-radius: calc(var(--combobox-field-border-radius) - var(--combobox-field-border-width));
-  text-indent: var(--combobox-field-padding);
-  height: var(--combobox-input-height);
-  cursor: auto;
+@layer components {
+  .ui-ComboboxInput {
+    text-align: inherit;
+    border: none;
+    padding: 0;
+    width: 100%;
+    font-size: 1em;
+    background-color: transparent;
+    border-radius: calc(var(--combobox-field-border-radius) - var(--combobox-field-border-width));
+    text-indent: var(--combobox-field-padding);
+    height: var(--combobox-input-height);
+    cursor: auto;
 
-  /* Reset size 2 padding bottom */
-  padding-bottom: 0px;
-  /* Safari credentials autofill icon */
+    /* Reset size 2 padding bottom */
+    padding-bottom: 0px;
+    /* Safari credentials autofill icon */
+  }
 }
 
 .ui-ComboboxField:where([data-multiple="true"]) :where(.ui-ComboboxInput) {

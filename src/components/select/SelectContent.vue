@@ -93,11 +93,15 @@ const contentClass = computed(() => {
   --scrollarea-scrollbar-vertical-margin-bottom: var(--select-content-padding);
   --scrollarea-scrollbar-horizontal-margin-left: var(--select-content-padding);
   --scrollarea-scrollbar-horizontal-margin-right: var(--select-content-padding);
+}
 
-  overflow: hidden;
-  box-shadow: var(--shadow-5);
-  background-color: var(--color-panel-solid);
-  box-sizing: border-box;
+@layer components {
+  .ui-SelectContent {
+    overflow: hidden;
+    box-shadow: var(--shadow-5);
+    background-color: var(--color-panel-solid);
+    box-sizing: border-box;
+  }
 }
 
 .ui-SelectContent:where([data-side]) {

@@ -50,29 +50,33 @@ const resetClass = buildPropsClass(props, ['size', 'variant', 'highContrast'])
 </template>
 
 <style>
-.ui-Toggle {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  vertical-align: top;
-  flex-shrink: 0;
-  width: var(--toggle-size);
-  height: var(--toggle-size);
+@layer components {
+  .ui-Toggle {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: top;
+    flex-shrink: 0;
+    border-radius: var(--toggle-border-radius);
+    font-size: var(--toggle-font-size);
+    width: var(--toggle-size);
+    height: var(--toggle-size);
+  }
 }
 .ui-Toggle:where(.r-size-1) {
-  border-radius: max(var(--radius-1), var(--radius-full));
-  font-size: var(--font-size-1);
+  --toggle-border-radius: max(var(--radius-1), var(--radius-full));
+  --toggle-font-size: var(--font-size-1);
   --toggle-size: var(--space-5);
 }
 .ui-Toggle:where(.r-size-2) {
-  border-radius: max(var(--radius-2), var(--radius-full));
-  font-size: var(--font-size-3);
+  --toggle-border-radius: max(var(--radius-2), var(--radius-full));
+  --toggle-font-size: var(--font-size-3);
   --toggle-size: var(--space-6);
 }
 .ui-Toggle:where(.r-size-3) {
-  border-radius: max(var(--radius-3), var(--radius-full));
-  font-size: var(--font-size-6);
+  --toggle-border-radius: max(var(--radius-3), var(--radius-full));
+  --toggle-font-size: var(--font-size-6);
   --toggle-size: var(--space-7);
 }
 

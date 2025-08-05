@@ -74,12 +74,14 @@ const props = withDefaults(defineProps<ScrollAreaProps>(), {
   --scrollarea-scrollbar-vertical-margin-right: var(--space-1);
 }
 
-.ui-ScrollArea {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
+@layer components {
+  .ui-ScrollArea {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .ui-ScrollAreaViewport {

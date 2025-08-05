@@ -7,12 +7,14 @@
 </template>
 
 <style>
-.ui-CollapsibleIndicator {
-  display: inline-flex;
-  align-items: center;
-  font-size: var(--collapsible-indicator-icon-size);
-  transition: transform 0.2s ease;
-  color: var(--gray-10);
+@layer components {
+  .ui-CollapsibleIndicator {
+    display: inline-flex;
+    align-items: center;
+    font-size: var(--collapsible-indicator-icon-size);
+    transition: transform 0.2s ease;
+    color: var(--gray-10);
+  }
 }
 
 .ui-CollapsibleIndicator:where([data-side="left"]) {

@@ -55,11 +55,13 @@ provideComboboxRootContext({
 </template>
 
 <style>
-.ui-ComboboxRoot {
-  width: fit-content;
-}
-.ui-ComboboxRoot:where(.r-multiple) {
-  width: auto;
+@layer components {
+  .ui-ComboboxRoot {
+    width: fit-content;
+  }
+  .ui-ComboboxRoot:where(.r-multiple) {
+    width: auto;
+  }
 }
 
 .ui-ComboboxRoot:where(.r-size-1) {

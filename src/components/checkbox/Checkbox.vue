@@ -63,16 +63,18 @@ const resetClass = buildPropsClass(props, ['size', 'variant', 'highContrast'])
 </template>
 
 <style>
-.ui-Checkbox {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  vertical-align: top;
-  flex-shrink: 0;
-  cursor: default;
-  height: var(--checkbox-size);
-  border-radius: var(--checkbox-border-radius);
+@layer components {
+  .ui-Checkbox {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: top;
+    flex-shrink: 0;
+    cursor: default;
+    height: var(--checkbox-size);
+    border-radius: var(--checkbox-border-radius);
+  }
 }
 .ui-Checkbox::before {
   content: '';

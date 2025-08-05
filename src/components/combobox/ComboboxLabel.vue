@@ -26,19 +26,21 @@ useForwardExpose()
 
 
 <style>
-.ui-ComboboxLabel {
-  display: flex;
-  align-items: center;
-  height: var(--combobox-item-height);
-  padding-left: calc(var(--combobox-indicator-width) / 2);
-  padding-right: var(--combobox-indicator-width);
-  color: var(--gray-a10);
-  user-select: none;
-  cursor: default;
+@layer components {
+  .ui-ComboboxLabel {
+    display: flex;
+    align-items: center;
+    height: var(--combobox-item-height);
+    padding-left: calc(var(--combobox-indicator-width) / 2);
+    padding-right: var(--combobox-indicator-width);
+    color: var(--gray-a10);
+    user-select: none;
+    cursor: default;
 
-  font-size: var(--combobox-label-font-size);
-  letter-spacing: var(--combobox-label-letter-spacing);
-  line-height: var(--combobox-label-line-height);
+    font-size: var(--combobox-label-font-size);
+    letter-spacing: var(--combobox-label-letter-spacing);
+    line-height: var(--combobox-label-line-height);
+  }
 }
 .ui-SelectItem + .ui-ComboboxLabel {
   margin-top: var(--space-2);

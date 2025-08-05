@@ -16,15 +16,17 @@ const forwarded = useForwardProps(props)
 </template>
 
 <style>
-.ui-ToggleGroupItem {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  vertical-align: top;
-  flex-shrink: 0;
-  width: var(--toggle-item-size);
-  height: var(--toggle-item-size);
+@layer components {
+  .ui-ToggleGroupItem {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: top;
+    flex-shrink: 0;
+    width: var(--toggle-item-size);
+    height: var(--toggle-item-size);
+  }
 }
 .ui-ToggleGroupRoot:where(.r-variant-solid, .r-variant-surface, .r-variant-outline) :where(.ui-ToggleGroupItem:first-child) {
   border-top-left-radius: var(--toggle-radius);

@@ -25,15 +25,17 @@ useForwardExpose()
 </template>
 
 <style>
-.ui-SelectLabel {
-  display: flex;
-  align-items: center;
-  height: var(--select-item-height);
-  padding-left: var(--select-item-indicator-width);
-  padding-right: var(--select-item-indicator-width);
-  color: var(--gray-a10);
-  user-select: none;
-  cursor: default;
+@layer components {
+  .ui-SelectLabel {
+    display: flex;
+    align-items: center;
+    height: var(--select-item-height);
+    padding-left: var(--select-item-indicator-width);
+    padding-right: var(--select-item-indicator-width);
+    color: var(--gray-a10);
+    user-select: none;
+    cursor: default;
+  }
 }
 .ui-SelectItem + .ui-SelectLabel {
   margin-top: var(--space-2);

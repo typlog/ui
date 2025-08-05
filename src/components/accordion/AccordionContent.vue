@@ -42,10 +42,12 @@ defineOptions({
     height: 0;
   }
 }
-.ui-AccordionContent {
-  overflow: hidden;
-  font-weight: var(--font-weight-regular);
-  font-size: var(--accordion-content-font-size);
+@layer components {
+  .ui-AccordionContent {
+    overflow: hidden;
+    font-weight: var(--font-weight-regular);
+    font-size: var(--accordion-content-font-size);
+  }
 }
 .ui-AccordionContent:where([data-state="open"]) {
   animation: accordion-down 0.2s ease-out;

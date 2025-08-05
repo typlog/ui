@@ -95,11 +95,15 @@ const contentClass = computed(() => {
   --scrollarea-scrollbar-vertical-margin-bottom: var(--combobox-content-padding);
   --scrollarea-scrollbar-horizontal-margin-left: var(--combobox-content-padding);
   --scrollarea-scrollbar-horizontal-margin-right: var(--combobox-content-padding);
+}
 
-  overflow: hidden;
-  box-shadow: var(--shadow-5);
-  background-color: var(--color-panel-solid);
-  box-sizing: border-box;
+@layer components {
+  .ui-ComboboxContent {
+    overflow: hidden;
+    box-shadow: var(--shadow-5);
+    background-color: var(--color-panel-solid);
+    box-sizing: border-box;
+  }
 }
 
 .ui-ComboboxContent:where([data-side]) {

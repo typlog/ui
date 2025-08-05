@@ -60,16 +60,18 @@ const resetClass = buildPropsClass(props, ['size', 'variant', 'highContrast'])
 </template>
 
 <style>
-.ui-Badge {
-  display: inline-flex;
-  align-items: center;
-  white-space: nowrap;
-  font-weight: var(--font-weight-medium);
-  font-style: normal;
-  flex-shrink: 0;
-  line-height: 1;
-  height: fit-content;
-  width: fit-content;
+@layer components {
+  .ui-Badge {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    font-weight: var(--font-weight-medium);
+    font-style: normal;
+    flex-shrink: 0;
+    line-height: 1;
+    height: fit-content;
+    width: fit-content;
+  }
 }
 
 .ui-Badge:where(.r-size-1) {

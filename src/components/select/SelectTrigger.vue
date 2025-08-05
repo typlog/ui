@@ -52,21 +52,22 @@ const resetClass = computed(() => {
 </template>
 
 <style>
-.ui-SelectTrigger {
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-shrink: 0;
-  user-select: none;
-  vertical-align: top;
-  font-weight: var(--font-weight-regular);
-  font-style: normal;
-  text-align: start;
-  color: var(--gray-12);
-  box-sizing: border-box;
-  height: var(--select-trigger-height);
+@layer components {
+  .ui-SelectTrigger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    user-select: none;
+    vertical-align: top;
+    font-weight: var(--font-weight-regular);
+    font-style: normal;
+    text-align: start;
+    color: var(--gray-12);
+    box-sizing: border-box;
+    height: var(--select-trigger-height);
+  }
 }
-
 .ui-SelectTriggerInner {
   overflow: hidden;
   text-overflow: ellipsis;

@@ -48,19 +48,21 @@ const props = withDefaults(defineProps<SeparatorProps>(), {
 </template>
 
 <style>
-.ui-Separator {
-  display: block;
-  box-sizing: border-box;
-  background-color: var(--accent-a6);
-}
+@layer components {
+  .ui-Separator {
+    display: block;
+    box-sizing: border-box;
+    background-color: var(--accent-a6);
+  }
 
-.ui-Separator[aria-orientation="horizontal"] {
-  width: var(--separator-size, auto);
-  height: 1px;
-}
-.ui-Separator[aria-orientation="vertical"] {
-  width: 1px;
-  height: var(--separator-size, auto);
+  .ui-Separator:where([aria-orientation="horizontal"]) {
+    width: var(--separator-size, auto);
+    height: 1px;
+  }
+  .ui-Separator:where([aria-orientation="vertical"]) {
+    width: 1px;
+    height: var(--separator-size, auto);
+  }
 }
 
 .ui-Separator:where(.r-size-1) {

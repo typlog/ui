@@ -25,25 +25,26 @@ const forwarded = useForwardProps(props)
 
 
 <style>
-.ui-ComboboxItem {
-  display: flex;
-  align-items: center;
-  height: var(--combobox-item-height);
-  padding-left: var(--combobox-indicator-width);
-  padding-right: var(--combobox-indicator-width);
-  position: relative;
-  box-sizing: border-box;
-  outline: none;
-  scroll-margin: var(--combobox-content-padding) 0;
-  user-select: none;
-  cursor: default;
+@layer components {
+  .ui-ComboboxItem {
+    display: flex;
+    align-items: center;
+    height: var(--combobox-item-height);
+    padding-left: var(--combobox-indicator-width);
+    padding-right: var(--combobox-indicator-width);
+    position: relative;
+    box-sizing: border-box;
+    outline: none;
+    scroll-margin: var(--combobox-content-padding) 0;
+    user-select: none;
+    cursor: default;
 
-  font-size: var(--combobox-item-font-size);
-  line-height: var(--combobox-item-line-height);
-  letter-spacing: var(--combobox-item-letter-spacing);
-  border-radius: var(--combobox-item-radius);
+    font-size: var(--combobox-item-font-size);
+    line-height: var(--combobox-item-line-height);
+    letter-spacing: var(--combobox-item-letter-spacing);
+    border-radius: var(--combobox-item-radius);
+  }
 }
-
 .ui-ComboboxItem:where([data-disabled]) {
   cursor: not-allowed;
 }

@@ -42,11 +42,13 @@ const forwardedProps = useForwardProps(props)
     height: 0;
   }
 }
-.ui-CollapsibleContent {
-  overflow: hidden;
-  font-size: var(--collapsible-font-size);
-  font-weight: var(--font-weight-regular);
-  padding-block: var(--collapsible-padding-y);
+@layer components {
+  .ui-CollapsibleContent {
+    overflow: hidden;
+    font-size: var(--collapsible-font-size);
+    font-weight: var(--font-weight-regular);
+    padding-block: var(--collapsible-padding-y);
+  }
 }
 .ui-CollapsibleContent:where([data-state="open"]) {
   animation: collapsible-down 0.2s ease-out;
