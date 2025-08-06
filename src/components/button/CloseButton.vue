@@ -9,7 +9,7 @@ import { Primitive } from 'reka-ui'
 import CrossIcon from '~icons/radix-icons/cross-2'
 import { buildPropsClass } from '../util'
 
-const props = withDefaults(defineProps<ButtonProps>(), {
+const props = withDefaults(defineProps<CloseButtonProps>(), {
   as: 'button',
   size: '2',
   variant: 'ghost',

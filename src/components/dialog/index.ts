@@ -18,6 +18,13 @@ export {
 } from 'reka-ui'
 
 export {
+  default as DialogCloseButton,
+  default as AlertDialogCancelButton,
+  type DialogCloseButtonProps,
+  type DialogCloseButtonProps as AlertDialogCloseButtonProps,
+} from './DialogCloseButton.vue'
+
+export {
   default as DialogTitle,
   default as AlertDialogTitle,
 } from './DialogTitle.vue'

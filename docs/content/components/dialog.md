@@ -51,13 +51,28 @@ Wraps the control that will open the dialog. Usually used with `Button`:
 
 <PropsTable name="DialogDescription" />
 
-### DialogClose
+### DialogCloseButton & AlertDialogCancelButton
+
+A cross icon to close the dialog.
+
+<PropsTable name="DialogCloseButton" />
+
+### DialogClose & AlertDialogCancel
+
+Reka UI's native `DialogClose` component without any styles.
+Usually used with `Button`:
+
+```vue
+<template>
+  <DialogRoot>
+    <DialogPopup>
+      <Button :as="DialogClose">Close</Button>
+    </DialogPopup>
+  </DialogRoot>
+</template>
+```
 
 <PropsTable name="DialogClose" />
-
-### AlertDialogCancel
-
-<PropsTable name="AlertDialogCancel" />
 
 ### AlertDialogAction
 

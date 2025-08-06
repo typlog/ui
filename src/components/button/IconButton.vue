@@ -8,7 +8,7 @@ export interface IconButtonProps extends ButtonProps {}
 import { Primitive } from 'reka-ui'
 import { buildPropsClass } from '../util'
 
-const props = withDefaults(defineProps<ButtonProps>(), {
+const props = withDefaults(defineProps<IconButtonProps>(), {
   as: 'button',
   size: '2',
   variant: 'solid',
