@@ -35,7 +35,7 @@ export * from './table'
 export * from './separator'
 export * from './tooltip'
 export * from './quota'
-export * from './spinner'
+export * from './icons'
 
 export * from './util'
 export type * from './types'

@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { Component } from 'vue'
-import SpinnerIcon from '../spinner/SpinnerIcon.vue'
+import SpinnerIcon from '../icons/SpinnerIcon.vue'
 import InfoIcon from '~icons/ri/information-2-fill'
 import SuccessIcon from '~icons/ri/checkbox-circle-fill'
 import WarningIcon from '~icons/ri/alert-fill'
