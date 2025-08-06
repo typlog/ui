@@ -23,7 +23,7 @@ const resetClass = buildPropsClass(props, ['variant', 'size', 'highContrast'])
 
 <template>
   <TabsList
-    class="ui-TabList"
+    class="ui-TabsList"
     :class="resetClass"
     :data-radius="props.radius"
     :data-accent-color="props.color"
@@ -34,11 +34,11 @@ const resetClass = buildPropsClass(props, ['variant', 'size', 'highContrast'])
 </template>
 
 <style>
-.ui-TabList::-webkit-scrollbar {
+.ui-TabsList::-webkit-scrollbar {
   display: none;
 }
 
-.ui-TabList:where(.r-size-1) {
+.ui-TabsList:where(.r-size-1) {
   --tab-font-size: var(--font-size-1);
   --tab-line-height: var(--line-height-1);
   --tab-letter-spacing: var(--letter-spacing-1);
@@ -49,7 +49,7 @@ const resetClass = buildPropsClass(props, ['variant', 'size', 'highContrast'])
   --tab-inner-padding-x: var(--space-1);
   --tab-inner-height: var(--space-5);
 }
-.ui-TabList:where(.r-size-2) {
+.ui-TabsList:where(.r-size-2) {
   --tab-font-size: var(--font-size-2);
   --tab-line-height: var(--line-height-2);
   --tab-letter-spacing: var(--letter-spacing-2);
@@ -61,14 +61,14 @@ const resetClass = buildPropsClass(props, ['variant', 'size', 'highContrast'])
   --tab-inner-height: calc(var(--space-6) - var(--space-1));
 }
 
-.ui-TabList:where(.r-variant-surface.r-size-1),
-.ui-TabList:where(.r-variant-soft.r-size-1) {
+.ui-TabsList:where(.r-variant-surface.r-size-1),
+.ui-TabsList:where(.r-variant-soft.r-size-1) {
   --tab-inner-padding-x: calc(var(--space-2) / 4 * 3);
 }
 
 
 @layer components {
-  .ui-TabList {
+  .ui-TabsList {
     justify-content: flex-start;
     position: relative;
     overflow-x: auto;
@@ -81,36 +81,35 @@ const resetClass = buildPropsClass(props, ['variant', 'size', 'highContrast'])
   }
 
   /** classic & surface */
-  .ui-TabList:where(.r-variant-surface, .r-variant-classic) {
+  .ui-TabsList:where(.r-variant-surface, .r-variant-classic) {
     position: relative;
     display: inline-flex;
     width: fit-content;
     align-items: center;
-    justify-content: center;
     vertical-align: top;
     flex-shrink: 0;
     border-radius: var(--tab-radius);
   }
 
-  .ui-TabList:where(.r-variant-classic) {
+  .ui-TabsList:where(.r-variant-classic) {
     background-color: var(--accent-a3);
     padding-left: var(--tab-padding-x);
     padding-right: var(--tab-padding-x);
   }
 
-  .ui-TabList:where(.r-variant-surface) {
+  .ui-TabsList:where(.r-variant-surface) {
     --tab-item-radius: 0;
     --tab-inner-height: var(--tab-height);
     box-shadow: inset 0 0 0 1px var(--gray-a6);
   }
 
   /** soft & outline */
-  .ui-TabList:where(.r-variant-outline, .r-variant-soft) {
+  .ui-TabsList:where(.r-variant-outline, .r-variant-soft) {
     display: flex;
     box-shadow: inset 0 -1px 0 0 var(--gray-a5);
   }
 
-  .ui-TabList:where(.r-variant-soft) {
+  .ui-TabsList:where(.r-variant-soft) {
     padding-left: var(--tab-padding-x);
     padding-right: var(--tab-padding-x);
   }
@@ -124,14 +123,14 @@ const resetClass = buildPropsClass(props, ['variant', 'size', 'highContrast'])
   width: var(--reka-tabs-indicator-size);
 }
 
-.ui-TabList:where(.r-variant-surface) :where(.ui-TabsIndicator) {
+.ui-TabsList:where(.r-variant-surface) :where(.ui-TabsIndicator) {
   top: 0;
-  height: var(--tab-inner-height);
+  height: var(--tab-height);
   background-color: var(--accent-a3);
   transition-duration: 100ms;
 }
 
-.ui-TabList:where(.r-variant-classic) :where(.ui-TabsIndicator) {
+.ui-TabsList:where(.r-variant-classic) :where(.ui-TabsIndicator) {
   top: calc((var(--tab-height) - var(--tab-inner-height)) / 2);
   height: var(--tab-inner-height);
   background-color: var(--color-panel-solid);
@@ -144,7 +143,7 @@ const resetClass = buildPropsClass(props, ['variant', 'size', 'highContrast'])
   transition-duration: 100ms;
 }
 
-.ui-TabList:where(.r-variant-soft) :where(.ui-TabsIndicator) {
+.ui-TabsList:where(.r-variant-soft) :where(.ui-TabsIndicator) {
   top: calc((var(--tab-height) - var(--tab-inner-height)) / 2);
   height: var(--tab-inner-height);
   background-color: var(--accent-a3);
@@ -152,7 +151,7 @@ const resetClass = buildPropsClass(props, ['variant', 'size', 'highContrast'])
   transition-duration: 100ms;
 }
 
-.ui-TabList:where(.r-variant-outline) :where(.ui-TabsIndicator) {
+.ui-TabsList:where(.r-variant-outline) :where(.ui-TabsIndicator) {
   bottom: 0;
   height: 2px;
   background-color: var(--accent-indicator);
@@ -160,7 +159,7 @@ const resetClass = buildPropsClass(props, ['variant', 'size', 'highContrast'])
 }
 
 /** high contrast */
-:where(.ui-TabList.r-variant-outline.r-high-contrast) .ui-TabsIndicator {
+:where(.ui-TabsList.r-variant-outline.r-high-contrast) .ui-TabsIndicator {
   background-color: var(--accent-12);
 }
 </style>

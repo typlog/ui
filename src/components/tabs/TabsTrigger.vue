@@ -73,13 +73,13 @@ const forwarded = useForwardProps(props)
 }
 
 @media (hover: hover) {
-  .ui-TabList:where(.r-variant-outline, .r-variant-classic) :where(.ui-TabTrigger:hover) {
+  .ui-TabsList:where(.r-variant-outline, .r-variant-classic) :where(.ui-TabTrigger:hover) {
     color: var(--gray-12);
   }
-  .ui-TabList:where(.r-variant-surface, .r-variant-soft) :where(.ui-TabTrigger:hover) {
+  .ui-TabsList:where(.r-variant-surface, .r-variant-soft) :where(.ui-TabTrigger:hover) {
     color: var(--accent-a11);
   }
-  .ui-TabList:where(.r-variant-outline) :where(.ui-TabTrigger:not(:disabled):hover) :where(.ui-TabTriggerInner) {
+  .ui-TabsList:where(.r-variant-outline) :where(.ui-TabTrigger:not(:disabled):hover) :where(.ui-TabTriggerInner) {
     background-color: var(--gray-a3);
   }
   .ui-TabTrigger:where(:focus-visible:hover) :where(.ui-TabTriggerInner) {
@@ -92,24 +92,24 @@ const forwarded = useForwardProps(props)
   outline-offset: -2px;
 }
 
-.ui-TabList:where(.r-variant-outline) :where(.ui-TabTrigger) {
+.ui-TabsList:where(.r-variant-outline) :where(.ui-TabTrigger) {
   padding-left: var(--tab-padding-x);
   padding-right: var(--tab-padding-x);
 }
 
-.ui-TabList:where(.r-variant-classic, .r-variant-outline) :where(.ui-TabTrigger[data-state='active']) {
+.ui-TabsList:where(.r-variant-classic, .r-variant-outline) :where(.ui-TabTrigger[data-state='active']) {
   color: var(--gray-12);
 }
 
-.ui-TabList:where(.r-variant-soft) :where(.ui-TabTrigger + .ui-TabTrigger) {
+.ui-TabsList:where(.r-variant-soft) :where(.ui-TabTrigger + .ui-TabTrigger) {
   margin-left: calc(var(--tab-padding-x) / 2)
 }
 
-.ui-TabList:where(.r-variant-surface) :where(.ui-TabTrigger + .ui-TabTrigger) {
+.ui-TabsList:where(.r-variant-surface) :where(.ui-TabTrigger + .ui-TabTrigger) {
   box-shadow: inset 1px 0 0 var(--gray-a4);
 }
 
-.ui-TabList:where(.r-variant-surface, .r-variant-soft) :where(.ui-TabTrigger[data-state='active']) {
+.ui-TabsList:where(.r-variant-surface, .r-variant-soft) :where(.ui-TabTrigger[data-state='active']) {
   color: var(--accent-a11);
 }
 </style>
