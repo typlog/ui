@@ -5,9 +5,6 @@ import type {
   DialogContentEmits,
 } from 'reka-ui'
 import { createContext } from 'reka-ui'
-import ThemeWrapper from '../provider/ThemeWrapper.vue'
-import ScrollArea from '../scrollarea/ScrollArea.vue'
-import { useForwardPropsEmitsWithout, buildPropsClass } from '../util'
 import type { ColorType } from '../types'
 
 export interface DropdownMenuContentProps extends RekaDropdownMenuContentProps {
@@ -34,6 +31,9 @@ import {
   DropdownMenuPortal,
   DropdownMenuContent,
 } from 'reka-ui'
+import ThemeWrapper from '../provider/ThemeWrapper.vue'
+import ScrollArea from '../scrollarea/ScrollArea.vue'
+import { useForwardPropsEmitsWithout, buildPropsClass } from '../util'
 
 defineOptions({
   inheritAttrs: false,

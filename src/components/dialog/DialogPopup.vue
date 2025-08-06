@@ -3,12 +3,6 @@ import type {
   DialogContentProps,
   DialogContentEmits,
 } from 'reka-ui'
-import {
-  DialogPortal,
-  DialogContent,
-  DialogOverlay,
-} from 'reka-ui'
-import ThemeWrapper from '../provider/ThemeWrapper.vue'
 
 export interface DialogPopupProps extends DialogContentProps {
   /**
@@ -20,6 +14,12 @@ export interface DialogPopupProps extends DialogContentProps {
 </script>
 
 <script setup lang="ts">
+import {
+  DialogPortal,
+  DialogContent,
+  DialogOverlay,
+} from 'reka-ui'
+import ThemeWrapper from '../provider/ThemeWrapper.vue'
 import { useForwardPropsEmitsWithout } from '../util'
 
 defineOptions({

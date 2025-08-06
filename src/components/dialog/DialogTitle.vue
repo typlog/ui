@@ -1,9 +1,9 @@
 <script lang="ts">
 import type { PrimitiveProps } from 'reka-ui'
-import { useForwardExpose } from 'reka-ui'
 </script>
 
 <script setup lang="ts">
+import { useForwardExpose } from 'reka-ui'
 import { Primitive, injectDialogRootContext } from 'reka-ui'
 
 const props = withDefaults(defineProps<PrimitiveProps>(), { as: 'h2' })

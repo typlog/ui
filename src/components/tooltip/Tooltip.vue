@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { TooltipContentProps } from 'reka-ui'
 import type { ColorType } from '../types'
-import ThemeWrapper from '../provider/ThemeWrapper.vue'
 
 export interface TooltipProps extends TooltipContentProps {
   /** The content associated with the tooltip. */
@@ -26,6 +25,7 @@ import {
   TooltipRoot,
   TooltipTrigger,
 } from 'reka-ui'
+import ThemeWrapper from '../provider/ThemeWrapper.vue'
 
 const props = withDefaults(defineProps<TooltipProps>(), {
   maxWidth: '360px',

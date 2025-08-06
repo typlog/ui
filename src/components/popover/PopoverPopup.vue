@@ -3,12 +3,6 @@ import type {
   PopoverContentProps,
   PopoverContentEmits,
 } from 'reka-ui'
-import {
-  PopoverPortal,
-  PopoverContent,
-} from 'reka-ui'
-import { useForwardPropsEmitsWithout } from '../util'
-import ThemeWrapper from '../provider/ThemeWrapper.vue'
 
 export interface PopoverPopupProps extends PopoverContentProps {
   size?: '1' | '2'
@@ -16,6 +10,13 @@ export interface PopoverPopupProps extends PopoverContentProps {
 </script>
 
 <script setup lang="ts">
+import {
+  PopoverPortal,
+  PopoverContent,
+} from 'reka-ui'
+import { useForwardPropsEmitsWithout } from '../util'
+import ThemeWrapper from '../provider/ThemeWrapper.vue'
+
 defineOptions({
   inheritAttrs: false,
 })
