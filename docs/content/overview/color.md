@@ -24,7 +24,7 @@ radix: https://www.radix-ui.com/themes/docs/theme/color
 ## Accents
 
 The accent color defines the dominant color in your theme and is applied to primary buttons,
-links, and other interactive components. To set it globally, pass the `accentColor` prop to
+links, and other interactive components. To set it globally, pass the `accent-color` prop to
 the `ThemeProvider`:
 
 ```vue

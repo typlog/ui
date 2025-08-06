@@ -31,7 +31,7 @@ const values = computed(() => {
     <a
       v-if="name === 'color'"
       class="text-sm underline hover:text-indigo-11"
-      href="/overview/color/"
+      href="/overview/color"
     >
       <span class="font-medium">Color</span>
     </a>
