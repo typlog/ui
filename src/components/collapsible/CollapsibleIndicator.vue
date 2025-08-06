@@ -21,6 +21,12 @@
   order: -1;
 }
 
+:where([aria-expanded="false"]) .ui-CollapsibleIndicator,
+:where([data-state="closed"]) .ui-CollapsibleIndicator {
+  transform: rotate(0);
+}
+
+:where([aria-expanded="true"]) .ui-CollapsibleIndicator,
 :where([data-state="open"]) .ui-CollapsibleIndicator {
   transform: rotate(90deg);
 }
