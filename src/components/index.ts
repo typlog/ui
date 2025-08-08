@@ -15,6 +15,7 @@ export * from './scrollarea'
 export * from './dialog'
 export * from './dropdown'
 export * from './popover'
+export * from './navigation'
 
 export * from './switch'
 export * from './checkbox'

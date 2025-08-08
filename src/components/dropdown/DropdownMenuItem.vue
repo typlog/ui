@@ -29,7 +29,7 @@ const rootContext = injectDropdownMenuContentContext()
 <template>
   <DropdownMenuItem
     class="ui-MenuItem"
-    :data-accent-color="props.color"
+    :data-accent-color="props.color || rootContext.color.value"
     :data-variant="rootContext.variant.value"
     :data-high-contrast="rootContext.highContrast?.value || undefined"
     v-bind="forwarded"

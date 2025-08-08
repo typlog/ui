@@ -7,7 +7,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
 } from '#components'
-import ChevronDownIcon from '~icons/radix-icons/chevron-down'
+import CaretDownIcon from '~icons/radix-icons/caret-down'
 </script>
 
 <template>
@@ -15,7 +15,7 @@ import ChevronDownIcon from '~icons/radix-icons/chevron-down'
     <DropdownMenuTrigger>
       <Button variant="soft">
         Options
-        <ChevronDownIcon />
+        <CaretDownIcon />
       </Button>
     </DropdownMenuTrigger>
     <DropdownMenuContent>

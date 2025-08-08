@@ -50,6 +50,9 @@ const { path } = toRefs(useRoute())
   padding-left: var(--space-2);
   border-left: 1px solid var(--gray-a4);
 }
+.ui-CollapsibleContent .sidebar-item.active {
+  border-color: var(--accent-a10);
+}
 .ui-CollapsibleContent .sidebar-item a {
   height: 1.875rem;
   padding-left: var(--space-3);

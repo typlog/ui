@@ -5,7 +5,18 @@ export interface SidebarItem extends DefaultTheme.SidebarItem {
   items?: SidebarItem[]
 }
 
-export interface ThemeConfig extends Omit<DefaultTheme.Config, 'sidebar'> {
+export interface NavChildItem extends Omit<DefaultTheme.NavItemWithLink, 'items'> {
+  icon?: string,
+  description?: string,
+}
+
+export interface NavItem extends Omit<DefaultTheme.NavItemWithLink, 'items' | 'link'> {
+  link?: string
+  items?: NavChildItem[]
+}
+
+export interface ThemeConfig extends Omit<DefaultTheme.Config, 'sidebar' | 'nav'> {
+  nav?: NavItem[]
   sidebar: SidebarItem[]
 }
 

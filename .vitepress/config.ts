@@ -38,7 +38,36 @@ export default defineConfig<ThemeConfig>({
     },
 
     nav: [
-      { text: 'UI', link: '/overview/getting-started' },
+      { text: 'Docs', link: '/overview/getting-started' },
+      {
+        text: 'Components',
+        items: [
+          {
+            text: 'Element',
+            icon: 'lucide:square-mouse-pointer',
+            link: '/components/avatar',
+            description: 'Button, avatar, badge, icon, and general UI elements.',
+          },
+          {
+            text: 'Form',
+            icon: 'lucide:text-cursor-input',
+            link: '/components/avatar',
+            description: 'Input, select, checkbox, radio, switch, toggle, and etc.',
+          },
+          {
+            text: 'Controls',
+            icon: 'lucide:sliders-horizontal',
+            link: '/components/tabs',
+            description: 'Tabs, pagination, accordion, and collapsible.',
+          },
+          {
+            text: 'Overlays',
+            icon: 'lucide:layers',
+            link: '/components/dialog',
+            description: 'Dialog, dropdown, tooltip, modal and popover.',
+          },
+        ],
+      },
     ],
 
     sidebar: [
@@ -105,6 +134,7 @@ export default defineConfig<ThemeConfig>({
             items: [
               { text: 'Dialog', link: '/components/dialog' },
               { text: 'Dropdown Menu', link: '/components/dropdown' },
+              { text: 'Navigation Menu', link: '/components/navigation' },
               { text: 'Popover', link: '/components/popover' },
               { text: 'Tooltip', link: '/components/tooltip' },
               { text: 'Toast', link: '/components/toast' },

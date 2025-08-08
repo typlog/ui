@@ -15,7 +15,7 @@ export interface DropdownMenuContentProps extends RekaDropdownMenuContentProps {
 }
 
 interface DropdownMenuContentContext {
-  color?: Ref<ColorType | undefined>
+  color: Ref<ColorType | undefined>
   size: Ref<'1' | '2' | '3'>
   variant: Ref<'solid' | 'soft'>
   highContrast?: Ref<boolean>

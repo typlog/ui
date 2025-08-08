@@ -1,0 +1,28 @@
+@layer components {
+  .ui-NavigationMenuTrigger,
+  .ui-NavigationMenuLink {
+    display: inline-flex;
+    gap: var(--space-1);
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    user-select: none;
+    vertical-align: top;
+    font-style: normal;
+    text-align: center;
+    white-space: nowrap;
+    font-weight: var(--font-weight-medium);
+    height: var(--navigation-menu-height);
+    padding-left: var(--navigation-menu-padding-x);
+    padding-right: var(--navigation-menu-padding-x);
+    font-size: var(--navigation-menu-font-size);
+    line-height: var(--navigation-menu-line-height);
+    letter-spacing: var(--navigation-menu-letter-spacing);
+    border-radius: var(--navigation-menu-radius);
+  }
+
+  .ui-NavigationMenuTrigger:where(:hover),
+  .ui-NavigationMenuLink:where(:hover) {
+    background-color: var(--accent-a2);
+  }
+}

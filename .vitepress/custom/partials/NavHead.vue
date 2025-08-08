@@ -2,7 +2,16 @@
 import { useData } from 'vitepress'
 import MoonIcon from '~icons/radix-icons/moon'
 import SunIcon from '~icons/radix-icons/sun'
-import { IconButton } from '#components'
+import {
+  IconButton,
+  NavigationMenuRoot,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuTrigger,
+  NavigationMenuLink,
+  NavigationMenuContent,
+} from '#components'
+import { Icon } from '@iconify/vue'
 import { useColorMode } from '@vueuse/core'
 
 const mode = useColorMode()
@@ -24,11 +33,34 @@ const { theme } = useData()
       <div class="shrink-0">
         <a href="/">Typlog UI</a>
       </div>
-      <nav class="hidden md:flex md:pl-6 items-center grow justify-between">
-        <div v-for="(nav, index) in theme.nav" :key="index">
-          <span>{{ nav.text }}</span>
-        </div>
-      </nav>
+      <div class="grow">
+        <NavigationMenuRoot class="hidden md:block md:pl-6">
+          <NavigationMenuList>
+            <NavigationMenuItem v-for="(nav, index) in theme.nav" :key="index">
+              <NavigationMenuTrigger
+                v-if="nav.items"
+                :href="nav.link"
+              >
+                {{ nav.text }}
+              </NavigationMenuTrigger>
+              <NavigationMenuLink v-else :href="nav.link">{{ nav.text }}</NavigationMenuLink>
+              <NavigationMenuContent v-if="nav.items" class="isolate p-2 max-w-[560px]">
+                <ul class="grid grid-cols-2">
+                  <li v-for="item in nav.items" :key="item.link">
+                    <a class="flex gap-2 p-2 rounded hover:bg-gray-a3" :href="item.link">
+                      <Icon v-if="item.icon" :icon="item.icon" class="mt-1 shrink-0" />
+                      <div class="flex flex-col">
+                        <span class="text-sm font-medium">{{ item.text }}</span>
+                        <span class="text-sm text-gray-11">{{ item.description }}</span>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenuRoot>
+      </div>
       <div class="flex items-center gap-x-2">
         <IconButton variant="ghost" color="gray" @click="changeColorMode">
           <MoonIcon v-if="mode === 'dark'" />

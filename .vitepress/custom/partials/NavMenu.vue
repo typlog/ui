@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import MenuIcon from '~icons/radix-icons/hamburger-menu'
+</script>
+
 <template>
   <div class="flex items-center justify-between h-12 py-4 px-5 lg:hidden border-t border-gray-a3">
     <div class="flex text-sm leading-6 whitespace-nowrap min-w-0 space-x-3">
