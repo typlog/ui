@@ -1,4 +1,10 @@
-on: [push]
+on:
+  push:
+    branches-ignore:
+      - 'wip-*'
+    paths-ignore:
+      - '.github/**'
+      - 'src/**'
 
 jobs:
   deploy:
@@ -17,6 +23,8 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: npm ci
       - run: npm run build:docs
+      - run: npm ci
+        working-directory: site
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
         with:
