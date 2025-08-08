@@ -8,7 +8,7 @@ const { frontmatter } = useData()
 </script>
 
 <template>
-  <ThemeProvider>
+  <ThemeProvider class="min-h-screen">
     <Intro v-if="frontmatter.layout === 'intro'" />
     <Doc v-else />
   </ThemeProvider>

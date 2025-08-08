@@ -31,6 +31,10 @@ export const [injectThemeContext, provideThemeContext]
 <script setup lang="ts">
 import { Primitive, TooltipProvider, createContext } from 'reka-ui'
 
+defineOptions({
+  inheritAttrs: false,
+})
+
 const props = withDefaults(defineProps<ThemeProviderProps>(), {
   as: 'div',
   accentColor: 'indigo',
@@ -64,6 +68,7 @@ provideThemeContext({
       :data-has-background="hasBackground"
       :as="props.as"
       :as-child="props.asChild"
+      v-bind="$attrs"
     >
       <slot></slot>
     </Primitive>
