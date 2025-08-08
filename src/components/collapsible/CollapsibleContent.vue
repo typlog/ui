@@ -2,10 +2,6 @@
 import type { CollapsibleContentProps } from 'reka-ui'
 import { CollapsibleContent, useForwardProps } from 'reka-ui'
 
-defineOptions({
-  inheritAttrs: false,
-})
-
 const props = defineProps<CollapsibleContentProps>()
 const forwardedProps = useForwardProps(props)
 </script>
@@ -15,9 +11,7 @@ const forwardedProps = useForwardProps(props)
     v-bind="forwardedProps"
     class="ui-CollapsibleContent"
   >
-    <div class="ui-CollapsibleContentInner" v-bind="$attrs">
-      <slot></slot>
-    </div>
+    <slot></slot>
   </CollapsibleContent>
 </template>
 

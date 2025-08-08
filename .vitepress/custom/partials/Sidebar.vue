@@ -1,8 +1,9 @@
 <script lang="ts">
-import type { DefaultTheme } from 'vitepress'
+import type { SidebarItem } from '../types'
 </script>
 
 <script setup lang="ts">
+import { Icon } from '@iconify/vue'
 import {
   CollapsibleRoot,
   CollapsibleTrigger,
@@ -10,22 +11,28 @@ import {
 } from '#components'
 import DocSidebarItem from './SidebarItem.vue'
 
-defineProps<{sidebar: DefaultTheme.SidebarItem[]}>()
+defineProps<{sidebar: SidebarItem[]}>()
 </script>
 
 <template>
-  <div
+  <ul
     v-for="item in sidebar"
     :key="item.text"
   >
     <CollapsibleRoot
       v-if="item.items?.length"
-      class="mb-6"
+      class="mb-4"
       size="1"
+      as="li"
       default-open
     >
-      <CollapsibleTrigger class="px-4 w-full">{{ item.text }}</CollapsibleTrigger>
-      <CollapsibleContent>
+      <CollapsibleTrigger class="pl-2 pr-4 w-full">
+        <div class="flex items-center gap-2">
+          <Icon v-if="item.icon" :icon="item.icon" />
+          {{ item.text }}
+        </div>
+      </CollapsibleTrigger>
+      <CollapsibleContent class="py-1" as="ul">
         <DocSidebarItem
           v-for="subitem in item.items"
           :key="subitem.text"
@@ -38,5 +45,5 @@ defineProps<{sidebar: DefaultTheme.SidebarItem[]}>()
       v-else
       :item="item"
     />
-  </div>
+  </ul>
 </template>

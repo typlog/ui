@@ -2,6 +2,8 @@
 title: Badge
 description: Displaying a colorful badge element.
 status: stable
+source: https://github.com/typlog/ui/tree/main/src/components/badge
+radix: https://www.radix-ui.com/themes/docs/components/badge
 ---
 
 <Example name="badge/Overview.vue" variant="hide" />

@@ -9,7 +9,7 @@ const { path } = toRefs(useRoute())
 </script>
 
 <template>
-  <div
+  <li
     class="sidebar-item"
     :class="{ active: path === item.link }"
   >
@@ -18,21 +18,23 @@ const { path } = toRefs(useRoute())
       v-html="item.text"
     >
     </a>
-  </div>
+  </li>
 </template>
 
 <style>
-.sidebar-item {
-  margin-top: 0.1rem;
+.sidebar-item.active {
+  border-color: var(--accent-9);
 }
 .sidebar-item a {
   display: inline-flex;
   align-items: center;
   width: 100%;
-  height: 2.15rem;
+  height: 2rem;
+  margin-top: 1px;
+  margin-bottom: 1px;
   padding-left: var(--space-4);
   padding-right: var(--space-4);
-  border-radius: var(--radius-4);
+  border-radius: var(--radius-2);
 }
 .sidebar-item.active a {
   font-weight: var(--font-weight-medium);
@@ -41,5 +43,16 @@ const { path } = toRefs(useRoute())
 }
 .sidebar-item a:hover {
   background-color: var(--gray-a3);
+}
+
+.ui-CollapsibleContent .sidebar-item {
+  margin-left: var(--space-4);
+  padding-left: var(--space-2);
+  border-left: 1px solid var(--gray-a4);
+}
+.ui-CollapsibleContent .sidebar-item a {
+  height: 1.875rem;
+  padding-left: var(--space-3);
+  padding-right: var(--space-3);
 }
 </style>

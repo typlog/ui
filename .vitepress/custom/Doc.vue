@@ -1,26 +1,77 @@
 <script lang="ts">
-import type { DefaultTheme } from 'vitepress'
+import type { SidebarItem, NavSidebarItem } from './types'
+
+const findFirstLink = (item: SidebarItem) => {
+  if (item.link) {
+    return item.link
+  } else if (item.items) {
+    return findFirstLink(item.items[0])
+  } else {
+    return null
+  }
+}
+
+const isActiveLink = (item: SidebarItem, link: string) => {
+  if (item.link === link) {
+    return true
+  }
+
+  if (!item.items) {
+    return false
+  }
+
+  for (const child of item.items) {
+    if (isActiveLink(child, link)) {
+      return true
+    }
+  }
+
+  return false
+}
 </script>
 
 <script setup lang="ts">
-import { useData, Content } from 'vitepress'
+import { computed, toRefs } from 'vue'
+import { useData, useRoute, Content } from 'vitepress'
 import { ScrollArea } from '#components'
-import DocSidebar from './doc/Sidebar.vue'
-import DocOutline from './doc/Outline.vue'
-import DocMetaInfo from './doc/MetaInfo.vue'
+import Navbar from './partials/Navbar.vue'
+import NavHead from './partials/NavHead.vue'
+import NavMenu from './partials/NavMenu.vue'
+import NavSidebar from './partials/NavSidebar.vue'
+import DocSidebar from './partials/Sidebar.vue'
+import DocOutline from './partials/Outline.vue'
+import DocMetaInfo from './partials/MetaInfo.vue'
 
-defineProps<{sidebar: DefaultTheme.SidebarItem[]}>()
+const { path } = toRefs(useRoute())
+const { theme, page } = useData()
 
-const { page } = useData()
+const sidebar = computed(() => {
+  const items = theme.value.sidebar as SidebarItem[]
+  return items.map(item => {
+    const link = findFirstLink(item)
+    const active = isActiveLink(item, path.value)
+    return { ...item, link, active } as NavSidebarItem
+  }).filter(item => Boolean(item.link && item.text))
+})
+
+const activeSidebar = computed(() => {
+  const found = sidebar.value.filter(item => item.active)[0]
+  return found?.items || []
+})
 </script>
 
 <template>
+  <Navbar>
+    <NavHead />
+    <NavMenu />
+    <NavSidebar :items="sidebar" />
+  </Navbar>
   <main class="max-w-content flex mx-auto pt-28 pb-10 lg:pt-0 lg:px-8">
     <div id="sidebar" class="z-20 hidden shrink-0 lg:block w-[18rem]">
       <div class="w-full sticky top-28">
         <ScrollArea class="pr-3 max-h-[calc(100vh-112px)]" scrollbars="vertical">
           <div class="pt-8 text-sm leading-6">
-            <DocSidebar :sidebar="sidebar" />
+            <DocSidebar :sidebar="activeSidebar" />
           </div>
         </ScrollArea>
       </div>

@@ -38,8 +38,7 @@ export default defineConfig<ThemeConfig>({
     },
 
     nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Components', link: '/components/button' },
+      { text: 'UI', link: '/overview/getting-started' },
     ],
 
     sidebar: [
@@ -59,6 +58,7 @@ export default defineConfig<ThemeConfig>({
         items: [
           {
             text: 'General',
+            icon: 'lucide:square-mouse-pointer',
             items: [
               { text: 'Avatar', link: '/components/avatar' },
               { text: 'Badge', link: '/components/badge' },
@@ -70,6 +70,7 @@ export default defineConfig<ThemeConfig>({
           },
           {
             text: 'Form',
+            icon: 'lucide:text-cursor-input',
             items: [
               { text: 'Switch', link: '/components/switch' },
               { text: 'Toggle', link: '/components/toggle' },
@@ -90,6 +91,7 @@ export default defineConfig<ThemeConfig>({
           },
           {
             text: 'Controls',
+            icon: 'lucide:sliders-horizontal',
             items: [
               { text: 'Tabs', link: '/components/tabs' },
               { text: 'Accordion', link: '/components/accordion' },
@@ -99,6 +101,7 @@ export default defineConfig<ThemeConfig>({
           },
           {
             text: 'Overlays',
+            icon: 'lucide:layers',
             items: [
               { text: 'Dialog', link: '/components/dialog' },
               { text: 'Dropdown Menu', link: '/components/dropdown' },
