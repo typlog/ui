@@ -30,5 +30,6 @@ coverage
 *.tsbuildinfo
 
 site/public
+site/.wrangler
 # vitepress
 .vitepress/cache
