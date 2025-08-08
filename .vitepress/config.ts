@@ -10,6 +10,7 @@ export default defineConfig<ThemeConfig>({
   title: 'Typlog UI',
   description: 'Themed components for Reka UI.',
   srcDir: 'docs/content',
+  outDir: 'site/public',
   cleanUrls: true,
   vite: {
     plugins: [
