@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { RadioGroupItemProps } from 'reka-ui'
 
-export interface RadioTabsItemProps extends RadioGroupItemProps {}
+export type RadioTabsItemProps = RadioGroupItemProps
 </script>
 
 <script setup lang="ts">

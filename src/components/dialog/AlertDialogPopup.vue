@@ -5,7 +5,7 @@ import type {
 } from 'reka-ui'
 import ThemeWrapper from '../provider/ThemeWrapper.vue'
 
-export interface AlertDialogPopupProps extends AlertDialogContentProps {}
+export type AlertDialogPopupProps = AlertDialogContentProps
 </script>
 
 <script setup lang="ts">

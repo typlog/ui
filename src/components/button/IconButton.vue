@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { ButtonProps } from './Button.vue'
 
-export interface IconButtonProps extends ButtonProps {}
+export type IconButtonProps = ButtonProps
 </script>
 
 <script setup lang="ts">

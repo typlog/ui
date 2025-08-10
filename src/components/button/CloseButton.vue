@@ -1,7 +1,5 @@
 <script lang="ts">
 import type { ButtonProps } from './Button.vue'
-
-export interface CloseButtonProps extends ButtonProps {}
 </script>
 
 <script setup lang="ts">
@@ -9,7 +7,7 @@ import { Primitive } from 'reka-ui'
 import CrossIcon from '~icons/radix-icons/cross-2'
 import { buildPropsClass } from '../util'
 
-const props = withDefaults(defineProps<CloseButtonProps>(), {
+const props = withDefaults(defineProps<ButtonProps>(), {
   as: 'button',
   size: '2',
   variant: 'ghost',

@@ -37,8 +37,7 @@ const buildAll = async () => {
       try {
         await fs.access(filepath)
         await runBuild(name, filepath)
-      } catch (e) {
-      }
+      } catch {}
     }
   })
   await Promise.all(results)
