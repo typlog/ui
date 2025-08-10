@@ -8,6 +8,7 @@ export default defineConfigWithVueTs(
     name: 'app/files-to-ignore',
     ignores: [
       '**/dist/**',
+      'site/public/**',
       '.vitepress/cache/**'
     ],
   },

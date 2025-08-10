@@ -14,6 +14,18 @@ radix: https://www.radix-ui.com/themes/docs/components/icon-button
 
 ## Examples
 
+### Size
+
+<Example name="icon-button/Size.vue" />
+
 ### Variant
 
 <Example name="icon-button/Variant.vue" />
+
+### Color
+
+<Example name="icon-button/Color.vue" />
+
+### Radius
+
+<Example name="icon-button/Radius.vue" />
