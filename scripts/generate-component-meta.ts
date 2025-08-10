@@ -7,7 +7,7 @@ import { createChecker } from 'vue-component-meta'
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url))
 
-const md = new MarkdownIt()
+const md = new MarkdownIt({ html: true })
 md.use(transformJSDocLinks)
 
 

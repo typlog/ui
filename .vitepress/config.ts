@@ -96,6 +96,7 @@ export default defineConfig<ThemeConfig>({
               { text: 'Icon Button', link: '/components/icon-button' },
               { text: 'Card', link: '/components/card' },
               { text: 'Separator', link: '/components/separator' },
+              { text: 'Scroll Area', link: '/components/scroll-area' },
             ],
           },
           {

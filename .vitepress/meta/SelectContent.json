@@ -104,7 +104,7 @@
     },
     {
       "name": "position",
-      "description": "<p>The positioning mode to use</p>\n<p><code>item-aligned (default)</code> - behaves similarly to a native MacOS menu by positioning content relative to the active item. &lt;br&gt;\n<code>popper</code> - positions content in the same way as our other primitives, for example <code>Popover</code> or <code>DropdownMenu</code>.</p>",
+      "description": "<p>The positioning mode to use</p>\n<p><code>item-aligned (default)</code> - behaves similarly to a native MacOS menu by positioning content relative to the active item. <br>\n<code>popper</code> - positions content in the same way as our other primitives, for example <code>Popover</code> or <code>DropdownMenu</code>.</p>",
       "type": "\"item-aligned\" | \"popper\"",
       "required": false,
       "inherit": "reka-ui"

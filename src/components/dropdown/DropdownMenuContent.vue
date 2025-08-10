@@ -32,7 +32,7 @@ import {
   DropdownMenuContent,
 } from 'reka-ui'
 import ThemeWrapper from '../provider/ThemeWrapper.vue'
-import ScrollArea from '../scrollarea/ScrollArea.vue'
+import ScrollArea from '../scroll-area/ScrollArea.vue'
 import { useForwardPropsEmitsWithout, buildPropsClass } from '../util'
 
 defineOptions({

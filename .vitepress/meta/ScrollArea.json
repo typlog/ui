@@ -17,7 +17,7 @@
     },
     {
       "name": "dir",
-      "description": "<p>The reading direction of the combobox when applicable. &lt;br&gt; If omitted, inherits globally from <code>ConfigProvider</code> or assumes LTR (left-to-right) reading mode.</p>",
+      "description": "<p>The reading direction of the combobox when applicable. <br> If omitted, inherits globally from <code>ConfigProvider</code> or assumes LTR (left-to-right) reading mode.</p>",
       "type": "\"ltr\" | \"rtl\"",
       "required": false,
       "inherit": "reka-ui"
@@ -38,7 +38,7 @@
     },
     {
       "name": "scrollHideDelay",
-      "description": "<p>If type is set to either <code>scroll</code> or <code>hover</code>, this prop determines the length of time, in milliseconds, &lt;br&gt; before the scrollbars are hidden after the user stops interacting with scrollbars.</p>",
+      "description": "<p>If type is set to either <code>scroll</code> or <code>hover</code>, this prop determines the length of time, in milliseconds, <br> before the scrollbars are hidden after the user stops interacting with scrollbars.</p>",
       "type": "number",
       "required": false,
       "inherit": "reka-ui"
@@ -52,7 +52,7 @@
     },
     {
       "name": "type",
-      "description": "<p>Describes the nature of scrollbar visibility, similar to how the scrollbar preferences in MacOS control visibility of native scrollbars.</p>\n<p><code>auto</code> - means that scrollbars are visible when content is overflowing on the corresponding orientation. &lt;br&gt;\n<code>always</code> - means that scrollbars are always visible regardless of whether the content is overflowing.&lt;br&gt;\n<code>scroll</code> - means that scrollbars are visible when the user is scrolling along its corresponding orientation.&lt;br&gt;\n<code>hover</code> - when the user is scrolling along its corresponding orientation and when the user is hovering over the scroll area.</p>",
+      "description": "<p>Describes the nature of scrollbar visibility, similar to how the scrollbar preferences in MacOS control visibility of native scrollbars.</p>\n<p><code>auto</code> - means that scrollbars are visible when content is overflowing on the corresponding orientation. <br>\n<code>always</code> - means that scrollbars are always visible regardless of whether the content is overflowing.<br>\n<code>scroll</code> - means that scrollbars are visible when the user is scrolling along its corresponding orientation.<br>\n<code>hover</code> - when the user is scrolling along its corresponding orientation and when the user is hovering over the scroll area.</p>",
       "type": "\"auto\" | \"scroll\" | \"always\" | \"hover\"",
       "required": false,
       "inherit": "reka-ui"

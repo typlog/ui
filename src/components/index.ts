@@ -10,7 +10,7 @@ export * from './badge'
 
 export * from './card'
 export * from './button'
-export * from './scrollarea'
+export * from './scroll-area'
 
 export * from './dialog'
 export * from './dropdown'

@@ -91,6 +91,13 @@ const props = withDefaults(defineProps<ScrollAreaProps>(), {
   height: 100%;
 }
 
+.ui-ScrollAreaViewport > div {
+  display: block;
+  min-width: fit-content;
+  width: 100%;
+  flex-grow: 1;
+}
+
 .ui-ScrollAreaViewport:where(:focus-visible) + :where(.ui-ScrollAreaViewportFocusRing) {
   position: absolute;
   inset: 0;

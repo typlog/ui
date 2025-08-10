@@ -7,7 +7,7 @@ export interface TableProps {
 </script>
 
 <script setup lang="ts">
-import ScrollArea from '../scrollarea/ScrollArea.vue'
+import ScrollArea from '../scroll-area/ScrollArea.vue'
 
 const props = withDefaults(defineProps<TableProps>(), {
   size: '2',

@@ -110,7 +110,7 @@
     },
     {
       "name": "position",
-      "description": "<p>The positioning mode to use, &lt;br&gt;\n<code>inline</code> is the default and you can control the position using CSS. &lt;br&gt;\n<code>popper</code> positions content in the same way as our other primitives, for example <code>Popover</code> or <code>DropdownMenu</code>.</p>",
+      "description": "<p>The positioning mode to use, <br>\n<code>inline</code> is the default and you can control the position using CSS. <br>\n<code>popper</code> positions content in the same way as our other primitives, for example <code>Popover</code> or <code>DropdownMenu</code>.</p>",
       "type": "\"popper\" | \"inline\"",
       "required": false,
       "inherit": "reka-ui"

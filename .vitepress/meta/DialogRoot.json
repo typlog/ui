@@ -9,7 +9,7 @@
     },
     {
       "name": "modal",
-      "description": "<p>The modality of the dialog When set to <code>true</code>, &lt;br&gt;\ninteraction with outside elements will be disabled and only dialog content will be visible to screen readers.</p>",
+      "description": "<p>The modality of the dialog When set to <code>true</code>, <br>\ninteraction with outside elements will be disabled and only dialog content will be visible to screen readers.</p>",
       "type": "boolean",
       "required": false,
       "inherit": "reka-ui"

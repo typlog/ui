@@ -1,6 +1,13 @@
 {
   "props": [
     {
+      "name": "active",
+      "description": "<p>Used to identify the link as the currently active page.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
       "name": "as",
       "description": "<p>The element or component this component should render as. Can be overwritten by <code>asChild</code>.</p>",
       "type": "AsTag | Component",
@@ -17,37 +24,30 @@
     },
     {
       "name": "color",
-      "description": "",
+      "description": "<p>Overrides the accent color inherited from the ThemeProvider.</p>",
       "type": "\"indigo\" | \"gray\" | \"gold\" | \"bronze\" | \"brown\" | \"yellow\" | \"amber\" | \"orange\" | \"tomato\" | \"red\" | \"ruby\" | \"crimson\" | \"pink\" | \"plum\" | \"purple\" | \"violet\" | \"iris\" | \"blue\" | \"cyan\" | \"teal\" | \"jade\" | \"green\" | \"grass\" | \"lime\" | \"mint\" | \"sky\"",
       "required": false,
       "inherit": null
     },
     {
-      "name": "disabled",
-      "description": "<p>When <code>true</code>, prevents the user from interacting with the item.</p>",
-      "type": "boolean",
-      "required": false,
-      "inherit": "reka-ui"
-    },
-    {
-      "name": "shortcut",
-      "description": "",
-      "type": "string",
+      "name": "radius",
+      "description": "<p>Overrides the radius inherited from the ThemeProvider.</p>",
+      "type": "\"none\" | \"small\" | \"medium\" | \"large\" | \"full\"",
       "required": false,
       "inherit": null
     },
     {
-      "name": "textValue",
-      "description": "<p>Optional text used for typeahead purposes. By default the typeahead behavior will use the <code>.textContent</code> of the item. <br>\nUse this when the content is complex, or you have non-textual content inside.</p>",
-      "type": "string",
+      "name": "size",
+      "description": "<p>Control the size of the component.</p>",
+      "type": "\"1\" | \"2\" | \"3\"",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": null
     }
   ],
   "events": [
     {
       "name": "select",
-      "type": "[event: Event]"
+      "type": "[payload: CustomEvent<{ originalEvent: Event; }>]"
     }
   ],
   "slots": [],

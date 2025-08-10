@@ -31,7 +31,7 @@
     },
     {
       "name": "defaultOpen",
-      "description": "<p>The open state of the combobox when it is initially rendered. &lt;br&gt; Use when you do not need to control its open state.</p>",
+      "description": "<p>The open state of the combobox when it is initially rendered. <br> Use when you do not need to control its open state.</p>",
       "type": "boolean",
       "required": false,
       "inherit": "reka-ui"
@@ -45,7 +45,7 @@
     },
     {
       "name": "dir",
-      "description": "<p>The reading direction of the listbox when applicable. &lt;br&gt; If omitted, inherits globally from <code>ConfigProvider</code> or assumes LTR (left-to-right) reading mode.</p>",
+      "description": "<p>The reading direction of the listbox when applicable. <br> If omitted, inherits globally from <code>ConfigProvider</code> or assumes LTR (left-to-right) reading mode.</p>",
       "type": "\"ltr\" | \"rtl\"",
       "required": false,
       "inherit": "reka-ui"
