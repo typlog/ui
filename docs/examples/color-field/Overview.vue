@@ -4,6 +4,6 @@ import { ColorField } from '#components'
 
 <template>
   <div class="flex">
-    <ColorField default-value="#3e63dd" />
+    <ColorField default-value="#3e63dd" radius="full" />
   </div>
 </template>

@@ -1,6 +1,6 @@
 ---
 title: TextArea
-description: Captures user input with an optional slot for buttons and icons.
+description: Captures multi-line user input.
 status: stable
 source: https://github.com/typlog/ui/tree/main/src/components/inputs/TextArea.vue
 radix: https://www.radix-ui.com/themes/docs/components/text-area
