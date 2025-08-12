@@ -114,9 +114,9 @@ export const useToastManager = createGlobalState(() => {
       if (options.error) {
         const msg = options.error(e)
         if (typeof msg === 'string') {
-          update(id, {title: msg, category: 'error'})
+          update(id, {duration: undefined, title: msg, category: 'error'})
         } else {
-          update(id, {...msg, category: 'error'})
+          update(id, {duration: undefined, ...msg, category: 'error'})
         }
       }
     })
