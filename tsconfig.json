@@ -34,7 +34,7 @@
     "src/**/*.vue",
     ".vitepress/**/*.ts",
     ".vitepress/**/*.vue",
-    "docs/examples/**/*.vue",
+    "docs/**/*.vue",
     "vite.config.ts",
   ],
 }

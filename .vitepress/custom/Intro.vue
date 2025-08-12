@@ -2,15 +2,13 @@
 import { Content } from 'vitepress'
 import Navbar from './partials/Navbar.vue'
 import NavHead from './partials/NavHead.vue'
-import NavMenu from './partials/NavMenu.vue'
 </script>
 
 <template>
   <Navbar>
     <NavHead />
-    <NavMenu />
   </Navbar>
-  <main class="max-w-content flex mx-auto pt-28 pb-10 lg:pt-0 lg:px-8">
-    <Content class="prose dark:prose-invert lg:prose-lg max-w-none" />
+  <main class="max-w-content flex mx-auto pt-28 pb-10 px-6 lg:px-8 lg:pt-18">
+    <Content class="prose dark:prose-invert lg:prose-lg max-w-none w-full" />
   </main>
 </template>
