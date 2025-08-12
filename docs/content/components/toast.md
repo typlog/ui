@@ -56,8 +56,10 @@ By default, toasts appear in the bottom-right corner.
 
 <div class="flex flex-wrap items-center gap-4">
 <Button @click="changePosition('top-left')" variant="surface">Top left</Button>
+<Button @click="changePosition('top-center')" variant="surface">Top center</Button>
 <Button @click="changePosition('top-right')" variant="surface">Top right</Button>
 <Button @click="changePosition('bottom-left')" variant="surface">Bottom left</Button>
+<Button @click="changePosition('bottom-center')" variant="surface">Bottom center</Button>
 <Button @click="changePosition('bottom-right')" variant="surface">Bottom right</Button>
 </div>
 

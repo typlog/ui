@@ -10,8 +10,8 @@ import type { ToastMessage, MessageCategory } from './manager'
 import { useToastManager } from './manager'
 
 export interface ToastItemProps {
-  yPosition: 'top' | 'bottom'
-  xPosition: 'left' | 'right'
+  yPosition: 'top' | 'bottom' | 'center'
+  xPosition: 'left' | 'right' | 'center'
   message: ToastMessage
   index: number
 }
@@ -222,11 +222,11 @@ onMounted(() => {
   --toast-item-swipe-to-x: calc(100% + var(--toast-x-position))
 }
 
-.ui-ToastItem:where([data-swipe-direction="top"]) {
+.ui-ToastItem:where([data-swipe-direction="up"]) {
   --toast-item-swipe-to-y: calc(0 - 100% - var(--toast-y-position))
 }
 
-.ui-ToastItem:where([data-swipe-direction="bottom"]) {
+.ui-ToastItem:where([data-swipe-direction="down"]) {
   --toast-item-swipe-to-y: calc(100% + var(--toast-y-position))
 }
 

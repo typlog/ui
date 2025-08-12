@@ -3,7 +3,7 @@ import type { ToastProviderProps as RekaToastProviderProps } from 'reka-ui'
 
 export interface ToastProviderProps extends RekaToastProviderProps {
   size?: '1' | '2' | '3'
-  position?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'
+  position?: 'top-left' | 'top-right' | 'top-center' | 'bottom-left' | 'bottom-right' | 'bottom-center'
 }
 </script>
 
@@ -32,18 +32,21 @@ const forwarded = useForwardPropsWithout(props, ['position', 'size'])
 const { messages } = useToastManager()
 
 const yPosition = computed(() => {
-  return props.position.split('-')[0] as 'top' | 'bottom'
+  return props.position.split('-')[0] as 'top' | 'bottom' | 'center'
 })
 
 const xPosition = computed(() => {
-  return props.position.split('-')[1] as 'left' | 'right'
+  return props.position.split('-')[1] as 'left' | 'right' | 'center'
 })
 
 const swipeDirection = computed(() => {
   if (props.swipeDirection) {
     return props.swipeDirection
   }
-  return xPosition.value
+  if (xPosition.value !== 'center') {
+    return xPosition.value
+  }
+  return yPosition.value === 'top' ? 'up' : 'down'
 })
 </script>
 
@@ -121,6 +124,9 @@ const swipeDirection = computed(() => {
 }
 .ui-ToastViewport:where([data-x-position="right"]) {
   right: var(--toast-x-position);
+}
+.ui-ToastViewport:where([data-x-position="center"]) {
+  left: calc(50% - var(--toast-width) / 2);
 }
 .ui-ToastViewport:where([data-y-position="top"]) {
   top: var(--toast-y-position);
