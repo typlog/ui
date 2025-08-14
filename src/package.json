@@ -14,21 +14,22 @@
   "exports": {
     ".": {
       "types": "./components.d.ts",
+      "style": "./index.css",
       "import": "./components.js"
     },
     "./components": {
       "types": "./components.d.ts",
+      "style": "./components.css",
       "import": "./components.js"
     },
     "./addons": {
       "types": "./addons.d.ts",
+      "style": "./addons.css",
       "import": "./addons.js"
     },
     "./base.css": "./base.css",
     "./components.css": "./components.css",
-    "./addons.css": "./addons.css",
-    "./tailwind.css": "./tailwind.css",
-    "./components/": "./components/"
+    "./tailwind.css": "./tailwind.css"
   },
   "dependencies": {
     "@iconify/vue": "^5.0.0",

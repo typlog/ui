@@ -18,6 +18,11 @@ const updatePackageJSON = async () => {
   fs.writeFileSync('dist/package.json', JSON.stringify(pkg, null, 2))
 }
 
+const addIndexCss = () => {
+  const content = '@import "./base.css";\n@import "./components.css";'
+  fs.writeFileSync('dist/index.css', content)
+}
+
 const cleanFiles = () => {
   try {
     fs.unlinkSync('dist/base.d.ts')
@@ -32,5 +37,6 @@ const cleanFiles = () => {
 }
 
 updateImports(path.resolve('dist/addons.js'))
+addIndexCss()
 updatePackageJSON()
 cleanFiles()

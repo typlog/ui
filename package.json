@@ -15,9 +15,8 @@
   ],
   "scripts": {
     "start": "vitepress dev",
-    "build": "npm run build:vue && npm run build:css && cp -r tailwind dist",
+    "build": "npm run build:vue",
     "build:vue": "vite build && node scripts/post-build.mjs",
-    "build:css": "node scripts/build-css.mjs",
     "build:meta": "npx tsx scripts/generate-component-meta.ts",
     "build:docs": "vitepress build",
     "lint": "eslint ."
