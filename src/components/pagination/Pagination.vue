@@ -1,174 +1,140 @@
 <script lang="ts">
-import type { ButtonProps } from '../button/Button.vue'
+import type { PaginationRootProps, PaginationRootEmits } from 'reka-ui'
+import type { ColorType } from '../types'
 
-export interface PaginationProps extends ButtonProps {
-  total: number
-  perpage?: number
-  edge?: number
+export interface PaginationProps extends PaginationRootProps {
+  color?: ColorType
+  size?: '1' | '2' | '3' | '4'
+  variant?: 'soft' | 'surface' | 'outline' | 'ghost'
+  navigation?: 'none' | 'prev-next' | 'first-last' | 'all'
 }
 </script>
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { Icon } from '@iconify/vue'
-import Button from '../button/Button.vue'
-import IconButton from '../button/IconButton.vue'
-import { buildPropsClass } from '../util'
+import {
+  PaginationRoot,
+  PaginationList,
+  PaginationListItem,
+  PaginationFirst,
+  PaginationLast,
+  PaginationPrev,
+  PaginationNext,
+} from 'reka-ui'
+import FirstIcon from '~icons/radix-icons/double-arrow-left'
+import LastIcon from '~icons/radix-icons/double-arrow-right'
+import PrevIcon from '~icons/radix-icons/chevron-left'
+import NextIcon from '~icons/radix-icons/chevron-right'
+import PaginationEllipsis from './PaginationEllipsis.vue'
+
+import { useForwardPropsEmitsWithout, buildPropsClass } from '../util'
 
 const props = withDefaults(defineProps<PaginationProps>(), {
-  perpage: 10,
-  edge: 2,
-  size: '1',
+  color: 'gray',
+  size: '2',
   variant: 'ghost',
+  navigation: 'all',
+  itemsPerPage: 10,
 })
-
-const page = defineModel<number>('page', { required: true })
+const emits = defineEmits<PaginationRootEmits>()
+const forwarded = useForwardPropsEmitsWithout(
+  props, emits, ['color', 'size', 'variant', 'navigation'],
+)
 
 const resetClass = buildPropsClass(props, ['size', 'variant'])
 
-const buttonProps = computed(() => {
-  return {
-    color: props.color,
-    radius: props.radius,
-    variant: props.variant,
-    size: props.size,
-    highContrast: props.highContrast,
-    disabled: props.disabled,
-  }
+const showPrevNext = computed(() => {
+  return props.navigation === 'all' || props.navigation === 'prev-next'
+})
+const showFirstLast = computed(() => {
+  return props.navigation === 'all' || props.navigation === 'first-last'
 })
 
-const pagination = computed(() => {
-  const totalPages = Math.ceil(props.total / props.perpage)
-  const prevPage = page.value > 1 ? page.value - 1 : null
-  const nextPage = page.value < totalPages ? page.value + 1 : null
 
-  const pagesOverflow = 5 + props.edge * 2
-  const hasLeftEdge = totalPages > pagesOverflow && page.value > props.edge + 3
-  const hasRightEdge = totalPages > pagesOverflow && page.value + props.edge + 2 < totalPages
-
-  const pageList = []
-
-  let left = 2, right = totalPages - 1
-  if (hasLeftEdge && !hasRightEdge) {
-    left = Math.max(4, totalPages - 2 * props.edge - 2)
-  } else if (!hasLeftEdge && hasRightEdge) {
-    right = Math.min(2 * props.edge + 3, totalPages - 1)
-  } else if (hasLeftEdge && hasRightEdge) {
-    left = page.value - props.edge
-    right = page.value + props.edge
-  }
-  for (let i = left; i <= right; i++) {
-    pageList.push(i)
-  }
-  return {
-    totalPages: totalPages,
-    prev: prevPage,
-    next: nextPage,
-    hasLeftEdge: hasLeftEdge,
-    hasRightEdge: hasRightEdge,
-    pageList: pageList,
-  }
-})
-
-const selectPage = (n: number) => {
-  page.value = n
-}
-const selectLeft = () => {
-  selectPage(page.value - props.edge)
-}
-const selectRight = () => {
-  selectPage(page.value + props.edge)
-}
 </script>
 
 <template>
-  <div class="ui-Pagination" :class="resetClass">
-    <IconButton
-      v-if="pagination.prev"
-      v-bind="buttonProps"
-      aria-label="Previous"
-      @click.prevent="selectPage(pagination.prev)"
-    >
-      <slot name="prev-page" :page="pagination.prev">
-        <Icon icon="lucide:chevron-left" />
-      </slot>
-    </IconButton>
-    <Button
-      v-bind="buttonProps"
-      :disabled="page === 1"
-      aria-current="page"
-      @click.prevent="selectPage(1)"
-    >
-      <slot name="page" :page="1">1</slot>
-    </Button>
-    <IconButton
-      v-if="pagination.hasLeftEdge"
-      v-bind="buttonProps"
-      @click.prevent="selectLeft"
-    >
-      <slot name="prev-edge" :page="page - edge">
-        <Icon icon="lucide:ellipsis" />
-      </slot>
-    </IconButton>
-    <Button
-      v-for="p in pagination.pageList"
-      :key="p"
-      v-bind="buttonProps"
-      :disabled="p === page"
-      aria-current="page"
-      @click.prevent="selectPage(p)"
-    >
-      <slot name="page" :page="p">{{ p }}</slot>
-    </Button>
-    <IconButton
-      v-if="pagination.hasRightEdge"
-      v-bind="buttonProps"
-      @click.prevent="selectRight"
-    >
-      <slot name="next-edge" :page="page + edge">
-        <Icon icon="lucide:ellipsis" />
-      </slot>
-    </IconButton>
-    <Button
-      v-if="pagination.totalPages > 1"
-      v-bind="buttonProps"
-      :disabled="pagination.totalPages === page"
-      aria-current="page"
-      @click.prevent="selectPage(pagination.totalPages)"
-    >
-      <slot name="page" :page="pagination.totalPages">{{ pagination.totalPages }}</slot>
-    </Button>
-    <IconButton
-      v-if="pagination.next"
-      v-bind="buttonProps"
-      aria-label="Next"
-      @click.prevent="selectPage(pagination.next)"
-    >
-      <slot name="next-page" :page="pagination.next">
-        <Icon icon="lucide:chevron-right" />
-      </slot>
-    </IconButton>
-  </div>
+  <PaginationRoot
+    v-bind="forwarded"
+    class="ui-PaginationRoot"
+    :class="resetClass"
+    :data-accent-color="color"
+  >
+    <PaginationList v-slot="{ items }" class="ui-PaginationList">
+      <PaginationFirst
+        v-if="showFirstLast"
+        class="ui-PaginationFirst ui-Button"
+        :class="resetClass"
+      >
+        <FirstIcon />
+      </PaginationFirst>
+      <PaginationPrev
+        v-if="showPrevNext"
+        class="ui-PaginationPrev ui-Button"
+        :class="resetClass"
+      >
+        <PrevIcon />
+      </PaginationPrev>
+      <template v-for="(page, index) in items" :key="index">
+        <PaginationListItem
+          v-if="page.type === 'page'"
+          class="ui-PaginationListItem ui-Button"
+          :class="resetClass"
+          :value="page.value"
+        >
+          {{ page.value }}
+        </PaginationListItem>
+        <PaginationEllipsis
+          v-else
+          :items="items"
+          :index="index"
+          :class="resetClass"
+          as="button"
+        />
+      </template>
+      <PaginationNext
+        v-if="showPrevNext"
+        class="ui-PaginationNext ui-Button"
+        :class="resetClass"
+      >
+        <NextIcon />
+      </PaginationNext>
+      <PaginationLast
+        v-if="showFirstLast"
+        class="ui-PaginationLast ui-Button"
+        :class="resetClass"
+      >
+        <LastIcon />
+      </PaginationLast>
+    </PaginationList>
+  </PaginationRoot>
 </template>
 
 <style>
-.ui-Pagination {
+.ui-PaginationList {
   display: flex;
   align-items: center;
-}
-.ui-Pagination:where(.r-size-1) {
   gap: var(--space-1);
 }
-.ui-Pagination:where(.r-size-2) {
-  gap: var(--space-2);
+.ui-PaginationList .ui-Button {
+  height: var(--button-height);
+  width: var(--button-height);
+  padding: 0;
 }
-.ui-Pagination:where(.r-size-3) {
-  gap: var(--space-3);
+
+.ui-PaginationRoot:where(.r-variant-ghost):where([data-accent-color="gray"]) :where(.ui-Button) {
+  color: var(--accent-12);
 }
-.ui-Pagination:where(.r-size-4) {
-  gap: var(--space-4);
+
+/** selected on ghost -> outline */
+.ui-PaginationRoot:where(.r-variant-ghost) :where(.ui-Button[data-selected]) {
+  box-shadow: inset 0 0 0 1px var(--accent-a6);
 }
-.ui-Pagination:where(.r-variant-ghost) {
-  gap: 0;
+.ui-PaginationRoot:where(.r-variant-soft, .r-variant-surface, .r-variant-outline) :where(.ui-Button[data-selected]) {
+  background-color: var(--accent-9);
+  color: var(--accent-contrast);
+}
+.ui-PaginationRoot:where(.r-variant-surface, .r-variant-outline) :where(.ui-Button[data-selected]) {
+  box-shadow: none;
 }
 </style>

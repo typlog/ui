@@ -45,14 +45,14 @@ export const buildPropsClass = (props: Record<string, any>, keys: string[]) => {
   })
 }
 
-function _excludeProps (props: Record<string, any>, exclude: string[]) {
+function _excludeProps<T extends Record<string, any>>(props: T, exclude: string[]) {
   const rv: Record<string, any> = {}
   Object.keys(props).forEach(k => {
     if (exclude.indexOf(k) === -1) {
       rv[k] = props[k]
     }
   })
-  return rv
+  return rv as T
 }
 
 function kebabize (str: string) {

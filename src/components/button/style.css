@@ -1,17 +1,24 @@
-.ui-Button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  user-select: none;
-  vertical-align: top;
-  font-style: normal;
-  font-weight: var(--button-font-weight);
-  text-align: center;
-  white-space: nowrap;
-  height: var(--button-height);
-  padding-left: var(--button-padding-x);
-  padding-right: var(--button-padding-x);
+@layer components {
+  .ui-Button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    user-select: none;
+    vertical-align: top;
+    font-style: normal;
+    font-weight: var(--button-font-weight);
+    text-align: center;
+    white-space: nowrap;
+    height: var(--button-height);
+    padding-left: var(--button-padding-x);
+    padding-right: var(--button-padding-x);
+    gap: var(--button-gap);
+    font-size: var(--button-font-size);
+    line-height: var(--button-line-height);
+    letter-spacing: var(--button-letter-spacing);
+    border-radius: var(--button-radius);
+  }
 }
 
 .ui-Button:where(.r-variant-ghost) {
@@ -22,16 +29,16 @@
   --button-font-weight: var(--font-weight-medium);
 }
 
-.ui-Button:where([data-disabled]) {
+.ui-Button:where(:disabled, [data-disabled]) {
   cursor: not-allowed;
 }
 
 .ui-Button:where(.r-size-1) {
-  gap: var(--space-1);
-  font-size: var(--font-size-1);
-  line-height: var(--line-height-1);
-  letter-spacing: var(--letter-spacing-1);
-  border-radius: max(var(--radius-1), var(--radius-full));
+  --button-gap: var(--space-1);
+  --button-font-size: var(--font-size-1);
+  --button-line-height: var(--line-height-1);
+  --button-letter-spacing: var(--letter-spacing-1);
+  --button-radius: max(var(--radius-1), var(--radius-full));
   --button-height: var(--space-5);
   --button-padding-x: var(--space-2);
 }
@@ -39,44 +46,44 @@
   --button-ghost-padding-y: var(--space-1);
 }
 .ui-Button:where(.r-size-2) {
-  gap: var(--space-2);
-  font-size: var(--font-size-2);
-  line-height: var(--line-height-2);
-  letter-spacing: var(--letter-spacing-2);
-  border-radius: max(var(--radius-2), var(--radius-full));
+  --button-gap: var(--space-2);
+  --button-font-size: var(--font-size-2);
+  --button-line-height: var(--line-height-2);
+  --button-letter-spacing: var(--letter-spacing-2);
+  --button-radius: max(var(--radius-2), var(--radius-full));
   --button-height: var(--space-6);
   --button-padding-x: var(--space-3);
 }
 .ui-Button:where(.r-size-2):where(.r-variant-ghost) {
-  gap: var(--space-1);
+  --button-gap: var(--space-1);
   --button-padding-x: var(--space-2);
   --button-ghost-padding-y: var(--space-1);
 }
 .ui-Button:where(.r-size-3) {
-  gap: var(--space-3);
-  font-size: var(--font-size-3);
-  line-height: var(--line-height-3);
-  letter-spacing: var(--letter-spacing-3);
-  border-radius: max(var(--radius-3), var(--radius-full));
+  --button-gap: var(--space-3);
+  --button-font-size: var(--font-size-3);
+  --button-line-height: var(--line-height-3);
+  --button-letter-spacing: var(--letter-spacing-3);
+  --button-radius: max(var(--radius-3), var(--radius-full));
   --button-height: var(--space-7);
   --button-padding-x: var(--space-4);
 }
 .ui-Button:where(.r-size-3):where(.r-variant-ghost) {
-  gap: var(--space-2);
+  --button-gap: var(--space-2);
   --button-padding-x: var(--space-3);
   --button-ghost-padding-y: calc(var(--space-1) * 1.5);
 }
 .ui-Button:where(.r-size-4) {
-  gap: var(--space-3);
-  font-size: var(--font-size-4);
-  line-height: var(--line-height-4);
-  letter-spacing: var(--letter-spacing-4);
-  border-radius: max(var(--radius-4), var(--radius-full));
+  --button-gap: var(--space-3);
+  --button-font-size: var(--font-size-4);
+  --button-line-height: var(--line-height-4);
+  --button-letter-spacing: var(--letter-spacing-4);
+  --button-radius: max(var(--radius-4), var(--radius-full));
   --button-height: var(--space-8);
   --button-padding-x: var(--space-5);
 }
 .ui-Button:where(.r-size-4):where(.r-variant-ghost) {
-  gap: var(--space-2);
+  --button-gap: var(--space-2);
   --button-padding-x: var(--space-4);
   --button-ghost-padding-y: var(--space-2);
 }
@@ -119,7 +126,7 @@
     filter: var(--button-solid-high-contrast-hover-filter);
   }
 }
-.ui-Button:where(.r-variant-solid):where([data-disabled]) {
+.ui-Button:where(.r-variant-solid):where(:disabled, [data-disabled]) {
   color: var(--gray-a8);
   background-color: var(--gray-a3);
   outline: none;
@@ -148,7 +155,7 @@
 .ui-Button:where(.r-variant-soft):where(:active) {
   background-color: var(--accent-a5);
 }
-.ui-Button:where(.r-variant-soft):where([data-disabled]) {
+.ui-Button:where(.r-variant-soft):where(:disabled, [data-disabled]) {
   color: var(--gray-a8);
   background-color: var(--gray-a3);
 }
@@ -167,7 +174,7 @@
 .ui-Button:where(.r-variant-ghost):where(:active) {
   background-color: var(--accent-a4);
 }
-.ui-Button:where(.r-variant-ghost):where([data-disabled]) {
+.ui-Button:where(.r-variant-ghost):where(:disabled, [data-disabled]) {
   color: var(--gray-a8);
   background-color: transparent;
 }
@@ -194,10 +201,10 @@
   outline: 2px solid var(--focus-8);
   outline-offset: 2px;
 }
-.ui-Button:where(.r-variant-classic):where(:active:not([data-disabled])) {
+.ui-Button:where(.r-variant-classic):where(:active:not(:disabled, [data-disabled])) {
   box-shadow: var(--shadow-1);
 }
-.ui-Button:where(.r-variant-classic):where([data-disabled]) {
+.ui-Button:where(.r-variant-classic):where(:disabled, [data-disabled]) {
   color: var(--gray-a10);
   background-color: var(--gray-a2);
 }
@@ -223,7 +230,7 @@
 .ui-Button:where(.r-variant-outline):where(:active) {
   background-color: var(--accent-a4);
 }
-.ui-Button:where(.r-variant-outline):where([data-disabled]) {
+.ui-Button:where(.r-variant-outline):where(:disabled, [data-disabled]) {
   color: var(--gray-a8);
   box-shadow: inset 0 0 0 1px var(--gray-a7);
   background-color: transparent;
@@ -250,7 +257,7 @@
 .ui-Button:where(.r-variant-surface):where(:active) {
   background-color: var(--accent-a4);
 }
-.ui-Button:where(.r-variant-surface):where([data-disabled]) {
+.ui-Button:where(.r-variant-surface):where(:disabled, [data-disabled]) {
   color: var(--gray-a8);
   box-shadow: inset 0 0 0 1px var(--gray-a6);
   background-color: var(--gray-a2);

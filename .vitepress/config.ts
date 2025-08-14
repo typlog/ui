@@ -76,10 +76,12 @@ export default defineConfig<ThemeConfig>({
         text: 'Overview',
         icon: 'lucide:rocket',
         items: [
+          { text: 'Introduction', link: '/overview/introduction' },
           { text: 'Getting started', link: '/overview/getting-started' },
           { text: 'Releases', link: '/overview/releases' },
           { text: 'Color', link: '/overview/color' },
           { text: 'Shadows', link: '/overview/shadows' },
+          { text: 'Tailwindcss', link: '/overview/tailwindcss' },
         ],
       },
       {
