@@ -9,9 +9,9 @@ html:not(.dark) .shiki span {
 div[class*="language-"] {
   display: block;
   position: relative;
+  border: 1px solid var(--gray-a5);
   margin-top: var(--space-4);
   margin-bottom: var(--space-4);
-  background-color: var(--accent-2);
   border-radius: var(--radius-4);
 }
 

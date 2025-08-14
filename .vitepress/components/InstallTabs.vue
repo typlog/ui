@@ -39,7 +39,6 @@ defineProps<{name: string}>()
 .vp-InstallTabs {
   border-radius: var(--radius-4);
   border: 1px solid var(--gray-a4);
-  background-color: var(--accent-2);
 }
 .vp-InstallTabs .ui-TabsList {
   background-color: var(--color-panel-solid);

@@ -106,6 +106,7 @@ const expanded = ref(false)
 }
 .vp-Example .vp-ExampleSource div.language-vue {
   margin: 0;
+  border: 0;
 }
 .vp-Example .vp-ExampleSource pre.shiki {
   padding-top: var(--space-2);

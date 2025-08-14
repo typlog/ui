@@ -15,9 +15,8 @@ Install the package from your command line.
 
 Import the global CSS file at the root of your application.
 
-```js
-import "@typlog/ui/base.css";
-import "@typlog/ui/components.css";
+```css
+@import "@typlog/ui";
 ```
 
 ### 3. Add the ThemeProvider
