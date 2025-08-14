@@ -305,7 +305,7 @@ onMounted(async () => {
           </button>
         </Tooltip>
       </div>
-      <Pagination v-model:page="page" :total="allIcons.length" :perpage="perpage" size="2" />
+      <Pagination v-model:page="page" :total="allIcons.length" :items-per-page="perpage" />
     </div>
   </div>
 </template>
