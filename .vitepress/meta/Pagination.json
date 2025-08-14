@@ -2,90 +2,95 @@
   "props": [
     {
       "name": "as",
-      "description": "<p>The element or component this component should render as.</p>",
+      "description": "<p>The element or component this component should render as. Can be overwritten by <code>asChild</code>.</p>",
       "type": "AsTag | Component",
       "required": false,
-      "inherit": null,
-      "default": "\"button\""
+      "inherit": "reka-ui",
+      "default": "\"div\""
     },
     {
       "name": "asChild",
-      "description": "",
+      "description": "<p>Change the default rendered element for the one passed as a child, merging their props and behavior.</p>",
       "type": "boolean",
       "required": false,
-      "inherit": null
+      "inherit": "reka-ui"
     },
     {
       "name": "color",
-      "description": "<p>Overrides the accent color inherited from the ThemeProvider.</p>",
+      "description": "",
       "type": "\"indigo\" | \"gray\" | \"gold\" | \"bronze\" | \"brown\" | \"yellow\" | \"amber\" | \"orange\" | \"tomato\" | \"red\" | \"ruby\" | \"crimson\" | \"pink\" | \"plum\" | \"purple\" | \"violet\" | \"iris\" | \"blue\" | \"cyan\" | \"teal\" | \"jade\" | \"green\" | \"grass\" | \"lime\" | \"mint\" | \"sky\"",
       "required": false,
       "inherit": null
     },
     {
-      "name": "disabled",
-      "description": "<p>Mark the button as disabled.</p>",
-      "type": "boolean",
-      "required": false,
-      "inherit": null
-    },
-    {
-      "name": "edge",
-      "description": "",
+      "name": "defaultPage",
+      "description": "<p>The value of the page that should be active when initially rendered.</p>\n<p>Use when you do not need to control the value state.</p>",
       "type": "number",
       "required": false,
-      "inherit": null
+      "inherit": "reka-ui"
     },
     {
-      "name": "highContrast",
-      "description": "<p>Uses a higher contrast color for the component.</p>",
+      "name": "disabled",
+      "description": "<p>When <code>true</code>, prevents the user from interacting with item</p>",
       "type": "boolean",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "itemsPerPage",
+      "description": "<p>Number of items per page</p>",
+      "type": "number",
+      "required": true,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "navigation",
+      "description": "",
+      "type": "\"none\" | \"all\" | \"prev-next\" | \"first-last\"",
       "required": false,
       "inherit": null
     },
     {
       "name": "page",
-      "description": "",
-      "type": "number",
-      "required": true,
-      "inherit": null
-    },
-    {
-      "name": "perpage",
-      "description": "",
+      "description": "<p>The controlled value of the current page. Can be binded as <code>v-model:page</code>.</p>",
       "type": "number",
       "required": false,
-      "inherit": null
+      "inherit": "reka-ui"
     },
     {
-      "name": "radius",
-      "description": "<p>Overrides the radius inherited from the ThemeProvider.</p>",
-      "type": "\"none\" | \"small\" | \"medium\" | \"large\" | \"full\"",
+      "name": "showEdges",
+      "description": "<p>When <code>true</code>, always show first page, last page, and ellipsis</p>",
+      "type": "boolean",
       "required": false,
-      "inherit": null
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "siblingCount",
+      "description": "<p>Number of sibling should be shown around the current page</p>",
+      "type": "number",
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "size",
-      "description": "<p>Control the size of the button.</p>",
+      "description": "",
       "type": "\"1\" | \"2\" | \"3\" | \"4\"",
       "required": false,
-      "inherit": null,
-      "default": "\"2\""
-    },
-    {
-      "name": "total",
-      "description": "",
-      "type": "number",
-      "required": true,
       "inherit": null
     },
     {
-      "name": "variant",
-      "description": "<p>The visual variant to apply.</p>",
-      "type": "\"solid\" | \"soft\" | \"outline\" | \"surface\" | \"classic\" | \"ghost\"",
+      "name": "total",
+      "description": "<p>Number of items in your list</p>",
+      "type": "number",
       "required": false,
-      "inherit": null,
-      "default": "\"solid\""
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "variant",
+      "description": "",
+      "type": "\"soft\" | \"outline\" | \"surface\" | \"ghost\"",
+      "required": false,
+      "inherit": null
     }
   ],
   "events": [
@@ -94,12 +99,6 @@
       "type": "[value: number]"
     }
   ],
-  "slots": [
-    {
-      "name": "page",
-      "description": "",
-      "type": "number"
-    }
-  ],
+  "slots": [],
   "methods": []
 }

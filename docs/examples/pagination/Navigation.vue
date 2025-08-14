@@ -8,29 +8,29 @@ import { Pagination } from '#components'
       :total="200"
       :items-per-page="10"
       show-edges
-      color="indigo"
-      variant="ghost"
-    />
-    <Pagination
-      :total="200"
-      :items-per-page="10"
-      show-edges
-      color="indigo"
-      variant="outline"
-    />
-    <Pagination
-      :total="200"
-      :items-per-page="10"
-      show-edges
-      color="indigo"
       variant="soft"
+      navigation="none"
     />
     <Pagination
       :total="200"
       :items-per-page="10"
       show-edges
-      color="indigo"
-      variant="surface"
+      variant="soft"
+      navigation="prev-next"
+    />
+    <Pagination
+      :total="200"
+      :items-per-page="10"
+      show-edges
+      variant="soft"
+      navigation="first-last"
+    />
+    <Pagination
+      :total="200"
+      :items-per-page="10"
+      show-edges
+      variant="soft"
+      navigation="all"
     />
   </div>
 </template>

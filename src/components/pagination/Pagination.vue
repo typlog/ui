@@ -134,6 +134,9 @@ const showFirstLast = computed(() => {
   background-color: var(--accent-9);
   color: var(--accent-contrast);
 }
+.ui-PaginationRoot:where([data-accent-color="gray"]):where(.r-variant-soft, .r-variant-surface, .r-variant-outline) :where(.ui-Button[data-selected]) {
+  background-color: var(--accent-12);
+}
 .ui-PaginationRoot:where(.r-variant-surface, .r-variant-outline) :where(.ui-Button[data-selected]) {
   box-shadow: none;
 }
