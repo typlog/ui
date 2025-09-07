@@ -6,8 +6,6 @@ description: Typlog UI combines Reka UI’s accessibility with Radix Colors’ t
 
 <script setup>
   import HomeHero from '../landing/HomeHero.vue'
-  import HomeShowcase from '../landing/HomeShowcase.vue'
 </script>
 
 <HomeHero />
-<HomeShowcase />
