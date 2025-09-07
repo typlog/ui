@@ -1,8 +1,12 @@
 <script lang="ts">
-import type { TooltipContentProps } from 'reka-ui'
+import type {
+  TooltipRootEmits,
+  TooltipRootProps,
+  TooltipContentProps,
+} from 'reka-ui'
 import type { ColorType } from '../types'
 
-export interface TooltipProps extends TooltipContentProps {
+export interface TooltipProps extends TooltipRootProps, TooltipContentProps {
   /** The content associated with the tooltip. */
   content?: string
   /**
@@ -36,13 +40,24 @@ const props = withDefaults(defineProps<TooltipProps>(), {
   color: 'gray',
 })
 
+const emits = defineEmits<TooltipRootEmits>()
+
 defineOptions({
   inheritAttrs: false,
 })
 </script>
 
 <template>
-  <TooltipRoot>
+  <TooltipRoot
+    :open="props.open"
+    :default-open="props.defaultOpen"
+    :delay-duration="props.delayDuration"
+    :disable-hoverable-content="props.disableHoverableContent"
+    :disable-closing-trigger="props.disableClosingTrigger"
+    :disabled="props.disabled"
+    :ignore-non-keyboard-focus="props.ignoreNonKeyboardFocus"
+    @update:open="emits('update:open', $event)"
+  >
     <TooltipTrigger
       :as="props.as"
       :as-child="props.asChild"
