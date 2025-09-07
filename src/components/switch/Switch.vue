@@ -34,7 +34,9 @@ const resetClass = buildPropsClass(props, ['size', 'variant', 'highContrast'])
     :data-accent-color="props.color"
     :data-radius="props.radius"
   >
-    <SwitchThumb class="ui-SwitchThumb" />
+    <SwitchThumb class="ui-SwitchThumb">
+      <slot></slot>
+    </SwitchThumb>
   </SwitchRoot>
 </template>
 
@@ -108,6 +110,9 @@ const resetClass = buildPropsClass(props, ['size', 'variant', 'highContrast'])
 }
 
 .ui-SwitchThumb {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   background-color: white;
   position: absolute;
   left: var(--switch-thumb-inset);
