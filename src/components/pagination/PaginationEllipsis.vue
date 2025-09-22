@@ -34,8 +34,8 @@ const onSelect = () => {
     class="ui-PaginationEllipsis ui-Button"
     as="button"
     type="button"
-    :aria-label="ellipsisPage"
-    :value="`Page ${ellipsisPage}`"
+    :value="ellipsisPage"
+    :aria-label="`Page ${ellipsisPage}`"
     @click.prevent="onSelect"
   >
     <EllipsisIcon />
