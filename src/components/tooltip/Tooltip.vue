@@ -49,14 +49,12 @@ defineOptions({
 
 <template>
   <TooltipRoot
-    :open="props.open"
     :default-open="props.defaultOpen"
     :delay-duration="props.delayDuration"
     :disable-hoverable-content="props.disableHoverableContent"
     :disable-closing-trigger="props.disableClosingTrigger"
     :disabled="props.disabled"
     :ignore-non-keyboard-focus="props.ignoreNonKeyboardFocus"
-    @update:open="emits('update:open', $event)"
   >
     <TooltipTrigger
       :as="props.as"
