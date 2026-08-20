@@ -1,56 +1,53 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import { Button } from '#components'
+import { Badge, Button } from '#components'
 import HomeShowcase from './HomeShowcase.vue'
 </script>
 
 <template>
-  <div class="Hero pt-32 lg:pt-16 not-prose">
-    <div class="absolute top-0 left-0 w-full h-full -z-1">
-      <div class="HeroGradient absolute top-0 left-0 w-full h-full"></div>
-    </div>
-    <div class="max-w-content mx-auto py-16 px-4 lg:px-12 flex flex-col w-full gap-10 lg:gap-28 lg:flex-row lg:justify-between">
-      <div class="home-intro shrink-0 lg:w-[600px]">
-        <Badge variant="solid">WIP</Badge>
-        <h1 class="text-4xl font-black leading-16">Typlog UI</h1>
-        <h2 class="text-3xl font-bold text-gray-12 leading-12 mb-4">Your Accessible Design System</h2>
-        <p class="text-lg leading-7">
-          Typlog UI combines <strong>Reka UI</strong>’s accessibility with <strong>Radix Colors</strong>’
-          theming power, so you can focus on building great features — not
-          reinventing components.
+  <section class="Hero not-prose overflow-hidden border-b border-gray-a3">
+    <div class="HeroGradient pointer-events-none absolute inset-0 -z-10"></div>
+    <div class="mx-auto grid max-w-screen-2xl gap-12 px-5 py-16 sm:px-6 sm:py-20 lg:grid-cols-[minmax(0,1fr)_minmax(20rem,0.9fr)] lg:items-center lg:gap-16">
+      <div class="max-w-3xl">
+        <Badge variant="soft" size="2">Vue component library</Badge>
+        <h1 class="mt-6 max-w-4xl text-5xl font-semibold leading-[1.05] tracking-tight text-gray-12 sm:text-6xl lg:text-7xl">
+          Build interfaces with a calmer foundation.
+        </h1>
+        <p class="mt-6 max-w-2xl text-base leading-7 text-gray-11 sm:text-lg sm:leading-8">
+          Typlog UI combines <strong class="font-semibold text-gray-12">Reka UI</strong>’s accessibility with <strong class="font-semibold text-gray-12">Radix Colors</strong>’ theming power, so you can focus on building great features — not reinventing components.
         </p>
-        <div class="flex items-center gap-4 mt-8">
-          <Button size="3" as="a" href="/overview/getting-started" radius="full">Get started</Button>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <Button size="3" as="a" href="/overview/getting-started">Get started</Button>
           <Button
             size="3"
             as="a"
             href="https://github.com/typlog/ui"
             color="gray"
             high-contrast
-            radius="full"
           >
-            <Icon icon="simple-icons:github" />
-            GitHub
+            <Icon aria-hidden="true" icon="simple-icons:github" />
+            View on GitHub
           </Button>
         </div>
+        <p class="mt-5 text-sm text-gray-10">Open source · Vue-first · Built on Reka UI</p>
       </div>
-      <div class="grow">
+
+      <div class="min-w-0 lg:justify-self-end">
         <HomeShowcase />
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <style>
 .Hero {
   position: relative;
-  top: -64px;
-  border-bottom: var(--gray-3);
+  margin-top: -64px;
+  padding-top: 64px;
 }
+
 .HeroGradient {
-  left: 50%;
-  transform: translateX(-50%);
   background-repeat: no-repeat;
-  background-image: radial-gradient(circle 800px at 700px 200px, var(--purple-2), transparent), radial-gradient(circle 600px at calc(100% - 300px) 300px, var(--blue-3), transparent), radial-gradient(circle 800px at right center, var(--sky-3), transparent), radial-gradient(circle 800px at right bottom, var(--sky-1), transparent), radial-gradient(circle 800px at calc(50% - 600px) calc(100% - 100px), var(--pink-3), var(--pink-1), transparent);
+  background-image: radial-gradient(circle 680px at 78% 18%, var(--blue-3), transparent), radial-gradient(circle 620px at 24% 10%, var(--purple-2), transparent), radial-gradient(circle 700px at 74% 100%, var(--sky-2), transparent);
 }
 </style>
