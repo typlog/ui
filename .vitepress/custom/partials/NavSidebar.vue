@@ -18,6 +18,7 @@ defineProps<{items: NavSidebarItem[]}>()
         class="nav-tabs-item"
         :class="{ active: item.active }"
         :href="item.link"
+        :aria-current="item.active ? 'page' : undefined"
       >
         <Icon v-if="item.icon" :icon="item.icon" />
         <span>{{ item.text }}</span>
@@ -39,8 +40,7 @@ defineProps<{items: NavSidebarItem[]}>()
   border-bottom: 2px solid transparent;
 }
 .nav-tabs a.nav-tabs-item:where(.active) {
-  font-weight: var(--font-weight-semibold);
-  color: var(--gray-12);
+  color: var(--accent-10);
   border-color: var(--accent-10);
 }
 .nav-tabs a.nav-tabs-item:hover {

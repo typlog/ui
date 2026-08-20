@@ -1,11 +1,12 @@
 import type { DefaultTheme } from 'vitepress'
 
-export interface SidebarItem extends DefaultTheme.SidebarItem {
+export interface SidebarItem extends Omit<DefaultTheme.SidebarItem, 'items'> {
   icon?: string
   items?: SidebarItem[]
 }
 
-export interface NavChildItem extends Omit<DefaultTheme.NavItemWithLink, 'items'> {
+export interface NavChildItem extends Omit<DefaultTheme.NavItemWithLink, 'items' | 'link'> {
+  link: string
   icon?: string,
   description?: string,
 }

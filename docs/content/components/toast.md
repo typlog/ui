@@ -1,8 +1,8 @@
 ---
 title: Toast
-description:
+description: A brief notification that gives feedback about an action or event.
 status: alpha
-source: https://github.com/typlog/ui/tree/main/src/components/toggtoastle
+source: https://github.com/typlog/ui/tree/main/src/components/toast
 reka: https://reka-ui.com/docs/components/toast
 ---
 

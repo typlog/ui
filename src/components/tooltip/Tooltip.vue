@@ -1,6 +1,5 @@
 <script lang="ts">
 import type {
-  TooltipRootEmits,
   TooltipRootProps,
   TooltipContentProps,
 } from 'reka-ui'
@@ -39,8 +38,6 @@ const props = withDefaults(defineProps<TooltipProps>(), {
   avoidCollisions: true,
   color: 'gray',
 })
-
-const emits = defineEmits<TooltipRootEmits>()
 
 defineOptions({
   inheritAttrs: false,

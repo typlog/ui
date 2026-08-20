@@ -12,7 +12,7 @@ type Breadcrumb = { text: string }[];
  * @param link The target link to search for.
  * @returns An array of breadcrumb items.
  */
-function findBreadcrumbPath(navItems: NavItem[], link: string): Breadcrumb {
+export function findBreadcrumbPath(navItems: NavItem[], link: string): Breadcrumb {
   function dfs(items: NavItem[], path: Breadcrumb): Breadcrumb | null {
     for (const item of items) {
       const newPath = [...path, { text: item.text }]

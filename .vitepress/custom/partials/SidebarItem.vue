@@ -15,6 +15,7 @@ const { path } = toRefs(useRoute())
   >
     <a
       :href="item.link"
+      :aria-current="path === item.link ? 'page' : undefined"
       v-html="item.text"
     >
     </a>

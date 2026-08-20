@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useData } from 'vitepress'
+import DocsSearch from '../DocsSearch.vue'
 import MoonIcon from '~icons/radix-icons/moon'
 import SunIcon from '~icons/radix-icons/sun'
 import {
@@ -33,7 +34,7 @@ const { theme } = useData()
       <div class="shrink-0">
         <a href="/">Typlog UI</a>
       </div>
-      <div class="grow">
+      <div class="grow min-w-0">
         <NavigationMenuRoot class="hidden md:block md:pl-6">
           <NavigationMenuList>
             <NavigationMenuItem v-for="(nav, index) in theme.nav" :key="index">
@@ -62,7 +63,14 @@ const { theme } = useData()
         </NavigationMenuRoot>
       </div>
       <div class="flex items-center gap-x-2">
-        <IconButton variant="ghost" color="gray" @click="changeColorMode">
+        <DocsSearch />
+        <IconButton
+          variant="ghost"
+          color="gray"
+          aria-label="Toggle color mode"
+          :title="mode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
+          @click="changeColorMode"
+        >
           <MoonIcon v-if="mode === 'dark'" />
           <SunIcon v-else />
         </IconButton>

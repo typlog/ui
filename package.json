@@ -19,6 +19,7 @@
     "build:vue": "vite build && node scripts/post-build.mjs",
     "build:meta": "npx tsx scripts/generate-component-meta.ts",
     "build:docs": "vitepress build",
+    "typecheck": "vue-tsc --noEmit",
     "lint": "eslint ."
   },
   "devDependencies": {

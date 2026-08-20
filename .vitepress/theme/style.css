@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "../../tailwind/index.css";
 @import "../../src/styles/index.css";
+@import "vitepress/dist/client/theme-default/styles/vars.css";
+@import "vitepress/dist/client/theme-default/styles/icons.css";
 @import "./css/vars.css";
 @import "./css/code.css";
 
@@ -17,6 +19,29 @@
   --container-content: 92rem;
 }
 
+:root {
+  --docs-chrome-height: calc(var(--space-9) + var(--space-8));
+  --vp-c-bg: var(--color-background, Canvas);
+  --vp-c-bg-alt: var(--gray-2);
+  --vp-c-bg-elv: var(--color-panel-solid, var(--gray-2));
+  --vp-c-divider: var(--gray-a4);
+  --vp-c-brand-1: var(--accent-9);
+  --vp-c-text-1: var(--gray-12);
+  --vp-c-text-2: var(--gray-11);
+  --vp-c-text-3: var(--gray-10);
+  --vp-backdrop-bg-color: var(--black-a6);
+  --vp-local-search-bg: var(--color-panel-solid, var(--gray-2));
+  --vp-local-search-result-bg: var(--color-panel-solid, var(--gray-2));
+  --vp-local-search-result-border: var(--gray-a4);
+  --vp-local-search-result-selected-border: var(--accent-9);
+  --vp-local-search-highlight-bg: var(--accent-a3);
+  --vp-local-search-highlight-text: var(--gray-12);
+}
+
 html {
   scroll-behavior: smooth;
+}
+
+.e-content :where(h2, h3) {
+  scroll-margin-top: calc(var(--docs-chrome-height) + var(--space-5));
 }

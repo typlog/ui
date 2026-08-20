@@ -1,7 +1,6 @@
 // https://github.com/unovue/reka-ui/blob/v2/docs/.vitepress/composables/outline.ts
 import type { DefaultTheme } from 'vitepress/theme'
 import type { Ref } from 'vue'
-import { getScrollOffset } from 'vitepress'
 import { onMounted, onUnmounted, onUpdated } from 'vue'
 
 export interface Header {
@@ -110,8 +109,8 @@ export function resolveHeaders(
 }
 
 export function useActiveAnchor(
-  container: Ref<HTMLElement>,
-  marker: Ref<HTMLElement>,
+  container: Ref<HTMLElement | null>,
+  marker: Ref<HTMLElement | null>,
 ) {
   const onScroll = throttleAndDebounce(setActiveLink, 100)
 
@@ -142,6 +141,7 @@ export function useActiveAnchor(
       .map(({ element, link }) => ({
         link,
         top: getAbsoluteTop(element),
+        scrollMarginTop: Number.parseFloat(getComputedStyle(element).scrollMarginTop) || 0,
       }))
       .filter(({ top }) => !Number.isNaN(top))
       .sort((a, b) => a.top - b.top)
@@ -164,15 +164,27 @@ export function useActiveAnchor(
       return
     }
 
+    const activationOffset = getActivationOffset(headers)
+
     // find the last header above the top of viewport
     let activeLink: string | null = null
     for (const { link, top } of headers) {
-      if (top > scrollY + getScrollOffset() + 4) {
+      if (top > scrollY + activationOffset) {
         break
       }
       activeLink = link
     }
     activateLink(activeLink)
+  }
+
+  function getActivationOffset(headers: { scrollMarginTop: number }[]) {
+    const chromeHeight = Number.parseFloat(
+      getComputedStyle(document.documentElement)
+        .getPropertyValue('--docs-chrome-height'),
+    ) || 112
+    const firstHeadingMargin = headers[0]?.scrollMarginTop || 0
+
+    return Math.max(firstHeadingMargin + 1, chromeHeight + 24)
   }
 
   function activateLink(hash: string | null) {
@@ -184,21 +196,26 @@ export function useActiveAnchor(
       prevActiveLink = null
     }
     else {
-      prevActiveLink = container.value.querySelector(
-        `a[href="${decodeURIComponent(hash)}"]`,
-      )
+      prevActiveLink = container.value?.querySelector(
+        `a[href$="${decodeURIComponent(hash)}"]`,
+      ) ?? null
     }
 
     const activeLink = prevActiveLink
+    const markerElement = marker.value
+
+    if (!markerElement) {
+      return
+    }
 
     if (activeLink) {
       activeLink.classList.add('active')
-      marker.value.style.top = `${activeLink.offsetTop + 39}px`
-      marker.value.style.opacity = '1'
+      markerElement.style.top = `${activeLink.offsetTop + 39}px`
+      markerElement.style.opacity = '1'
     }
     else {
-      marker.value.style.top = '33px'
-      marker.value.style.opacity = '0'
+      markerElement.style.top = '33px'
+      markerElement.style.opacity = '0'
     }
   }
 }
@@ -229,7 +246,8 @@ function throttleAndDebounce(fn: () => void, delay: number): () => void {
 
     if (!called) {
       fn()
-      ;(called = true) && setTimeout(() => (called = false), delay)
+      called = true
+      setTimeout(() => (called = false), delay)
     }
     else {
       timeoutId = setTimeout(fn, delay)

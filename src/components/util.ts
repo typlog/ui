@@ -18,7 +18,7 @@ export function useForwardPropsEmitsWithout<T extends Record<string, any>, Name 
   exclude: string[],
 ) {
   const parsedProps = useForwardProps(props)
-  const emitsAsProps = useEmitAsProps(emit)
+  const emitsAsProps = useEmitAsProps(emit as (name: string, ...args: any[]) => void)
   return computed(() => ({
     ..._excludeProps(parsedProps.value, exclude),
     ...emitsAsProps,

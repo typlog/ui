@@ -1,9 +1,11 @@
 import { resolve } from 'node:path'
 import { defineConfig } from 'vitepress'
+import type { DefaultTheme } from 'vitepress'
 import tailwindcss from '@tailwindcss/vite'
 import Icons from 'unplugin-icons/vite'
-import type { ThemeConfig } from './custom/types'
-import { markdownExampleTagBlock } from './plugins/example'
+import type { ThemeConfig } from './custom/types.ts'
+import { markdownExampleTagBlock } from './plugins/example.ts'
+import { searchOptions } from './plugins/search.ts'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig<ThemeConfig>({
@@ -19,9 +21,9 @@ export default defineConfig<ThemeConfig>({
     ],
     resolve: {
       alias: {
-        '~': resolve(__dirname, '..'),
-        '#components': resolve(__dirname, '../src/components'),
-        '#addons': resolve(__dirname, '../src/addons'),
+        '~': resolve(import.meta.dirname, '..'),
+        '#components': resolve(import.meta.dirname, '../src/components'),
+        '#addons': resolve(import.meta.dirname, '../src/addons'),
       },
     },
   },
@@ -33,6 +35,11 @@ export default defineConfig<ThemeConfig>({
   },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
+    lastUpdated: {},
+    search: {
+      provider: 'local',
+      options: searchOptions as unknown as DefaultTheme.LocalSearchOptions,
+    },
     outline: {
       level: [2, 3],
       label: 'On this page',
@@ -52,7 +59,7 @@ export default defineConfig<ThemeConfig>({
           {
             text: 'Form',
             icon: 'lucide:text-cursor-input',
-            link: '/components/avatar',
+            link: '/components/text-field',
             description: 'Input, select, checkbox, radio, switch, toggle, and etc.',
           },
           {

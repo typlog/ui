@@ -63,6 +63,12 @@ defineProps<{items: PropData[]}>()
 </template>
 
 <style>
+.vp-PropsTable {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
 .vp-PropsTable code {
   font-size: 0.95em;
   line-height: 1.25;
