@@ -124,6 +124,7 @@ export default defineConfig<ThemeConfig>({
               { text: 'Text Field', link: '/components/text-field' },
               { text: 'Text Area', link: '/components/text-area' },
               { text: 'Color Field', link: '/components/color-field' },
+              { text: 'Pin Input', link: '/components/pin-input' },
               { text: 'Select', link: '/components/select' },
               { text: 'Combobox', link: '/components/combobox' },
               { text: 'Editable', link: '/components/editable' },

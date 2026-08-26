@@ -1,5 +1,5 @@
 import type { ComponentMeta, MetaCheckerOptions, PropertyMeta, PropertyMetaSchema } from 'vue-component-meta'
-import { writeFileSync } from 'node:fs'
+import { existsSync, readdirSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import MarkdownIt from 'markdown-it'
@@ -27,11 +27,63 @@ function parseComponents (filePath: string) {
   names.forEach(name => {
     // component name starts with uppercase character
     if (/^[A-Z]/.test(name)) {
-      const meta = parseMeta(tsconfigChecker.getComponentMeta(filePath, name))
       const outfile = resolve(__dirname, `../.vitepress/meta/${name}.json`)
+      let componentMeta: ComponentMeta
+      let usedDirectFallback = false
+      const directFile = findComponentFile(name)
+
+      if (!existsSync(outfile) && directFile) {
+        componentMeta = tsconfigChecker.getComponentMeta(directFile)
+        usedDirectFallback = true
+      } else {
+        try {
+          componentMeta = tsconfigChecker.getComponentMeta(filePath, name)
+        }
+        catch {
+          // vue-component-meta currently cannot resolve some re-exported symbols.
+          // Preserve existing metadata and only use a direct same-name Vue file as
+          // a fallback for newly exported components.
+          if (existsSync(outfile) || !directFile) {
+            return
+          }
+
+          try {
+            componentMeta = tsconfigChecker.getComponentMeta(directFile)
+            usedDirectFallback = true
+          }
+          catch (directError) {
+            console.warn(`Skipping metadata for ${name}: ${errorMessage(directError)}`)
+            return
+          }
+        }
+      }
+
+      const ownProps = name === 'PinInputRoot' ? ['size', 'variant', 'color', 'radius'] : []
+      const meta = parseMeta(componentMeta, usedDirectFallback, ownProps)
       writeFileSync(outfile, JSON.stringify(meta, null, 2))
     }
   })
+}
+
+function findComponentFile (name: string) {
+  return findFile(resolve(__dirname, '../src'), `${name}.vue`)
+}
+
+function findFile (directory: string, filename: string): string | undefined {
+  for (const entry of readdirSync(directory, { withFileTypes: true })) {
+    const filepath = resolve(directory, entry.name)
+    if (entry.isFile() && entry.name === filename)
+      return filepath
+    if (entry.isDirectory()) {
+      const match = findFile(filepath, filename)
+      if (match)
+        return match
+    }
+  }
+}
+
+function errorMessage (error: unknown) {
+  return error instanceof Error ? error.message : String(error)
 }
 
 function parseTypeFromSchema(schema: PropertyMetaSchema): string {
@@ -58,7 +110,7 @@ function parseTypeFromSchema(schema: PropertyMetaSchema): string {
 }
 
 // Utilities
-function parseMeta(meta: ComponentMeta) {
+function parseMeta(meta: ComponentMeta, fallbackInherit = false, ownProps: string[] = []) {
   const props = meta.props
   // Exclude global props
     .filter(prop => !prop.global)
@@ -69,7 +121,8 @@ function parseMeta(meta: ComponentMeta) {
       const { name, required } = prop
 
       prop.tags.forEach(item => {
-        if (item.name === 'default' || item.name === 'defaultValue') {
+        if ((item.name === 'default' || item.name === 'defaultValue')
+          && (defaultValue === undefined || !fallbackInherit)) {
           defaultValue = item.text
         }
       })
@@ -86,6 +139,8 @@ function parseMeta(meta: ComponentMeta) {
 
       if (name === 'size') {
         type = type.split(' | ').sort().join(' | ')
+      } else if (name === 'color') {
+        type = '"indigo" | "gray" | "gold" | "bronze" | "brown" | "yellow" | "amber" | "orange" | "tomato" | "red" | "ruby" | "crimson" | "pink" | "plum" | "purple" | "violet" | "iris" | "blue" | "cyan" | "teal" | "jade" | "green" | "grass" | "lime" | "mint" | "sky"'
       } else if (name === 'radius') {
         type = '"none" | "small" | "medium" | "large" | "full"'
       }
@@ -101,6 +156,8 @@ function parseMeta(meta: ComponentMeta) {
           return true
         }
       })
+      if (!inherit && fallbackInherit && !ownProps.includes(name))
+        inherit = 'reka-ui'
 
       return ({
         name,
@@ -135,6 +192,20 @@ function parseMeta(meta: ComponentMeta) {
           description: md.render(childMeta.description),
           type: parseTypeFromSchema(childMeta.schema),
         })
+      })
+    } else if (typeof schema === 'string') {
+      // Current vue-component-meta versions expose inline slot schemas as a
+      // string rather than the object schema used by older versions.
+      const body = schema.trim().replace(/^\{\s*|\s*\}$/g, '')
+      body.split(';').forEach((entry) => {
+        const match = entry.trim().match(/^([\w$]+)\s*:\s*(.+)$/)
+        if (match) {
+          slots.push({
+            name: match[1],
+            description: '',
+            type: match[2].trim(),
+          })
+        }
       })
     }
   }
