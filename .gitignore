@@ -33,3 +33,5 @@ site/public
 site/.wrangler
 # vitepress
 .vitepress/cache
+
+plans/
