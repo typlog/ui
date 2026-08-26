@@ -42,6 +42,7 @@ import HomeShowcase from './HomeShowcase.vue'
 <style>
 .Hero {
   position: relative;
+  isolation: isolate;
   margin-top: -64px;
   padding-top: 64px;
 }
