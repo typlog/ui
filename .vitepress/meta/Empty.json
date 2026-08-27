@@ -1,0 +1,37 @@
+{
+  "props": [
+    {
+      "name": "as",
+      "description": "<p>The element or component this component should render as. Can be overwritten by <code>asChild</code>.</p>",
+      "type": "AsTag | Component",
+      "required": false,
+      "inherit": "reka-ui",
+      "default": "\"div\""
+    },
+    {
+      "name": "asChild",
+      "description": "<p>Change the default rendered element for the one passed as a child, merging their props and behavior.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "radius",
+      "description": "<p>Overrides the radius inherited from the theme.</p>",
+      "type": "\"none\" | \"small\" | \"medium\" | \"large\" | \"full\"",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "size",
+      "description": "<p>Controls the spacing and typography of the empty state.</p>",
+      "type": "\"1\" | \"2\" | \"3\"",
+      "required": false,
+      "inherit": "reka-ui",
+      "default": "\"2\""
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "methods": []
+}
