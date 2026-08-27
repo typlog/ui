@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import {
-  PaginationEllipsis,
+  PaginationEllipsis as RekaPaginationEllipsis,
   injectPaginationRootContext,
 } from 'reka-ui'
 import EllipsisIcon from '~icons/radix-icons/dots-horizontal'
@@ -30,7 +30,7 @@ const onSelect = () => {
 </script>
 
 <template>
-  <PaginationEllipsis
+  <RekaPaginationEllipsis
     class="ui-PaginationEllipsis ui-Button"
     as="button"
     type="button"
@@ -39,5 +39,5 @@ const onSelect = () => {
     @click.prevent="onSelect"
   >
     <EllipsisIcon />
-  </PaginationEllipsis>
+  </RekaPaginationEllipsis>
 </template>
