@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "@iconify/vue": "^5.0.0",
+    "@tanstack/vue-virtual": "^3.13.36",
     "reka-ui": "^2.4.0",
     "vue": "^3.5.0"
   }

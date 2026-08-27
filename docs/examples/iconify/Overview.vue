@@ -1,14 +1,16 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
+import { ref } from 'vue'
 import {
   Button,
-  DialogRoot,
-  DialogTrigger,
-  DialogTitle,
-  DialogClose,
-  DialogPopup,
+  PopoverRoot,
+  PopoverTrigger,
+  PopoverPopup,
 } from '#components'
-import { IconifyCollection } from '#addons'
+import { IconCollection } from '#addons'
+
+const selectedIcon = ref('')
+const collection = ref('')
+const query = ref('')
 
 const onSelectIcon = (icon: string) => {
   console.info('select:', icon)
@@ -16,18 +18,22 @@ const onSelectIcon = (icon: string) => {
 </script>
 
 <template>
-  <DialogRoot>
-    <Button :as="DialogTrigger">Choose an icon</Button>
-    <DialogPopup size="5" class="p-0 h-(--dialog-popup-max-height)">
-      <div class="py-2 px-4 w-full flex items-center justify-between bg-gray-2 border-b sticky top-0">
-        <DialogTitle>Choose an icon from iconify</DialogTitle>
-        <Button variant="ghost" color="gray" :as="DialogClose">
-          <Icon icon="lucide:x" />
-        </Button>
-      </div>
-      <div class="p-4">
-        <IconifyCollection @select="onSelectIcon" />
-      </div>
-    </DialogPopup>
-  </DialogRoot>
+  <PopoverRoot>
+    <Button :as="PopoverTrigger">Choose an icon</Button>
+    <PopoverPopup class="w-96 p-0">
+      <IconCollection
+        v-model="selectedIcon"
+        v-model:collection="collection"
+        v-model:query="query"
+        :ui="{
+          browser: 'p-4',
+          grid: {
+            header: 'p-4',
+            viewport: 'px-4',
+          },
+        }"
+        @select="onSelectIcon"
+      />
+    </PopoverPopup>
+  </PopoverRoot>
 </template>

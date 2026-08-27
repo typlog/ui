@@ -1,0 +1,94 @@
+{
+  "props": [
+    {
+      "name": "activeCollection",
+      "description": "<p>Active collection prefix; an empty value displays all collections.</p>",
+      "type": "string",
+      "required": false,
+      "inherit": "reka-ui",
+      "default": "\"\""
+    },
+    {
+      "name": "cellSize",
+      "description": "<p>Width and height of each icon button.</p>",
+      "type": "number",
+      "required": false,
+      "inherit": "reka-ui",
+      "default": "40"
+    },
+    {
+      "name": "collections",
+      "description": "<p>Iconify collection prefixes to display.</p>",
+      "type": "string[]",
+      "required": false,
+      "inherit": "reka-ui",
+      "default": "[]"
+    },
+    {
+      "name": "height",
+      "description": "<p>Height of the scroll viewport.</p>",
+      "type": "string | number",
+      "required": false,
+      "inherit": "reka-ui",
+      "default": "420"
+    },
+    {
+      "name": "iconSize",
+      "description": "<p>Size of each rendered icon.</p>",
+      "type": "string | number",
+      "required": false,
+      "inherit": "reka-ui",
+      "default": "20"
+    },
+    {
+      "name": "modelValue",
+      "description": "<p>The selected icon name, such as <code>lucide:heart</code>.</p>",
+      "type": "string",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "overscan",
+      "description": "<p>Number of extra rows rendered outside the viewport.</p>",
+      "type": "number",
+      "required": false,
+      "inherit": "reka-ui",
+      "default": "4"
+    },
+    {
+      "name": "query",
+      "description": "<p>The current icon search query.</p>",
+      "type": "string",
+      "required": false,
+      "inherit": "reka-ui",
+      "default": "\"\""
+    },
+    {
+      "name": "ui",
+      "description": "<p>Classes for the component's stable visual parts.</p>",
+      "type": "IconGridUI",
+      "required": false,
+      "inherit": "reka-ui"
+    }
+  ],
+  "events": [
+    {
+      "name": "select",
+      "type": "[icon: string]"
+    },
+    {
+      "name": "update:activeCollection",
+      "type": "[prefix: string]"
+    },
+    {
+      "name": "update:modelValue",
+      "type": "[icon: string]"
+    },
+    {
+      "name": "update:query",
+      "type": "[query: string]"
+    }
+  ],
+  "slots": [],
+  "methods": []
+}

@@ -1,0 +1,98 @@
+{
+  "props": [
+    {
+      "name": "cellSize",
+      "description": "<p>Width and height of each icon button.</p>",
+      "type": "number",
+      "required": false,
+      "inherit": "reka-ui",
+      "default": "40"
+    },
+    {
+      "name": "collection",
+      "description": "<p>The current icon set prefix. An empty value displays the collection catalog.</p>",
+      "type": "string",
+      "required": false,
+      "inherit": "reka-ui",
+      "default": "\"\""
+    },
+    {
+      "name": "filter",
+      "description": "<p>The current collection catalog filter.</p>",
+      "type": "string",
+      "required": false,
+      "inherit": "reka-ui",
+      "default": "\"\""
+    },
+    {
+      "name": "height",
+      "description": "<p>Height of the catalog or icon grid scroll viewport.</p>",
+      "type": "string | number",
+      "required": false,
+      "inherit": "reka-ui",
+      "default": "420"
+    },
+    {
+      "name": "iconSize",
+      "description": "<p>Size of each rendered icon.</p>",
+      "type": "string | number",
+      "required": false,
+      "inherit": "reka-ui",
+      "default": "20"
+    },
+    {
+      "name": "modelValue",
+      "description": "<p>The selected icon name, such as <code>lucide:heart</code>.</p>",
+      "type": "string",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "overscan",
+      "description": "<p>Number of extra icon rows rendered outside the viewport.</p>",
+      "type": "number",
+      "required": false,
+      "inherit": "reka-ui",
+      "default": "4"
+    },
+    {
+      "name": "query",
+      "description": "<p>The current search query within the selected icon set.</p>",
+      "type": "string",
+      "required": false,
+      "inherit": "reka-ui",
+      "default": "\"\""
+    },
+    {
+      "name": "ui",
+      "description": "<p>Classes for the component's stable visual parts.</p>",
+      "type": "IconCollectionUI",
+      "required": false,
+      "inherit": "reka-ui"
+    }
+  ],
+  "events": [
+    {
+      "name": "select",
+      "type": "[icon: string]"
+    },
+    {
+      "name": "update:collection",
+      "type": "[prefix: string]"
+    },
+    {
+      "name": "update:filter",
+      "type": "[filter: string]"
+    },
+    {
+      "name": "update:modelValue",
+      "type": "[icon: string]"
+    },
+    {
+      "name": "update:query",
+      "type": "[query: string]"
+    }
+  ],
+  "slots": [],
+  "methods": []
+}
