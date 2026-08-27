@@ -41,12 +41,12 @@ const forwarded = useForwardPropsWithout(props, ['indicator'])
     text-align: initial;
     gap: var(--collapsible-trigger-gap);
     font-size: var(--collapsible-font-size);
-    font-weight: var(--font-weight-medium);
   }
 }
 .ui-CollapsibleTriggerText {
   flex-grow: 1;
   text-align: initial;
+  font-weight: var(--font-weight-medium);
 }
 :where(.ui-CollapsibleRoot:not(.r-variant-ghost)) .ui-CollapsibleTrigger {
   background-color: var(--collapsible-trigger-background-color);

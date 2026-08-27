@@ -106,6 +106,7 @@ export default defineConfig<ThemeConfig>({
               { text: 'Card', link: '/components/card' },
               { text: 'Separator', link: '/components/separator' },
               { text: 'Scroll Area', link: '/components/scroll-area' },
+              { text: 'Sidebar', link: '/components/sidebar' },
             ],
           },
           {

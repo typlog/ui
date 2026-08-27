@@ -1,0 +1,21 @@
+{
+  "props": [
+    {
+      "name": "as",
+      "description": "<p>The element or component used for the layout container.</p>",
+      "type": "AsTag | Component",
+      "required": false,
+      "inherit": null,
+      "default": "\"div\""
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "name": "isMobile",
+      "description": "",
+      "type": "boolean"
+    }
+  ],
+  "methods": []
+}

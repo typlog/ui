@@ -1,0 +1,115 @@
+{
+  "props": [
+    {
+      "name": "collapsed",
+      "description": "<p>Controls whether the desktop sidebar is collapsed.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": null
+    },
+    {
+      "name": "collapsedWidth",
+      "description": "<p>The desktop width when <code>collapsible=&quot;icon&quot;</code>.</p>",
+      "type": "string",
+      "required": false,
+      "inherit": null,
+      "default": "\"3.5rem\""
+    },
+    {
+      "name": "collapsible",
+      "description": "<p>The desktop collapse behavior.</p>",
+      "type": "\"offcanvas\" | \"icon\" | \"none\"",
+      "required": false,
+      "inherit": null,
+      "default": "\"offcanvas\""
+    },
+    {
+      "name": "defaultCollapsed",
+      "description": "<p>Initial desktop collapsed state when <code>collapsed</code> is uncontrolled.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": null,
+      "default": "false"
+    },
+    {
+      "name": "defaultOpen",
+      "description": "<p>Initial mobile open state when <code>open</code> is uncontrolled.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": null,
+      "default": "false"
+    },
+    {
+      "name": "mobileWidth",
+      "description": "<p>The sidebar width below the mobile breakpoint.</p>",
+      "type": "string",
+      "required": false,
+      "inherit": null,
+      "default": "\"18rem\""
+    },
+    {
+      "name": "open",
+      "description": "<p>Controls whether the mobile sidebar is open.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": null
+    },
+    {
+      "name": "side",
+      "description": "<p>The edge of the layout that contains the sidebar.</p>",
+      "type": "\"left\" | \"right\"",
+      "required": false,
+      "inherit": null,
+      "default": "\"left\""
+    },
+    {
+      "name": "variant",
+      "description": "<p>The visual relationship between the sidebar and main content.</p>",
+      "type": "\"default\" | \"floating\" | \"inset\"",
+      "required": false,
+      "inherit": null,
+      "default": "\"default\""
+    },
+    {
+      "name": "width",
+      "description": "<p>The expanded desktop width.</p>",
+      "type": "string",
+      "required": false,
+      "inherit": null,
+      "default": "\"16rem\""
+    }
+  ],
+  "events": [
+    {
+      "name": "update:collapsed",
+      "type": "[value: boolean]"
+    },
+    {
+      "name": "update:open",
+      "type": "[value: boolean]"
+    }
+  ],
+  "slots": [
+    {
+      "name": "open",
+      "description": "",
+      "type": "boolean"
+    },
+    {
+      "name": "collapsed",
+      "description": "",
+      "type": "boolean"
+    },
+    {
+      "name": "isMobile",
+      "description": "",
+      "type": "boolean"
+    },
+    {
+      "name": "toggle",
+      "description": "",
+      "type": "() => void"
+    }
+  ],
+  "methods": []
+}

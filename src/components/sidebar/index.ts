@@ -1,0 +1,23 @@
+export { default as SidebarProvider, type SidebarProviderProps } from './SidebarProvider.vue'
+
+export {
+  default as SidebarRoot,
+  type SidebarRootProps,
+  type SidebarRootEmits,
+} from './SidebarRoot.vue'
+
+export { default as SidebarContent, type SidebarContentProps } from './SidebarContent.vue'
+export { default as SidebarHeader, type SidebarHeaderProps } from './SidebarHeader.vue'
+export { default as SidebarBody, type SidebarBodyProps } from './SidebarBody.vue'
+export { default as SidebarFooter, type SidebarFooterProps } from './SidebarFooter.vue'
+export { default as SidebarTrigger, type SidebarTriggerProps } from './SidebarTrigger.vue'
+export { default as SidebarRail, type SidebarRailProps } from './SidebarRail.vue'
+export { default as SidebarInset, type SidebarInsetProps } from './SidebarInset.vue'
+export { default as SidebarGroup, type SidebarGroupProps } from './SidebarGroup.vue'
+export { default as SidebarGroupLabel, type SidebarGroupLabelProps } from './SidebarGroupLabel.vue'
+export { default as SidebarMenu, type SidebarMenuProps } from './SidebarMenu.vue'
+export { default as SidebarMenuItem, type SidebarMenuItemProps } from './SidebarMenuItem.vue'
+export { default as SidebarMenuButton, type SidebarMenuButtonProps } from './SidebarMenuButton.vue'
+export { default as SidebarMenuSub, type SidebarMenuSubProps } from './SidebarMenuSub.vue'
+export { default as SidebarMenuSubItem, type SidebarMenuSubItemProps } from './SidebarMenuSubItem.vue'
+export { default as SidebarMenuSubButton, type SidebarMenuSubButtonProps } from './SidebarMenuSubButton.vue'

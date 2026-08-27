@@ -1,0 +1,70 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+import {
+  SidebarBody,
+  SidebarContent,
+  SidebarProvider,
+  SidebarHeader,
+  SidebarInset,
+  SidebarRail,
+  SidebarRoot,
+  SidebarTrigger,
+} from '#components'
+
+const leftOpen = ref(false)
+const leftCollapsed = ref(false)
+const rightOpen = ref(false)
+const rightCollapsed = ref(false)
+</script>
+
+<template>
+  <SidebarProvider class="h-80 overflow-hidden rounded-lg border border-gray-5">
+    <SidebarRoot
+      v-model:open="leftOpen"
+      v-model:collapsed="leftCollapsed"
+      collapsible="icon"
+      width="13rem"
+    >
+      <SidebarContent mobile-title="Navigation" mobile-description="Choose a section">
+        <SidebarHeader><strong data-sidebar-label>Workspace</strong></SidebarHeader>
+        <SidebarBody class="text-sm text-gray-11">
+          <span data-sidebar-label>Project navigation</span>
+        </SidebarBody>
+        <SidebarRail />
+      </SidebarContent>
+    </SidebarRoot>
+
+    <SidebarInset>
+      <header class="flex h-12 items-center gap-2 border-b border-gray-4 px-4">
+        <SidebarTrigger target="left" />
+        <strong>Editor</strong>
+        <SidebarTrigger target="right" class="ml-auto" />
+      </header>
+      <div class="p-4 text-sm text-gray-11">
+        Left and right panels keep independent state. On mobile, opening one closes the other.
+      </div>
+    </SidebarInset>
+
+    <SidebarRoot
+      v-model:open="rightOpen"
+      v-model:collapsed="rightCollapsed"
+      side="right"
+      collapsible="offcanvas"
+      width="13rem"
+    >
+      <SidebarContent mobile-title="Inspector" mobile-description="Edit document properties">
+        <SidebarHeader><strong data-sidebar-label>Inspector</strong></SidebarHeader>
+        <SidebarBody class="flex flex-col gap-3 text-sm">
+          <label data-sidebar-collapsed-hidden class="flex flex-col gap-1">
+            <span class="text-gray-11">Slug</span>
+            <input value="welcome" class="rounded-md border border-gray-6 bg-transparent px-2 py-1.5" />
+          </label>
+          <label data-sidebar-collapsed-hidden class="flex items-center gap-2">
+            <input type="checkbox" checked /> Published
+          </label>
+        </SidebarBody>
+        <SidebarRail />
+      </SidebarContent>
+    </SidebarRoot>
+  </SidebarProvider>
+</template>

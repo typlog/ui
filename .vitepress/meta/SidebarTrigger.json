@@ -1,0 +1,66 @@
+{
+  "props": [
+    {
+      "name": "as",
+      "description": "<p>The element or component this component should render as. Can be overwritten by <code>asChild</code>.</p>",
+      "type": "AsTag | Component",
+      "required": false,
+      "inherit": "reka-ui",
+      "default": "\"button\""
+    },
+    {
+      "name": "asChild",
+      "description": "<p>Change the default rendered element for the one passed as a child, merging their props and behavior.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "disabled",
+      "description": "<p>Prevents the trigger from changing sidebar state.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": null,
+      "default": "false"
+    },
+    {
+      "name": "label",
+      "description": "<p>Overrides the generated accessible label.</p>",
+      "type": "string",
+      "required": false,
+      "inherit": null
+    },
+    {
+      "name": "target",
+      "description": "<p>The sidebar edge controlled by this trigger.</p>",
+      "type": "\"left\" | \"right\"",
+      "required": false,
+      "inherit": null,
+      "default": "\"left\""
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "name": "open",
+      "description": "",
+      "type": "boolean"
+    },
+    {
+      "name": "collapsed",
+      "description": "",
+      "type": "boolean"
+    },
+    {
+      "name": "isMobile",
+      "description": "",
+      "type": "boolean"
+    },
+    {
+      "name": "target",
+      "description": "",
+      "type": "\"left\" | \"right\""
+    }
+  ],
+  "methods": []
+}

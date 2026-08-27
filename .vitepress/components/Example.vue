@@ -2,6 +2,7 @@
 interface ExampleProps {
   name: string
   variant?: 'full' | 'some' | 'hide'
+  overflow?: 'hidden' | 'visible'
 }
 </script>
 
@@ -11,13 +12,17 @@ import { ScrollArea } from '#components'
 
 withDefaults(defineProps<ExampleProps>(), {
   variant: 'some',
+  overflow: 'hidden',
 })
 
 const expanded = ref(false)
 </script>
 
 <template>
-  <div class="vp-Example not-prose text-base" :class="`r-variant-${variant}`">
+  <div
+    class="vp-Example not-prose text-base"
+    :class="[`r-variant-${variant}`, `r-overflow-${overflow}`]"
+  >
     <div class="vp-ExampleComponent">
       <ScrollArea scrollbars="horizontal">
         <slot></slot>
@@ -54,6 +59,13 @@ const expanded = ref(false)
   border-radius: var(--radius-4);
   overflow: hidden;
   background: var(--accent-2);
+}
+.vp-Example:where(.r-overflow-visible) {
+  overflow: visible;
+}
+.vp-Example:where(.r-overflow-visible) .vp-ExampleComponent .ui-ScrollArea,
+.vp-Example:where(.r-overflow-visible) .vp-ExampleComponent .ui-ScrollAreaViewport {
+  overflow: visible !important;
 }
 .vp-ExampleComponent {
   border-bottom: 1px solid var(--gray-a5);

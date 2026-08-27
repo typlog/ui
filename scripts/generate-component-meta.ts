@@ -58,8 +58,7 @@ function parseComponents (filePath: string) {
         }
       }
 
-      const ownProps = name === 'PinInputRoot' ? ['size', 'variant', 'color', 'radius'] : []
-      const meta = parseMeta(componentMeta, usedDirectFallback, ownProps)
+      const meta = parseMeta(componentMeta, usedDirectFallback)
       writeFileSync(outfile, JSON.stringify(meta, null, 2))
     }
   })
@@ -110,7 +109,7 @@ function parseTypeFromSchema(schema: PropertyMetaSchema): string {
 }
 
 // Utilities
-function parseMeta(meta: ComponentMeta, fallbackInherit = false, ownProps: string[] = []) {
+function parseMeta(meta: ComponentMeta, fallbackInherit = false) {
   const props = meta.props
   // Exclude global props
     .filter(prop => !prop.global)
@@ -156,8 +155,9 @@ function parseMeta(meta: ComponentMeta, fallbackInherit = false, ownProps: strin
           return true
         }
       })
-      if (!inherit && fallbackInherit && !ownProps.includes(name))
+      if (!inherit && fallbackInherit) {
         inherit = 'reka-ui'
+      }
 
       return ({
         name,
