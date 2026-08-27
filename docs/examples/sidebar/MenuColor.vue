@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import {
+  Sidebar,
   SidebarBody,
-  SidebarContent,
   SidebarGroup,
   SidebarGroupLabel,
   SidebarInset,
@@ -10,7 +10,6 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
-  SidebarRoot,
 } from '#components'
 
 const menus = [
@@ -21,29 +20,27 @@ const menus = [
 
 <template>
   <SidebarProvider class="h-80 overflow-hidden rounded-lg border border-gray-5">
-    <SidebarRoot width="15rem" collapsible="none">
-      <SidebarContent>
-        <SidebarBody>
-          <SidebarGroup v-for="menu in menus" :key="menu.color">
-            <SidebarGroupLabel>{{ menu.label }}</SidebarGroupLabel>
-            <SidebarMenu :color="menu.color">
-              <SidebarMenuItem>
-                <SidebarMenuButton active>
-                  <Icon :icon="menu.icon" />
-                  <span>{{ menu.label }} overview</span>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-              <SidebarMenuItem>
-                <SidebarMenuButton>
-                  <Icon icon="lucide:settings" />
-                  <span>Settings</span>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            </SidebarMenu>
-          </SidebarGroup>
-        </SidebarBody>
-      </SidebarContent>
-    </SidebarRoot>
+    <Sidebar width="15rem" collapsible="none">
+      <SidebarBody>
+        <SidebarGroup v-for="menu in menus" :key="menu.color">
+          <SidebarGroupLabel>{{ menu.label }}</SidebarGroupLabel>
+          <SidebarMenu :color="menu.color">
+            <SidebarMenuItem>
+              <SidebarMenuButton active>
+                <Icon :icon="menu.icon" />
+                <span>{{ menu.label }} overview</span>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+            <SidebarMenuItem>
+              <SidebarMenuButton>
+                <Icon icon="lucide:settings" />
+                <span>Settings</span>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarGroup>
+      </SidebarBody>
+    </Sidebar>
     <SidebarInset class="p-4 text-sm text-gray-11">
       Active and focus states inherit each menu's accent color.
     </SidebarInset>

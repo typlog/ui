@@ -12,10 +12,10 @@ export interface SidebarRailProps extends PrimitiveProps {
 <script setup lang="ts">
 import { computed } from 'vue'
 import { Primitive } from 'reka-ui'
-import { injectSidebarRootContext } from './SidebarRoot.vue'
+import { injectSidebarContext } from './Sidebar.vue'
 
 const props = withDefaults(defineProps<SidebarRailProps>(), { as: 'button', disabled: false })
-const context = injectSidebarRootContext()
+const context = injectSidebarContext()
 const isDisabled = computed(() => props.disabled || context.collapsible.value === 'none')
 const accessibleLabel = computed(() => props.label
   ?? `${context.collapsed.value ? 'Expand' : 'Collapse'} ${context.side.value} sidebar`)
@@ -31,7 +31,7 @@ const accessibleLabel = computed(() => props.label
     :data-disabled="isDisabled ? true : undefined"
     :aria-disabled="isDisabled ? true : undefined"
     :aria-label="accessibleLabel"
-    :aria-controls="context.contentId"
+    :aria-controls="context.panelId"
     :aria-expanded="!context.collapsed.value"
     @click="!isDisabled && context.toggleCollapsed()"
   >

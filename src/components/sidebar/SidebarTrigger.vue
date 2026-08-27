@@ -23,7 +23,7 @@ const props = withDefaults(defineProps<SidebarTriggerProps>(), {
   disabled: false,
 })
 const provider = injectSidebarProviderContext()
-const target = computed(() => provider.roots[props.target])
+const target = computed(() => provider.sidebars[props.target])
 const isDisabled = computed(() => props.disabled
   || !target.value
   || (!provider.isMobile.value && target.value.collapsible.value === 'none'))
@@ -56,7 +56,7 @@ function toggle(event: MouseEvent) {
     :data-collapsible="target?.collapsible.value"
     :data-target="props.target"
     :aria-label="accessibleLabel"
-    :aria-controls="target?.contentId"
+    :aria-controls="target?.panelId"
     :aria-expanded="provider.isMobile.value ? (target?.open.value ?? false) : !(target?.collapsed.value ?? true)"
     :aria-haspopup="provider.isMobile.value ? 'dialog' : undefined"
     @click="toggle"

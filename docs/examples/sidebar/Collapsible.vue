@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import {
+  Sidebar,
   SidebarBody,
-  SidebarContent,
   SidebarProvider,
   SidebarHeader,
   SidebarInset,
-  SidebarRoot,
   SidebarTrigger,
 } from '#components'
 
@@ -19,17 +18,15 @@ const modes = ['offcanvas', 'icon', 'none'] as const
       :key="mode"
       class="h-64 overflow-hidden rounded-lg border border-gray-5"
     >
-      <SidebarRoot :collapsible="mode" width="10rem">
-        <SidebarContent>
-          <SidebarHeader>
-            <span class="grid size-7 shrink-0 place-items-center rounded bg-accent-9 text-white">T</span>
-            <strong data-sidebar-label>{{ mode }}</strong>
-          </SidebarHeader>
-          <SidebarBody class="text-sm text-gray-11">
-            <p data-sidebar-label>The sidebar uses the {{ mode }} collapse mode.</p>
-          </SidebarBody>
-        </SidebarContent>
-      </SidebarRoot>
+      <Sidebar :collapsible="mode" width="10rem">
+        <SidebarHeader>
+          <span class="grid size-7 shrink-0 place-items-center rounded bg-accent-9 text-white">T</span>
+          <strong data-sidebar-label>{{ mode }}</strong>
+        </SidebarHeader>
+        <SidebarBody class="text-sm text-gray-11">
+          <p data-sidebar-label>The sidebar uses the {{ mode }} collapse mode.</p>
+        </SidebarBody>
+      </Sidebar>
       <SidebarInset>
         <div class="flex items-center gap-2 p-3">
           <SidebarTrigger />

@@ -16,7 +16,7 @@ import { computed } from 'vue'
 import { Primitive } from 'reka-ui'
 import Tooltip from '../tooltip/Tooltip.vue'
 import { injectSidebarMenuContext } from './SidebarMenu.vue'
-import { injectSidebarRootContext } from './SidebarRoot.vue'
+import { injectSidebarContext } from './Sidebar.vue'
 
 defineOptions({ inheritAttrs: false })
 
@@ -25,7 +25,7 @@ const props = withDefaults(defineProps<SidebarMenuButtonProps>(), {
   active: false,
   disabled: false,
 })
-const context = injectSidebarRootContext()
+const context = injectSidebarContext()
 injectSidebarMenuContext()
 const showTooltip = computed(() => Boolean(props.tooltip)
   && !props.disabled

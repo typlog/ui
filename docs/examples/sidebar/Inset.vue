@@ -1,23 +1,20 @@
 <script setup lang="ts">
 import {
+  Sidebar,
   SidebarBody,
-  SidebarContent,
   SidebarProvider,
   SidebarHeader,
   SidebarInset,
-  SidebarRoot,
   SidebarTrigger,
 } from '#components'
 </script>
 
 <template>
   <SidebarProvider class="h-80 overflow-hidden rounded-lg">
-    <SidebarRoot variant="inset" width="13rem">
-      <SidebarContent>
-        <SidebarHeader><strong>Typlog</strong></SidebarHeader>
-        <SidebarBody class="text-sm text-gray-11">Inset navigation</SidebarBody>
-      </SidebarContent>
-    </SidebarRoot>
+    <Sidebar variant="inset" width="13rem">
+      <SidebarHeader><strong>Typlog</strong></SidebarHeader>
+      <SidebarBody class="text-sm text-gray-11">Inset navigation</SidebarBody>
+    </Sidebar>
     <SidebarInset>
       <header class="flex h-12 items-center gap-2 border-b border-gray-4 px-4">
         <SidebarTrigger />

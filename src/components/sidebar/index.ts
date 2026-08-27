@@ -1,12 +1,6 @@
 export { default as SidebarProvider, type SidebarProviderProps } from './SidebarProvider.vue'
 
-export {
-  default as SidebarRoot,
-  type SidebarRootProps,
-  type SidebarRootEmits,
-} from './SidebarRoot.vue'
-
-export { default as SidebarContent, type SidebarContentProps } from './SidebarContent.vue'
+export { default as Sidebar, type SidebarProps, type SidebarEmits } from './Sidebar.vue'
 export { default as SidebarHeader, type SidebarHeaderProps } from './SidebarHeader.vue'
 export { default as SidebarBody, type SidebarBodyProps } from './SidebarBody.vue'
 export { default as SidebarFooter, type SidebarFooterProps } from './SidebarFooter.vue'

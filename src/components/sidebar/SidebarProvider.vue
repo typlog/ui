@@ -14,7 +14,7 @@ export interface SidebarController {
   collapsed: ComputedRef<boolean>
   collapsible: Ref<'offcanvas' | 'icon' | 'none'>
   variant: Ref<'default' | 'floating' | 'inset'>
-  contentId: string
+  panelId: string
   lastTrigger: Ref<HTMLElement | null>
   setOpen: (value: boolean) => void
   toggle: () => void
@@ -22,7 +22,7 @@ export interface SidebarController {
 
 export interface SidebarProviderContext {
   isMobile: Ref<boolean>
-  roots: {
+  sidebars: {
     left?: SidebarController
     right?: SidebarController
   }
@@ -41,30 +41,30 @@ import { Primitive } from 'reka-ui'
 
 const props = withDefaults(defineProps<SidebarProviderProps>(), { as: 'div' })
 const isMobile = ref(false)
-const roots = shallowReactive<SidebarProviderContext['roots']>({})
+const sidebars = shallowReactive<SidebarProviderContext['sidebars']>({})
 
 function register(side: 'left' | 'right', controller: SidebarController) {
-  const existing = roots[side]
+  const existing = sidebars[side]
   if (existing && existing !== controller) {
-    console.warn(`[Typlog UI] SidebarProvider accepts at most one SidebarRoot for side="${side}".`)
+    console.warn(`[Typlog UI] SidebarProvider accepts at most one Sidebar for side="${side}".`)
     return false
   }
-  roots[side] = controller
+  sidebars[side] = controller
   return true
 }
 
 function unregister(side: 'left' | 'right', controller: SidebarController) {
-  if (roots[side] === controller)
-    delete roots[side]
+  if (sidebars[side] === controller)
+    delete sidebars[side]
 }
 
 function requestOpen(side: 'left' | 'right', controller: SidebarController) {
-  const other = roots[side === 'left' ? 'right' : 'left']
+  const other = sidebars[side === 'left' ? 'right' : 'left']
   if (other && other !== controller && other.open.value)
     other.setOpen(false)
 }
 
-provideSidebarProviderContext({ isMobile, roots, register, unregister, requestOpen })
+provideSidebarProviderContext({ isMobile, sidebars, register, unregister, requestOpen })
 
 let mediaQuery: MediaQueryList | undefined
 
@@ -82,8 +82,11 @@ onBeforeUnmount(() => {
   mediaQuery?.removeEventListener('change', updateMobile)
 })
 
-const hasInset = computed(() => roots.left?.variant.value === 'inset'
-  || roots.right?.variant.value === 'inset')
+const hasInset = computed(() => sidebars.left?.variant.value === 'inset'
+  || sidebars.right?.variant.value === 'inset')
+const hasPadding = computed(() => sidebars.left?.variant.value === 'floating'
+  || sidebars.right?.variant.value === 'floating'
+  || hasInset.value)
 </script>
 
 <template>
@@ -91,6 +94,7 @@ const hasInset = computed(() => roots.left?.variant.value === 'inset'
     class="ui-SidebarProvider"
     :as="props.as"
     :data-mobile="isMobile"
+    :data-padded="hasPadding"
     :data-inset="hasInset"
   >
     <slot :is-mobile="isMobile"></slot>

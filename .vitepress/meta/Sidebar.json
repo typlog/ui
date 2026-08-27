@@ -1,6 +1,21 @@
 {
   "props": [
     {
+      "name": "as",
+      "description": "<p>The element or component this component should render as. Can be overwritten by <code>asChild</code>.</p>",
+      "type": "AsTag | Component",
+      "required": false,
+      "inherit": "reka-ui",
+      "default": "\"aside\""
+    },
+    {
+      "name": "asChild",
+      "description": "<p>Change the default rendered element for the one passed as a child, merging their props and behavior.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
       "name": "collapsed",
       "description": "<p>Controls whether the desktop sidebar is collapsed.</p>",
       "type": "boolean",
@@ -38,6 +53,36 @@
       "required": false,
       "inherit": null,
       "default": "false"
+    },
+    {
+      "name": "disableOutsidePointerEvents",
+      "description": "<p>When <code>true</code>, hover/focus/click interactions will be disabled on elements outside\nthe <code>DismissableLayer</code>. Users will need to click twice on outside elements to\ninteract with them: once to close the <code>DismissableLayer</code>, and again to trigger the element.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "forceMount",
+      "description": "<p>Used to force mounting when more control is needed. Useful when\ncontrolling animation with Vue animation libraries.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "mobileDescription",
+      "description": "<p>Accessible description announced when the sidebar opens on mobile.</p>",
+      "type": "string",
+      "required": false,
+      "inherit": null,
+      "default": "\"Site navigation\""
+    },
+    {
+      "name": "mobileTitle",
+      "description": "<p>Accessible title announced when the sidebar opens on mobile.</p>",
+      "type": "string",
+      "required": false,
+      "inherit": null,
+      "default": "\"Navigation\""
     },
     {
       "name": "mobileWidth",
@@ -80,6 +125,30 @@
     }
   ],
   "events": [
+    {
+      "name": "closeAutoFocus",
+      "type": "[event: Event]"
+    },
+    {
+      "name": "escapeKeyDown",
+      "type": "[event: KeyboardEvent]"
+    },
+    {
+      "name": "focusOutside",
+      "type": "[event: FocusOutsideEvent]"
+    },
+    {
+      "name": "interactOutside",
+      "type": "[event: PointerDownOutsideEvent | FocusOutsideEvent]"
+    },
+    {
+      "name": "openAutoFocus",
+      "type": "[event: Event]"
+    },
+    {
+      "name": "pointerDownOutside",
+      "type": "[event: PointerDownOutsideEvent]"
+    },
     {
       "name": "update:collapsed",
       "type": "[value: boolean]"

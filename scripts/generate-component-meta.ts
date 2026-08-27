@@ -19,6 +19,10 @@ const tsconfigChecker = createChecker(
   checkerOptions,
 )
 
+const ownPropsByComponent: Record<string, string[]> = {
+  Sidebar: ['open', 'defaultOpen', 'collapsed', 'defaultCollapsed', 'side', 'variant', 'collapsible', 'width', 'collapsedWidth', 'mobileWidth', 'mobileTitle', 'mobileDescription'],
+}
+
 parseComponents(resolve(__dirname, '../src/components/index.ts'))
 parseComponents(resolve(__dirname, '../src/addons/index.ts'))
 
@@ -31,8 +35,12 @@ function parseComponents (filePath: string) {
       let componentMeta: ComponentMeta
       let usedDirectFallback = false
       const directFile = findComponentFile(name)
+      const ownProps = ownPropsByComponent[name] ?? []
 
-      if (!existsSync(outfile) && directFile) {
+      if (directFile && ownProps.length) {
+        componentMeta = tsconfigChecker.getComponentMeta(directFile)
+        usedDirectFallback = true
+      } else if (!existsSync(outfile) && directFile) {
         componentMeta = tsconfigChecker.getComponentMeta(directFile)
         usedDirectFallback = true
       } else {
@@ -58,7 +66,7 @@ function parseComponents (filePath: string) {
         }
       }
 
-      const meta = parseMeta(componentMeta, usedDirectFallback)
+      const meta = parseMeta(componentMeta, usedDirectFallback, ownProps)
       writeFileSync(outfile, JSON.stringify(meta, null, 2))
     }
   })
@@ -109,7 +117,7 @@ function parseTypeFromSchema(schema: PropertyMetaSchema): string {
 }
 
 // Utilities
-function parseMeta(meta: ComponentMeta, fallbackInherit = false) {
+function parseMeta(meta: ComponentMeta, fallbackInherit = false, ownProps: string[] = []) {
   const props = meta.props
   // Exclude global props
     .filter(prop => !prop.global)
@@ -155,7 +163,7 @@ function parseMeta(meta: ComponentMeta, fallbackInherit = false) {
           return true
         }
       })
-      if (!inherit && fallbackInherit) {
+      if (!inherit && fallbackInherit && !ownProps.includes(name)) {
         inherit = 'reka-ui'
       }
 

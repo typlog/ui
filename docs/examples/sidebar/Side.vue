@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import {
+  Sidebar,
   SidebarBody,
-  SidebarContent,
   SidebarProvider,
   SidebarHeader,
   SidebarInset,
   SidebarRail,
-  SidebarRoot,
   SidebarTrigger,
 } from '#components'
 </script>
@@ -16,16 +15,14 @@ import {
     <SidebarInset class="p-4">
       <SidebarTrigger target="right" />
     </SidebarInset>
-    <SidebarRoot side="right" collapsible="offcanvas" width="13rem">
-      <SidebarContent>
-        <SidebarHeader>
-          <strong data-sidebar-label>Inspector</strong>
-        </SidebarHeader>
-        <SidebarBody class="text-sm text-gray-11">
-          <span data-sidebar-label>Properties appear on the right.</span>
-        </SidebarBody>
-        <SidebarRail />
-      </SidebarContent>
-    </SidebarRoot>
+    <Sidebar side="right" collapsible="offcanvas" width="13rem">
+      <SidebarHeader>
+        <strong data-sidebar-label>Inspector</strong>
+      </SidebarHeader>
+      <SidebarBody class="text-sm text-gray-11">
+        <span data-sidebar-label>Properties appear on the right.</span>
+      </SidebarBody>
+      <SidebarRail />
+    </Sidebar>
   </SidebarProvider>
 </template>

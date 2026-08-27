@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import {
+  Sidebar,
   SidebarBody,
-  SidebarContent,
   SidebarProvider,
   SidebarHeader,
   SidebarInset,
   SidebarRail,
-  SidebarRoot,
   SidebarTrigger,
 } from '#components'
 
@@ -19,20 +18,20 @@ const rightCollapsed = ref(false)
 
 <template>
   <SidebarProvider class="h-80 overflow-hidden rounded-lg border border-gray-5">
-    <SidebarRoot
+    <Sidebar
       v-model:open="leftOpen"
       v-model:collapsed="leftCollapsed"
       collapsible="icon"
       width="13rem"
+      mobile-title="Navigation"
+      mobile-description="Choose a section"
     >
-      <SidebarContent mobile-title="Navigation" mobile-description="Choose a section">
-        <SidebarHeader><strong data-sidebar-label>Workspace</strong></SidebarHeader>
-        <SidebarBody class="text-sm text-gray-11">
-          <span data-sidebar-label>Project navigation</span>
-        </SidebarBody>
-        <SidebarRail />
-      </SidebarContent>
-    </SidebarRoot>
+      <SidebarHeader><strong data-sidebar-label>Workspace</strong></SidebarHeader>
+      <SidebarBody class="text-sm text-gray-11">
+        <span data-sidebar-label>Project navigation</span>
+      </SidebarBody>
+      <SidebarRail />
+    </Sidebar>
 
     <SidebarInset>
       <header class="flex h-12 items-center gap-2 border-b border-gray-4 px-4">
@@ -45,26 +44,26 @@ const rightCollapsed = ref(false)
       </div>
     </SidebarInset>
 
-    <SidebarRoot
+    <Sidebar
       v-model:open="rightOpen"
       v-model:collapsed="rightCollapsed"
       side="right"
       collapsible="offcanvas"
       width="13rem"
+      mobile-title="Inspector"
+      mobile-description="Edit document properties"
     >
-      <SidebarContent mobile-title="Inspector" mobile-description="Edit document properties">
-        <SidebarHeader><strong data-sidebar-label>Inspector</strong></SidebarHeader>
-        <SidebarBody class="flex flex-col gap-3 text-sm">
-          <label data-sidebar-collapsed-hidden class="flex flex-col gap-1">
-            <span class="text-gray-11">Slug</span>
-            <input value="welcome" class="rounded-md border border-gray-6 bg-transparent px-2 py-1.5" />
-          </label>
-          <label data-sidebar-collapsed-hidden class="flex items-center gap-2">
-            <input type="checkbox" checked /> Published
-          </label>
-        </SidebarBody>
-        <SidebarRail />
-      </SidebarContent>
-    </SidebarRoot>
+      <SidebarHeader><strong data-sidebar-label>Inspector</strong></SidebarHeader>
+      <SidebarBody class="flex flex-col gap-3 text-sm">
+        <label data-sidebar-collapsed-hidden class="flex flex-col gap-1">
+          <span class="text-gray-11">Slug</span>
+          <input value="welcome" class="rounded-md border border-gray-6 bg-transparent px-2 py-1.5" />
+        </label>
+        <label data-sidebar-collapsed-hidden class="flex items-center gap-2">
+          <input type="checkbox" checked /> Published
+        </label>
+      </SidebarBody>
+      <SidebarRail />
+    </Sidebar>
   </SidebarProvider>
 </template>

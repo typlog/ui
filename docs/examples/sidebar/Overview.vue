@@ -2,8 +2,8 @@
 import { ref } from 'vue'
 import { Icon } from '@iconify/vue'
 import {
+  Sidebar,
   SidebarBody,
-  SidebarContent,
   SidebarFooter,
   SidebarGroup,
   SidebarGroupLabel,
@@ -14,7 +14,6 @@ import {
   SidebarMenuItem,
   SidebarProvider,
   SidebarRail,
-  SidebarRoot,
   SidebarTrigger,
 } from '#components'
 
@@ -30,37 +29,35 @@ const leftCollapsed = ref(false)
 
 <template>
   <SidebarProvider class="h-112 overflow-hidden rounded-lg border border-gray-5">
-    <SidebarRoot v-model:collapsed="leftCollapsed" collapsible="icon">
-      <SidebarContent class="bg-gray-1">
-        <SidebarHeader>
-          <Icon v-if="!leftCollapsed" icon="lucide:layers" />
-          <div class="mr-auto" data-sidebar-label>
-            <strong>Typlog</strong>
-          </div>
-          <SidebarTrigger />
-        </SidebarHeader>
-        <SidebarBody>
-          <SidebarGroup>
-            <SidebarGroupLabel>Navigation</SidebarGroupLabel>
-            <SidebarMenu>
-              <SidebarMenuItem v-for="(link, index) in links" :key="link.label">
-                <SidebarMenuButton as-child :active="index === 0" :tooltip="link.label">
-                  <a href="#">
-                    <Icon :icon="link.icon" />
-                    <span>{{ link.label }}</span>
-                  </a>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            </SidebarMenu>
-          </SidebarGroup>
-        </SidebarBody>
-        <SidebarFooter>
-          <span class="grid size-8 shrink-0 place-items-center rounded-full bg-gray-4 text-sm">A</span>
-          <span data-sidebar-label class="truncate text-sm">Ada Lovelace</span>
-        </SidebarFooter>
-        <SidebarRail />
-      </SidebarContent>
-    </SidebarRoot>
+    <Sidebar v-model:collapsed="leftCollapsed" collapsible="icon" class="bg-gray-1">
+      <SidebarHeader>
+        <Icon v-if="!leftCollapsed" icon="lucide:layers" />
+        <div class="mr-auto" data-sidebar-label>
+          <strong>Typlog</strong>
+        </div>
+        <SidebarTrigger />
+      </SidebarHeader>
+      <SidebarBody>
+        <SidebarGroup>
+          <SidebarGroupLabel>Navigation</SidebarGroupLabel>
+          <SidebarMenu>
+            <SidebarMenuItem v-for="(link, index) in links" :key="link.label">
+              <SidebarMenuButton as-child :active="index === 0" :tooltip="link.label">
+                <a href="#">
+                  <Icon :icon="link.icon" />
+                  <span>{{ link.label }}</span>
+                </a>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarGroup>
+      </SidebarBody>
+      <SidebarFooter>
+        <span class="grid size-8 shrink-0 place-items-center rounded-full bg-gray-4 text-sm">A</span>
+        <span data-sidebar-label class="truncate text-sm">Ada Lovelace</span>
+      </SidebarFooter>
+      <SidebarRail />
+    </Sidebar>
 
     <SidebarInset>
       <header class="flex h-12 items-center gap-3 border-b border-gray-4 px-4">
@@ -72,24 +69,28 @@ const leftCollapsed = ref(false)
       </div>
     </SidebarInset>
 
-    <SidebarRoot side="right" width="14rem" collapsible="offcanvas">
-      <SidebarContent mobile-title="Inspector" mobile-description="Edit page settings">
-        <SidebarHeader><strong data-sidebar-label>Inspector</strong></SidebarHeader>
-        <SidebarBody class="flex flex-col gap-4 text-sm">
-          <label data-sidebar-collapsed-hidden class="flex flex-col gap-1">
-            <span class="text-gray-11">Title</span>
-            <input value="Overview" class="rounded-md border border-gray-6 bg-transparent px-2 py-1.5" />
-          </label>
-          <label data-sidebar-collapsed-hidden class="flex flex-col gap-1">
-            <span class="text-gray-11">Status</span>
-            <select class="rounded-md border border-gray-6 bg-transparent px-2 py-1.5">
-              <option>Published</option>
-              <option>Draft</option>
-            </select>
-          </label>
-        </SidebarBody>
-        <SidebarRail />
-      </SidebarContent>
-    </SidebarRoot>
+    <Sidebar
+      side="right"
+      width="14rem"
+      collapsible="offcanvas"
+      mobile-title="Inspector"
+      mobile-description="Edit page settings"
+    >
+      <SidebarHeader><strong data-sidebar-label>Inspector</strong></SidebarHeader>
+      <SidebarBody class="flex flex-col gap-4 text-sm">
+        <label data-sidebar-collapsed-hidden class="flex flex-col gap-1">
+          <span class="text-gray-11">Title</span>
+          <input value="Overview" class="rounded-md border border-gray-6 bg-transparent px-2 py-1.5" />
+        </label>
+        <label data-sidebar-collapsed-hidden class="flex flex-col gap-1">
+          <span class="text-gray-11">Status</span>
+          <select class="rounded-md border border-gray-6 bg-transparent px-2 py-1.5">
+            <option>Published</option>
+            <option>Draft</option>
+          </select>
+        </label>
+      </SidebarBody>
+      <SidebarRail />
+    </Sidebar>
   </SidebarProvider>
 </template>

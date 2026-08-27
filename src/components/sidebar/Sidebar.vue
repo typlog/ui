@@ -1,9 +1,10 @@
 <script lang="ts">
 import type { ComputedRef, Ref } from 'vue'
+import type { DialogContentEmits, DialogContentProps } from 'reka-ui'
 import { createContext } from 'reka-ui'
 import type { SidebarController } from './SidebarProvider.vue'
 
-export interface SidebarRootProps {
+export interface SidebarProps extends DialogContentProps {
   /** Controls whether the mobile sidebar is open. */
   open?: boolean
   /** Initial mobile open state when `open` is uncontrolled. @default false */
@@ -24,45 +25,57 @@ export interface SidebarRootProps {
   collapsedWidth?: string
   /** The sidebar width below the mobile breakpoint. @default "18rem" */
   mobileWidth?: string
+  /** Accessible title announced when the sidebar opens on mobile. @default "Navigation" */
+  mobileTitle?: string
+  /** Accessible description announced when the sidebar opens on mobile. @default "Site navigation" */
+  mobileDescription?: string
 }
 
-export interface SidebarRootEmits {
+export type SidebarEmits = DialogContentEmits & {
   /** Emitted when the mobile open state changes. */
   'update:open': [value: boolean]
   /** Emitted when the desktop collapsed state changes. */
   'update:collapsed': [value: boolean]
 }
 
-export interface SidebarRootContext {
+export interface SidebarContext {
   open: ComputedRef<boolean>
   collapsed: ComputedRef<boolean>
   isMobile: Ref<boolean>
   side: Ref<'left' | 'right'>
   variant: Ref<'default' | 'floating' | 'inset'>
   collapsible: Ref<'offcanvas' | 'icon' | 'none'>
-  width: Ref<string>
-  collapsedWidth: Ref<string>
-  mobileWidth: Ref<string>
-  contentId: string
+  panelId: string
   lastTrigger: Ref<HTMLElement | null>
   toggle: () => void
   toggleCollapsed: () => void
   shouldRestoreFocus: () => boolean
 }
 
-export const [injectSidebarRootContext, provideSidebarRootContext]
-  = createContext<SidebarRootContext>('ui:SidebarRoot')
+export const [injectSidebarContext, provideSidebarContext]
+  = createContext<SidebarContext>('ui:Sidebar')
 </script>
 
 <script setup lang="ts">
-import { computed, ref, toRefs, useId, watch } from 'vue'
-import { DialogRoot } from 'reka-ui'
-import { buildPropsClass } from '../util'
+import { computed, nextTick, ref, toRefs, useId, watch } from 'vue'
+import {
+  DialogContent,
+  DialogDescription,
+  DialogOverlay,
+  DialogPortal,
+  DialogRoot,
+  DialogTitle,
+  Primitive,
+} from 'reka-ui'
+import ThemeWrapper from '../provider/ThemeWrapper.vue'
+import { buildPropsClass, useForwardPropsWithout } from '../util'
 import { injectSidebarProviderContext } from './SidebarProvider.vue'
 
 defineOptions({ inheritAttrs: false })
 
-const props = withDefaults(defineProps<SidebarRootProps>(), {
+const props = withDefaults(defineProps<SidebarProps>(), {
+  as: 'aside',
+  disableOutsidePointerEvents: undefined,
   open: undefined,
   defaultOpen: false,
   collapsed: undefined,
@@ -73,16 +86,30 @@ const props = withDefaults(defineProps<SidebarRootProps>(), {
   width: '16rem',
   collapsedWidth: '3.5rem',
   mobileWidth: '18rem',
+  mobileTitle: 'Navigation',
+  mobileDescription: 'Site navigation',
 })
-const emits = defineEmits<SidebarRootEmits>()
+const emits = defineEmits<SidebarEmits>()
+defineSlots<{
+  default?: (props: {
+    /** Current mobile open state. */
+    open: boolean
+    /** Current desktop collapsed state. */
+    collapsed: boolean
+    /** Whether the provider is below the responsive breakpoint. */
+    isMobile: boolean
+    /** Toggles the state appropriate for the current viewport. */
+    toggle: () => void
+  }) => any
+}>()
 const provider = injectSidebarProviderContext()
 
 const internalOpen = ref(props.defaultOpen)
 const internalCollapsed = ref(props.defaultCollapsed)
 const isMobile = provider.isMobile
 const lastTrigger = ref<HTMLElement | null>(null)
-const contentId = `ui-sidebar-${useId()}`
-const { side, variant, collapsible, width, collapsedWidth, mobileWidth } = toRefs(props)
+const panelId = `ui-sidebar-${useId()}`
+const { side, variant, collapsible } = toRefs(props)
 
 const open = computed({
   get: () => props.open ?? internalOpen.value,
@@ -121,7 +148,7 @@ function setOpen(value: boolean) {
 }
 
 function shouldRestoreFocus() {
-  const other = provider.roots[side.value === 'left' ? 'right' : 'left']
+  const other = provider.sidebars[side.value === 'left' ? 'right' : 'left']
   return !other?.open.value
 }
 
@@ -131,7 +158,7 @@ const controller: SidebarController = {
   collapsed,
   collapsible,
   variant,
-  contentId,
+  panelId,
   lastTrigger,
   setOpen,
   toggle,
@@ -147,52 +174,121 @@ watch([open, isMobile], ([isOpen, mobile]) => {
     provider.requestOpen(side.value, controller)
 }, { immediate: true })
 
-provideSidebarRootContext({
+provideSidebarContext({
   open,
   collapsed,
   isMobile,
   side,
   variant,
   collapsible,
-  width,
-  collapsedWidth,
-  mobileWidth,
-  contentId,
+  panelId,
   lastTrigger,
   toggle,
   toggleCollapsed,
   shouldRestoreFocus,
 })
 
+const sidebarProps = [
+  'open',
+  'defaultOpen',
+  'collapsed',
+  'defaultCollapsed',
+  'side',
+  'variant',
+  'collapsible',
+  'width',
+  'collapsedWidth',
+  'mobileWidth',
+  'mobileTitle',
+  'mobileDescription',
+]
+const forwardedDialogProps = useForwardPropsWithout(props, sidebarProps)
 const resetClass = buildPropsClass(props, ['side', 'variant', 'collapsible'])
-const rootStyle = computed(() => ({
+const mobileClass = computed(() => [
+  `r-side-${props.side}`,
+  `r-variant-${props.variant}`,
+])
+const sidebarStyle = computed(() => ({
   '--sidebar-width': props.width,
   '--sidebar-collapsed-width': props.collapsedWidth,
   '--sidebar-mobile-width': props.mobileWidth,
 }))
+
+function closeAutoFocus(event: Event) {
+  emits('closeAutoFocus', event)
+  if (event.defaultPrevented)
+    return
+
+  if (!shouldRestoreFocus()) {
+    event.preventDefault()
+    return
+  }
+
+  const trigger = lastTrigger.value
+  if (trigger?.isConnected) {
+    event.preventDefault()
+    nextTick(() => trigger.focus())
+  }
+}
 </script>
 
 <template>
   <DialogRoot :open="open" @update:open="setOpen">
     <div
-      v-bind="$attrs"
-      class="ui-SidebarRoot"
+      v-if="!isMobile"
+      class="ui-Sidebar"
       :class="resetClass"
-      :style="rootStyle"
-      :data-mobile="isMobile"
-      :data-open="open"
+      :style="sidebarStyle"
       :data-collapsed="collapsed"
-      :data-side="props.side"
-      :data-variant="props.variant"
-      :data-collapsible="props.collapsible"
     >
-      <slot
-        :open="open"
-        :collapsed="collapsed"
-        :is-mobile="isMobile"
-        :toggle="toggle"
-      ></slot>
+      <Primitive
+        v-bind="$attrs"
+        :id="panelId"
+        :as="props.as"
+        :as-child="props.asChild"
+        class="ui-SidebarPanel r-desktop"
+      >
+        <slot
+          :open="open"
+          :collapsed="collapsed"
+          :is-mobile="isMobile"
+          :toggle="toggle"
+        ></slot>
+      </Primitive>
     </div>
+
+    <DialogPortal v-else>
+      <ThemeWrapper>
+        <DialogOverlay class="ui-SidebarOverlay" :force-mount="props.forceMount">
+          <DialogContent
+            v-bind="{ ...$attrs, ...forwardedDialogProps }"
+            :id="panelId"
+            class="ui-SidebarPanel r-mobile"
+            :class="mobileClass"
+            :style="sidebarStyle"
+            @close-auto-focus="closeAutoFocus"
+            @escape-key-down="emits('escapeKeyDown', $event)"
+            @focus-outside="emits('focusOutside', $event)"
+            @interact-outside="emits('interactOutside', $event)"
+            @open-auto-focus="emits('openAutoFocus', $event)"
+            @pointer-down-outside="emits('pointerDownOutside', $event)"
+          >
+            <slot
+              :open="open"
+              :collapsed="collapsed"
+              :is-mobile="isMobile"
+              :toggle="toggle"
+            ></slot>
+            <DialogTitle class="ui-SidebarVisuallyHidden">
+              {{ props.mobileTitle }}
+            </DialogTitle>
+            <DialogDescription class="ui-SidebarVisuallyHidden">
+              {{ props.mobileDescription }}
+            </DialogDescription>
+          </DialogContent>
+        </DialogOverlay>
+      </ThemeWrapper>
+    </DialogPortal>
   </DialogRoot>
 </template>
 

@@ -2,8 +2,8 @@
 import { Icon } from '@iconify/vue'
 import {
   Badge,
+  Sidebar,
   SidebarBody,
-  SidebarContent,
   SidebarGroup,
   SidebarGroupLabel,
   SidebarHeader,
@@ -12,7 +12,6 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
-  SidebarRoot,
   SidebarTrigger,
 } from '#components'
 
@@ -47,38 +46,36 @@ const groups: NavigationGroup[] = [
 
 <template>
   <SidebarProvider class="h-80 overflow-hidden rounded-lg border border-gray-5">
-    <SidebarRoot collapsible="icon">
-      <SidebarContent>
-        <SidebarHeader><strong data-sidebar-label>Publication</strong></SidebarHeader>
-        <SidebarBody>
-          <SidebarGroup v-for="group in groups" :key="group.label">
-            <SidebarGroupLabel>{{ group.label }}</SidebarGroupLabel>
-            <SidebarMenu>
-              <SidebarMenuItem
-                v-for="link in group.links"
-                :key="link.label"
+    <Sidebar collapsible="icon">
+      <SidebarHeader><strong data-sidebar-label>Publication</strong></SidebarHeader>
+      <SidebarBody>
+        <SidebarGroup v-for="group in groups" :key="group.label">
+          <SidebarGroupLabel>{{ group.label }}</SidebarGroupLabel>
+          <SidebarMenu>
+            <SidebarMenuItem
+              v-for="link in group.links"
+              :key="link.label"
+            >
+              <SidebarMenuButton
+                as-child
+                :active="link.label === 'Inbox'"
+                :tooltip="link.label"
               >
-                <SidebarMenuButton
-                  as-child
-                  :active="link.label === 'Inbox'"
-                  :tooltip="link.label"
-                >
-                  <a href="#">
-                    <Icon :icon="link.icon" />
-                    <span>{{ link.label }}</span>
-                    <Badge
-                      v-if="link.count"
-                    >
-                      {{ link.count }}
-                    </Badge>
-                  </a>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            </SidebarMenu>
-          </SidebarGroup>
-        </SidebarBody>
-      </SidebarContent>
-    </SidebarRoot>
+                <a href="#">
+                  <Icon :icon="link.icon" />
+                  <span>{{ link.label }}</span>
+                  <Badge
+                    v-if="link.count"
+                  >
+                    {{ link.count }}
+                  </Badge>
+                </a>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarGroup>
+      </SidebarBody>
+    </Sidebar>
     <SidebarInset class="p-4"><SidebarTrigger /></SidebarInset>
   </SidebarProvider>
 </template>

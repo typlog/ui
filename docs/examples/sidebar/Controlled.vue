@@ -2,12 +2,11 @@
 import { ref } from 'vue'
 import {
   Button,
+  Sidebar,
   SidebarBody,
-  SidebarContent,
   SidebarProvider,
   SidebarHeader,
   SidebarInset,
-  SidebarRoot,
   SidebarTrigger,
 } from '#components'
 
@@ -22,16 +21,14 @@ const collapsed = ref(false)
       <Button size="1" variant="soft" @click="collapsed = !collapsed">Desktop collapsed: {{ collapsed }}</Button>
     </div>
     <SidebarProvider class="h-72 overflow-hidden rounded-lg border border-gray-5">
-      <SidebarRoot
+      <Sidebar
         v-model:open="open"
         v-model:collapsed="collapsed"
         width="13rem"
       >
-        <SidebarContent>
-          <SidebarHeader><strong>Controlled</strong></SidebarHeader>
-          <SidebarBody class="text-sm text-gray-11">Both states are owned by the parent.</SidebarBody>
-        </SidebarContent>
-      </SidebarRoot>
+        <SidebarHeader><strong>Controlled</strong></SidebarHeader>
+        <SidebarBody class="text-sm text-gray-11">Both states are owned by the parent.</SidebarBody>
+      </Sidebar>
       <SidebarInset class="p-4">
         <SidebarTrigger />
       </SidebarInset>

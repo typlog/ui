@@ -2,8 +2,8 @@
 import { Icon } from '@iconify/vue'
 import {
   Badge,
+  Sidebar,
   SidebarBody,
-  SidebarContent,
   SidebarGroup,
   SidebarGroupLabel,
   SidebarInset,
@@ -11,7 +11,6 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
-  SidebarRoot,
 } from '#components'
 
 const sizes = [
@@ -23,30 +22,28 @@ const sizes = [
 
 <template>
   <SidebarProvider class="h-112 overflow-hidden rounded-lg border border-gray-5">
-    <SidebarRoot width="15rem" collapsible="none">
-      <SidebarContent>
-        <SidebarBody>
-          <SidebarGroup v-for="size in sizes" :key="size.value">
-            <SidebarGroupLabel>{{ size.label }} · size {{ size.value }}</SidebarGroupLabel>
-            <SidebarMenu :size="size.value">
-              <SidebarMenuItem>
-                <SidebarMenuButton active>
-                  <Icon icon="lucide:inbox" />
-                  <span>Inbox</span>
-                  <Badge>12</Badge>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-              <SidebarMenuItem>
-                <SidebarMenuButton>
-                  <Icon icon="lucide:file-text" />
-                  <span>Drafts</span>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            </SidebarMenu>
-          </SidebarGroup>
-        </SidebarBody>
-      </SidebarContent>
-    </SidebarRoot>
+    <Sidebar width="15rem" collapsible="none">
+      <SidebarBody>
+        <SidebarGroup v-for="size in sizes" :key="size.value">
+          <SidebarGroupLabel>{{ size.label }} · size {{ size.value }}</SidebarGroupLabel>
+          <SidebarMenu :size="size.value">
+            <SidebarMenuItem>
+              <SidebarMenuButton active>
+                <Icon icon="lucide:inbox" />
+                <span>Inbox</span>
+                <Badge>12</Badge>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+            <SidebarMenuItem>
+              <SidebarMenuButton>
+                <Icon icon="lucide:file-text" />
+                <span>Drafts</span>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarGroup>
+      </SidebarBody>
+    </Sidebar>
     <SidebarInset class="p-4 text-sm text-gray-11">
       Size is configured once for each menu tree.
     </SidebarInset>
