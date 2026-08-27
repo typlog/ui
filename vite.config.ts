@@ -12,7 +12,7 @@ export default defineConfig({
     dts({
       tsconfigPath: 'tsconfig.build.json',
       cleanVueFileName: true,
-      rollupTypes: true,
+      bundleTypes: true,
     }),
   ],
   resolve: {
@@ -21,8 +21,8 @@ export default defineConfig({
       '@vue/runtime-core',
     ],
     alias: {
-      '#components': resolve(__dirname, 'src/components'),
-      '#addons': resolve(__dirname, 'src/addons'),
+      '#components': resolve(import.meta.dirname, 'src/components'),
+      '#addons': resolve(import.meta.dirname, 'src/addons'),
     },
   },
   build: {
@@ -31,10 +31,10 @@ export default defineConfig({
     lib: {
       formats: ['es'],
       entry: {
-        base: resolve(__dirname, 'src/styles/index.css'),
-        tailwind: resolve(__dirname, 'tailwind/index.css'),
-        components: resolve(__dirname, 'src/components/index.ts'),
-        addons: resolve(__dirname, 'src/addons/index.ts'),
+        base: resolve(import.meta.dirname, 'src/styles/index.css'),
+        tailwind: resolve(import.meta.dirname, 'tailwind/index.css'),
+        components: resolve(import.meta.dirname, 'src/components/index.ts'),
+        addons: resolve(import.meta.dirname, 'src/addons/index.ts'),
       },
     },
     rollupOptions: {

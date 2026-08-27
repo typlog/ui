@@ -19,4 +19,4 @@ Released on August 27, 2026.
 
 ### Tooling
 
-- Improved type declaration generation and release workflows.
+- Upgraded the build, lint, icon, Markdown, and type declaration toolchain, including Vite 8 and ESLint 10.

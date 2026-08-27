@@ -45,7 +45,7 @@ export function markdownExampleTagBlock(md: MarkdownRenderer) {
 
       const componentName = formatComponentName(props.name)
       const srcPath = resolve(import.meta.dirname, '../../docs/examples', props.name)
-      const { path: mdPath } = state.env as MarkdownEnv
+      const { path: mdPath } = state.env as unknown as MarkdownEnv
       const importPath = relative(dirname(mdPath), srcPath)
       insertComponentImport(`import ${componentName} from "${importPath}"`)
 
