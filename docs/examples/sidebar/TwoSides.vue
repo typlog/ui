@@ -19,6 +19,7 @@ const rightCollapsed = ref(false)
 <template>
   <SidebarProvider class="h-80 overflow-hidden rounded-lg border border-gray-5">
     <Sidebar
+      v-slot="{ collapsed, isMobile }"
       v-model:open="leftOpen"
       v-model:collapsed="leftCollapsed"
       collapsible="icon"
@@ -26,9 +27,9 @@ const rightCollapsed = ref(false)
       mobile-title="Navigation"
       mobile-description="Choose a section"
     >
-      <SidebarHeader><strong data-sidebar-label>Workspace</strong></SidebarHeader>
+      <SidebarHeader><strong v-if="isMobile || !collapsed">Workspace</strong></SidebarHeader>
       <SidebarBody class="text-sm text-gray-11">
-        <span data-sidebar-label>Project navigation</span>
+        <span v-if="isMobile || !collapsed">Project navigation</span>
       </SidebarBody>
       <SidebarRail />
     </Sidebar>
@@ -53,13 +54,13 @@ const rightCollapsed = ref(false)
       mobile-title="Inspector"
       mobile-description="Edit document properties"
     >
-      <SidebarHeader><strong data-sidebar-label>Inspector</strong></SidebarHeader>
+      <SidebarHeader><strong>Inspector</strong></SidebarHeader>
       <SidebarBody class="flex flex-col gap-3 text-sm">
-        <label data-sidebar-collapsed-hidden class="flex flex-col gap-1">
+        <label class="flex flex-col gap-1">
           <span class="text-gray-11">Slug</span>
           <input value="welcome" class="rounded-md border border-gray-6 bg-transparent px-2 py-1.5" />
         </label>
-        <label data-sidebar-collapsed-hidden class="flex items-center gap-2">
+        <label class="flex items-center gap-2">
           <input type="checkbox" checked /> Published
         </label>
       </SidebarBody>

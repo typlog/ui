@@ -11,13 +11,13 @@ import {
 
 <template>
   <SidebarProvider class="h-72 overflow-hidden rounded-lg border border-gray-5">
-    <Sidebar collapsible="icon" width="13rem">
+    <Sidebar v-slot="{ collapsed, isMobile }" collapsible="icon" width="13rem">
       <SidebarHeader>
         <span class="grid size-7 shrink-0 place-items-center rounded bg-accent-9 text-white">T</span>
-        <strong data-sidebar-label>Typlog</strong>
+        <strong v-if="isMobile || !collapsed">Typlog</strong>
       </SidebarHeader>
       <SidebarBody class="text-sm text-gray-11">
-        <span data-sidebar-label>Hover or focus the sidebar edge, then activate it.</span>
+        <span v-if="isMobile || !collapsed">Hover or focus the sidebar edge, then activate it.</span>
       </SidebarBody>
       <SidebarRail />
     </Sidebar>

@@ -21,6 +21,8 @@ const tsconfigChecker = createChecker(
 
 const ownPropsByComponent: Record<string, string[]> = {
   Sidebar: ['open', 'defaultOpen', 'collapsed', 'defaultCollapsed', 'side', 'variant', 'collapsible', 'width', 'collapsedWidth', 'mobileWidth', 'mobileTitle', 'mobileDescription'],
+  SidebarMenuButton: ['icon', 'text', 'trailingIcon', 'active', 'disabled', 'tooltip'],
+  SidebarMenuSubButton: ['icon', 'text', 'trailingIcon', 'active', 'disabled'],
 }
 
 parseComponents(resolve(__dirname, '../src/components/index.ts'))

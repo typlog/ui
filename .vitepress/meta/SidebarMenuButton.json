@@ -32,8 +32,29 @@
       "default": "false"
     },
     {
+      "name": "icon",
+      "description": "<p>Iconify icon rendered before the text.</p>",
+      "type": "string",
+      "required": false,
+      "inherit": null
+    },
+    {
+      "name": "text",
+      "description": "<p>Primary button text. Also supplies the collapsed tooltip by default.</p>",
+      "type": "string",
+      "required": false,
+      "inherit": null
+    },
+    {
       "name": "tooltip",
-      "description": "<p>Label shown when an icon-only collapsed item is hovered or focused.</p>",
+      "description": "<p>Label shown when an icon-only collapsed item is hovered or focused.\nSet to <code>false</code> to disable the tooltip inferred from <code>text</code>.</p>",
+      "type": "string | false",
+      "required": false,
+      "inherit": null
+    },
+    {
+      "name": "trailingIcon",
+      "description": "<p>Iconify icon rendered in the trailing position.</p>",
       "type": "string",
       "required": false,
       "inherit": null

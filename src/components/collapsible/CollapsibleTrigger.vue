@@ -19,6 +19,14 @@ const forwarded = useForwardPropsWithout(props, ['indicator'])
 
 <template>
   <CollapsibleTrigger
+    v-if="props.asChild"
+    class="ui-CollapsibleTrigger"
+    v-bind="forwarded"
+  >
+    <slot></slot>
+  </CollapsibleTrigger>
+  <CollapsibleTrigger
+    v-else
     class="ui-CollapsibleTrigger"
     v-bind="forwarded"
   >

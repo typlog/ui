@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
 import {
   Badge,
   Sidebar,
@@ -28,17 +27,12 @@ const sizes = [
           <SidebarGroupLabel>{{ size.label }} · size {{ size.value }}</SidebarGroupLabel>
           <SidebarMenu :size="size.value">
             <SidebarMenuItem>
-              <SidebarMenuButton active>
-                <Icon icon="lucide:inbox" />
-                <span>Inbox</span>
-                <Badge>12</Badge>
+              <SidebarMenuButton active icon="lucide:inbox" text="Inbox">
+                <template #trailing><Badge>12</Badge></template>
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
-              <SidebarMenuButton>
-                <Icon icon="lucide:file-text" />
-                <span>Drafts</span>
-              </SidebarMenuButton>
+              <SidebarMenuButton icon="lucide:file-text" text="Drafts" />
             </SidebarMenuItem>
           </SidebarMenu>
         </SidebarGroup>

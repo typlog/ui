@@ -41,6 +41,8 @@ Use at most one `Sidebar` per `side` in a provider. Left and right state is inde
 
 `SidebarHeader` and `SidebarFooter` provide layout and spacing only. Add a border utility or `Separator` when a visual divider is needed.
 
+The default `Sidebar` slot exposes `collapsed` and `isMobile`. Use them to conditionally render arbitrary header or body content in desktop icon-collapsed mode while keeping the complete mobile panel visible.
+
 <PropsTable name="SidebarInset" />
 
 ### Menu structure
@@ -119,12 +121,16 @@ The rail is a keyboard-accessible desktop control placed on the panel edge. An e
 
 ### Navigation composition
 
-Sidebar intentionally does not accept navigation item data or depend on Vue Router. Compose links and buttons with `SidebarGroup`, `SidebarMenu`, and their item components. Set `active` explicitly and configure size or accent color at the `SidebarMenu` boundary rather than on individual buttons. A `SidebarMenuButton` tooltip is enabled only on desktop when its sidebar uses icon collapse and is currently collapsed; the tooltip opens toward the content area. In that state, visual text is clipped rather than removed from the DOM, so the button keeps its accessible label.
+Sidebar intentionally does not accept navigation item data or depend on Vue Router. Compose links and buttons with `SidebarGroup`, `SidebarMenu`, and their item components. Set `active` explicitly and configure size or accent color at the `SidebarMenu` boundary rather than on individual buttons.
+
+Use `icon`, `text`, and `trailingIcon` for common Iconify content, or replace those parts with the `icon`, `text`, and `trailing` slots. The default slot is shorthand for `text`. Use `as="a"` or `:as="RouterLink"` for structured links. `asChild` remains available as a raw single-child escape hatch and does not add the structured content wrappers.
+
+A `SidebarMenuButton` tooltip is enabled only on desktop when its sidebar uses icon collapse and is currently collapsed; the tooltip opens toward the content area. When `tooltip` is omitted, a `text` prop also supplies the tooltip label. Set `:tooltip="false"` to opt out. In the collapsed state, structured text is visually clipped rather than removed from the DOM, so the button keeps its accessible name; trailing content is hidden and only the leading icon remains visible.
 
 <Example name="sidebar/Navigation.vue" variant="full" />
 
 ### Submenu composition
 
-`SidebarMenuSub` provides only nested list semantics and indentation. Compose `CollapsibleRoot`, `CollapsibleTrigger`, and `CollapsibleContent` when a submenu needs expandable state. The entire submenu is hidden visually in desktop icon-collapsed mode.
+`SidebarMenuSub` provides only nested list semantics and indentation. Its button supports the same `icon`, `text`, `trailingIcon`, and named content slots as `SidebarMenuButton`. Compose `CollapsibleRoot`, an as-child `CollapsibleTrigger`, and `CollapsibleContent` when a submenu needs expandable state; place the structured `SidebarMenuButton` directly inside the trigger and put `CollapsibleIndicator` in its `trailing` slot. A general `trailingIcon` remains static, while the explicit indicator follows the collapsible state. The entire submenu is hidden visually in desktop icon-collapsed mode.
 
 <Example name="sidebar/Submenu.vue" variant="full" />

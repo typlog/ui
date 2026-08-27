@@ -2,12 +2,21 @@
 import type { PrimitiveProps } from 'reka-ui'
 
 export interface SidebarMenuButtonProps extends PrimitiveProps {
+  /** Iconify icon rendered before the text. */
+  icon?: string
+  /** Primary button text. Also supplies the collapsed tooltip by default. */
+  text?: string
+  /** Iconify icon rendered in the trailing position. */
+  trailingIcon?: string
   /** Marks this item as the current selection. */
   active?: boolean
   /** Prevents interaction with this item. */
   disabled?: boolean
-  /** Label shown when an icon-only collapsed item is hovered or focused. */
-  tooltip?: string
+  /**
+   * Label shown when an icon-only collapsed item is hovered or focused.
+   * Set to `false` to disable the tooltip inferred from `text`.
+   */
+  tooltip?: string | false
 }
 </script>
 
@@ -17,6 +26,7 @@ import { Primitive } from 'reka-ui'
 import Tooltip from '../tooltip/Tooltip.vue'
 import { injectSidebarMenuContext } from './SidebarMenu.vue'
 import { injectSidebarContext } from './Sidebar.vue'
+import SidebarMenuButtonContent from './SidebarMenuButtonContent.vue'
 
 defineOptions({ inheritAttrs: false })
 
@@ -25,9 +35,20 @@ const props = withDefaults(defineProps<SidebarMenuButtonProps>(), {
   active: false,
   disabled: false,
 })
+defineSlots<{
+  /** Shorthand for the `text` slot. */
+  default?: () => any
+  /** Replaces the leading `icon` prop. */
+  icon?: () => any
+  /** Replaces the `text` prop. */
+  text?: () => any
+  /** Replaces the `trailingIcon` prop. */
+  trailing?: () => any
+}>()
 const context = injectSidebarContext()
 injectSidebarMenuContext()
-const showTooltip = computed(() => Boolean(props.tooltip)
+const tooltip = computed(() => props.tooltip === false ? undefined : props.tooltip ?? props.text)
+const showTooltip = computed(() => Boolean(tooltip.value)
   && !props.disabled
   && !context.isMobile.value
   && context.collapsible.value === 'icon'
@@ -46,7 +67,7 @@ function preventDisabled(event: MouseEvent) {
   <Tooltip
     v-if="showTooltip"
     as-child
-    :content="props.tooltip"
+    :content="tooltip"
     :side="tooltipSide"
     :side-offset="8"
   >
@@ -62,7 +83,18 @@ function preventDisabled(event: MouseEvent) {
       :aria-disabled="props.disabled ? true : undefined"
       @click="preventDisabled"
     >
-      <slot></slot>
+      <slot v-if="props.asChild"></slot>
+      <SidebarMenuButtonContent
+        v-else
+        :icon="props.icon"
+        :text="props.text"
+        :trailing-icon="props.trailingIcon"
+      >
+        <template v-if="$slots.icon" #icon><slot name="icon"></slot></template>
+        <template v-if="$slots.text" #text><slot name="text"></slot></template>
+        <template v-if="$slots.default" #default><slot></slot></template>
+        <template v-if="$slots.trailing" #trailing><slot name="trailing"></slot></template>
+      </SidebarMenuButtonContent>
     </Primitive>
   </Tooltip>
   <Primitive
@@ -78,6 +110,17 @@ function preventDisabled(event: MouseEvent) {
     :aria-disabled="props.disabled ? true : undefined"
     @click="preventDisabled"
   >
-    <slot></slot>
+    <slot v-if="props.asChild"></slot>
+    <SidebarMenuButtonContent
+      v-else
+      :icon="props.icon"
+      :text="props.text"
+      :trailing-icon="props.trailingIcon"
+    >
+      <template v-if="$slots.icon" #icon><slot name="icon"></slot></template>
+      <template v-if="$slots.text" #text><slot name="text"></slot></template>
+      <template v-if="$slots.default" #default><slot></slot></template>
+      <template v-if="$slots.trailing" #trailing><slot name="trailing"></slot></template>
+    </SidebarMenuButtonContent>
   </Primitive>
 </template>

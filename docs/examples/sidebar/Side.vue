@@ -17,10 +17,10 @@ import {
     </SidebarInset>
     <Sidebar side="right" collapsible="offcanvas" width="13rem">
       <SidebarHeader>
-        <strong data-sidebar-label>Inspector</strong>
+        <strong>Inspector</strong>
       </SidebarHeader>
       <SidebarBody class="text-sm text-gray-11">
-        <span data-sidebar-label>Properties appear on the right.</span>
+        <span>Properties appear on the right.</span>
       </SidebarBody>
       <SidebarRail />
     </Sidebar>

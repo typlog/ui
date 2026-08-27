@@ -30,6 +30,27 @@
       "required": false,
       "inherit": null,
       "default": "false"
+    },
+    {
+      "name": "icon",
+      "description": "<p>Iconify icon rendered before the text.</p>",
+      "type": "string",
+      "required": false,
+      "inherit": null
+    },
+    {
+      "name": "text",
+      "description": "<p>Primary button text.</p>",
+      "type": "string",
+      "required": false,
+      "inherit": null
+    },
+    {
+      "name": "trailingIcon",
+      "description": "<p>Iconify icon rendered in the trailing position.</p>",
+      "type": "string",
+      "required": false,
+      "inherit": null
     }
   ],
   "events": [],

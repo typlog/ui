@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
 import {
   Badge,
   Sidebar,
@@ -46,8 +45,8 @@ const groups: NavigationGroup[] = [
 
 <template>
   <SidebarProvider class="h-80 overflow-hidden rounded-lg border border-gray-5">
-    <Sidebar collapsible="icon">
-      <SidebarHeader><strong data-sidebar-label>Publication</strong></SidebarHeader>
+    <Sidebar v-slot="{ collapsed, isMobile }" collapsible="icon">
+      <SidebarHeader><strong v-if="isMobile || !collapsed">Publication</strong></SidebarHeader>
       <SidebarBody>
         <SidebarGroup v-for="group in groups" :key="group.label">
           <SidebarGroupLabel>{{ group.label }}</SidebarGroupLabel>
@@ -57,19 +56,19 @@ const groups: NavigationGroup[] = [
               :key="link.label"
             >
               <SidebarMenuButton
-                as-child
+                as="a"
+                href="#"
                 :active="link.label === 'Inbox'"
-                :tooltip="link.label"
+                :icon="link.icon"
+                :text="link.label"
               >
-                <a href="#">
-                  <Icon :icon="link.icon" />
-                  <span>{{ link.label }}</span>
+                <template #trailing>
                   <Badge
                     v-if="link.count"
                   >
                     {{ link.count }}
                   </Badge>
-                </a>
+                </template>
               </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>

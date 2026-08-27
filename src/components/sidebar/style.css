@@ -228,11 +228,6 @@
     display: none;
   }
 
-  .ui-Sidebar:where(.r-collapsible-icon)[data-collapsed='true'] [data-sidebar-label],
-  .ui-Sidebar:where(.r-collapsible-icon)[data-collapsed='true'] [data-sidebar-collapsed-hidden] {
-    display: none;
-  }
-
   .ui-Sidebar:where(.r-collapsible-icon)[data-collapsed='true'] .ui-SidebarHeader,
   .ui-Sidebar:where(.r-collapsible-icon)[data-collapsed='true'] .ui-SidebarFooter {
     justify-content: center;
@@ -273,7 +268,7 @@
     display: flex;
     flex-direction: column;
     gap: var(--sidebar-menu-list-gap);
-    min-width: 0;
+    width: 100%;
   }
 
   .ui-SidebarMenu:where(.r-size-1) {
@@ -375,22 +370,55 @@
     width: 100%;
   }
 
-  .ui-SidebarMenuButton > :where(svg, [data-icon]),
-  .ui-SidebarMenuButton .ui-CollapsibleTriggerText > :where(svg, [data-icon]) {
+  .ui-SidebarMenuButtonIcon,
+  .ui-SidebarMenuButtonTrailing,
+  .ui-SidebarMenuSubButtonIcon,
+  .ui-SidebarMenuSubButtonTrailing {
+    align-items: center;
+    display: inline-flex;
     flex: 0 0 auto;
+    justify-content: center;
+  }
+
+  .ui-SidebarMenuButtonIconGraphic,
+  .ui-SidebarMenuButtonTrailingIcon {
     height: var(--sidebar-menu-icon-size);
     width: var(--sidebar-menu-icon-size);
   }
 
-  .ui-SidebarMenuSubButton > :where(svg, [data-icon]) {
-    flex: 0 0 auto;
+  .ui-SidebarMenuSubButtonIconGraphic,
+  .ui-SidebarMenuSubButtonTrailingIcon {
     height: var(--sidebar-menu-sub-icon-size);
     width: var(--sidebar-menu-sub-icon-size);
   }
 
-  .ui-SidebarMenuButton > .ui-Badge {
-    flex: 0 0 auto;
+  .ui-SidebarMenuButtonText,
+  .ui-SidebarMenuSubButtonText {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .ui-SidebarMenuButtonTrailing,
+  .ui-SidebarMenuSubButtonTrailing {
     margin-inline-start: auto;
+  }
+
+  .ui-SidebarMenuButtonTrailing > .ui-CollapsibleIndicator {
+    block-size: var(--sidebar-menu-icon-size);
+    color: var(--gray-10);
+    flex: 0 0 auto;
+    font-size: var(--sidebar-menu-icon-size);
+    inline-size: var(--sidebar-menu-icon-size);
+  }
+
+  .ui-SidebarMenuSubButtonTrailing > .ui-CollapsibleIndicator {
+    block-size: var(--sidebar-menu-sub-icon-size);
+    color: var(--gray-10);
+    flex: 0 0 auto;
+    font-size: var(--sidebar-menu-sub-icon-size);
+    inline-size: var(--sidebar-menu-sub-icon-size);
   }
 
   .ui-SidebarMenuButton .ui-CollapsibleTriggerText {
@@ -471,8 +499,8 @@
     text-overflow: clip;
   }
 
-  .ui-Sidebar:where(.r-collapsible-icon)[data-collapsed='true'] .ui-SidebarMenuButton > :not(svg, [data-icon], .ui-CollapsibleTriggerText, .ui-CollapsibleIndicator),
-  .ui-Sidebar:where(.r-collapsible-icon)[data-collapsed='true'] .ui-SidebarMenuButton .ui-CollapsibleTriggerText > :not(svg, [data-icon]) {
+  .ui-Sidebar:where(.r-collapsible-icon)[data-collapsed='true'] .ui-SidebarMenuButtonText,
+  .ui-Sidebar:where(.r-collapsible-icon)[data-collapsed='true'] .ui-SidebarMenuButtonTrailing {
     border: 0;
     clip: rect(0, 0, 0, 0);
     clip-path: inset(50%);
@@ -483,14 +511,6 @@
     position: absolute;
     white-space: nowrap;
     width: 1px;
-  }
-
-  .ui-Sidebar:where(.r-collapsible-icon)[data-collapsed='true'] .ui-SidebarMenuButton .ui-CollapsibleTriggerText {
-    display: contents;
-  }
-
-  .ui-Sidebar:where(.r-collapsible-icon)[data-collapsed='true'] .ui-SidebarMenuButton .ui-CollapsibleTriggerText > :where(svg, [data-icon]) {
-    flex: 0 0 auto;
   }
 
   .ui-Sidebar:where(.r-collapsible-icon)[data-collapsed='true'] .ui-SidebarMenuButton > .ui-CollapsibleIndicator {

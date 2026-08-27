@@ -18,13 +18,13 @@ const modes = ['offcanvas', 'icon', 'none'] as const
       :key="mode"
       class="h-64 overflow-hidden rounded-lg border border-gray-5"
     >
-      <Sidebar :collapsible="mode" width="10rem">
+      <Sidebar v-slot="{ collapsed, isMobile }" :collapsible="mode" width="10rem">
         <SidebarHeader>
           <span class="grid size-7 shrink-0 place-items-center rounded bg-accent-9 text-white">T</span>
-          <strong data-sidebar-label>{{ mode }}</strong>
+          <strong v-if="isMobile || !collapsed">{{ mode }}</strong>
         </SidebarHeader>
         <SidebarBody class="text-sm text-gray-11">
-          <p data-sidebar-label>The sidebar uses the {{ mode }} collapse mode.</p>
+          <p v-if="isMobile || !collapsed">The sidebar uses the {{ mode }} collapse mode.</p>
         </SidebarBody>
       </Sidebar>
       <SidebarInset>

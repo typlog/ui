@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
 import {
   CollapsibleContent,
+  CollapsibleIndicator,
   CollapsibleRoot,
   CollapsibleTrigger,
   Sidebar,
@@ -28,30 +28,27 @@ import {
           <SidebarGroupLabel>Workspace</SidebarGroupLabel>
           <SidebarMenu>
             <CollapsibleRoot :as="SidebarMenuItem" default-open>
-              <CollapsibleTrigger :as="SidebarMenuButton" tooltip="Projects">
-                <Icon icon="lucide:folder" />
-                <span>Projects</span>
+              <CollapsibleTrigger as-child>
+                <SidebarMenuButton
+                  icon="lucide:folder"
+                  text="Projects"
+                >
+                  <template #trailing><CollapsibleIndicator /></template>
+                </SidebarMenuButton>
               </CollapsibleTrigger>
               <CollapsibleContent>
                 <SidebarMenuSub>
                   <SidebarMenuSubItem>
-                    <SidebarMenuSubButton as-child active>
-                      <a href="#">Typlog UI</a>
-                    </SidebarMenuSubButton>
+                    <SidebarMenuSubButton as="a" href="#" text="Typlog UI" active />
                   </SidebarMenuSubItem>
                   <SidebarMenuSubItem>
-                    <SidebarMenuSubButton as-child>
-                      <a href="#">Documentation</a>
-                    </SidebarMenuSubButton>
+                    <SidebarMenuSubButton as="a" href="#" text="Documentation" />
                   </SidebarMenuSubItem>
                 </SidebarMenuSub>
               </CollapsibleContent>
             </CollapsibleRoot>
             <SidebarMenuItem>
-              <SidebarMenuButton tooltip="Members">
-                <Icon icon="lucide:users" />
-                <span>Members</span>
-              </SidebarMenuButton>
+              <SidebarMenuButton icon="lucide:users" text="Members" />
             </SidebarMenuItem>
           </SidebarMenu>
         </SidebarGroup>

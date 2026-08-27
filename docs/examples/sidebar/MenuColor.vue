@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
 import {
   Sidebar,
   SidebarBody,
@@ -26,16 +25,14 @@ const menus = [
           <SidebarGroupLabel>{{ menu.label }}</SidebarGroupLabel>
           <SidebarMenu :color="menu.color">
             <SidebarMenuItem>
-              <SidebarMenuButton active>
-                <Icon :icon="menu.icon" />
-                <span>{{ menu.label }} overview</span>
-              </SidebarMenuButton>
+              <SidebarMenuButton
+                active
+                :icon="menu.icon"
+                :text="`${menu.label} overview`"
+              />
             </SidebarMenuItem>
             <SidebarMenuItem>
-              <SidebarMenuButton>
-                <Icon icon="lucide:settings" />
-                <span>Settings</span>
-              </SidebarMenuButton>
+              <SidebarMenuButton icon="lucide:settings" text="Settings" />
             </SidebarMenuItem>
           </SidebarMenu>
         </SidebarGroup>
