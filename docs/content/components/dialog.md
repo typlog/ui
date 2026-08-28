@@ -37,6 +37,10 @@ Wraps the control that will open the dialog. Usually used with `Button`:
 
 ### DialogPopup
 
+Use the `ui` prop to add classes to the popup's stable visual parts: `overlay`,
+`wrapper`, `container`, and `content`. Classes are additive to the component's
+default classes.
+
 <PropsTable name="DialogPopup" />
 
 ### AlertDialogPopup

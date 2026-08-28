@@ -37,6 +37,7 @@ export {
 export {
   default as DialogPopup,
   type DialogPopupProps,
+  type DialogPopupUI,
 } from './DialogPopup.vue'
 
 export {

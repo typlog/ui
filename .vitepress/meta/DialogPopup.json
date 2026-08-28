@@ -36,6 +36,13 @@
       "required": false,
       "inherit": null,
       "default": "\"1\""
+    },
+    {
+      "name": "ui",
+      "description": "<p>Classes for the component's stable visual parts.</p>",
+      "type": "DialogPopupUI",
+      "required": false,
+      "inherit": null
     }
   ],
   "events": [

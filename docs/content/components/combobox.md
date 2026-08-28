@@ -18,6 +18,10 @@ The root element of a combobox, it contains all the parts of a combobox.
 
 ### ComboboxInput
 
+Use the `ui` prop to add classes to the field, selected values, selected-value
+items, input, trigger, and remove buttons. Classes are additive to the
+component's default classes.
+
 <PropsTable name="ComboboxInput" />
 
 ### ComboboxContent

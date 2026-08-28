@@ -2,11 +2,24 @@
 import type { PaginationRootProps, PaginationRootEmits } from 'reka-ui'
 import type { ColorType } from '../types'
 
+export interface PaginationUI {
+  base?: string
+  list?: string
+  item?: string
+  ellipsis?: string
+  first?: string
+  previous?: string
+  next?: string
+  last?: string
+}
+
 export interface PaginationProps extends PaginationRootProps {
   color?: ColorType
   size?: '1' | '2' | '3' | '4'
   variant?: 'soft' | 'surface' | 'outline' | 'ghost'
   navigation?: 'none' | 'prev-next' | 'first-last' | 'all'
+  /** Classes for the component's stable visual parts. */
+  ui?: PaginationUI
 }
 </script>
 
@@ -38,7 +51,7 @@ const props = withDefaults(defineProps<PaginationProps>(), {
 })
 const emits = defineEmits<PaginationRootEmits>()
 const forwarded = useForwardPropsEmitsWithout(
-  props, emits, ['color', 'size', 'variant', 'navigation'],
+  props, emits, ['color', 'size', 'variant', 'navigation', 'ui'],
 )
 
 const resetClass = buildPropsClass(props, ['size', 'variant'])
@@ -57,21 +70,21 @@ const showFirstLast = computed(() => {
   <PaginationRoot
     v-bind="forwarded"
     class="ui-PaginationRoot"
-    :class="resetClass"
+    :class="[resetClass, props.ui?.base]"
     :data-accent-color="color"
   >
-    <PaginationList v-slot="{ items }" class="ui-PaginationList">
+    <PaginationList v-slot="{ items }" class="ui-PaginationList" :class="props.ui?.list">
       <PaginationFirst
         v-if="showFirstLast"
         class="ui-PaginationFirst ui-Button"
-        :class="resetClass"
+        :class="[resetClass, props.ui?.first]"
       >
         <FirstIcon />
       </PaginationFirst>
       <PaginationPrev
         v-if="showPrevNext"
         class="ui-PaginationPrev ui-Button"
-        :class="resetClass"
+        :class="[resetClass, props.ui?.previous]"
       >
         <PrevIcon />
       </PaginationPrev>
@@ -79,7 +92,7 @@ const showFirstLast = computed(() => {
         <PaginationListItem
           v-if="page.type === 'page'"
           class="ui-PaginationListItem ui-Button"
-          :class="resetClass"
+          :class="[resetClass, props.ui?.item]"
           :value="page.value"
         >
           {{ page.value }}
@@ -88,21 +101,21 @@ const showFirstLast = computed(() => {
           v-else
           :items="items"
           :index="index"
-          :class="resetClass"
+          :class="[resetClass, props.ui?.ellipsis]"
           as="button"
         />
       </template>
       <PaginationNext
         v-if="showPrevNext"
         class="ui-PaginationNext ui-Button"
-        :class="resetClass"
+        :class="[resetClass, props.ui?.next]"
       >
         <NextIcon />
       </PaginationNext>
       <PaginationLast
         v-if="showFirstLast"
         class="ui-PaginationLast ui-Button"
-        :class="resetClass"
+        :class="[resetClass, props.ui?.last]"
       >
         <LastIcon />
       </PaginationLast>

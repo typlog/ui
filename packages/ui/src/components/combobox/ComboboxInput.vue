@@ -7,10 +7,21 @@ import type{
 } from 'reka-ui'
 import type { RadiusType } from '../types'
 
+export interface ComboboxInputUI {
+  base?: string
+  values?: string
+  value?: string
+  input?: string
+  trigger?: string
+  remove?: string
+}
+
 export interface ComboboxInputProps extends RekaComboboxInputProps {
   variant?: 'surface' | 'soft'
   radius?: RadiusType
   placeholder?: string
+  /** Classes for the component's stable visual parts. */
+  ui?: ComboboxInputUI
 }
 </script>
 
@@ -20,11 +31,11 @@ import {
   ComboboxAnchor,
   ComboboxInput,
   ComboboxTrigger,
-  useForwardPropsEmits,
   injectComboboxRootContext,
 } from 'reka-ui'
 import CrossIcon from '~icons/radix-icons/cross-2'
 import ChevronDownIcon from '~icons/radix-icons/chevron-down'
+import { useForwardPropsEmitsWithout } from '../util'
 
 defineOptions({
   inheritAttrs: false,
@@ -36,7 +47,7 @@ const props = withDefaults(defineProps<ComboboxInputProps>(), {
   variant: 'surface',
 })
 const emits = defineEmits<ComboboxInputEmits>()
-const forwarded = useForwardPropsEmits(props, emits)
+const forwarded = useForwardPropsEmitsWithout(props, emits, ['ui'])
 
 const activeIndex = ref<number>(-1)
 
@@ -85,18 +96,20 @@ watch(values, () => {
 <template>
   <ComboboxAnchor
     class="ui-ComboboxField"
-    :class="`r-variant-${variant}`"
+    :class="[`r-variant-${variant}`, props.ui?.base]"
     :data-radius="radius"
     :data-multiple="context.multiple.value || undefined"
   >
     <div
       v-if="context.multiple.value"
       class="ui-ComboboxValues"
+      :class="props.ui?.values"
     >
       <div
         v-for="(item, index) in values"
         :key="displayValue(item)"
         class="ui-ComboboxValuesItem"
+        :class="props.ui?.value"
         :aria-current="index === activeIndex"
         :value="item"
       >
@@ -109,6 +122,7 @@ watch(values, () => {
         <button
           type="button"
           tabindex="-1"
+          :class="props.ui?.remove"
           @click.prevent="onDeleteIndex(index)"
         >
           <CrossIcon />
@@ -123,6 +137,7 @@ watch(values, () => {
           radius: undefined,
         }"
         class="ui-ComboboxInput"
+        :class="props.ui?.input"
         @keydown="onInputKeydown"
       >
       </ComboboxInput>
@@ -131,6 +146,7 @@ watch(values, () => {
     <ComboboxInput
       v-else
       class="ui-ComboboxInput"
+      :class="props.ui?.input"
       v-bind="{
         ...$attrs,
         ...forwarded,
@@ -138,7 +154,7 @@ watch(values, () => {
         radius: undefined,
       }"
     />
-    <ComboboxTrigger class="ui-ComboboxTrigger">
+    <ComboboxTrigger class="ui-ComboboxTrigger" :class="props.ui?.trigger">
       <ChevronDownIcon />
     </ComboboxTrigger>
   </ComboboxAnchor>

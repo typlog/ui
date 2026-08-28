@@ -90,6 +90,13 @@
       "inherit": "reka-ui"
     },
     {
+      "name": "ui",
+      "description": "<p>Classes for the component's stable visual parts.</p>",
+      "type": "PaginationUI",
+      "required": false,
+      "inherit": null
+    },
+    {
       "name": "variant",
       "description": "",
       "type": "\"soft\" | \"outline\" | \"surface\" | \"ghost\"",

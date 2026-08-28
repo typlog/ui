@@ -5,6 +5,7 @@ export {
 
 export {
   default as ComboboxInput,
+  type ComboboxInputUI,
 } from './ComboboxInput.vue'
 
 export {

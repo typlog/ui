@@ -12,6 +12,10 @@ reka: https://reka-ui.com/docs/components/pagination
 
 ### Pagination
 
+Use the `ui` prop to add classes to the pagination root, list, page items,
+ellipsis, and each navigation control (`first`, `previous`, `next`, and `last`).
+Classes are additive to the component's default classes.
+
 <PropsTable name="Pagination" />
 
 ## Examples
@@ -39,4 +43,3 @@ Controls for showing “Previous”, “Next”, “First”, and “Last” pag
 Without `show-edges` attribute, there will be no pagination ellipsis.
 
 <Example name="pagination/WithoutEdges.vue" />
-
