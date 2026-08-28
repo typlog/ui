@@ -38,7 +38,7 @@
     },
     {
       "name": "modelValue",
-      "description": "<p>The controlled value of the filter. Can be binded with with v-model.</p>",
+      "description": "<p>The controlled value of the filter. Can be binded with v-model.</p>",
       "type": "string",
       "required": false,
       "inherit": "reka-ui"
@@ -62,7 +62,8 @@
       "description": "",
       "type": "\"soft\" | \"surface\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"surface\""
     }
   ],
   "events": [
@@ -75,7 +76,7 @@
     {
       "name": "value",
       "description": "",
-      "type": "string | Record<string, any>"
+      "type": "AcceptableInputValue"
     }
   ],
   "methods": []

@@ -20,7 +20,8 @@
       "description": "",
       "type": "\"indigo\" | \"gray\" | \"gold\" | \"bronze\" | \"brown\" | \"yellow\" | \"amber\" | \"orange\" | \"tomato\" | \"red\" | \"ruby\" | \"crimson\" | \"pink\" | \"plum\" | \"purple\" | \"violet\" | \"iris\" | \"blue\" | \"cyan\" | \"teal\" | \"jade\" | \"green\" | \"grass\" | \"lime\" | \"mint\" | \"sky\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"gray\""
     },
     {
       "name": "defaultPage",
@@ -41,14 +42,16 @@
       "description": "<p>Number of items per page</p>",
       "type": "number",
       "required": true,
-      "inherit": "reka-ui"
+      "inherit": "reka-ui",
+      "default": "10"
     },
     {
       "name": "navigation",
       "description": "",
       "type": "\"none\" | \"all\" | \"prev-next\" | \"first-last\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"all\""
     },
     {
       "name": "page",
@@ -76,7 +79,8 @@
       "description": "",
       "type": "\"1\" | \"2\" | \"3\" | \"4\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"2\""
     },
     {
       "name": "total",
@@ -90,7 +94,8 @@
       "description": "",
       "type": "\"soft\" | \"outline\" | \"surface\" | \"ghost\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"ghost\""
     }
   ],
   "events": [

@@ -6,7 +6,7 @@
       "type": "AsTag | Component",
       "required": false,
       "inherit": "reka-ui",
-      "default": "\"div\""
+      "default": "\"h2\""
     },
     {
       "name": "asChild",

@@ -79,6 +79,13 @@
       "default": "0"
     },
     {
+      "name": "dir",
+      "description": "<p>The reading direction of the popper content when applicable. <br> If omitted, inherits globally from <code>ConfigProvider</code> or assumes LTR (left-to-right) reading mode.</p>",
+      "type": "Direction",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
       "name": "disableOutsidePointerEvents",
       "description": "<p>When <code>true</code>, hover/focus/click interactions will be disabled on elements outside\nthe <code>DismissableLayer</code>. Users will need to click twice on outside elements to\ninteract with them: once to close the <code>DismissableLayer</code>, and again to trigger the element.</p>",
       "type": "boolean",
@@ -101,6 +108,14 @@
       "inherit": "reka-ui"
     },
     {
+      "name": "hideShiftedArrow",
+      "description": "<p>When <code>true</code>, hides the arrow when it cannot be centered\nto the reference element.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": "reka-ui",
+      "default": "true"
+    },
+    {
       "name": "hideWhenDetached",
       "description": "<p>Whether to hide the content when the trigger becomes fully occluded.</p>",
       "type": "boolean",
@@ -109,11 +124,27 @@
       "default": "false"
     },
     {
+      "name": "hideWhenEmpty",
+      "description": "<p>When <code>true</code>, hides the content when there are no items matching the filter.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": "reka-ui",
+      "default": "false"
+    },
+    {
+      "name": "memoDependencies",
+      "description": "<p>Reactive dependencies that should invalidate the memoized content subtree.</p>",
+      "type": "unknown[]",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
       "name": "position",
       "description": "<p>The positioning mode to use, <br>\n<code>inline</code> is the default and you can control the position using CSS. <br>\n<code>popper</code> positions content in the same way as our other primitives, for example <code>Popover</code> or <code>DropdownMenu</code>.</p>",
       "type": "\"popper\" | \"inline\"",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": "reka-ui",
+      "default": "\"popper\""
     },
     {
       "name": "positionStrategy",
@@ -143,7 +174,7 @@
       "type": "\"top\" | \"right\" | \"bottom\" | \"left\"",
       "required": false,
       "inherit": "reka-ui",
-      "default": "\"top\""
+      "default": "\"bottom\""
     },
     {
       "name": "sideFlip",
@@ -159,7 +190,7 @@
       "type": "number",
       "required": false,
       "inherit": "reka-ui",
-      "default": "0"
+      "default": "5"
     },
     {
       "name": "sticky",
@@ -182,7 +213,8 @@
       "description": "",
       "type": "\"solid\" | \"soft\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"solid\""
     }
   ],
   "events": [

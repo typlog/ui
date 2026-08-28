@@ -38,7 +38,7 @@
     {
       "name": "dir",
       "description": "<p>The reading direction of the combobox when applicable. <br> If omitted, inherits globally from <code>ConfigProvider</code> or assumes LTR (left-to-right) reading mode.</p>",
-      "type": "\"ltr\" | \"rtl\"",
+      "type": "Direction",
       "required": false,
       "inherit": "reka-ui"
     },
@@ -78,6 +78,13 @@
       "inherit": "reka-ui"
     },
     {
+      "name": "nullableValue",
+      "description": "<p>The value of the hidden native select option when the model value is nullish.</p>",
+      "type": "string",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
       "name": "open",
       "description": "<p>The controlled open state of the Select. Can be bind as <code>v-model:open</code>.</p>",
       "type": "boolean",
@@ -96,7 +103,8 @@
       "description": "",
       "type": "\"1\" | \"2\" | \"3\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"2\""
     }
   ],
   "events": [

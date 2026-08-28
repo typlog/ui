@@ -20,7 +20,7 @@
       "description": "<p>Overrides the radius inherited from the theme.</p>",
       "type": "\"none\" | \"small\" | \"medium\" | \"large\" | \"full\"",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": null
     }
   ],
   "events": [],

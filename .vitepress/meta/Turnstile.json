@@ -5,14 +5,16 @@
       "description": "",
       "type": "string",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"\""
     },
     {
       "name": "appearance",
       "description": "",
       "type": "\"always\" | \"execute\" | \"interaction-only\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"always\""
     },
     {
       "name": "modelValue",
@@ -26,14 +28,16 @@
       "description": "",
       "type": "boolean",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "true"
     },
     {
       "name": "resetInterval",
       "description": "",
       "type": "number",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "295 * 1000"
     },
     {
       "name": "sitekey",
@@ -47,14 +51,16 @@
       "description": "",
       "type": "\"compact\" | \"normal\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"normal\""
     },
     {
       "name": "theme",
       "description": "",
       "type": "\"auto\" | \"light\" | \"dark\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"auto\""
     }
   ],
   "events": [

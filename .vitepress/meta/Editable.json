@@ -3,7 +3,7 @@
     {
       "name": "activationMode",
       "description": "<p>The activation event of the editable field</p>",
-      "type": "\"none\" | \"focus\" | \"dblclick\"",
+      "type": "ActivationMode",
       "required": false,
       "inherit": "reka-ui"
     },
@@ -46,7 +46,7 @@
     {
       "name": "dir",
       "description": "<p>The reading direction of the calendar when applicable. <br> If omitted, inherits globally from <code>ConfigProvider</code> or assumes LTR (left-to-right) reading mode.</p>",
-      "type": "\"ltr\" | \"rtl\"",
+      "type": "Direction",
       "required": false,
       "inherit": "reka-ui"
     },
@@ -139,7 +139,7 @@
     {
       "name": "submitMode",
       "description": "<p>The submit event of the editable field</p>",
-      "type": "\"none\" | \"both\" | \"blur\" | \"enter\"",
+      "type": "SubmitMode",
       "required": false,
       "inherit": "reka-ui"
     }

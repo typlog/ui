@@ -20,7 +20,8 @@
       "description": "",
       "type": "\"none\" | \"right\" | \"left\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"right\""
     }
   ],
   "events": [],

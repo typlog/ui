@@ -37,6 +37,13 @@
       "inherit": "reka-ui"
     },
     {
+      "name": "falseValue",
+      "description": "<p>The value used when the switch is off. Defaults to <code>false</code>.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
       "name": "highContrast",
       "description": "",
       "type": "boolean",
@@ -83,7 +90,15 @@
       "description": "",
       "type": "\"1\" | \"2\" | \"3\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"2\""
+    },
+    {
+      "name": "trueValue",
+      "description": "<p>The value used when the switch is on. Defaults to <code>true</code>.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": "reka-ui"
     },
     {
       "name": "value",
@@ -97,7 +112,8 @@
       "description": "",
       "type": "\"soft\" | \"surface\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"surface\""
     }
   ],
   "events": [

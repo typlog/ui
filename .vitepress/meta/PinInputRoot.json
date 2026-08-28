@@ -117,7 +117,7 @@
     {
       "name": "variant",
       "description": "<p>Controls the visual treatment.</p>",
-      "type": "\"surface\" | \"soft\"",
+      "type": "\"soft\" | \"surface\"",
       "required": false,
       "inherit": null,
       "default": "\"surface\""

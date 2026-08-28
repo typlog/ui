@@ -27,7 +27,7 @@
       "description": "<p>Overrides the accent color inherited from the theme.</p>",
       "type": "\"indigo\" | \"gray\" | \"gold\" | \"bronze\" | \"brown\" | \"yellow\" | \"amber\" | \"orange\" | \"tomato\" | \"red\" | \"ruby\" | \"crimson\" | \"pink\" | \"plum\" | \"purple\" | \"violet\" | \"iris\" | \"blue\" | \"cyan\" | \"teal\" | \"jade\" | \"green\" | \"grass\" | \"lime\" | \"mint\" | \"sky\"",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": null
     },
     {
       "name": "defaultExpanded",
@@ -83,7 +83,7 @@
       "description": "<p>Uses a higher contrast color for selected tree items.</p>",
       "type": "boolean",
       "required": false,
-      "inherit": "reka-ui",
+      "inherit": null,
       "default": "false"
     },
     {
@@ -126,7 +126,7 @@
       "description": "<p>Controls the size of each tree row.</p>",
       "type": "\"1\" | \"2\" | \"3\"",
       "required": false,
-      "inherit": "reka-ui",
+      "inherit": null,
       "default": "\"2\""
     },
     {
@@ -134,7 +134,7 @@
       "description": "<p>Enables virtual rendering, optionally configuring the virtualizer.</p>",
       "type": "boolean | TreeVirtualOptions<T>",
       "required": false,
-      "inherit": "reka-ui",
+      "inherit": null,
       "default": "false"
     }
   ],

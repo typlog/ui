@@ -26,7 +26,8 @@
       "description": "<p>Optional color array or color accessor function for crosshair circles. Default: <code>d =&gt; d.color</code></p>",
       "type": "\"indigo\" | \"gray\" | \"gold\" | \"bronze\" | \"brown\" | \"yellow\" | \"amber\" | \"orange\" | \"tomato\" | \"red\" | \"ruby\" | \"crimson\" | \"pink\" | \"plum\" | \"purple\" | \"violet\" | \"iris\" | \"blue\" | \"cyan\" | \"teal\" | \"jade\" | \"green\" | \"grass\" | \"lime\" | \"mint\" | \"sky\"",
       "required": false,
-      "inherit": "unovis"
+      "inherit": "unovis",
+      "default": "\"transparent\""
     },
     {
       "name": "contentComponent",
@@ -54,7 +55,7 @@
     {
       "name": "events",
       "description": "<p>Events configuration. An object containing properties in the following format:</p>\n<pre><code>{\n [selectorString]: {\n     [eventType]: callbackFunction\n }\n}\n</code></pre>\n<p>e.g.:</p>\n<pre><code>{\n [Area.selectors.area]: {\n   click: (d) =&gt; console.log(&quot;Clicked Area&quot;, d)\n }\n}\n</code></pre>",
-      "type": "{ [selector: string]: { scroll?: VisEventCallback; touchstart?: VisEventCallback; touchmove?: VisEventCallback; touchend?: VisEventCallback; mouseover?: VisEventCallback; mousemove?: VisEventCallback; mousedown?: VisEventCallback; mouseup?: VisEventCallback; click?: VisEventCallback; auxclick?: VisEventCallback; contextmenu?: VisEventCallback; dblclick?: VisEventCallback; mouseenter?: VisEventCallback; mouseleave?: VisEventCallback; mouseout?: VisEventCallback; select?: VisEventCallback; wheel?: VisEventCallback; pointerdown?: VisEventCallback; pointerup?: VisEventCallback; pointerout?: VisEventCallback; pointermove?: VisEventCallback; }; }",
+      "type": "{ [selector: string]: { scroll?: VisEventCallback; select?: VisEventCallback; dblclick?: VisEventCallback; touchstart?: VisEventCallback; touchmove?: VisEventCallback; touchend?: VisEventCallback; mouseover?: VisEventCallback; mousemove?: VisEventCallback; mousedown?: VisEventCallback; mouseup?: VisEventCallback; click?: VisEventCallback; auxclick?: VisEventCallback; contextmenu?: VisEventCallback; mouseenter?: VisEventCallback; mouseleave?: VisEventCallback; mouseout?: VisEventCallback; wheel?: VisEventCallback; pointerdown?: VisEventCallback; pointerup?: VisEventCallback; pointerout?: VisEventCallback; pointermove?: VisEventCallback; }; }",
       "required": false,
       "inherit": "unovis"
     },

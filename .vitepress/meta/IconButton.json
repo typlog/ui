@@ -34,7 +34,8 @@
       "description": "<p>Uses a higher contrast color for the component.</p>",
       "type": "boolean",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "false"
     },
     {
       "name": "radius",

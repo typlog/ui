@@ -20,7 +20,7 @@
       "description": "<p>Controls whether the media is presented as a plain visual or an icon tile.</p>",
       "type": "\"default\" | \"icon\"",
       "required": false,
-      "inherit": "reka-ui",
+      "inherit": null,
       "default": "\"default\""
     }
   ],

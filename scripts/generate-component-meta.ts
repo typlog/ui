@@ -1,11 +1,15 @@
 import type { ComponentMeta, MetaCheckerOptions, PropertyMeta, PropertyMetaSchema } from 'vue-component-meta'
-import { existsSync, readdirSync, writeFileSync } from 'node:fs'
-import { resolve } from 'node:path'
+import { existsSync, readFileSync, statSync, writeFileSync } from 'node:fs'
+import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import MarkdownIt from 'markdown-it'
+import ts from 'typescript'
 import { createChecker } from 'vue-component-meta'
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url))
+const sourceDir = resolve(__dirname, '../packages/ui/src')
+const normalizedSourceDir = `${sourceDir.replaceAll('\\', '/')}/`
+const componentExports = new Map<string, Map<string, string>>()
 
 const md = new MarkdownIt({ html: true })
 md.use(transformJSDocLinks)
@@ -15,99 +19,90 @@ const checkerOptions: MetaCheckerOptions = {
 }
 
 const tsconfigChecker = createChecker(
-  resolve(__dirname, '../tsconfig.json'),
+  resolve(__dirname, '../packages/ui/tsconfig.json'),
   checkerOptions,
 )
 
-const ownPropsByComponent: Record<string, string[]> = {
-  ChartLegend: ['orientation', 'align', 'ariaLabel'],
-  ChartRoot: ['config'],
-  ChartTooltip: [],
-  ChartTooltipContent: ['payload', 'config', 'x', 'indicator', 'hideLabel', 'hideIndicator', 'labelKey', 'labelFormatter', 'valueFormatter'],
-  ChartCrosshair: ['contentComponent', 'contentProps'],
-  Sidebar: ['open', 'defaultOpen', 'collapsed', 'defaultCollapsed', 'side', 'variant', 'collapsible', 'width', 'collapsedWidth', 'mobileWidth', 'mobileTitle', 'mobileDescription'],
-  SidebarMenuButton: ['icon', 'text', 'trailingIcon', 'active', 'disabled', 'tooltip'],
-  SidebarMenuSubButton: ['icon', 'text', 'trailingIcon', 'active', 'disabled'],
-}
+generateEntryMeta(resolve(sourceDir, 'components/index.ts'))
+generateEntryMeta(resolve(sourceDir, 'addons/index.ts'))
+generateEntryMeta(resolve(sourceDir, 'charts/index.ts'))
 
-const fallbackInheritByComponent: Record<string, string> = {
-  ChartTooltip: 'unovis',
-  ChartCrosshair: 'unovis',
-}
-
-parseComponents(resolve(__dirname, '../packages/ui/src/components/index.ts'))
-parseComponents(resolve(__dirname, '../packages/ui/src/addons/index.ts'))
-parseComponents(resolve(__dirname, '../packages/ui/src/charts/index.ts'))
-
-function parseComponents (filePath: string) {
-  const names = tsconfigChecker.getExportNames(filePath)
-  names.forEach(name => {
-    // component name starts with uppercase character
-    if (/^[A-Z]/.test(name)) {
-      const outfile = resolve(__dirname, `../.vitepress/meta/${name}.json`)
-      let componentMeta: ComponentMeta
-      let usedDirectFallback = false
-      const directFile = findComponentFile(name)
-      const ownProps = ownPropsByComponent[name] ?? []
-      const hasOwnProps = Object.hasOwn(ownPropsByComponent, name)
-
-      if (directFile && hasOwnProps) {
-        componentMeta = tsconfigChecker.getComponentMeta(directFile)
-        usedDirectFallback = true
-      } else if (!existsSync(outfile) && directFile) {
-        componentMeta = tsconfigChecker.getComponentMeta(directFile)
-        usedDirectFallback = true
-      } else {
-        try {
-          componentMeta = tsconfigChecker.getComponentMeta(filePath, name)
-        }
-        catch {
-          // vue-component-meta currently cannot resolve some re-exported symbols.
-          // Preserve existing metadata and only use a direct same-name Vue file as
-          // a fallback for newly exported components.
-          if (existsSync(outfile) || !directFile) {
-            return
-          }
-
-          try {
-            componentMeta = tsconfigChecker.getComponentMeta(directFile)
-            usedDirectFallback = true
-          }
-          catch (directError) {
-            console.warn(`Skipping metadata for ${name}: ${errorMessage(directError)}`)
-            return
-          }
-        }
-      }
-
-      const fallbackInherit = usedDirectFallback
-        ? (fallbackInheritByComponent[name] ?? 'reka-ui')
-        : null
-      const meta = parseMeta(componentMeta, fallbackInherit, ownProps)
-      writeFileSync(outfile, JSON.stringify(meta, null, 2))
-    }
-  })
-}
-
-function findComponentFile (name: string) {
-  return findFile(resolve(__dirname, '../packages/ui/src'), `${name}.vue`)
-}
-
-function findFile (directory: string, filename: string): string | undefined {
-  for (const entry of readdirSync(directory, { withFileTypes: true })) {
-    const filepath = resolve(directory, entry.name)
-    if (entry.isFile() && entry.name === filename)
-      return filepath
-    if (entry.isDirectory()) {
-      const match = findFile(filepath, filename)
-      if (match)
-        return match
-    }
+function generateEntryMeta (filePath: string) {
+  for (const [name, componentFile] of collectComponentExports(filePath)) {
+    const outfile = resolve(__dirname, `../.vitepress/meta/${name}.json`)
+    const componentMeta = tsconfigChecker.getComponentMeta(componentFile)
+    const meta = formatMeta(componentMeta)
+    writeFileSync(outfile, JSON.stringify(meta, null, 2))
   }
 }
 
-function errorMessage (error: unknown) {
-  return error instanceof Error ? error.message : String(error)
+function collectComponentExports (filePath: string): Map<string, string> {
+  const cached = componentExports.get(filePath)
+  if (cached)
+    return cached
+
+  const exports = new Map<string, string>()
+  componentExports.set(filePath, exports)
+
+  const source = ts.createSourceFile(
+    filePath,
+    readFileSync(filePath, 'utf-8'),
+    ts.ScriptTarget.Latest,
+    true,
+    ts.ScriptKind.TS,
+  )
+
+  for (const statement of source.statements) {
+    if (!ts.isExportDeclaration(statement) || !statement.moduleSpecifier || !ts.isStringLiteral(statement.moduleSpecifier))
+      continue
+
+    const moduleFile = resolveModuleFile(filePath, statement.moduleSpecifier.text)
+    if (!moduleFile)
+      continue
+
+    if (moduleFile.endsWith('.vue')) {
+      if (!statement.exportClause || !ts.isNamedExports(statement.exportClause))
+        continue
+      for (const specifier of statement.exportClause.elements) {
+        if (!specifier.isTypeOnly && specifier.propertyName?.text === 'default')
+          addComponentExport(exports, specifier.name.text, moduleFile)
+      }
+      continue
+    }
+
+    const nestedExports = collectComponentExports(moduleFile)
+    if (!statement.exportClause) {
+      for (const [name, componentFile] of nestedExports)
+        addComponentExport(exports, name, componentFile)
+    } else if (ts.isNamedExports(statement.exportClause)) {
+      for (const specifier of statement.exportClause.elements) {
+        if (specifier.isTypeOnly)
+          continue
+        const importedName = specifier.propertyName?.text ?? specifier.name.text
+        const componentFile = nestedExports.get(importedName)
+        if (componentFile)
+          addComponentExport(exports, specifier.name.text, componentFile)
+      }
+    }
+  }
+
+  return exports
+}
+
+function resolveModuleFile (importer: string, moduleName: string): string | undefined {
+  if (!moduleName.startsWith('.'))
+    return
+
+  const target = resolve(dirname(importer), moduleName)
+  const candidates = [target, `${target}.ts`, `${target}.vue`, resolve(target, 'index.ts')]
+  return candidates.find(candidate => existsSync(candidate) && statSync(candidate).isFile())
+}
+
+function addComponentExport (exports: Map<string, string>, name: string, componentFile: string) {
+  const existing = exports.get(name)
+  if (existing && existing !== componentFile)
+    throw new Error(`Component export ${name} resolves to both ${existing} and ${componentFile}`)
+  exports.set(name, componentFile)
 }
 
 function parseTypeFromSchema(schema: PropertyMetaSchema): string {
@@ -134,26 +129,21 @@ function parseTypeFromSchema(schema: PropertyMetaSchema): string {
 }
 
 // Utilities
-function parseMeta(meta: ComponentMeta, fallbackInherit: string | null = null, ownProps: string[] = []) {
+function formatMeta(meta: ComponentMeta) {
   const props = meta.props
   // Exclude global props
     .filter(prop => !prop.global)
     .map((prop) => {
-      let defaultValue = prop.default
+      let defaultValue = prop.default === 'undefined' ? undefined : prop.default
       let type = prop.type
       let description = prop.description
       const { name, required } = prop
 
       prop.tags.forEach(item => {
-        if ((item.name === 'default' || item.name === 'defaultValue')
-          && (defaultValue === undefined || !fallbackInherit)) {
+        if ((item.name === 'default' || item.name === 'defaultValue') && defaultValue === undefined) {
           defaultValue = item.text
         }
       })
-
-      if (defaultValue === 'undefined') {
-        defaultValue = undefined
-      }
 
       if (!isNativeType(type)) {
         type = parseTypeFromSchema(prop.schema) || type
@@ -173,21 +163,7 @@ function parseMeta(meta: ComponentMeta, fallbackInherit: string | null = null, o
         description = description.replace(/Read our.+$/, '')
       }
 
-      let inherit: string | null = null
-      prop.declarations.some(declare => {
-        if (declare.file.indexOf('node_modules/reka-ui') !== -1) {
-          inherit = 'reka-ui'
-          return true
-        }
-        if (declare.file.indexOf('node_modules/@unovis') !== -1) {
-          inherit = 'unovis'
-          return true
-        }
-      })
-      if (fallbackInherit && !ownProps.includes(name)) {
-        inherit = fallbackInherit
-      }
-
+      const inherit = findInheritanceSource(prop)
       return ({
         name,
         description: md.render(description).trim(),
@@ -254,6 +230,20 @@ function parseMeta(meta: ComponentMeta, fallbackInherit: string | null = null, o
     slots,
     methods,
   }
+}
+
+function findInheritanceSource(prop: PropertyMeta): string | null {
+  const files = prop.getDeclarations().map(declaration => declaration.file.replaceAll('\\', '/'))
+  if (files.some(file => file.startsWith(normalizedSourceDir)))
+    return null
+
+  for (const file of files) {
+    if (file.includes('/node_modules/reka-ui/'))
+      return 'reka-ui'
+    if (file.includes('/node_modules/@unovis/'))
+      return 'unovis'
+  }
+  return null
 }
 
 

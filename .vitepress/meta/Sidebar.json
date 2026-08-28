@@ -33,7 +33,7 @@
     {
       "name": "collapsible",
       "description": "<p>The desktop collapse behavior.</p>",
-      "type": "\"offcanvas\" | \"icon\" | \"none\"",
+      "type": "\"none\" | \"icon\" | \"offcanvas\"",
       "required": false,
       "inherit": null,
       "default": "\"offcanvas\""
@@ -102,7 +102,7 @@
     {
       "name": "side",
       "description": "<p>The edge of the layout that contains the sidebar.</p>",
-      "type": "\"left\" | \"right\"",
+      "type": "\"right\" | \"left\"",
       "required": false,
       "inherit": null,
       "default": "\"left\""

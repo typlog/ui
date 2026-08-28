@@ -55,7 +55,8 @@
       "description": "",
       "type": "\"1\" | \"2\" | \"3\" | \"4\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"2\""
     },
     {
       "name": "unmountOnHide",
@@ -69,7 +70,8 @@
       "description": "",
       "type": "\"soft\" | \"surface\" | \"ghost\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"ghost\""
     }
   ],
   "events": [

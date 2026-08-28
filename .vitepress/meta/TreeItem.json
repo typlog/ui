@@ -27,14 +27,14 @@
       "description": "<p>Whether the item should display a disclosure indicator. Defaults to the tree data.</p>",
       "type": "boolean",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": null
     },
     {
       "name": "icon",
       "description": "<p>Iconify icon rendered before the item text.</p>",
       "type": "string",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": null
     },
     {
       "name": "level",
@@ -48,14 +48,14 @@
       "description": "<p>Text rendered when no text or default slot is provided.</p>",
       "type": "string",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": null
     },
     {
       "name": "trailingIcon",
       "description": "<p>Iconify icon rendered at the end of the row.</p>",
       "type": "string",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": null
     },
     {
       "name": "value",

@@ -12,14 +12,16 @@
       "description": "",
       "type": "\"1\" | \"2\" | \"3\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"2\""
     },
     {
       "name": "variant",
       "description": "",
       "type": "\"surface\" | \"ghost\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"ghost\""
     }
   ],
   "events": [],

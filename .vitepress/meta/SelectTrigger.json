@@ -48,7 +48,8 @@
       "description": "",
       "type": "\"soft\" | \"surface\" | \"ghost\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"surface\""
     }
   ],
   "events": [],

@@ -18,7 +18,7 @@
     {
       "name": "dir",
       "description": "<p>The reading direction of the combobox when applicable. <br> If omitted, inherits globally from <code>ConfigProvider</code> or assumes LTR (left-to-right) reading mode.</p>",
-      "type": "\"ltr\" | \"rtl\"",
+      "type": "Direction$2",
       "required": false,
       "inherit": "reka-ui"
     },
@@ -34,7 +34,8 @@
       "description": "",
       "type": "\"both\" | \"vertical\" | \"horizontal\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"both\""
     },
     {
       "name": "scrollHideDelay",
@@ -48,14 +49,16 @@
       "description": "",
       "type": "\"1\" | \"2\" | \"3\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"1\""
     },
     {
       "name": "type",
-      "description": "<p>Describes the nature of scrollbar visibility, similar to how the scrollbar preferences in MacOS control visibility of native scrollbars.</p>\n<p><code>auto</code> - means that scrollbars are visible when content is overflowing on the corresponding orientation. <br>\n<code>always</code> - means that scrollbars are always visible regardless of whether the content is overflowing.<br>\n<code>scroll</code> - means that scrollbars are visible when the user is scrolling along its corresponding orientation.<br>\n<code>hover</code> - when the user is scrolling along its corresponding orientation and when the user is hovering over the scroll area.</p>",
-      "type": "\"auto\" | \"scroll\" | \"always\" | \"hover\"",
+      "description": "<p>Describes the nature of scrollbar visibility, similar to how the scrollbar preferences in MacOS control visibility of native scrollbars.</p>\n<p><code>auto</code> - means that scrollbars are visible when content is overflowing on the corresponding orientation. <br>\n<code>always</code> - means that scrollbars are always visible regardless of whether the content is overflowing.<br>\n<code>scroll</code> - means that scrollbars are visible when the user is scrolling along its corresponding orientation.<br>\n<code>hover</code> - when the user is scrolling along its corresponding orientation and when the user is hovering over the scroll area.<br>\n<code>glimpse</code> - a hybrid approach that briefly shows scrollbars when the user enters the scroll area, then hides them until further interaction.</p>",
+      "type": "ScrollType",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": "reka-ui",
+      "default": "\"scroll\""
     }
   ],
   "events": [],

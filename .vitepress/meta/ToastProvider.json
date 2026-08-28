@@ -1,6 +1,14 @@
 {
   "props": [
     {
+      "name": "disableSwipe",
+      "description": "<p>Whether to disable the ability to swipe to close the toast.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": "reka-ui",
+      "default": "false"
+    },
+    {
       "name": "duration",
       "description": "<p>Time in milliseconds that each toast should remain visible for.</p>",
       "type": "number",
@@ -21,19 +29,21 @@
       "description": "",
       "type": "\"bottom-right\" | \"top-left\" | \"top-right\" | \"top-center\" | \"bottom-left\" | \"bottom-center\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"bottom-right\""
     },
     {
       "name": "size",
       "description": "",
       "type": "\"1\" | \"2\" | \"3\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"1\""
     },
     {
       "name": "swipeDirection",
       "description": "<p>Direction of pointer swipe that should close the toast.</p>",
-      "type": "\"right\" | \"left\" | \"up\" | \"down\"",
+      "type": "SwipeDirection",
       "required": false,
       "inherit": "reka-ui",
       "default": "'right'"

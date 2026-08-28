@@ -19,7 +19,8 @@
       "description": "",
       "type": "any",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"\""
     },
     {
       "name": "radius",
@@ -33,21 +34,24 @@
       "description": "",
       "type": "\"1\" | \"2\" | \"3\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"2\""
     },
     {
       "name": "type",
       "description": "",
-      "type": "\"number\" | \"text\" | \"date\" | \"datetime-local\" | \"email\" | \"hidden\" | \"month\" | \"password\" | \"search\" | \"tel\" | \"time\" | \"url\" | \"week\" | \"file\"",
+      "type": "\"number\" | \"text\" | \"search\" | \"date\" | \"datetime-local\" | \"email\" | \"hidden\" | \"month\" | \"password\" | \"tel\" | \"time\" | \"url\" | \"week\" | \"file\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"text\""
     },
     {
       "name": "variant",
       "description": "",
       "type": "\"soft\" | \"surface\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"surface\""
     }
   ],
   "events": [

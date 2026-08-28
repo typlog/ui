@@ -20,14 +20,14 @@
       "description": "<p>Overrides the accent color inherited from the theme.</p>",
       "type": "\"indigo\" | \"gray\" | \"gold\" | \"bronze\" | \"brown\" | \"yellow\" | \"amber\" | \"orange\" | \"tomato\" | \"red\" | \"ruby\" | \"crimson\" | \"pink\" | \"plum\" | \"purple\" | \"violet\" | \"iris\" | \"blue\" | \"cyan\" | \"teal\" | \"jade\" | \"green\" | \"grass\" | \"lime\" | \"mint\" | \"sky\"",
       "required": false,
-      "inherit": "reka-ui"
+      "inherit": null
     },
     {
       "name": "size",
       "description": "<p>Controls the size of the spinner.</p>",
       "type": "\"1\" | \"2\" | \"3\"",
       "required": false,
-      "inherit": "reka-ui",
+      "inherit": null,
       "default": "\"2\""
     }
   ],

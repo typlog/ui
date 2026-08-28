@@ -19,7 +19,8 @@
       "description": "",
       "type": "any",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"\""
     },
     {
       "name": "size",

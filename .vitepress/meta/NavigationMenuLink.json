@@ -41,7 +41,8 @@
       "description": "<p>Control the size of the component.</p>",
       "type": "\"1\" | \"2\" | \"3\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"2\""
     }
   ],
   "events": [

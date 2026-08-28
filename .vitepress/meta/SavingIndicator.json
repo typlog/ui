@@ -6,19 +6,20 @@
       "type": "AsTag | Component",
       "required": false,
       "inherit": "reka-ui",
-      "default": "\"div\""
+      "default": "\"span\""
     },
     {
       "name": "size",
       "description": "",
       "type": "\"1\" | \"2\" | \"3\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"2\""
     },
     {
       "name": "status",
       "description": "",
-      "type": "\"idle\" | \"saving\" | \"saved\"",
+      "type": "SavingStatus",
       "required": true,
       "inherit": null
     }
@@ -28,7 +29,7 @@
     {
       "name": "status",
       "description": "",
-      "type": "\"idle\" | \"saving\" | \"saved\""
+      "type": "SavingStatus"
     }
   ],
   "methods": []

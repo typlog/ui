@@ -26,14 +26,16 @@
       "description": "",
       "type": "\"1\" | \"2\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"2\""
     },
     {
       "name": "variant",
       "description": "",
       "type": "\"soft\" | \"outline\" | \"surface\" | \"classic\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"outline\""
     }
   ],
   "events": [],

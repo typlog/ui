@@ -20,7 +20,8 @@
       "description": "<p>Overrides the accent color inherited from the ThemeProvider.</p>",
       "type": "\"indigo\" | \"gray\" | \"gold\" | \"bronze\" | \"brown\" | \"yellow\" | \"amber\" | \"orange\" | \"tomato\" | \"red\" | \"ruby\" | \"crimson\" | \"pink\" | \"plum\" | \"purple\" | \"violet\" | \"iris\" | \"blue\" | \"cyan\" | \"teal\" | \"jade\" | \"green\" | \"grass\" | \"lime\" | \"mint\" | \"sky\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"gray\""
     },
     {
       "name": "disabled",
@@ -34,7 +35,8 @@
       "description": "<p>Uses a higher contrast color for the component.</p>",
       "type": "boolean",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "false"
     },
     {
       "name": "radius",
@@ -56,7 +58,8 @@
       "description": "",
       "type": "string",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"Close\""
     },
     {
       "name": "variant",
@@ -64,7 +67,7 @@
       "type": "\"solid\" | \"soft\" | \"outline\" | \"surface\" | \"classic\" | \"ghost\"",
       "required": false,
       "inherit": null,
-      "default": "\"solid\""
+      "default": "\"ghost\""
     }
   ],
   "events": [],

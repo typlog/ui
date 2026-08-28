@@ -33,7 +33,7 @@
     {
       "name": "dir",
       "description": "<p>The reading direction of the combobox when applicable.</p>\n<p>If omitted, inherits globally from <code>ConfigProvider</code> or assumes LTR (left-to-right) reading mode.</p>",
-      "type": "\"ltr\" | \"rtl\"",
+      "type": "Direction$3",
       "required": false,
       "inherit": "reka-ui"
     },
@@ -71,7 +71,7 @@
     {
       "name": "orientation",
       "description": "<p>The orientation of the menu.</p>",
-      "type": "\"vertical\" | \"horizontal\"",
+      "type": "Orientation",
       "required": false,
       "inherit": "reka-ui"
     },

@@ -12,7 +12,8 @@
       "description": "",
       "type": "string",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"\""
     },
     {
       "name": "radius",
@@ -33,14 +34,16 @@
       "description": "",
       "type": "\"1\" | \"2\" | \"3\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"2\""
     },
     {
       "name": "variant",
       "description": "",
       "type": "\"soft\" | \"surface\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"surface\""
     }
   ],
   "events": [

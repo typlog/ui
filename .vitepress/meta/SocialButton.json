@@ -6,7 +6,7 @@
       "type": "AsTag | Component",
       "required": false,
       "inherit": "reka-ui",
-      "default": "\"div\""
+      "default": "\"button\""
     },
     {
       "name": "asChild",
@@ -18,7 +18,7 @@
     {
       "name": "brand",
       "description": "",
-      "type": "\"google\" | \"facebook\" | \"x\" | \"github\" | \"apple\" | \"slack\" | \"figma\"",
+      "type": "BrandType",
       "required": true,
       "inherit": null
     },
@@ -49,7 +49,8 @@
       "description": "",
       "type": "\"solid\" | \"soft\" | \"outline\" | \"surface\" | \"classic\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"classic\""
     }
   ],
   "events": [],

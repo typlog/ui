@@ -3,9 +3,10 @@
     {
       "name": "accentColor",
       "description": "",
-      "type": "\"indigo\" | \"gray\" | \"gold\" | \"bronze\" | \"brown\" | \"yellow\" | \"amber\" | \"orange\" | \"tomato\" | \"red\" | \"ruby\" | \"crimson\" | \"pink\" | \"plum\" | \"purple\" | \"violet\" | \"iris\" | \"blue\" | \"cyan\" | \"teal\" | \"jade\" | \"green\" | \"grass\" | \"lime\" | \"mint\" | \"sky\"",
+      "type": "ColorType",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"indigo\""
     },
     {
       "name": "as",
@@ -25,37 +26,42 @@
     {
       "name": "grayColor",
       "description": "",
-      "type": "\"auto\" | \"mauve\" | \"olive\" | \"sage\" | \"sand\" | \"slate\"",
+      "type": "GrayColorType",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"auto\""
     },
     {
       "name": "hasBackground",
       "description": "",
       "type": "boolean",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "true"
     },
     {
       "name": "panelBackground",
       "description": "",
       "type": "\"translucent\" | \"solid\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"translucent\""
     },
     {
       "name": "radius",
       "description": "",
       "type": "\"none\" | \"small\" | \"medium\" | \"large\" | \"full\"",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"medium\""
     },
     {
       "name": "scaling",
       "description": "",
-      "type": "\"100%\" | \"90%\" | \"95%\" | \"105%\" | \"110%\" | \"115%\" | \"120%\"",
+      "type": "ScalingType",
       "required": false,
-      "inherit": null
+      "inherit": null,
+      "default": "\"100%\""
     }
   ],
   "events": [],
