@@ -4,7 +4,24 @@ description: Apply Typlog presentation to Unovis tooltip interactions.
 status: alpha
 ---
 
-`ChartTooltip` is a themed adapter for Unovis' `VisTooltip`. Pair it with `ChartCrosshair` inside an XY container for the default interactive crosshair experience. `ChartTooltipContent` provides the consistent label, indicator, series, and tabular-value layout used by Typlog dashboards. `createChartTooltipTemplate` is also available when wiring a custom component directly to a crosshair or pie/donut trigger.
+`ChartTooltip` is a themed adapter for Unovis' `VisTooltip`. Pair it with `ChartCrosshair` inside an XY container for the default interactive crosshair experience. `ChartTooltipContent` provides the consistent label, indicator, series, and tabular-value layout used by Typlog dashboards. Pass supported Unovis primitives to `targets` to generate triggers automatically:
+
+```vue
+<ChartTooltip :targets="[Donut]" :content-props="{ hideLabel: true }" />
+```
+
+Automatic targets currently support `Donut` (including pie charts), `GroupedBar`, and `StackedBar`. Use `contentComponent` and `contentProps` to customize the renderer. Explicit `triggers` are merged with generated triggers and take precedence when they use the same selector. For a custom mapping, pass a descriptor with `primitive` and `payload`:
+
+```vue
+<ChartTooltip
+  :targets="[{
+    primitive: Donut,
+    payload: arc => ({ browser: arc.data.browser }),
+  }]"
+/>
+```
+
+`ChartCrosshair` remains the recommended interaction for line and area charts.
 
 <Example name="charts/TooltipDefault.vue" />
 

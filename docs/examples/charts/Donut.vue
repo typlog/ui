@@ -5,8 +5,6 @@ import {
   ChartLegend,
   ChartRoot,
   ChartTooltip,
-  ChartTooltipContent,
-  createChartTooltipTemplate,
 } from '@typlog/ui/charts'
 
 const data = [
@@ -18,12 +16,6 @@ const config = Object.fromEntries(data.map(item => [
   item.label,
   { label: item.label },
 ]))
-const tooltipContent = createChartTooltipTemplate(config, ChartTooltipContent, { hideLabel: true })
-const tooltipTriggers = {
-  [Donut.selectors.segment]: (arc: { data: { label: string; value: number } }) => (
-    tooltipContent({ [arc.data.label]: arc.data.value })
-  ),
-}
 </script>
 
 <template>
@@ -33,7 +25,7 @@ const tooltipTriggers = {
         :value="(item: { value: number }) => item.value"
         central-label="100%"
       />
-      <ChartTooltip :triggers="tooltipTriggers" />
+      <ChartTooltip :targets="[Donut]" :content-props="{ hideLabel: true }" />
     </VisSingleContainer>
     <ChartLegend class="mt-3" />
   </ChartRoot>

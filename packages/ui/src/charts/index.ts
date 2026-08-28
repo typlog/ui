@@ -2,7 +2,13 @@ import './style.css'
 
 export { default as ChartRoot, type ChartRootProps } from './ChartRoot.vue'
 export { default as ChartCrosshair, type ChartCrosshairProps } from './ChartCrosshair.vue'
-export { default as ChartTooltip, type ChartTooltipProps } from './ChartTooltip.vue'
+export {
+  default as ChartTooltip,
+  type ChartTooltipPrimitive,
+  type ChartTooltipProps,
+  type ChartTooltipTarget,
+  type ChartTooltipTargetDescriptor,
+} from './ChartTooltip.vue'
 export {
   default as ChartAreaGradient,
   type ChartAreaGradientColor,

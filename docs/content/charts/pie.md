@@ -8,7 +8,7 @@ Unovis uses `VisDonut` for both pie and donut charts. Set `arc-width="0"` to fil
 
 ## Default
 
-Place the pie inside `VisSingleContainer`. Use `Donut.selectors.segment` to connect each slice to `ChartTooltip`.
+Place the pie inside `VisSingleContainer`. Pass `Donut` to `ChartTooltip.targets` to connect each slice to the themed tooltip automatically.
 
 <Example name="charts/Pie.vue" />
 

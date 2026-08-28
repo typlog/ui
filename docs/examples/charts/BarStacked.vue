@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { StackedBar } from '@unovis/ts'
 import { VisAxis, VisStackedBar, VisXYContainer } from '@unovis/vue'
 import {
   ChartCrosshair,
@@ -53,7 +54,7 @@ const xTickFormat = (value: number) => data[value]?.month ?? ''
         :grid-line="false"
       />
       <VisAxis type="y" :tick-format="() => ''" :tick-line="false" :domain-line="false" />
-      <ChartTooltip />
+      <ChartTooltip :targets="[StackedBar]" />
       <ChartCrosshair />
     </VisXYContainer>
     <ChartLegend class="mt-3" align="center" />

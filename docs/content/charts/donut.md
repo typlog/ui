@@ -8,7 +8,7 @@ Donut charts reserve the center for a total or short summary. Place `VisDonut` i
 
 ## Summary
 
-Use the central label for a concise total and keep the surrounding legend visible. Segment tooltips can reuse `ChartTooltipContent` through `createChartTooltipTemplate`.
+Use the central label for a concise total and keep the surrounding legend visible. Segment tooltips can use `ChartTooltip` with `:targets="[Donut]"`.
 
 <Example name="charts/Donut.vue" />
 

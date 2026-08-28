@@ -4,8 +4,6 @@ import { VisAxis, VisGroupedBar, VisXYContainer } from '@unovis/vue'
 import {
   ChartRoot,
   ChartTooltip,
-  ChartTooltipContent,
-  createChartTooltipTemplate,
   type ChartConfig,
 } from '@typlog/ui/charts'
 
@@ -27,10 +25,6 @@ const config = {
 const x = (_item: Point, index: number) => index
 const y = (item: Point) => item.conversions
 const yTickFormat = (value: number) => data[value]?.channel ?? ''
-const tooltipContent = createChartTooltipTemplate(config, ChartTooltipContent)
-const tooltipTriggers = {
-  [GroupedBar.selectors.bar]: (item: Point) => tooltipContent(item),
-}
 </script>
 
 <template>
@@ -62,7 +56,7 @@ const tooltipTriggers = {
         :domain-line="false"
         :grid-line="false"
       />
-      <ChartTooltip :triggers="tooltipTriggers" />
+      <ChartTooltip :targets="[GroupedBar]" />
     </VisXYContainer>
   </ChartRoot>
 </template>

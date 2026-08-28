@@ -36,6 +36,22 @@
       "inherit": "unovis"
     },
     {
+      "name": "contentComponent",
+      "description": "<p>Vue component rendered as the tooltip content.</p>",
+      "type": "Component",
+      "required": false,
+      "inherit": null,
+      "default": "ChartTooltipContent"
+    },
+    {
+      "name": "contentProps",
+      "description": "<p>Props passed to <code>contentComponent</code> in addition to payload, config, and x.</p>",
+      "type": "Record<string, unknown>",
+      "required": false,
+      "inherit": null,
+      "default": "{}"
+    },
+    {
       "name": "followCursor",
       "description": "<p>Follow the mouse cursor. Default: <code>true</code></p>",
       "type": "boolean",
@@ -69,6 +85,13 @@
       "type": "number",
       "required": false,
       "inherit": "unovis"
+    },
+    {
+      "name": "targets",
+      "description": "<p>Unovis primitives that should automatically trigger the themed tooltip.</p>",
+      "type": "ChartTooltipTarget[]",
+      "required": false,
+      "inherit": null
     },
     {
       "name": "triggers",

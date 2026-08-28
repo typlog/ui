@@ -18,6 +18,8 @@ status: alpha
 
 <PropsTable name="ChartTooltip" />
 
+`ChartTooltip` can generate Unovis triggers from `targets`. Supported primitives are `Donut`, `GroupedBar`, and `StackedBar`; pass a descriptor with `primitive` and an optional `payload` mapper when the default data mapping is not enough. Explicit `triggers` override generated triggers for the same selector.
+
 ## ChartCrosshair
 
 <PropsTable name="ChartCrosshair" />

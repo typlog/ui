@@ -75,6 +75,11 @@
       "type": "{ index: number"
     },
     {
+      "name": "icon",
+      "description": "",
+      "type": "IconifyIconBuildResult | undefined"
+    },
+    {
       "name": "key",
       "description": "",
       "type": "string"
