@@ -21,7 +21,7 @@ const contentProps = {
 <template>
   <ChartRoot v-slot="{ mounted }" :config="config">
     <VisXYContainer v-if="mounted" :data="data" :height="200">
-      <VisLine :x="(_item: Point, index: number) => index" :y="(item: Point) => item.revenue" color="var(--chart-1)" />
+      <VisLine :x="(_item: Point, index: number) => index" :y="(item: Point) => item.revenue" />
       <ChartTooltip />
       <ChartCrosshair :content-props="contentProps" />
     </VisXYContainer>

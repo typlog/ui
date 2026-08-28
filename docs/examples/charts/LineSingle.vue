@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { VisAxis, VisGroupedBar, VisXYContainer } from '@unovis/vue'
+import { VisAxis, VisLine, VisXYContainer } from '@unovis/vue'
 import {
   ChartCrosshair,
   ChartRoot,
@@ -9,31 +9,31 @@ import {
 
 interface Point {
   day: string
-  desktop: number
-  mobile: number
+  activeUsers: number
 }
 
 const data: Point[] = [
-  { day: 'Mon', desktop: 186, mobile: 80 },
-  { day: 'Tue', desktop: 305, mobile: 200 },
-  { day: 'Wed', desktop: 237, mobile: 120 },
-  { day: 'Thu', desktop: 173, mobile: 190 },
-  { day: 'Fri', desktop: 209, mobile: 130 },
+  { day: 'Mon', activeUsers: 1280 },
+  { day: 'Tue', activeUsers: 1460 },
+  { day: 'Wed', activeUsers: 1390 },
+  { day: 'Thu', activeUsers: 1710 },
+  { day: 'Fri', activeUsers: 1890 },
+  { day: 'Sat', activeUsers: 1760 },
+  { day: 'Sun', activeUsers: 2040 },
 ]
 const config = {
   day: { label: 'Day', role: 'x' },
-  desktop: { label: 'Desktop' },
-  mobile: { label: 'Mobile' },
+  activeUsers: { label: 'Active users', color: 'var(--cyan-9)' },
 } satisfies ChartConfig
 const x = (_item: Point, index: number) => index
-const y = [(item: Point) => item.desktop, (item: Point) => item.mobile]
+const y = (item: Point) => item.activeUsers
 const xTickFormat = (value: number) => data[value]?.day ?? ''
 </script>
 
 <template>
   <ChartRoot v-slot="{ mounted }" :config="config">
-    <VisXYContainer v-if="mounted" :data="data" :height="240">
-      <VisGroupedBar :x="x" :y="y" />
+    <VisXYContainer v-if="mounted" :data="data" :height="220">
+      <VisLine :x="x" :y="y" :line-width="3" />
       <VisAxis
         type="x"
         :tick-format="xTickFormat"
@@ -42,13 +42,7 @@ const xTickFormat = (value: number) => data[value]?.day ?? ''
         :domain-line="false"
         :grid-line="false"
       />
-      <VisAxis
-        type="y"
-        :tick-format="() => ''"
-        :tick-line="false"
-        :domain-line="false"
-        :grid-line="true"
-      />
+      <VisAxis type="y" :tick-format="() => ''" :tick-line="false" :domain-line="false" />
       <ChartTooltip />
       <ChartCrosshair />
     </VisXYContainer>

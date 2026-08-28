@@ -28,14 +28,14 @@ const noIndicatorContentProps = {
   <div class="grid gap-6 sm:grid-cols-2">
     <ChartRoot v-slot="{ mounted }" :config="config">
       <VisXYContainer v-if="mounted" :data="data" :height="180">
-        <VisLine :x="x" :y="y" color="var(--chart-1)" />
+        <VisLine :x="x" :y="y" />
         <ChartTooltip />
         <ChartCrosshair :content-props="lineContentProps" />
       </VisXYContainer>
     </ChartRoot>
     <ChartRoot v-slot="{ mounted }" :config="config">
       <VisXYContainer v-if="mounted" :data="data" :height="180">
-        <VisLine :x="x" :y="y" color="var(--chart-1)" />
+        <VisLine :x="x" :y="y" />
         <ChartTooltip />
         <ChartCrosshair :content-props="noIndicatorContentProps" />
       </VisXYContainer>

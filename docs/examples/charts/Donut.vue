@@ -31,7 +31,6 @@ const tooltipTriggers = {
     <VisSingleContainer v-if="mounted" :data="data" :height="220">
       <VisDonut
         :value="(item: { value: number }) => item.value"
-        :color="(_item: { value: number }, index: number) => `var(--chart-${index + 1})`"
         central-label="100%"
       />
       <ChartTooltip :triggers="tooltipTriggers" />

@@ -2,11 +2,11 @@
 import { ref } from 'vue'
 import { VisArea, VisAxis, VisLine, VisXYContainer } from '@unovis/vue'
 import {
+  ChartAreaGradient,
   ChartCrosshair,
   ChartLegend,
   ChartRoot,
   ChartTooltip,
-  ChartAreaGradient,
   type ChartConfig,
 } from '@typlog/ui/charts'
 

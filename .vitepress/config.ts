@@ -169,6 +169,7 @@ export default defineConfig<ThemeConfig>({
         items: [
           { text: 'Overview', link: '/charts/overview' },
           { text: 'Line', link: '/charts/line' },
+          { text: 'Area', link: '/charts/area' },
           { text: 'Bar', link: '/charts/bar' },
           { text: 'Pie', link: '/charts/pie' },
           { text: 'Donut', link: '/charts/donut' },
