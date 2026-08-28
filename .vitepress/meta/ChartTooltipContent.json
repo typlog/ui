@@ -1,0 +1,99 @@
+{
+  "props": [
+    {
+      "name": "config",
+      "description": "<p>Series metadata. Passed automatically by createChartTooltipTemplate.</p>",
+      "type": "ChartConfig",
+      "required": false,
+      "inherit": null,
+      "default": "{}"
+    },
+    {
+      "name": "hideIndicator",
+      "description": "<p>Hides series indicators without removing icons.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": null
+    },
+    {
+      "name": "hideLabel",
+      "description": "<p>Hides the tooltip label.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": null
+    },
+    {
+      "name": "indicator",
+      "description": "<p>Indicator displayed beside each series.</p>",
+      "type": "ChartTooltipIndicator",
+      "required": false,
+      "inherit": null,
+      "default": "\"dot\""
+    },
+    {
+      "name": "labelFormatter",
+      "description": "<p>Formats the final tooltip label. Priority: hideLabel, labelKey, role-x field, crosshair x.</p>",
+      "type": "((value: string | number | Date) => string)",
+      "required": false,
+      "inherit": null
+    },
+    {
+      "name": "labelKey",
+      "description": "<p>Uses a payload or config key instead of the role-x value or crosshair x.</p>",
+      "type": "string",
+      "required": false,
+      "inherit": null
+    },
+    {
+      "name": "payload",
+      "description": "<p>Values keyed by the matching ChartConfig series key.</p>",
+      "type": "Record<string, unknown>",
+      "required": false,
+      "inherit": null,
+      "default": "{}"
+    },
+    {
+      "name": "valueFormatter",
+      "description": "<p>Formats a series value.</p>",
+      "type": "((value: unknown, key: string) => string)",
+      "required": false,
+      "inherit": null
+    },
+    {
+      "name": "x",
+      "description": "<p>Domain value displayed as the tooltip label.</p>",
+      "type": "string | number | Date",
+      "required": false,
+      "inherit": null
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "name": "items",
+      "description": "",
+      "type": "{ index: number"
+    },
+    {
+      "name": "key",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "name": "value",
+      "description": "",
+      "type": "unknown"
+    },
+    {
+      "name": "series",
+      "description": "",
+      "type": "ChartSeries"
+    },
+    {
+      "name": "label",
+      "description": "",
+      "type": "string | undefined"
+    }
+  ],
+  "methods": []
+}

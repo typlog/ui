@@ -1,0 +1,98 @@
+{
+  "props": [
+    {
+      "name": "allowHover",
+      "description": "<p>Allow the tooltip to be hovered over and interacted with. Default: <code>false</code></p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": "unovis"
+    },
+    {
+      "name": "attributes",
+      "description": "<p>Custom DOM attributes for the tooltip. Useful when you need to refer to a specific tooltip instance\nby using a CSS selector. Attributes configuration object has the following structure:</p>\n<pre><code>{\n [attributeName]: attribute value\n}\n</code></pre>\n<p>e.g.:</p>\n<pre><code>{\n 'type': 'area-tooltip',\n 'value': 42\n}\n</code></pre>",
+      "type": "{ [attr: string]: string | number | boolean; }",
+      "required": false,
+      "inherit": "unovis"
+    },
+    {
+      "name": "className",
+      "description": "<p>Custom class name for the tooltip. Default: <code>undefined</code></p>",
+      "type": "string",
+      "required": false,
+      "inherit": "unovis"
+    },
+    {
+      "name": "components",
+      "description": "<p>An array of visualization components to interact with. Default: <code>[]</code></p>",
+      "type": "ComponentCore<unknown, ComponentConfigInterface>[]",
+      "required": false,
+      "inherit": "unovis"
+    },
+    {
+      "name": "container",
+      "description": "<p>Container to where the Tooltip component should be inserted. Default: <code>undefined</code></p>",
+      "type": "HTMLElement",
+      "required": false,
+      "inherit": "unovis"
+    },
+    {
+      "name": "followCursor",
+      "description": "<p>Follow the mouse cursor. Default: <code>true</code></p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": "unovis"
+    },
+    {
+      "name": "hideDelay",
+      "description": "<p>Hide delay in milliseconds. Default: <code>undefined</code></p>",
+      "type": "number",
+      "required": false,
+      "inherit": "unovis"
+    },
+    {
+      "name": "horizontalPlacement",
+      "description": "<p>Horizontal placement of the tooltip. Default: <code>Position.Auto</code></p>",
+      "type": "string",
+      "required": false,
+      "inherit": "unovis"
+    },
+    {
+      "name": "horizontalShift",
+      "description": "<p>Horizontal shift of the tooltip in pixels. Works only with\n<code>horizontalPlacement</code> set to <code>Position.Left</code> or <code>Position.Right</code>.\nDefault: <code>0</code></p>",
+      "type": "number",
+      "required": false,
+      "inherit": "unovis"
+    },
+    {
+      "name": "showDelay",
+      "description": "<p>Show delay in milliseconds. Default: <code>undefined</code></p>",
+      "type": "number",
+      "required": false,
+      "inherit": "unovis"
+    },
+    {
+      "name": "triggers",
+      "description": "<p>Defines the content of the tooltip and hovering over which elements should trigger it.\nAn object containing properties in the following format:</p>\n<pre><code>{\n [selectorString]: (d: unknown) =&gt; string | HTMLElement\n}\n</code></pre>\n<p>e.g.:</p>\n<pre><code>{\n [Area.selectors.area]: (d: AreaDatum[]) =&gt; `&lt;div&gt;${d.value.toString()}&lt;/div&gt;\n}\n</code></pre>",
+      "type": "{ [selector: string]: ((data: any, i: number, elements: (HTMLElement | SVGElement)[]) => string | void | HTMLElement | null) | null; }",
+      "required": false,
+      "inherit": "unovis"
+    },
+    {
+      "name": "verticalPlacement",
+      "description": "<p>Vertical placement of the tooltip. Default: <code>Position.Top</code></p>",
+      "type": "string",
+      "required": false,
+      "inherit": "unovis"
+    },
+    {
+      "name": "verticalShift",
+      "description": "<p>Vertical shift of the tooltip in pixels. Works only with\n<code>verticalPlacement</code> set to <code>Position.Top</code> or <code>Position.Bottom</code>.\nDefault: <code>0</code></p>",
+      "type": "number",
+      "required": false,
+      "inherit": "unovis"
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "methods": []
+}

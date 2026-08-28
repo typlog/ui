@@ -20,13 +20,24 @@ const tsconfigChecker = createChecker(
 )
 
 const ownPropsByComponent: Record<string, string[]> = {
+  ChartLegend: ['orientation', 'align', 'ariaLabel'],
+  ChartRoot: ['config'],
+  ChartTooltip: [],
+  ChartTooltipContent: ['payload', 'config', 'x', 'indicator', 'hideLabel', 'hideIndicator', 'labelKey', 'labelFormatter', 'valueFormatter'],
+  ChartCrosshair: ['contentComponent', 'contentProps'],
   Sidebar: ['open', 'defaultOpen', 'collapsed', 'defaultCollapsed', 'side', 'variant', 'collapsible', 'width', 'collapsedWidth', 'mobileWidth', 'mobileTitle', 'mobileDescription'],
   SidebarMenuButton: ['icon', 'text', 'trailingIcon', 'active', 'disabled', 'tooltip'],
   SidebarMenuSubButton: ['icon', 'text', 'trailingIcon', 'active', 'disabled'],
 }
 
+const fallbackInheritByComponent: Record<string, string> = {
+  ChartTooltip: 'unovis',
+  ChartCrosshair: 'unovis',
+}
+
 parseComponents(resolve(__dirname, '../src/components/index.ts'))
 parseComponents(resolve(__dirname, '../src/addons/index.ts'))
+parseComponents(resolve(__dirname, '../src/charts/index.ts'))
 
 function parseComponents (filePath: string) {
   const names = tsconfigChecker.getExportNames(filePath)
@@ -38,8 +49,9 @@ function parseComponents (filePath: string) {
       let usedDirectFallback = false
       const directFile = findComponentFile(name)
       const ownProps = ownPropsByComponent[name] ?? []
+      const hasOwnProps = Object.hasOwn(ownPropsByComponent, name)
 
-      if (directFile && ownProps.length) {
+      if (directFile && hasOwnProps) {
         componentMeta = tsconfigChecker.getComponentMeta(directFile)
         usedDirectFallback = true
       } else if (!existsSync(outfile) && directFile) {
@@ -68,7 +80,10 @@ function parseComponents (filePath: string) {
         }
       }
 
-      const meta = parseMeta(componentMeta, usedDirectFallback, ownProps)
+      const fallbackInherit = usedDirectFallback
+        ? (fallbackInheritByComponent[name] ?? 'reka-ui')
+        : null
+      const meta = parseMeta(componentMeta, fallbackInherit, ownProps)
       writeFileSync(outfile, JSON.stringify(meta, null, 2))
     }
   })
@@ -119,7 +134,7 @@ function parseTypeFromSchema(schema: PropertyMetaSchema): string {
 }
 
 // Utilities
-function parseMeta(meta: ComponentMeta, fallbackInherit = false, ownProps: string[] = []) {
+function parseMeta(meta: ComponentMeta, fallbackInherit: string | null = null, ownProps: string[] = []) {
   const props = meta.props
   // Exclude global props
     .filter(prop => !prop.global)
@@ -164,9 +179,13 @@ function parseMeta(meta: ComponentMeta, fallbackInherit = false, ownProps: strin
           inherit = 'reka-ui'
           return true
         }
+        if (declare.file.indexOf('node_modules/@unovis') !== -1) {
+          inherit = 'unovis'
+          return true
+        }
       })
-      if (!inherit && fallbackInherit && !ownProps.includes(name)) {
-        inherit = 'reka-ui'
+      if (fallbackInherit && !ownProps.includes(name)) {
+        inherit = fallbackInherit
       }
 
       return ({

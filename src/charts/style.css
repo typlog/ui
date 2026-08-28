@@ -1,0 +1,167 @@
+@layer components {
+  .ui-ChartRoot {
+    --vis-font-family: var(--font-family-sans);
+    --vis-axis-tick-color: var(--gray-a7);
+    --vis-axis-domain-color: var(--gray-a7);
+    --vis-axis-grid-color: var(--gray-a4);
+    --vis-axis-label-color: var(--gray-11);
+    --vis-axis-tick-label-color: var(--gray-11);
+    --vis-tooltip-background-color: var(--color-panel-solid);
+    --vis-tooltip-border-color: var(--gray-a6);
+    --vis-tooltip-text-color: var(--gray-12);
+    --vis-tooltip-shadow-color: var(--gray-a5);
+    --vis-tooltip-backdrop-filter: blur(8px);
+    --vis-color-main: var(--chart-1);
+    --vis-color0: var(--chart-1);
+    --vis-color1: var(--chart-2);
+    --vis-color2: var(--chart-3);
+    --vis-color3: var(--chart-4);
+    --vis-color4: var(--chart-5);
+    --vis-color5: var(--chart-6);
+
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    color: var(--gray-12);
+  }
+
+  .ui-ChartLegend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-5);
+    color: var(--gray-11);
+    font-size: var(--font-size-2);
+    line-height: var(--line-height-2);
+  }
+
+  .ui-ChartLegend:where(.r-orientation-vertical) {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .ui-ChartLegend:where(.r-orientation-horizontal.r-align-center) {
+    justify-content: center;
+  }
+
+  .ui-ChartLegend:where(.r-orientation-horizontal.r-align-end) {
+    justify-content: flex-end;
+  }
+
+  .ui-ChartLegend:where(.r-orientation-vertical.r-align-center) {
+    align-items: center;
+  }
+
+  .ui-ChartLegend:where(.r-orientation-vertical.r-align-end) {
+    align-items: flex-end;
+  }
+
+  .ui-ChartLegendItem {
+    display: inline-flex;
+    align-items: center;
+    min-width: 0;
+    gap: var(--space-2);
+  }
+
+  .ui-ChartLegendMarker,
+  .ui-ChartTooltipIndicator {
+    flex: 0 0 auto;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-radius: var(--radius-full);
+  }
+
+  .ui-ChartLegendLabel {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .ui-ChartTooltip {
+    min-width: 8rem;
+    max-width: min(20rem, calc(100vw - var(--space-4)));
+    padding: var(--space-3);
+    border: 1px solid var(--vis-tooltip-border-color);
+    border-radius: var(--radius-3);
+    background: var(--vis-tooltip-background-color);
+    box-shadow: var(--shadow-3);
+    color: var(--vis-tooltip-text-color);
+    font-size: var(--font-size-2);
+    line-height: var(--line-height-2);
+    backdrop-filter: var(--vis-tooltip-backdrop-filter);
+  }
+
+  .ui-ChartTooltipContent {
+    display: grid;
+    min-width: 8rem;
+    gap: var(--space-2);
+  }
+
+  .ui-ChartTooltipLabel {
+    color: var(--gray-12);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .ui-ChartTooltipItems {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .ui-ChartTooltipItem {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .ui-ChartTooltipIcon {
+    width: 0.75rem;
+    height: 0.75rem;
+    color: var(--gray-11);
+  }
+
+  .ui-ChartTooltipIndicator {
+    width: 0.625rem;
+    height: 0.625rem;
+    border: 1px solid var(--chart-tooltip-color);
+    border-radius: var(--radius-full);
+    background: var(--chart-tooltip-color);
+  }
+
+  .ui-ChartTooltipIndicator:where(.r-indicator-line) {
+    align-self: stretch;
+    width: 0.1875rem;
+    height: auto;
+    border-radius: var(--radius-1);
+  }
+
+  .ui-ChartTooltipIndicator:where(.r-indicator-dashed) {
+    align-self: stretch;
+    width: 0;
+    height: auto;
+    border-width: 0 0 0 2px;
+    border-style: dashed;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .ui-ChartTooltipSeries {
+    display: grid;
+    min-width: 0;
+    gap: var(--space-1);
+  }
+
+  .ui-ChartTooltipSeriesLabel {
+    overflow: hidden;
+    color: var(--gray-11);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .ui-ChartTooltipValue {
+    color: var(--gray-12);
+    font-family: var(--font-family-mono);
+    font-weight: var(--font-weight-medium);
+    font-variant-numeric: tabular-nums;
+  }
+}

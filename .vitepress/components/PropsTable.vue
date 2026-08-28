@@ -38,9 +38,20 @@ const selfProps = computed(() => {
   return items.value.filter(item => !item.inherit)
 })
 
-const inheritProps = computed(() => {
-  return items.value.filter(item => Boolean(item.inherit))
+const inheritGroups = computed(() => {
+  return items.value.reduce<Record<string, PropData[]>>((groups, item) => {
+    if (item.inherit) {
+      groups[item.inherit] ??= []
+      groups[item.inherit].push(item)
+    }
+    return groups
+  }, {})
 })
+
+const inheritLabels: Record<string, string> = {
+  'reka-ui': 'Reka UI',
+  'unovis': 'Unovis',
+}
 </script>
 
 <template>
@@ -51,12 +62,13 @@ const inheritProps = computed(() => {
       :items="selfProps"
     />
     <CollapsibleRoot
-      v-if="inheritProps.length"
+      v-for="(inheritProps, source) in inheritGroups"
+      :key="source"
       size="1"
       :default-open="props.expand"
     >
       <CollapsibleTrigger class="font-medium">
-        Props inherited from Reka UI
+        Props inherited from {{ inheritLabels[source] ?? source }}
         <template #right>
           <CollapsibleIndicator />
         </template>

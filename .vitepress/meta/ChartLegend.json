@@ -1,0 +1,62 @@
+{
+  "props": [
+    {
+      "name": "align",
+      "description": "<p>Alignment of legend entries within the legend.</p>",
+      "type": "\"center\" | \"end\" | \"start\"",
+      "required": false,
+      "inherit": null,
+      "default": "\"start\""
+    },
+    {
+      "name": "ariaLabel",
+      "description": "<p>Accessible name for the legend list.</p>",
+      "type": "string",
+      "required": false,
+      "inherit": null,
+      "default": "\"Chart legend\""
+    },
+    {
+      "name": "as",
+      "description": "<p>The element or component this component should render as. Can be overwritten by <code>asChild</code>.</p>",
+      "type": "AsTag | Component",
+      "required": false,
+      "inherit": "reka-ui",
+      "default": "\"div\""
+    },
+    {
+      "name": "asChild",
+      "description": "<p>Change the default rendered element for the one passed as a child, merging their props and behavior.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "orientation",
+      "description": "<p>Layout direction for legend entries.</p>",
+      "type": "\"horizontal\" | \"vertical\"",
+      "required": false,
+      "inherit": null,
+      "default": "\"horizontal\""
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "name": "key",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "name": "series",
+      "description": "",
+      "type": "ChartSeries"
+    },
+    {
+      "name": "index",
+      "description": "",
+      "type": "number"
+    }
+  ],
+  "methods": []
+}

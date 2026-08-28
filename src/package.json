@@ -27,6 +27,11 @@
       "style": "./addons.css",
       "import": "./addons.js"
     },
+    "./charts": {
+      "types": "./charts.d.ts",
+      "style": "./charts.css",
+      "import": "./charts.js"
+    },
     "./base.css": "./base.css",
     "./components.css": "./components.css",
     "./tailwind.css": "./tailwind.css"
@@ -36,5 +41,17 @@
     "@tanstack/vue-virtual": "^3.13.36",
     "reka-ui": "^2.4.0",
     "vue": "^3.5.0"
+  },
+  "peerDependencies": {
+    "@unovis/ts": "^1.6.7",
+    "@unovis/vue": "^1.6.7"
+  },
+  "peerDependenciesMeta": {
+    "@unovis/ts": {
+      "optional": true
+    },
+    "@unovis/vue": {
+      "optional": true
+    }
   }
 }

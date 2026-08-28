@@ -23,6 +23,7 @@ export default defineConfig({
     alias: {
       '#components': resolve(import.meta.dirname, 'src/components'),
       '#addons': resolve(import.meta.dirname, 'src/addons'),
+      '#charts': resolve(import.meta.dirname, 'src/charts'),
     },
   },
   build: {
@@ -35,6 +36,7 @@ export default defineConfig({
         tailwind: resolve(import.meta.dirname, 'tailwind/index.css'),
         components: resolve(import.meta.dirname, 'src/components/index.ts'),
         addons: resolve(import.meta.dirname, 'src/addons/index.ts'),
+        charts: resolve(import.meta.dirname, 'src/charts/index.ts'),
       },
     },
     rollupOptions: {
@@ -43,6 +45,8 @@ export default defineConfig({
         '@iconify/vue',
         'reka-ui',
         '#components',
+        '@unovis/ts',
+        '@unovis/vue',
       ],
     },
   },

@@ -18,7 +18,8 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "paths": {
-      "#components": ["./src/components/index.ts"]
+      "#components": ["./src/components/index.ts"],
+      "#charts": ["./src/charts/index.ts"]
     }
   },
   "include": [

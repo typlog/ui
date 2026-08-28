@@ -26,6 +26,7 @@
     "paths": {
       "#components": ["./src/components/index.ts"],
       "#addons": ["./src/addons/index.ts"],
+      "#charts": ["./src/charts/index.ts"],
       "@localSearchIndex": ["./.vitepress/shims/localSearchIndex.d.ts"]
     }
   },

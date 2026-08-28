@@ -1,0 +1,191 @@
+{
+  "props": [
+    {
+      "name": "attributes",
+      "description": "<p>You can set every SVG and HTML visualization object to have a custom DOM attributes, which is useful\nwhen you want to do unit or end-to-end testing. Attributes configuration object has the following structure:</p>\n<pre><code>{\n [selectorString]: {\n     [attributeName]: attribute constant value or accessor function\n }\n}\n</code></pre>\n<p>e.g.:</p>\n<pre><code>{\n [Area.selectors.area]: {\n   &quot;test-value&quot;: d =&gt; d.value\n }\n}\n</code></pre>",
+      "type": "{ [selector: string]: { [attr: string]: string | number | boolean | ((datum: any) => string | number | boolean); }; }",
+      "required": false,
+      "inherit": "unovis"
+    },
+    {
+      "name": "baseline",
+      "description": "<p>Baseline accessor function for stacked values, useful with stacked areas. Default: <code>null</code></p>",
+      "type": "NumericAccessor<Datum>",
+      "required": false,
+      "inherit": "unovis"
+    },
+    {
+      "name": "circleRadius",
+      "description": "<p>Radius of crosshair circles in pixels. Default: <code>3</code></p>",
+      "type": "number",
+      "required": false,
+      "inherit": "unovis"
+    },
+    {
+      "name": "color",
+      "description": "<p>Optional color array or color accessor function for crosshair circles. Default: <code>d =&gt; d.color</code></p>",
+      "type": "\"indigo\" | \"gray\" | \"gold\" | \"bronze\" | \"brown\" | \"yellow\" | \"amber\" | \"orange\" | \"tomato\" | \"red\" | \"ruby\" | \"crimson\" | \"pink\" | \"plum\" | \"purple\" | \"violet\" | \"iris\" | \"blue\" | \"cyan\" | \"teal\" | \"jade\" | \"green\" | \"grass\" | \"lime\" | \"mint\" | \"sky\"",
+      "required": false,
+      "inherit": "unovis"
+    },
+    {
+      "name": "contentComponent",
+      "description": "<p>Vue component rendered as the crosshair tooltip content.</p>",
+      "type": "Component",
+      "required": false,
+      "inherit": null,
+      "default": "ChartTooltipContent"
+    },
+    {
+      "name": "contentProps",
+      "description": "<p>Props passed to <code>contentComponent</code> in addition to payload, config, and x.</p>",
+      "type": "Record<string, unknown>",
+      "required": false,
+      "inherit": null,
+      "default": "{}"
+    },
+    {
+      "name": "duration",
+      "description": "<p>Animation duration of the data update transitions in milliseconds. Default: <code>600</code></p>",
+      "type": "number",
+      "required": false,
+      "inherit": "unovis"
+    },
+    {
+      "name": "events",
+      "description": "<p>Events configuration. An object containing properties in the following format:</p>\n<pre><code>{\n [selectorString]: {\n     [eventType]: callbackFunction\n }\n}\n</code></pre>\n<p>e.g.:</p>\n<pre><code>{\n [Area.selectors.area]: {\n   click: (d) =&gt; console.log(&quot;Clicked Area&quot;, d)\n }\n}\n</code></pre>",
+      "type": "{ [selector: string]: { scroll?: VisEventCallback; touchstart?: VisEventCallback; touchmove?: VisEventCallback; touchend?: VisEventCallback; mouseover?: VisEventCallback; mousemove?: VisEventCallback; mousedown?: VisEventCallback; mouseup?: VisEventCallback; click?: VisEventCallback; auxclick?: VisEventCallback; contextmenu?: VisEventCallback; dblclick?: VisEventCallback; mouseenter?: VisEventCallback; mouseleave?: VisEventCallback; mouseout?: VisEventCallback; select?: VisEventCallback; wheel?: VisEventCallback; pointerdown?: VisEventCallback; pointerup?: VisEventCallback; pointerout?: VisEventCallback; pointermove?: VisEventCallback; }; }",
+      "required": false,
+      "inherit": "unovis"
+    },
+    {
+      "name": "excludeFromDomainCalculation",
+      "description": "<p>Identifies whether the component should be excluded from overall X and Y domain calculations or not.\nThis property can be useful when you want pass individual data to a component and you don't want it to affect\nthe scales of the chart.\nDefault: <code>false</code></p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": "unovis"
+    },
+    {
+      "name": "forceShowAt",
+      "description": "<p>Force the crosshair to show at a specific position. Default: <code>undefined</code></p>",
+      "type": "number | Date",
+      "required": false,
+      "inherit": "unovis"
+    },
+    {
+      "name": "getCircles",
+      "description": "<p>Custom function for setting up the crosshair circles, usually needed when <code>snapToData</code> is set to <code>false</code>.\nThe function receives the horizontal position of the crosshair (in the data space, not in pixels), the data array,\nthe <code>yScale</code> instance to help you calculate the correct vertical position of the circles, and the nearest datum index.\nIt has to return an array of the <code>CrosshairCircle</code> objects: <code>{ y: number; color: string; opacity?: number }[]</code>.\nDefault: <code>undefined</code></p>",
+      "type": "((x: number | Date, data: Datum[], yScale: ContinuousScale, leftNearestDatumIndex?: number) => CrosshairCircle[])",
+      "required": false,
+      "inherit": "unovis"
+    },
+    {
+      "name": "hideWhenFarFromPointer",
+      "description": "<p>Hide Crosshair when the corresponding datum element is far from mouse pointer. Default: <code>true</code></p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": "unovis"
+    },
+    {
+      "name": "hideWhenFarFromPointerDistance",
+      "description": "<p>Distance in pixels to check in the hideWhenFarFromPointer condition. Default: <code>100</code></p>",
+      "type": "number",
+      "required": false,
+      "inherit": "unovis"
+    },
+    {
+      "name": "id",
+      "description": "<p>Accessor function for getting the unique data record id. Used for more persistent data updates. Default: <code>(d, i) =&gt; d.id ?? i</code></p>",
+      "type": "((d: Datum, i: number, ...any: any[]) => string)",
+      "required": false,
+      "inherit": "unovis"
+    },
+    {
+      "name": "onCrosshairMove",
+      "description": "<p>Callback function that is called when the crosshair is moved:</p>\n<ul>\n<li><code>x</code> is the horizontal position of the crosshair in the data space;</li>\n<li><code>datum</code> is the nearest datum to the crosshair;</li>\n<li><code>datumIndex</code> is the index of the nearest datum.</li>\n<li><code>event</code> is the event that triggered the crosshair move (mouse or wheel).</li>\n</ul>\n<p>When the mouse goes out of the container and on wheel events, all the arguments are <code>undefined</code> except for <code>event</code>.\nDefault: <code>undefined</code></p>",
+      "type": "((x?: number | Date, datum?: Datum, datumIndex?: number, event?: MouseEvent | WheelEvent) => void)",
+      "required": false,
+      "inherit": "unovis"
+    },
+    {
+      "name": "skipRangeCheck",
+      "description": "<p>Skip range checks for crosshair visibility. When true, crosshair will show regardless of position within chart bounds. Default: <code>false</code>\nThis is useful for testing, especially when you only triggers mousemove event but does not have real mouse event.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": "unovis"
+    },
+    {
+      "name": "snapToData",
+      "description": "<p>Snap to the nearest data point.\nIf disabled, the tooltip template will receive only the horizontal position of the crosshair and you'll be responsible\nfor getting the underlying data records and crosshair circles (see the <code>getCircles</code> configuration option).\nDefault: <code>true</code></p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": "unovis"
+    },
+    {
+      "name": "strokeColor",
+      "description": "<p>Optional stroke color accessor function for crosshair circles. Default: <code>undefined</code></p>",
+      "type": "ColorAccessor<Datum>",
+      "required": false,
+      "inherit": "unovis"
+    },
+    {
+      "name": "strokeWidth",
+      "description": "<p>Optional stroke width for crosshair circles. Default: <code>undefined</code></p>",
+      "type": "NumericAccessor<Datum>",
+      "required": false,
+      "inherit": "unovis"
+    },
+    {
+      "name": "tooltip",
+      "description": "<p>An instance of the Tooltip component to be used with Crosshair. Default: <code>undefined</code></p>",
+      "type": "Tooltip",
+      "required": false,
+      "inherit": "unovis"
+    },
+    {
+      "name": "visibilityThreshold",
+      "description": "<p>Minimum fraction (<code>0</code> to <code>1</code>) of the container's area that must be visible in the\nviewport for the Crosshair (and its Tooltip) to be displayed. This prevents the\nCrosshair from showing when the chart is mostly scrolled out of view. Charts that are\nwider or taller than the viewport may never reach the default ratio, so lower this\nvalue (or set it to <code>0</code> to always show the Crosshair) for large charts. Default: <code>0.35</code></p>",
+      "type": "number",
+      "required": false,
+      "inherit": "unovis"
+    },
+    {
+      "name": "x",
+      "description": "<p>Optional accessor function for getting the values along the X axis. Default: <code>undefined</code></p>",
+      "type": "NumericAccessor<Datum>",
+      "required": false,
+      "inherit": "unovis"
+    },
+    {
+      "name": "xScale",
+      "description": "<p>Scale for X dimension, e.g. Scale.scaleLinear(). If you set xScale you'll be responsible for setting it's <code>domain</code> and <code>range</code> as well.\nOnly continuous scales are supported.\nDefault: <code>undefined</code></p>",
+      "type": "ContinuousScale",
+      "required": false,
+      "inherit": "unovis"
+    },
+    {
+      "name": "y",
+      "description": "<p>Optional single of multiple accessor functions for getting the values along the Y axis. Default: <code>undefined</code></p>",
+      "type": "NumericAccessor<Datum> | NumericAccessor<Datum>[]",
+      "required": false,
+      "inherit": "unovis"
+    },
+    {
+      "name": "yScale",
+      "description": "<p>Scale for Y dimension, e.g. Scale.scaleLinear(). If you set yScale you'll be responsible for setting it's <code>domain</code> and <code>range</code> as well.\nOnly continuous scales are supported.\nDefault: <code>undefined</code></p>",
+      "type": "ContinuousScale",
+      "required": false,
+      "inherit": "unovis"
+    },
+    {
+      "name": "yStacked",
+      "description": "<p>Separate array of accessors for stacked components (eg StackedBar, Area). Default: <code>undefined</code></p>",
+      "type": "NumericAccessor<Datum>[]",
+      "required": false,
+      "inherit": "unovis"
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "methods": []
+}
