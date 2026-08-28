@@ -14,6 +14,7 @@ export * from './scroll-area'
 export * from './skeleton'
 export * from './spinner'
 export * from './empty'
+export * from './tree'
 
 export * from './dialog'
 export * from './dropdown'

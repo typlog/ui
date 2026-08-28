@@ -142,6 +142,7 @@ export default defineConfig<ThemeConfig>({
               { text: 'Accordion', link: '/components/accordion' },
               { text: 'Collapsible', link: '/components/collapsible' },
               { text: 'Pagination', link: '/components/pagination' },
+              { text: 'Tree', link: '/components/tree' },
             ],
           },
           {

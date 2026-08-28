@@ -1,0 +1,31 @@
+{
+  "props": [
+    {
+      "name": "disabled",
+      "description": "<p>Whether the item is disabled.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": "reka-ui",
+      "default": "false"
+    },
+    {
+      "name": "expanded",
+      "description": "<p>Whether the parent item is expanded.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": "reka-ui",
+      "default": "false"
+    },
+    {
+      "name": "hasChildren",
+      "description": "<p>Whether the item has children.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": "reka-ui",
+      "default": "false"
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "methods": []
+}

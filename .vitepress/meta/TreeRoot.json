@@ -1,0 +1,169 @@
+{
+  "props": [
+    {
+      "name": "as",
+      "description": "<p>The element or component this component should render as. Can be overwritten by <code>asChild</code>.</p>",
+      "type": "AsTag | Component",
+      "required": false,
+      "inherit": "reka-ui",
+      "default": "\"ul\""
+    },
+    {
+      "name": "asChild",
+      "description": "<p>Change the default rendered element for the one passed as a child, merging their props and behavior.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "bubbleSelect",
+      "description": "<p>When <code>true</code>, selecting children will update the parent state. Requires <code>multiple</code> to be <code>true</code>.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "color",
+      "description": "<p>Overrides the accent color inherited from the theme.</p>",
+      "type": "\"indigo\" | \"gray\" | \"gold\" | \"bronze\" | \"brown\" | \"yellow\" | \"amber\" | \"orange\" | \"tomato\" | \"red\" | \"ruby\" | \"crimson\" | \"pink\" | \"plum\" | \"purple\" | \"violet\" | \"iris\" | \"blue\" | \"cyan\" | \"teal\" | \"jade\" | \"green\" | \"grass\" | \"lime\" | \"mint\" | \"sky\"",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "defaultExpanded",
+      "description": "<p>The value of the expanded tree when initially rendered. Use when you do not need to control the state of the expanded tree</p>",
+      "type": "string[]",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "defaultValue",
+      "description": "<p>The value of the tree when initially rendered. Use when you do not need to control the state of the tree</p>",
+      "type": "(M extends true ? U[] : U)",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "dir",
+      "description": "<p>The reading direction of the listbox when applicable. <br> If omitted, inherits globally from <code>ConfigProvider</code> or assumes LTR (left-to-right) reading mode.</p>",
+      "type": "Direction",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "disabled",
+      "description": "<p>When <code>true</code>, prevents the user from interacting with tree</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "expanded",
+      "description": "<p>The controlled value of the expanded item. Can be binded with <code>v-model</code>.</p>",
+      "type": "string[]",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "getChildren",
+      "description": "<p>This function is passed the index of each item and should return a list of children for that item</p>",
+      "type": "((val: T) => T[])",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "getKey",
+      "description": "<p>This function is passed the index of each item and should return a unique key for that item</p>",
+      "type": "(val: T) => string",
+      "required": true,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "highContrast",
+      "description": "<p>Uses a higher contrast color for selected tree items.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": "reka-ui",
+      "default": "false"
+    },
+    {
+      "name": "items",
+      "description": "<p>List of items</p>",
+      "type": "T[]",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "modelValue",
+      "description": "<p>The controlled value of the tree. Can be binded with <code>v-model</code>.</p>",
+      "type": "(M extends true ? U[] : U)",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "multiple",
+      "description": "<p>Whether multiple options can be selected or not.</p>",
+      "type": "boolean | M",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "propagateSelect",
+      "description": "<p>When <code>true</code>, selecting parent will select the descendants. Requires <code>multiple</code> to be <code>true</code>.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "selectionBehavior",
+      "description": "<p>How multiple selection should behave in the collection.</p>",
+      "type": "\"toggle\" | \"replace\"",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "size",
+      "description": "<p>Controls the size of each tree row.</p>",
+      "type": "\"1\" | \"2\" | \"3\"",
+      "required": false,
+      "inherit": "reka-ui",
+      "default": "\"2\""
+    },
+    {
+      "name": "virtual",
+      "description": "<p>Enables virtual rendering, optionally configuring the virtualizer.</p>",
+      "type": "boolean | TreeVirtualOptions<T>",
+      "required": false,
+      "inherit": "reka-ui",
+      "default": "false"
+    }
+  ],
+  "events": [
+    {
+      "name": "update:expanded",
+      "type": "[val: string[]]"
+    },
+    {
+      "name": "update:modelValue",
+      "type": "[val: M extends true ? T[] : T]"
+    }
+  ],
+  "slots": [
+    {
+      "name": "item",
+      "description": "",
+      "type": "FlattenedItem<T>"
+    },
+    {
+      "name": "modelValue",
+      "description": "",
+      "type": "M extends true ? U[] : U"
+    },
+    {
+      "name": "expanded",
+      "description": "",
+      "type": "string[]"
+    }
+  ],
+  "methods": []
+}

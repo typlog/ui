@@ -1,0 +1,242 @@
+@layer components {
+  .ui-TreeRoot {
+    box-sizing: border-box;
+    display: block;
+    min-width: 0;
+    width: 100%;
+    margin: 0;
+    padding: var(--space-2);
+    overflow-x: auto;
+    border: 1px solid var(--gray-a6);
+    border-radius: var(--radius-3);
+    background-color: var(--color-background);
+    color: var(--gray-12);
+    list-style: none;
+    outline: none;
+  }
+
+  .ui-TreeItem {
+    display: block;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    outline: none;
+  }
+
+  .ui-TreeItemRow {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: fit-content;
+    max-width: 100%;
+    min-width: 0;
+    height: var(--tree-row-height);
+    padding-block: var(--tree-row-padding);
+    padding-inline-start: calc((var(--tree-item-level) - 1) * var(--tree-item-indent));
+    color: var(--gray-12);
+    cursor: default;
+    user-select: none;
+  }
+
+  .ui-TreeItemRow::before {
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: calc(var(--tree-item-indent) / 2 - 0.5px);
+    width: calc((var(--tree-item-level) - 1) * var(--tree-item-indent));
+    background: repeating-linear-gradient(
+      to right,
+      var(--tree-guide-color) 0,
+      var(--tree-guide-color) 1px,
+      transparent 1px var(--tree-item-indent)
+    );
+    content: '';
+    pointer-events: none;
+  }
+
+  .ui-TreeItemTarget {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    min-width: 0;
+    max-width: 100%;
+    gap: var(--tree-item-gap);
+    min-height: calc(var(--tree-row-height) - var(--tree-row-padding) * 2);
+    padding-inline: var(--tree-target-padding-inline);
+    border-radius: var(--tree-item-radius);
+    color: inherit;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    line-height: 1.4;
+    position: relative;
+    z-index: 1;
+  }
+
+  .ui-TreeItemIndicator {
+    box-sizing: border-box;
+    display: inline-flex;
+    flex: 0 0 var(--tree-indicator-size);
+    align-items: center;
+    justify-content: center;
+    width: var(--tree-indicator-size);
+    height: var(--tree-indicator-size);
+    color: var(--gray-9);
+    cursor: pointer;
+  }
+
+  .ui-TreeItemIndicator:where([data-has-children]) {
+    color: var(--gray-11);
+  }
+
+  .ui-TreeItemIndicator:where(:not([data-has-children])) {
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .ui-TreeItemIndicatorGraphic {
+    width: var(--tree-indicator-icon-size);
+    height: var(--tree-indicator-icon-size);
+    transition: transform 120ms ease;
+  }
+
+  .ui-TreeItemIndicator:where([data-expanded]) .ui-TreeItemIndicatorGraphic {
+    transform: rotate(90deg);
+  }
+
+  .ui-TreeItemIcon {
+    display: inline-flex;
+    flex: 0 0 var(--tree-icon-size);
+    align-items: center;
+    justify-content: center;
+    width: var(--tree-icon-size);
+    height: var(--tree-icon-size);
+    color: var(--gray-10);
+  }
+
+  .ui-TreeItemIconGraphic,
+  .ui-TreeItemTrailingIcon {
+    width: var(--tree-icon-graphic-size);
+    height: var(--tree-icon-graphic-size);
+  }
+
+  .ui-TreeItemText {
+    min-width: 0;
+    overflow: hidden;
+    flex: 1 1 auto;
+    font-size: var(--tree-item-font-size);
+    line-height: 1.4;
+    letter-spacing: var(--tree-item-letter-spacing);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .ui-TreeItemTrailing {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray-9);
+    font-family: var(--default-font-family);
+    font-size: var(--font-size-1);
+    line-height: var(--line-height-1);
+  }
+
+  .ui-TreeItem:where(:not([data-disabled])):where(:hover) .ui-TreeItemRow {
+    color: var(--gray-12);
+  }
+
+  .ui-TreeItem:where(:not([data-disabled])):where(:hover) .ui-TreeItemTarget {
+    background-color: var(--gray-a3);
+  }
+
+  .ui-TreeItem:where([data-selected]) .ui-TreeItemTarget {
+    background-color: var(--accent-a3);
+    color: var(--accent-a11);
+  }
+
+  .ui-TreeItem:where([data-selected]) .ui-TreeItemIcon {
+    color: var(--accent-a11);
+  }
+
+  .ui-TreeItem:where(.r-high-contrast[data-selected]) .ui-TreeItemTarget {
+    background-color: var(--accent-a5);
+    color: var(--accent-12);
+  }
+
+  .ui-TreeItem:where(:focus-visible) .ui-TreeItemTarget {
+    outline: 2px solid var(--focus-8);
+    outline-offset: -2px;
+  }
+
+  .ui-TreeItem:where([data-disabled]) .ui-TreeItemRow {
+    color: var(--gray-a8);
+    cursor: not-allowed;
+  }
+
+  .ui-TreeItem:where([data-disabled]) .ui-TreeItemIndicator {
+    cursor: not-allowed;
+  }
+
+  .ui-TreeRoot:where(.r-size-1) {
+    --tree-row-height: var(--space-5);
+    --tree-row-padding: var(--space-1);
+    --tree-item-indent: var(--space-4);
+    --tree-item-gap: var(--space-1);
+    --tree-target-padding-inline: var(--space-1);
+    --tree-indicator-size: var(--space-4);
+    --tree-indicator-icon-size: var(--space-2);
+    --tree-icon-size: var(--space-4);
+    --tree-icon-graphic-size: var(--space-3);
+    --tree-item-font-size: var(--font-size-1);
+    --tree-item-letter-spacing: var(--letter-spacing-1);
+    --tree-item-radius: max(var(--radius-1), var(--radius-full));
+    --tree-guide-color: var(--gray-a5);
+  }
+
+  .ui-TreeRoot:where(.r-size-2) {
+    --tree-row-height: var(--space-6);
+    --tree-row-padding: var(--space-1);
+    --tree-item-indent: var(--space-5);
+    --tree-item-gap: var(--space-2);
+    --tree-target-padding-inline: var(--space-1);
+    --tree-indicator-size: var(--space-5);
+    --tree-indicator-icon-size: var(--space-3);
+    --tree-icon-size: var(--space-5);
+    --tree-icon-graphic-size: var(--space-4);
+    --tree-item-font-size: var(--font-size-2);
+    --tree-item-letter-spacing: var(--letter-spacing-2);
+    --tree-item-radius: max(var(--radius-2), var(--radius-full));
+    --tree-guide-color: var(--gray-a5);
+  }
+
+  .ui-TreeRoot:where(.r-size-3) {
+    --tree-row-height: var(--space-7);
+    --tree-row-padding: var(--space-1);
+    --tree-item-indent: var(--space-6);
+    --tree-item-gap: var(--space-2);
+    --tree-target-padding-inline: var(--space-2);
+    --tree-indicator-size: var(--space-6);
+    --tree-indicator-icon-size: var(--space-4);
+    --tree-icon-size: var(--space-6);
+    --tree-icon-graphic-size: var(--space-5);
+    --tree-item-font-size: var(--font-size-3);
+    --tree-item-letter-spacing: var(--letter-spacing-3);
+    --tree-item-radius: max(var(--radius-3), var(--radius-full));
+    --tree-guide-color: var(--gray-a5);
+  }
+
+  .ui-TreeRoot:where(:dir(rtl)) .ui-TreeItemRow::before {
+    background: repeating-linear-gradient(
+      to left,
+      var(--tree-guide-color) 0,
+      var(--tree-guide-color) 1px,
+      transparent 1px var(--tree-item-indent)
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ui-TreeItemIndicatorGraphic {
+    transition: none;
+  }
+}
