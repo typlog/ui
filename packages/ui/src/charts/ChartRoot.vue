@@ -1,30 +1,28 @@
 <script lang="ts">
 import type { PrimitiveProps } from 'reka-ui'
 import type { ChartConfig } from './types'
+import type { ColorType } from '../components/types'
 
 export interface ChartRootProps extends PrimitiveProps {
   /** Series metadata used by ChartLegend and ChartTooltip. */
-  config: ChartConfig
+  config: ChartConfig,
+  colors?: ColorType[],
 }
 </script>
 
 <script setup lang="ts">
-import { computed, onMounted, ref, toRef, useAttrs } from 'vue'
+import { computed, onMounted, ref, toRef } from 'vue'
 import { Primitive } from 'reka-ui'
 import { useForwardPropsWithout } from '../components/util'
 import { defaultChartColors, provideChartContext } from './context'
 import { getChartColors, getChartEntries } from './util'
 
-defineOptions({ inheritAttrs: false })
-
 const props = withDefaults(defineProps<ChartRootProps>(), {
   as: 'div',
 })
 
-const forwarded = useForwardPropsWithout(props, [
-  'config',
-])
-const attrs = useAttrs()
+const forwarded = useForwardPropsWithout(props, ['config'])
+
 const config = toRef(props, 'config')
 const mounted = ref(false)
 onMounted(() => {
@@ -43,17 +41,12 @@ const chartStyle = computed<Record<string, string>>(() => {
   })
   return style
 })
-const rootAttrs = computed(() => ({
-  ...attrs,
-  ...forwarded.value,
-  style: [attrs.style, chartStyle.value],
-}))
 
 provideChartContext({ config, series, colors, mounted })
 </script>
 
 <template>
-  <Primitive v-bind="rootAttrs" class="ui-ChartRoot">
+  <Primitive v-bind="forwarded" class="ui-ChartRoot" :style="chartStyle">
     <slot :mounted="mounted"></slot>
   </Primitive>
 </template>

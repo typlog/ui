@@ -1,6 +1,12 @@
 <script setup lang="ts">
-import { VisArea, VisAxis, VisLine, VisXYContainer } from '@unovis/vue'
-import { ChartLegend, ChartRoot, type ChartConfig } from '@typlog/ui/charts'
+import { VisAxis, VisLine, VisXYContainer } from '@unovis/vue'
+import {
+  ChartLegend,
+  ChartRoot,
+  ChartTooltip,
+  ChartCrosshair,
+  type ChartConfig,
+} from '@typlog/ui/charts'
 
 interface Point {
   month: string
@@ -28,8 +34,7 @@ const xTickFormat = (value: number) => data[value]?.month ?? ''
 <template>
   <ChartRoot v-slot="{ mounted }" :config="config">
     <VisXYContainer v-if="mounted" :data="data" :height="240">
-      <VisArea :x="x" :y="y" :color="['var(--chart-1)', 'var(--chart-2)']" :opacity="0.1" />
-      <VisLine :x="x" :y="y" :color="['var(--chart-1)', 'var(--chart-2)']" :line-width="2" />
+      <VisLine :x="x" :y="y" :line-width="2" />
       <VisAxis
         type="x"
         :tick-format="xTickFormat"
@@ -45,6 +50,8 @@ const xTickFormat = (value: number) => data[value]?.month ?? ''
         :domain-line="false"
         :grid-line="true"
       />
+      <ChartTooltip />
+      <ChartCrosshair />
     </VisXYContainer>
     <ChartLegend class="mt-3" />
   </ChartRoot>

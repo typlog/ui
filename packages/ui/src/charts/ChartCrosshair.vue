@@ -12,40 +12,30 @@ export interface ChartCrosshairProps<Datum = unknown> extends /* @vue-ignore */ 
 </script>
 
 <script setup lang="ts" generic="Datum = unknown">
-import { computed, useAttrs } from 'vue'
+import { computed } from 'vue'
 import { VisCrosshair } from '@unovis/vue'
 import { useForwardPropsWithout } from '../components/util'
 import { injectChartContext } from './context'
 import ChartTooltipContent from './ChartTooltipContent.vue'
 import { createChartTooltipTemplate } from './tooltip'
 
-defineOptions({ inheritAttrs: false })
-
 const props = withDefaults(defineProps<ChartCrosshairProps<Datum>>(), {
   contentComponent: ChartTooltipContent,
   contentProps: () => ({}),
 })
+
 const context = injectChartContext()
-const attrs = useAttrs()
 const forwarded = useForwardPropsWithout(props, ['contentComponent', 'contentProps', 'template'])
+const color = computed(() => {
+  return context.series.value.map(d => `var(--chart-${d.index + 1})`)
+})
 const template = computed(() => createChartTooltipTemplate(
   context.config.value,
   props.contentComponent,
   props.contentProps,
 ))
-const crosshairProps = computed(() => ({
-  ...withoutTemplate(attrs),
-  ...forwarded.value,
-  template: template.value,
-}))
-
-function withoutTemplate (value: Record<string, unknown>) {
-  const result = { ...value }
-  delete result.template
-  return result
-}
 </script>
 
 <template>
-  <VisCrosshair v-bind="crosshairProps" />
+  <VisCrosshair v-bind="{ ...forwarded, color, template }" />
 </template>

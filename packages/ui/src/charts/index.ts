@@ -4,6 +4,11 @@ export { default as ChartRoot, type ChartRootProps } from './ChartRoot.vue'
 export { default as ChartCrosshair, type ChartCrosshairProps } from './ChartCrosshair.vue'
 export { default as ChartTooltip, type ChartTooltipProps } from './ChartTooltip.vue'
 export {
+  default as ChartAreaGradient,
+  type ChartAreaGradientColor,
+  type ChartAreaGradientSlotProps,
+} from './ChartAreaGradient.vue'
+export {
   default as ChartTooltipContent,
   type ChartTooltipContentProps,
   type ChartTooltipIndicator,
