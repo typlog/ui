@@ -15,8 +15,8 @@ export const [injectChartContext, provideChartContext]
 export const defaultChartColors = [
   'var(--accent-9)',
   'var(--blue-9)',
-  'var(--cyan-9)',
-  'var(--green-9)',
-  'var(--orange-9)',
   'var(--ruby-9)',
+  'var(--green-9)',
+  'var(--amber-9)',
+  'var(--cyan-9)',
 ]

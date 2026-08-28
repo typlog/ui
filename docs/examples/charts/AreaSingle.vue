@@ -38,9 +38,9 @@ const xTickFormat = (value: number) => data[value]?.hour ?? ''
           :x="x"
           :y="y"
           :color="color"
-          :opacity="0.7"
+          :opacity="0.4"
           :line="true"
-          :line-width="2"
+          :line-width="1"
         />
         <VisAxis
           type="x"
