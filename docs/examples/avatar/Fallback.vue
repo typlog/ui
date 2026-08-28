@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Avatar } from '#components'
+import { Avatar } from '@typlog/ui'
 </script>
 
 <template>

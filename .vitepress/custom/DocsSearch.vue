@@ -11,7 +11,7 @@ import {
   DialogRoot,
   DialogTitle,
   TextField,
-} from '#components'
+} from '@typlog/ui'
 
 interface SearchRecord {
   title: string

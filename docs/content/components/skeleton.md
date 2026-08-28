@@ -2,7 +2,7 @@
 title: Skeleton
 description: Placeholder content that indicates a page or component is loading.
 status: alpha
-source: https://github.com/typlog/ui/tree/main/src/components/skeleton
+source: https://github.com/typlog/ui/tree/main/packages/ui/src/components/skeleton
 ---
 
 <Example name="skeleton/Overview.vue" />

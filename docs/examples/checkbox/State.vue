@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Checkbox } from '#components'
+import { Checkbox } from '@typlog/ui'
 </script>
 
 <template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TextArea } from '#components'
+import { TextArea } from '@typlog/ui'
 </script>
 
 <template>

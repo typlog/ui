@@ -2,7 +2,7 @@
 title: Empty
 description: A flexible, accessible composition for empty states.
 status: alpha
-source: https://github.com/typlog/ui/tree/main/src/components/empty
+source: https://github.com/typlog/ui/tree/main/packages/ui/src/components/empty
 ---
 
 <Example name="empty/Overview.vue" />

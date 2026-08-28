@@ -1,6 +1,6 @@
 @import "tailwindcss";
-@import "../../tailwind/index.css";
-@import "../../src/styles/index.css";
+@import "@typlog/ui/tailwind.css";
+@import "@typlog/ui/base.css";
 @import "vitepress/dist/client/theme-default/styles/vars.css";
 @import "vitepress/dist/client/theme-default/styles/icons.css";
 @import "./css/vars.css";

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Checkbox } from '#components'
+import { Checkbox } from '@typlog/ui'
 
 const checked = ref(true)
 </script>

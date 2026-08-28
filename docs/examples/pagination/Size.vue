@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Pagination } from '#components'
+import { Pagination } from '@typlog/ui'
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { PrimitiveProps } from 'reka-ui'
-import type { RadiusType } from '#components'
+import type { RadiusType } from '@typlog/ui'
 
 type BrandType = 'google' | 'facebook' | 'x' | 'github' | 'apple' | 'slack' | 'figma'
 
@@ -31,7 +31,7 @@ export interface SocialButtonProps extends PrimitiveProps {
 import { computed } from 'vue'
 import { Primitive } from 'reka-ui'
 import { Icon } from '@iconify/vue'
-import { buildPropsClass } from '#components'
+import { buildPropsClass } from '@typlog/ui'
 
 const props = withDefaults(defineProps<SocialButtonProps>(), {
   as: 'button',

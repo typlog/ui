@@ -2,7 +2,7 @@
 title: Select
 description: Displays a list of options for the user to pick from—triggered by a button.
 status: stable
-source: https://github.com/typlog/ui/tree/main/src/components/select
+source: https://github.com/typlog/ui/tree/main/packages/ui/src/components/select
 radix: https://www.radix-ui.com/themes/docs/components/select
 reka: https://reka-ui.com/docs/components/select
 ---

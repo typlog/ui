@@ -2,7 +2,7 @@
 title: Separator
 description: Visually or semantically separates content.
 status: stable
-source: https://github.com/typlog/ui/tree/main/src/components/separator
+source: https://github.com/typlog/ui/tree/main/packages/ui/src/components/separator
 radix: https://www.radix-ui.com/themes/docs/components/separator
 ---
 

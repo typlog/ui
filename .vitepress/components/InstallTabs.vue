@@ -4,7 +4,7 @@ import {
   TabsList,
   TabsTrigger,
   TabsContent,
-} from '#components'
+} from '@typlog/ui'
 
 defineProps<{name: string}>()
 </script>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Editable } from '#components'
+import { Editable } from '@typlog/ui'
 </script>
 
 <template>

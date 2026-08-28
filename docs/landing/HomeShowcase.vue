@@ -4,7 +4,7 @@ import {
   Card,
   IconButton,
   Tooltip,
-} from '#components'
+} from '@typlog/ui'
 import BadgeOverview from '../examples/badge/Overview.vue'
 import AvatarRing from '../examples/avatar/Ring.vue'
 import SwitchColor from '../examples/switch/Color.vue'

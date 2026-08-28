@@ -1,5 +1,4 @@
 {
-  "extends": "@vue/tsconfig/tsconfig.dom.json",
   "compilerOptions": {
     "types": [
       "unplugin-icons/types/vue",
@@ -9,7 +8,7 @@
     "lib": ["esnext", "dom"],
     "baseUrl": ".",
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "strict": true,
     "declaration": false,
@@ -17,13 +16,8 @@
     "sourceMap": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "paths": {
-      "#components": ["./src/components/index.ts"],
-      "#charts": ["./src/charts/index.ts"]
-    }
   },
   "include": [
-    "env.d.ts",
     "src/**/*",
     "src/**/*.ts",
     "src/**/*.vue"

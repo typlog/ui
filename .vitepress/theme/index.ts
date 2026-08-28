@@ -1,6 +1,6 @@
 import './style.css'
 import type { Theme } from 'vitepress'
-import * as components from '#components'
+import * as components from '@typlog/ui'
 import Example from '../components/Example.vue'
 import PropsTable from '../components/PropsTable.vue'
 import InstallTabs from '../components/InstallTabs.vue'

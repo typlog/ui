@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Separator } from '#components'
+import { Separator } from '@typlog/ui'
 </script>
 
 <template>

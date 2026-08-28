@@ -2,7 +2,7 @@
 title: Radio Tabs
 description: Set of interactive radio buttons where only one can be selected at a time.
 status: alpha
-source: https://github.com/typlog/ui/tree/main/src/components/radio
+source: https://github.com/typlog/ui/tree/main/packages/ui/src/components/radio
 ---
 
 <Example name="radio-tabs/Overview.vue" variant="hide" />

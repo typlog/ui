@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { toast, Button } from '#components'
+import { toast, Button } from '@typlog/ui'
 
 const onClick = () => {
   const now = new Date().toLocaleDateString('en-US', {

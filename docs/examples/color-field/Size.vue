@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ColorField } from '#components'
+import { ColorField } from '@typlog/ui'
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import { Button } from '#components'
+import { Button } from '@typlog/ui'
 </script>
 
 <template>

@@ -1,0 +1,82 @@
+{
+  "name": "@typlog/ui",
+  "version": "0.14.0",
+  "license": "MIT",
+  "type": "module",
+  "description": "Themed components for Reka UI with Radix colors.",
+  "author": "Hsiaoming Yang <me@lepture.com>",
+  "repository": {
+    "url": "https://github.com/typlog/ui"
+  },
+  "sideEffects": false,
+  "module": "./src/components/index.ts",
+  "types": "./src/components/index.ts",
+  "exports": {
+    ".": {
+      "types": "./src/components/index.ts",
+      "style": "./src/styles/index.css",
+      "import": "./src/components/index.ts",
+      "default": "./src/components/index.ts"
+    },
+    "./components": {
+      "types": "./src/components/index.ts",
+      "style": "./src/styles/components.css",
+      "import": "./src/components/index.ts",
+      "default": "./src/components/index.ts"
+    },
+    "./addons": {
+      "types": "./src/addons/index.ts",
+      "style": "./src/styles/components.css",
+      "import": "./src/addons/index.ts",
+      "default": "./src/addons/index.ts"
+    },
+    "./charts": {
+      "types": "./src/charts/index.ts",
+      "style": "./src/charts/style.css",
+      "import": "./src/charts/index.ts",
+      "default": "./src/charts/index.ts"
+    },
+    "./base.css": "./src/styles/index.css",
+    "./components.css": "./src/styles/components.css",
+    "./tailwind.css": "./tailwind/index.css"
+  },
+  "dependencies": {
+    "@iconify/vue": "^5.0.0",
+    "@tanstack/vue-virtual": "^3.13.36",
+    "@vueuse/core": "^14.4.0",
+    "reka-ui": "^2.4.0",
+    "vue": "^3.5.0"
+  },
+  "peerDependencies": {
+    "@unovis/ts": "^1.6.7",
+    "@unovis/vue": "^1.6.7"
+  },
+  "peerDependenciesMeta": {
+    "@unovis/ts": {
+      "optional": true
+    },
+    "@unovis/vue": {
+      "optional": true
+    }
+  },
+  "scripts": {
+    "build": "vite build && node post-build.mjs",
+    "build:css": "node build-css.mjs",
+    "typecheck": "vue-tsc --noEmit -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@iconify-json/radix-icons": "^1.2.2",
+    "@iconify-json/ri": "^1.2.5",
+    "@microsoft/api-extractor": "^7.59.0",
+    "@types/node": "^24.0.0",
+    "@unovis/ts": "^1.6.7",
+    "@unovis/vue": "^1.6.7",
+    "@vitejs/plugin-vue": "^6.0.0",
+    "@vue/language-core": "^3.3.11",
+    "typescript": "^5.9.3",
+    "unplugin-icons": "^23.0.1",
+    "vite": "^8.2.2",
+    "vite-plugin-dts": "^5.0.3",
+    "vue-tsc": "^3.0.0"
+  }
+}

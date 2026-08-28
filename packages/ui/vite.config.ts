@@ -20,11 +20,6 @@ export default defineConfig({
       'vue',
       '@vue/runtime-core',
     ],
-    alias: {
-      '#components': resolve(import.meta.dirname, 'src/components'),
-      '#addons': resolve(import.meta.dirname, 'src/addons'),
-      '#charts': resolve(import.meta.dirname, 'src/charts'),
-    },
   },
   build: {
     minify: false,
@@ -44,7 +39,7 @@ export default defineConfig({
         'vue',
         '@iconify/vue',
         'reka-ui',
-        '#components',
+        /^@typlog\/ui(?:\/.*)?$/,
         '@unovis/ts',
         '@unovis/vue',
       ],

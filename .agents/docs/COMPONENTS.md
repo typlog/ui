@@ -11,7 +11,7 @@ The component library has four layers:
 3. **Theme and visual system:** `.ui-root`, CSS variables, Radix colors, `data-*` overrides, and `r-*` modifier classes define appearance.
 4. **Documentation and metadata:** Vue examples exercise source directly; VitePress pages display examples and generated prop tables.
 
-The build starts at `src/components/index.ts` and `src/addons/index.ts`. Vite produces ESM, declarations, and CSS in `dist/`; `scripts/post-build.mjs` copies the publish manifest from `src/package.json`, applies the root version, creates `index.css`, and rewrites the addon's internal `#components` alias.
+The build starts at `packages/ui/src/components/index.ts`, `packages/ui/src/addons/index.ts`, and `packages/ui/src/charts/index.ts`. Vite produces ESM, declarations, and CSS in `packages/ui/dist/`; `packages/ui/post-build.mjs` creates the publish manifest and `index.css`. The root VitePress workspace consumes the package source directly through `workspace:*`.
 
 ## Choose the right component shape
 
@@ -19,13 +19,13 @@ The build starts at `src/components/index.ts` and `src/addons/index.ts`. Vite pr
 
 Use this for a single semantic element such as a button, badge, or separator. Render a Reka `Primitive` or a single Reka component, add Typlog props and classes, and keep the wrapper thin.
 
-Good references: `src/components/button/Button.vue`, `src/components/badge/Badge.vue`, and `src/components/switch/Switch.vue`.
+Good references: `packages/ui/src/components/button/Button.vue`, `packages/ui/src/components/badge/Badge.vue`, and `packages/ui/src/components/switch/Switch.vue`.
 
 ### Compound component
 
 Use multiple exported parts when consumers need to control layout or composition. Put shared visual configuration on the root and provide it to children with a typed Reka `createContext` context.
 
-Good references: `src/components/select/`, `src/components/combobox/`, `src/components/accordion/`, and `src/components/collapsible/`.
+Good references: `packages/ui/src/components/select/`, `packages/ui/src/components/combobox/`, `packages/ui/src/components/accordion/`, and `packages/ui/src/components/collapsible/`.
 
 Do not hide essential Reka parts if consumers need them for accessible composition. Re-export unchanged primitives from the family barrel when a Typlog wrapper adds no value.
 
@@ -33,11 +33,11 @@ Do not hide essential Reka parts if consumers need them for accessible compositi
 
 Dialogs, popovers, dropdowns, select content, tooltips, and similar overlays render outside the provider DOM subtree. Place `ThemeWrapper` inside the Portal around the content so theme data and `.ui-root` variables are present.
 
-Good references: `src/components/dialog/DialogPopup.vue`, `src/components/popover/PopoverPopup.vue`, and `src/components/select/SelectContent.vue`.
+Good references: `packages/ui/src/components/dialog/DialogPopup.vue`, `packages/ui/src/components/popover/PopoverPopup.vue`, and `packages/ui/src/components/select/SelectContent.vue`.
 
 ### Addon
 
-Use `src/addons` for integrations or opinionated components that are not part of the core design-system contract. Addons publish from `@typlog/ui/addons` and may import core APIs through `#components`.
+Use `packages/ui/src/addons` for integrations or opinionated components that are not part of the core design-system contract. Addons publish from `@typlog/ui/addons` and import core public APIs from `@typlog/ui`.
 
 ## Public API pattern
 
@@ -154,7 +154,7 @@ Prefer the existing variables:
 - space and size: `--space-*` and `--scaling`;
 - radius: `--radius-*` and `--radius-thumb`;
 - type: `--font-size-*`, `--line-height-*`, `--letter-spacing-*`, and `--font-weight-*`;
-- shadow and animation: variables/keyframes in `src/styles/shadow.css` and `src/styles/animation.css`.
+- shadow and animation: variables/keyframes in `packages/ui/src/styles/shadow.css` and `packages/ui/src/styles/animation.css`.
 
 If a new reusable token is necessary, define it at the narrowest shared theme layer and document why an existing token is insufficient. Check light/dark definitions and high-contrast behavior together.
 
@@ -173,15 +173,15 @@ export {
 } from './Example.vue'
 ```
 
-Then add `export * from './example'` to `src/components/index.ts`. Addons instead flow through their family barrel and `src/addons/index.ts`.
+Then add `export * from './example'` to `packages/ui/src/components/index.ts`. Addons instead flow through their family barrel and `packages/ui/src/addons/index.ts`.
 
 Keep runtime imports aligned with package boundaries:
 
 - inside core components, prefer relative imports for nearby component files and shared utilities;
-- inside addons, use `#components` for core public APIs because the build rewrites that alias for the published addon bundle;
-- in docs examples, use `#components` or `#addons` so examples run against source and display as package imports.
+- inside addons, import core public APIs from `@typlog/ui`;
+- in docs examples, use `@typlog/ui`, `@typlog/ui/addons`, or `@typlog/ui/charts` exactly as consumers do.
 
-When adding a runtime package, update `src/package.json` through npm. Root-only build and documentation tools belong in the root `devDependencies`.
+When adding a runtime package, run `pnpm --filter @typlog/ui add <package>`. Root-only build and documentation tools belong in the root `devDependencies`.
 
 ## Documentation pipeline
 
@@ -192,12 +192,12 @@ docs/examples/example/Overview.vue
 docs/content/components/example.md
 ```
 
-The Markdown `<Example name="example/Overview.vue" />` tag is expanded by `.vitepress/plugins/example.ts`: it imports the live Vue example and embeds its source, replacing `#components` and `#addons` with public package imports for readers.
+The Markdown `<Example name="example/Overview.vue" />` tag is expanded by `.vitepress/plugins/example.ts`: it imports the live Vue example and embeds the same source shown to readers.
 
 `<PropsTable name="Example" />` reads `.vitepress/meta/Example.json`. Generate that file only after the component is exported:
 
 ```sh
-npm run build:meta
+pnpm build:meta
 ```
 
 Never hand-edit the JSON. If metadata is missing or wrong, fix the exported Vue type/JSDoc or barrel export and regenerate it.

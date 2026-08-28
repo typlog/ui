@@ -1,4 +1,3 @@
-import { resolve } from 'node:path'
 import { defineConfig } from 'vitepress'
 import type { DefaultTheme } from 'vitepress'
 import tailwindcss from '@tailwindcss/vite'
@@ -15,18 +14,13 @@ export default defineConfig<ThemeConfig>({
   outDir: 'site/public',
   cleanUrls: true,
   vite: {
+    resolve: {
+      dedupe: ['vue', '@typlog/ui'],
+    },
     plugins: [
       tailwindcss(),
       Icons({ scale: 1, compiler: 'vue3' }),
     ],
-    resolve: {
-      alias: {
-        '~': resolve(import.meta.dirname, '..'),
-        '#components': resolve(import.meta.dirname, '../src/components'),
-        '#addons': resolve(import.meta.dirname, '../src/addons'),
-        '#charts': resolve(import.meta.dirname, '../src/charts'),
-      },
-    },
   },
   markdown: {
     headers: true,

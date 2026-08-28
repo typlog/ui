@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import { Badge, Button } from '#components'
+import { Badge, Button } from '@typlog/ui'
 import HomeShowcase from './HomeShowcase.vue'
 </script>
 

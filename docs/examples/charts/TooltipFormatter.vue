@@ -5,7 +5,7 @@ import {
   ChartCrosshair,
   ChartRoot,
   ChartTooltip,
-} from '#charts'
+} from '@typlog/ui/charts'
 
 interface Point {
   revenue: number

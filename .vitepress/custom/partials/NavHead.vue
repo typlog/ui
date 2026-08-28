@@ -11,7 +11,7 @@ import {
   NavigationMenuTrigger,
   NavigationMenuLink,
   NavigationMenuContent,
-} from '#components'
+} from '@typlog/ui'
 import { Icon } from '@iconify/vue'
 import { useColorMode } from '@vueuse/core'
 

@@ -5,8 +5,8 @@ import {
   PopoverRoot,
   PopoverTrigger,
   PopoverPopup,
-} from '#components'
-import { IconCollection } from '#addons'
+} from '@typlog/ui'
+import { IconCollection } from '@typlog/ui/addons'
 
 const selectedIcon = ref('')
 const collection = ref('')

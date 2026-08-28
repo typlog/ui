@@ -2,7 +2,7 @@
 title: Popover
 description: Floating element for displaying rich content, triggered by a button.
 status: beta
-source: https://github.com/typlog/ui/tree/main/src/components/popover
+source: https://github.com/typlog/ui/tree/main/packages/ui/src/components/popover
 reka: https://reka-ui.com/docs/components/popover
 radix: https://www.radix-ui.com/themes/docs/components/popover
 ---

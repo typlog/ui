@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TextField } from '#components'
+import { TextField } from '@typlog/ui'
 </script>
 
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { toast, Button } from '#components'
+import { toast, Button } from '@typlog/ui'
 
 const count = ref(0)
 

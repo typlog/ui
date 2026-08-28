@@ -4,7 +4,7 @@ import {
   SelectTrigger,
   SelectContent,
   SelectItem,
-  } from '#components'
+  } from '@typlog/ui'
 </script>
 
 <template>

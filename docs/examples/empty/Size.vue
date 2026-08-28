@@ -6,7 +6,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from '#components'
+} from '@typlog/ui'
 
 const sizes = ['1', '2', '3'] as const
 </script>

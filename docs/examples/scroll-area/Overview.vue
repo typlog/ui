@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ScrollArea } from '#components'
+import { ScrollArea } from '@typlog/ui'
 </script>
 
 <template>

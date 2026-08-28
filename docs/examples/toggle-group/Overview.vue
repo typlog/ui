@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { Icon } from '@iconify/vue'
-import { ToggleGroupRoot, ToggleGroupItem } from '#components'
+import { ToggleGroupRoot, ToggleGroupItem } from '@typlog/ui'
 
 const selected = ref<string>('left')
 </script>

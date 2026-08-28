@@ -35,9 +35,9 @@ const fallbackInheritByComponent: Record<string, string> = {
   ChartCrosshair: 'unovis',
 }
 
-parseComponents(resolve(__dirname, '../src/components/index.ts'))
-parseComponents(resolve(__dirname, '../src/addons/index.ts'))
-parseComponents(resolve(__dirname, '../src/charts/index.ts'))
+parseComponents(resolve(__dirname, '../packages/ui/src/components/index.ts'))
+parseComponents(resolve(__dirname, '../packages/ui/src/addons/index.ts'))
+parseComponents(resolve(__dirname, '../packages/ui/src/charts/index.ts'))
 
 function parseComponents (filePath: string) {
   const names = tsconfigChecker.getExportNames(filePath)
@@ -90,7 +90,7 @@ function parseComponents (filePath: string) {
 }
 
 function findComponentFile (name: string) {
-  return findFile(resolve(__dirname, '../src'), `${name}.vue`)
+  return findFile(resolve(__dirname, '../packages/ui/src'), `${name}.vue`)
 }
 
 function findFile (directory: string, filename: string): string | undefined {

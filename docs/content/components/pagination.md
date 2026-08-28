@@ -2,7 +2,7 @@
 title: Pagination
 status: beta
 description: Paginated view with page navigation controls.
-source: https://github.com/typlog/ui/tree/main/src/components/pagination
+source: https://github.com/typlog/ui/tree/main/packages/ui/src/components/pagination
 reka: https://reka-ui.com/docs/components/pagination
 ---
 

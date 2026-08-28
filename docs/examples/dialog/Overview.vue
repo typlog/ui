@@ -9,7 +9,7 @@ import {
   DialogDescription,
   DialogCloseButton,
   TextField,
-} from '#components'
+} from '@typlog/ui'
 </script>
 
 <template>

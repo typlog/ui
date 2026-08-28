@@ -2,7 +2,7 @@
 title: IconCollection and IconGrid
 description: Browse Iconify collections and select icons from a virtualized grid.
 status: alpha
-source: https://github.com/typlog/ui/tree/main/src/addons/iconset
+source: https://github.com/typlog/ui/tree/main/packages/ui/src/addons/iconset
 ---
 
 `IconCollection` is a complete icon picker. It starts with the Iconify collection catalog, then opens the selected collection in its built-in virtualized `IconGrid`. Use `v-model:collection` and `v-model:query` when the navigation state also needs to be controlled externally.

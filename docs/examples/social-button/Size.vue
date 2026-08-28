@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SocialButton } from '#addons'
+import { SocialButton } from '@typlog/ui/addons'
 </script>
 
 <template>

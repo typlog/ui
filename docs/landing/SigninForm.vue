@@ -3,7 +3,7 @@ import {
   Card,
   Button,
   TextField,
-} from '#components'
+} from '@typlog/ui'
 </script>
 
 <template>

@@ -8,7 +8,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from '#components'
+} from '@typlog/ui'
 </script>
 
 <template>

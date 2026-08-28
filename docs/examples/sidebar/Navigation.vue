@@ -12,7 +12,7 @@ import {
   SidebarMenuItem,
   SidebarProvider,
   SidebarTrigger,
-} from '#components'
+} from '@typlog/ui'
 
 interface NavigationLink {
   label: string

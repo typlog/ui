@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Card, Avatar } from '#components'
+import { Card, Avatar } from '@typlog/ui'
 
 const picture = 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?&w=256&h=256&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop'
 </script>

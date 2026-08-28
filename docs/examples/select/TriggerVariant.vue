@@ -7,7 +7,7 @@ import {
   SelectLabel,
   SelectItem,
   SelectSeparator,
-  } from '#components'
+  } from '@typlog/ui'
 </script>
 
 <template>

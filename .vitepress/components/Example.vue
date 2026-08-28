@@ -8,7 +8,7 @@ interface ExampleProps {
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { ScrollArea } from '#components'
+import { ScrollArea } from '@typlog/ui'
 
 withDefaults(defineProps<ExampleProps>(), {
   variant: 'some',

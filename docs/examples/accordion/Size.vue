@@ -4,7 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-} from '#components'
+} from '@typlog/ui'
 </script>
 
 <template>

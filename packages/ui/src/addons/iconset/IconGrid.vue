@@ -44,7 +44,7 @@ export interface IconGridEmits {
 import { computed, nextTick, onBeforeUnmount, ref, watch } from 'vue'
 import { Icon } from '@iconify/vue'
 import { useVirtualizer } from '@tanstack/vue-virtual'
-import { TextField } from '#components'
+import { TextField } from '@typlog/ui'
 import {
   fetchCollection,
   fetchCollections,

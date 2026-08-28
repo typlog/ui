@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Turnstile } from '#addons'
+import { Turnstile } from '@typlog/ui/addons'
 
 const token = ref('')
 </script>

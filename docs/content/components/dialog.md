@@ -2,7 +2,7 @@
 title: Dialog
 description: Modal dialog window displayed above the page.
 status: beta
-source: https://github.com/typlog/ui/tree/main/src/components/dialog
+source: https://github.com/typlog/ui/tree/main/packages/ui/src/components/dialog
 reka: https://reka-ui.com/docs/components/dialog
 radix: https://www.radix-ui.com/themes/docs/components/dialog
 ---

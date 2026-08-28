@@ -7,7 +7,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
   createChartTooltipTemplate,
-} from '#charts'
+} from '@typlog/ui/charts'
 
 const data = [
   { label: 'Direct', value: 46 },

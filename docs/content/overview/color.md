@@ -2,7 +2,7 @@
 title: Color
 description: The color system is built using Radix Colors for consistent and accessible theming.
 status: stable
-source: https://github.com/typlog/ui/tree/main/src/styles/color.css
+source: https://github.com/typlog/ui/tree/main/packages/ui/src/styles/color.css
 radix: https://www.radix-ui.com/themes/docs/theme/color
 ---
 

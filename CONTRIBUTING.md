@@ -6,20 +6,20 @@ For the component architecture and implementation patterns, see [.agents/docs/CO
 
 ## Development setup
 
-Use Node.js 22 and npm. From the repository root:
+Use Node.js 22 and pnpm. From the repository root:
 
 ```sh
-npm ci
-npm run start
+pnpm install --frozen-lockfile
+pnpm start
 ```
 
-The docs development server uses source aliases, so edits to components and examples are visible without first publishing the package.
+The docs development server uses source package exports, so edits to components and examples are visible without first publishing the package.
 
 ## Before implementing a component
 
 Define the intended public API before writing CSS:
 
-- Decide whether it belongs in core `src/components` or optional `src/addons`.
+- Decide whether it belongs in core `packages/ui/src/components` or optional `packages/ui/src/addons`.
 - Find the closest Reka UI primitive and the nearest Typlog UI component pattern.
 - Reuse existing scales (`size`, `variant`, `color`, `radius`, and `highContrast`) when they match the design.
 - List supported states: default, hover, active, focus-visible, disabled, invalid, open/closed, checked/unchecked, and loading as applicable.
@@ -43,7 +43,7 @@ Prefer a small API that composes well. Avoid props that duplicate native or Reka
 
 - Use `ui-ComponentPart` class names for stable component selectors.
 - Use `buildPropsClass` for standard `r-size-*`, `r-variant-*`, and boolean modifier classes.
-- Use existing tokens in `src/styles` for color, spacing, typography, radius, shadow, scaling, and animation.
+- Use existing tokens in `packages/ui/src/styles` for color, spacing, typography, radius, shadow, scaling, and animation.
 - Use `data-accent-color` and `data-radius` for per-component overrides.
 - Support light and dark themes; never fix text or surface colors to a light-only value.
 - Include visible keyboard focus and an intentional disabled cursor/appearance.
@@ -55,7 +55,7 @@ Prefer a small API that composes well. Avoid props that duplicate native or Reka
 Every public component needs both levels of export:
 
 ```ts
-// src/components/example/index.ts
+// packages/ui/src/components/example/index.ts
 export {
   default as Example,
   type ExampleProps,
@@ -63,7 +63,7 @@ export {
 ```
 
 ```ts
-// src/components/index.ts
+// packages/ui/src/components/index.ts
 export * from './example'
 ```
 
@@ -77,9 +77,9 @@ A new public component normally includes:
 2. Additional focused examples for important sizes, variants, states, or composition.
 3. `docs/content/components/<component>.md` with frontmatter, overview example, API tables, and examples.
 4. A sidebar entry in `.vitepress/config.ts`.
-5. Generated `.vitepress/meta/<ExportName>.json` from `npm run build:meta`.
+5. Generated `.vitepress/meta/<ExportName>.json` from `pnpm build:meta`.
 
-Examples import core components from `#components` and addons from `#addons`. The documentation plugin rewrites those aliases to published package imports in the displayed source.
+Examples import core components from `@typlog/ui` and addons from `@typlog/ui/addons`. Examples use the same imports at runtime and in displayed source.
 
 Use this page shape:
 
@@ -88,7 +88,7 @@ Use this page shape:
 title: Example
 description: A concise, user-facing description.
 status: alpha
-source: https://github.com/typlog/ui/tree/main/src/components/example
+source: https://github.com/typlog/ui/tree/main/packages/ui/src/components/example
 reka: https://reka-ui.com/docs/components/example
 ---
 
@@ -108,11 +108,11 @@ Only add reference links that exist for the component. Use `alpha` for a new or 
 For a new component or public API change, run:
 
 ```sh
-npm run lint
-npm run typecheck
-npm run build:meta
-npm run build
-npm run build:docs
+pnpm lint
+pnpm typecheck
+pnpm build:meta
+pnpm build
+pnpm build:docs
 ```
 
 Also inspect the component in the docs server:
@@ -139,4 +139,4 @@ In a pull request, describe:
 - commands run and manual states checked;
 - screenshots or a short recording for visual or interactive changes.
 
-Do not include `dist/` or `site/public/`. Do include changed generated metadata when the public API changed.
+Do not include `packages/ui/dist/` or `site/public/`. Do include changed generated metadata when the public API changed.

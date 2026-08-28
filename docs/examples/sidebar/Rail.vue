@@ -6,7 +6,7 @@ import {
   SidebarHeader,
   SidebarInset,
   SidebarRail,
-} from '#components'
+} from '@typlog/ui'
 </script>
 
 <template>

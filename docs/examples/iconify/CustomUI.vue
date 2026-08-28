@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { IconGrid } from '#addons'
+import { IconGrid } from '@typlog/ui/addons'
 
 const selectedIcon = ref('')
 const query = ref('shape')

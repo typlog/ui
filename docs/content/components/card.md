@@ -2,7 +2,7 @@
 title: Card
 description: Container that groups related content and actions.
 status: stable
-source: https://github.com/typlog/ui/tree/main/src/components/card
+source: https://github.com/typlog/ui/tree/main/packages/ui/src/components/card
 radix: https://www.radix-ui.com/themes/docs/components/card
 ---
 

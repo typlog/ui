@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { VisAxis, VisGroupedBar, VisXYContainer } from '@unovis/vue'
-import { ChartLegend, ChartRoot } from '#charts'
+import { ChartLegend, ChartRoot } from '@typlog/ui/charts'
 
 interface BarPoint {
   month: string

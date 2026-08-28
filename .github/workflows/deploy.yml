@@ -6,7 +6,6 @@ on:
       - 'wip-*'
     paths-ignore:
       - '.github/**'
-      - 'src/**'
 
 jobs:
   deploy:
@@ -23,10 +22,9 @@ jobs:
         with:
           node-version: 24
           registry-url: https://registry.npmjs.org/
-      - run: npm ci
-      - run: npm run build:docs
-      - run: npm ci
-        working-directory: site
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build:docs
       - name: Deploy
         uses: cloudflare/wrangler-action@v4
         with:

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import SearchIcon from '~icons/ri/search-line'
-import { TextField } from '#components'
+import { TextField } from '@typlog/ui'
 </script>
 
 <template>

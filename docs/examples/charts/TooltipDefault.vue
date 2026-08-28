@@ -5,7 +5,7 @@ import {
   ChartRoot,
   ChartTooltip,
   type ChartConfig,
-} from '#charts'
+} from '@typlog/ui/charts'
 
 interface Point {
   day: string

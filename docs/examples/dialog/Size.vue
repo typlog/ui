@@ -5,7 +5,7 @@ import {
   DialogRoot,
   DialogTrigger,
   DialogPopup,
-} from '#components'
+} from '@typlog/ui'
 
 type PopupSize = '1' | '2' | '3' | '4' | '5'
 

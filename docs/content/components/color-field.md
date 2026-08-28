@@ -2,7 +2,7 @@
 title: Color Field
 description: Captures a color using native functionality.
 status: alpha
-source: https://github.com/typlog/ui/tree/main/src/components/inputs/ColorField.vue
+source: https://github.com/typlog/ui/tree/main/packages/ui/src/components/inputs/ColorField.vue
 ---
 
 <Example name="color-field/Overview.vue" variant="full" />

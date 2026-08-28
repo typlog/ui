@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Badge } from '#components'
+import { Badge } from '@typlog/ui'
 </script>
 
 <template>

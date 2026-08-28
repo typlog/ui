@@ -34,7 +34,7 @@ const isActiveLink = (item: SidebarItem, link: string) => {
 import { computed, toRefs } from 'vue'
 import { useData, useRoute, Content } from 'vitepress'
 import { Icon } from '@iconify/vue'
-import { ScrollArea, Separator } from '#components'
+import { ScrollArea, Separator } from '@typlog/ui'
 import Navbar from './partials/Navbar.vue'
 import NavHead from './partials/NavHead.vue'
 import NavMenu from './partials/NavMenu.vue'

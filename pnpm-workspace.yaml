@@ -1,0 +1,9 @@
+packages:
+  - packages/*
+  - site
+allowBuilds:
+  esbuild: true
+  maplibre-gl: false
+  sharp: true
+  vue-demi: true
+  workerd: true

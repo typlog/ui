@@ -8,7 +8,7 @@ import {
   AlertDialogDescription,
   AlertDialogCancel,
   AlertDialogAction,
-} from '#components'
+} from '@typlog/ui'
 </script>
 
 <template>

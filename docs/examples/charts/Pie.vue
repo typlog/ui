@@ -7,7 +7,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
   createChartTooltipTemplate,
-} from '#charts'
+} from '@typlog/ui/charts'
 
 interface Slice {
   browser: string

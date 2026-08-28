@@ -6,7 +6,7 @@ import {
   PopoverRoot,
   PopoverTrigger,
   PopoverPopup,
-} from '#components'
+} from '@typlog/ui'
 import QuestionIcon from '~icons/ri/question-line'
 
 const props = defineProps<{name: string, type: string}>()

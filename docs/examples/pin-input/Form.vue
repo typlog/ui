@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Button, PinInputInput, PinInputRoot } from '#components'
+import { Button, PinInputInput, PinInputRoot } from '@typlog/ui'
 
 const value = ref<string[]>([])
 const submitted = ref('')

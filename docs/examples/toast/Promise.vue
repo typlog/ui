@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { toast, Button } from '#components'
+import { toast, Button } from '@typlog/ui'
 
 const successFn = () => new Promise((resolve) => setTimeout(resolve, 2000))
 const errorFn = () => new Promise((_, reject) => setTimeout(reject, 2000))

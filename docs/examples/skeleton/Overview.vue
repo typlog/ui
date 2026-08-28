@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Card, Skeleton } from '#components'
+import { Card, Skeleton } from '@typlog/ui'
 </script>
 
 <template>

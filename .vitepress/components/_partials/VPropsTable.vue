@@ -13,7 +13,7 @@ export interface PropData {
 import {
   Table,
   Badge,
-} from '#components'
+} from '@typlog/ui'
 import VPropType from './VPropType.vue'
 
 defineProps<{items: PropData[]}>()

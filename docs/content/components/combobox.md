@@ -2,7 +2,7 @@
 title: Combobox
 description: Choose from a list of suggested values with full keyboard support.
 status: beta
-source: https://github.com/typlog/ui/tree/main/src/components/combobox
+source: https://github.com/typlog/ui/tree/main/packages/ui/src/components/combobox
 reka: https://reka-ui.com/docs/components/combobox
 ---
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import { TreeItem, TreeRoot } from '#components'
+import { TreeItem, TreeRoot } from '@typlog/ui'
 
 interface Node {
   id: string

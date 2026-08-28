@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import { Toggle } from '#components'
+import { Toggle } from '@typlog/ui'
 </script>
 
 <template>

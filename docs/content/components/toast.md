@@ -2,13 +2,13 @@
 title: Toast
 description: A brief notification that gives feedback about an action or event.
 status: alpha
-source: https://github.com/typlog/ui/tree/main/src/components/toast
+source: https://github.com/typlog/ui/tree/main/packages/ui/src/components/toast
 reka: https://reka-ui.com/docs/components/toast
 ---
 
 <script setup>
   import { ref } from 'vue'
-  import { ToastProvider, Button, toast } from '#components'
+  import { ToastProvider, Button, toast } from '@typlog/ui'
 
   const size = ref('1')
   const position = ref('bottom-right')

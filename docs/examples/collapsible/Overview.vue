@@ -3,7 +3,7 @@ import {
   CollapsibleRoot,
   CollapsibleTrigger,
   CollapsibleContent,
-} from '#components'
+} from '@typlog/ui'
 </script>
 
 <template>

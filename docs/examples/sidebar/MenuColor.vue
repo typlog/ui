@@ -9,7 +9,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
-} from '#components'
+} from '@typlog/ui'
 
 const menus = [
   { label: 'Editorial', color: 'blue', icon: 'lucide:notebook-pen' },

@@ -20,7 +20,7 @@ import {
   SidebarProvider,
   SidebarRail,
   SidebarTrigger,
-} from '#components'
+} from '@typlog/ui'
 
 const links = [
   { label: 'Overview', icon: 'lucide:layout-dashboard' },

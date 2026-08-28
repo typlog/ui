@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import { Badge, Button, Card } from '#components'
+import { Badge, Button, Card } from '@typlog/ui'
 import HomeHero from './HomeHero.vue'
 
 const principles = [

@@ -10,7 +10,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
-} from '#components'
+} from '@typlog/ui'
 
 const sizes = [
   { value: '1', label: 'Compact' },

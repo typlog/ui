@@ -6,7 +6,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
-} from '#components'
+} from '@typlog/ui'
 import CaretDownIcon from '~icons/radix-icons/caret-down'
 </script>
 

@@ -2,13 +2,13 @@
 title: Charts
 description: Theme-aware chart primitives for Unovis.
 status: alpha
-source: https://github.com/typlog/ui/tree/main/src/charts
+source: https://github.com/typlog/ui/tree/main/packages/ui/src/charts
 ---
 
 Typlog UI charts provide a small theme and presentation layer around [Unovis](https://unovis.dev/). Install the optional peer dependencies when using this entry:
 
 ```sh
-npm install @typlog/ui @unovis/ts @unovis/vue
+pnpm add @typlog/ui @unovis/ts @unovis/vue
 ```
 
 `ChartRoot` supplies series metadata, palette variables, and responsive layout. Mark the domain field with `role: 'x'`; it is excluded from legends and series colors while becoming the default tooltip heading. All other entries default to `role: 'series'`. Standard attributes such as `role`, `aria-label`, and `aria-describedby` are forwarded to the root primitive.

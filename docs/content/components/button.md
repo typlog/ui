@@ -2,7 +2,7 @@
 title: Button
 description: Trigger an action or event, such as submitting a form or displaying a dialog.
 status: stable
-source: https://github.com/typlog/ui/tree/main/src/components/button
+source: https://github.com/typlog/ui/tree/main/packages/ui/src/components/button
 radix: https://www.radix-ui.com/themes/docs/components/button
 ---
 

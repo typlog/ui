@@ -2,7 +2,7 @@
 title: Toggle
 description: A two-state button that can be either on or off.
 status: stable
-source: https://github.com/typlog/ui/tree/main/src/components/toggle
+source: https://github.com/typlog/ui/tree/main/packages/ui/src/components/toggle
 reka: https://reka-ui.com/docs/components/toggle
 ---
 

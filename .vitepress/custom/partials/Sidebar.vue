@@ -8,7 +8,7 @@ import {
   CollapsibleRoot,
   CollapsibleTrigger,
   CollapsibleContent,
-} from '#components'
+} from '@typlog/ui'
 import DocSidebarItem from './SidebarItem.vue'
 
 defineProps<{sidebar: SidebarItem[]}>()

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Spinner } from '#components'
+import { Spinner } from '@typlog/ui'
 </script>
 
 <template>

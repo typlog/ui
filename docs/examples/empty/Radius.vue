@@ -2,7 +2,7 @@
 import {
   Empty,
   EmptyTitle,
-} from '#components'
+} from '@typlog/ui'
 
 const radii = ['none', 'small', 'medium', 'large', 'full'] as const
 </script>

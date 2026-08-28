@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import PlusIcon from '~icons/ri/add-line'
-import { Tooltip, IconButton } from '#components'
+import { Tooltip, IconButton } from '@typlog/ui'
 </script>
 
 <template>

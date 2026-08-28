@@ -2,7 +2,7 @@
 title: TextField
 description: Captures user input with an optional slot for buttons and icons.
 status: stable
-source: https://github.com/typlog/ui/tree/main/src/components/inputs/TextField.vue
+source: https://github.com/typlog/ui/tree/main/packages/ui/src/components/inputs/TextField.vue
 radix: https://www.radix-ui.com/themes/docs/components/text-field
 ---
 

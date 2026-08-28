@@ -24,19 +24,12 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "#components": ["./src/components/index.ts"],
-      "#addons": ["./src/addons/index.ts"],
-      "#charts": ["./src/charts/index.ts"],
       "@localSearchIndex": ["./.vitepress/shims/localSearchIndex.d.ts"]
     }
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.vue",
     ".vitepress/**/*.ts",
     ".vitepress/**/*.vue",
     "docs/**/*.vue",
-    "vite.config.ts",
   ],
 }

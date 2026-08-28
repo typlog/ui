@@ -6,7 +6,7 @@ import {
   PopoverPopup,
   PopoverClose,
   TextField,
-} from '#components'
+} from '@typlog/ui'
 </script>
 
 <template>

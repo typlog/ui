@@ -6,7 +6,7 @@ import {
   SidebarHeader,
   SidebarInset,
   SidebarTrigger,
-} from '#components'
+} from '@typlog/ui'
 
 const modes = ['offcanvas', 'icon', 'none'] as const
 </script>

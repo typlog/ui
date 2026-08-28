@@ -55,7 +55,7 @@ export type { IconifyCollectionGroup, IconifyCollectionItem }
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue'
 import { Icon } from '@iconify/vue'
-import { Button, TextField } from '#components'
+import { Button, TextField } from '@typlog/ui'
 import IconGrid from './IconGrid.vue'
 import { fetchCollections } from './api'
 

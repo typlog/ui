@@ -8,7 +8,7 @@ import {
   SidebarHeader,
   SidebarInset,
   SidebarTrigger,
-} from '#components'
+} from '@typlog/ui'
 
 const open = ref(false)
 const collapsed = ref(false)

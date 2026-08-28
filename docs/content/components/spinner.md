@@ -2,7 +2,7 @@
 title: Spinner
 description: Compact progress indicator for asynchronous work.
 status: alpha
-source: https://github.com/typlog/ui/tree/main/src/components/spinner
+source: https://github.com/typlog/ui/tree/main/packages/ui/src/components/spinner
 ---
 
 <Example name="spinner/Overview.vue" />

@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { ColorType } from '#components'
+import type { ColorType } from '@typlog/ui'
 
 const STATUS_COLOR_MAP: Record<string, ColorType> = {
   alpha: 'orange',
@@ -12,7 +12,7 @@ const STATUS_COLOR_MAP: Record<string, ColorType> = {
 import { useData } from 'vitepress'
 import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
-import { Badge } from '#components'
+import { Badge } from '@typlog/ui'
 
 const { frontmatter } = useData()
 

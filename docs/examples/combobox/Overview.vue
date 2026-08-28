@@ -7,7 +7,7 @@ import {
   ComboboxInput,
   ComboboxLabel,
   ComboboxEmpty,
-} from '#components'
+} from '@typlog/ui'
 
 const foodItems = [
   {

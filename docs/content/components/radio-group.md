@@ -2,7 +2,7 @@
 title: Radio Group
 description: Set of interactive radio buttons where only one can be selected at a time.
 status: stable
-source: https://github.com/typlog/ui/tree/main/src/components/radio
+source: https://github.com/typlog/ui/tree/main/packages/ui/src/components/radio
 radix: https://www.radix-ui.com/themes/docs/components/radio-group
 reka: https://reka-ui.com/docs/components/radio-group
 ---

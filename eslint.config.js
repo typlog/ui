@@ -14,8 +14,8 @@ export default defineConfigWithVueTs(
   },
   {
     files: [
-      'src/**/*.ts',
-      'src/**/*.vue',
+      'packages/ui/**/*.ts',
+      'packages/ui/**/*.vue',
       '.vitepress/**/*.ts',
       '.vitepress/**/*.vue',
       'docs/**/*.vue',
@@ -33,7 +33,7 @@ export default defineConfigWithVueTs(
   },
   {
     files: [
-      'src/**/*.vue',
+      'packages/ui/**/*.vue',
       '.vitepress/**/*.vue',
       '.vitepress/**/*.ts',
       'docs/**/*.vue'

@@ -3,7 +3,7 @@ import {
   TabsRoot,
   TabsList,
   TabsTrigger,
-} from '#components'
+} from '@typlog/ui'
 </script>
 
 <template>

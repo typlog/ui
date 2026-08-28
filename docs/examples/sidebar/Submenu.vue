@@ -17,7 +17,7 @@ import {
   SidebarMenuSubItem,
   SidebarProvider,
   SidebarTrigger,
-} from '#components'
+} from '@typlog/ui'
 </script>
 
 <template>

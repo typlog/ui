@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useData } from 'vitepress'
-import { ThemeProvider } from '#components'
+import { ThemeProvider } from '@typlog/ui'
 import Doc from './Doc.vue'
 import Intro from './Intro.vue'
 import Landing from './Landing.vue'

@@ -26,7 +26,7 @@ import {
   CollapsibleTrigger,
   CollapsibleContent,
   CollapsibleIndicator,
-} from '#components'
+} from '@typlog/ui'
 import VPropsTable from './_partials/VPropsTable.vue'
 
 const props = defineProps<PropsTableProps>()

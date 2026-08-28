@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PinInputInput, PinInputRoot } from '#components'
+import { PinInputInput, PinInputRoot } from '@typlog/ui'
 
 const filled = ['1', '2', '3']
 const disabled = ['1', '2', '3']

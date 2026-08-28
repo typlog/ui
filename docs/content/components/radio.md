@@ -2,7 +2,7 @@
 title: Radio
 description: Base input element to toggle an option on and off.
 status: stable
-source: https://github.com/typlog/ui/tree/main/src/components/radio
+source: https://github.com/typlog/ui/tree/main/packages/ui/src/components/radio
 radix: https://www.radix-ui.com/themes/docs/components/radio
 ---
 

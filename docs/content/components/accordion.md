@@ -2,7 +2,7 @@
 title: Accordion
 description: A vertically stacked set of interactive headings that each reveal an associated section of content.
 status: alpha
-source: https://github.com/typlog/ui/tree/main/src/components/accordion
+source: https://github.com/typlog/ui/tree/main/packages/ui/src/components/accordion
 reka: https://reka-ui.com/docs/components/accordion
 ---
 

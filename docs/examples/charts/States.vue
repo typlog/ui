@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Empty, EmptyDescription, EmptyTitle, Skeleton } from '#components'
-import { ChartRoot } from '#charts'
+import { Empty, EmptyDescription, EmptyTitle, Skeleton } from '@typlog/ui'
+import { ChartRoot } from '@typlog/ui/charts'
 
 const config = { value: { label: 'Value' } }
 </script>

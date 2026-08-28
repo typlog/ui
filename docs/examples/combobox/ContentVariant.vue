@@ -5,7 +5,7 @@ import {
   ComboboxItem,
   ComboboxInput,
   ComboboxEmpty,
-} from '#components'
+} from '@typlog/ui'
 
 const fruits = [
   { name: 'Apple' },

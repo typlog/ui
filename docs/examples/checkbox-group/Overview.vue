@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { CheckboxGroup, Checkbox } from '#components'
+import { CheckboxGroup, Checkbox } from '@typlog/ui'
 
 const permissions = ref(['tenant:read'])
 </script>

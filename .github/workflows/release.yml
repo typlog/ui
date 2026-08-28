@@ -20,15 +20,13 @@ jobs:
         with:
           node-version: 24
           registry-url: https://registry.npmjs.org/
-      # Ensure npm 11.5.1 or later is installed
-      - name: Update npm
-        run: npm install -g npm@latest
-      - run: npm ci
-      - run: npm run build
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build:ui
       - name: publish
         run: npm publish
-        working-directory: dist
-      - run: npx changelogithub --no-group
+        working-directory: packages/ui/dist
+      - run: pnpm dlx changelogithub --no-group
         continue-on-error: true
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

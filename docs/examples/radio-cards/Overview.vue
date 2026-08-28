@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { RadioCardsRoot, RadioCardsItem } from '#components'
+import { RadioCardsRoot, RadioCardsItem } from '@typlog/ui'
 
 const selected = ref<string>('1')
 </script>

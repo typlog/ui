@@ -1,7 +1,7 @@
 ---
 title: Shadows
 status: stable
-source: https://github.com/typlog/ui/tree/main/src/styles/shadow.css
+source: https://github.com/typlog/ui/tree/main/packages/ui/src/styles/shadow.css
 radix: https://www.radix-ui.com/themes/docs/theme/shadows
 ---
 

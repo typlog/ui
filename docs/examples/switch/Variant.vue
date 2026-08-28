@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Switch } from '#components'
+import { Switch } from '@typlog/ui'
 </script>
 
 <template>

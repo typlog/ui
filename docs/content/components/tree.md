@@ -2,7 +2,7 @@
 title: Tree
 description: Keyboard-friendly hierarchical navigation and selection.
 status: alpha
-source: https://github.com/typlog/ui/tree/main/src/components/tree
+source: https://github.com/typlog/ui/tree/main/packages/ui/src/components/tree
 reka: https://reka-ui.com/docs/components/tree
 ---
 

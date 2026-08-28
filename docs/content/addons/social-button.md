@@ -2,7 +2,7 @@
 title: SocialButton
 description: A button component styled specially for social logins.
 status: alpha
-source: https://github.com/typlog/ui/tree/main/src/addons/button/SocialButton.vue
+source: https://github.com/typlog/ui/tree/main/packages/ui/src/addons/button/SocialButton.vue
 ---
 
 <Example name="social-button/Overview.vue" variant="full" />

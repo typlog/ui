@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ChartLegend, ChartRoot } from '#charts'
+import { ChartLegend, ChartRoot } from '@typlog/ui/charts'
 
 const config = {
   revenue: { label: 'Revenue' },

@@ -2,7 +2,7 @@
 title: Icon Button
 description: Button designed specifically for usage with a single icon.
 status: stable
-source: https://github.com/typlog/ui/tree/main/src/components/button
+source: https://github.com/typlog/ui/tree/main/packages/ui/src/components/button
 radix: https://www.radix-ui.com/themes/docs/components/icon-button
 ---
 

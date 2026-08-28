@@ -12,7 +12,7 @@ import {
   PopoverRoot,
   PopoverTrigger,
   ScrollArea,
-} from '#components'
+} from '@typlog/ui'
 import { Icon } from '@iconify/vue'
 import type { NavSidebarItem, SidebarItem } from '../types'
 import DocSidebar from './Sidebar.vue'

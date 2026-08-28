@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Skeleton } from '#components'
+import { Skeleton } from '@typlog/ui'
 
 const radii = ['none', 'small', 'medium', 'large', 'full'] as const
 </script>

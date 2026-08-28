@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { VisArea, VisAxis, VisLine, VisXYContainer } from '@unovis/vue'
-import { ChartCrosshair, ChartLegend, ChartRoot, ChartTooltip, type ChartConfig } from '#charts'
+import { ChartCrosshair, ChartLegend, ChartRoot, ChartTooltip, type ChartConfig } from '@typlog/ui/charts'
 
 interface Point {
   month: string

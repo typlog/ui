@@ -2,7 +2,7 @@
 title: Sidebar
 description: A responsive, collapsible navigation panel composed from flexible layout parts.
 status: alpha
-source: https://github.com/typlog/ui/tree/main/src/components/sidebar
+source: https://github.com/typlog/ui/tree/main/packages/ui/src/components/sidebar
 ---
 
 <Example name="sidebar/Overview.vue" variant="full" />

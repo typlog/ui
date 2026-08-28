@@ -2,7 +2,7 @@
 title: Checkbox
 description: Base input element to toggle an option on and off.
 status: stable
-source: https://github.com/typlog/ui/tree/main/src/components/checkbox
+source: https://github.com/typlog/ui/tree/main/packages/ui/src/components/checkbox
 reka: https://reka-ui.com/docs/components/checkbox
 radix: https://www.radix-ui.com/themes/docs/components/checkbox
 ---
