@@ -1,7 +1,7 @@
 <template>
   <div id="navbar" class="z-30 fixed lg:sticky top-0 w-full">
     <div id="navbar-backdrop" class="absolute w-full h-full backdrop-blur border-b border-gray-a3"></div>
-    <div class="mx-auto max-w-content relative">
+    <div class="mx-auto max-w-screen-2xl relative">
       <slot></slot>
     </div>
   </div>

@@ -32,7 +32,7 @@ const { theme } = useData()
   <div class="nav-head flex items-center lg:px-12 h-16 min-w-0 mx-4 lg:mx-0">
     <div class="h-full relative flex-1 flex items-center gap-x-4 min-w-0">
       <div class="shrink-0">
-        <a href="/">Typlog UI</a>
+        <a class="font-bold" href="/">Typlog UI</a>
       </div>
       <div class="grow min-w-0">
         <NavigationMenuRoot class="hidden md:block md:pl-6">

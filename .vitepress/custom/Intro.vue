@@ -8,7 +8,7 @@ import NavHead from './partials/NavHead.vue'
   <Navbar>
     <NavHead />
   </Navbar>
-  <main class="max-w-content flex mx-auto pt-28 pb-10 px-6 lg:px-8 lg:pt-18">
+  <main class="max-w-screen-2xl flex mx-auto pt-28 pb-10 px-6 lg:px-8 lg:pt-18">
     <Content class="prose dark:prose-invert lg:prose-lg max-w-none w-full" />
   </main>
 </template>

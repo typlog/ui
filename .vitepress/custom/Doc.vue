@@ -119,7 +119,7 @@ const editPageUrl = computed(() => {
     />
     <NavSidebar :items="sidebar" />
   </Navbar>
-  <main id="main-content" tabindex="-1" class="max-w-content flex mx-auto pt-28 pb-10 lg:pt-0 lg:px-8">
+  <main id="main-content" tabindex="-1" class="max-w-screen-2xl flex mx-auto pt-28 pb-10 lg:pt-0 lg:px-8">
     <div id="sidebar" class="z-20 hidden shrink-0 lg:block w-[18rem]">
       <div class="w-full sticky top-28">
         <ScrollArea class="pr-3 max-h-[calc(100vh-112px)]" scrollbars="vertical">

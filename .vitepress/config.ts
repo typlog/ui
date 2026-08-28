@@ -22,6 +22,7 @@ export default defineConfig<ThemeConfig>({
       Icons({ scale: 1, compiler: 'vue3' }),
     ],
   },
+  head: [['link', { rel: 'icon', href: '/favicon.svg' }]],
   markdown: {
     headers: true,
     preConfig(md) {
@@ -30,6 +31,7 @@ export default defineConfig<ThemeConfig>({
   },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
+    logo: '/favicon.svg',
     lastUpdated: {},
     search: {
       provider: 'local',
@@ -42,35 +44,6 @@ export default defineConfig<ThemeConfig>({
 
     nav: [
       { text: 'Docs', link: '/overview/getting-started' },
-      {
-        text: 'Components',
-        items: [
-          {
-            text: 'Element',
-            icon: 'lucide:square-mouse-pointer',
-            link: '/components/avatar',
-            description: 'Button, avatar, badge, icon, and general UI elements.',
-          },
-          {
-            text: 'Form',
-            icon: 'lucide:text-cursor-input',
-            link: '/components/text-field',
-            description: 'Input, select, checkbox, radio, switch, toggle, and etc.',
-          },
-          {
-            text: 'Controls',
-            icon: 'lucide:sliders-horizontal',
-            link: '/components/tabs',
-            description: 'Tabs, pagination, accordion, and collapsible.',
-          },
-          {
-            text: 'Overlays',
-            icon: 'lucide:layers',
-            link: '/components/dialog',
-            description: 'Dialog, dropdown, tooltip, modal and popover.',
-          },
-        ],
-      },
     ],
 
     sidebar: [
