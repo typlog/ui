@@ -2,7 +2,7 @@
 
 Thanks for helping improve `@typlog/ui`. This repository is a themed Vue 3 component library, so a contribution is complete only when implementation, public exports, styling, examples, and API documentation agree.
 
-For the component architecture and implementation patterns, see [.agents/docs/COMPONENTS.md](./.agents/docs/COMPONENTS.md). AI coding agents should also follow [AGENTS.md](./AGENTS.md).
+AI coding agents should also follow [AGENTS.md](./AGENTS.md), which contains the repository's component architecture and implementation rules.
 
 ## Development setup
 

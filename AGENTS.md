@@ -13,7 +13,7 @@ This file is the operating guide for AI coding agents working in this repository
 - Styling: plain CSS, semantic custom properties, Radix colors, and stable class/data-attribute contracts.
 - Tests: there is currently no automated test suite. Use the validation commands below and manually exercise interactive behavior in the docs site.
 
-Read [CONTRIBUTING.md](./CONTRIBUTING.md) before changing public APIs. For component-specific architecture and a worked skeleton, read [.agents/docs/COMPONENTS.md](./.agents/docs/COMPONENTS.md).
+Read [CONTRIBUTING.md](./CONTRIBUTING.md) before changing public APIs.
 
 ## Repository map
 
@@ -68,6 +68,33 @@ When creating or changing a component, preserve these repository conventions:
 11. Add a live example, a component page, generated API metadata, and a sidebar entry for a new public component.
 
 Do not casually rename or remove exported symbols, props, emitted events, CSS classes, or documented behavior. They are part of the consumer-facing contract even when TypeScript cannot enforce them.
+
+## Component architecture
+
+Choose a component shape based on behavior and composition:
+
+- **Styled primitive:** For one semantic element, render a Reka `Primitive` or a single Reka component and keep the Typlog wrapper thin. See `button`, `badge`, and `switch`.
+- **Compound component:** Export separate parts when consumers need layout control. Put shared configuration on the root and provide typed refs to children with Reka `createContext`; use a repository-scoped context name such as `ui:SelectRoot`. See `select`, `combobox`, `accordion`, and `collapsible`.
+- **Portalled overlay:** Keep the Reka Portal and accessible composition visible. Place `ThemeWrapper` inside the Portal around popup content so theme variables and `.ui-root` are restored. See `dialog`, `popover`, and `select`.
+- **Addon:** Put vendor integrations and opinionated features outside the core design-system contract in `packages/ui/src/addons`; publish them from `@typlog/ui/addons`.
+
+Do not hide essential Reka parts when consumers need them for accessible composition. Re-export an unchanged primitive from the family barrel when wrapping it adds no value.
+
+### Public API and forwarding
+
+- Put exportable prop and emit types in a normal `<script lang="ts">` block and runtime implementation in `<script setup>`.
+- Forward supported slots rather than converting them to string props. Preserve the underlying `v-model` and `update:*` event names.
+- Use `useForwardPropsWithout` for props, `useForwardPropsEmitsWithout` for props plus emits, Reka's `useForwardProps` when every prop belongs to the primitive, and `useForwardExpose` when consumers need the underlying element or API.
+- Set `inheritAttrs: false` and bind `$attrs` deliberately when attributes belong on an inner element.
+- Keep compound-component context values reactive so runtime prop updates reach child parts.
+
+### Styling and package boundaries
+
+- Prefer existing color (`--gray-*`, `--accent-*`, `--focus-*`, `--color-*`), spacing (`--space-*`, `--scaling`), radius, typography, shadow, and animation tokens. Add a token only at the narrowest shared theme layer and verify light, dark, and high-contrast behavior.
+- Use `:where()` for modifier and state selectors when low specificity helps consumer overrides.
+- Inside core components, prefer relative imports for nearby files and shared utilities. Inside addons, consume core APIs through `@typlog/ui`.
+- Documentation examples must use consumer-facing imports: `@typlog/ui`, `@typlog/ui/addons`, or `@typlog/ui/charts`.
+- Add runtime dependencies with `pnpm add <package> --filter @typlog/ui`; root-only build and documentation tools belong in root `devDependencies`.
 
 ## Recommended workflow for a new component
 
