@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "types": [
-      "unplugin-icons/types/vue",
+      "vite/client",
+      "unplugin-icons/types/vue"
     ],
     "target": "esnext",
     "jsx": "preserve",

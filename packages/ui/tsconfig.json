@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "types": [
+      "vite/client",
       "unplugin-icons/types/vue"
     ],
     "target": "ES2020",
