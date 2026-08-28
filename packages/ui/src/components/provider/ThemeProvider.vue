@@ -76,7 +76,7 @@ provideThemeContext({
 </template>
 
 <style>
-[data-v-app] > .ui-root {
+.ui-root:not([data-dismissable-layer]) {
   position: relative;
   z-index: 0;
 }
