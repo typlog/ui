@@ -26,7 +26,7 @@ const xTickFormat = (value: number) => barData[value]?.month ?? ''
 <template>
   <ChartRoot v-slot="{ mounted }" :config="barConfig">
     <VisXYContainer v-if="mounted" :data="barData" :height="220">
-      <VisGroupedBar :x="barX" :y="barY" />
+      <VisGroupedBar :x="barX" :y="barY" bar-padding="0.1" />
       <VisAxis
         type="x"
         :tick-format="xTickFormat"

@@ -25,3 +25,11 @@ Use `VisStackedBar` for part-to-whole comparisons across several categories. Kee
 <Example name="charts/BarStacked.vue" />
 
 Start the value axis at zero unless the chart explicitly communicates a bounded deviation. Truncated bar axes exaggerate small differences in length.
+
+## Horizontal bars
+
+Set `orientation` to `Orientation.Horizontal` when category labels need more room or when ranking is easier to scan from top to bottom. The data accessor stays on `x` and the value accessor stays on `y`; only their rendered axes change, so category ticks belong to the y-axis and numeric values belong to the x-axis.
+
+Use `Direction.South` on the container to keep the first data item at the top. Because the standard crosshair follows the horizontal x-domain, attach `ChartTooltip` directly to `GroupedBar.selectors.bar` for horizontal bars.
+
+<Example name="charts/BarHorizontal.vue" />

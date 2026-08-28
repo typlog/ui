@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import { Direction, GroupedBar, Orientation } from '@unovis/ts'
 import { VisAxis, VisGroupedBar, VisXYContainer } from '@unovis/vue'
 import {
-  ChartCrosshair,
   ChartRoot,
   ChartTooltip,
+  ChartTooltipContent,
+  createChartTooltipTemplate,
   type ChartConfig,
 } from '@typlog/ui/charts'
 
@@ -20,28 +22,47 @@ const data: Point[] = [
 ]
 const config = {
   channel: { label: 'Channel', role: 'x' },
-  conversions: { label: 'Conversions' },
+  conversions: { label: 'Conversions', color: 'var(--blue-9)' },
 } satisfies ChartConfig
 const x = (_item: Point, index: number) => index
 const y = (item: Point) => item.conversions
-const xTickFormat = (value: number) => data[value]?.channel ?? ''
+const yTickFormat = (value: number) => data[value]?.channel ?? ''
+const tooltipContent = createChartTooltipTemplate(config, ChartTooltipContent)
+const tooltipTriggers = {
+  [GroupedBar.selectors.bar]: (item: Point) => tooltipContent(item),
+}
 </script>
 
 <template>
   <ChartRoot v-slot="{ mounted }" :config="config">
-    <VisXYContainer v-if="mounted" :data="data" :height="220">
-      <VisGroupedBar :x="x" :y="y" :rounded-corners="6" />
+    <VisXYContainer
+      v-if="mounted"
+      :data="data"
+      :height="260"
+      :y-direction="Direction.South"
+    >
+      <VisGroupedBar
+        :x="x"
+        :y="y"
+        :rounded-corners="6"
+        :bar-padding="0.15"
+        :orientation="Orientation.Horizontal"
+      />
       <VisAxis
         type="x"
-        :tick-format="xTickFormat"
+        :tick-line="false"
+        :domain-line="false"
+        :grid-line="true"
+      />
+      <VisAxis
+        type="y"
+        :tick-format="yTickFormat"
         :tick-values="data.map((_item, index) => index)"
         :tick-line="false"
         :domain-line="false"
         :grid-line="false"
       />
-      <VisAxis type="y" :tick-format="() => ''" :tick-line="false" :domain-line="false" />
-      <ChartTooltip />
-      <ChartCrosshair />
+      <ChartTooltip :triggers="tooltipTriggers" />
     </VisXYContainer>
   </ChartRoot>
 </template>
