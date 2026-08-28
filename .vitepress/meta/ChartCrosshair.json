@@ -26,8 +26,7 @@
       "description": "<p>Optional color array or color accessor function for crosshair circles. Default: <code>d =&gt; d.color</code></p>",
       "type": "\"indigo\" | \"gray\" | \"gold\" | \"bronze\" | \"brown\" | \"yellow\" | \"amber\" | \"orange\" | \"tomato\" | \"red\" | \"ruby\" | \"crimson\" | \"pink\" | \"plum\" | \"purple\" | \"violet\" | \"iris\" | \"blue\" | \"cyan\" | \"teal\" | \"jade\" | \"green\" | \"grass\" | \"lime\" | \"mint\" | \"sky\"",
       "required": false,
-      "inherit": "unovis",
-      "default": "\"transparent\""
+      "inherit": "unovis"
     },
     {
       "name": "contentComponent",

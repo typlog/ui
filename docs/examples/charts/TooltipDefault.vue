@@ -50,7 +50,7 @@ const xTickFormat = (value: number) => data[value]?.day ?? ''
         :grid-line="true"
       />
       <ChartTooltip />
-      <ChartCrosshair color="transparent" />
+      <ChartCrosshair />
     </VisXYContainer>
   </ChartRoot>
 </template>

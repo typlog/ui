@@ -1,12 +1,10 @@
 <script lang="ts">
 import type { PrimitiveProps } from 'reka-ui'
 import type { ChartConfig } from './types'
-import type { ColorType } from '../components/types'
 
 export interface ChartRootProps extends PrimitiveProps {
   /** Series metadata used by ChartLegend and ChartTooltip. */
   config: ChartConfig,
-  colors?: ColorType[],
 }
 </script>
 

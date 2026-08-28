@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { VisAxis, VisGroupedBar, VisXYContainer } from '@unovis/vue'
-import { ChartLegend, ChartRoot } from '@typlog/ui/charts'
+import { ChartLegend, ChartRoot, ChartTooltip, ChartCrosshair } from '@typlog/ui/charts'
 
 interface BarPoint {
   month: string
@@ -42,6 +42,8 @@ const xTickFormat = (value: number) => barData[value]?.month ?? ''
         :domain-line="false"
         :grid-line="true"
       />
+      <ChartTooltip />
+      <ChartCrosshair />
     </VisXYContainer>
     <ChartLegend class="mt-3" />
   </ChartRoot>

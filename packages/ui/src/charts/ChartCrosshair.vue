@@ -12,7 +12,8 @@ export interface ChartCrosshairProps<Datum = unknown> extends /* @vue-ignore */ 
 </script>
 
 <script setup lang="ts" generic="Datum = unknown">
-import { computed } from 'vue'
+import { computed, onUnmounted, watch } from 'vue'
+import { loadIcons } from '@iconify/vue'
 import { VisCrosshair } from '@unovis/vue'
 import { useForwardPropsWithout } from '../components/util'
 import { injectChartContext } from './context'
@@ -26,6 +27,16 @@ const props = withDefaults(defineProps<ChartCrosshairProps<Datum>>(), {
 
 const context = injectChartContext()
 const forwarded = useForwardPropsWithout(props, ['contentComponent', 'contentProps', 'template'])
+const icons = computed(() => context.series.value.flatMap(entry => (
+  entry.series.icon ? [entry.series.icon] : []
+)))
+let cancelIconLoad: (() => void) | undefined
+watch(icons, value => {
+  cancelIconLoad?.()
+  cancelIconLoad = value.length ? loadIcons(value) : undefined
+}, { immediate: true })
+onUnmounted(() => cancelIconLoad?.())
+
 const color = computed(() => {
   return context.series.value.map(d => `var(--chart-${d.index + 1})`)
 })

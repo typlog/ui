@@ -16,6 +16,7 @@ export type { ChartLegendItemSlotProps }
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import { Icon } from '@iconify/vue'
 import { Primitive } from 'reka-ui'
 import { buildPropsClass, useForwardPropsWithout } from '../components/util'
 import { injectChartContext } from './context'
@@ -51,7 +52,12 @@ const entries = computed(() => context.series.value)
         <slot name="marker" v-bind="entry">
           <span class="ui-ChartLegendMarker" :style="{ backgroundColor: context.colors.value[entry.index] }"></span>
         </slot>
-        <component :is="entry.series.icon" v-if="entry.series.icon" class="ui-ChartLegendIcon" aria-hidden="true" />
+        <Icon
+          v-if="entry.series.icon"
+          :icon="entry.series.icon"
+          class="ui-ChartLegendIcon"
+          aria-hidden="true"
+        />
         <span class="ui-ChartLegendLabel">{{ entry.series.label }}</span>
       </slot>
     </div>

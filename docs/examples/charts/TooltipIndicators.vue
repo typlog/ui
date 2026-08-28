@@ -30,14 +30,14 @@ const noIndicatorContentProps = {
       <VisXYContainer v-if="mounted" :data="data" :height="180">
         <VisLine :x="x" :y="y" color="var(--chart-1)" />
         <ChartTooltip />
-        <ChartCrosshair :content-props="lineContentProps" color="transparent" />
+        <ChartCrosshair :content-props="lineContentProps" />
       </VisXYContainer>
     </ChartRoot>
     <ChartRoot v-slot="{ mounted }" :config="config">
       <VisXYContainer v-if="mounted" :data="data" :height="180">
         <VisLine :x="x" :y="y" color="var(--chart-1)" />
         <ChartTooltip />
-        <ChartCrosshair :content-props="noIndicatorContentProps" color="transparent" />
+        <ChartCrosshair :content-props="noIndicatorContentProps" />
       </VisXYContainer>
     </ChartRoot>
   </div>

@@ -15,7 +15,7 @@ export default defineConfig<ThemeConfig>({
   cleanUrls: true,
   vite: {
     resolve: {
-      dedupe: ['vue', '@typlog/ui'],
+      dedupe: ['vue', '@iconify/vue', '@typlog/ui'],
     },
     plugins: [
       tailwindcss(),

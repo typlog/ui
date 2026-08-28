@@ -1,5 +1,3 @@
-import type { Component } from 'vue'
-
 /** Determines whether a configured field is the x-axis domain or a data series. */
 export type ChartSeriesRole = 'x' | 'series'
 
@@ -11,8 +9,8 @@ export interface ChartSeries {
   role?: ChartSeriesRole
   /** Optional CSS color. Defaults to the chart palette. */
   color?: string
-  /** Optional icon rendered before the series label. */
-  icon?: Component
+  /** Optional Iconify icon name rendered before the series label. */
+  icon?: string
 }
 
 /** Configuration keyed by the series identifier used by a chart primitive. */

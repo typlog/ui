@@ -27,6 +27,7 @@ export interface ChartTooltipContentProps {
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import { buildIcon, getIcon } from '@iconify/vue'
 
 const props = withDefaults(defineProps<ChartTooltipContentProps>(), {
   payload: () => ({}),
@@ -37,9 +38,17 @@ const props = withDefaults(defineProps<ChartTooltipContentProps>(), {
 const items = computed(() => Object.entries(props.payload)
   .map(([key, value]) => ({ key, value, series: props.config[key] }))
   .filter(item => Boolean(item.series) && item.series!.role !== 'x')
-  .map((item, index) => ({ ...item, index })))
+  .map((item, index) => ({
+    ...item,
+    index,
+    icon: buildSeriesIcon(item.series!.icon),
+  })))
 
-const nestedLabel = computed(() => items.value.length === 1 && props.indicator !== 'dot')
+function buildSeriesIcon (name?: string) {
+  const icon = name ? getIcon(name) : undefined
+  return icon ? buildIcon(icon) : undefined
+}
+
 const label = computed(() => {
   if (props.hideLabel)
     return undefined
@@ -69,17 +78,19 @@ function formatValue (value: unknown, key: string) {
 <template>
   <div class="ui-ChartTooltipContent">
     <slot :items="items" :label="label">
-      <div v-if="!nestedLabel && label" class="ui-ChartTooltipLabel">
+      <div v-if="label" class="ui-ChartTooltipLabel">
         {{ label }}
       </div>
       <div class="ui-ChartTooltipItems">
         <div v-for="item in items" :key="item.key" class="ui-ChartTooltipItem">
-          <component
-            :is="item.series!.icon"
-            v-if="item.series!.icon"
+          <svg
+            v-if="item.icon"
+            v-bind="item.icon.attributes"
             class="ui-ChartTooltipIcon"
             aria-hidden="true"
-          />
+            focusable="false"
+            v-html="item.icon.body"
+          ></svg>
           <span
             v-else-if="!props.hideIndicator && props.indicator !== 'none'"
             class="ui-ChartTooltipIndicator"
@@ -87,7 +98,6 @@ function formatValue (value: unknown, key: string) {
             :style="{ '--chart-tooltip-color': item.series!.color ?? `var(--chart-${item.index + 1})` }"
           ></span>
           <span class="ui-ChartTooltipSeries">
-            <span v-if="nestedLabel && label" class="ui-ChartTooltipLabel">{{ label }}</span>
             <span class="ui-ChartTooltipSeriesLabel">{{ item.series!.label }}</span>
           </span>
           <span class="ui-ChartTooltipValue">{{ formatValue(item.value, item.key) }}</span>
