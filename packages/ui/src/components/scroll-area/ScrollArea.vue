@@ -63,7 +63,7 @@ const props = withDefaults(defineProps<ScrollAreaProps>(), {
 </template>
 
 <style>
-.ui-root {
+.ui-theme {
   --scrollarea-scrollbar-horizontal-margin-top: var(--space-1);
   --scrollarea-scrollbar-horizontal-margin-bottom: var(--space-1);
   --scrollarea-scrollbar-horizontal-margin-left: var(--space-1);

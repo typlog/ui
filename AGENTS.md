@@ -63,7 +63,7 @@ When creating or changing a component, preserve these repository conventions:
 6. Prefix component classes with `ui-`. Visual prop classes use `r-<prop>-<value>` (for example `r-size-2`) and booleans use `r-<prop>` (for example `r-high-contrast`). `buildPropsClass` creates these classes.
 7. Use `data-accent-color` and `data-radius` for local theme overrides. Consume existing CSS variables instead of introducing literal theme colors, spacing, radii, or shadows.
 8. Style Reka state through its data attributes, such as `data-state`, `data-disabled`, `data-highlighted`, and `data-orientation`. Keep focus-visible and disabled behavior explicit.
-9. Content rendered through a Portal leaves the provider DOM tree. Wrap portal content in `ThemeWrapper` so `.ui-root` and theme data attributes are restored.
+9. Content rendered through a Portal leaves the provider DOM tree. Wrap portal content in `ThemeWrapper` so `.ui-theme` and theme data attributes are restored.
 10. Export the component and its public types from the family `index.ts`, then export that family from `packages/ui/src/components/index.ts` or `packages/ui/src/addons/index.ts`.
 11. Add a live example, a component page, generated API metadata, and a sidebar entry for a new public component.
 
@@ -75,7 +75,7 @@ Choose a component shape based on behavior and composition:
 
 - **Styled primitive:** For one semantic element, render a Reka `Primitive` or a single Reka component and keep the Typlog wrapper thin. See `button`, `badge`, and `switch`.
 - **Compound component:** Export separate parts when consumers need layout control. Put shared configuration on the root and provide typed refs to children with Reka `createContext`; use a repository-scoped context name such as `ui:SelectRoot`. See `select`, `combobox`, `accordion`, and `collapsible`.
-- **Portalled overlay:** Keep the Reka Portal and accessible composition visible. Place `ThemeWrapper` inside the Portal around popup content so theme variables and `.ui-root` are restored. See `dialog`, `popover`, and `select`.
+- **Portalled overlay:** Keep the Reka Portal and accessible composition visible. Place `ThemeWrapper` inside the Portal around popup content so theme variables and `.ui-theme` are restored. See `dialog`, `popover`, and `select`.
 - **Addon:** Put vendor integrations and opinionated features outside the core design-system contract in `packages/ui/src/addons`; publish them from `@typlog/ui/addons`.
 
 Do not hide essential Reka parts when consumers need them for accessible composition. Re-export an unchanged primitive from the family barrel when wrapping it adds no value.

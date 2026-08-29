@@ -59,7 +59,7 @@ provideThemeContext({
 <template>
   <TooltipProvider>
     <Primitive
-      class="ui-root"
+      class="ui-root ui-theme"
       :data-accent-color="accentColor"
       :data-gray-color="grayColor"
       :data-radius="radius"
@@ -76,7 +76,7 @@ provideThemeContext({
 </template>
 
 <style>
-.ui-root:not([data-dismissable-layer]) {
+.ui-root {
   position: relative;
   z-index: 0;
 }

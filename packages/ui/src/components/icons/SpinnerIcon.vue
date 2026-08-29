@@ -12,7 +12,7 @@
 </template>
 
 <style>
-.ui-root {
+.ui-theme {
   --spinner-animation-duration: 800ms;
   --spinner-opacity: 0.65;
 }

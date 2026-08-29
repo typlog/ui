@@ -1,4 +1,4 @@
-.ui-root {
+.ui-theme {
   --font-size-1: calc(12px * var(--scaling));
   --font-size-2: calc(14px * var(--scaling));
   --font-size-3: calc(16px * var(--scaling));
@@ -36,7 +36,7 @@
   --letter-spacing-9: -0.025em;
 }
 
-.ui-root {
+.ui-theme {
   overflow-wrap: break-word;
   text-size-adjust: none;
   -webkit-font-smoothing: antialiased;

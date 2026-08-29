@@ -17,7 +17,7 @@ const theme = injectThemeContext()
 
 <template>
   <Primitive
-    class="ui-root"
+    class="ui-theme"
     :data-accent-color="props.accentColor || theme.accentColor.value"
     :data-gray-color="theme.grayColor.value"
     :data-radius="props.radius || theme.radius.value"
