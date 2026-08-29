@@ -1,0 +1,22 @@
+{
+  "props": [
+    {
+      "name": "as",
+      "description": "",
+      "type": "AsTag | Component",
+      "required": false,
+      "inherit": null,
+      "default": "\"p\""
+    },
+    {
+      "name": "asChild",
+      "description": "",
+      "type": "boolean",
+      "required": false,
+      "inherit": null
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "methods": []
+}

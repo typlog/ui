@@ -1,0 +1,70 @@
+@layer components {
+  .ui-FormRoot {
+    width: 100%;
+  }
+
+  .ui-FieldRoot {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ui-FieldRoot:where([data-invalid]) {
+    --field-error-color: var(--red-11);
+    --field-error-border-color: var(--red-a7);
+    --field-error-focus-color: var(--red-a8);
+    --field-error-outline-color: var(--red-8);
+  }
+
+  .ui-FieldRoot + .ui-FieldRoot {
+    margin-top: var(--space-4);
+  }
+
+  .ui-FieldLabel {
+    color: var(--gray-12);
+    font-size: var(--font-size-2);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-2);
+  }
+
+  .ui-FieldDescription {
+    margin: 0;
+    color: var(--gray-a11);
+    font-size: var(--font-size-1);
+    line-height: var(--line-height-2);
+  }
+
+  .ui-FieldError {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    margin: 0;
+    color: var(--field-error-color);
+    font-size: var(--font-size-1);
+    line-height: var(--line-height-2);
+  }
+
+  .ui-FieldRoot > * + * {
+    margin-top: var(--space-2);
+  }
+
+  .ui-FieldRoot > :where(.ui-FieldDescription, .ui-FieldError) {
+    margin-top: var(--space-1);
+  }
+
+  .ui-FieldRoot:where([data-invalid]) .ui-FieldLabel {
+    color: var(--field-error-color);
+  }
+
+  .ui-FieldRoot[data-invalid] :where(input, textarea, select, button, [role='combobox'], .ui-TextField, .ui-TextArea, .ui-SelectTrigger, .ui-ComboboxField) {
+    --text-field-border-color: var(--field-error-border-color);
+    --text-field-focus-color: var(--field-error-focus-color);
+    --text-area-border-color: var(--field-error-border-color);
+    --select-trigger-border-color: var(--field-error-border-color);
+    --combobox-field-border-color: var(--field-error-border-color);
+    --combobox-field-focus-color: var(--field-error-focus-color);
+  }
+
+  .ui-FieldRoot[data-invalid] :where(input, textarea, select, [role='combobox']):focus-visible {
+    outline-color: var(--field-error-outline-color);
+  }
+}

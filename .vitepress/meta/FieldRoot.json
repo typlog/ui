@@ -1,0 +1,51 @@
+{
+  "props": [
+    {
+      "name": "disabled",
+      "description": "<p>Disables the field control.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": null,
+      "default": "false"
+    },
+    {
+      "name": "errors",
+      "description": "<p>Initial field errors controlled by the consumer.</p>",
+      "type": "FormError",
+      "required": false,
+      "inherit": null
+    },
+    {
+      "name": "id",
+      "description": "<p>Explicitly sets the generated control ID.</p>",
+      "type": "string",
+      "required": false,
+      "inherit": null
+    },
+    {
+      "name": "name",
+      "description": "<p>The form field name used for errors and native submission.</p>",
+      "type": "string",
+      "required": false,
+      "inherit": null
+    },
+    {
+      "name": "required",
+      "description": "<p>Marks the field as required.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": null,
+      "default": "false"
+    },
+    {
+      "name": "validate",
+      "description": "<p>A validator-neutral callback returning one or more messages.</p>",
+      "type": "FieldValidator",
+      "required": false,
+      "inherit": null
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "methods": []
+}

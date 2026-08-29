@@ -1,0 +1,27 @@
+{
+  "props": [
+    {
+      "name": "errors",
+      "description": "<p>Field errors keyed by field name.</p>",
+      "type": "Record<string, FormError>",
+      "required": false,
+      "inherit": null
+    }
+  ],
+  "events": [
+    {
+      "name": "invalid",
+      "type": "[event: Event]"
+    },
+    {
+      "name": "reset",
+      "type": "[event: Event]"
+    },
+    {
+      "name": "submit",
+      "type": "[event: SubmitEvent]"
+    }
+  ],
+  "slots": [],
+  "methods": []
+}

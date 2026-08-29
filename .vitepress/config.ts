@@ -84,6 +84,7 @@ export default defineConfig<ThemeConfig>({
             text: 'Form',
             icon: 'lucide:text-cursor-input',
             items: [
+              { text: 'Form', link: '/components/form' },
               { text: 'Switch', link: '/components/switch' },
               { text: 'Toggle', link: '/components/toggle' },
               { text: 'Toggle Group', link: '/components/toggle-group' },
