@@ -272,28 +272,6 @@
   }
 
   .ui-SidebarMenu:where(.r-size-1) {
-    --sidebar-menu-list-gap: 0;
-    --sidebar-menu-button-height: calc(1.75rem * var(--scaling));
-    --sidebar-menu-button-padding-block: calc(var(--space-1) / 2);
-    --sidebar-menu-button-padding-inline: var(--space-1);
-    --sidebar-menu-button-gap: var(--space-1);
-    --sidebar-menu-button-font-size: var(--font-size-1);
-    --sidebar-menu-button-line-height: var(--line-height-1);
-    --sidebar-menu-icon-size: calc(0.75rem * var(--scaling));
-    --sidebar-menu-sub-gap: 0;
-    --sidebar-menu-sub-margin-block: 0;
-    --sidebar-menu-sub-margin-inline: var(--space-3);
-    --sidebar-menu-sub-padding-inline: var(--space-1);
-    --sidebar-menu-sub-button-height: calc(1.5rem * var(--scaling));
-    --sidebar-menu-sub-button-padding-block: 0;
-    --sidebar-menu-sub-button-padding-inline: var(--space-1);
-    --sidebar-menu-sub-button-gap: var(--space-1);
-    --sidebar-menu-sub-button-font-size: var(--font-size-1);
-    --sidebar-menu-sub-button-line-height: var(--line-height-1);
-    --sidebar-menu-sub-icon-size: calc(0.6875rem * var(--scaling));
-  }
-
-  .ui-SidebarMenu:where(.r-size-2) {
     --sidebar-menu-list-gap: calc(var(--space-1) / 2);
     --sidebar-menu-button-height: calc(2rem * var(--scaling));
     --sidebar-menu-button-padding-block: var(--space-1);
@@ -315,7 +293,7 @@
     --sidebar-menu-sub-icon-size: calc(0.75rem * var(--scaling));
   }
 
-  .ui-SidebarMenu:where(.r-size-3) {
+  .ui-SidebarMenu:where(.r-size-2) {
     --sidebar-menu-list-gap: var(--space-1);
     --sidebar-menu-button-height: calc(2.25rem * var(--scaling));
     --sidebar-menu-button-padding-block: var(--space-2);
@@ -335,6 +313,28 @@
     --sidebar-menu-sub-button-font-size: var(--font-size-1);
     --sidebar-menu-sub-button-line-height: var(--line-height-1);
     --sidebar-menu-sub-icon-size: calc(0.875rem * var(--scaling));
+  }
+
+  .ui-SidebarMenu:where(.r-size-3) {
+    --sidebar-menu-list-gap: var(--space-2);
+    --sidebar-menu-button-height: calc(2.5rem * var(--scaling));
+    --sidebar-menu-button-padding-block: var(--space-2);
+    --sidebar-menu-button-padding-inline: var(--space-3);
+    --sidebar-menu-button-gap: var(--space-3);
+    --sidebar-menu-button-font-size: var(--font-size-3);
+    --sidebar-menu-button-line-height: var(--line-height-3);
+    --sidebar-menu-icon-size: calc(1.125rem * var(--scaling));
+    --sidebar-menu-sub-gap: var(--space-2);
+    --sidebar-menu-sub-margin-block: var(--space-2);
+    --sidebar-menu-sub-margin-inline: var(--space-5);
+    --sidebar-menu-sub-padding-inline: var(--space-3);
+    --sidebar-menu-sub-button-height: calc(2.25rem * var(--scaling));
+    --sidebar-menu-sub-button-padding-block: var(--space-2);
+    --sidebar-menu-sub-button-padding-inline: var(--space-3);
+    --sidebar-menu-sub-button-gap: var(--space-3);
+    --sidebar-menu-sub-button-font-size: var(--font-size-2);
+    --sidebar-menu-sub-button-line-height: var(--line-height-2);
+    --sidebar-menu-sub-icon-size: calc(1rem * var(--scaling));
   }
 
   .ui-SidebarMenuItem,

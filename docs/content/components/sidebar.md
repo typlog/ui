@@ -67,7 +67,7 @@ The default `Sidebar` slot exposes `collapsed` and `isMobile`. Use them to condi
 
 ### Menu size
 
-Set `size` once on `SidebarMenu` to coordinate button height, spacing, typography, icons, and nested submenu dimensions. The default `2` uses a compact 2rem button baseline; `1` tightens the entire scale and `3` adds room across the same set of measurements.
+Set `size` once on `SidebarMenu` to coordinate button height, spacing, typography, icons, and nested submenu dimensions. The default `2` uses a 2.25rem button baseline; `1` tightens the entire scale and `3` adds room across the same set of measurements.
 
 <Example name="sidebar/MenuSize.vue" variant="full" />
 
