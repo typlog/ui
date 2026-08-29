@@ -44,6 +44,7 @@ import Button from '../button/Button.vue'
 
 const props = defineProps<ToastItemProps>()
 const toastRef = useTemplateRef<InstanceType<typeof ToastRoot>>('toastRef')
+const layoutRef = useTemplateRef<HTMLDivElement>('layoutRef')
 const paused = ref(false)
 
 const manager = useToastManager()
@@ -52,7 +53,12 @@ let resizeObserver: ResizeObserver | undefined
 const styleVars = computed(() => {
   const heights = manager.messages.value.slice(0, props.index).map(item => item.height || 60)
   const offsetY = heights.reduce((sum, num) => sum + num, 0)
-  return {'--toast-index': props.index, '--toast-offset-y': offsetY + 'px'}
+  const frontHeight = manager.messages.value[0]?.height || 60
+  return {
+    '--toast-index': props.index,
+    '--toast-offset-y': offsetY + 'px',
+    '--toast-front-height': frontHeight + 'px',
+  }
 })
 
 const categoryIcon = computed(() => {
@@ -89,10 +95,14 @@ const onResume = () => {
 
 onMounted(() => {
   const el = toastRef.value!.$el as HTMLLIElement
+  const layout = layoutRef.value!
   let height: number | undefined
 
   const updateHeight = () => {
-    const nextHeight = el.clientHeight
+    // The root is fixed to the front toast height while collapsed. Measure the
+    // inner layout instead so the manager always keeps each toast's natural height.
+    const borderHeight = el.offsetHeight - el.clientHeight
+    const nextHeight = layout.offsetHeight + borderHeight
     if (nextHeight !== height) {
       height = nextHeight
       manager.update(props.message.id, {height: nextHeight})
@@ -102,7 +112,7 @@ onMounted(() => {
   updateHeight()
   if (typeof ResizeObserver !== 'undefined') {
     resizeObserver = new ResizeObserver(updateHeight)
-    resizeObserver.observe(el)
+    resizeObserver.observe(layout)
   }
 })
 
@@ -125,38 +135,40 @@ onBeforeUnmount(() => {
     @pause="onPause"
     @resume="onResume"
   >
-    <div
-      v-if="message.category"
-      class="ui-ToastIcon"
-      :data-accent-color="categoryColor"
-    >
-      <component :is="categoryIcon" />
-    </div>
-    <div class="ui-ToastContent">
-      <ToastTitle class="ui-ToastTitle">{{ message.title }}</ToastTitle>
-      <ToastDescription
-        v-if="message.description"
-        class="ui-ToastDescription"
+    <div ref="layoutRef" class="ui-ToastLayout">
+      <div
+        v-if="message.category"
+        class="ui-ToastIcon"
+        :data-accent-color="categoryColor"
       >
-        {{ message.description }}
-      </ToastDescription>
-    </div>
-    <ToastAction
-      v-if="message.action"
-      class="ui-ToastAction"
-      :alt-text="message.action.altText || message.action.label"
-      as-child
-      @click="message.action.onClick"
-    >
-      <Button
-        :variant="message.action.variant || 'soft'"
-        :radius="message.action.radius"
-        :size="message.action.size || '1'"
-        :color="message.action.color"
+        <component :is="categoryIcon" />
+      </div>
+      <div class="ui-ToastContent">
+        <ToastTitle class="ui-ToastTitle">{{ message.title }}</ToastTitle>
+        <ToastDescription
+          v-if="message.description"
+          class="ui-ToastDescription"
+        >
+          {{ message.description }}
+        </ToastDescription>
+      </div>
+      <ToastAction
+        v-if="message.action"
+        class="ui-ToastAction"
+        :alt-text="message.action.altText || message.action.label"
+        as-child
+        @click="message.action.onClick"
       >
-        {{ message.action.label }}
-      </Button>
-    </ToastAction>
+        <Button
+          :variant="message.action.variant || 'soft'"
+          :radius="message.action.radius"
+          :size="message.action.size || '1'"
+          :color="message.action.color"
+        >
+          {{ message.action.label }}
+        </Button>
+      </ToastAction>
+    </div>
   </ToastRoot>
 </template>
 
@@ -164,9 +176,7 @@ onBeforeUnmount(() => {
 @layer components {
   .ui-ToastItem {
     position: absolute;
-    display: flex;
-    align-items: center;
-    gap: var(--toast-gap);
+    display: block;
     left: auto;
     right: auto;
     bottom: auto;
@@ -176,11 +186,18 @@ onBeforeUnmount(() => {
     box-shadow: 0 4px 12px var(--gray-a4);
     border: 1px solid var(--gray-a3);
     border-radius: var(--radius-3);
-    padding: var(--space-4);
     opacity: 1;
     z-index: calc(0 - var(--toast-index));
-    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), height 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s;
     --toast-collapse-scale: calc(max(0, 1 - (var(--toast-index) * 0.06)));
+    box-sizing: border-box;
+  }
+
+  .ui-ToastLayout {
+    display: flex;
+    align-items: center;
+    gap: var(--toast-gap);
+    padding: var(--space-4);
   }
 
   .ui-ToastItem::after {
@@ -224,15 +241,20 @@ onBeforeUnmount(() => {
   :where(.ui-ToastViewport[data-y-position="top"]) .ui-ToastItem:where([data-expanded="false"]) {
     transform:
       translateX(var(--reka-toast-swipe-move-x, 0px))
-      translateY(calc(var(--reka-toast-swipe-move-y, 0px) + (min(var(--toast-index), 10) * 20%)))
+      translateY(calc(var(--reka-toast-swipe-move-y, 0px) + (min(var(--toast-index), 10) * var(--toast-front-height) * 0.2)))
       scale(var(--toast-collapse-scale));
   }
 
   :where(.ui-ToastViewport[data-y-position="bottom"]) .ui-ToastItem:where([data-expanded="false"]) {
     transform:
       translateX(var(--reka-toast-swipe-move-x, 0px))
-      translateY(calc(var(--reka-toast-swipe-move-y, 0px) + var(--toast-offset-y) * -0.2))
+      translateY(calc(var(--reka-toast-swipe-move-y, 0px) + (min(var(--toast-index), 10) * var(--toast-front-height) * -0.2)))
       scale(var(--toast-collapse-scale));
+  }
+
+  .ui-ToastItem:where([data-expanded="false"]) {
+    height: var(--toast-front-height);
+    overflow: hidden;
   }
 
   .ui-ToastItem:where([data-expanded="true"]) {
