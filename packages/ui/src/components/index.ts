@@ -17,6 +17,7 @@ export * from './empty'
 export * from './tree'
 
 export * from './dialog'
+export * from './drawer'
 export * from './dropdown'
 export * from './popover'
 export * from './navigation'

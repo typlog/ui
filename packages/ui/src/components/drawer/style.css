@@ -1,0 +1,209 @@
+@layer components {
+  .ui-DrawerViewport {
+    inset: 0;
+    pointer-events: none;
+    position: fixed;
+    z-index: 50;
+  }
+
+  .ui-DrawerOverlay {
+    background: var(--color-overlay);
+    inset: 0;
+    pointer-events: auto;
+    position: absolute;
+  }
+
+  .ui-DrawerPopup {
+    background: var(--color-panel-solid);
+    box-shadow: var(--shadow-6);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    outline: none;
+    overflow: auto;
+    overscroll-behavior: contain;
+    padding: var(--drawer-padding);
+    pointer-events: auto;
+    position: absolute;
+    transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .ui-DrawerPopup:where(.r-size-1) {
+    --drawer-padding: var(--space-4);
+    --drawer-size: 320px;
+  }
+
+  .ui-DrawerPopup:where(.r-size-2) {
+    --drawer-padding: var(--space-5);
+    --drawer-size: 440px;
+  }
+
+  .ui-DrawerPopup:where(.r-size-3) {
+    --drawer-padding: var(--space-6);
+    --drawer-size: 640px;
+  }
+
+  .ui-DrawerPopup[data-swipe-direction='down'] {
+    --drawer-closed-transform: translate3d(0, 100%, 0);
+    --drawer-snap-transform: translate3d(0, var(--drawer-snap-point-offset, 0px), 0);
+
+    border-radius: var(--radius-5) var(--radius-5) 0 0;
+    bottom: 0;
+    height: min(var(--drawer-size), 100%);
+    left: 0;
+    max-height: 100%;
+    padding-bottom: max(var(--drawer-padding), env(safe-area-inset-bottom));
+    right: 0;
+  }
+
+  .ui-DrawerPopup[data-swipe-direction='up'] {
+    --drawer-closed-transform: translate3d(0, -100%, 0);
+    --drawer-snap-transform: translate3d(0, var(--drawer-snap-point-offset, 0px), 0);
+
+    border-radius: 0 0 var(--radius-5) var(--radius-5);
+    height: min(var(--drawer-size), 100%);
+    left: 0;
+    max-height: 100%;
+    padding-top: max(var(--drawer-padding), env(safe-area-inset-top));
+    right: 0;
+    top: 0;
+  }
+
+  .ui-DrawerPopup[data-swipe-direction='left'] {
+    --drawer-closed-transform: translate3d(-100%, 0, 0);
+    --drawer-snap-transform: translate3d(var(--drawer-snap-point-offset, 0px), 0, 0);
+
+    border-radius: 0 var(--radius-5) var(--radius-5) 0;
+    bottom: 0;
+    left: 0;
+    max-width: 100%;
+    padding-left: max(var(--drawer-padding), env(safe-area-inset-left));
+    top: 0;
+    width: min(var(--drawer-size), 100%);
+  }
+
+  .ui-DrawerPopup[data-swipe-direction='right'] {
+    --drawer-closed-transform: translate3d(100%, 0, 0);
+    --drawer-snap-transform: translate3d(var(--drawer-snap-point-offset, 0px), 0, 0);
+
+    border-radius: var(--radius-5) 0 0 var(--radius-5);
+    bottom: 0;
+    max-width: 100%;
+    padding-right: max(var(--drawer-padding), env(safe-area-inset-right));
+    right: 0;
+    top: 0;
+    width: min(var(--drawer-size), 100%);
+  }
+
+  .ui-DrawerPopup[data-state='closed'] {
+    transform: var(--drawer-closed-transform);
+  }
+
+  .ui-DrawerPopup[data-state='open'] {
+    transform: var(--drawer-snap-transform);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .ui-DrawerPopup[data-swiping] {
+      transition: none;
+    }
+
+    .ui-DrawerPopup[data-swiping][data-swipe-direction='down'],
+    .ui-DrawerPopup[data-swiping][data-swipe-direction='up'] {
+      transform: translate3d(
+        var(--drawer-swipe-movement-x, 0px),
+        calc(var(--drawer-swipe-movement-y, 0px) + var(--drawer-snap-point-offset, 0px)),
+        0
+      );
+    }
+
+    .ui-DrawerPopup[data-swiping][data-swipe-direction='left'],
+    .ui-DrawerPopup[data-swiping][data-swipe-direction='right'] {
+      transform: translate3d(
+        calc(var(--drawer-swipe-movement-x, 0px) + var(--drawer-snap-point-offset, 0px)),
+        var(--drawer-swipe-movement-y, 0px),
+        0
+      );
+    }
+
+    .ui-DrawerPopup[data-state='closed'] {
+      transition-duration: calc(180ms * var(--drawer-swipe-strength, 1));
+    }
+  }
+
+  .ui-DrawerHandle {
+    background: var(--gray-8);
+    border-radius: var(--radius-full);
+    height: 4px;
+    position: absolute;
+    width: 36px;
+  }
+
+  .ui-DrawerPopup[data-swipe-direction='down'] > .ui-DrawerHandle {
+    left: 50%;
+    top: var(--space-2);
+    transform: translateX(-50%);
+  }
+
+  .ui-DrawerPopup[data-swipe-direction='up'] > .ui-DrawerHandle {
+    bottom: var(--space-2);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .ui-DrawerPopup[data-swipe-direction='left'] > .ui-DrawerHandle,
+  .ui-DrawerPopup[data-swipe-direction='right'] > .ui-DrawerHandle {
+    height: 36px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+  }
+
+  .ui-DrawerPopup[data-swipe-direction='left'] > .ui-DrawerHandle {
+    right: var(--space-2);
+  }
+
+  .ui-DrawerPopup[data-swipe-direction='right'] > .ui-DrawerHandle {
+    left: var(--space-2);
+  }
+
+  .ui-DrawerTitle {
+    font-size: var(--font-size-4);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-4);
+  }
+
+  .ui-DrawerDescription {
+    color: var(--gray-11);
+    font-size: var(--font-size-3);
+    line-height: var(--line-height-2);
+  }
+
+  .ui-DrawerTitle + .ui-DrawerDescription {
+    margin-top: var(--space-2);
+  }
+
+  .ui-DrawerCloseButton {
+    position: absolute;
+    right: var(--space-3);
+    top: var(--space-3);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .ui-DrawerOverlay[data-state='open'] {
+      animation: ui-fade-in 200ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .ui-DrawerOverlay[data-state='closed'] {
+      animation: ui-fade-out 160ms linear;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ui-DrawerPopup,
+    .ui-DrawerOverlay {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}

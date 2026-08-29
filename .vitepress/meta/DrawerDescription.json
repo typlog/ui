@@ -6,7 +6,7 @@
       "type": "AsTag | Component",
       "required": false,
       "inherit": "reka-ui",
-      "default": "\"div\""
+      "default": "\"p\""
     },
     {
       "name": "asChild",
@@ -14,22 +14,6 @@
       "type": "boolean",
       "required": false,
       "inherit": "reka-ui"
-    },
-    {
-      "name": "indicatorIcon",
-      "description": "<p>An indicator icon on the left or right of the trigger.</p>",
-      "type": "\"none\" | \"chevron\" | \"plus\"",
-      "required": false,
-      "inherit": null,
-      "default": "\"chevron\""
-    },
-    {
-      "name": "indicatorSide",
-      "description": "<p>The indicator icon's poistion, left or right.</p>",
-      "type": "\"left\" | \"right\"",
-      "required": false,
-      "inherit": null,
-      "default": "\"right\""
     }
   ],
   "events": [],

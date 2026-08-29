@@ -33,7 +33,7 @@ const CATEGORY_COLORS: Record<MessageCategory, ColorType> = {
 </script>
 
 <script setup lang="ts">
-import { computed, ref, useTemplateRef, onMounted } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, useTemplateRef } from 'vue'
 import {
   ToastRoot,
   ToastTitle,
@@ -47,6 +47,7 @@ const toastRef = useTemplateRef<InstanceType<typeof ToastRoot>>('toastRef')
 const paused = ref(false)
 
 const manager = useToastManager()
+let resizeObserver: ResizeObserver | undefined
 
 const styleVars = computed(() => {
   const heights = manager.messages.value.slice(0, props.index).map(item => item.height || 60)
@@ -88,7 +89,26 @@ const onResume = () => {
 
 onMounted(() => {
   const el = toastRef.value!.$el as HTMLLIElement
-  manager.update(props.message.id, {height: el.clientHeight})
+  let height: number | undefined
+
+  const updateHeight = () => {
+    const nextHeight = el.clientHeight
+    if (nextHeight !== height) {
+      height = nextHeight
+      manager.update(props.message.id, {height: nextHeight})
+    }
+  }
+
+  updateHeight()
+  if (typeof ResizeObserver !== 'undefined') {
+    resizeObserver = new ResizeObserver(updateHeight)
+    resizeObserver.observe(el)
+  }
+})
+
+onBeforeUnmount(() => {
+  resizeObserver?.disconnect()
+  resizeObserver = undefined
 })
 </script>
 
@@ -186,6 +206,10 @@ onMounted(() => {
   :where(.ui-ToastViewport[data-x-position="right"]) .ui-ToastItem {
     right: 0;
   }
+  :where(.ui-ToastViewport[data-mobile="true"]) .ui-ToastItem {
+    left: 0;
+    right: auto;
+  }
 
   :where(.ui-ToastViewport[data-y-position="top"]) .ui-ToastItem {
     top: 0;
@@ -241,8 +265,8 @@ onMounted(() => {
     animation: toast-swipe-x 100ms ease-out;
   }
 
-  .ui-ToastItem:where([data-swipe-direction="top"][data-swipe="end"]),
-  .ui-ToastItem:where([data-swipe-direction="bottom"][data-swipe="end"]) {
+  .ui-ToastItem:where([data-swipe-direction="up"][data-swipe="end"]),
+  .ui-ToastItem:where([data-swipe-direction="down"][data-swipe="end"]) {
     animation: toast-swipe-y 100ms ease-out;
   }
 

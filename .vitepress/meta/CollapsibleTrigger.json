@@ -18,7 +18,7 @@
     {
       "name": "indicator",
       "description": "",
-      "type": "\"none\" | \"right\" | \"left\"",
+      "type": "\"none\" | \"left\" | \"right\"",
       "required": false,
       "inherit": null,
       "default": "\"right\""

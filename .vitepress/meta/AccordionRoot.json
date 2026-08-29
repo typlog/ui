@@ -57,7 +57,7 @@
     {
       "name": "indicatorSide",
       "description": "<p>The indicator icon's poistion, left or right.</p>",
-      "type": "\"right\" | \"left\"",
+      "type": "\"left\" | \"right\"",
       "required": false,
       "inherit": null,
       "default": "\"right\""

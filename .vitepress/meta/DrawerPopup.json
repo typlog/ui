@@ -1,0 +1,98 @@
+{
+  "props": [
+    {
+      "name": "as",
+      "description": "<p>The element or component this component should render as. Can be overwritten by <code>asChild</code>.</p>",
+      "type": "AsTag | Component",
+      "required": false,
+      "inherit": "reka-ui",
+      "default": "\"div\""
+    },
+    {
+      "name": "asChild",
+      "description": "<p>Change the default rendered element for the one passed as a child, merging their props and behavior.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "disableOutsidePointerEvents",
+      "description": "<p>When <code>true</code>, hover/focus/click interactions will be disabled on elements outside\nthe <code>DismissableLayer</code>. Users will need to click twice on outside elements to\ninteract with them: once to close the <code>DismissableLayer</code>, and again to trigger the element.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "finalFocus",
+      "description": "<p>Final focus target when the drawer closes.</p>\n<ul>\n<li><code>true</code> / default: focus the trigger</li>\n<li><code>false</code>: do not restore focus</li>\n<li>element ref: focus that specific element</li>\n</ul>",
+      "type": "boolean | HTMLElement | null",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "forceMount",
+      "description": "",
+      "type": "boolean",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "initialFocus",
+      "description": "<p>Initial focus target when the drawer opens.</p>\n<ul>\n<li><code>true</code> / default: focus the first focusable element inside</li>\n<li><code>false</code>: do not focus anything</li>\n<li>element ref: focus that specific element</li>\n</ul>",
+      "type": "boolean | HTMLElement | null",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "showHandle",
+      "description": "<p>Render a draggable handle.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": null,
+      "default": "true"
+    },
+    {
+      "name": "size",
+      "description": "<p>Control the size of the drawer.</p>",
+      "type": "\"1\" | \"2\" | \"3\"",
+      "required": false,
+      "inherit": null,
+      "default": "\"2\""
+    },
+    {
+      "name": "ui",
+      "description": "<p>Classes for the component's stable visual parts.</p>",
+      "type": "DrawerPopupUI",
+      "required": false,
+      "inherit": null
+    }
+  ],
+  "events": [
+    {
+      "name": "closeAutoFocus",
+      "type": "[event: Event]"
+    },
+    {
+      "name": "escapeKeyDown",
+      "type": "[event: KeyboardEvent]"
+    },
+    {
+      "name": "focusOutside",
+      "type": "[event: FocusOutsideEvent]"
+    },
+    {
+      "name": "interactOutside",
+      "type": "[event: PointerDownOutsideEvent | FocusOutsideEvent]"
+    },
+    {
+      "name": "openAutoFocus",
+      "type": "[event: Event]"
+    },
+    {
+      "name": "pointerDownOutside",
+      "type": "[event: PointerDownOutsideEvent]"
+    }
+  ],
+  "slots": [],
+  "methods": []
+}

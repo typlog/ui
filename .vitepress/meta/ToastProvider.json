@@ -1,6 +1,14 @@
 {
   "props": [
     {
+      "name": "breakpoint",
+      "description": "<p>The viewport width in pixels at which toast messages switch to a full-width mobile layout.</p>",
+      "type": "number",
+      "required": false,
+      "inherit": null,
+      "default": "640"
+    },
+    {
       "name": "disableSwipe",
       "description": "<p>Whether to disable the ability to swipe to close the toast.</p>",
       "type": "boolean",

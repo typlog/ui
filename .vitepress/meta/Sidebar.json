@@ -102,7 +102,7 @@
     {
       "name": "side",
       "description": "<p>The edge of the layout that contains the sidebar.</p>",
-      "type": "\"right\" | \"left\"",
+      "type": "\"left\" | \"right\"",
       "required": false,
       "inherit": null,
       "default": "\"left\""

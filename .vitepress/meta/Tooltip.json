@@ -66,7 +66,7 @@
     {
       "name": "collisionPadding",
       "description": "<p>The distance in pixels from the boundary edges where collision\ndetection should occur. Accepts a number (same for all sides),\nor a partial padding object, for example: { top: 20, left: 20 }.</p>",
-      "type": "number | Partial<Record<\"top\" | \"right\" | \"bottom\" | \"left\", number>>",
+      "type": "number | Partial<Record<\"left\" | \"right\" | \"top\" | \"bottom\", number>>",
       "required": false,
       "inherit": "reka-ui",
       "default": "10"
@@ -172,7 +172,7 @@
     {
       "name": "side",
       "description": "<p>The preferred side of the trigger to render against when open.\nWill be reversed when collisions occur and avoidCollisions\nis enabled.</p>",
-      "type": "\"top\" | \"right\" | \"bottom\" | \"left\"",
+      "type": "\"left\" | \"right\" | \"top\" | \"bottom\"",
       "required": false,
       "inherit": "reka-ui",
       "default": "\"top\""

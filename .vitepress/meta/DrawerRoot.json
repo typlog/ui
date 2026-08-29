@@ -1,0 +1,89 @@
+{
+  "props": [
+    {
+      "name": "defaultOpen",
+      "description": "",
+      "type": "boolean",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "defaultSnapPoint",
+      "description": "",
+      "type": "DrawerSnapPoint | null",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "modal",
+      "description": "<p>Modality of the drawer.</p>\n<ul>\n<li><code>true</code> (default): modal with focus trap, scroll lock, and outside-press dismiss</li>\n<li><code>'trap-focus'</code>: traps focus but allows outside pointer events (non-modal side panels)</li>\n<li><code>false</code>: non-modal</li>\n</ul>",
+      "type": "DrawerModal",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "open",
+      "description": "<p>v-model:open</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "snapPoint",
+      "description": "<p>v-model:snapPoint</p>",
+      "type": "DrawerSnapPoint | null",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "snapPoints",
+      "description": "<p>Preset snap positions (fractions 0-1, pixels &gt;1, or '148px'/'30rem' strings)</p>",
+      "type": "DrawerSnapPoint[]",
+      "required": false,
+      "inherit": "reka-ui"
+    },
+    {
+      "name": "snapToSequentialPoints",
+      "description": "<p>When true, snaps to the next sequential snap point (one step at a time).\nWhen false, snaps to the nearest snap point by distance.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": "reka-ui",
+      "default": "false"
+    },
+    {
+      "name": "swipeDirection",
+      "description": "<p>Direction to swipe to dismiss.</p>",
+      "type": "SwipeDirection$1",
+      "required": false,
+      "inherit": "reka-ui",
+      "default": "'down'"
+    }
+  ],
+  "events": [
+    {
+      "name": "update:open",
+      "type": "[value: boolean, details?: DrawerOpenChangeDetails]"
+    },
+    {
+      "name": "update:openComplete",
+      "type": "[value: boolean]"
+    },
+    {
+      "name": "update:snapPoint",
+      "type": "[value: DrawerSnapPoint | null]"
+    }
+  ],
+  "slots": [
+    {
+      "name": "open",
+      "description": "",
+      "type": "boolean"
+    },
+    {
+      "name": "close",
+      "description": "",
+      "type": "() => void"
+    }
+  ],
+  "methods": []
+}

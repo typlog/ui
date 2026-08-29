@@ -33,7 +33,7 @@
     {
       "name": "target",
       "description": "<p>The sidebar edge controlled by this trigger.</p>",
-      "type": "\"right\" | \"left\"",
+      "type": "\"left\" | \"right\"",
       "required": false,
       "inherit": null,
       "default": "\"left\""
@@ -54,7 +54,7 @@
     {
       "name": "target",
       "description": "",
-      "type": "\"right\" | \"left\""
+      "type": "\"left\" | \"right\""
     }
   ],
   "methods": []

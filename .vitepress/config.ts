@@ -119,6 +119,7 @@ export default defineConfig<ThemeConfig>({
             icon: 'lucide:layers',
             items: [
               { text: 'Dialog', link: '/components/dialog' },
+              { text: 'Drawer', link: '/components/drawer' },
               { text: 'Dropdown Menu', link: '/components/dropdown' },
               { text: 'Navigation Menu', link: '/components/navigation' },
               { text: 'Popover', link: '/components/popover' },

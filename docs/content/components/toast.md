@@ -47,6 +47,23 @@ function as expected.
 
 <PropsTable name="ToastProvider" />
 
+### Responsive layout
+
+Toast messages use a full-width layout with a `var(--space-4)` gutter on both
+sides when the viewport is narrower than `640px` by default. The top or bottom
+position is preserved, while the desktop left, center, or right alignment is
+replaced by the shared mobile layout. When `swipeDirection` is omitted, top
+toasts swipe up and bottom toasts swipe down on narrow viewports; an explicit
+direction always takes precedence.
+
+Set `breakpoint` to change the viewport width at which this behavior starts:
+
+```vue
+<ToastProvider :breakpoint="768" />
+```
+
+<Example name="toast/Responsive.vue" variant="full" />
+
 ### Position
 
 You can customize the position of toast messages using the `position` prop on `ToastProvider`.

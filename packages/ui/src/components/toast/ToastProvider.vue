@@ -2,13 +2,15 @@
 import type { ToastProviderProps as RekaToastProviderProps } from 'reka-ui'
 
 export interface ToastProviderProps extends RekaToastProviderProps {
+  /** The viewport width in pixels at which toast messages switch to a full-width mobile layout. @default 640 */
+  breakpoint?: number
   size?: '1' | '2' | '3'
   position?: 'top-left' | 'top-right' | 'top-center' | 'bottom-left' | 'bottom-right' | 'bottom-center'
 }
 </script>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import {
   ToastProvider,
   ToastViewport,
@@ -24,12 +26,39 @@ defineOptions({
 })
 
 const props = withDefaults(defineProps<ToastProviderProps>(), {
+  breakpoint: 640,
   size: '1',
   position: 'bottom-right',
 })
 
-const forwarded = useForwardPropsWithout(props, ['position', 'size'])
+const forwarded = useForwardPropsWithout(props, ['breakpoint', 'position', 'size'])
 const { messages } = useToastManager()
+const isNarrowViewport = ref(false)
+
+let mediaQuery: MediaQueryList | undefined
+
+function updateNarrowViewport(event: MediaQueryList | MediaQueryListEvent) {
+  isNarrowViewport.value = event.matches
+}
+
+function setupMediaQuery() {
+  mediaQuery?.removeEventListener('change', updateNarrowViewport)
+  mediaQuery = window.matchMedia(`(max-width: ${props.breakpoint - 0.02}px)`)
+  updateNarrowViewport(mediaQuery)
+  mediaQuery.addEventListener('change', updateNarrowViewport)
+}
+
+onMounted(setupMediaQuery)
+
+watch(() => props.breakpoint, () => {
+  if (mediaQuery)
+    setupMediaQuery()
+})
+
+onBeforeUnmount(() => {
+  mediaQuery?.removeEventListener('change', updateNarrowViewport)
+  mediaQuery = undefined
+})
 
 const yPosition = computed(() => {
   return props.position.split('-')[0] as 'top' | 'bottom' | 'center'
@@ -42,6 +71,9 @@ const xPosition = computed(() => {
 const swipeDirection = computed(() => {
   if (props.swipeDirection) {
     return props.swipeDirection
+  }
+  if (isNarrowViewport.value && yPosition.value !== 'center') {
+    return yPosition.value === 'top' ? 'up' : 'down'
   }
   if (xPosition.value !== 'center') {
     return xPosition.value
@@ -76,6 +108,7 @@ const swipeDirection = computed(() => {
           :class="`r-size-${size}`"
           :data-x-position="xPosition"
           :data-y-position="yPosition"
+          :data-mobile="isNarrowViewport"
         />
       </ThemeWrapper>
     </ToastPortal>
@@ -134,6 +167,12 @@ const swipeDirection = computed(() => {
   }
   .ui-ToastViewport:where([data-y-position="bottom"]) {
     bottom: var(--toast-y-position);
+  }
+  .ui-ToastViewport:where([data-mobile="true"]) {
+    left: var(--toast-x-position);
+    right: var(--toast-x-position);
+    width: auto;
+    max-width: none;
   }
 }
 </style>
