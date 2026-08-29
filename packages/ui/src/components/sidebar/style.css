@@ -721,15 +721,13 @@
 }
 
 @layer components {
-  @media (max-width: 1023.98px) {
-    .ui-SidebarTrigger:where([data-collapsible='none']) {
-      display: inline-flex;
-    }
+  .ui-SidebarProvider:where([data-mobile='true']) .ui-SidebarTrigger:where([data-collapsible='none']) {
+    display: inline-flex;
+  }
 
-    .ui-SidebarProvider:where([data-inset='true']) > .ui-SidebarInset {
-      border: 0;
-      border-radius: 0;
-    }
+  .ui-SidebarProvider:where([data-mobile='true'][data-inset='true']) > .ui-SidebarInset {
+    border: 0;
+    border-radius: 0;
   }
 }
 

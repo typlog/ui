@@ -7,6 +7,14 @@
       "required": false,
       "inherit": null,
       "default": "\"div\""
+    },
+    {
+      "name": "breakpoint",
+      "description": "<p>The viewport width in pixels at which the sidebar switches between mobile and desktop behavior.</p>",
+      "type": "number",
+      "required": false,
+      "inherit": null,
+      "default": "1024"
     }
   ],
   "events": [],

@@ -6,6 +6,8 @@ import { createContext } from 'reka-ui'
 export interface SidebarProviderProps {
   /** The element or component used for the layout container. @default "div" */
   as?: AsTag | Component
+  /** The viewport width in pixels at which the sidebar switches between mobile and desktop behavior. @default 1024 */
+  breakpoint?: number
 }
 
 export interface SidebarController {
@@ -36,10 +38,13 @@ export const [injectSidebarProviderContext, provideSidebarProviderContext]
 </script>
 
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref, shallowReactive } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, shallowReactive, watch } from 'vue'
 import { Primitive } from 'reka-ui'
 
-const props = withDefaults(defineProps<SidebarProviderProps>(), { as: 'div' })
+const props = withDefaults(defineProps<SidebarProviderProps>(), {
+  as: 'div',
+  breakpoint: 1024,
+})
 const isNarrowViewport = ref(false)
 const sidebars = shallowReactive<SidebarProviderContext['sidebars']>({})
 
@@ -72,14 +77,23 @@ function updateNarrowViewport(event: MediaQueryList | MediaQueryListEvent) {
   isNarrowViewport.value = event.matches
 }
 
-onMounted(() => {
-  mediaQuery = window.matchMedia('(max-width: 1023.98px)')
+function setupMediaQuery() {
+  mediaQuery?.removeEventListener('change', updateNarrowViewport)
+  mediaQuery = window.matchMedia(`(max-width: ${props.breakpoint - 0.02}px)`)
   updateNarrowViewport(mediaQuery)
   mediaQuery.addEventListener('change', updateNarrowViewport)
+}
+
+onMounted(setupMediaQuery)
+
+watch(() => props.breakpoint, () => {
+  if (mediaQuery)
+    setupMediaQuery()
 })
 
 onBeforeUnmount(() => {
   mediaQuery?.removeEventListener('change', updateNarrowViewport)
+  mediaQuery = undefined
 })
 
 const hasInset = computed(() => sidebars.left?.variant.value === 'inset'
@@ -95,6 +109,7 @@ const hasPadding = computed(() => sidebars.left?.variant.value === 'floating'
     :as="props.as"
     :data-padded="hasPadding"
     :data-inset="hasInset"
+    :data-mobile="isNarrowViewport"
   >
     <slot></slot>
   </Primitive>
