@@ -5,6 +5,12 @@ status: alpha
 source: https://github.com/typlog/ui/tree/main/packages/ui/src/addons/iconset
 ---
 
+Import the addon stylesheet when using addon components:
+
+```css
+@import "@typlog/ui/addons";
+```
+
 `IconCollection` is a complete icon picker. It starts with the Iconify collection catalog, then opens the selected collection in its built-in virtualized `IconGrid`. Use `v-model:collection` and `v-model:query` when the navigation state also needs to be controlled externally.
 
 <Example name="iconify/Overview.vue" variant="full" />
