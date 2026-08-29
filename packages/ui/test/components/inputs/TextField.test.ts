@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { describe, expect, it, vi } from 'vitest'
-import TextField from './TextField.vue'
+import { TextField } from '@typlog/ui'
 
 describe('TextField', () => {
   it('places the cursor at the side that was clicked', async () => {

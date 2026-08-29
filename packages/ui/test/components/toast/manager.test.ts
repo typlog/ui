@@ -1,6 +1,6 @@
 import { flushPromises } from '@vue/test-utils'
 import { beforeEach, describe, expect, it } from 'vitest'
-import { useToastManager } from './manager'
+import { useToastManager } from '../../../src/components/toast/manager'
 
 describe('toast promise manager', () => {
   const manager = useToastManager()

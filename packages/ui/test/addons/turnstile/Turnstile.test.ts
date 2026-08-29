@@ -8,9 +8,9 @@ let scripts: HTMLScriptElement[]
 
 const loadComponent = async () => {
   vi.resetModules()
-  const [{ mount }, { default: Turnstile }] = await Promise.all([
+  const [{ mount }, { Turnstile }] = await Promise.all([
     import('@vue/test-utils'),
-    import('./Turnstile.vue'),
+    import('@typlog/ui/addons'),
   ])
   return { mount, Turnstile }
 }
