@@ -11,7 +11,7 @@ This file is the operating guide for AI coding agents working in this repository
 - Source language: Vue SFCs and strict TypeScript.
 - Documentation: VitePress, with live examples under `docs/examples`.
 - Styling: plain CSS, semantic custom properties, Radix colors, and stable class/data-attribute contracts.
-- Tests: there is currently no automated test suite. Use the validation commands below and manually exercise interactive behavior in the docs site.
+- Tests: Vitest component regression tests under `packages/ui/test/`, plus manual interactive checks in the docs site.
 
 Read [CONTRIBUTING.md](./CONTRIBUTING.md) before changing public APIs.
 
@@ -26,6 +26,7 @@ Read [CONTRIBUTING.md](./CONTRIBUTING.md) before changing public APIs.
 | `packages/ui/src/addons/` | Optional or integration-specific components published from `@typlog/ui/addons`. |
 | `packages/ui/src/styles/` | Base tokens, theme variables, color mappings, and shared component CSS. |
 | `packages/ui/src/styles/tailwind/` | Tailwind-compatible token definitions included by the main stylesheet. |
+| `packages/ui/test/` | Vitest component regression tests, organized to mirror the source families they cover. |
 | `docs/examples/` | Runnable examples used by component documentation. |
 | `docs/content/` | VitePress Markdown content. |
 | `.vitepress/config.ts` | Documentation navigation and Vite config. |
@@ -44,6 +45,8 @@ pnpm install --frozen-lockfile                 # reproducible install
 pnpm start          # VitePress development server
 pnpm lint           # ESLint for source, docs, and VitePress code
 pnpm typecheck      # vue-tsc without emitting files
+pnpm typecheck:ui   # vue-tsc for package source and package tests
+pnpm test           # run Vitest once
 pnpm build:meta     # regenerate .vitepress/meta from public exports
 pnpm build          # build the publishable library into packages/ui/dist/
 pnpm build:docs     # build the documentation into site/public/
@@ -113,7 +116,7 @@ Do not hide essential Reka parts when consumers need them for accessible composi
 | Change | Minimum validation |
 | --- | --- |
 | Documentation only | `pnpm lint`, `pnpm build:docs` |
-| Component implementation or types | `pnpm lint`, `pnpm typecheck`, `pnpm build` |
+| Component implementation or types | `pnpm lint`, `pnpm typecheck`, `pnpm typecheck:ui`, `pnpm test`, `pnpm build` |
 | Public props/exports or new component | Above, plus `pnpm build:meta` and `pnpm build:docs` |
 | Theme/token/CSS change | Above, plus visual checks in light/dark themes and at affected sizes/variants |
 | Overlay or interactive behavior | Above, plus keyboard, focus, disabled, controlled/uncontrolled, and portal checks |
@@ -126,6 +129,6 @@ Generated outputs `packages/ui/dist/` and `site/public/` are ignored and should 
 - Keep changes scoped. Do not reformat or refactor unrelated components while adding one.
 - Treat source exports, runtime dependencies, docs, and generated metadata as one atomic public change.
 - Do not hand-edit lockfiles, generated metadata, `packages/ui/dist/`, or `site/public/`.
-- Do not invent a test command or claim tests passed; no test runner is configured today.
+- Put component regression tests under `packages/ui/test/`, use public package imports when testing exported APIs, and report only commands actually run.
 - If implementation and current documentation disagree, verify behavior in source and call out the discrepancy rather than silently codifying it.
 - Prefer established local patterns over introducing a new abstraction for a single component.

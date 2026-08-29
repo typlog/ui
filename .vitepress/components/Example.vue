@@ -2,7 +2,6 @@
 interface ExampleProps {
   name: string
   variant?: 'full' | 'some' | 'hide'
-  overflow?: 'hidden' | 'visible'
 }
 </script>
 
@@ -12,7 +11,6 @@ import { ScrollArea } from '@typlog/ui'
 
 withDefaults(defineProps<ExampleProps>(), {
   variant: 'some',
-  overflow: 'hidden',
 })
 
 const expanded = ref(false)
@@ -21,12 +19,10 @@ const expanded = ref(false)
 <template>
   <div
     class="vp-Example not-prose text-base"
-    :class="[`r-variant-${variant}`, `r-overflow-${overflow}`]"
+    :class="`r-variant-${variant}`"
   >
     <div class="vp-ExampleComponent">
-      <ScrollArea scrollbars="horizontal">
-        <slot></slot>
-      </ScrollArea>
+      <slot></slot>
     </div>
     <div class="vp-ExampleSource" :data-expanded="expanded">
       <ScrollArea scrollbars="horizontal">
@@ -57,23 +53,14 @@ const expanded = ref(false)
   margin-bottom: var(--space-6);
   border: 1px solid var(--gray-a5);
   border-radius: var(--radius-4);
-  overflow: hidden;
   background: var(--accent-2);
 }
-.vp-Example:where(.r-overflow-visible) {
-  overflow: visible;
-}
-.vp-Example:where(.r-overflow-visible) .vp-ExampleComponent .ui-ScrollArea,
-.vp-Example:where(.r-overflow-visible) .vp-ExampleComponent .ui-ScrollAreaViewport {
-  overflow: visible !important;
-}
 .vp-ExampleComponent {
+  border-radius: var(--radius-4) var(--radius-4) 0 0;
   border-bottom: 1px solid var(--gray-a5);
   width: 100%;
   box-sizing: border-box;
   background-color: var(--color-panel-solid);
-}
-.vp-ExampleComponent .ui-ScrollAreaViewport {
   padding: var(--space-4);
 }
 .vp-ExampleSource {
@@ -93,6 +80,7 @@ const expanded = ref(false)
   background: var(--gray-2);
   color: var(--gray-11);
   padding: var(--space-1);
+  border-radius: 0 0 var(--radius-4) var(--radius-4);
 }
 .vp-Example:where(.r-variant-some) :where(.vp-ExampleSource[data-expanded="false"]:before) {
   position: absolute;

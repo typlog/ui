@@ -6,7 +6,8 @@ AI coding agents should also follow [AGENTS.md](./AGENTS.md), which contains the
 
 ## Development setup
 
-Use Node.js 22 and pnpm. From the repository root:
+Use Node.js 22 or newer and pnpm. CI and releases currently run on Node.js 24.
+From the repository root:
 
 ```sh
 pnpm install --frozen-lockfile
@@ -14,6 +15,7 @@ pnpm start
 ```
 
 The docs development server uses source package exports, so edits to components and examples are visible without first publishing the package.
+Automated UI tests live under `packages/ui/test/` and run with Vitest.
 
 ## Before implementing a component
 
@@ -110,6 +112,8 @@ For a new component or public API change, run:
 ```sh
 pnpm lint
 pnpm typecheck
+pnpm typecheck:ui
+pnpm test
 pnpm build:meta
 pnpm build
 pnpm build:docs
@@ -125,7 +129,10 @@ Also inspect the component in the docs server:
 - portalled content and local color/radius overrides;
 - narrow layouts and long or empty content where relevant.
 
-There is no automated test runner in this repository yet. Do not substitute a successful build for interaction and accessibility checks.
+Automated tests cover focused component regressions, but they do not replace
+manual interaction and accessibility checks in the docs site. Add or update a
+test under `packages/ui/test/` when changing behavior that can be asserted in
+Vitest, and still complete the relevant browser checks above.
 
 ## Commits and pull requests
 
@@ -153,7 +160,8 @@ Releases are tag-driven. Before creating a tag:
    prefix (for example, `0.16.0`).
 
 Pushing the tag runs `.github/workflows/release.yml`. The workflow verifies the
-tag and package version, runs lint, typecheck, package and documentation builds,
-inspects the npm archive, publishes `packages/ui/dist`, and then generates the
-GitHub changelog. Do not commit `packages/ui/dist`; Vite generates its package
-manifest and public CSS/JavaScript entries during the release build.
+tag and package version, runs lint, both typechecks, automated tests, metadata
+drift checks, package and documentation builds, inspects the npm archive,
+publishes `packages/ui/dist`, and then generates the GitHub changelog. Do not
+commit `packages/ui/dist`; Vite generates its package manifest and public
+CSS/JavaScript entries during the release build.
