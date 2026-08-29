@@ -19,6 +19,14 @@ Import the global CSS file at the root of your application.
 @import "@typlog/ui";
 ```
 
+The addon and chart entry points publish their styles separately. Import them
+only when your application uses those entry points:
+
+```css
+@import "@typlog/ui/addons";
+@import "@typlog/ui/charts";
+```
+
 ### 3. Add the ThemeProvider
 
 Add `ThemeProvider` to your `App.vue`.

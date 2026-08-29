@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+      - name: Enable Corepack
+        run: corepack enable
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Lint
+        run: pnpm lint
+      - name: Typecheck docs
+        run: pnpm typecheck
+      - name: Typecheck UI
+        run: pnpm typecheck:ui
+      - name: Test
+        run: pnpm test
+      - name: Generate component metadata
+        run: pnpm build:meta
+      - name: Verify generated metadata
+        run: git diff --exit-code -- .vitepress/meta
+      - name: Build package
+        run: pnpm build
+      - name: Build docs
+        run: pnpm build:docs

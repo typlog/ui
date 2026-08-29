@@ -13,6 +13,12 @@ Install the chart entry and its optional peer dependencies:
 pnpm add @typlog/ui @unovis/ts @unovis/vue
 ```
 
+Import the chart stylesheet alongside the chart entry:
+
+```css
+@import "@typlog/ui/charts";
+```
+
 ## Example
 
 The following area chart shows the complete composition: `ChartRoot` provides configuration and theme colors, `ChartAreaGradient` supplies SVG definitions, and the Unovis container owns the chart geometry.

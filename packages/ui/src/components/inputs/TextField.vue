@@ -49,11 +49,13 @@ const onPointerDown = (event: MouseEvent) => {
   const input = inputRef.value
   if (!input) return
 
+  input.focus()
+  if (!['text', 'search', 'tel', 'url', 'password'].includes(props.type)) return
+
   const isRightSlot = target.closest('[data-side=right]')
   const cursorPosition = isRightSlot ? input.value.length : 0
   requestAnimationFrame(() => {
     input.setSelectionRange(cursorPosition, cursorPosition)
-    input.focus()
   })
 }
 
@@ -61,7 +63,9 @@ const [modelValue, modifiers] = defineModel<any>({
   default: '',
   set (value) {
     if (modifiers.number) {
-      return Number(value)
+      if (value === '') return ''
+      const number = parseFloat(value)
+      return Number.isNaN(number) ? value : number
     }
     if (modifiers.trim) {
       return value.trim()

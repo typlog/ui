@@ -5,6 +5,12 @@ status: alpha
 source: https://github.com/typlog/ui/tree/main/packages/ui/src/addons/button/SocialButton.vue
 ---
 
+Import the addon stylesheet before using addon components:
+
+```css
+@import "@typlog/ui/addons";
+```
+
 <Example name="social-button/Overview.vue" variant="full" />
 
 ## API Reference

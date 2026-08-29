@@ -118,6 +118,8 @@ export const useToastManager = createGlobalState(() => {
         } else {
           update(id, {duration: undefined, ...msg, category: 'error'})
         }
+      } else {
+        remove(id)
       }
     })
 

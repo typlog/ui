@@ -1,19 +1,72 @@
 <script lang="ts">
 const turnstileSrc = 'https://challenges.cloudflare.com/turnstile/v0/api.js'
 const turnstileLoadFunction = 'cfTurnstileOnLoad'
-let turnstileState = typeof window !== 'undefined' ? (window.turnstile !== undefined ? 'ready' : 'unloaded') : 'unloaded'
-let turnstileLoad: {
-  resolve: (value?: unknown) => void;
-  reject: (value?: unknown) => void;
+
+type TurnstileWidgetId = string | number
+
+interface TurnstileRenderOptions {
+  sitekey: string
+  theme: 'light' | 'dark' | 'auto'
+  size: 'normal' | 'compact'
+  callback: (token: string) => void
+  action: string
+  appearance: 'always' | 'execute' | 'interaction-only'
 }
-let widgetId: any
-let resetTimeout: any
+
+interface TurnstileApi {
+  render: (container: HTMLElement, options: TurnstileRenderOptions) => TurnstileWidgetId
+  reset: (widgetId?: TurnstileWidgetId) => void
+  remove: (widgetId: TurnstileWidgetId) => void
+}
+
+let turnstileLoadPromise: Promise<void> | undefined
 
 declare global {
   interface Window {
-    turnstile: any;
-    [turnstileLoadFunction]: any;
+    turnstile?: TurnstileApi
+    cfTurnstileOnLoad?: () => void
   }
+}
+
+const loadTurnstile = (): Promise<void> => {
+  if (typeof window === 'undefined') {
+    return Promise.reject(new Error('Turnstile is only available in a browser.'))
+  }
+
+  if (window.turnstile) {
+    return Promise.resolve()
+  }
+
+  if (turnstileLoadPromise) {
+    return turnstileLoadPromise
+  }
+
+  turnstileLoadPromise = new Promise<void>((resolve, reject) => {
+    const onLoad = () => {
+      if (window.turnstile) {
+        resolve()
+      } else {
+        reject(new Error('Turnstile loaded without exposing its API.'))
+      }
+    }
+
+    window[turnstileLoadFunction] = onLoad
+    const script = document.createElement('script')
+    script.src = `${turnstileSrc}?onload=${turnstileLoadFunction}&render=explicit`
+    script.async = true
+    script.addEventListener('error', () => {
+      reject(new Error('Failed to load Turnstile.'))
+    }, { once: true })
+    document.head.appendChild(script)
+  }).catch((error: unknown) => {
+    turnstileLoadPromise = undefined
+    if (window.cfTurnstileOnLoad) {
+      delete window.cfTurnstileOnLoad
+    }
+    throw error
+  })
+
+  return turnstileLoadPromise
 }
 
 export interface TurnstileProps {
@@ -29,7 +82,7 @@ export interface TurnstileProps {
 </script>
 
 <script setup lang="ts">
-import { useTemplateRef, onMounted, onBeforeUnmount } from 'vue'
+import { useTemplateRef, onMounted, onBeforeUnmount, ref } from 'vue'
 
 const props = withDefaults(defineProps<TurnstileProps>(), {
   resetInterval: 295 * 1000,
@@ -45,29 +98,56 @@ const emit = defineEmits<{
 }>()
 
 const element = useTemplateRef<HTMLDivElement>('element')
+const mounted = ref(false)
+let widgetId: TurnstileWidgetId | undefined
+let resetTimeout: ReturnType<typeof setTimeout> | undefined
+
+const clearResetTimeout = () => {
+  if (resetTimeout !== undefined) {
+    clearTimeout(resetTimeout)
+    resetTimeout = undefined
+  }
+}
 
 const resetTurnstile = () => {
-  if (window.turnstile) {
+  if (widgetId !== undefined && window.turnstile) {
+    clearResetTimeout()
     emit('update:modelValue', '')
-    window.turnstile.reset()
+    window.turnstile.reset(widgetId)
   }
 }
 
 const removeTurnstile = () => {
-  if (widgetId) {
-    window.turnstile.remove(widgetId)
+  clearResetTimeout()
+  if (widgetId !== undefined) {
+    if (window.turnstile) {
+      window.turnstile.remove(widgetId)
+    }
     widgetId = undefined
   }
 }
 
 const callbackTurnstile = (token: string) => {
   emit('update:modelValue', token)
+  clearResetTimeout()
   resetTimeout = setTimeout(() => {
     resetTurnstile()
   }, props.resetInterval)
 }
 
-const renderTurnstile = () => {
+const renderTurnstile = async () => {
+  if (!mounted.value || widgetId !== undefined || !element.value) return
+
+  if (!window.turnstile) {
+    try {
+      await loadTurnstile()
+    } catch {
+      return
+    }
+  }
+
+  if (!mounted.value || widgetId !== undefined || !element.value || !window.turnstile) return
+
   widgetId = window.turnstile.render(element.value, {
     sitekey: props.sitekey,
     theme: props.theme,
@@ -78,42 +158,22 @@ const renderTurnstile = () => {
   })
 }
 
-onMounted(async () => {
-  const turnstileLoadPromise = new Promise((resolve, reject) => {
-    turnstileLoad = { resolve, reject }
-    if (turnstileState === 'ready') resolve(undefined)
-  })
+defineExpose({
+  render: renderTurnstile,
+  reset: resetTurnstile,
+  remove: removeTurnstile,
+})
 
-  window[turnstileLoadFunction] = () => {
-    turnstileLoad.resolve()
-    turnstileState = 'ready'
-  }
-
-  const ensureTurnstile = () => {
-    if (turnstileState === 'unloaded') {
-      turnstileState = 'loading'
-      const url = `${turnstileSrc}?onload=${turnstileLoadFunction}&render=explicit`
-      const script = document.createElement('script')
-      script.src = url
-      script.async = true
-      script.addEventListener('error', () => {
-        turnstileLoad.reject('Failed to load Turnstile.')
-      })
-      document.head.appendChild(script)
-    }
-    return turnstileLoadPromise
-  }
-
-  await ensureTurnstile()
-
+onMounted(() => {
+  mounted.value = true
   if (props.renderOnMount) {
-    renderTurnstile()
+    void renderTurnstile()
   }
 })
 
 onBeforeUnmount(() => {
+  mounted.value = false
   removeTurnstile()
-  clearTimeout(resetTimeout)
 })
 </script>
 
