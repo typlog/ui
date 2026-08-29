@@ -39,8 +39,6 @@ import { useForwardPropsEmitsWithout } from '../util'
 import TreeItemIndicator from './TreeItemIndicator.vue'
 import { injectTreeContext } from './TreeRoot.vue'
 
-defineOptions({ inheritAttrs: false })
-
 const props = withDefaults(defineProps<TreeItemProps<T>>(), {
   as: 'li',
   hasChildren: undefined,
@@ -85,7 +83,7 @@ function slotProps(state: Omit<SlotProps, 'value' | 'hasChildren'>): SlotProps {
 <template>
   <RekaTreeItem
     v-slot="state"
-    v-bind="{ ...$attrs, ...forwarded }"
+    v-bind="forwarded"
     :value="props.value"
     :level="props.level"
     class="ui-TreeItem"
