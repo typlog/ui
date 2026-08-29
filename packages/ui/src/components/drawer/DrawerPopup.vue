@@ -36,7 +36,7 @@ const forwarded = useForwardPropsEmitsWithout(props, emits, ['size', 'showHandle
       <DrawerViewport class="ui-DrawerViewport" :class="props.ui?.viewport">
         <DrawerOverlay class="ui-DrawerOverlay" :class="props.ui?.overlay" />
         <DrawerContent
-          class="ui-DrawerPopup"
+          class="ui-DrawerPopup ui-DrawerMotion"
           :class="[`r-size-${props.size}`, props.ui?.content]"
           v-bind="{ ...$attrs, ...forwarded }"
         >

@@ -1,10 +1,10 @@
 <script lang="ts">
 import type { ComputedRef, Ref } from 'vue'
-import type { DialogContentEmits, DialogContentProps } from 'reka-ui'
+import type { DrawerContentEmits, DrawerContentProps } from 'reka-ui'
 import { createContext } from 'reka-ui'
 import type { SidebarController } from './SidebarProvider.vue'
 
-export interface SidebarProps extends DialogContentProps {
+export interface SidebarProps extends DrawerContentProps {
   /** Controls whether the mobile sidebar is open. */
   open?: boolean
   /** Initial mobile open state when `open` is uncontrolled. @default false */
@@ -31,7 +31,7 @@ export interface SidebarProps extends DialogContentProps {
   mobileDescription?: string
 }
 
-export type SidebarEmits = DialogContentEmits & {
+export type SidebarEmits = DrawerContentEmits & {
   /** Emitted when the mobile open state changes. */
   'update:open': [value: boolean]
   /** Emitted when the desktop collapsed state changes. */
@@ -59,12 +59,13 @@ export const [injectSidebarContext, provideSidebarContext]
 <script setup lang="ts">
 import { computed, nextTick, ref, toRefs, useId, watch } from 'vue'
 import {
-  DialogContent,
-  DialogDescription,
-  DialogOverlay,
-  DialogPortal,
-  DialogRoot,
-  DialogTitle,
+  DrawerContent,
+  DrawerDescription,
+  DrawerOverlay,
+  DrawerPortal,
+  DrawerRoot,
+  DrawerTitle,
+  DrawerViewport,
   Primitive,
 } from 'reka-ui'
 import ThemeWrapper from '../provider/ThemeWrapper.vue'
@@ -187,7 +188,7 @@ provideSidebarContext({
   shouldRestoreFocus,
 })
 
-const sidebarProps = [
+const sidebarOnlyProps = [
   'open',
   'defaultOpen',
   'collapsed',
@@ -201,8 +202,8 @@ const sidebarProps = [
   'mobileTitle',
   'mobileDescription',
 ]
-const forwardedDialogProps = useForwardPropsWithout(props, sidebarProps)
-const resetClass = buildPropsClass(props, ['side', 'variant', 'collapsible'])
+const forwarded = useForwardPropsWithout(props, sidebarOnlyProps)
+const desktopClass = buildPropsClass(props, ['side', 'variant', 'collapsible'])
 const mobileClass = computed(() => [
   `r-side-${props.side}`,
   `r-variant-${props.variant}`,
@@ -232,36 +233,42 @@ function closeAutoFocus(event: Event) {
 </script>
 
 <template>
-  <DialogRoot :open="open" @update:open="setOpen">
-    <div
-      v-if="!isNarrowViewport"
-      class="ui-Sidebar"
-      :class="resetClass"
-      :style="sidebarStyle"
-      :data-collapsed="collapsed"
+  <div
+    v-if="!isNarrowViewport"
+    class="ui-Sidebar"
+    :class="desktopClass"
+    :style="sidebarStyle"
+    :data-collapsed="collapsed"
+  >
+    <Primitive
+      v-bind="$attrs"
+      :id="panelId"
+      :as="props.as"
+      :as-child="props.asChild"
+      class="ui-SidebarPanel r-desktop"
     >
-      <Primitive
-        v-bind="$attrs"
-        :id="panelId"
-        :as="props.as"
-        :as-child="props.asChild"
-        class="ui-SidebarPanel r-desktop"
-      >
-        <slot
-          :open="open"
-          :collapsed="isVisuallyCollapsed"
-          :toggle="toggle"
-        ></slot>
-      </Primitive>
-    </div>
+      <slot
+        :open="open"
+        :collapsed="isVisuallyCollapsed"
+        :toggle="toggle"
+      ></slot>
+    </Primitive>
+  </div>
 
-    <DialogPortal v-else>
+  <DrawerRoot
+    v-else
+    :open="open"
+    :swipe-direction="side"
+    @update:open="setOpen"
+  >
+    <DrawerPortal>
       <ThemeWrapper>
-        <DialogOverlay class="ui-SidebarOverlay" :force-mount="props.forceMount">
-          <DialogContent
-            v-bind="{ ...$attrs, ...forwardedDialogProps }"
+        <DrawerViewport class="ui-SidebarViewport">
+          <DrawerOverlay class="ui-SidebarOverlay" :force-mount="props.forceMount" />
+          <DrawerContent
+            v-bind="{ ...$attrs, ...forwarded }"
             :id="panelId"
-            class="ui-SidebarPanel r-mobile"
+            class="ui-SidebarPanel ui-DrawerMotion r-mobile"
             :class="mobileClass"
             :style="sidebarStyle"
             @close-auto-focus="closeAutoFocus"
@@ -276,17 +283,17 @@ function closeAutoFocus(event: Event) {
               :collapsed="isVisuallyCollapsed"
               :toggle="toggle"
             ></slot>
-            <DialogTitle class="ui-SidebarVisuallyHidden">
+            <DrawerTitle class="ui-SidebarVisuallyHidden">
               {{ props.mobileTitle }}
-            </DialogTitle>
-            <DialogDescription class="ui-SidebarVisuallyHidden">
+            </DrawerTitle>
+            <DrawerDescription class="ui-SidebarVisuallyHidden">
               {{ props.mobileDescription }}
-            </DialogDescription>
-          </DialogContent>
-        </DialogOverlay>
+            </DrawerDescription>
+          </DrawerContent>
+        </DrawerViewport>
       </ThemeWrapper>
-    </DialogPortal>
-  </DialogRoot>
+    </DrawerPortal>
+  </DrawerRoot>
 </template>
 
 <style src="./style.css"></style>

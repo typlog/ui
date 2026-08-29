@@ -7,7 +7,7 @@ source: https://github.com/typlog/ui/tree/main/packages/ui/src/components/sideba
 
 <Example name="sidebar/Overview.vue" variant="full" />
 
-`SidebarProvider` arranges an optional left `Sidebar`, central inset, and optional right `Sidebar`. It owns the responsive breakpoint and lets triggers target either edge. Each `Sidebar` keeps its own mobile `open` and desktop `collapsed` states, rendering inline at 1024px and above by default and as an accessible modal slideover on narrower viewports. Set `breakpoint` on the provider to change where the persistent desktop panel switches to the mobile dialog presentation.
+`SidebarProvider` arranges an optional left `Sidebar`, central inset, and optional right `Sidebar`. It owns the responsive breakpoint and lets triggers target either edge. Each `Sidebar` keeps its own mobile `open` and desktop `collapsed` states, rendering inline at 1024px and above by default and as an accessible modal drawer/slideover on narrower viewports. Set `breakpoint` on the provider to change where the persistent desktop panel switches to the mobile drawer presentation. On touch devices, the mobile panel can be swiped toward its edge to dismiss it.
 
 Use at most one `Sidebar` per `side` in a provider. Left and right state is independent on desktop. On mobile, opening one panel requests that the other close so modal sidebars do not stack.
 

@@ -519,18 +519,23 @@
     display: none;
   }
 
-  .ui-SidebarOverlay {
+  .ui-SidebarViewport {
     align-items: stretch;
-    background-color: var(--gray-a8);
     display: flex;
     inset: 0;
-    justify-content: flex-start;
+    pointer-events: none;
     position: fixed;
     z-index: 50;
   }
 
-  .ui-SidebarOverlay:has(> .ui-SidebarPanel.r-side-right) {
+  .ui-SidebarViewport:has(> .ui-SidebarPanel.r-side-right) {
     justify-content: flex-end;
+  }
+
+  .ui-SidebarOverlay {
+    background-color: var(--gray-a8);
+    inset: 0;
+    position: absolute;
   }
 
   .ui-SidebarOverlay[data-state='open'] {
@@ -544,6 +549,7 @@
   .ui-SidebarPanel:where(.r-mobile) {
     height: 100%;
     max-width: calc(100vw - var(--space-4));
+    pointer-events: auto;
     position: relative;
     width: var(--sidebar-mobile-width);
     background-color: var(--color-panel-solid);
@@ -554,20 +560,14 @@
     margin: var(--space-2);
   }
 
-  .ui-SidebarPanel:where(.r-mobile.r-side-left)[data-state='open'] {
-    animation: ui-sidebar-enter-left 200ms ease-out;
+  .ui-SidebarPanel:where(.r-mobile)[data-swipe-direction='left'] {
+    --drawer-closed-transform: translate3d(-100%, 0, 0);
+    --drawer-snap-transform: translate3d(var(--drawer-snap-point-offset, 0px), 0, 0);
   }
 
-  .ui-SidebarPanel:where(.r-mobile.r-side-left)[data-state='closed'] {
-    animation: ui-sidebar-exit-left 170ms ease-in;
-  }
-
-  .ui-SidebarPanel:where(.r-mobile.r-side-right)[data-state='open'] {
-    animation: ui-sidebar-enter-right 200ms ease-out;
-  }
-
-  .ui-SidebarPanel:where(.r-mobile.r-side-right)[data-state='closed'] {
-    animation: ui-sidebar-exit-right 170ms ease-in;
+  .ui-SidebarPanel:where(.r-mobile)[data-swipe-direction='right'] {
+    --drawer-closed-transform: translate3d(100%, 0, 0);
+    --drawer-snap-transform: translate3d(var(--drawer-snap-point-offset, 0px), 0, 0);
   }
 
   .ui-SidebarVisuallyHidden {
@@ -698,26 +698,6 @@
 .ui-Sidebar:where(.r-collapsible-icon)[data-collapsed='true']
   .ui-SidebarMenu .ui-CollapsibleTrigger.ui-SidebarMenuButton > .ui-CollapsibleIndicator {
   display: none;
-}
-
-@keyframes ui-sidebar-enter-left {
-  from { transform: translateX(-100%); }
-  to { transform: translateX(0); }
-}
-
-@keyframes ui-sidebar-exit-left {
-  from { transform: translateX(0); }
-  to { transform: translateX(-100%); }
-}
-
-@keyframes ui-sidebar-enter-right {
-  from { transform: translateX(100%); }
-  to { transform: translateX(0); }
-}
-
-@keyframes ui-sidebar-exit-right {
-  from { transform: translateX(0); }
-  to { transform: translateX(100%); }
 }
 
 @layer components {

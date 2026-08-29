@@ -42,3 +42,4 @@
 @import './animation.css';
 @import './typography.css';
 @import './components.css';
+@import '../components/drawer/motion.css';
