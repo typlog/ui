@@ -43,17 +43,17 @@ const forwardedProps = useForwardProps(props)
     font-weight: var(--font-weight-regular);
     padding-block: var(--collapsible-padding-y);
   }
-}
-.ui-CollapsibleContent:where([data-state="open"]) {
-  animation: collapsible-down 0.2s ease-out;
-}
-.ui-CollapsibleContent:where([data-state="closed"]) {
-  animation: collapsible-up 0.2s ease-in;
-}
-:where(.ui-CollapsibleRoot.r-variant-soft) .ui-CollapsibleContent {
-  background-color: var(--accent-a2);
-}
-:where(.ui-CollapsibleRoot:not(.r-variant-ghost)) .ui-CollapsibleContent {
-  padding-inline: var(--collapsible-padding-x);
+  .ui-CollapsibleContent:where([data-state="open"]) {
+    animation: collapsible-down 0.2s ease-out;
+  }
+  .ui-CollapsibleContent:where([data-state="closed"]) {
+    animation: collapsible-up 0.2s ease-in;
+  }
+  :where(.ui-CollapsibleRoot.r-variant-soft) .ui-CollapsibleContent {
+    background-color: var(--accent-a2);
+  }
+  :where(.ui-CollapsibleRoot:not(.r-variant-ghost)) .ui-CollapsibleContent {
+    padding-inline: var(--collapsible-padding-x);
+  }
 }
 </style>

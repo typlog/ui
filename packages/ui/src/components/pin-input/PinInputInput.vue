@@ -47,52 +47,51 @@ useForwardExpose()
     caret-color: var(--accent-9);
     appearance: none;
   }
-}
+  .ui-PinInputRoot:where(.r-variant-surface) .ui-PinInputInput {
+    background-color: var(--color-surface);
+  }
 
-.ui-PinInputRoot:where(.r-variant-surface) .ui-PinInputInput {
-  background-color: var(--color-surface);
-}
+  .ui-PinInputRoot:where(.r-variant-soft) .ui-PinInputInput {
+    background-color: var(--accent-a3);
+    color: var(--accent-12);
+  }
 
-.ui-PinInputRoot:where(.r-variant-soft) .ui-PinInputInput {
-  background-color: var(--accent-a3);
-  color: var(--accent-12);
-}
+  .ui-PinInputInput:where(:focus, :focus-visible) {
+    box-shadow: 0 0 0 2px var(--pin-input-selection-color);
+    border-color: var(--pin-input-focus-color);
+  }
 
-.ui-PinInputInput:where(:focus, :focus-visible) {
-  box-shadow: 0 0 0 2px var(--pin-input-selection-color);
-  border-color: var(--pin-input-focus-color);
-}
+  .ui-PinInputInput::selection {
+    background-color: var(--pin-input-selection-color);
+  }
 
-.ui-PinInputInput::selection {
-  background-color: var(--pin-input-selection-color);
-}
+  .ui-PinInputInput::placeholder {
+    color: var(--gray-a10);
+    opacity: 1;
+  }
 
-.ui-PinInputInput::placeholder {
-  color: var(--gray-a10);
-  opacity: 1;
-}
+  .ui-PinInputRoot:where(.r-variant-soft) .ui-PinInputInput::placeholder {
+    color: var(--accent-12);
+    opacity: 0.6;
+  }
 
-.ui-PinInputRoot:where(.r-variant-soft) .ui-PinInputInput::placeholder {
-  color: var(--accent-12);
-  opacity: 0.6;
-}
+  .ui-PinInputInput:where(:disabled, [data-disabled]) {
+    cursor: var(--cursor-disabled);
+    color: var(--gray-a8);
+    background-color: var(--gray-a3);
+    -webkit-text-fill-color: var(--gray-a8);
+  }
 
-.ui-PinInputInput:where(:disabled, [data-disabled]) {
-  cursor: var(--cursor-disabled);
-  color: var(--gray-a8);
-  background-color: var(--gray-a3);
-  -webkit-text-fill-color: var(--gray-a8);
-}
+  .ui-PinInputInput:where(:disabled, [data-disabled])::placeholder {
+    color: var(--gray-a8);
+  }
 
-.ui-PinInputInput:where(:disabled, [data-disabled])::placeholder {
-  color: var(--gray-a8);
-}
+  .ui-PinInputRoot:where(.r-variant-soft) .ui-PinInputInput:where(:disabled, [data-disabled]) {
+    background-color: var(--gray-a3);
+  }
 
-.ui-PinInputRoot:where(.r-variant-soft) .ui-PinInputInput:where(:disabled, [data-disabled]) {
-  background-color: var(--gray-a3);
-}
-
-.ui-PinInputInput:where([data-complete]) {
-  /* Completion describes input state, not validation success. */
+  .ui-PinInputInput:where([data-complete]) {
+    /* Completion describes input state, not validation success. */
+  }
 }
 </style>

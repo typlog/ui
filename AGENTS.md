@@ -7,7 +7,7 @@ This file is the operating guide for AI coding agents working in this repository
 `@typlog/ui` is a Vue 3 component library built on [Reka UI](https://reka-ui.com/) primitives and Radix color tokens. The library adds Typlog's theme, sizing, variants, and higher-level compositions while preserving Reka UI's accessibility and interaction behavior.
 
 - Package manager: pnpm (the repository commits `pnpm-lock.yaml`).
-- CI runtime: Node.js 22.
+- CI runtime: Node.js 24.
 - Source language: Vue SFCs and strict TypeScript.
 - Documentation: VitePress, with live examples under `docs/examples`.
 - Styling: plain CSS, semantic custom properties, Radix colors, and stable class/data-attribute contracts.
@@ -25,13 +25,13 @@ Read [CONTRIBUTING.md](./CONTRIBUTING.md) before changing public APIs.
 | `packages/ui/src/components/util.ts` | Prop forwarding and variant-class helpers. |
 | `packages/ui/src/addons/` | Optional or integration-specific components published from `@typlog/ui/addons`. |
 | `packages/ui/src/styles/` | Base tokens, theme variables, color mappings, and shared component CSS. |
-| `packages/ui/tailwind/` | Tailwind-compatible token exports. |
+| `packages/ui/src/styles/tailwind/` | Tailwind-compatible token definitions included by the main stylesheet. |
 | `docs/examples/` | Runnable examples used by component documentation. |
 | `docs/content/` | VitePress Markdown content. |
 | `.vitepress/config.ts` | Documentation navigation and Vite config. |
 | `.vitepress/meta/` | Generated component API metadata; do not edit it manually. |
 | `scripts/generate-component-meta.ts` | Generates API metadata from exported component types and JSDoc. |
-| `packages/ui/post-build.mjs` | Finalizes the package manifest and CSS entry in `dist/`. |
+| `packages/ui/vite.config.ts` | Builds the public entries and emits the publishable `dist/package.json`. |
 | `packages/ui/package.json` | Manifest template for the published package and its runtime dependencies. |
 | `package.json` | Workspace, development dependencies, scripts, and release version. |
 

@@ -71,11 +71,11 @@ const indicatorSide = computed(() => {
     gap: var(--accordion-trigger-gap);
     --accordion-indicator-icon-size: var(--accordion-trigger-font-size);
   }
-}
-.ui-AccordionTrigger:hover {
-  text-decoration: underline;
-}
-.ui-AccordionTriggerText {
-  flex-grow: 1;
+  .ui-AccordionTrigger:hover {
+    text-decoration: underline;
+  }
+  .ui-AccordionTriggerText {
+    flex-grow: 1;
+  }
 }
 </style>

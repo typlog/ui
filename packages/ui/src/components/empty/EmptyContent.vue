@@ -23,11 +23,13 @@ const context = injectEmptyContext()
 </template>
 
 <style>
-.ui-EmptyContent {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: var(--empty-gap);
+@layer components {
+  .ui-EmptyContent {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--empty-gap);
+  }
 }
 </style>

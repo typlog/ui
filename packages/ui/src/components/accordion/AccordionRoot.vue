@@ -75,28 +75,30 @@ provideAccordionRootContext({
 </template>
 
 <style>
-.ui-AccordionRoot {
-  overflow: hidden;
-}
-.ui-AccordionRoot:where(.r-size-1) {
-  --accordion-padding: var(--space-3);
-  --accordion-trigger-font-size: var(--font-size-3);
-  --accordion-trigger-gap: var(--space-1);
-  --accordion-content-font-size: var(--font-size-2);
-  --accordion-indicator-line-width: 1px;
-}
-.ui-AccordionRoot:where(.r-size-2) {
-  --accordion-padding: var(--space-4);
-  --accordion-trigger-font-size: var(--font-size-4);
-  --accordion-trigger-gap: var(--space-2);
-  --accordion-content-font-size: var(--font-size-3);
-  --accordion-indicator-line-width: 1px;
-}
-.ui-AccordionRoot:where(.r-size-3) {
-  --accordion-padding: var(--space-5);
-  --accordion-trigger-font-size: var(--font-size-5);
-  --accordion-trigger-gap: var(--space-3);
-  --accordion-content-font-size: var(--font-size-4);
-  --accordion-indicator-line-width: 2px;
+@layer components {
+  .ui-AccordionRoot {
+    overflow: hidden;
+  }
+  .ui-AccordionRoot:where(.r-size-1) {
+    --accordion-padding: var(--space-3);
+    --accordion-trigger-font-size: var(--font-size-3);
+    --accordion-trigger-gap: var(--space-1);
+    --accordion-content-font-size: var(--font-size-2);
+    --accordion-indicator-line-width: 1px;
+  }
+  .ui-AccordionRoot:where(.r-size-2) {
+    --accordion-padding: var(--space-4);
+    --accordion-trigger-font-size: var(--font-size-4);
+    --accordion-trigger-gap: var(--space-2);
+    --accordion-content-font-size: var(--font-size-3);
+    --accordion-indicator-line-width: 1px;
+  }
+  .ui-AccordionRoot:where(.r-size-3) {
+    --accordion-padding: var(--space-5);
+    --accordion-trigger-font-size: var(--font-size-5);
+    --accordion-trigger-gap: var(--space-3);
+    --accordion-content-font-size: var(--font-size-4);
+    --accordion-indicator-line-width: 2px;
+  }
 }
 </style>

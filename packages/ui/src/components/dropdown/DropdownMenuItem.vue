@@ -43,48 +43,50 @@ const rootContext = injectDropdownMenuContentContext()
 </template>
 
 <style>
-.ui-MenuItem {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  height: var(--menu-item-height);
-  padding-left: var(--menu-item-padding-left);
-  padding-right: var(--menu-item-padding-right);
-  box-sizing: border-box;
-  position: relative;
-  outline: none;
-  scroll-margin: var(--menu-content-padding) 0;
-  user-select: none;
-  cursor: default;
-  color: var(--gray-12);
-  font-size: var(--menu-item-font-size);
-  line-height: var(--menu-item-line-height);
-  letter-spacing: var(--menu-item-letter-spacing);
-  border-radius: var(--menu-item-border-radius);
-}
+@layer components {
+  .ui-MenuItem {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    height: var(--menu-item-height);
+    padding-left: var(--menu-item-padding-left);
+    padding-right: var(--menu-item-padding-right);
+    box-sizing: border-box;
+    position: relative;
+    outline: none;
+    scroll-margin: var(--menu-content-padding) 0;
+    user-select: none;
+    cursor: default;
+    color: var(--gray-12);
+    font-size: var(--menu-item-font-size);
+    line-height: var(--menu-item-line-height);
+    letter-spacing: var(--menu-item-letter-spacing);
+    border-radius: var(--menu-item-border-radius);
+  }
 
-.ui-MenuShortcut {
-  display: flex;
-  align-items: center;
-  margin-left: auto;
-  padding-left: var(--space-4);
-  color: var(--gray-a11);
-}
+  .ui-MenuShortcut {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    padding-left: var(--space-4);
+    color: var(--gray-a11);
+  }
 
-.ui-MenuItem:where([data-accent-color]) {
-  color: var(--accent-a11);
-}
+  .ui-MenuItem:where([data-accent-color]) {
+    color: var(--accent-a11);
+  }
 
-.ui-MenuItem:where([data-disabled]) {
-  color: var(--gray-a8);
-}
+  .ui-MenuItem:where([data-disabled]) {
+    color: var(--gray-a8);
+  }
 
-.ui-MenuItem:where([data-highlighted]) {
-  background-color: var(--menu-item-highlighted-background-color);
-  color: var(--menu-item-highlighted-text-color);
-}
+  .ui-MenuItem:where([data-highlighted]) {
+    background-color: var(--menu-item-highlighted-background-color);
+    color: var(--menu-item-highlighted-text-color);
+  }
 
-.ui-MenuItem:where([data-disabled], [data-highlighted]) :where(.ui-MenuShortcut) {
-  color: inherit;
+  .ui-MenuItem:where([data-disabled], [data-highlighted]) :where(.ui-MenuShortcut) {
+    color: inherit;
+  }
 }
 </style>

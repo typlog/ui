@@ -23,11 +23,13 @@ const context = injectEmptyContext()
 </template>
 
 <style>
-.ui-EmptyTitle {
-  margin: 0;
-  color: var(--gray-12);
-  font-size: var(--empty-title-font-size);
-  font-weight: var(--font-weight-semibold);
-  line-height: var(--empty-title-line-height);
+@layer components {
+  .ui-EmptyTitle {
+    margin: 0;
+    color: var(--gray-12);
+    font-size: var(--empty-title-font-size);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--empty-title-line-height);
+  }
 }
 </style>

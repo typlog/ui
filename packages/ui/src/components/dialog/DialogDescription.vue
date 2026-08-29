@@ -23,12 +23,14 @@ const rootContext = injectDialogRootContext()
 </template>
 
 <style>
-.ui-DialogDescription {
-  font-size: var(--font-size-3);
-  line-height: var(--line-height-2);
-  color: var(--gray-11);
-}
-.ui-DialogTitle + .ui-DialogDescription {
-  margin-top: var(--space-2);
+@layer components {
+  .ui-DialogDescription {
+    font-size: var(--font-size-3);
+    line-height: var(--line-height-2);
+    color: var(--gray-11);
+  }
+  .ui-DialogTitle + .ui-DialogDescription {
+    margin-top: var(--space-2);
+  }
 }
 </style>

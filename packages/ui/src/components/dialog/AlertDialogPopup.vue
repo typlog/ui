@@ -51,8 +51,10 @@ const forwarded = useForwardPropsEmits(props, emits)
 <style src="./style.css"></style>
 
 <style>
-.ui-AlertPopup {
-  --dialog-popup-radius: var(--radius-4);
-  --dialog-popup-max-width: 450px;
+@layer components {
+  .ui-AlertPopup {
+    --dialog-popup-radius: var(--radius-4);
+    --dialog-popup-max-width: 450px;
+  }
 }
 </style>

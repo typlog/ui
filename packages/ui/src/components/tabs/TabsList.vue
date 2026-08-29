@@ -34,40 +34,40 @@ const resetClass = buildPropsClass(props, ['variant', 'size', 'highContrast'])
 </template>
 
 <style>
-.ui-TabsList::-webkit-scrollbar {
-  display: none;
-}
-
-.ui-TabsList:where(.r-size-1) {
-  --tab-font-size: var(--font-size-1);
-  --tab-line-height: var(--line-height-1);
-  --tab-letter-spacing: var(--letter-spacing-1);
-  --tab-height: var(--space-6);
-  --tab-padding-x: var(--space-1);
-  --tab-radius: max(var(--radius-2), var(--radius-full));
-  --tab-item-radius: max(var(--radius-1), var(--radius-full));
-  --tab-inner-padding-x: var(--space-1);
-  --tab-inner-height: var(--space-5);
-}
-.ui-TabsList:where(.r-size-2) {
-  --tab-font-size: var(--font-size-2);
-  --tab-line-height: var(--line-height-2);
-  --tab-letter-spacing: var(--letter-spacing-2);
-  --tab-height: var(--space-7);
-  --tab-padding-x: var(--space-2);
-  --tab-radius: max(var(--radius-3), var(--radius-full));
-  --tab-item-radius: max(var(--radius-2), var(--radius-full));
-  --tab-inner-padding-x: var(--space-2);
-  --tab-inner-height: calc(var(--space-6) - var(--space-1));
-}
-
-.ui-TabsList:where(.r-variant-surface.r-size-1),
-.ui-TabsList:where(.r-variant-soft.r-size-1) {
-  --tab-inner-padding-x: calc(var(--space-2) / 4 * 3);
-}
-
-
 @layer components {
+  .ui-TabsList::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ui-TabsList:where(.r-size-1) {
+    --tab-font-size: var(--font-size-1);
+    --tab-line-height: var(--line-height-1);
+    --tab-letter-spacing: var(--letter-spacing-1);
+    --tab-height: var(--space-6);
+    --tab-padding-x: var(--space-1);
+    --tab-radius: max(var(--radius-2), var(--radius-full));
+    --tab-item-radius: max(var(--radius-1), var(--radius-full));
+    --tab-inner-padding-x: var(--space-1);
+    --tab-inner-height: var(--space-5);
+  }
+  .ui-TabsList:where(.r-size-2) {
+    --tab-font-size: var(--font-size-2);
+    --tab-line-height: var(--line-height-2);
+    --tab-letter-spacing: var(--letter-spacing-2);
+    --tab-height: var(--space-7);
+    --tab-padding-x: var(--space-2);
+    --tab-radius: max(var(--radius-3), var(--radius-full));
+    --tab-item-radius: max(var(--radius-2), var(--radius-full));
+    --tab-inner-padding-x: var(--space-2);
+    --tab-inner-height: calc(var(--space-6) - var(--space-1));
+  }
+
+  .ui-TabsList:where(.r-variant-surface.r-size-1),
+  .ui-TabsList:where(.r-variant-soft.r-size-1) {
+    --tab-inner-padding-x: calc(var(--space-2) / 4 * 3);
+  }
+
+
   .ui-TabsList {
     justify-content: flex-start;
     position: relative;
@@ -113,53 +113,52 @@ const resetClass = buildPropsClass(props, ['variant', 'size', 'highContrast'])
     padding-left: var(--tab-padding-x);
     padding-right: var(--tab-padding-x);
   }
-}
+  .ui-TabsIndicator {
+    position: absolute;
+    left: 0;
+    transition-property: width, transform;
+    transform: translateX(var(--reka-tabs-indicator-position));
+    width: var(--reka-tabs-indicator-size);
+  }
 
-.ui-TabsIndicator {
-  position: absolute;
-  left: 0;
-  transition-property: width, transform;
-  transform: translateX(var(--reka-tabs-indicator-position));
-  width: var(--reka-tabs-indicator-size);
-}
+  .ui-TabsList:where(.r-variant-surface) :where(.ui-TabsIndicator) {
+    top: 0;
+    height: var(--tab-height);
+    background-color: var(--accent-a3);
+    transition-duration: 100ms;
+  }
 
-.ui-TabsList:where(.r-variant-surface) :where(.ui-TabsIndicator) {
-  top: 0;
-  height: var(--tab-height);
-  background-color: var(--accent-a3);
-  transition-duration: 100ms;
-}
+  .ui-TabsList:where(.r-variant-classic) :where(.ui-TabsIndicator) {
+    top: calc((var(--tab-height) - var(--tab-inner-height)) / 2);
+    height: var(--tab-inner-height);
+    background-color: var(--color-panel-solid);
+    box-shadow:
+      0 0 0 0.5px var(--black-a1),
+      0 1px 1px 0 var(--gray-a2),
+      0 2px 1px -1px var(--black-a1),
+      0 1px 3px 0 var(--black-a1);
+    border-radius: var(--tab-item-radius);
+    transition-duration: 100ms;
+  }
 
-.ui-TabsList:where(.r-variant-classic) :where(.ui-TabsIndicator) {
-  top: calc((var(--tab-height) - var(--tab-inner-height)) / 2);
-  height: var(--tab-inner-height);
-  background-color: var(--color-panel-solid);
-  box-shadow:
-    0 0 0 0.5px var(--black-a1),
-    0 1px 1px 0 var(--gray-a2),
-    0 2px 1px -1px var(--black-a1),
-    0 1px 3px 0 var(--black-a1);
-  border-radius: var(--tab-item-radius);
-  transition-duration: 100ms;
-}
+  .ui-TabsList:where(.r-variant-soft) :where(.ui-TabsIndicator) {
+    top: calc((var(--tab-height) - var(--tab-inner-height)) / 2);
+    height: var(--tab-inner-height);
+    background-color: var(--accent-a3);
+    border-radius: var(--tab-item-radius);
+    transition-duration: 100ms;
+  }
 
-.ui-TabsList:where(.r-variant-soft) :where(.ui-TabsIndicator) {
-  top: calc((var(--tab-height) - var(--tab-inner-height)) / 2);
-  height: var(--tab-inner-height);
-  background-color: var(--accent-a3);
-  border-radius: var(--tab-item-radius);
-  transition-duration: 100ms;
-}
+  .ui-TabsList:where(.r-variant-outline) :where(.ui-TabsIndicator) {
+    bottom: 0;
+    height: 2px;
+    background-color: var(--accent-indicator);
+    transition-duration: 300ms;
+  }
 
-.ui-TabsList:where(.r-variant-outline) :where(.ui-TabsIndicator) {
-  bottom: 0;
-  height: 2px;
-  background-color: var(--accent-indicator);
-  transition-duration: 300ms;
-}
-
-/** high contrast */
-:where(.ui-TabsList.r-variant-outline.r-high-contrast) .ui-TabsIndicator {
-  background-color: var(--accent-12);
+  /** high contrast */
+  :where(.ui-TabsList.r-variant-outline.r-high-contrast) .ui-TabsIndicator {
+    background-color: var(--accent-12);
+  }
 }
 </style>

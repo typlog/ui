@@ -44,31 +44,27 @@ const forwarded = useForwardProps(props)
     letter-spacing: var(--combobox-item-letter-spacing);
     border-radius: var(--combobox-item-radius);
   }
-}
-.ui-ComboboxItem:where([data-disabled]) {
-  cursor: not-allowed;
-}
-
-.ui-ComboboxItem:where([data-disabled]) {
-  color: var(--gray-a8);
-}
-
-.ui-ComboboxItem:where([data-highlighted]) {
-  background-color: var(--combobox-highlighted-background-color);
-  color: var(--combobox-highlighted-text-color);
-}
-
-.ui-ComboboxItemIndicator {
-  position: absolute;
-  left: 0;
-  width: var(--combobox-indicator-width);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.ui-ComboboxItemIndicatorIcon {
-  width: var(--combobox-indicator-icon-width);
-  height: var(--combobox-indicator-icon-height);
+  .ui-ComboboxItem:where([data-disabled]) {
+    cursor: not-allowed;
+  }
+  .ui-ComboboxItem:where([data-disabled]) {
+    color: var(--gray-a8);
+  }
+  .ui-ComboboxItem:where([data-highlighted]) {
+    background-color: var(--combobox-highlighted-background-color);
+    color: var(--combobox-highlighted-text-color);
+  }
+  .ui-ComboboxItemIndicator {
+    position: absolute;
+    left: 0;
+    width: var(--combobox-indicator-width);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ui-ComboboxItemIndicatorIcon {
+    width: var(--combobox-indicator-icon-width);
+    height: var(--combobox-indicator-icon-height);
+  }
 }
 </style>

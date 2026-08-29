@@ -386,32 +386,32 @@ onMounted(async () => {
     color: var(--gray-a11);
     text-align: center;
   }
-}
 
-@container icon-collection (min-width: 768px) {
-  .ui-IconCollectionToolbar {
-    flex-direction: row;
-    align-items: center;
+  @container icon-collection (min-width: 768px) {
+    .ui-IconCollectionToolbar {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .ui-IconCollectionFilter {
+      max-width: 28rem;
+    }
+
+    .ui-IconCollectionCards {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
   }
 
-  .ui-IconCollectionFilter {
-    max-width: 28rem;
+  @container icon-collection (min-width: 1024px) {
+    .ui-IconCollectionCards {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
   }
 
-  .ui-IconCollectionCards {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@container icon-collection (min-width: 1024px) {
-  .ui-IconCollectionCards {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-@container icon-collection (min-width: 1280px) {
-  .ui-IconCollectionCards {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+  @container icon-collection (min-width: 1280px) {
+    .ui-IconCollectionCards {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
   }
 }
 </style>

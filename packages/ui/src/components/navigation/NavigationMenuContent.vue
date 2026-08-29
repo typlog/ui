@@ -31,18 +31,17 @@ const forwarded = useForwardPropsEmits(props, emits)
     width: 100%;
     animation: var(--navigation-menu-content-animation);
   }
-}
-
-.ui-NavigationMenuContent:where([data-motion="from-start"]) {
-  --navigation-menu-content-animation: enterFromLeft 250ms ease;
-}
-.ui-NavigationMenuContent:where([data-motion="to-start"]) {
-  --navigation-menu-content-animation: exitToLeft 250ms ease;
-}
-.ui-NavigationMenuContent:where([data-motion="from-end"]) {
-  --navigation-menu-content-animation: enterFromRight 250ms ease;
-}
-.ui-NavigationMenuContent:where([data-motion="to-end"]) {
-  --navigation-menu-content-animation: exitToRight 250ms ease;
+  .ui-NavigationMenuContent:where([data-motion="from-start"]) {
+    --navigation-menu-content-animation: enterFromLeft 250ms ease;
+  }
+  .ui-NavigationMenuContent:where([data-motion="to-start"]) {
+    --navigation-menu-content-animation: exitToLeft 250ms ease;
+  }
+  .ui-NavigationMenuContent:where([data-motion="from-end"]) {
+    --navigation-menu-content-animation: enterFromRight 250ms ease;
+  }
+  .ui-NavigationMenuContent:where([data-motion="to-end"]) {
+    --navigation-menu-content-animation: exitToRight 250ms ease;
+  }
 }
 </style>

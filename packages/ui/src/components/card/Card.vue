@@ -34,31 +34,33 @@ const resetClass = buildPropsClass(props, ['size', 'variant'])
 </template>
 
 <style>
-.ui-Card:where(.r-size-1) {
-  --card-padding: var(--space-3);
-  --card-border-radius: max(var(--radius-4), var(--radius-full));
-}
-.ui-Card:where(.r-size-2) {
-  --card-padding: var(--space-4);
-  --card-border-radius: max(var(--radius-4), var(--radius-full));
-}
-.ui-Card:where(.r-size-3) {
-  --card-padding: var(--space-5);
-  --card-border-radius: max(var(--radius-5), var(--radius-full));
-}
-.ui-Card:where(.r-size-4) {
-  --card-padding: var(--space-6);
-  --card-border-radius: max(var(--radius-5), var(--radius-full));
-}
-.ui-Card:where(.r-size-5) {
-  --card-padding: var(--space-8);
-  --card-border-radius: max(var(--radius-6), var(--radius-full));
-}
-.ui-Card:where(.r-variant-soft) {
-  border-color: var(--gray-2);
-  background-color: var(--gray-2);
-}
-.ui-Card:where(.r-variant-soft):where(:any-link, button, label):where(:hover) {
-  border-color: var(--gray-a5);
+@layer components {
+  .ui-Card:where(.r-size-1) {
+    --card-padding: var(--space-3);
+    --card-border-radius: max(var(--radius-4), var(--radius-full));
+  }
+  .ui-Card:where(.r-size-2) {
+    --card-padding: var(--space-4);
+    --card-border-radius: max(var(--radius-4), var(--radius-full));
+  }
+  .ui-Card:where(.r-size-3) {
+    --card-padding: var(--space-5);
+    --card-border-radius: max(var(--radius-5), var(--radius-full));
+  }
+  .ui-Card:where(.r-size-4) {
+    --card-padding: var(--space-6);
+    --card-border-radius: max(var(--radius-5), var(--radius-full));
+  }
+  .ui-Card:where(.r-size-5) {
+    --card-padding: var(--space-8);
+    --card-border-radius: max(var(--radius-6), var(--radius-full));
+  }
+  .ui-Card:where(.r-variant-soft) {
+    border-color: var(--gray-2);
+    background-color: var(--gray-2);
+  }
+  .ui-Card:where(.r-variant-soft):where(:any-link, button, label):where(:hover) {
+    border-color: var(--gray-a5);
+  }
 }
 </style>

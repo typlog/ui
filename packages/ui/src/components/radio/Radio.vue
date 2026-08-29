@@ -56,7 +56,9 @@ const resetClass = buildPropsClass(props, ['size', 'variant', 'highContrast'])
 <style src="./style.css"></style>
 
 <style>
-.ui-Radio {
-  appearance: none;
+@layer components {
+  .ui-Radio {
+    appearance: none;
+  }
 }
 </style>

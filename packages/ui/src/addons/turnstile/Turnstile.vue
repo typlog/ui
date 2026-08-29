@@ -122,15 +122,17 @@ onBeforeUnmount(() => {
 </template>
 
 <style>
-.ui-Turnstile {
-  background: var(--gray-a3);
-}
-.ui-Turnstile:where(.r-size-normal) {
-  width: 300px;
-  height: 65px;
-}
-.ui-Turnstile:where(.r-size-compact) {
-  width: 150px;
-  height: 140px;
+@layer components {
+  .ui-Turnstile {
+    background: var(--gray-a3);
+  }
+  .ui-Turnstile:where(.r-size-normal) {
+    width: 300px;
+    height: 65px;
+  }
+  .ui-Turnstile:where(.r-size-compact) {
+    width: 150px;
+    height: 140px;
+  }
 }
 </style>

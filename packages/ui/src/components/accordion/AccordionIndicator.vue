@@ -30,69 +30,71 @@ withDefaults(defineProps<AccordionIndicatorProps>(), {
 </template>
 
 <style>
-.ui-AccordionIndicator {
-  display: inline-flex;
-  align-items: center;
-  --accordion-indicator-color: var(--gray-10);
-}
+@layer components {
+  .ui-AccordionIndicator {
+    display: inline-flex;
+    align-items: center;
+    --accordion-indicator-color: var(--gray-10);
+  }
 
-.ui-AccordionIndicator:where([data-side="left"]) {
-  order: -1;
-}
+  .ui-AccordionIndicator:where([data-side="left"]) {
+    order: -1;
+  }
 
-.ui-AccordionIndicator:where([data-side="right"]) {
-  order: 0;
-}
+  .ui-AccordionIndicator:where([data-side="right"]) {
+    order: 0;
+  }
 
-.ui-AccordionIndicator-chevron {
-  transition: transform 0.2s ease;
-  font-size: var(--accordion-indicator-icon-size);
-  color: var(--accordion-indicator-color);
-}
+  .ui-AccordionIndicator-chevron {
+    transition: transform 0.2s ease;
+    font-size: var(--accordion-indicator-icon-size);
+    color: var(--accordion-indicator-color);
+  }
 
-:where([data-state="open"]) .ui-AccordionIndicator-chevron {
-  transform: rotate(90deg);
-}
+  :where([data-state="open"]) .ui-AccordionIndicator-chevron {
+    transform: rotate(90deg);
+  }
 
-.ui-AccordionIndicator-plus {
-  position: relative;
-  width: calc(var(--accordion-indicator-icon-size) - var(--space-1));
-  height: calc(var(--accordion-indicator-icon-size) - var(--space-1));
-  cursor: pointer;
-  display: inline-block;
-}
+  .ui-AccordionIndicator-plus {
+    position: relative;
+    width: calc(var(--accordion-indicator-icon-size) - var(--space-1));
+    height: calc(var(--accordion-indicator-icon-size) - var(--space-1));
+    cursor: pointer;
+    display: inline-block;
+  }
 
-.ui-AccordionIndicator-plus-1,
-.ui-AccordionIndicator-plus-2 {
-  position: absolute;
-  background-color: var(--accordion-indicator-color);
-  border-radius: 2px;
-  transition: transform 0.3s, opacity 0.3s;
-}
+  .ui-AccordionIndicator-plus-1,
+  .ui-AccordionIndicator-plus-2 {
+    position: absolute;
+    background-color: var(--accordion-indicator-color);
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+  }
 
-.ui-AccordionIndicator-plus-1 {
-  top: 50%;
-  left: 0;
-  width: 100%;
-  height: var(--accordion-indicator-line-width);
-  transform: translateY(-50%) rotate(0deg);
-}
+  .ui-AccordionIndicator-plus-1 {
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: var(--accordion-indicator-line-width);
+    transform: translateY(-50%) rotate(0deg);
+  }
 
-.ui-AccordionIndicator-plus-2 {
-  top: 0;
-  left: 50%;
-  width: var(--accordion-indicator-line-width);
-  height: 100%;
-  transform: translateX(-50%) rotate(0deg);
-}
+  .ui-AccordionIndicator-plus-2 {
+    top: 0;
+    left: 50%;
+    width: var(--accordion-indicator-line-width);
+    height: 100%;
+    transform: translateX(-50%) rotate(0deg);
+  }
 
-:where([data-state="open"]) .ui-AccordionIndicator-plus-1 {
-  transform: translateY(-50%) rotate(180deg);
-}
+  :where([data-state="open"]) .ui-AccordionIndicator-plus-1 {
+    transform: translateY(-50%) rotate(180deg);
+  }
 
-:where([data-state="open"]) .ui-AccordionIndicator-plus-2 {
-  transform: translateX(-50%) rotate(90deg);
-  opacity: 0;
-  height: 0;
+  :where([data-state="open"]) .ui-AccordionIndicator-plus-2 {
+    transform: translateX(-50%) rotate(90deg);
+    opacity: 0;
+    height: 0;
+  }
 }
 </style>

@@ -22,9 +22,11 @@ useForwardExpose()
 </template>
 
 <style>
-.ui-DialogTitle {
-  font-size: var(--font-size-4);
-  font-weight: var(--font-weight-semibold);
-  line-height: var(--line-height-4);
+@layer components {
+  .ui-DialogTitle {
+    font-size: var(--font-size-4);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-4);
+  }
 }
 </style>

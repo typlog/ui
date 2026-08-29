@@ -48,17 +48,19 @@ const percent = computed(() => {
 </template>
 
 <style>
-.ui-Quota {
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--radius-full);
-  width: 100%;
-  height: var(--space-2);
-  background-color: var(--slate-4);
-}
-.ui-QuotaValue {
-  border-radius: var(--radius-full);
-  width: 100%;
-  height: 100%;
+@layer components {
+  .ui-Quota {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-full);
+    width: 100%;
+    height: var(--space-2);
+    background-color: var(--slate-4);
+  }
+  .ui-QuotaValue {
+    border-radius: var(--radius-full);
+    width: 100%;
+    height: 100%;
+  }
 }
 </style>

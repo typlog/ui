@@ -124,33 +124,35 @@ const showFirstLast = computed(() => {
 </template>
 
 <style>
-.ui-PaginationList {
-  display: flex;
-  align-items: center;
-  gap: var(--space-1);
-}
-.ui-PaginationList .ui-Button {
-  height: var(--button-height);
-  width: var(--button-height);
-  padding: 0;
-}
+@layer components {
+  .ui-PaginationList {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+  }
+  .ui-PaginationList .ui-Button {
+    height: var(--button-height);
+    width: var(--button-height);
+    padding: 0;
+  }
 
-.ui-PaginationRoot:where(.r-variant-ghost):where([data-accent-color="gray"]) :where(.ui-Button) {
-  color: var(--accent-12);
-}
+  .ui-PaginationRoot:where(.r-variant-ghost):where([data-accent-color="gray"]) :where(.ui-Button) {
+    color: var(--accent-12);
+  }
 
-/** selected on ghost -> outline */
-.ui-PaginationRoot:where(.r-variant-ghost) :where(.ui-Button[data-selected]) {
-  box-shadow: inset 0 0 0 1px var(--accent-a6);
-}
-.ui-PaginationRoot:where(.r-variant-soft, .r-variant-surface, .r-variant-outline) :where(.ui-Button[data-selected]) {
-  background-color: var(--accent-9);
-  color: var(--accent-contrast);
-}
-.ui-PaginationRoot:where([data-accent-color="gray"]):where(.r-variant-soft, .r-variant-surface, .r-variant-outline) :where(.ui-Button[data-selected]) {
-  background-color: var(--accent-12);
-}
-.ui-PaginationRoot:where(.r-variant-surface, .r-variant-outline) :where(.ui-Button[data-selected]) {
-  box-shadow: none;
+  /** selected on ghost -> outline */
+  .ui-PaginationRoot:where(.r-variant-ghost) :where(.ui-Button[data-selected]) {
+    box-shadow: inset 0 0 0 1px var(--accent-a6);
+  }
+  .ui-PaginationRoot:where(.r-variant-soft, .r-variant-surface, .r-variant-outline) :where(.ui-Button[data-selected]) {
+    background-color: var(--accent-9);
+    color: var(--accent-contrast);
+  }
+  .ui-PaginationRoot:where([data-accent-color="gray"]):where(.r-variant-soft, .r-variant-surface, .r-variant-outline) :where(.ui-Button[data-selected]) {
+    background-color: var(--accent-12);
+  }
+  .ui-PaginationRoot:where(.r-variant-surface, .r-variant-outline) :where(.ui-Button[data-selected]) {
+    box-shadow: none;
+  }
 }
 </style>

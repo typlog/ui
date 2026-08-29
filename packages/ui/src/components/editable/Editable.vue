@@ -56,35 +56,37 @@ const resetClass = buildPropsClass(props, ['radius', 'size'])
 </template>
 
 <style>
-.ui-Editable:where(.r-size-1) {
-  --editable-padding-x: var(--space-1);
-  --editable-border-radius: max(var(--radius-2), var(--radius-full));
-}
-.ui-Editable:where(.r-size-2) {
-  --editable-padding-x: var(--space-2);
-  --editable-border-radius: max(var(--radius-2), var(--radius-full));
-}
-.ui-Editable:where(.r-size-3) {
-  --editable-padding-x: var(--space-3);
-  --editable-border-radius: max(var(--radius-3), var(--radius-full));
-}
-.ui-EditableArea {
-  padding-left: var(--editable-padding-x);
-  padding-right: var(--editable-padding-x);
-  border-radius: var(--editable-border-radius);
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.ui-EditableArea:where([data-focused]),
-.ui-EditableArea:where(:hover) {
-  background-color: var(--accent-a3);
-}
-.ui-EditablePreview {
-  white-space: pre;
-  user-select: none;
-}
-.ui-EditableInput {
-  outline: none;
-  max-width: 100%;
+@layer components {
+  .ui-Editable:where(.r-size-1) {
+    --editable-padding-x: var(--space-1);
+    --editable-border-radius: max(var(--radius-2), var(--radius-full));
+  }
+  .ui-Editable:where(.r-size-2) {
+    --editable-padding-x: var(--space-2);
+    --editable-border-radius: max(var(--radius-2), var(--radius-full));
+  }
+  .ui-Editable:where(.r-size-3) {
+    --editable-padding-x: var(--space-3);
+    --editable-border-radius: max(var(--radius-3), var(--radius-full));
+  }
+  .ui-EditableArea {
+    padding-left: var(--editable-padding-x);
+    padding-right: var(--editable-padding-x);
+    border-radius: var(--editable-border-radius);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .ui-EditableArea:where([data-focused]),
+  .ui-EditableArea:where(:hover) {
+    background-color: var(--accent-a3);
+  }
+  .ui-EditablePreview {
+    white-space: pre;
+    user-select: none;
+  }
+  .ui-EditableInput {
+    outline: none;
+    max-width: 100%;
+  }
 }
 </style>

@@ -63,80 +63,80 @@ const resetClass = buildPropsClass(props, ['size', 'variant', 'highContrast'])
     width: var(--toggle-size);
     height: var(--toggle-size);
   }
-}
-.ui-Toggle:where(.r-size-1) {
-  --toggle-border-radius: max(var(--radius-1), var(--radius-full));
-  --toggle-font-size: var(--font-size-1);
-  --toggle-size: var(--space-5);
-}
-.ui-Toggle:where(.r-size-2) {
-  --toggle-border-radius: max(var(--radius-2), var(--radius-full));
-  --toggle-font-size: var(--font-size-3);
-  --toggle-size: var(--space-6);
-}
-.ui-Toggle:where(.r-size-3) {
-  --toggle-border-radius: max(var(--radius-3), var(--radius-full));
-  --toggle-font-size: var(--font-size-6);
-  --toggle-size: var(--space-7);
-}
-
-/** soft */
-.ui-Toggle:where(.r-variant-soft) {
-  background-color: var(--color-panel-translucent);
-  box-shadow: var(--shadow-2);
-}
-@media (hover: hover) {
-  .ui-Toggle:where(.r-variant-soft):where(:hover) {
-    background-color: var(--accent-a2);
+  .ui-Toggle:where(.r-size-1) {
+    --toggle-border-radius: max(var(--radius-1), var(--radius-full));
+    --toggle-font-size: var(--font-size-1);
+    --toggle-size: var(--space-5);
   }
-}
-.ui-Toggle:where(.r-variant-soft):where(:focus-visible) {
-  outline: 2px solid var(--accent-8);
-  outline-offset: -1px;
-}
-.ui-Toggle:where(.r-variant-soft):where([data-disabled]) {
-  color: var(--gray-a8);
-  background-color: var(--gray-a3);
-}
-.ui-Toggle:where(.r-variant-soft):where([data-state="on"]) {
-  background-color: var(--accent-a3);
-  box-shadow: var(--shadow-1);
-}
+  .ui-Toggle:where(.r-size-2) {
+    --toggle-border-radius: max(var(--radius-2), var(--radius-full));
+    --toggle-font-size: var(--font-size-3);
+    --toggle-size: var(--space-6);
+  }
+  .ui-Toggle:where(.r-size-3) {
+    --toggle-border-radius: max(var(--radius-3), var(--radius-full));
+    --toggle-font-size: var(--font-size-6);
+    --toggle-size: var(--space-7);
+  }
 
-/** solid & ghost*/
-.ui-Toggle:where(.r-variant-solid) {
-  background-color: var(--color-panel-solid);
-  box-shadow: var(--shadow-2);
-}
-
-@media (hover: hover) {
-  .ui-Toggle:where(.r-variant-solid, .r-variant-ghost):where(:hover) {
+  /** soft */
+  .ui-Toggle:where(.r-variant-soft) {
+    background-color: var(--color-panel-translucent);
+    box-shadow: var(--shadow-2);
+  }
+  @media (hover: hover) {
+    .ui-Toggle:where(.r-variant-soft):where(:hover) {
+      background-color: var(--accent-a2);
+    }
+  }
+  .ui-Toggle:where(.r-variant-soft):where(:focus-visible) {
+    outline: 2px solid var(--accent-8);
+    outline-offset: -1px;
+  }
+  .ui-Toggle:where(.r-variant-soft):where([data-disabled]) {
+    color: var(--gray-a8);
+    background-color: var(--gray-a3);
+  }
+  .ui-Toggle:where(.r-variant-soft):where([data-state="on"]) {
     background-color: var(--accent-a3);
+    box-shadow: var(--shadow-1);
   }
-}
-.ui-Toggle:where(.r-variant-solid, .r-variant-ghost):where(:focus-visible) {
-  outline: 2px solid var(--focus-8);
-  outline-offset: 2px;
-}
-.ui-Toggle:where(.r-variant-solid):where([data-disabled]) {
-  color: var(--gray-a8);
-  background-color: var(--gray-a3);
-}
-.ui-Toggle:where(.r-variant-ghost):where([data-disabled]) {
-  color: var(--gray-a8);
-  background-color: transparent;
-}
-.ui-Toggle:where(.r-variant-solid):where([data-state="on"]) {
-  background-color: var(--accent-9);
-  color: var(--accent-contrast);
-  box-shadow: var(--shadow-1);
-}
-.ui-Toggle:where(.r-variant-ghost):where([data-state="on"]) {
-  background-color: var(--accent-a3);
-  box-shadow: var(--shadow-1);
-}
-.ui-Toggle:where(.r-variant-solid, .r-variant-ghost):where(.r-high-contrast):where([data-state="on"]) {
-  background-color: var(--accent-12);
-  color: var(--gray-1);
+
+  /** solid & ghost*/
+  .ui-Toggle:where(.r-variant-solid) {
+    background-color: var(--color-panel-solid);
+    box-shadow: var(--shadow-2);
+  }
+
+  @media (hover: hover) {
+    .ui-Toggle:where(.r-variant-solid, .r-variant-ghost):where(:hover) {
+      background-color: var(--accent-a3);
+    }
+  }
+  .ui-Toggle:where(.r-variant-solid, .r-variant-ghost):where(:focus-visible) {
+    outline: 2px solid var(--focus-8);
+    outline-offset: 2px;
+  }
+  .ui-Toggle:where(.r-variant-solid):where([data-disabled]) {
+    color: var(--gray-a8);
+    background-color: var(--gray-a3);
+  }
+  .ui-Toggle:where(.r-variant-ghost):where([data-disabled]) {
+    color: var(--gray-a8);
+    background-color: transparent;
+  }
+  .ui-Toggle:where(.r-variant-solid):where([data-state="on"]) {
+    background-color: var(--accent-9);
+    color: var(--accent-contrast);
+    box-shadow: var(--shadow-1);
+  }
+  .ui-Toggle:where(.r-variant-ghost):where([data-state="on"]) {
+    background-color: var(--accent-a3);
+    box-shadow: var(--shadow-1);
+  }
+  .ui-Toggle:where(.r-variant-solid, .r-variant-ghost):where(.r-high-contrast):where([data-state="on"]) {
+    background-color: var(--accent-12);
+    color: var(--gray-1);
+  }
 }
 </style>

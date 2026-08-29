@@ -140,3 +140,20 @@ In a pull request, describe:
 - screenshots or a short recording for visual or interactive changes.
 
 Do not include `packages/ui/dist/` or `site/public/`. Do include changed generated metadata when the public API changed.
+
+## Releases
+
+Releases are tag-driven. Before creating a tag:
+
+1. Update `packages/ui/package.json` to the intended version.
+2. Add the matching entry to `docs/content/overview/releases.md`.
+3. Run the validation commands above and inspect the package with
+   `npm pack --dry-run` from `packages/ui/dist` after `pnpm build:ui`.
+4. Create a tag whose name exactly matches the package version, without a `v`
+   prefix (for example, `0.16.0`).
+
+Pushing the tag runs `.github/workflows/release.yml`. The workflow verifies the
+tag and package version, runs lint, typecheck, package and documentation builds,
+inspects the npm archive, publishes `packages/ui/dist`, and then generates the
+GitHub changelog. Do not commit `packages/ui/dist`; Vite generates its package
+manifest and public CSS/JavaScript entries during the release build.

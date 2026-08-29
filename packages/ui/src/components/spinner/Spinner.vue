@@ -107,26 +107,25 @@ const resetClass = buildPropsClass(props, ['size'])
     stroke-dasharray: 42 56.5;
     stroke-dashoffset: 0;
   }
-}
+  .ui-Spinner:where(.r-size-1) {
+    --spinner-size: var(--space-3);
+    --spinner-stroke-width: 2.5;
+  }
 
-.ui-Spinner:where(.r-size-1) {
-  --spinner-size: var(--space-3);
-  --spinner-stroke-width: 2.5;
-}
+  .ui-Spinner:where(.r-size-2) {
+    --spinner-size: var(--space-4);
+    --spinner-stroke-width: 2.25;
+  }
 
-.ui-Spinner:where(.r-size-2) {
-  --spinner-size: var(--space-4);
-  --spinner-stroke-width: 2.25;
-}
+  .ui-Spinner:where(.r-size-3) {
+    --spinner-size: var(--space-5);
+    --spinner-stroke-width: 2;
+  }
 
-.ui-Spinner:where(.r-size-3) {
-  --spinner-size: var(--space-5);
-  --spinner-stroke-width: 2;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .ui-SpinnerGraphic {
-    animation: none;
+  @media (prefers-reduced-motion: reduce) {
+    .ui-SpinnerGraphic {
+      animation: none;
+    }
   }
 }
 </style>

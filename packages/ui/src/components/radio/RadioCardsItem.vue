@@ -23,11 +23,13 @@ useForwardExpose()
 <style src="../card/style.css"></style>
 
 <style>
-.ui-RadioCardsItem {
-  height: 100%;
-}
-.ui-RadioCardsItem:where([data-state="checked"]) {
-  --card-border-color: var(--accent-10);
-  box-shadow: 0 0 0 1px var(--accent-10);
+@layer components {
+  .ui-RadioCardsItem {
+    height: 100%;
+  }
+  .ui-RadioCardsItem:where([data-state="checked"]) {
+    --card-border-color: var(--accent-10);
+    box-shadow: 0 0 0 1px var(--accent-10);
+  }
 }
 </style>

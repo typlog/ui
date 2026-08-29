@@ -61,41 +61,43 @@ const brandIcon = computed(() => {
 </template>
 
 <style>
-.ui-SocialButton:where(.r-variant-classic) {
-  background-color: var(--social-button-background-color);
-  color: var(--social-button-text-color);
-  box-shadow: 0px 1px 2px 0px #0A0D120D, 0px -2px 0px 0px #0A0D120D inset, 0px 0px 0px 1px #0A0D122E inset;
-  --social-button-background-color: black;
-  --social-button-text-color: white;
-  --social-button-hover-filter: brightness(0.92) saturate(1.1);
-}
-@media (hover: hover) {
-  .ui-SocialButton:where(:hover) {
-    filter: var(--social-button-hover-filter);
+@layer components {
+  .ui-SocialButton:where(.r-variant-classic) {
+    background-color: var(--social-button-background-color);
+    color: var(--social-button-text-color);
+    box-shadow: 0px 1px 2px 0px #0A0D120D, 0px -2px 0px 0px #0A0D120D inset, 0px 0px 0px 1px #0A0D122E inset;
+    --social-button-background-color: black;
+    --social-button-text-color: white;
+    --social-button-hover-filter: brightness(0.92) saturate(1.1);
   }
-}
-.ui-SocialButton:where(.r-brand-google) {
-  --social-button-background-color: var(--color-background);
-  --social-button-text-color: var(--gray-12);
-}
-.ui-SocialButton:where(.r-brand-facebook) {
-  --social-button-background-color: #1877F2;
-}
-.ui-SocialButton:where(.r-brand-github) {
-  --social-button-background-color: #333;
-}
-.ui-SocialButton:where(.r-variant-classic):where(.r-brand-slack) {
-  --social-button-background-color: #611f69;
-}
-.ui-SocialButton:where(.r-variant-classic):where(:focus-visible) {
-  outline: 2px solid var(--focus-8);
-  outline-offset: 2px;
-}
-.ui-SocialButton:where(.r-variant-classic):where(:active) {
-  box-shadow: var(--shadow-1);
-}
-.ui-SocialButton:where(.r-variant-classic):where([data-disabled]) {
-  color: var(--gray-a10);
-  background-color: var(--gray-a2);
+  @media (hover: hover) {
+    .ui-SocialButton:where(:hover) {
+      filter: var(--social-button-hover-filter);
+    }
+  }
+  .ui-SocialButton:where(.r-brand-google) {
+    --social-button-background-color: var(--color-background);
+    --social-button-text-color: var(--gray-12);
+  }
+  .ui-SocialButton:where(.r-brand-facebook) {
+    --social-button-background-color: #1877F2;
+  }
+  .ui-SocialButton:where(.r-brand-github) {
+    --social-button-background-color: #333;
+  }
+  .ui-SocialButton:where(.r-variant-classic):where(.r-brand-slack) {
+    --social-button-background-color: #611f69;
+  }
+  .ui-SocialButton:where(.r-variant-classic):where(:focus-visible) {
+    outline: 2px solid var(--focus-8);
+    outline-offset: 2px;
+  }
+  .ui-SocialButton:where(.r-variant-classic):where(:active) {
+    box-shadow: var(--shadow-1);
+  }
+  .ui-SocialButton:where(.r-variant-classic):where([data-disabled]) {
+    color: var(--gray-a10);
+    background-color: var(--gray-a2);
+  }
 }
 </style>

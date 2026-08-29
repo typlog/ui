@@ -46,10 +46,10 @@
     inset-inline-start: calc(var(--tree-item-indent) / 2 - 0.5px);
     width: calc((var(--tree-item-level) - 1) * var(--tree-item-indent));
     background: repeating-linear-gradient(
-      to right,
-      var(--tree-guide-color) 0,
-      var(--tree-guide-color) 1px,
-      transparent 1px var(--tree-item-indent)
+    to right,
+    var(--tree-guide-color) 0,
+    var(--tree-guide-color) 1px,
+    transparent 1px var(--tree-item-indent)
     );
     content: '';
     pointer-events: none;
@@ -227,10 +227,10 @@
 
   .ui-TreeRoot:where(:dir(rtl)) .ui-TreeItemRow::before {
     background: repeating-linear-gradient(
-      to left,
-      var(--tree-guide-color) 0,
-      var(--tree-guide-color) 1px,
-      transparent 1px var(--tree-item-indent)
+    to left,
+    var(--tree-guide-color) 0,
+    var(--tree-guide-color) 1px,
+    transparent 1px var(--tree-item-indent)
     );
   }
 }

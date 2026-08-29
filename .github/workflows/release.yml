@@ -22,7 +22,15 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: corepack enable
       - run: pnpm install --frozen-lockfile
+      - name: verify tag and package version
+        run: test "$GITHUB_REF_NAME" = "$(node -p "require('./packages/ui/package.json').version")"
+      - run: pnpm lint
+      - run: pnpm typecheck
       - run: pnpm build:ui
+      - run: pnpm build:docs
+      - name: inspect package
+        run: npm pack --dry-run
+        working-directory: packages/ui/dist
       - name: publish
         run: npm publish
         working-directory: packages/ui/dist

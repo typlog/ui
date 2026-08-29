@@ -25,31 +25,33 @@ const forwarded = useForwardPropsEmits(props, emits)
 </template>
 
 <style>
-.ui-NavigationMenuRoot {
-  position: relative;
-  z-index: 1;
-}
+@layer components {
+  .ui-NavigationMenuRoot {
+    position: relative;
+    z-index: 1;
+  }
 
-.ui-NavigationMenuViewport {
-  position: absolute;
-  margin-top: 10px;
-  top: 100%;
-  left: var(--reka-navigation-menu-viewport-left);
-  height: var(--reka-navigation-menu-viewport-height);
-  background-color: white;
-  border-radius: var(--radius-4);
-  overflow: hidden;
-  box-shadow: var(--shadow-3);
-  width: 100%;
-  max-width: var(--reka-navigation-menu-viewport-width);
-  transition: width, height, 300ms ease;
-  transform-origin: top center;
-}
-.ui-NavigationMenuViewport:where([data-state="open"]) {
-  animation: navigation-menu-viewport-scale-in 200ms ease;
-}
-.ui-NavigationMenuViewport:where([data-state="closed"]) {
-  animation: navigation-menu-viewport-scale-out 200ms ease;
+  .ui-NavigationMenuViewport {
+    position: absolute;
+    margin-top: 10px;
+    top: 100%;
+    left: var(--reka-navigation-menu-viewport-left);
+    height: var(--reka-navigation-menu-viewport-height);
+    background-color: white;
+    border-radius: var(--radius-4);
+    overflow: hidden;
+    box-shadow: var(--shadow-3);
+    width: 100%;
+    max-width: var(--reka-navigation-menu-viewport-width);
+    transition: width, height, 300ms ease;
+    transform-origin: top center;
+  }
+  .ui-NavigationMenuViewport:where([data-state="open"]) {
+    animation: navigation-menu-viewport-scale-in 200ms ease;
+  }
+  .ui-NavigationMenuViewport:where([data-state="closed"]) {
+    animation: navigation-menu-viewport-scale-out 200ms ease;
+  }
 }
 
 @keyframes navigation-menu-viewport-scale-in {

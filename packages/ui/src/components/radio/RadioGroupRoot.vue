@@ -46,13 +46,15 @@ const resetClass = buildPropsClass(props, ['size', 'variant', 'highContrast'])
 </template>
 
 <style>
-.ui-RadioGroupRoot:where(.r-size-1) {
-  --radio-size: calc(var(--space-4) * 0.875);
-}
-.ui-RadioGroupRoot:where(.r-size-2) {
-  --radio-size: var(--space-4);
-}
-.ui-RadioGroupRoot:where(.r-size-3) {
-  --radio-size: calc(var(--space-4) * 1.25);
+@layer components {
+  .ui-RadioGroupRoot:where(.r-size-1) {
+    --radio-size: calc(var(--space-4) * 0.875);
+  }
+  .ui-RadioGroupRoot:where(.r-size-2) {
+    --radio-size: var(--space-4);
+  }
+  .ui-RadioGroupRoot:where(.r-size-3) {
+    --radio-size: calc(var(--space-4) * 1.25);
+  }
 }
 </style>

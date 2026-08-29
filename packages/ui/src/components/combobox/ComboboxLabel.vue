@@ -41,8 +41,8 @@ useForwardExpose()
     letter-spacing: var(--combobox-label-letter-spacing);
     line-height: var(--combobox-label-line-height);
   }
-}
-.ui-SelectItem + .ui-ComboboxLabel {
-  margin-top: var(--space-2);
+  .ui-SelectItem + .ui-ComboboxLabel {
+    margin-top: var(--space-2);
+  }
 }
 </style>

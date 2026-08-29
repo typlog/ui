@@ -63,43 +63,43 @@ const resetClass = buildPropsClass(props, ['size', 'variant', 'highContrast'])
     flex-shrink: 0;
     height: var(--toggle-group-height);
   }
-}
-.ui-ToggleGroupRoot:where(.r-size-1) {
-  font-size: var(--font-size-1);
-  --toggle-radius: max(var(--radius-1), var(--radius-full));
-  --toggle-group-height: var(--space-5);
-  --toggle-group-soft-padding: 1px;
-}
-.ui-ToggleGroupRoot:where(.r-size-2) {
-  font-size: var(--font-size-3);
-  --toggle-radius: max(var(--radius-2), var(--radius-full));
-  --toggle-group-height: var(--space-6);
-  --toggle-group-soft-padding: 2px;
-}
-.ui-ToggleGroupRoot:where(.r-size-3) {
-  font-size: var(--font-size-6);
-  --toggle-radius: max(var(--radius-3), var(--radius-full));
-  --toggle-group-height: var(--space-7);
-  --toggle-group-soft-padding: 3px;
-}
-.ui-ToggleGroupRoot:where(.r-variant-solid),
-.ui-ToggleGroupRoot:where(.r-variant-outline),
-.ui-ToggleGroupRoot:where(.r-variant-surface) {
-  border-radius: var(--toggle-radius);
-  background-color: var(--color-panel-solid);
-  box-shadow: var(--shadow-2);
-  --toggle-item-size: var(--toggle-group-height);
-}
-.ui-ToggleGroupRoot:where(.r-variant-soft) {
-  border-radius: var(--toggle-radius);
-  background-color: var(--color-panel-translucent);
-  box-shadow: var(--shadow-2);
-  padding: var(--toggle-group-soft-padding);
-  gap: var(--toggle-group-soft-padding);
-  --toggle-item-size: calc(var(--toggle-group-height) - 2 * var(--toggle-group-soft-padding));
-}
-.ui-ToggleGroupRoot:where(.r-variant-ghost) {
-  gap: calc(var(--space-1) / 2);
-  --toggle-item-size: var(--toggle-group-height);
+  .ui-ToggleGroupRoot:where(.r-size-1) {
+    font-size: var(--font-size-1);
+    --toggle-radius: max(var(--radius-1), var(--radius-full));
+    --toggle-group-height: var(--space-5);
+    --toggle-group-soft-padding: 1px;
+  }
+  .ui-ToggleGroupRoot:where(.r-size-2) {
+    font-size: var(--font-size-3);
+    --toggle-radius: max(var(--radius-2), var(--radius-full));
+    --toggle-group-height: var(--space-6);
+    --toggle-group-soft-padding: 2px;
+  }
+  .ui-ToggleGroupRoot:where(.r-size-3) {
+    font-size: var(--font-size-6);
+    --toggle-radius: max(var(--radius-3), var(--radius-full));
+    --toggle-group-height: var(--space-7);
+    --toggle-group-soft-padding: 3px;
+  }
+  .ui-ToggleGroupRoot:where(.r-variant-solid),
+  .ui-ToggleGroupRoot:where(.r-variant-outline),
+  .ui-ToggleGroupRoot:where(.r-variant-surface) {
+    border-radius: var(--toggle-radius);
+    background-color: var(--color-panel-solid);
+    box-shadow: var(--shadow-2);
+    --toggle-item-size: var(--toggle-group-height);
+  }
+  .ui-ToggleGroupRoot:where(.r-variant-soft) {
+    border-radius: var(--toggle-radius);
+    background-color: var(--color-panel-translucent);
+    box-shadow: var(--shadow-2);
+    padding: var(--toggle-group-soft-padding);
+    gap: var(--toggle-group-soft-padding);
+    --toggle-item-size: calc(var(--toggle-group-height) - 2 * var(--toggle-group-soft-padding));
+  }
+  .ui-ToggleGroupRoot:where(.r-variant-ghost) {
+    gap: calc(var(--space-1) / 2);
+    --toggle-item-size: var(--toggle-group-height);
+  }
 }
 </style>

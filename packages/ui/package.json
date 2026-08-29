@@ -18,15 +18,8 @@
       "import": "./src/components/index.ts",
       "default": "./src/components/index.ts"
     },
-    "./components": {
-      "types": "./src/components/index.ts",
-      "style": "./src/styles/components.css",
-      "import": "./src/components/index.ts",
-      "default": "./src/components/index.ts"
-    },
     "./addons": {
       "types": "./src/addons/index.ts",
-      "style": "./src/styles/components.css",
       "import": "./src/addons/index.ts",
       "default": "./src/addons/index.ts"
     },
@@ -35,10 +28,7 @@
       "style": "./src/charts/style.css",
       "import": "./src/charts/index.ts",
       "default": "./src/charts/index.ts"
-    },
-    "./base.css": "./src/styles/index.css",
-    "./components.css": "./src/styles/components.css",
-    "./tailwind.css": "./tailwind/index.css"
+    }
   },
   "dependencies": {
     "@iconify/vue": "^5.0.0",
@@ -60,8 +50,7 @@
     }
   },
   "scripts": {
-    "build": "vite build && node post-build.mjs",
-    "build:css": "node build-css.mjs",
+    "build": "vite build",
     "typecheck": "vue-tsc --noEmit -p tsconfig.json"
   },
   "devDependencies": {

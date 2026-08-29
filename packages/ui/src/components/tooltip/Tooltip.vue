@@ -92,48 +92,50 @@ defineOptions({
 </template>
 
 <style>
-.ui-Tooltip {
-  box-sizing: border-box;
-  padding: var(--space-1) var(--space-2);
-  border-radius: var(--radius-2);
-  transform-origin: var(--reka-tooltip-content-transform-origin);
-  animation-duration: 140ms;
-  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-  background-color: var(--accent-11);
-}
+@layer components {
+  .ui-Tooltip {
+    box-sizing: border-box;
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-2);
+    transform-origin: var(--reka-tooltip-content-transform-origin);
+    animation-duration: 140ms;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    background-color: var(--accent-11);
+  }
 
-@media (prefers-reduced-motion: no-preference) {
-  .ui-Tooltip:where([data-state='delayed-open']):where([data-side='top']) {
-    animation-name: ui-slide-from-top, ui-fade-in;
+  @media (prefers-reduced-motion: no-preference) {
+    .ui-Tooltip:where([data-state='delayed-open']):where([data-side='top']) {
+      animation-name: ui-slide-from-top, ui-fade-in;
+    }
+    .ui-Tooltip:where([data-state='delayed-open']):where([data-side='bottom']) {
+      animation-name: ui-slide-from-bottom, ui-fade-in;
+    }
+    .ui-Tooltip:where([data-state='delayed-open']):where([data-side='left']) {
+      animation-name: ui-slide-from-left, ui-fade-in;
+    }
+    .ui-Tooltip:where([data-state='delayed-open']):where([data-side='right']) {
+      animation-name: ui-slide-from-right, ui-fade-in;
+    }
   }
-  .ui-Tooltip:where([data-state='delayed-open']):where([data-side='bottom']) {
-    animation-name: ui-slide-from-bottom, ui-fade-in;
+  .ui-TooltipText {
+    color: var(--gray-1);
+    user-select: none;
+    cursor: default;
+    font-size: var(--font-size-1);
+    line-height: var(--line-height-1);
+    letter-spacing: var(--letter-spacing-1);
   }
-  .ui-Tooltip:where([data-state='delayed-open']):where([data-side='left']) {
-    animation-name: ui-slide-from-left, ui-fade-in;
-  }
-  .ui-Tooltip:where([data-state='delayed-open']):where([data-side='right']) {
-    animation-name: ui-slide-from-right, ui-fade-in;
-  }
-}
-.ui-TooltipText {
-  color: var(--gray-1);
-  user-select: none;
-  cursor: default;
-  font-size: var(--font-size-1);
-  line-height: var(--line-height-1);
-  letter-spacing: var(--letter-spacing-1);
-}
 
-.ui-TooltipArrow {
-  fill: var(--accent-11);
-}
+  .ui-TooltipArrow {
+    fill: var(--accent-11);
+  }
 
-/* special handle for gray color */
-.ui-Tooltip:where([data-accent-color="gray"]) {
-  background-color: var(--gray-12);
-}
-.ui-Tooltip:where([data-accent-color="gray"]) :where(.ui-TooltipArrow) {
-  fill: var(--gray-12);
+  /* special handle for gray color */
+  .ui-Tooltip:where([data-accent-color="gray"]) {
+    background-color: var(--gray-12);
+  }
+  .ui-Tooltip:where([data-accent-color="gray"]) :where(.ui-TooltipArrow) {
+    fill: var(--gray-12);
+  }
 }
 </style>

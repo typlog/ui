@@ -33,27 +33,29 @@ const props = withDefaults(defineProps<SavingIndicatorProps>(), {
 </template>
 
 <style>
-.ui-SavingIndicator {
-  display: inline-flex;
-  align-items: center;
-}
-.ui-SavingIndicator > svg {
-  vertical-align: middle;
-}
-.ui-SavingIndicator:where([data-status="saving"]) {
-  color: var(--gray-10);
-  animation: ui-spin 2s infinite linear;
-}
-.ui-SavingIndicator:where([data-status="saved"]) {
-  color: var(--green-10);
-}
-.ui-SavingIndicator:where(.r-size-1) {
-  font-size: var(--space-3);
-}
-.ui-SavingIndicator:where(.r-size-2) {
-  font-size: var(--space-4);
-}
-.ui-SavingIndicator:where(.r-size-3) {
-  font-size: calc(1.25 * var(--space-4));
+@layer components {
+  .ui-SavingIndicator {
+    display: inline-flex;
+    align-items: center;
+  }
+  .ui-SavingIndicator > svg {
+    vertical-align: middle;
+  }
+  .ui-SavingIndicator:where([data-status="saving"]) {
+    color: var(--gray-10);
+    animation: ui-spin 2s infinite linear;
+  }
+  .ui-SavingIndicator:where([data-status="saved"]) {
+    color: var(--green-10);
+  }
+  .ui-SavingIndicator:where(.r-size-1) {
+    font-size: var(--space-3);
+  }
+  .ui-SavingIndicator:where(.r-size-2) {
+    font-size: var(--space-4);
+  }
+  .ui-SavingIndicator:where(.r-size-3) {
+    font-size: calc(1.25 * var(--space-4));
+  }
 }
 </style>

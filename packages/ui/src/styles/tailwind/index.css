@@ -1,3 +1,4 @@
+@layer theme, base, components, utilities;
 @import "./space.css";
 @import "./colors.css";
 @import "./shadow.css";

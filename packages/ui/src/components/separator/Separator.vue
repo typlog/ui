@@ -63,18 +63,17 @@ const props = withDefaults(defineProps<SeparatorProps>(), {
     width: 1px;
     height: var(--separator-size, auto);
   }
-}
-
-.ui-Separator:where(.r-size-1) {
-  --separator-size: var(--space-4);
-}
-.ui-Separator:where(.r-size-2) {
-  --separator-size: var(--space-6);
-}
-.ui-Separator:where(.r-size-3) {
-  --separator-size: var(--space-9);
-}
-.ui-Separator:where(.r-size-4) {
-  --separator-size: 100%;
+  .ui-Separator:where(.r-size-1) {
+    --separator-size: var(--space-4);
+  }
+  .ui-Separator:where(.r-size-2) {
+    --separator-size: var(--space-6);
+  }
+  .ui-Separator:where(.r-size-3) {
+    --separator-size: var(--space-9);
+  }
+  .ui-Separator:where(.r-size-4) {
+    --separator-size: 100%;
+  }
 }
 </style>

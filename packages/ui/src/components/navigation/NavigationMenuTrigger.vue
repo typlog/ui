@@ -63,11 +63,13 @@ const resetClass = computed(() => {
 <style src="./style.css"></style>
 
 <style>
-.ui-NavigationMenuTriggerArrow {
-  transform: rotate(0deg);
-  transition: transform 250ms ease;
-}
-:where(.ui-NavigationMenuTrigger[data-state="open"]) .ui-NavigationMenuTriggerArrow {
-  transform: rotate(-180deg);
+@layer components {
+  .ui-NavigationMenuTriggerArrow {
+    transform: rotate(0deg);
+    transition: transform 250ms ease;
+  }
+  :where(.ui-NavigationMenuTrigger[data-state="open"]) .ui-NavigationMenuTriggerArrow {
+    transform: rotate(-180deg);
+  }
 }
 </style>

@@ -88,51 +88,51 @@ const contentClass = computed(() => {
 <style src="../popover/popper.css"></style>
 
 <style>
-.ui-SelectContent {
-  --scrollarea-scrollbar-vertical-margin-top: var(--select-content-padding);
-  --scrollarea-scrollbar-vertical-margin-bottom: var(--select-content-padding);
-  --scrollarea-scrollbar-horizontal-margin-left: var(--select-content-padding);
-  --scrollarea-scrollbar-horizontal-margin-right: var(--select-content-padding);
-}
-
 @layer components {
+  .ui-SelectContent {
+    --scrollarea-scrollbar-vertical-margin-top: var(--select-content-padding);
+    --scrollarea-scrollbar-vertical-margin-bottom: var(--select-content-padding);
+    --scrollarea-scrollbar-horizontal-margin-left: var(--select-content-padding);
+    --scrollarea-scrollbar-horizontal-margin-right: var(--select-content-padding);
+  }
+
   .ui-SelectContent {
     overflow: hidden;
     box-shadow: var(--shadow-5);
     background-color: var(--color-panel-solid);
     box-sizing: border-box;
   }
-}
 
-.ui-SelectContent:where([data-side]) {
-  min-width: var(--reka-select-trigger-width);
-  max-width: var(--reka-select-content-available-width);
-  max-height: var(--reka-select-content-available-height);
-  transform-origin: var(--reka-select-content-transform-origin);
-}
+  .ui-SelectContent:where([data-side]) {
+    min-width: var(--reka-select-trigger-width);
+    max-width: var(--reka-select-content-available-width);
+    max-height: var(--reka-select-content-available-height);
+    transform-origin: var(--reka-select-content-transform-origin);
+  }
 
-.ui-SelectViewport {
-  box-sizing: border-box;
-  padding: var(--select-content-padding);
-}
+  .ui-SelectViewport {
+    box-sizing: border-box;
+    padding: var(--select-content-padding);
+  }
 
-.ui-SelectContent:has(.ui-ScrollAreaScrollbar[data-orientation='vertical']) .ui-SelectViewport {
-  padding-right: var(--space-3);
-}
+  .ui-SelectContent:has(.ui-ScrollAreaScrollbar[data-orientation='vertical']) .ui-SelectViewport {
+    padding-right: var(--space-3);
+  }
 
-.ui-SelectContent:where(.r-size-1) {
-  --select-content-padding: var(--space-1);
-  --select-item-height: var(--space-5);
-  --select-item-indicator-width: calc(var(--space-5) / 1.2);
-  --select-separator-margin-right: var(--space-2);
-  border-radius: var(--radius-3);
-}
-.ui-SelectContent:where(.r-size-2),
-.ui-SelectContent:where(.r-size-3) {
-  --select-content-padding: var(--space-2);
-  --select-item-height: var(--space-6);
-  --select-item-indicator-width: var(--space-5);
-  --select-separator-margin-right: var(--space-3);
-  border-radius: var(--radius-4);
+  .ui-SelectContent:where(.r-size-1) {
+    --select-content-padding: var(--space-1);
+    --select-item-height: var(--space-5);
+    --select-item-indicator-width: calc(var(--space-5) / 1.2);
+    --select-separator-margin-right: var(--space-2);
+    border-radius: var(--radius-3);
+  }
+  .ui-SelectContent:where(.r-size-2),
+  .ui-SelectContent:where(.r-size-3) {
+    --select-content-padding: var(--space-2);
+    --select-item-height: var(--space-6);
+    --select-item-indicator-width: var(--space-5);
+    --select-separator-margin-right: var(--space-3);
+    border-radius: var(--radius-4);
+  }
 }
 </style>

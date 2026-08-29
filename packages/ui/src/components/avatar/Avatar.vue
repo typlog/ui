@@ -99,147 +99,147 @@ const fallback = computed(() => {
     border-radius: var(--avatar-border-radius);
     letter-spacing: var(--avatar-letter-spacing);
   }
-}
 
-.ui-Avatar > img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: inherit;
-}
+  .ui-Avatar > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+  }
 
-.ui-Avatar > span {
-  font-family: var(--default-font-family);
-  font-weight: var(--font-weight-medium);
-  font-style: normal;
-  z-index: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
-  border-radius: inherit;
-  text-transform: uppercase;
-}
+  .ui-Avatar > span {
+    font-family: var(--default-font-family);
+    font-weight: var(--font-weight-medium);
+    font-style: normal;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    border-radius: inherit;
+    text-transform: uppercase;
+  }
 
-.ui-Avatar > :where(span.r-count-1) {
-  font-size: var(--avatar-fallback-one-letter-font-size);
-}
+  .ui-Avatar > :where(span.r-count-1) {
+    font-size: var(--avatar-fallback-one-letter-font-size);
+  }
 
-.ui-Avatar > :where(span.r-count-2) {
-  font-size: var(--avatar-fallback-two-letters-font-size, var(--avatar-fallback-one-letter-font-size));
-}
+  .ui-Avatar > :where(span.r-count-2) {
+    font-size: var(--avatar-fallback-two-letters-font-size, var(--avatar-fallback-one-letter-font-size));
+  }
 
-.ui-Avatar:where(.r-size-1) {
-  --avatar-size: var(--space-5);
-  --avatar-fallback-one-letter-font-size: var(--font-size-2);
-  --avatar-fallback-two-letters-font-size: var(--font-size-1);
-  --avatar-ring-width: 1px;
-  --avatar-ring-offset: 1px;
-  --avatar-border-radius: max(var(--radius-2), var(--radius-full));
-  --avatar-letter-spacing: var(--letter-spacing-1);
-}
-.ui-Avatar:where(.r-size-2) {
-  --avatar-size: var(--space-6);
-  --avatar-fallback-one-letter-font-size: var(--font-size-3);
-  --avatar-fallback-two-letters-font-size: var(--font-size-2);
-  --avatar-ring-width: 2px;
-  --avatar-ring-offset: 2px;
-  --avatar-border-radius: max(var(--radius-2), var(--radius-full));
-  --avatar-letter-spacing: var(--letter-spacing-2);
-}
+  .ui-Avatar:where(.r-size-1) {
+    --avatar-size: var(--space-5);
+    --avatar-fallback-one-letter-font-size: var(--font-size-2);
+    --avatar-fallback-two-letters-font-size: var(--font-size-1);
+    --avatar-ring-width: 1px;
+    --avatar-ring-offset: 1px;
+    --avatar-border-radius: max(var(--radius-2), var(--radius-full));
+    --avatar-letter-spacing: var(--letter-spacing-1);
+  }
+  .ui-Avatar:where(.r-size-2) {
+    --avatar-size: var(--space-6);
+    --avatar-fallback-one-letter-font-size: var(--font-size-3);
+    --avatar-fallback-two-letters-font-size: var(--font-size-2);
+    --avatar-ring-width: 2px;
+    --avatar-ring-offset: 2px;
+    --avatar-border-radius: max(var(--radius-2), var(--radius-full));
+    --avatar-letter-spacing: var(--letter-spacing-2);
+  }
 
-.ui-Avatar:where(.r-size-3) {
-  --avatar-size: var(--space-7);
-  --avatar-fallback-one-letter-font-size: var(--font-size-4);
-  --avatar-fallback-two-letters-font-size: var(--font-size-3);
-  --avatar-ring-width: 2px;
-  --avatar-ring-offset: 2px;
-  --avatar-border-radius: max(var(--radius-3), var(--radius-full));
-  --avatar-letter-spacing: var(--letter-spacing-3);
-}
+  .ui-Avatar:where(.r-size-3) {
+    --avatar-size: var(--space-7);
+    --avatar-fallback-one-letter-font-size: var(--font-size-4);
+    --avatar-fallback-two-letters-font-size: var(--font-size-3);
+    --avatar-ring-width: 2px;
+    --avatar-ring-offset: 2px;
+    --avatar-border-radius: max(var(--radius-3), var(--radius-full));
+    --avatar-letter-spacing: var(--letter-spacing-3);
+  }
 
-.ui-Avatar:where(.r-size-4) {
-  --avatar-size: var(--space-8);
-  --avatar-fallback-one-letter-font-size: var(--font-size-5);
-  --avatar-fallback-two-letters-font-size: var(--font-size-4);
-  --avatar-ring-width: 2px;
-  --avatar-ring-offset: 2px;
-  --avatar-border-radius: max(var(--radius-3), var(--radius-full));
-  --avatar-letter-spacing: var(--letter-spacing-4);
-}
+  .ui-Avatar:where(.r-size-4) {
+    --avatar-size: var(--space-8);
+    --avatar-fallback-one-letter-font-size: var(--font-size-5);
+    --avatar-fallback-two-letters-font-size: var(--font-size-4);
+    --avatar-ring-width: 2px;
+    --avatar-ring-offset: 2px;
+    --avatar-border-radius: max(var(--radius-3), var(--radius-full));
+    --avatar-letter-spacing: var(--letter-spacing-4);
+  }
 
-.ui-Avatar:where(.r-size-5) {
-  --avatar-size: var(--space-9);
-  --avatar-fallback-one-letter-font-size: var(--font-size-6);
-  --avatar-ring-width: 3px;
-  --avatar-ring-offset: 2px;
-  --avatar-border-radius: max(var(--radius-4), var(--radius-full));
-  --avatar-letter-spacing: var(--letter-spacing-6);
-}
+  .ui-Avatar:where(.r-size-5) {
+    --avatar-size: var(--space-9);
+    --avatar-fallback-one-letter-font-size: var(--font-size-6);
+    --avatar-ring-width: 3px;
+    --avatar-ring-offset: 2px;
+    --avatar-border-radius: max(var(--radius-4), var(--radius-full));
+    --avatar-letter-spacing: var(--letter-spacing-6);
+  }
 
-.ui-Avatar:where(.r-size-6) {
-  --avatar-size: 80px;
-  --avatar-fallback-one-letter-font-size: var(--font-size-7);
-  --avatar-ring-width: 3px;
-  --avatar-ring-offset: 3px;
-  --avatar-border-radius: max(var(--radius-5), var(--radius-full));
-  --avatar-letter-spacing: var(--letter-spacing-7);
-}
+  .ui-Avatar:where(.r-size-6) {
+    --avatar-size: 80px;
+    --avatar-fallback-one-letter-font-size: var(--font-size-7);
+    --avatar-ring-width: 3px;
+    --avatar-ring-offset: 3px;
+    --avatar-border-radius: max(var(--radius-5), var(--radius-full));
+    --avatar-letter-spacing: var(--letter-spacing-7);
+  }
 
-.ui-Avatar:where(.r-size-7) {
-  --avatar-size: 96px;
-  --avatar-fallback-one-letter-font-size: var(--font-size-7);
-  --avatar-ring-width: 3px;
-  --avatar-ring-offset: 3px;
-  --avatar-border-radius: max(var(--radius-5), var(--radius-full));
-  --avatar-letter-spacing: var(--letter-spacing-7);
-}
+  .ui-Avatar:where(.r-size-7) {
+    --avatar-size: 96px;
+    --avatar-fallback-one-letter-font-size: var(--font-size-7);
+    --avatar-ring-width: 3px;
+    --avatar-ring-offset: 3px;
+    --avatar-border-radius: max(var(--radius-5), var(--radius-full));
+    --avatar-letter-spacing: var(--letter-spacing-7);
+  }
 
-.ui-Avatar:where(.r-size-8) {
-  --avatar-size: 128px;
-  --avatar-fallback-one-letter-font-size: var(--font-size-8);
-  --avatar-ring-width: 4px;
-  --avatar-ring-offset: 3px;
-  --avatar-border-radius: max(var(--radius-6), var(--radius-full));
-  --avatar-letter-spacing: var(--letter-spacing-8);
-}
+  .ui-Avatar:where(.r-size-8) {
+    --avatar-size: 128px;
+    --avatar-fallback-one-letter-font-size: var(--font-size-8);
+    --avatar-ring-width: 4px;
+    --avatar-ring-offset: 3px;
+    --avatar-border-radius: max(var(--radius-6), var(--radius-full));
+    --avatar-letter-spacing: var(--letter-spacing-8);
+  }
 
-.ui-Avatar:where(.r-size-9) {
-  --avatar-size: 160px;
-  --avatar-fallback-one-letter-font-size: var(--font-size-9);
-  --avatar-ring-width: 4px;
-  --avatar-ring-offset: 4px;
-  --avatar-border-radius: max(var(--radius-6), var(--radius-full));
-  --avatar-letter-spacing: var(--letter-spacing-9);
-}
+  .ui-Avatar:where(.r-size-9) {
+    --avatar-size: 160px;
+    --avatar-fallback-one-letter-font-size: var(--font-size-9);
+    --avatar-ring-width: 4px;
+    --avatar-ring-offset: 4px;
+    --avatar-border-radius: max(var(--radius-6), var(--radius-full));
+    --avatar-letter-spacing: var(--letter-spacing-9);
+  }
 
-.ui-Avatar:where(.r-variant-ring) {
-  outline-color: var(--accent-9);
-  outline-width: var(--avatar-ring-width);
-  outline-offset: var(--avatar-ring-offset);
-  outline-style: solid;
-}
+  .ui-Avatar:where(.r-variant-ring) {
+    outline-color: var(--accent-9);
+    outline-width: var(--avatar-ring-width);
+    outline-offset: var(--avatar-ring-offset);
+    outline-style: solid;
+  }
 
-.ui-Avatar:where(.r-variant-ring) > span,
-.ui-Avatar:where(.r-variant-solid) > span {
-  background-color: var(--accent-9);
-  color: var(--accent-contrast);
-}
-.ui-Avatar:where(.r-variant-soft) > span {
-  background-color: var(--accent-a3);
-  color: var(--accent-a11);
-}
-.ui-Avatar:where(.r-variant-outline) > span {
-  box-shadow: inset 0 0 1px var(--accent-a8);
-  color: var(--accent-a11);
-}
+  .ui-Avatar:where(.r-variant-ring) > span,
+  .ui-Avatar:where(.r-variant-solid) > span {
+    background-color: var(--accent-9);
+    color: var(--accent-contrast);
+  }
+  .ui-Avatar:where(.r-variant-soft) > span {
+    background-color: var(--accent-a3);
+    color: var(--accent-a11);
+  }
+  .ui-Avatar:where(.r-variant-outline) > span {
+    box-shadow: inset 0 0 1px var(--accent-a8);
+    color: var(--accent-a11);
+  }
 
-.ui-Avatar:where(.r-variant-surface) > span {
-  background-color: var(--accent-surface);
-  background-color: var(--accent-a3);
-  color: var(--accent-a11);
-  box-shadow: inset 0 0 1px var(--accent-a8);
+  .ui-Avatar:where(.r-variant-surface) > span {
+    background-color: var(--accent-surface);
+    background-color: var(--accent-a3);
+    color: var(--accent-a11);
+    box-shadow: inset 0 0 1px var(--accent-a8);
+  }
 }
 </style>

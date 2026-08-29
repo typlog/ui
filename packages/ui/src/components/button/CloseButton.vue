@@ -36,9 +36,11 @@ const resetClass = buildPropsClass(props, ['size', 'variant', 'highContrast'])
 <style src="./style.css"></style>
 
 <style>
-.ui-Button.ui-CloseButton {
-  height: var(--button-height);
-  width: var(--button-height);
-  padding: 0;
+@layer components {
+  .ui-Button.ui-CloseButton {
+    height: var(--button-height);
+    width: var(--button-height);
+    padding: 0;
+  }
 }
 </style>

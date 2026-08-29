@@ -141,146 +141,148 @@ onMounted(() => {
 </template>
 
 <style>
-.ui-ToastItem {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  gap: var(--toast-gap);
-  left: auto;
-  right: auto;
-  bottom: auto;
-  top: auto;
-  width: 100%;
-  background: var(--color-panel-solid);
-  box-shadow: 0 4px 12px var(--gray-a4);
-  border: 1px solid var(--gray-a3);
-  border-radius: var(--radius-3);
-  padding: var(--space-4);
-  opacity: 1;
-  z-index: calc(0 - var(--toast-index));
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s;
-  --toast-collapse-scale: calc(max(0, 1 - (var(--toast-index) * 0.06)));
-}
-
-.ui-ToastItem::after {
-  content: "";
-  position: absolute;
-  left: 0px;
-  height: calc(var(--toast-gap) + 1px);
-  bottom: 100%;
-  width: 100%;
-}
-
-.ui-ToastItem:where([data-swipe="move"]) {
-  transition: none;
-}
-
-.ui-ToastItem:where([data-visible="false"]) {
-  display: none;
-}
-
-:where(.ui-ToastViewport[data-x-position="left"]) .ui-ToastItem {
-  left: 0;
-}
-:where(.ui-ToastViewport[data-x-position="right"]) .ui-ToastItem {
-  right: 0;
-}
-
-:where(.ui-ToastViewport[data-y-position="top"]) .ui-ToastItem {
-  top: 0;
-  --toast-expanded-offset-y: calc(var(--toast-offset-y) + var(--toast-index) * var(--toast-gap) + var(--reka-toast-swipe-move-y, 0px));
-}
-
-:where(.ui-ToastViewport[data-y-position="bottom"]) .ui-ToastItem {
-  bottom: 0;
-  --toast-expanded-offset-y: calc(var(--toast-offset-y) * -1 + var(--toast-index) * var(--toast-gap) * -1 + var(--reka-toast-swipe-move-y, 0px));
-}
-
-:where(.ui-ToastViewport[data-y-position="top"]) .ui-ToastItem:where([data-expanded="false"]) {
-  transform:
-    translateX(var(--reka-toast-swipe-move-x, 0px))
-    translateY(calc(var(--reka-toast-swipe-move-y, 0px) + (min(var(--toast-index), 10) * 20%)))
-    scale(var(--toast-collapse-scale));
-}
-
-:where(.ui-ToastViewport[data-y-position="bottom"]) .ui-ToastItem:where([data-expanded="false"]) {
-  transform:
-    translateX(var(--reka-toast-swipe-move-x, 0px))
-    translateY(calc(var(--reka-toast-swipe-move-y, 0px) + var(--toast-offset-y) * -0.2))
-    scale(var(--toast-collapse-scale));
-}
-
-.ui-ToastItem:where([data-expanded="true"]) {
-  transform: translateX(var(--reka-toast-swipe-move-x, 0px)) translateY(var(--toast-expanded-offset-y));
-}
-
-.ui-ToastItem:where([data-swipe-direction="left"]) {
-  --toast-item-swipe-to-x: calc(0 - 100% - var(--toast-x-position))
-}
-
-.ui-ToastItem:where([data-swipe-direction="right"]) {
-  --toast-item-swipe-to-x: calc(100% + var(--toast-x-position))
-}
-
-.ui-ToastItem:where([data-swipe-direction="up"]) {
-  --toast-item-swipe-to-y: calc(0 - 100% - var(--toast-y-position))
-}
-
-.ui-ToastItem:where([data-swipe-direction="down"]) {
-  --toast-item-swipe-to-y: calc(100% + var(--toast-y-position))
-}
-
-.ui-ToastItem:where([data-state="closed"]),
-.ui-ToastItem:where([data-swipe="closed"]) {
-  animation: ui-fade-out 100ms ease-in;
-}
-
-.ui-ToastItem:where([data-swipe-direction="left"][data-swipe="end"]),
-.ui-ToastItem:where([data-swipe-direction="right"][data-swipe="end"]) {
-  animation: toast-swipe-x 100ms ease-out;
-}
-
-.ui-ToastItem:where([data-swipe-direction="top"][data-swipe="end"]),
-.ui-ToastItem:where([data-swipe-direction="bottom"][data-swipe="end"]) {
-  animation: toast-swipe-y 100ms ease-out;
-}
-
-@keyframes toast-swipe-x {
-  from {
-    transform: translateX(var(--reka-toast-swipe-end-x)) translateY(var(--toast-expanded-offset-y));
+@layer components {
+  .ui-ToastItem {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: var(--toast-gap);
+    left: auto;
+    right: auto;
+    bottom: auto;
+    top: auto;
+    width: 100%;
+    background: var(--color-panel-solid);
+    box-shadow: 0 4px 12px var(--gray-a4);
+    border: 1px solid var(--gray-a3);
+    border-radius: var(--radius-3);
+    padding: var(--space-4);
+    opacity: 1;
+    z-index: calc(0 - var(--toast-index));
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s;
+    --toast-collapse-scale: calc(max(0, 1 - (var(--toast-index) * 0.06)));
   }
-  to {
-    transform: translateX(var(--toast-item-swipe-to-x)) translateY(var(--toast-expanded-offset-y));
-  }
-}
 
-@keyframes toast-swipe-y {
-  from {
-    transform: translateY(var(--reka-toast-swipe-end-y));
+  .ui-ToastItem::after {
+    content: "";
+    position: absolute;
+    left: 0px;
+    height: calc(var(--toast-gap) + 1px);
+    bottom: 100%;
+    width: 100%;
   }
-  to {
-    transform: translateY(var(--toast-item-swipe-to-y));
-  }
-}
 
-.ui-ToastContent {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-.ui-ToastIcon {
-  display: inline-flex;
-  align-items: center;
-  font-size: calc(var(--toast-title-font-size) + 4px);
-  color: var(--accent-a9);
-  vertical-align: middle;
-}
-.ui-ToastTitle {
-  font-size: var(--toast-title-font-size);
-  font-weight: var(--font-weight-medium);
-}
-.ui-ToastDescription {
-  font-size: var(--toast-description-font-size);
-  color: var(--gray-10);
+  .ui-ToastItem:where([data-swipe="move"]) {
+    transition: none;
+  }
+
+  .ui-ToastItem:where([data-visible="false"]) {
+    display: none;
+  }
+
+  :where(.ui-ToastViewport[data-x-position="left"]) .ui-ToastItem {
+    left: 0;
+  }
+  :where(.ui-ToastViewport[data-x-position="right"]) .ui-ToastItem {
+    right: 0;
+  }
+
+  :where(.ui-ToastViewport[data-y-position="top"]) .ui-ToastItem {
+    top: 0;
+    --toast-expanded-offset-y: calc(var(--toast-offset-y) + var(--toast-index) * var(--toast-gap) + var(--reka-toast-swipe-move-y, 0px));
+  }
+
+  :where(.ui-ToastViewport[data-y-position="bottom"]) .ui-ToastItem {
+    bottom: 0;
+    --toast-expanded-offset-y: calc(var(--toast-offset-y) * -1 + var(--toast-index) * var(--toast-gap) * -1 + var(--reka-toast-swipe-move-y, 0px));
+  }
+
+  :where(.ui-ToastViewport[data-y-position="top"]) .ui-ToastItem:where([data-expanded="false"]) {
+    transform:
+      translateX(var(--reka-toast-swipe-move-x, 0px))
+      translateY(calc(var(--reka-toast-swipe-move-y, 0px) + (min(var(--toast-index), 10) * 20%)))
+      scale(var(--toast-collapse-scale));
+  }
+
+  :where(.ui-ToastViewport[data-y-position="bottom"]) .ui-ToastItem:where([data-expanded="false"]) {
+    transform:
+      translateX(var(--reka-toast-swipe-move-x, 0px))
+      translateY(calc(var(--reka-toast-swipe-move-y, 0px) + var(--toast-offset-y) * -0.2))
+      scale(var(--toast-collapse-scale));
+  }
+
+  .ui-ToastItem:where([data-expanded="true"]) {
+    transform: translateX(var(--reka-toast-swipe-move-x, 0px)) translateY(var(--toast-expanded-offset-y));
+  }
+
+  .ui-ToastItem:where([data-swipe-direction="left"]) {
+    --toast-item-swipe-to-x: calc(0 - 100% - var(--toast-x-position))
+  }
+
+  .ui-ToastItem:where([data-swipe-direction="right"]) {
+    --toast-item-swipe-to-x: calc(100% + var(--toast-x-position))
+  }
+
+  .ui-ToastItem:where([data-swipe-direction="up"]) {
+    --toast-item-swipe-to-y: calc(0 - 100% - var(--toast-y-position))
+  }
+
+  .ui-ToastItem:where([data-swipe-direction="down"]) {
+    --toast-item-swipe-to-y: calc(100% + var(--toast-y-position))
+  }
+
+  .ui-ToastItem:where([data-state="closed"]),
+  .ui-ToastItem:where([data-swipe="closed"]) {
+    animation: ui-fade-out 100ms ease-in;
+  }
+
+  .ui-ToastItem:where([data-swipe-direction="left"][data-swipe="end"]),
+  .ui-ToastItem:where([data-swipe-direction="right"][data-swipe="end"]) {
+    animation: toast-swipe-x 100ms ease-out;
+  }
+
+  .ui-ToastItem:where([data-swipe-direction="top"][data-swipe="end"]),
+  .ui-ToastItem:where([data-swipe-direction="bottom"][data-swipe="end"]) {
+    animation: toast-swipe-y 100ms ease-out;
+  }
+
+  @keyframes toast-swipe-x {
+    from {
+      transform: translateX(var(--reka-toast-swipe-end-x)) translateY(var(--toast-expanded-offset-y));
+    }
+    to {
+      transform: translateX(var(--toast-item-swipe-to-x)) translateY(var(--toast-expanded-offset-y));
+    }
+  }
+
+  @keyframes toast-swipe-y {
+    from {
+      transform: translateY(var(--reka-toast-swipe-end-y));
+    }
+    to {
+      transform: translateY(var(--toast-item-swipe-to-y));
+    }
+  }
+
+  .ui-ToastContent {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  .ui-ToastIcon {
+    display: inline-flex;
+    align-items: center;
+    font-size: calc(var(--toast-title-font-size) + 4px);
+    color: var(--accent-a9);
+    vertical-align: middle;
+  }
+  .ui-ToastTitle {
+    font-size: var(--toast-title-font-size);
+    font-weight: var(--font-weight-medium);
+  }
+  .ui-ToastDescription {
+    font-size: var(--toast-description-font-size);
+    color: var(--gray-10);
+  }
 }
 </style>

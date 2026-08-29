@@ -74,46 +74,45 @@ const resetClass = buildPropsClass(props, ['size', 'variant'])
     gap: var(--pin-input-gap);
     box-sizing: border-box;
   }
-}
+  .ui-PinInputRoot:where(.r-size-1) {
+    --pin-input-size: var(--space-5);
+    --pin-input-gap: var(--space-1);
+    --pin-input-radius: max(var(--radius-2), var(--radius-full));
+    --pin-input-padding: var(--space-1);
+    font-size: var(--font-size-1);
+    letter-spacing: var(--letter-spacing-1);
+  }
 
-.ui-PinInputRoot:where(.r-size-1) {
-  --pin-input-size: var(--space-5);
-  --pin-input-gap: var(--space-1);
-  --pin-input-radius: max(var(--radius-2), var(--radius-full));
-  --pin-input-padding: var(--space-1);
-  font-size: var(--font-size-1);
-  letter-spacing: var(--letter-spacing-1);
-}
+  .ui-PinInputRoot:where(.r-size-2) {
+    --pin-input-size: var(--space-6);
+    --pin-input-gap: var(--space-2);
+    --pin-input-radius: max(var(--radius-2), var(--radius-full));
+    --pin-input-padding: var(--space-2);
+    font-size: var(--font-size-2);
+    letter-spacing: var(--letter-spacing-2);
+  }
 
-.ui-PinInputRoot:where(.r-size-2) {
-  --pin-input-size: var(--space-6);
-  --pin-input-gap: var(--space-2);
-  --pin-input-radius: max(var(--radius-2), var(--radius-full));
-  --pin-input-padding: var(--space-2);
-  font-size: var(--font-size-2);
-  letter-spacing: var(--letter-spacing-2);
-}
+  .ui-PinInputRoot:where(.r-size-3) {
+    --pin-input-size: var(--space-7);
+    --pin-input-gap: var(--space-2);
+    --pin-input-radius: max(var(--radius-3), var(--radius-full));
+    --pin-input-padding: var(--space-3);
+    font-size: var(--font-size-3);
+    letter-spacing: var(--letter-spacing-3);
+  }
 
-.ui-PinInputRoot:where(.r-size-3) {
-  --pin-input-size: var(--space-7);
-  --pin-input-gap: var(--space-2);
-  --pin-input-radius: max(var(--radius-3), var(--radius-full));
-  --pin-input-padding: var(--space-3);
-  font-size: var(--font-size-3);
-  letter-spacing: var(--letter-spacing-3);
-}
+  .ui-PinInputRoot:where(.r-variant-surface) {
+    --pin-input-border-width: 1px;
+    --pin-input-border-color: var(--gray-a7);
+    --pin-input-focus-color: var(--focus-a8);
+    --pin-input-selection-color: var(--focus-a5);
+  }
 
-.ui-PinInputRoot:where(.r-variant-surface) {
-  --pin-input-border-width: 1px;
-  --pin-input-border-color: var(--gray-a7);
-  --pin-input-focus-color: var(--focus-a8);
-  --pin-input-selection-color: var(--focus-a5);
-}
-
-.ui-PinInputRoot:where(.r-variant-soft) {
-  --pin-input-border-width: 0px;
-  --pin-input-border-color: transparent;
-  --pin-input-focus-color: var(--accent-8);
-  --pin-input-selection-color: var(--accent-a5);
+  .ui-PinInputRoot:where(.r-variant-soft) {
+    --pin-input-border-width: 0px;
+    --pin-input-border-color: transparent;
+    --pin-input-focus-color: var(--accent-8);
+    --pin-input-selection-color: var(--accent-a5);
+  }
 }
 </style>

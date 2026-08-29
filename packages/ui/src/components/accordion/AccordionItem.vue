@@ -37,7 +37,9 @@ const forwarded = computed(() => {
 </template>
 
 <style>
-.ui-AccordionItem + .ui-AccordionItem {
-  border-top: 1px solid var(--gray-a5);
+@layer components {
+  .ui-AccordionItem + .ui-AccordionItem {
+    border-top: 1px solid var(--gray-a5);
+  }
 }
 </style>

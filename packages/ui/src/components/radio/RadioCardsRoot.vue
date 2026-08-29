@@ -46,16 +46,18 @@ const resetClass = buildPropsClass(props, ['size', 'variant', 'highContrast'])
 </template>
 
 <style>
-.ui-RadioCardsRoot:where(.r-size-1) {
-  --card-padding: var(--space-3);
-  --card-border-radius: max(var(--radius-4), var(--radius-full));
-}
-.ui-RadioCardsRoot:where(.r-size-2) {
-  --card-padding: var(--space-4);
-  --card-border-radius: max(var(--radius-4), var(--radius-full));
-}
-.ui-RadioCardsRoot:where(.r-size-3) {
-  --card-padding: var(--space-5);
-  --card-border-radius: max(var(--radius-5), var(--radius-full));
+@layer components {
+  .ui-RadioCardsRoot:where(.r-size-1) {
+    --card-padding: var(--space-3);
+    --card-border-radius: max(var(--radius-4), var(--radius-full));
+  }
+  .ui-RadioCardsRoot:where(.r-size-2) {
+    --card-padding: var(--space-4);
+    --card-border-radius: max(var(--radius-4), var(--radius-full));
+  }
+  .ui-RadioCardsRoot:where(.r-size-3) {
+    --card-padding: var(--space-5);
+    --card-border-radius: max(var(--radius-5), var(--radius-full));
+  }
 }
 </style>

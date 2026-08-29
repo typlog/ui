@@ -47,66 +47,65 @@ useForwardExpose()
     user-select: none;
     cursor: default;
   }
-}
+  .ui-SelectItem:where([data-disabled]) {
+    cursor: not-allowed;
+  }
 
-.ui-SelectItem:where([data-disabled]) {
-  cursor: not-allowed;
-}
+  .ui-SelectItemIndicator {
+    position: absolute;
+    left: 0;
+    width: var(--select-item-indicator-width);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-.ui-SelectItemIndicator {
-  position: absolute;
-  left: 0;
-  width: var(--select-item-indicator-width);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
+  .ui-SelectItem:where([data-disabled]) {
+    color: var(--gray-a8);
+  }
 
-.ui-SelectItem:where([data-disabled]) {
-  color: var(--gray-a8);
-}
+  :where(.r-size-1) .ui-SelectItem {
+    font-size: var(--font-size-1);
+    line-height: var(--line-height-1);
+    letter-spacing: var(--letter-spacing-1);
+    border-radius: var(--radius-1);
+  }
 
-:where(.r-size-1) .ui-SelectItem {
-  font-size: var(--font-size-1);
-  line-height: var(--line-height-1);
-  letter-spacing: var(--letter-spacing-1);
-  border-radius: var(--radius-1);
-}
+  :where(.r-size-1) .ui-SelectItemIndicatorIcon {
+    width: calc(8px * var(--scaling));
+    height: calc(8px * var(--scaling));
+  }
 
-:where(.r-size-1) .ui-SelectItemIndicatorIcon {
-  width: calc(8px * var(--scaling));
-  height: calc(8px * var(--scaling));
-}
+  :where(.r-size-2) .ui-SelectItem {
+    line-height: var(--line-height-2);
+    border-radius: var(--radius-2);
+    font-size: var(--font-size-2);
+    letter-spacing: var(--letter-spacing-2);
+  }
 
-:where(.r-size-2) .ui-SelectItem {
-  line-height: var(--line-height-2);
-  border-radius: var(--radius-2);
-  font-size: var(--font-size-2);
-  letter-spacing: var(--letter-spacing-2);
-}
+  :where(.r-size-2) .ui-SelectItemIndicatorIcon,
+  :where(.r-size-3) .ui-SelectItemIndicatorIcon {
+    width: calc(10px * var(--scaling));
+    height: calc(10px * var(--scaling));
+  }
 
-:where(.r-size-2) .ui-SelectItemIndicatorIcon,
-:where(.r-size-3) .ui-SelectItemIndicatorIcon {
-  width: calc(10px * var(--scaling));
-  height: calc(10px * var(--scaling));
-}
+  :where(.r-size-3) .ui-SelectItem {
+    line-height: var(--line-height-2);
+    border-radius: var(--radius-2);
+    font-size: var(--font-size-3);
+    letter-spacing: var(--letter-spacing-3);
+  }
 
-:where(.r-size-3) .ui-SelectItem {
-  line-height: var(--line-height-2);
-  border-radius: var(--radius-2);
-  font-size: var(--font-size-3);
-  letter-spacing: var(--letter-spacing-3);
-}
-
-:where(.r-variant-solid) .ui-SelectItem[data-highlighted] {
-  background-color: var(--accent-9);
-  color: var(--accent-contrast);
-}
-:where(.r-variant-solid):where(.r-high-contrast) .ui-SelectItem[data-highlighted] {
-  background-color: var(--accent-12);
-  color: var(--accent-1);
-}
-:where(.r-variant-soft) .ui-SelectItem[data-highlighted] {
-  background-color: var(--accent-a4);
+  :where(.r-variant-solid) .ui-SelectItem[data-highlighted] {
+    background-color: var(--accent-9);
+    color: var(--accent-contrast);
+  }
+  :where(.r-variant-solid):where(.r-high-contrast) .ui-SelectItem[data-highlighted] {
+    background-color: var(--accent-12);
+    color: var(--accent-1);
+  }
+  :where(.r-variant-soft) .ui-SelectItem[data-highlighted] {
+    background-color: var(--accent-a4);
+  }
 }
 </style>

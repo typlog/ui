@@ -83,55 +83,57 @@ const swipeDirection = computed(() => {
 </template>
 
 <style>
-.ui-ToastViewport {
-  position: fixed;
-  margin: 0 auto;
-  top: auto;
-  left: auto;
-  bottom: auto;
-  right: auto;
-  max-width: calc(100vw - var(--toast-x-position) - var(--space-4));
-  display: flex;
-  flex-direction: column;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  outline: none;
-  width: var(--toast-width);
-  --toast-x-position: var(--space-4);
-  --toast-y-position: var(--space-4);
-}
-.ui-ToastViewport:where(.r-size-1) {
-  --toast-width: 300px;
-  --toast-gap: var(--space-2);
-  --toast-title-font-size: var(--font-size-2);
-  --toast-description-font-size: var(--font-size-1);
-}
-.ui-ToastViewport:where(.r-size-2) {
-  --toast-width: 340px;
-  --toast-gap: var(--space-3);
-  --toast-title-font-size: var(--font-size-3);
-  --toast-description-font-size: var(--font-size-1);
-}
-.ui-ToastViewport:where(.r-size-3) {
-  --toast-width: 380px;
-  --toast-gap: var(--space-4);
-  --toast-title-font-size: var(--font-size-4);
-  --toast-description-font-size: var(--font-size-3);
-}
-.ui-ToastViewport:where([data-x-position="left"]) {
-  left: var(--toast-x-position);
-}
-.ui-ToastViewport:where([data-x-position="right"]) {
-  right: var(--toast-x-position);
-}
-.ui-ToastViewport:where([data-x-position="center"]) {
-  left: calc(50% - var(--toast-width) / 2);
-}
-.ui-ToastViewport:where([data-y-position="top"]) {
-  top: var(--toast-y-position);
-}
-.ui-ToastViewport:where([data-y-position="bottom"]) {
-  bottom: var(--toast-y-position);
+@layer components {
+  .ui-ToastViewport {
+    position: fixed;
+    margin: 0 auto;
+    top: auto;
+    left: auto;
+    bottom: auto;
+    right: auto;
+    max-width: calc(100vw - var(--toast-x-position) - var(--space-4));
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    width: var(--toast-width);
+    --toast-x-position: var(--space-4);
+    --toast-y-position: var(--space-4);
+  }
+  .ui-ToastViewport:where(.r-size-1) {
+    --toast-width: 300px;
+    --toast-gap: var(--space-2);
+    --toast-title-font-size: var(--font-size-2);
+    --toast-description-font-size: var(--font-size-1);
+  }
+  .ui-ToastViewport:where(.r-size-2) {
+    --toast-width: 340px;
+    --toast-gap: var(--space-3);
+    --toast-title-font-size: var(--font-size-3);
+    --toast-description-font-size: var(--font-size-1);
+  }
+  .ui-ToastViewport:where(.r-size-3) {
+    --toast-width: 380px;
+    --toast-gap: var(--space-4);
+    --toast-title-font-size: var(--font-size-4);
+    --toast-description-font-size: var(--font-size-3);
+  }
+  .ui-ToastViewport:where([data-x-position="left"]) {
+    left: var(--toast-x-position);
+  }
+  .ui-ToastViewport:where([data-x-position="right"]) {
+    right: var(--toast-x-position);
+  }
+  .ui-ToastViewport:where([data-x-position="center"]) {
+    left: calc(50% - var(--toast-width) / 2);
+  }
+  .ui-ToastViewport:where([data-y-position="top"]) {
+    top: var(--toast-y-position);
+  }
+  .ui-ToastViewport:where([data-y-position="bottom"]) {
+    bottom: var(--toast-y-position);
+  }
 }
 </style>

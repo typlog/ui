@@ -38,22 +38,21 @@ const forwarded = useForwardPropsWithout(props, ['radius'])
     background-color: var(--gray-a3);
     animation: ui-skeleton-pulse 1.5s ease-in-out infinite;
   }
-}
+  @keyframes ui-skeleton-pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
 
-@keyframes ui-skeleton-pulse {
-  0%,
-  100% {
-    opacity: 1;
+    50% {
+      opacity: 0.55;
+    }
   }
 
-  50% {
-    opacity: 0.55;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .ui-Skeleton {
-    animation: none;
+  @media (prefers-reduced-motion: reduce) {
+    .ui-Skeleton {
+      animation: none;
+    }
   }
 }
 </style>

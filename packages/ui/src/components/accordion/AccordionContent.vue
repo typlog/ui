@@ -48,14 +48,14 @@ defineOptions({
     font-weight: var(--font-weight-regular);
     font-size: var(--accordion-content-font-size);
   }
-}
-.ui-AccordionContent:where([data-state="open"]) {
-  animation: accordion-down 0.2s ease-out;
-}
-.ui-AccordionContent:where([data-state="closed"]) {
-  animation: accordion-up 0.2s ease-out;
-}
-.ui-AccordionContentInner {
-  padding-bottom: var(--accordion-padding);
+  .ui-AccordionContent:where([data-state="open"]) {
+    animation: accordion-down 0.2s ease-out;
+  }
+  .ui-AccordionContent:where([data-state="closed"]) {
+    animation: accordion-up 0.2s ease-out;
+  }
+  .ui-AccordionContentInner {
+    padding-bottom: var(--accordion-padding);
+  }
 }
 </style>

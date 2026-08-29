@@ -57,34 +57,33 @@ const resetClass = buildPropsClass(props, ['size', 'variant'])
     border-radius: var(--radio-tabs-list-radius);
     font-size: var(--radio-tabs-font-size);
   }
-}
+  .ui-RadioTabsRoot:where(.r-size-1) {
+    --radio-tabs-font-size: var(--font-size-1);
+    --radio-tabs-list-padding: var(--space-1);
+    --radio-tabs-list-radius: max(var(--radius-2), var(--radius-full));
+    --radio-tabs-item-padding: 3px 6px;
+    --radio-tabs-item-radius: max(var(--radius-1), var(--radius-full));
+  }
 
-.ui-RadioTabsRoot:where(.r-size-1) {
-  --radio-tabs-font-size: var(--font-size-1);
-  --radio-tabs-list-padding: var(--space-1);
-  --radio-tabs-list-radius: max(var(--radius-2), var(--radius-full));
-  --radio-tabs-item-padding: 3px 6px;
-  --radio-tabs-item-radius: max(var(--radius-1), var(--radius-full));
-}
+  .ui-RadioTabsRoot:where(.r-size-2) {
+    --radio-tabs-font-size: var(--font-size-2);
+    --radio-tabs-list-padding: var(--space-1);
+    --radio-tabs-list-radius: max(var(--radius-3), var(--radius-full));
+    --radio-tabs-item-padding: 4px 8px;
+    --radio-tabs-item-radius: max(var(--radius-2), var(--radius-full));
+  }
 
-.ui-RadioTabsRoot:where(.r-size-2) {
-  --radio-tabs-font-size: var(--font-size-2);
-  --radio-tabs-list-padding: var(--space-1);
-  --radio-tabs-list-radius: max(var(--radius-3), var(--radius-full));
-  --radio-tabs-item-padding: 4px 8px;
-  --radio-tabs-item-radius: max(var(--radius-2), var(--radius-full));
-}
+  .ui-RadioTabsRoot:where(.r-variant-surface) {
+    background-color: var(--accent-surface);
+    box-shadow: inset 0 0 0 1px var(--accent-a7);
+  }
 
-.ui-RadioTabsRoot:where(.r-variant-surface) {
-  background-color: var(--accent-surface);
-  box-shadow: inset 0 0 0 1px var(--accent-a7);
-}
+  .ui-RadioTabsRoot:where(.r-variant-classic) {
+    background-color: var(--accent-a3);
+  }
 
-.ui-RadioTabsRoot:where(.r-variant-classic) {
-  background-color: var(--accent-a3);
-}
-
-.ui-RadioTabsRoot:where(.r-variant-soft) {
-  background-color: var(--accent-a3);
+  .ui-RadioTabsRoot:where(.r-variant-soft) {
+    background-color: var(--accent-a3);
+  }
 }
 </style>
