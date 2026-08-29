@@ -103,7 +103,11 @@ reka: https://reka-ui.com/docs/components/example
 ## Examples
 ```
 
-Only add reference links that exist for the component. Use `alpha` for a new or still-evolving API and change status deliberately as the API matures.
+Only add reference links that exist for the component. Choose a status using this rubric:
+
+- `alpha` — the API or core behavior may still change, or known contract gaps remain.
+- `beta` — the documented API is usable, but compatibility, SSR/browser, or complex interaction validation may be incomplete.
+- `stable` — there is a compatibility commitment, key regression coverage, and no known high-impact gaps.
 
 ## Validation
 

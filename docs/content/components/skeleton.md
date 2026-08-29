@@ -1,7 +1,7 @@
 ---
 title: Skeleton
 description: Placeholder content that indicates a page or component is loading.
-status: alpha
+status: beta
 source: https://github.com/typlog/ui/tree/main/packages/ui/src/components/skeleton
 ---
 

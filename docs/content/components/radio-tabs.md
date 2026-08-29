@@ -1,7 +1,7 @@
 ---
 title: Radio Tabs
 description: Set of interactive radio buttons where only one can be selected at a time.
-status: alpha
+status: beta
 source: https://github.com/typlog/ui/tree/main/packages/ui/src/components/radio
 ---
 

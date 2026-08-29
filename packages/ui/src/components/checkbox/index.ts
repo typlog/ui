@@ -4,6 +4,8 @@ export {
 } from './Checkbox.vue'
 
 export {
-  CheckboxGroupRoot as CheckboxGroup,
-  type CheckboxGroupRootProps as CheckboxGroupProps,
-} from 'reka-ui'
+  default as CheckboxGroup,
+  type CheckboxGroupEmits,
+  type CheckboxGroupProps,
+  type CheckboxGroupSelectAllProps,
+} from './CheckboxGroup.vue'

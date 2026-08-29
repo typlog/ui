@@ -1,7 +1,7 @@
 ---
 title: Empty
 description: A flexible, accessible composition for empty states.
-status: alpha
+status: beta
 source: https://github.com/typlog/ui/tree/main/packages/ui/src/components/empty
 ---
 

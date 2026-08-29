@@ -1,7 +1,7 @@
 ---
 title: PinInput
 description: Captures a short sequence of characters with one input per position.
-status: alpha
+status: beta
 source: https://github.com/typlog/ui/tree/main/packages/ui/src/components/pin-input
 reka: https://reka-ui.com/docs/components/pin-input
 ---

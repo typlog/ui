@@ -1,7 +1,7 @@
 ---
 title: Spinner
 description: Compact progress indicator for asynchronous work.
-status: alpha
+status: beta
 source: https://github.com/typlog/ui/tree/main/packages/ui/src/components/spinner
 ---
 

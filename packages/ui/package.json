@@ -34,6 +34,7 @@
     "@iconify/vue": "^5.0.0",
     "@tanstack/vue-virtual": "^3.13.36",
     "@vueuse/core": "^14.4.0",
+    "ohash": "^2.0.12",
     "reka-ui": "^2.10.4",
     "vue": "^3.5.0"
   },
