@@ -1,3 +1,55 @@
+@keyframes ui-drawer-slide-out-down {
+  from {
+    transform: translate3d(
+      var(--drawer-swipe-movement-x, 0px),
+      calc(var(--drawer-swipe-movement-y, 0px) + var(--drawer-snap-point-offset, 0px)),
+      0
+    );
+  }
+  to {
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+@keyframes ui-drawer-slide-out-up {
+  from {
+    transform: translate3d(
+      var(--drawer-swipe-movement-x, 0px),
+      calc(var(--drawer-swipe-movement-y, 0px) + var(--drawer-snap-point-offset, 0px)),
+      0
+    );
+  }
+  to {
+    transform: translate3d(0, -100%, 0);
+  }
+}
+
+@keyframes ui-drawer-slide-out-left {
+  from {
+    transform: translate3d(
+      calc(var(--drawer-swipe-movement-x, 0px) + var(--drawer-snap-point-offset, 0px)),
+      var(--drawer-swipe-movement-y, 0px),
+      0
+    );
+  }
+  to {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@keyframes ui-drawer-slide-out-right {
+  from {
+    transform: translate3d(
+      calc(var(--drawer-swipe-movement-x, 0px) + var(--drawer-snap-point-offset, 0px)),
+      var(--drawer-swipe-movement-y, 0px),
+      0
+    );
+  }
+  to {
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
 @layer components {
   .ui-DrawerViewport {
     inset: 0;
@@ -9,7 +61,6 @@
   .ui-DrawerOverlay {
     background: var(--color-overlay);
     inset: 0;
-    pointer-events: auto;
     position: absolute;
   }
 
@@ -51,7 +102,6 @@
     bottom: 0;
     height: min(var(--drawer-size), 100%);
     left: 0;
-    max-height: 100%;
     padding-bottom: max(var(--drawer-padding), env(safe-area-inset-bottom));
     right: 0;
   }
@@ -63,7 +113,6 @@
     border-radius: 0 0 var(--radius-5) var(--radius-5);
     height: min(var(--drawer-size), 100%);
     left: 0;
-    max-height: 100%;
     padding-top: max(var(--drawer-padding), env(safe-area-inset-top));
     right: 0;
     top: 0;
@@ -76,7 +125,6 @@
     border-radius: 0 var(--radius-5) var(--radius-5) 0;
     bottom: 0;
     left: 0;
-    max-width: 100%;
     padding-left: max(var(--drawer-padding), env(safe-area-inset-left));
     top: 0;
     width: min(var(--drawer-size), 100%);
@@ -88,7 +136,6 @@
 
     border-radius: var(--radius-5) 0 0 var(--radius-5);
     bottom: 0;
-    max-width: 100%;
     padding-right: max(var(--drawer-padding), env(safe-area-inset-right));
     right: 0;
     top: 0;
@@ -103,37 +150,68 @@
     transform: var(--drawer-snap-transform);
   }
 
+  .ui-DrawerPopup:where([data-swiping], [data-swipe-dismissed]) {
+    transition: none;
+  }
+
+  .ui-DrawerPopup:where([data-swiping], [data-swipe-dismissed])[data-swipe-direction='down'],
+  .ui-DrawerPopup:where([data-swiping], [data-swipe-dismissed])[data-swipe-direction='up'] {
+    transform: translate3d(
+      var(--drawer-swipe-movement-x, 0px),
+      calc(var(--drawer-swipe-movement-y, 0px) + var(--drawer-snap-point-offset, 0px)),
+      0
+    );
+  }
+
+  .ui-DrawerPopup:where([data-swiping], [data-swipe-dismissed])[data-swipe-direction='left'],
+  .ui-DrawerPopup:where([data-swiping], [data-swipe-dismissed])[data-swipe-direction='right'] {
+    transform: translate3d(
+      calc(var(--drawer-swipe-movement-x, 0px) + var(--drawer-snap-point-offset, 0px)),
+      var(--drawer-swipe-movement-y, 0px),
+      0
+    );
+  }
+
   @media (prefers-reduced-motion: no-preference) {
-    .ui-DrawerPopup[data-swiping] {
-      transition: none;
+    @starting-style {
+      .ui-DrawerPopup[data-state='open'][data-swipe-direction='down'] {
+        transform: translate3d(0, 100%, 0);
+      }
+
+      .ui-DrawerPopup[data-state='open'][data-swipe-direction='up'] {
+        transform: translate3d(0, -100%, 0);
+      }
+
+      .ui-DrawerPopup[data-state='open'][data-swipe-direction='left'] {
+        transform: translate3d(-100%, 0, 0);
+      }
+
+      .ui-DrawerPopup[data-state='open'][data-swipe-direction='right'] {
+        transform: translate3d(100%, 0, 0);
+      }
     }
 
-    .ui-DrawerPopup[data-swiping][data-swipe-direction='down'],
-    .ui-DrawerPopup[data-swiping][data-swipe-direction='up'] {
-      transform: translate3d(
-        var(--drawer-swipe-movement-x, 0px),
-        calc(var(--drawer-swipe-movement-y, 0px) + var(--drawer-snap-point-offset, 0px)),
-        0
-      );
+    .ui-DrawerPopup[data-state='closed'][data-swipe-direction='down'] {
+      animation: ui-drawer-slide-out-down calc(180ms * var(--drawer-swipe-strength, 1)) ease-in;
     }
 
-    .ui-DrawerPopup[data-swiping][data-swipe-direction='left'],
-    .ui-DrawerPopup[data-swiping][data-swipe-direction='right'] {
-      transform: translate3d(
-        calc(var(--drawer-swipe-movement-x, 0px) + var(--drawer-snap-point-offset, 0px)),
-        var(--drawer-swipe-movement-y, 0px),
-        0
-      );
+    .ui-DrawerPopup[data-state='closed'][data-swipe-direction='up'] {
+      animation: ui-drawer-slide-out-up calc(180ms * var(--drawer-swipe-strength, 1)) ease-in;
     }
 
-    .ui-DrawerPopup[data-state='closed'] {
-      transition-duration: calc(180ms * var(--drawer-swipe-strength, 1));
+    .ui-DrawerPopup[data-state='closed'][data-swipe-direction='left'] {
+      animation: ui-drawer-slide-out-left calc(180ms * var(--drawer-swipe-strength, 1)) ease-in;
     }
+
+    .ui-DrawerPopup[data-state='closed'][data-swipe-direction='right'] {
+      animation: ui-drawer-slide-out-right calc(180ms * var(--drawer-swipe-strength, 1)) ease-in;
+    }
+
   }
 
   .ui-DrawerHandle {
     background: var(--gray-8);
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-1);
     height: 4px;
     position: absolute;
     width: 36px;
@@ -200,10 +278,8 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .ui-DrawerPopup,
-    .ui-DrawerOverlay {
-      animation-duration: 0.01ms !important;
-      transition-duration: 0.01ms !important;
+    .ui-DrawerPopup {
+      transition: none;
     }
   }
 }

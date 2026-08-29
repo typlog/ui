@@ -22,16 +22,16 @@
       animation-duration: 100ms;
     }
     .ui-PopperContent:where([data-state='closed']):where([data-side='top']) {
-      animation-name: ui-slide-from-top, ui-fade-out;
+      animation-name: ui-slide-to-top, ui-fade-out;
     }
     .ui-PopperContent:where([data-state='closed']):where([data-side='bottom']) {
-      animation-name: ui-slide-from-bottom, ui-fade-out;
+      animation-name: ui-slide-to-bottom, ui-fade-out;
     }
     .ui-PopperContent:where([data-state='closed']):where([data-side='left']) {
-      animation-name: ui-slide-from-left, ui-fade-out;
+      animation-name: ui-slide-to-left, ui-fade-out;
     }
     .ui-PopperContent:where([data-state='closed']):where([data-side='right']) {
-      animation-name: ui-slide-from-right, ui-fade-out;
+      animation-name: ui-slide-to-right, ui-fade-out;
     }
   }
 }
