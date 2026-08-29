@@ -13,6 +13,8 @@
   }
 
   .ui-DrawerPopup {
+    --drawer-bleed: var(--space-8);
+
     background: var(--color-panel-solid);
     box-shadow: var(--shadow-6);
     box-sizing: border-box;
@@ -42,51 +44,59 @@
   }
 
   .ui-DrawerPopup[data-swipe-direction='down'] {
-    --drawer-closed-transform: translate3d(0, 100%, 0);
-    --drawer-snap-transform: translate3d(0, var(--drawer-snap-point-offset, 0px), 0);
-
     border-radius: var(--radius-5) var(--radius-5) 0 0;
-    bottom: 0;
-    height: min(var(--drawer-size), 100%);
+    bottom: calc(-1 * var(--drawer-bleed));
+    height: min(
+      calc(var(--drawer-size) + var(--drawer-bleed)),
+      calc(100% + var(--drawer-bleed))
+    );
     left: 0;
-    padding-bottom: max(var(--drawer-padding), env(safe-area-inset-bottom));
+    padding-bottom: calc(
+      max(var(--drawer-padding), env(safe-area-inset-bottom)) + var(--drawer-bleed)
+    );
     right: 0;
   }
 
   .ui-DrawerPopup[data-swipe-direction='up'] {
-    --drawer-closed-transform: translate3d(0, -100%, 0);
-    --drawer-snap-transform: translate3d(0, var(--drawer-snap-point-offset, 0px), 0);
-
     border-radius: 0 0 var(--radius-5) var(--radius-5);
-    height: min(var(--drawer-size), 100%);
+    height: min(
+      calc(var(--drawer-size) + var(--drawer-bleed)),
+      calc(100% + var(--drawer-bleed))
+    );
     left: 0;
-    padding-top: max(var(--drawer-padding), env(safe-area-inset-top));
+    padding-top: calc(
+      max(var(--drawer-padding), env(safe-area-inset-top)) + var(--drawer-bleed)
+    );
     right: 0;
-    top: 0;
+    top: calc(-1 * var(--drawer-bleed));
   }
 
   .ui-DrawerPopup[data-swipe-direction='left'] {
-    --drawer-closed-transform: translate3d(-100%, 0, 0);
-    --drawer-snap-transform: translate3d(var(--drawer-snap-point-offset, 0px), 0, 0);
-
     border-radius: 0 var(--radius-5) var(--radius-5) 0;
     bottom: 0;
-    left: 0;
-    padding-left: max(var(--drawer-padding), env(safe-area-inset-left));
+    left: calc(-1 * var(--drawer-bleed));
+    padding-left: calc(
+      max(var(--drawer-padding), env(safe-area-inset-left)) + var(--drawer-bleed)
+    );
     top: 0;
-    width: min(var(--drawer-size), 100%);
+    width: min(
+      calc(var(--drawer-size) + var(--drawer-bleed)),
+      calc(100% + var(--drawer-bleed))
+    );
   }
 
   .ui-DrawerPopup[data-swipe-direction='right'] {
-    --drawer-closed-transform: translate3d(100%, 0, 0);
-    --drawer-snap-transform: translate3d(var(--drawer-snap-point-offset, 0px), 0, 0);
-
     border-radius: var(--radius-5) 0 0 var(--radius-5);
     bottom: 0;
-    padding-right: max(var(--drawer-padding), env(safe-area-inset-right));
-    right: 0;
+    padding-right: calc(
+      max(var(--drawer-padding), env(safe-area-inset-right)) + var(--drawer-bleed)
+    );
+    right: calc(-1 * var(--drawer-bleed));
     top: 0;
-    width: min(var(--drawer-size), 100%);
+    width: min(
+      calc(var(--drawer-size) + var(--drawer-bleed)),
+      calc(100% + var(--drawer-bleed))
+    );
   }
 
   .ui-DrawerHandle {

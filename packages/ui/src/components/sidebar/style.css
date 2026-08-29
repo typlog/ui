@@ -547,6 +547,8 @@
   }
 
   .ui-SidebarPanel:where(.r-mobile) {
+    --drawer-bleed: var(--space-8);
+
     height: 100%;
     max-width: calc(100vw - var(--space-4));
     pointer-events: auto;
@@ -560,14 +562,24 @@
     margin: var(--space-2);
   }
 
-  .ui-SidebarPanel:where(.r-mobile)[data-swipe-direction='left'] {
-    --drawer-closed-transform: translate3d(-100%, 0, 0);
-    --drawer-snap-transform: translate3d(var(--drawer-snap-point-offset, 0px), 0, 0);
+  .ui-SidebarPanel:where(.r-mobile.r-side-left)[data-swiping] {
+    box-shadow: calc(-1 * var(--drawer-bleed)) 0 0 var(--color-panel-solid);
   }
 
-  .ui-SidebarPanel:where(.r-mobile)[data-swipe-direction='right'] {
-    --drawer-closed-transform: translate3d(100%, 0, 0);
-    --drawer-snap-transform: translate3d(var(--drawer-snap-point-offset, 0px), 0, 0);
+  .ui-SidebarPanel:where(.r-mobile.r-side-right)[data-swiping] {
+    box-shadow: var(--drawer-bleed) 0 0 var(--color-panel-solid);
+  }
+
+  .ui-SidebarPanel:where(.r-mobile.r-variant-floating.r-side-left)[data-swiping] {
+    box-shadow:
+      var(--shadow-3),
+      calc(-1 * var(--drawer-bleed)) 0 0 var(--color-panel-solid);
+  }
+
+  .ui-SidebarPanel:where(.r-mobile.r-variant-floating.r-side-right)[data-swiping] {
+    box-shadow:
+      var(--shadow-3),
+      var(--drawer-bleed) 0 0 var(--color-panel-solid);
   }
 
   .ui-SidebarVisuallyHidden {
