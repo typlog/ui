@@ -72,6 +72,7 @@ const resetClass = buildPropsClass(props, ['size', 'variant', 'highContrast'])
     vertical-align: top;
     flex-shrink: 0;
     cursor: default;
+    width: var(--checkbox-size);
     height: var(--checkbox-size);
     border-radius: var(--checkbox-border-radius);
   }

@@ -62,7 +62,10 @@ const pin = ref<string[]>([])
     <FieldRoot name="radio">
       <FieldLabel>Radio Group</FieldLabel>
       <FieldControl as-child>
-        <RadioGroupRoot v-model="radio" name="radio"><RadioGroupItem value="one">One</RadioGroupItem><RadioGroupItem value="two">Two</RadioGroupItem></RadioGroupRoot>
+        <RadioGroupRoot v-model="radio" name="radio" class="flex flex-col gap-2">
+          <RadioGroupItem value="one">One</RadioGroupItem>
+          <RadioGroupItem value="two">Two</RadioGroupItem>
+        </RadioGroupRoot>
       </FieldControl>
     </FieldRoot>
     <FieldRoot name="switch">

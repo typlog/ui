@@ -57,6 +57,7 @@ const resetClass = buildPropsClass(props, ['size', 'variant', 'highContrast'])
   }
 
   .ui-Switch {
+    --switch-width: calc(var(--switch-height) * 1.75);
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -65,7 +66,7 @@ const resetClass = buildPropsClass(props, ['size', 'variant', 'highContrast'])
     outline: none;
 
     height: var(--switch-height);
-    --switch-width: calc(var(--switch-height) * 1.75);
+    width: var(--switch-width);
     --switch-thumb-inset: 1px;
     --switch-thumb-size: calc(var(--switch-height) - var(--switch-thumb-inset) * 2);
     --switch-thumb-translate-x: calc(var(--switch-width) - var(--switch-height));
