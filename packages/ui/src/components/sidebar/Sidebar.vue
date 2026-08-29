@@ -41,7 +41,7 @@ export type SidebarEmits = DialogContentEmits & {
 export interface SidebarContext {
   open: ComputedRef<boolean>
   collapsed: ComputedRef<boolean>
-  isMobile: Ref<boolean>
+  isNarrowViewport: Ref<boolean>
   side: Ref<'left' | 'right'>
   variant: Ref<'default' | 'floating' | 'inset'>
   collapsible: Ref<'offcanvas' | 'icon' | 'none'>
@@ -94,10 +94,8 @@ defineSlots<{
   default?: (props: {
     /** Current mobile open state. */
     open: boolean
-    /** Current desktop collapsed state. */
+    /** Whether the currently rendered sidebar is visually collapsed. */
     collapsed: boolean
-    /** Whether the provider is below the responsive breakpoint. */
-    isMobile: boolean
     /** Toggles the state appropriate for the current viewport. */
     toggle: () => void
   }) => any
@@ -106,7 +104,7 @@ const provider = injectSidebarProviderContext()
 
 const internalOpen = ref(props.defaultOpen)
 const internalCollapsed = ref(props.defaultCollapsed)
-const isMobile = provider.isMobile
+const isNarrowViewport = provider.isNarrowViewport
 const lastTrigger = ref<HTMLElement | null>(null)
 const panelId = `ui-sidebar-${useId()}`
 const { side, variant, collapsible } = toRefs(props)
@@ -114,7 +112,7 @@ const { side, variant, collapsible } = toRefs(props)
 const open = computed({
   get: () => props.open ?? internalOpen.value,
   set: (value: boolean) => {
-    if (value && isMobile.value)
+    if (value && isNarrowViewport.value)
       provider.requestOpen(side.value, controller)
     if (props.open === undefined)
       internalOpen.value = value
@@ -130,6 +128,7 @@ const collapsed = computed({
     emits('update:collapsed', value)
   },
 })
+const isVisuallyCollapsed = computed(() => !isNarrowViewport.value && collapsed.value)
 
 function toggleCollapsed() {
   if (collapsible.value !== 'none')
@@ -137,7 +136,7 @@ function toggleCollapsed() {
 }
 
 function toggle() {
-  if (isMobile.value)
+  if (isNarrowViewport.value)
     open.value = !open.value
   else
     toggleCollapsed()
@@ -169,15 +168,15 @@ watch(side, (value, _oldValue, onCleanup) => {
     onCleanup(() => provider.unregister(value, controller))
 }, { immediate: true })
 
-watch([open, isMobile], ([isOpen, mobile]) => {
-  if (isOpen && mobile)
+watch([open, isNarrowViewport], ([isOpen, narrowViewport]) => {
+  if (isOpen && narrowViewport)
     provider.requestOpen(side.value, controller)
 }, { immediate: true })
 
 provideSidebarContext({
   open,
   collapsed,
-  isMobile,
+  isNarrowViewport,
   side,
   variant,
   collapsible,
@@ -235,7 +234,7 @@ function closeAutoFocus(event: Event) {
 <template>
   <DialogRoot :open="open" @update:open="setOpen">
     <div
-      v-if="!isMobile"
+      v-if="!isNarrowViewport"
       class="ui-Sidebar"
       :class="resetClass"
       :style="sidebarStyle"
@@ -250,8 +249,7 @@ function closeAutoFocus(event: Event) {
       >
         <slot
           :open="open"
-          :collapsed="collapsed"
-          :is-mobile="isMobile"
+          :collapsed="isVisuallyCollapsed"
           :toggle="toggle"
         ></slot>
       </Primitive>
@@ -275,8 +273,7 @@ function closeAutoFocus(event: Event) {
           >
             <slot
               :open="open"
-              :collapsed="collapsed"
-              :is-mobile="isMobile"
+              :collapsed="isVisuallyCollapsed"
               :toggle="toggle"
             ></slot>
             <DialogTitle class="ui-SidebarVisuallyHidden">

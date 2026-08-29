@@ -41,9 +41,11 @@ Use at most one `Sidebar` per `side` in a provider. Left and right state is inde
 
 `SidebarHeader` and `SidebarFooter` provide layout and spacing only. Add a border utility or `Separator` when a visual divider is needed.
 
-The default `Sidebar` slot exposes `collapsed` and `isMobile`. Use them to conditionally render arbitrary header or body content in desktop icon-collapsed mode while keeping the complete mobile panel visible.
+The default `Sidebar` slot exposes `collapsed` as the current visual state. It follows desktop icon-collapse state and remains `false` in the complete mobile panel, so arbitrary header or body content can use `v-if="!collapsed"` without application-level breakpoint checks.
 
 <PropsTable name="SidebarInset" />
+
+`SidebarInset` scrolls vertically when `SidebarProvider` has a constrained height, while each sidebar keeps its header and footer fixed and scrolls only `SidebarBody`. Set the provider height at the layout boundary—for example, `h-dvh overflow-hidden` for a full-height application shell.
 
 ### Menu structure
 

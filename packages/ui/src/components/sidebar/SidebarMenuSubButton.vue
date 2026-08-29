@@ -20,8 +20,6 @@ import { Primitive } from 'reka-ui'
 import { injectSidebarMenuContext } from './SidebarMenu.vue'
 import SidebarMenuButtonContent from './SidebarMenuButtonContent.vue'
 
-defineOptions({ inheritAttrs: false })
-
 const props = withDefaults(defineProps<SidebarMenuSubButtonProps>(), {
   as: 'button',
   active: false,
@@ -50,7 +48,6 @@ function preventDisabled(event: MouseEvent) {
 
 <template>
   <Primitive
-    v-bind="$attrs"
     class="ui-SidebarMenuSubButton"
     :as="props.as"
     :as-child="props.asChild"

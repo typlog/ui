@@ -50,7 +50,7 @@ injectSidebarMenuContext()
 const tooltip = computed(() => props.tooltip === false ? undefined : props.tooltip ?? props.text)
 const showTooltip = computed(() => Boolean(tooltip.value)
   && !props.disabled
-  && !context.isMobile.value
+  && !context.isNarrowViewport.value
   && context.collapsible.value === 'icon'
   && context.collapsed.value)
 const tooltipSide = computed(() => context.side.value === 'left' ? 'right' : 'left')

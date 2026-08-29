@@ -32,6 +32,7 @@ export * from './combobox'
 export * from './radio'
 export * from './tabs'
 export * from './editable'
+export * from './form'
 
 export * from './accordion'
 export * from './collapsible'

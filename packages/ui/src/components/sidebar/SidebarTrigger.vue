@@ -26,11 +26,11 @@ const provider = injectSidebarProviderContext()
 const target = computed(() => provider.sidebars[props.target])
 const isDisabled = computed(() => props.disabled
   || !target.value
-  || (!provider.isMobile.value && target.value.collapsible.value === 'none'))
+  || (!provider.isNarrowViewport.value && target.value.collapsible.value === 'none'))
 const accessibleLabel = computed(() => {
   if (props.label)
     return props.label
-  if (provider.isMobile.value)
+  if (provider.isNarrowViewport.value)
     return `${target.value?.open.value ? 'Close' : 'Open'} ${props.target} sidebar`
   return `${target.value?.collapsed.value ? 'Expand' : 'Collapse'} ${props.target} sidebar`
 })
@@ -52,19 +52,17 @@ function toggle(event: MouseEvent) {
     :disabled="isDisabled && props.as === 'button' ? true : undefined"
     :data-disabled="isDisabled ? true : undefined"
     :aria-disabled="isDisabled ? true : undefined"
-    :data-mobile="provider.isMobile.value"
     :data-collapsible="target?.collapsible.value"
     :data-target="props.target"
     :aria-label="accessibleLabel"
     :aria-controls="target?.panelId"
-    :aria-expanded="provider.isMobile.value ? (target?.open.value ?? false) : !(target?.collapsed.value ?? true)"
-    :aria-haspopup="provider.isMobile.value ? 'dialog' : undefined"
+    :aria-expanded="provider.isNarrowViewport.value ? (target?.open.value ?? false) : !(target?.collapsed.value ?? true)"
+    :aria-haspopup="provider.isNarrowViewport.value ? 'dialog' : undefined"
     @click="toggle"
   >
     <slot
       :open="target?.open.value ?? false"
       :collapsed="target?.collapsed.value ?? false"
-      :is-mobile="provider.isMobile.value"
       :target="props.target"
     >
       <Icon

@@ -32,13 +32,12 @@ const links = [
 
 <template>
   <SidebarProvider class="h-112 overflow-hidden rounded-lg border border-gray-5">
-    <Sidebar v-slot="{ collapsed, isMobile }" collapsible="icon" class="bg-gray-1">
+    <Sidebar v-slot="{ collapsed }" collapsible="icon" class="bg-gray-1">
       <SidebarHeader>
-        <Icon v-if="isMobile || !collapsed" icon="lucide:layers" />
-        <div v-if="isMobile || !collapsed" class="mr-auto">
+        <Icon icon="lucide:layers" />
+        <div v-if="!collapsed">
           <strong>Typlog</strong>
         </div>
-        <SidebarTrigger />
       </SidebarHeader>
       <SidebarBody>
         <SidebarGroup>
@@ -104,6 +103,7 @@ const links = [
 
     <SidebarInset>
       <header class="flex h-12 items-center gap-3 border-b border-gray-4 px-4">
+        <SidebarTrigger />
         <strong>Overview</strong>
         <SidebarTrigger target="right" class="ml-auto" />
       </header>

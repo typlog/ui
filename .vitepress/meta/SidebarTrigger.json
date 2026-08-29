@@ -52,11 +52,6 @@
       "type": "boolean"
     },
     {
-      "name": "isMobile",
-      "description": "",
-      "type": "boolean"
-    },
-    {
       "name": "target",
       "description": "",
       "type": "\"right\" | \"left\""

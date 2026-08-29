@@ -19,7 +19,7 @@ const rightCollapsed = ref(false)
 <template>
   <SidebarProvider class="h-80 overflow-hidden rounded-lg border border-gray-5">
     <Sidebar
-      v-slot="{ collapsed, isMobile }"
+      v-slot="{ collapsed }"
       v-model:open="leftOpen"
       v-model:collapsed="leftCollapsed"
       collapsible="icon"
@@ -27,9 +27,9 @@ const rightCollapsed = ref(false)
       mobile-title="Navigation"
       mobile-description="Choose a section"
     >
-      <SidebarHeader><strong v-if="isMobile || !collapsed">Workspace</strong></SidebarHeader>
+      <SidebarHeader><strong v-if="!collapsed">Workspace</strong></SidebarHeader>
       <SidebarBody class="text-sm text-gray-11">
-        <span v-if="isMobile || !collapsed">Project navigation</span>
+        <span v-if="!collapsed">Project navigation</span>
       </SidebarBody>
       <SidebarRail />
     </Sidebar>

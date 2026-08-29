@@ -127,6 +127,9 @@
     min-height: 0;
     min-width: 0;
     order: 1;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
     position: relative;
   }
 
@@ -134,7 +137,6 @@
     border-radius: var(--radius-4);
     box-shadow: var(--shadow-3);
     margin: var(--space-2);
-    overflow: hidden;
   }
 
   .ui-SidebarTrigger {
@@ -224,7 +226,7 @@
 
   .ui-Sidebar:where(.r-collapsible-none) .ui-SidebarRail,
   .ui-SidebarPanel:where(.r-mobile) .ui-SidebarRail,
-  .ui-SidebarTrigger:where([data-mobile='false'][data-collapsible='none']) {
+  .ui-SidebarTrigger:where([data-collapsible='none']) {
     display: none;
   }
 
@@ -718,7 +720,11 @@
   to { transform: translateX(100%); }
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 1023.98px) {
+  .ui-SidebarTrigger:where([data-collapsible='none']) {
+    display: inline-flex;
+  }
+
   .ui-SidebarProvider:where([data-inset='true']) > .ui-SidebarInset {
     border: 0;
     border-radius: 0;

@@ -21,7 +21,7 @@ export interface SidebarController {
 }
 
 export interface SidebarProviderContext {
-  isMobile: Ref<boolean>
+  isNarrowViewport: Ref<boolean>
   sidebars: {
     left?: SidebarController
     right?: SidebarController
@@ -40,7 +40,7 @@ import { computed, onBeforeUnmount, onMounted, ref, shallowReactive } from 'vue'
 import { Primitive } from 'reka-ui'
 
 const props = withDefaults(defineProps<SidebarProviderProps>(), { as: 'div' })
-const isMobile = ref(false)
+const isNarrowViewport = ref(false)
 const sidebars = shallowReactive<SidebarProviderContext['sidebars']>({})
 
 function register(side: 'left' | 'right', controller: SidebarController) {
@@ -64,22 +64,22 @@ function requestOpen(side: 'left' | 'right', controller: SidebarController) {
     other.setOpen(false)
 }
 
-provideSidebarProviderContext({ isMobile, sidebars, register, unregister, requestOpen })
+provideSidebarProviderContext({ isNarrowViewport, sidebars, register, unregister, requestOpen })
 
 let mediaQuery: MediaQueryList | undefined
 
-function updateMobile(event: MediaQueryList | MediaQueryListEvent) {
-  isMobile.value = event.matches
+function updateNarrowViewport(event: MediaQueryList | MediaQueryListEvent) {
+  isNarrowViewport.value = event.matches
 }
 
 onMounted(() => {
   mediaQuery = window.matchMedia('(max-width: 1023.98px)')
-  updateMobile(mediaQuery)
-  mediaQuery.addEventListener('change', updateMobile)
+  updateNarrowViewport(mediaQuery)
+  mediaQuery.addEventListener('change', updateNarrowViewport)
 })
 
 onBeforeUnmount(() => {
-  mediaQuery?.removeEventListener('change', updateMobile)
+  mediaQuery?.removeEventListener('change', updateNarrowViewport)
 })
 
 const hasInset = computed(() => sidebars.left?.variant.value === 'inset'
@@ -93,10 +93,9 @@ const hasPadding = computed(() => sidebars.left?.variant.value === 'floating'
   <Primitive
     class="ui-SidebarProvider"
     :as="props.as"
-    :data-mobile="isMobile"
     :data-padded="hasPadding"
     :data-inset="hasInset"
   >
-    <slot :is-mobile="isMobile"></slot>
+    <slot></slot>
   </Primitive>
 </template>

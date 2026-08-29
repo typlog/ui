@@ -45,8 +45,8 @@ const groups: NavigationGroup[] = [
 
 <template>
   <SidebarProvider class="h-80 overflow-hidden rounded-lg border border-gray-5">
-    <Sidebar v-slot="{ collapsed, isMobile }" collapsible="icon">
-      <SidebarHeader><strong v-if="isMobile || !collapsed">Publication</strong></SidebarHeader>
+    <Sidebar v-slot="{ collapsed }" collapsible="icon">
+      <SidebarHeader><strong v-if="!collapsed">Publication</strong></SidebarHeader>
       <SidebarBody>
         <SidebarGroup v-for="group in groups" :key="group.label">
           <SidebarGroupLabel>{{ group.label }}</SidebarGroupLabel>

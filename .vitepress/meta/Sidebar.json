@@ -170,11 +170,6 @@
       "type": "boolean"
     },
     {
-      "name": "isMobile",
-      "description": "",
-      "type": "boolean"
-    },
-    {
       "name": "toggle",
       "description": "",
       "type": "() => void"
