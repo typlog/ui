@@ -9,8 +9,9 @@ export interface QuotaProps {
 }
 
 const props = defineProps<QuotaProps>()
+const percent = computed(() => Math.min(100, Math.max(0, props.percent)))
 const style = computed(() => {
-  const transform = `translateX(-${100 - props.percent}%)`
+  const transform = `translateX(${percent.value - 100}%)`
   if (props.percent > 100) {
     return { transform, 'background-color': 'var(--red-a10)' }
   }
@@ -22,15 +23,7 @@ const style = computed(() => {
   } else if (props.percent > 33) {
     alpha = 'a6'
   }
-  return { transform, 'background-color': `var(--blue-${alpha})` }
-})
-const percent = computed(() => {
-  if (props.percent > 100) {
-    return 100
-  } else if (props.percent < 0) {
-    return 0
-  }
-  return props.percent
+  return { transform, 'background-color': `var(--accent-${alpha})` }
 })
 </script>
 

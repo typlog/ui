@@ -6,13 +6,13 @@ import SuccessIcon from '~icons/ri/checkbox-circle-fill'
 import WarningIcon from '~icons/ri/alert-fill'
 import ErrorIcon from '~icons/ri/error-warning-fill'
 import type { ColorType } from '../types'
-import type { ToastMessage, MessageCategory } from './manager'
-import { useToastManager } from './manager'
+import type { ToastManager, ToastMessage, MessageCategory } from './manager'
 
 export interface ToastItemProps {
   yPosition: 'top' | 'bottom' | 'center'
   xPosition: 'left' | 'right' | 'center'
   message: ToastMessage
+  manager: ToastManager
   index: number
 }
 
@@ -47,7 +47,7 @@ const toastRef = useTemplateRef<InstanceType<typeof ToastRoot>>('toastRef')
 const layoutRef = useTemplateRef<HTMLDivElement>('layoutRef')
 const paused = ref(false)
 
-const manager = useToastManager()
+const manager = props.manager
 let resizeObserver: ResizeObserver | undefined
 
 const styleVars = computed(() => {

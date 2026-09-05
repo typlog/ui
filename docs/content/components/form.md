@@ -10,7 +10,9 @@ reka: https://reka-ui.com/docs/overview/accessibility
 
 Form provides a small, validator-neutral composition layer for existing Typlog
 controls. It connects labels, descriptions, and errors to a control, while
-preserving native form submission and validation behavior.
+preserving native controls and browser constraint validation behavior. Valid
+submissions emit `submit` after field validation; `FormRoot` prevents the
+browser's default navigation so the application can handle the result.
 
 It does not manage nested values, field arrays, or schema state. Validation can
 come from the browser, a field callback, a server response, or an external
@@ -58,8 +60,10 @@ Input. Compound controls keep their existing submission behavior.
 
 #### FormRoot
 
-The native form container. It coordinates field validation, controlled errors,
-submission, reset, and focus movement after an invalid submission.
+The form container. It coordinates field validation, controlled errors,
+submission, reset, and focus movement after an invalid submission. It prevents
+the browser's default submit navigation and emits `submit` only when every
+registered field is valid.
 
 It accepts native `<form>` attributes and events. Use `errors` to provide a
 controlled error map keyed by field name; native attributes are omitted here.

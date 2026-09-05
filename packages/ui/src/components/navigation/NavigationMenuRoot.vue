@@ -37,7 +37,7 @@ const forwarded = useForwardPropsEmits(props, emits)
     top: 100%;
     left: var(--reka-navigation-menu-viewport-left);
     height: var(--reka-navigation-menu-viewport-height);
-    background-color: white;
+    background-color: var(--color-surface);
     border-radius: var(--radius-4);
     overflow: hidden;
     box-shadow: var(--shadow-3);

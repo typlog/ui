@@ -16,11 +16,15 @@
     "build:ui": "pnpm --filter @typlog/ui build",
     "build:meta": "tsx scripts/generate-component-meta.ts",
     "build:docs": "vitepress build",
+    "check": "pnpm lint && pnpm typecheck && pnpm typecheck:ui && pnpm test",
+    "check:release": "pnpm check && pnpm verify:meta && pnpm build:ui && pnpm verify:package && pnpm build:docs",
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "vue-tsc --noEmit",
     "typecheck:ui": "pnpm --filter @typlog/ui typecheck",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "verify:meta": "node scripts/verify-component-meta.mjs",
+    "verify:package": "node scripts/verify-package.mjs"
   },
   "dependencies": {
     "@typlog/ui": "workspace:*"

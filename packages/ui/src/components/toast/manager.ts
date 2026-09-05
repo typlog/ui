@@ -1,5 +1,4 @@
-import { ref } from 'vue'
-import { createGlobalState } from '@vueuse/core'
+import { markRaw, ref } from 'vue'
 import type { ColorType, RadiusType } from '../types'
 
 export type MessageCategory = 'success' | 'info' | 'warning' | 'error' | 'loading'
@@ -49,9 +48,9 @@ interface PromiseMessageOption<T> {
   error?: (err: Error) => Message
 }
 
-let count = 0
-
-export const useToastManager = createGlobalState(() => {
+/** Create an isolated toast queue. */
+export function createToastManager() {
+  let count = 0
   const messages = ref<ToastMessage[]>([])
 
   const add = (msg: Message, category?: MessageCategory) => {
@@ -126,7 +125,18 @@ export const useToastManager = createGlobalState(() => {
     return id
   }
 
-  return {
+  const toast: ToastFunction = Object.assign(
+    (msg: Message) => add(msg),
+    {
+      info,
+      success,
+      warning,
+      error,
+      promise,
+    },
+  )
+
+  return markRaw({
     messages,
     add,
     update,
@@ -136,5 +146,15 @@ export const useToastManager = createGlobalState(() => {
     warning,
     error,
     promise,
-  }
-})
+    toast,
+  })
+}
+
+export type ToastManager = ReturnType<typeof createToastManager>
+
+const defaultToastManager = createToastManager()
+
+/** Return the default manager used by the global `toast` function. */
+export function useToastManager() {
+  return defaultToastManager
+}

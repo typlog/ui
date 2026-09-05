@@ -46,3 +46,12 @@ Use the `variant` prop to control the visual style of the button.
 ### Radius
 
 <Example name="button/Radius.vue" />
+
+### Close button
+
+`CloseButton` is an icon-only button for dismissing a surface. Always provide
+an accessible name such as `aria-label="Close"`.
+
+<Example name="button/CloseButton.vue" />
+
+<PropsTable name="CloseButton" />

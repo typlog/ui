@@ -6,3 +6,7 @@ source: https://github.com/typlog/ui/tree/main/packages/ui/src/components/editab
 ---
 
 <Example name="editable/Overview.vue" />
+
+## API Reference
+
+<PropsTable name="Editable" />

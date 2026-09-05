@@ -14,26 +14,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v6
         with:
           node-version: 24
-      - name: Enable Corepack
-        run: corepack enable
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-      - name: Lint
-        run: pnpm lint
-      - name: Typecheck docs
-        run: pnpm typecheck
-      - name: Typecheck UI
-        run: pnpm typecheck:ui
-      - name: Test
-        run: pnpm test
-      - name: Generate component metadata
-        run: pnpm build:meta
-      - name: Verify generated metadata
-        run: git diff --exit-code -- .vitepress/meta
-      - name: Build package
-        run: pnpm build
-      - name: Build docs
-        run: pnpm build:docs
+      - name: Validate release artifacts
+        run: pnpm check:release

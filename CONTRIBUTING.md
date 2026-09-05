@@ -111,16 +111,18 @@ Only add reference links that exist for the component. Choose a status using thi
 
 ## Validation
 
-For a new component or public API change, run:
+For ordinary implementation work, run the fast validation suite:
 
 ```sh
-pnpm lint
-pnpm typecheck
-pnpm typecheck:ui
-pnpm test
-pnpm build:meta
-pnpm build
-pnpm build:docs
+pnpm check
+```
+
+Before merging a public API change or preparing a release, run the complete
+suite. It also verifies generated metadata, builds and consumes the packed
+package through its core/addon/chart entries, and builds the documentation:
+
+```sh
+pnpm check:release
 ```
 
 Also inspect the component in the docs server:
@@ -158,14 +160,13 @@ Releases are tag-driven. Before creating a tag:
 
 1. Update `packages/ui/package.json` to the intended version.
 2. Add the matching entry to `docs/content/overview/releases.md`.
-3. Run the validation commands above and inspect the package with
-   `npm pack --dry-run` from `packages/ui/dist` after `pnpm build:ui`.
+3. Run `pnpm check:release`.
 4. Create a tag whose name exactly matches the package version, without a `v`
    prefix (for example, `0.16.0`).
 
 Pushing the tag runs `.github/workflows/release.yml`. The workflow verifies the
-tag and package version, runs lint, both typechecks, automated tests, metadata
-drift checks, package and documentation builds, inspects the npm archive,
+tag and package version, runs the complete validation suite, consumes the
+packed package in a temporary Vue/Vite project, inspects the npm archive,
 publishes `packages/ui/dist`, and then generates the GitHub changelog. Do not
 commit `packages/ui/dist`; Vite generates its package manifest and public
 CSS/JavaScript entries during the release build.

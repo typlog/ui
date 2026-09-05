@@ -12,38 +12,52 @@ export interface ColorFieldProps extends Omit<PrimitiveProps, 'asChild'> {
 </script>
 
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { computed, ref, useAttrs } from 'vue'
 import { Primitive } from 'reka-ui'
 import { buildPropsClass } from '../util'
+
+defineOptions({ inheritAttrs: false })
 
 const props = withDefaults(defineProps<ColorFieldProps>(), {
   size: '2',
   variant: 'solid',
   as: 'div',
 })
+const attrs = useAttrs()
 
 const modelValue = defineModel<string>({ required: false })
+const defaultModelValue = ref(props.defaultValue)
+const inputValue = computed({
+  get: () => modelValue.value ?? defaultModelValue.value,
+  set: (value: string) => {
+    defaultModelValue.value = value
+    modelValue.value = value
+  },
+})
+const rootAttrs = computed(() => ({
+  class: attrs.class,
+  style: attrs.style,
+}))
+const inputAttrs = computed(() => Object.fromEntries(
+  Object.entries(attrs).filter(([key]) => key !== 'class' && key !== 'style'),
+))
 
 const resetClass = buildPropsClass(props, ['size', 'variant'])
-
-onMounted(() => {
-  if (props.defaultValue && !modelValue.value) {
-    modelValue.value = props.defaultValue
-  }
-})
 </script>
 
 <template>
   <Primitive
+    v-bind="rootAttrs"
     class="ui-ColorField"
     :as="props.as"
     :class="resetClass"
     :data-radius="props.radius"
-    :style="{'--color-field-color': modelValue }"
+    :style="{'--color-field-color': inputValue }"
   >
     <input
       :id="props.id"
-      v-model="modelValue"
+      v-model="inputValue"
+      v-bind="inputAttrs"
       class="ui-ColorFieldInput"
       type="color"
     >

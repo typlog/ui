@@ -41,6 +41,7 @@ const dirty = ref(false)
 const nativeValidityVisible = ref(false)
 const initialValue = ref<string>()
 const localErrors = ref<string[]>(normalizeErrors(props.errors))
+let validationVersion = 0
 const controlId = computed(() => props.id || `ui-field-${uid}`)
 const descriptionId = computed(() => `${controlId.value}-description`)
 const errorId = computed(() => `${controlId.value}-error`)
@@ -84,14 +85,17 @@ const valueOf = () => {
 }
 
 const validate = async () => {
+  const version = ++validationVersion
   syncValidity(undefined, true)
   let nextErrors: string[] = []
   if (props.validate) nextErrors = normalizeErrors(await props.validate(valueOf()))
+  if (version !== validationVersion) return false
   localErrors.value = nextErrors
   return !invalid.value
 }
 
 const reset = () => {
+  validationVersion++
   const element = control.value
   if (element && initialValue.value !== undefined && 'value' in element) {
     const input = element as HTMLInputElement
@@ -108,6 +112,7 @@ const reset = () => {
 }
 
 watch(() => props.errors, value => {
+  validationVersion++
   localErrors.value = normalizeErrors(value)
 })
 
@@ -129,6 +134,7 @@ const fieldContext: FieldContext = {
   markFocused: value => { focused.value = value },
   markTouched: () => { touched.value = true },
   markDirty: () => {
+    validationVersion++
     dirty.value = true
     localErrors.value = []
     nativeValidityVisible.value = false

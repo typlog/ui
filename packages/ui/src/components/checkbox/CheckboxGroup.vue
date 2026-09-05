@@ -37,6 +37,7 @@ import {
   CheckboxGroupRoot,
   Primitive,
   useForwardExpose,
+  VisuallyHidden,
 } from 'reka-ui'
 import { useForwardPropsWithout } from '../util'
 
@@ -62,9 +63,39 @@ const modelValue = useVModel(props, 'modelValue', emits, {
 
 const forwarded = useForwardPropsWithout(
   props,
-  ['allValues', 'as', 'contentAs', 'defaultValue', 'modelValue'],
+  ['allValues', 'as', 'contentAs', 'defaultValue', 'modelValue', 'name', 'required'],
 )
-const { forwardRef } = useForwardExpose()
+const { forwardRef, currentElement } = useForwardExpose()
+
+const usesTableSectionFormInput = computed(() => (
+  typeof props.contentAs === 'string'
+  && ['thead', 'tbody', 'tfoot'].includes(props.contentAs)
+))
+
+const isFormControl = computed(() => (
+  currentElement.value
+    ? Boolean(currentElement.value.closest('form'))
+    : true
+))
+
+const externalFormEntries = computed(() => {
+  if (!props.name)
+    return []
+
+  return modelValue.value.flatMap((value, index) => {
+    if (typeof value === 'object' && value !== null) {
+      return Object.entries(value).map(([key, item]) => ({
+        name: `${props.name}[${index}][${key}]`,
+        value: item,
+      }))
+    }
+
+    return [{
+      name: `${props.name}[${index}]`,
+      value,
+    }]
+  })
+})
 
 function includesValue(values: T[], value: T) {
   return values.some(item => isEqual(item, value))
@@ -116,6 +147,30 @@ const checkboxProps = computed<CheckboxGroupSelectAllProps>(() => ({
     class="ui-CheckboxGroup"
     :as="props.as"
   >
+    <caption
+      v-if="usesTableSectionFormInput && isFormControl && props.name"
+      class="ui-CheckboxGroupFormControl"
+      aria-hidden="true"
+    >
+      <VisuallyHidden
+        v-if="props.required && externalFormEntries.length === 0"
+        as="input"
+        feature="fully-hidden"
+        :name="props.name"
+        required
+        value=""
+      />
+      <VisuallyHidden
+        v-for="entry in externalFormEntries"
+        v-else
+        :key="entry.name"
+        as="input"
+        feature="fully-hidden"
+        :name="entry.name"
+        :required="props.required"
+        :value="entry.value"
+      />
+    </caption>
     <slot
       name="select-all"
       :checkbox-props="checkboxProps"
@@ -124,6 +179,8 @@ const checkboxProps = computed<CheckboxGroupSelectAllProps>(() => ({
       v-bind="forwarded"
       class="ui-CheckboxGroupContent"
       :as="props.contentAs"
+      :name="usesTableSectionFormInput ? undefined : props.name"
+      :required="usesTableSectionFormInput ? undefined : props.required"
       :model-value="modelValue"
       @update:model-value="modelValue = $event"
     >
@@ -131,3 +188,17 @@ const checkboxProps = computed<CheckboxGroupSelectAllProps>(() => ({
     </CheckboxGroupRoot>
   </Primitive>
 </template>
+
+<style>
+@layer components {
+  .ui-CheckboxGroupFormControl {
+    position: absolute;
+    border: 0;
+    width: 0;
+    height: 0;
+    min-height: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+}
+</style>

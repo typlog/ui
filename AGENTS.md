@@ -47,6 +47,8 @@ pnpm lint           # ESLint for source, docs, and VitePress code
 pnpm typecheck      # vue-tsc without emitting files
 pnpm typecheck:ui   # vue-tsc for package source and package tests
 pnpm test           # run Vitest once
+pnpm check          # lint, both typechecks, and tests
+pnpm check:release  # full metadata, package-consumer, and docs validation
 pnpm build:meta     # regenerate .vitepress/meta from public exports
 pnpm build          # build the publishable library into packages/ui/dist/
 pnpm build:docs     # build the documentation into site/public/

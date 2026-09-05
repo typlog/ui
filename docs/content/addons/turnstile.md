@@ -12,3 +12,7 @@ Import the addon stylesheet when using addon components:
 ```
 
 <Example name="turnstile/Overview.vue" variant="full" />
+
+## API Reference
+
+<PropsTable name="Turnstile" />

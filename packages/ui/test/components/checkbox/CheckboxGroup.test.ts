@@ -1,3 +1,4 @@
+/* eslint-disable vue/one-component-per-file -- test harnesses stay beside their assertions */
 import { mount } from '@vue/test-utils'
 import { defineComponent, h, ref } from 'vue'
 import { describe, expect, it } from 'vitest'
@@ -98,5 +99,47 @@ describe('CheckboxGroup', () => {
     expect(wrapper.find(':scope > tbody.ui-CheckboxGroupContent').exists()).toBe(true)
     expect(wrapper.find('thead [role=checkbox]').attributes('aria-checked')).toBe('mixed')
     expect(wrapper.findAll('tbody [role=checkbox]')).toHaveLength(2)
+  })
+
+  it('wraps native form inputs in valid table rows', async () => {
+    const wrapper = mount(defineComponent({
+      components: { Checkbox, CheckboxGroup },
+      setup() {
+        const scopes = ref(['read', 'write'])
+        return { scopes }
+      },
+      template: `
+        <form>
+          <CheckboxGroup
+            v-model="scopes"
+            name="scopes"
+            as="table"
+            content-as="tbody"
+          >
+            <Checkbox value="read" as="tr" />
+            <Checkbox value="write" as="tr" />
+          </CheckboxGroup>
+        </form>
+      `,
+    }))
+
+    expect(wrapper.find('tbody > input').exists()).toBe(false)
+    expect(wrapper.find('table > input').exists()).toBe(false)
+    expect(wrapper.find('table > caption.ui-CheckboxGroupFormControl').exists()).toBe(true)
+    expect(wrapper.findAll('tbody > tr')).toHaveLength(2)
+    expect(wrapper.get('tbody > tr:last-child').attributes('role')).toBe('checkbox')
+
+    const formInputs = wrapper.findAll('.ui-CheckboxGroupFormControl input')
+    expect(formInputs.map(input => input.attributes('name'))).toEqual([
+      'scopes[0]',
+      'scopes[1]',
+    ])
+    expect(formInputs.map(input => (input.element as HTMLInputElement).value)).toEqual(['read', 'write'])
+
+    await wrapper.find('tbody [role=checkbox]').trigger('click')
+
+    expect(wrapper.findAll('.ui-CheckboxGroupFormControl input')).toHaveLength(1)
+    expect(wrapper.get('.ui-CheckboxGroupFormControl input').attributes('name')).toBe('scopes[0]')
+    expect((wrapper.get('.ui-CheckboxGroupFormControl input').element as HTMLInputElement).value).toBe('write')
   })
 })

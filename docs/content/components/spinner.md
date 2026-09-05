@@ -22,3 +22,13 @@ By default, `Spinner` is decorative and hidden from assistive technology. Passin
 ### Color
 
 <Example name="spinner/Color.vue" />
+
+### Status indicators
+
+`SpinnerIcon` is the unstyled, current-color glyph used inside composed
+controls. `SavingIndicator` switches between idle, saving, and saved states.
+Pair either visual with accessible status text when it communicates state.
+
+<Example name="spinner/SavingIndicator.vue" />
+
+<PropsTable name="SavingIndicator" />

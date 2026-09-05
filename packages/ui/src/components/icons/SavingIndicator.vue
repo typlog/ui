@@ -21,6 +21,7 @@ const props = withDefaults(defineProps<SavingIndicatorProps>(), {
 
 <template>
   <Primitive
+    :as="props.as"
     class="ui-SavingIndicator"
     :class="`r-size-${size}`"
     :data-status="props.status"

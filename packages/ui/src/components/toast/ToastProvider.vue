@@ -1,11 +1,14 @@
 <script lang="ts">
 import type { ToastProviderProps as RekaToastProviderProps } from 'reka-ui'
+import type { ToastManager } from './manager'
 
 export interface ToastProviderProps extends RekaToastProviderProps {
   /** The viewport width in pixels at which toast messages switch to a full-width mobile layout. @default 640 */
   breakpoint?: number
   size?: '1' | '2' | '3'
   position?: 'top-left' | 'top-right' | 'top-center' | 'bottom-left' | 'bottom-right' | 'bottom-center'
+  /** An isolated toast manager. Defaults to the manager used by the global `toast` function. */
+  manager?: ToastManager
 }
 </script>
 
@@ -31,8 +34,10 @@ const props = withDefaults(defineProps<ToastProviderProps>(), {
   position: 'bottom-right',
 })
 
-const forwarded = useForwardPropsWithout(props, ['breakpoint', 'position', 'size'])
-const { messages } = useToastManager()
+const forwarded = useForwardPropsWithout(props, ['breakpoint', 'manager', 'position', 'size'])
+const defaultManager = useToastManager()
+const manager = computed(() => props.manager ?? defaultManager)
+const messages = computed(() => manager.value.messages.value)
 const isNarrowViewport = ref(false)
 
 let mediaQuery: MediaQueryList | undefined
@@ -95,6 +100,7 @@ const swipeDirection = computed(() => {
       <ToastItem
         :key="msg.id"
         :message="msg"
+        :manager="manager"
         :index="index"
         :x-position="xPosition"
         :y-position="yPosition"

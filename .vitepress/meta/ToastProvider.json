@@ -33,6 +33,13 @@
       "default": "'Notification'"
     },
     {
+      "name": "manager",
+      "description": "<p>An isolated toast manager. Defaults to the manager used by the global <code>toast</code> function.</p>",
+      "type": "Raw<{ messages: Ref<{ id: number; category?: MessageCategory; title: string; height?: number; type?: \"foreground\" | \"background\"; duration?: number; description?: string; action?: { label: string; altText?: string; variant?: \"solid\" | \"soft\" | \"outline\" | \"surface\" | \"ghost\"; color?: ColorType; radius?: RadiusType; size?: \"2\" | \"1\" | \"3\" | \"4\"; onClick: () => void; }; }[], ToastMessage[] | { id: number; category?: MessageCategory; title: string; height?: number; type?: \"foreground\" | \"background\"; duration?: number; description?: string; action?: { label: string; altText?: string; variant?: \"solid\" | \"soft\" | \"outline\" | \"surface\" | \"ghost\"; color?: ColorType; radius?: RadiusType; size?: \"2\" | \"1\" | \"3\" | \"4\"; onClick: () => void; }; }[]>; add: (msg: Message, category?: MessageCategory) => number; update: (id: number, msg: Partial<ToastMessage>) => void; remove: (id: number) => void; info: (msg: Message) => number; success: (msg: Message) => number; warning: (msg: Message) => number; error: (msg: Message) => number; promise: <T>(fn: () => Promise<T>, options: PromiseMessageOption<T>) => number; toast: ToastFunction; }>",
+      "required": false,
+      "inherit": null
+    },
+    {
       "name": "position",
       "description": "",
       "type": "\"bottom-right\" | \"top-left\" | \"top-right\" | \"top-center\" | \"bottom-left\" | \"bottom-center\"",

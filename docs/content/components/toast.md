@@ -47,6 +47,33 @@ function as expected.
 
 <PropsTable name="ToastProvider" />
 
+### Isolated applications and SSR
+
+The exported `toast` function and a provider without a `manager` prop use a
+shared default queue. This preserves the convenient setup for a single
+client-side application.
+
+For server-side rendering or pages containing multiple Vue applications,
+create one manager for each app or request. Pass it to the provider and use
+the manager's `toast` function so messages cannot leak between queues:
+
+```vue
+<script setup>
+  import { createToastManager, ToastProvider } from '@typlog/ui'
+
+  const toastManager = createToastManager()
+  const toast = toastManager.toast
+</script>
+
+<template>
+  <ToastProvider :manager="toastManager" />
+  <button @click="toast.success('Saved')">Save</button>
+</template>
+```
+
+In an SSR application, create the manager inside the per-request app factory,
+not at module scope.
+
 ### Responsive layout
 
 Toast messages use a full-width layout with a `var(--space-4)` gutter on both
