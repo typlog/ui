@@ -8,12 +8,12 @@
   },
   "dependencies": {
     "@radix-ui/colors": "^3.0.0",
-    "bezier-easing": "^2.1.0",
-    "colorjs.io": "^0.5.0"
+    "bezier-easing": "^3.1.0",
+    "colorjs.io": "^0.7.1"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20240821.1",
-    "typescript": "^5.5.2",
-    "wrangler": "^3.72.2"
+    "@cloudflare/workers-types": "^5.20260906.1",
+    "typescript": "^5.9.3",
+    "wrangler": "^4.129.0"
   }
 }

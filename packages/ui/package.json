@@ -31,12 +31,12 @@
     }
   },
   "dependencies": {
-    "@iconify/vue": "^5.0.0",
+    "@iconify/vue": "^5.0.1",
     "@tanstack/vue-virtual": "^3.13.36",
     "@vueuse/core": "^14.4.0",
     "ohash": "^2.0.12",
     "reka-ui": "^2.10.4",
-    "vue": "^3.5.0"
+    "vue": "^3.5.42"
   },
   "peerDependencies": {
     "@unovis/ts": "^1.6.7",
@@ -55,18 +55,18 @@
     "typecheck": "vue-tsc --noEmit -p tsconfig.json"
   },
   "devDependencies": {
-    "@iconify-json/radix-icons": "^1.2.2",
-    "@iconify-json/ri": "^1.2.5",
+    "@iconify-json/radix-icons": "^1.2.6",
+    "@iconify-json/ri": "^1.2.10",
     "@microsoft/api-extractor": "^7.59.0",
-    "@types/node": "^24.0.0",
+    "@types/node": "^24.13.3",
     "@unovis/ts": "^1.6.7",
     "@unovis/vue": "^1.6.7",
-    "@vitejs/plugin-vue": "^6.0.0",
+    "@vitejs/plugin-vue": "^6.0.8",
     "@vue/language-core": "^3.3.11",
     "typescript": "^5.9.3",
     "unplugin-icons": "^23.0.1",
     "vite": "^8.2.2",
-    "vite-plugin-dts": "^5.0.3",
-    "vue-tsc": "^3.0.0"
+    "vite-plugin-dts": "^5.1.0",
+    "vue-tsc": "^3.3.11"
   }
 }
