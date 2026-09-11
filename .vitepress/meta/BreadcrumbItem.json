@@ -1,0 +1,35 @@
+{
+  "props": [
+    {
+      "name": "as",
+      "description": "<p>The element or component used for the item's content.</p>",
+      "type": "AsTag | Component",
+      "required": false,
+      "inherit": null
+    },
+    {
+      "name": "asChild",
+      "description": "<p>Uses the slotted child as the item's link or current-page element.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": null
+    },
+    {
+      "name": "current",
+      "description": "<p>Marks the item as the current page. Defaults to <code>true</code> when no link target\nor custom component is provided.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": null
+    },
+    {
+      "name": "href",
+      "description": "<p>Link destination. Omit for the current page.</p>",
+      "type": "string",
+      "required": false,
+      "inherit": null
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "methods": []
+}

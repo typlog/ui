@@ -1,0 +1,23 @@
+{
+  "props": [
+    {
+      "name": "label",
+      "description": "<p>The accessible name for the navigation landmark.</p>",
+      "type": "string",
+      "required": false,
+      "inherit": null,
+      "default": "\"Breadcrumb\""
+    },
+    {
+      "name": "size",
+      "description": "<p>Controls the breadcrumb typography and spacing.</p>",
+      "type": "\"1\" | \"2\" | \"3\"",
+      "required": false,
+      "inherit": null,
+      "default": "\"2\""
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "methods": []
+}

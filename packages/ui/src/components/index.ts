@@ -7,9 +7,11 @@ export {
 
 export * from './avatar'
 export * from './badge'
+export * from './breadcrumb'
 
 export * from './card'
 export * from './button'
+export * from './callout'
 export * from './scroll-area'
 export * from './skeleton'
 export * from './spinner'
