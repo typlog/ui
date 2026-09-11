@@ -1,0 +1,59 @@
+{
+  "props": [
+    {
+      "name": "as",
+      "description": "<p>The element or component this component should render as.</p>",
+      "type": "AsTag | Component",
+      "required": false,
+      "inherit": null,
+      "default": "\"div\""
+    },
+    {
+      "name": "color",
+      "description": "<p>Overrides the accent color inherited from the theme.</p>",
+      "type": "\"indigo\" | \"gray\" | \"gold\" | \"bronze\" | \"brown\" | \"yellow\" | \"amber\" | \"orange\" | \"tomato\" | \"red\" | \"ruby\" | \"crimson\" | \"pink\" | \"plum\" | \"purple\" | \"violet\" | \"iris\" | \"blue\" | \"cyan\" | \"teal\" | \"jade\" | \"green\" | \"grass\" | \"lime\" | \"mint\" | \"sky\"",
+      "required": false,
+      "inherit": null
+    },
+    {
+      "name": "highContrast",
+      "description": "<p>Uses a higher contrast text color.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": null
+    },
+    {
+      "name": "icon",
+      "description": "<p>Iconify icon rendered before the content.</p>",
+      "type": "string",
+      "required": false,
+      "inherit": null
+    },
+    {
+      "name": "size",
+      "description": "<p>Controls the spacing and typography of the callout.</p>",
+      "type": "\"1\" | \"2\" | \"3\"",
+      "required": false,
+      "inherit": null,
+      "default": "\"2\""
+    },
+    {
+      "name": "title",
+      "description": "<p>Optional heading rendered above the message.</p>",
+      "type": "string",
+      "required": false,
+      "inherit": null
+    },
+    {
+      "name": "variant",
+      "description": "<p>The visual treatment of the callout.</p>",
+      "type": "\"soft\" | \"outline\" | \"surface\"",
+      "required": false,
+      "inherit": null,
+      "default": "\"soft\""
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "methods": []
+}
