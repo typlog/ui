@@ -75,6 +75,7 @@ export default defineConfig<ThemeConfig>({
               { text: 'Card', link: '/components/card' },
               { text: 'Callout', link: '/components/callout' },
               { text: 'Table', link: '/components/table' },
+              { text: 'Data Table', link: '/components/data-table' },
               { text: 'Empty', link: '/components/empty' },
               { text: 'Skeleton', link: '/components/skeleton' },
               { text: 'Spinner', link: '/components/spinner' },

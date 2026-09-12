@@ -1,0 +1,168 @@
+{
+  "props": [
+    {
+      "name": "caption",
+      "description": "<p>Accessible table caption.</p>",
+      "type": "string",
+      "required": false,
+      "inherit": null
+    },
+    {
+      "name": "columns",
+      "description": "<p>Column definitions in display order.</p>",
+      "type": "readonly DataTableColumn<Row>[]",
+      "required": true,
+      "inherit": null
+    },
+    {
+      "name": "emptyText",
+      "description": "<p>Message displayed when no rows match.</p>",
+      "type": "string",
+      "required": false,
+      "inherit": null,
+      "default": "\"No results found.\""
+    },
+    {
+      "name": "layout",
+      "description": "<p>Controls the native table layout algorithm.</p>",
+      "type": "\"auto\" | \"fixed\"",
+      "required": false,
+      "inherit": null,
+      "default": "\"auto\""
+    },
+    {
+      "name": "loading",
+      "description": "<p>Displays the loading state instead of rows.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": null,
+      "default": "false"
+    },
+    {
+      "name": "loadingText",
+      "description": "<p>Message displayed while rows are loading.</p>",
+      "type": "string",
+      "required": false,
+      "inherit": null,
+      "default": "\"Loading rows…\""
+    },
+    {
+      "name": "manual",
+      "description": "<p>Disables client-side filtering, sorting, and pagination. In manual mode,\n<code>rows</code> should contain the current page and <code>request</code> drives data loading.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": null,
+      "default": "false"
+    },
+    {
+      "name": "page",
+      "description": "<p>Controlled current page. Can be bound with <code>v-model:page</code>.</p>",
+      "type": "number",
+      "required": false,
+      "inherit": null
+    },
+    {
+      "name": "pageSize",
+      "description": "<p>Number of rows displayed on each page.</p>",
+      "type": "number",
+      "required": false,
+      "inherit": null,
+      "default": "10"
+    },
+    {
+      "name": "rowKey",
+      "description": "<p>Property or function that returns a stable key for each row.</p>",
+      "type": "(keyof Row & string) | ((row: Row, index: number) => string | number)",
+      "required": false,
+      "inherit": null
+    },
+    {
+      "name": "rows",
+      "description": "<p>Rows displayed by the table.</p>",
+      "type": "readonly Row[]",
+      "required": true,
+      "inherit": null
+    },
+    {
+      "name": "search",
+      "description": "<p>Controlled text filter. Can be bound with <code>v-model:search</code>.</p>",
+      "type": "string",
+      "required": false,
+      "inherit": null
+    },
+    {
+      "name": "searchable",
+      "description": "<p>Shows the built-in text filter.</p>",
+      "type": "boolean",
+      "required": false,
+      "inherit": null,
+      "default": "true"
+    },
+    {
+      "name": "searchLabel",
+      "description": "<p>Accessible label for the text filter.</p>",
+      "type": "string",
+      "required": false,
+      "inherit": null,
+      "default": "\"Search rows\""
+    },
+    {
+      "name": "searchPlaceholder",
+      "description": "<p>Placeholder displayed by the text filter.</p>",
+      "type": "string",
+      "required": false,
+      "inherit": null,
+      "default": "\"Filter rows…\""
+    },
+    {
+      "name": "size",
+      "description": "<p>Controls table density.</p>",
+      "type": "\"1\" | \"2\" | \"3\"",
+      "required": false,
+      "inherit": null,
+      "default": "\"2\""
+    },
+    {
+      "name": "sort",
+      "description": "<p>Controlled sort state. Can be bound with <code>v-model:sort</code>.</p>",
+      "type": "DataTableSort | null",
+      "required": false,
+      "inherit": null
+    },
+    {
+      "name": "total",
+      "description": "<p>Total row count used for pagination in manual mode.</p>",
+      "type": "number",
+      "required": false,
+      "inherit": null
+    },
+    {
+      "name": "variant",
+      "description": "<p>Controls the table surface treatment.</p>",
+      "type": "\"surface\" | \"ghost\"",
+      "required": false,
+      "inherit": null,
+      "default": "\"surface\""
+    }
+  ],
+  "events": [
+    {
+      "name": "request",
+      "type": "[request: DataTableRequest]"
+    },
+    {
+      "name": "update:page",
+      "type": "[value: number]"
+    },
+    {
+      "name": "update:search",
+      "type": "[value: string]"
+    },
+    {
+      "name": "update:sort",
+      "type": "[value: DataTableSort | null]"
+    }
+  ],
+  "slots": [],
+  "methods": []
+}
