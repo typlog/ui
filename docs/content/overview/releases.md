@@ -3,6 +3,14 @@ title: Releases
 description: Typlog UI releases and their changelogs.
 ---
 
+## 0.17.0
+
+Released on September 12, 2026.
+
+- Added Callout with Radix Themes-inspired soft and outline variants, optional icons and titles, and semantic color support.
+- Added Breadcrumb and Breadcrumb Item components with accessible navigation semantics, configurable separators, and current-page handling.
+- Added DataTable with typed columns, custom cell and toolbar slots, search, sorting, pagination, loading and empty states, and client-side or manual server-side data handling.
+
 ## 0.16.1
 
 Released on September 6, 2026.
