@@ -48,7 +48,7 @@
     {
       "name": "tooltip",
       "description": "<p>Label shown when an icon-only collapsed item is hovered or focused.\nSet to <code>false</code> to disable the tooltip inferred from <code>text</code>.</p>",
-      "type": "string | false",
+      "type": "false | string",
       "required": false,
       "inherit": null
     },

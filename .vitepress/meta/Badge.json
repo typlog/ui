@@ -48,7 +48,7 @@
     {
       "name": "variant",
       "description": "<p>The visual variant to apply.</p>",
-      "type": "\"solid\" | \"soft\" | \"outline\" | \"surface\"",
+      "type": "\"outline\" | \"soft\" | \"solid\" | \"surface\"",
       "required": false,
       "inherit": null,
       "default": "\"soft\""

@@ -82,7 +82,7 @@
     {
       "name": "variant",
       "description": "<p>The visual variant to apply.</p>",
-      "type": "\"solid\" | \"soft\" | \"ghost\"",
+      "type": "\"ghost\" | \"soft\" | \"solid\"",
       "required": false,
       "inherit": null,
       "default": "\"soft\""

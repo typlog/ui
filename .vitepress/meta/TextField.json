@@ -40,7 +40,7 @@
     {
       "name": "type",
       "description": "",
-      "type": "\"number\" | \"text\" | \"search\" | \"date\" | \"datetime-local\" | \"email\" | \"hidden\" | \"month\" | \"password\" | \"tel\" | \"time\" | \"url\" | \"week\" | \"file\"",
+      "type": "\"date\" | \"datetime-local\" | \"email\" | \"file\" | \"hidden\" | \"month\" | \"number\" | \"password\" | \"search\" | \"tel\" | \"text\" | \"time\" | \"url\" | \"week\"",
       "required": false,
       "inherit": null,
       "default": "\"text\""

@@ -72,7 +72,7 @@
     {
       "name": "rowKey",
       "description": "<p>Property or function that returns a stable key for each row.</p>",
-      "type": "(keyof Row & string) | ((row: Row, index: number) => string | number)",
+      "type": "((row: Row, index: number) => string | number) | (keyof Row & string)",
       "required": false,
       "inherit": null
     },
@@ -139,7 +139,7 @@
     {
       "name": "variant",
       "description": "<p>Controls the table surface treatment.</p>",
-      "type": "\"surface\" | \"ghost\"",
+      "type": "\"ghost\" | \"surface\"",
       "required": false,
       "inherit": null,
       "default": "\"surface\""

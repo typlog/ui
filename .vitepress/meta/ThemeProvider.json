@@ -42,7 +42,7 @@
     {
       "name": "panelBackground",
       "description": "",
-      "type": "\"translucent\" | \"solid\"",
+      "type": "\"solid\" | \"translucent\"",
       "required": false,
       "inherit": null,
       "default": "\"translucent\""

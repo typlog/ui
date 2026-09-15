@@ -25,7 +25,7 @@
     {
       "name": "resize",
       "description": "",
-      "type": "\"none\" | \"both\" | \"vertical\" | \"horizontal\"",
+      "type": "\"both\" | \"horizontal\" | \"none\" | \"vertical\"",
       "required": false,
       "inherit": null
     },

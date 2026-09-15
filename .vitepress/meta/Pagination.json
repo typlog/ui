@@ -48,7 +48,7 @@
     {
       "name": "navigation",
       "description": "",
-      "type": "\"none\" | \"all\" | \"prev-next\" | \"first-last\"",
+      "type": "\"all\" | \"first-last\" | \"none\" | \"prev-next\"",
       "required": false,
       "inherit": null,
       "default": "\"all\""
@@ -99,7 +99,7 @@
     {
       "name": "variant",
       "description": "",
-      "type": "\"soft\" | \"outline\" | \"surface\" | \"ghost\"",
+      "type": "\"ghost\" | \"outline\" | \"soft\" | \"surface\"",
       "required": false,
       "inherit": null,
       "default": "\"ghost\""

@@ -32,7 +32,7 @@
     {
       "name": "scrollbars",
       "description": "",
-      "type": "\"both\" | \"vertical\" | \"horizontal\"",
+      "type": "\"both\" | \"horizontal\" | \"vertical\"",
       "required": false,
       "inherit": null,
       "default": "\"both\""

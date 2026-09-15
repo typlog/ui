@@ -18,7 +18,7 @@
     {
       "name": "indicatorIcon",
       "description": "<p>An indicator icon on the left or right of the trigger.</p>",
-      "type": "\"none\" | \"chevron\" | \"plus\"",
+      "type": "\"chevron\" | \"none\" | \"plus\"",
       "required": false,
       "inherit": null,
       "default": "\"chevron\""

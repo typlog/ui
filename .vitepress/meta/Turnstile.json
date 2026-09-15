@@ -57,7 +57,7 @@
     {
       "name": "theme",
       "description": "",
-      "type": "\"auto\" | \"light\" | \"dark\"",
+      "type": "\"auto\" | \"dark\" | \"light\"",
       "required": false,
       "inherit": null,
       "default": "\"auto\""

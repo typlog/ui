@@ -128,6 +128,24 @@ function parseTypeFromSchema(schema: PropertyMetaSchema): string {
   }
 }
 
+function sortUnionType(type: string): string {
+  const source = ts.createSourceFile(
+    'component-meta-type.ts',
+    `type ComponentMetaType = ${type}`,
+    ts.ScriptTarget.Latest,
+    true,
+    ts.ScriptKind.TS,
+  )
+  const declaration = source.statements[0]
+  if (!declaration || !ts.isTypeAliasDeclaration(declaration) || !ts.isUnionTypeNode(declaration.type))
+    return type
+
+  return declaration.type.types
+    .map(member => member.getText(source))
+    .sort()
+    .join(' | ')
+}
+
 // Utilities
 function formatMeta(meta: ComponentMeta) {
   const props = meta.props
@@ -149,11 +167,9 @@ function formatMeta(meta: ComponentMeta) {
         type = parseTypeFromSchema(prop.schema) || type
       }
 
-      type = type.replace(/\s*\|\s*undefined/g, '')
+      type = sortUnionType(type.replace(/\s*\|\s*undefined/g, ''))
 
-      if (name === 'size') {
-        type = type.split(' | ').sort().join(' | ')
-      } else if (name === 'color') {
+      if (name === 'color') {
         type = '"indigo" | "gray" | "gold" | "bronze" | "brown" | "yellow" | "amber" | "orange" | "tomato" | "red" | "ruby" | "crimson" | "pink" | "plum" | "purple" | "violet" | "iris" | "blue" | "cyan" | "teal" | "jade" | "green" | "grass" | "lime" | "mint" | "sky"'
       } else if (name === 'radius') {
         type = '"none" | "small" | "medium" | "large" | "full"'
@@ -180,7 +196,7 @@ function formatMeta(meta: ComponentMeta) {
       const { name, type } = event
       return ({
         name,
-        type: type.replace(/\s*\|\s*undefined/g, ''),
+        type: sortUnionType(type.replace(/\s*\|\s*undefined/g, '')),
       })
     })
     .sort((a, b) => a.name.localeCompare(b.name))
@@ -195,7 +211,7 @@ function formatMeta(meta: ComponentMeta) {
         slots.push({
           name: childMeta.name,
           description: md.render(childMeta.description),
-          type: parseTypeFromSchema(childMeta.schema),
+          type: sortUnionType(parseTypeFromSchema(childMeta.schema)),
         })
       })
     } else if (typeof schema === 'string') {
@@ -208,7 +224,7 @@ function formatMeta(meta: ComponentMeta) {
           slots.push({
             name: match[1],
             description: '',
-            type: match[2].trim(),
+            type: sortUnionType(match[2].trim()),
           })
         }
       })
@@ -221,7 +237,7 @@ function formatMeta(meta: ComponentMeta) {
     .map(expose => ({
       name: expose.name,
       description: md.render(expose.description),
-      type: expose.type,
+      type: sortUnionType(expose.type),
     }))
 
   return {

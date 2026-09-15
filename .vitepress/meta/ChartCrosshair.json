@@ -68,7 +68,7 @@
     {
       "name": "forceShowAt",
       "description": "<p>Force the crosshair to show at a specific position. Default: <code>undefined</code></p>",
-      "type": "number | Date",
+      "type": "Date | number",
       "required": false,
       "inherit": "unovis"
     },

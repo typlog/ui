@@ -103,7 +103,7 @@
     {
       "name": "multiple",
       "description": "<p>Whether multiple options can be selected or not.</p>",
-      "type": "boolean | M",
+      "type": "M | boolean",
       "required": false,
       "inherit": "reka-ui"
     },
@@ -117,7 +117,7 @@
     {
       "name": "selectionBehavior",
       "description": "<p>How multiple selection should behave in the collection.</p>",
-      "type": "\"toggle\" | \"replace\"",
+      "type": "\"replace\" | \"toggle\"",
       "required": false,
       "inherit": "reka-ui"
     },
@@ -132,7 +132,7 @@
     {
       "name": "virtual",
       "description": "<p>Enables virtual rendering, optionally configuring the virtualizer.</p>",
-      "type": "boolean | TreeVirtualOptions<T>",
+      "type": "TreeVirtualOptions<T> | boolean",
       "required": false,
       "inherit": null,
       "default": "false"

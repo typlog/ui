@@ -3,7 +3,7 @@
     {
       "name": "align",
       "description": "<p>Alignment of legend entries within the legend.</p>",
-      "type": "\"start\" | \"center\" | \"end\"",
+      "type": "\"center\" | \"end\" | \"start\"",
       "required": false,
       "inherit": null,
       "default": "\"start\""
@@ -34,7 +34,7 @@
     {
       "name": "orientation",
       "description": "<p>Layout direction for legend entries.</p>",
-      "type": "\"vertical\" | \"horizontal\"",
+      "type": "\"horizontal\" | \"vertical\"",
       "required": false,
       "inherit": null,
       "default": "\"horizontal\""

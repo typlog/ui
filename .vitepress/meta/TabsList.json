@@ -32,7 +32,7 @@
     {
       "name": "variant",
       "description": "",
-      "type": "\"soft\" | \"outline\" | \"surface\" | \"classic\"",
+      "type": "\"classic\" | \"outline\" | \"soft\" | \"surface\"",
       "required": false,
       "inherit": null,
       "default": "\"outline\""

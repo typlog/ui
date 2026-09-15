@@ -42,7 +42,7 @@
     {
       "name": "position",
       "description": "",
-      "type": "\"bottom-right\" | \"top-left\" | \"top-right\" | \"top-center\" | \"bottom-left\" | \"bottom-center\"",
+      "type": "\"bottom-center\" | \"bottom-left\" | \"bottom-right\" | \"top-center\" | \"top-left\" | \"top-right\"",
       "required": false,
       "inherit": null,
       "default": "\"bottom-right\""

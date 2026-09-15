@@ -47,7 +47,7 @@
     {
       "name": "variant",
       "description": "",
-      "type": "\"solid\" | \"ring\"",
+      "type": "\"ring\" | \"solid\"",
       "required": false,
       "inherit": null,
       "default": "\"solid\""

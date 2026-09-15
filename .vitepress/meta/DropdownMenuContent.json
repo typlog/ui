@@ -3,7 +3,7 @@
     {
       "name": "align",
       "description": "<p>The preferred alignment against the trigger.\nMay change when collisions occur.</p>",
-      "type": "\"start\" | \"center\" | \"end\"",
+      "type": "\"center\" | \"end\" | \"start\"",
       "required": false,
       "inherit": "reka-ui",
       "default": "\"start\""
@@ -58,7 +58,7 @@
     {
       "name": "collisionBoundary",
       "description": "<p>The element used as the collision boundary. By default\nthis is the viewport, though you can provide additional\nelement(s) to be included in this check.</p>",
-      "type": "Element | (Element | null)[] | null",
+      "type": "(Element | null)[] | Element | null",
       "required": false,
       "inherit": "reka-ui",
       "default": "[]"
@@ -66,7 +66,7 @@
     {
       "name": "collisionPadding",
       "description": "<p>The distance in pixels from the boundary edges where collision\ndetection should occur. Accepts a number (same for all sides),\nor a partial padding object, for example: { top: 20, left: 20 }.</p>",
-      "type": "number | Partial<Record<\"left\" | \"right\" | \"top\" | \"bottom\", number>>",
+      "type": "Partial<Record<\"left\" | \"right\" | \"top\" | \"bottom\", number>> | number",
       "required": false,
       "inherit": "reka-ui",
       "default": "10"
@@ -156,7 +156,7 @@
     {
       "name": "side",
       "description": "<p>The preferred side of the trigger to render against when open.\nWill be reversed when collisions occur and avoidCollisions\nis enabled.</p>",
-      "type": "\"left\" | \"right\" | \"top\" | \"bottom\"",
+      "type": "\"bottom\" | \"left\" | \"right\" | \"top\"",
       "required": false,
       "inherit": "reka-ui",
       "default": "\"bottom\""
@@ -204,7 +204,7 @@
     {
       "name": "variant",
       "description": "",
-      "type": "\"solid\" | \"soft\"",
+      "type": "\"soft\" | \"solid\"",
       "required": false,
       "inherit": null,
       "default": "\"solid\""

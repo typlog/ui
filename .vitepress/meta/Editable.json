@@ -74,7 +74,7 @@
     {
       "name": "modelValue",
       "description": "<p>The value of the editable field</p>",
-      "type": "string | null",
+      "type": "null | string",
       "required": false,
       "inherit": "reka-ui"
     },

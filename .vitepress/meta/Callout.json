@@ -47,7 +47,7 @@
     {
       "name": "variant",
       "description": "<p>The visual treatment of the callout.</p>",
-      "type": "\"soft\" | \"outline\" | \"surface\"",
+      "type": "\"outline\" | \"soft\" | \"surface\"",
       "required": false,
       "inherit": null,
       "default": "\"soft\""

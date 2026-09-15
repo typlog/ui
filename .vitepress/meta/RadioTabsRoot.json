@@ -96,7 +96,7 @@
     {
       "name": "variant",
       "description": "<p>The visual variant of the radio tabs.</p>",
-      "type": "\"soft\" | \"surface\" | \"classic\"",
+      "type": "\"classic\" | \"soft\" | \"surface\"",
       "required": false,
       "inherit": null,
       "default": "\"classic\""

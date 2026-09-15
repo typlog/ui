@@ -27,7 +27,7 @@
     {
       "name": "height",
       "description": "<p>Height of the scroll viewport.</p>",
-      "type": "string | number",
+      "type": "number | string",
       "required": false,
       "inherit": null,
       "default": "420"
@@ -35,7 +35,7 @@
     {
       "name": "iconSize",
       "description": "<p>Size of each rendered icon.</p>",
-      "type": "string | number",
+      "type": "number | string",
       "required": false,
       "inherit": null,
       "default": "20"

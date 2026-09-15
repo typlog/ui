@@ -25,7 +25,7 @@
     {
       "name": "defaultValue",
       "description": "<p>The value of the checkbox when it is initially rendered. Use when you do not need to control its value.</p>",
-      "type": "boolean | \"indeterminate\"",
+      "type": "\"indeterminate\" | boolean",
       "required": false,
       "inherit": "reka-ui"
     },
@@ -60,7 +60,7 @@
     {
       "name": "modelValue",
       "description": "<p>The controlled value of the checkbox. Can be binded with v-model.</p>",
-      "type": "boolean | \"indeterminate\" | null",
+      "type": "\"indeterminate\" | boolean | null",
       "required": false,
       "inherit": "reka-ui"
     },

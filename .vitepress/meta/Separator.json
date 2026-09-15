@@ -19,7 +19,7 @@
     {
       "name": "orientation",
       "description": "<p>Control the orientation of the separator.</p>",
-      "type": "\"vertical\" | \"horizontal\"",
+      "type": "\"horizontal\" | \"vertical\"",
       "required": false,
       "inherit": null,
       "default": "\"horizontal\""

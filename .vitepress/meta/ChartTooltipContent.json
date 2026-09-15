@@ -62,7 +62,7 @@
     {
       "name": "x",
       "description": "<p>Domain value displayed as the tooltip label.</p>",
-      "type": "string | number | Date",
+      "type": "Date | number | string",
       "required": false,
       "inherit": null
     }
